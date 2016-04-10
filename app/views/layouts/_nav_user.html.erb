@@ -4,6 +4,7 @@ user
     <button id="upload">Upload</button>
     <%= link_to('<span id="settings"></span>'.html_safe, edit_user_registration_path) %>
     <a href="/profile"><span id="profile-photo-small"></span></a>
+    <a href="/profile"><p id="username"><%= current_user.username %></p></a>
     <form id="demo-2">
 	    <input type="search" placeholder="Search">
     </form>

@@ -1939,3 +1939,10 @@ input::-webkit-input-placeholder {
     margin: 19px 4px;
     font-size: 14px;
 }
+#username-profile {
+	    display: inline-block;
+    position: absolute;
+    bottom: 0px;
+    left: 280px;
+    font-family: open sans;
+}
