@@ -1,0 +1,11 @@
+user
+<nav id="navbar">
+    <a href="/"><div id="logo-wrapper"><img id="logo" src="logo.png"></div></a>
+    <button id="upload">Upload</button>
+    <%= link_to('<span id="settings"></span>'.html_safe, edit_user_registration_path) %>
+    <a href="/profile"><span id="profile-photo-small"></span></a>
+    <form id="demo-2">
+	    <input type="search" placeholder="Search">
+    </form>
+    <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %>
+</nav>

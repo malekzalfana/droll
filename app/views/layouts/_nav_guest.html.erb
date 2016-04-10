@@ -1,0 +1,9 @@
+<nav id="navbar">
+    <a href="/"><div id="logo-wrapper"><img id="logo" src="logo.png"></div></a>
+    <%= link_to('<button id="sign-up">Sign Up</button>'.html_safe, new_user_registration_path) %>
+    <%= link_to('<p id="log-in">Log In</p>'.html_safe, new_user_session_path) %>
+    <form id="demo-2">
+	    <input type="search" placeholder="Search">
+    </form>
+    
+</nav>

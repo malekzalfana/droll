@@ -1,7 +1,5 @@
-<nav id="navbar">
-    <a href="/"><div id="logo-wrapper"><img id="logo" src="logo.png"></div></a>
-    <a href="/profile"><span id="profile-photo-small"></span></a>
-    <form id="demo-2">
-	    <input type="search" placeholder="Search">
-    </form>
-</nav>
+<% if !user_signed_in? %>
+<%= render '/layouts/nav_guest' %>
+<% else %>
+<%= render '/layouts/nav_user' %>
+<% end %>

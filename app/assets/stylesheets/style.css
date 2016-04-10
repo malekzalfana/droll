@@ -1878,10 +1878,64 @@ input::-webkit-input-placeholder {
     border-radius: 100%;
 }
 #profile-photo-small {
-        width: 38px;
-    height: 38px;
+        width: 35px;
+    height: 35px;
     background: gray;
+    float: right;
+    margin: 11px;
+    border-radius: 100%;
+}
+#settings, .settings {
+	width: 38px;
+    height: 38px;
+    background: url('cogwheel.png') 7px center no-repeat;
     float: right;
     margin: 10px;
     border-radius: 100%;
+    cursor: pointer;
+}
+#settings:hover {
+	background: url('cogwheel-2.png') 7px center no-repeat;
+}
+#log-in {
+	    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    float: right;
+    font-family: open sans ;
+    margin: 18px 4px;
+    font-size: 15px;
+}
+#upload {
+	float: right;
+    background: #F44336;
+    border: none;
+    font-size: 14px;
+    font-family: open sans;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 2px;
+    margin: 11px;
+}
+#sign-up {
+	float: right;
+    background: #F44336;
+    border: none;
+    font-size: 14px;
+    font-family: open sans;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 2px;
+    margin: 11px;
+}
+#username {
+	display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    float: right;
+    font-family: open sans ;
+    margin: 19px 4px;
+    font-size: 14px;
 }

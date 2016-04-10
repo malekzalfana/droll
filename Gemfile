@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# for devise gem
+gem 'devise'
 # for twitter bootstrap sass 
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
