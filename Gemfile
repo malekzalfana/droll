@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-
+# for voting system
+gem 'acts_as_votable'
 # for uploading images
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 # for devise gem

@@ -4,6 +4,16 @@
         <div class="wrapper">
             <h2 class="post-title"><%= x.title %></h2>
             <%= image_tag x.image.url(:medium), :class => "post-image" %>
+            <div class="upvote-downvote-comment">
+                <%= link_to like_post_path(Post), method: :put, class: 'upvote' do %>
+                    Upvotes
+                <% end %>
+                
+                <%= link_to like_post_path(Post), method: :put, class: 'downvote' do %>
+                    Downvotes
+                <% end %>
+                
+            </div>
         </div>
     <% end %>
 </div>

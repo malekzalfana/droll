@@ -12,7 +12,12 @@ Rails.application.routes.draw do
   get '/user/:id' => 'pages#profile'
 
   get '/explore' => 'pages#explore'
-
+  resources :posts do
+    member do
+      put "like", to: "posts#upvote"  # maybe change it to POSTS??
+      put "dislike", to: "posts#downvote" # maybe change it to POSTS??
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -67,4 +72,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  
 end
