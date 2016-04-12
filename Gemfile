@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+# for uploading images
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
 # for devise gem
 gem 'devise'
 # for twitter bootstrap sass 

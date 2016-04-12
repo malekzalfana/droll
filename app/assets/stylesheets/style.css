@@ -5,12 +5,16 @@ html body {
 	min-width: 1100px;
 	min-height: 100% !important;
 	padding: 0px;
-	background: #FCFCFC;
+	background: #FFF;
 }
 a {
 	text-decoration: none;
 }
 #content {
+    position: relative;
+    text-align: center;
+    width: 500px;
+    margin: 0px auto;
 
 }
 #navbar {
@@ -24,10 +28,13 @@ a {
     height: 60px;
     width: 185px;
     display: inline-block;
+    position: fixed;
+    background: #212121;
 }
 #logo {
     height: 100%;
     width: 100%;
+    background-image: url('logo.png');
 }
 #addRageFaces, #addMemes {
 	margin: 0px 10px 40px 20px;
@@ -527,6 +534,7 @@ textarea:focus {
 	height: 100%;
 	margin: 0px;
 	padding: 0px;
+	margin-bottom: 50px;
 }
 
 .navbar {
@@ -1945,4 +1953,32 @@ input::-webkit-input-placeholder {
     bottom: 0px;
     left: 280px;
     font-family: open sans;
+}
+#upload a{
+	color: white;
+}
+#upload:hover {
+	background: #E53935;
+}
+#upvotes-number {
+	position: absolute;
+    bottom: 0px;
+    right: 26px;
+    font-family: open sans;
+}
+#posts-number {
+	position: absolute;
+    bottom: 0px;
+    right: 165px;
+    font-family: open sans;
+}
+.post-title {
+	font-size: 21px;
+    font-family: open sans;
+    padding: 10px 0px;
+    margin: 0px;
+    text-align: left;
+}
+.post-image {
+	width: 500px;
 }

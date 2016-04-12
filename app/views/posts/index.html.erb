@@ -1,0 +1,7 @@
+<% @post.each do |x| %>
+<div class="wrapper">
+    <%= image_tag x.image.url(:medium) %>
+    <br>
+    <%= x.title %>
+</div>
+<% end %>

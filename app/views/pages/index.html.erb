@@ -1,2 +1,10 @@
-<%= render '/layouts/left' %>
-<div id="content"></div>
+<div><%= render '/layouts/left' %></div>
+<div id="content">
+    <% @post.each do |x| %>
+        <div class="wrapper">
+            <h2 class="post-title"><%= x.title %></h2>
+            <%= image_tag x.image.url(:medium), :class => "post-image" %>
+        </div>
+    <% end %>
+</div>
+

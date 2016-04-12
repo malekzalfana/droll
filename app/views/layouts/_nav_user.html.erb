@@ -1,10 +1,9 @@
-user
+<a href="/"><div id="logo-wrapper"><span id="logo"></span></div></a>
 <nav id="navbar">
-    <a href="/"><div id="logo-wrapper"><img id="logo" src="logo.png"></div></a>
-    <button id="upload">Upload</button>
+    <button id="upload"><%= link_to 'Upload', new_post_path %></button>
     <%= link_to('<span id="settings"></span>'.html_safe, edit_user_registration_path) %>
-    <a href="/profile"><span id="profile-photo-small"></span></a>
-    <a href="/profile"><p id="username"><%= current_user.username %></p></a>
+    <a href="/user/<%= current_user.username %>"><span id="profile-photo-small"></span></a>
+    <a href="/user/<%= current_user.username %>"><p id="username"><%= current_user.username %></p></a>
     <form id="demo-2">
 	    <input type="search" placeholder="Search">
     </form>
