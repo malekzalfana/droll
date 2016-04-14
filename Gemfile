@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# for the forms
+gem 'simple_form', '~> 3.0.2'
 # for voting system
 gem 'acts_as_votable'
 # for uploading images

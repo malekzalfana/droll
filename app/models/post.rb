@@ -9,4 +9,5 @@ class Post < ActiveRecord::Base
     #@post = @post.order(created_at: :desc)
     #@post = Post.order("created_at DESC").all
     default_scope { order("created_at DESC")}
+    has_many :comments
 end

@@ -15,6 +15,12 @@
                     <%= post.get_downvotes.size %>
                 <% end %>
                 
+                <h2><%= post.comments.count %> Comments</h2>
+                <div class: 'comments-wrapper'>
+                    <%= render post.comments %>
+                    <%= render "comments/form" %>
+                </div>
+                
             </div>
         </div>
     <% end %>
