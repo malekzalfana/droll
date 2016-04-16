@@ -1,10 +1,11 @@
 <div class="comment clearfix">
   <div class="content">
     <p class="comment_content">
+      <div class="created_at"><%= comment.created_at.strftime("%B %d, %Y") %></div>
       <%= comment.comment %>
     </p>
     <p class="comment_author">
-      <%= comment.user.email %>
+      @<%= comment.user.username unless comment.user.blank? %>
     </p>
   </div>
   <div class="buttons">

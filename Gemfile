@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+#for the comments
+gem 'ancestry'
+# for the impresssions count
+gem 'impressionist'
 # for the forms
 gem 'simple_form', '~> 3.0.2'
 # for voting system

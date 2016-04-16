@@ -163,6 +163,10 @@ a {
     color: whitesmoke;
 	cursor: pointer;
 }
+#create-wrapper:focus .create {
+	display: block;
+	opacity: 1;
+}
 .create:nth-child(2) {
 	font-family: open sans;
     letter-spacing: 1px;
@@ -1981,4 +1985,19 @@ input::-webkit-input-placeholder {
 }
 .post-image {
 	width: 550px;
+}
+.upvote, .downvote {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.upvote1 {
+	background-image: url('arrow-up-black.png');
+	width: 20px;
+	height: 20px;
+}
+.downvote1 {
+	background-image: url('arrow-down-black.png');
+	width: 20px;
+	height: 20px;
 }
