@@ -1,7 +1,29 @@
-<% @post.each do |x| %>
-<div class="wrapper">
-    <%= image_tag x.image.url(:medium) %>
-    <br>
-    <%= x.title %>
+<div><%= render '/layouts/left' %></div>
+<div id="content">
+    <% @post.each do |post| %>
+        <div class="wrapper">
+            <h2 class="post-title"><%= post.title %></h2>
+            <p class="post-user">+  @<%= post.user.username unless post.user.blank? %> </p>
+            <%= image_tag post.image.url(:medium), :class => "post-image" %>
+            <div class="upvote-downvote-comment">
+                <div class="voting-wrapper">
+                <span class="upvote"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
+                <%= link_to like_post_path(post), method: :put, class: 'upvote', remote: true  do %>
+                    <span class="upvote">Upvote 
+                    </span>
+                <% end %>
+                
+                
+                <%= link_to dislike_post_path(post), method: :put, class: 'downvote', remote: true  do %>
+                    <span class="downvote">Downvote 
+                    </span>
+                <% end %>
+                <span class="views"><%= post.impressionist_count(:filter=>:ip_address) %> views</span>
+                </div>
+                
+                
+                
+            </div>
+        </div>
+    <% end %>
 </div>
-<% end %>

@@ -1,15 +1,9 @@
-<div class="comment clearfix">
-  <div class="content">
-    <p class="comment_content">
-      <div class="created_at"><%= comment.created_at.strftime("%B %d, %Y") %></div>
-      <%= comment.comment %>
-    </p>
-    <p class="comment_author">
-      @<%= comment.user.username unless comment.user.blank? %>
-    </p>
-  </div>
-  <div class="buttons">
-    <%= link_to "Edit", edit_post_comment_path(comment.post, comment) %>
-    <%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
-  </div>
+<div class="well">
+  <h2><%= comment.title %></h2>
+  <p class="text-muted">Added by <strong></strong> on
+    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %></p>
+
+  <blockquote>
+    <p><%= comment.body %></p>
+  </blockquote>
 </div>

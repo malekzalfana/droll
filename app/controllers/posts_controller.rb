@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  impressionist actions: [:show], unique: [:session_hash]
+  impressionist :actions=>[:show,:index], unique: [:session_hash]
   #is_impressionable :counter_cache => true, :column_name => :my_column_name, :unique => true
   #resources posts
   
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     #@post = Post.find(params[:id])
     #@user = User.find(params[:user_id])
     @post = current_user.posts.build(permit_post)
+    @post.user = current_user
     if @post.save
       flash[:success] = "Uploaded"
       redirect_to '/'

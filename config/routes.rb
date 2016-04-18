@@ -18,8 +18,10 @@ Rails.application.routes.draw do
       put "like", to: "posts#upvote"  # maybe change it to POSTS??
       put "dislike", to: "posts#downvote" # maybe change it to POSTS??
     end
-    resources :comments
+    #resources :comments
   end
+  #root to: 'comments#index'
+  #resources :comments, only: [:index, :new, :create]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

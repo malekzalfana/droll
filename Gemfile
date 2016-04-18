@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 #for the comments
-gem 'ancestry'
+#gem 'ancestry'
 # for the impresssions count
+gem 'closure_tree'
+
 gem 'impressionist'
 # for the forms
 gem 'simple_form', '~> 3.0.2'

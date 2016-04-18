@@ -7,5 +7,5 @@ class Post < ActiveRecord::Base
     validates :image, presence: true
     default_scope { order("created_at DESC")}
     has_many :comments
-    is_impressionable :counter_cache => true, :column_name => :my_column_name, :unique => true
+    is_impressionable # :counter_cache => true, :column_name => :my_column_name, :unique => true
 end
