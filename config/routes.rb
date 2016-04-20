@@ -14,15 +14,16 @@ Rails.application.routes.draw do
   get '/explore' => 'pages#explore'
   
   resources :posts do
+    resources :comments
     member do
       put "like", to: "posts#upvote"  # maybe change it to POSTS??
       put "dislike", to: "posts#downvote" # maybe change it to POSTS??
     end
-    #resources :comments
+    
   end
-  #root to: 'comments#index'
+  #resources :comments
   #resources :comments, only: [:index, :new, :create]
-  
+  #get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

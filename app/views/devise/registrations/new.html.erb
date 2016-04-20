@@ -8,6 +8,11 @@
     <%= f.text_field :username, autofocus: true %>
   </div>
   
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control'%>
+  </div>
+  
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>

@@ -7,19 +7,25 @@
             <%= image_tag post.image.url(:medium), :class => "post-image" %>
             <div class="upvote-downvote-comment">
                 <div class="voting-wrapper">
-                <span class="upvote"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
+                <span class="post-votes"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
                 <%= link_to like_post_path(post), method: :put, class: 'upvote', remote: true  do %>
                     <span class="upvote">Upvote 
                     </span>
                 <% end %>
-                
                 
                 <%= link_to dislike_post_path(post), method: :put, class: 'downvote', remote: true  do %>
                     <span class="downvote">Downvote 
                     </span>
                 <% end %>
                 <span class="views"><%= post.impressionist_count(:filter=>:ip_address) %> views</span>
-                </div>
+            </div>
+            <%= render post.comments %>
+            <%= form_for([post, post.comments.new]) do |f| %>
+              <div class="form-group">
+                <%= f.text_area :body, class: 'post-comment-body', required: true %>
+              </div>
+              <%= f.submit class: 'post-comment' %>
+            <% end %>
                 
                 
                 

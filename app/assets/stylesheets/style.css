@@ -1889,6 +1889,9 @@ input::-webkit-input-placeholder {
     background: red;
     left: 70px;
     border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 #profile-photo-small {
         width: 35px;
@@ -1980,7 +1983,7 @@ input::-webkit-input-placeholder {
 .post-title {
 	font-size: 21px;
     font-family: open sans;
-    padding: 10px 0px;
+    padding: 10px;
     margin: 0px;
     text-align: left;
     display: inline-block;
@@ -1998,6 +2001,17 @@ input::-webkit-input-placeholder {
     margin: 2px;
     color: gray;
     font-size: 15px;
+}
+.post-votes {
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    float: left;
+    font-family: open sans;
+    margin: 2px;
+    color: gray;
+    font-size: 15px;
+    padding: 2px 0px 5px 10px;
 }
 .upvote1 {
 	background-image: url('arrow-up-black.png');
@@ -2040,4 +2054,77 @@ input::-webkit-input-placeholder {
     color: gray;
     font-size: 15px;
     padding-right: 20px;
+}
+.comment-user {
+	font-weight: bold;
+	display: block;
+	float: left;
+	padding: 6px 7px;
+	font-size: 14px;
+}
+.comment-body p {
+	margin: 0px 9px;
+    display: block;
+    width: 450px;
+    text-align: left;
+    float: left;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+.comment-body {
+	padding: 0px 14px;
+    display: block;
+    text-align: left;
+    float: left;
+    margin: 0px;
+    font-family: open sans;
+    width: 100%;
+}
+.comment-user-image {
+	width: 40px;
+    height: 40px;
+    float: left;
+    margin: 8px;
+    background-size: cover;
+    background-position: center;
+}
+.comment-user-image-wrapper {
+	height: auto;
+    width: auto;
+    margin: 0px;
+    float: left;
+}
+.comment-options {
+	float: left;
+	width: 480px;
+}
+.comment-separater {
+    margin: 2px 0px;
+    border-color: whitesmoke;
+    border-style: solid;
+   	width: 515px;
+}
+.created-at {
+	font-size: 11px;
+    float: left;
+    padding: 8px 0px;
+    color: gray;
+}
+.post-comment {
+	border: none;
+    font-size: 15px;
+    font-family: open sans;
+    padding: 3px 7px;
+    margin: 2px 0px 8px 15px;
+    display: inherit;
+    border-radius: 2px;
+    color: black;
+}
+.post-comment-body {
+	width: 515px;
+    resize: none;
+    height: auto;
+    border-color: silver;
+    margin: 5px;
+
 }

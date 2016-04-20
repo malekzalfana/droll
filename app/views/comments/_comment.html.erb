@@ -1,9 +1,18 @@
-<div class="well">
-  <h2><%= comment.title %></h2>
-  <p class="text-muted">Added by <strong></strong> on
-    <%= l(comment.created_at, format: '%B, %d %Y %H:%M:%S') %></p>
-
-  <blockquote>
-    <p><%= comment.body %></p>
-  </blockquote>
-</div>
+<blockquote class="comment-body">
+  <div class="comment-user-image-wrapper">
+  <% if !comment.user.blank? %>
+    <% if comment.user.image.url == "missing.jpg" %>
+          <span class="comment-user-image" style="background-image: url(/assets/<%= comment.user.image.url(:thumb) %>)"></span>
+    <% else %>
+          <span class="comment-user-image" style="background-image: url(<%= comment.user.image.url(:medium) %>)"></span>
+    <% end %> 
+  <% end %>
+  </div>
+  <div class="comment-options">
+    <span class="comment-user"><%= comment.user.username unless comment.user.blank? %></span>
+    <span class="created-at"><%= time_ago_in_words(comment.created_at) %> ago -</span>
+    <%= link_to '- destroy', [comment.post, comment], method: :delete, class: 'created-at' %>
+  <p><%= comment.body %></p>
+  </div>
+  <hr class="comment-separater">
+</blockquote>
