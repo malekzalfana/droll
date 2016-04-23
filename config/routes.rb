@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       get :following, :followers
     end  
   end
-  
+  resources :relationships
   # Define root URL
   root 'pages#index'
   
