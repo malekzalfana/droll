@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.references :post, index: true, foreign_key: true
       t.integer :post_id
-
+      t.integer :parent_id
       t.timestamps null: false
     end
   end

@@ -24,11 +24,8 @@
               <div class="form-group">
                 <%= f.text_area :body, class: 'post-comment-body', required: true %>
               </div>
-              <%= f.submit class: 'post-comment' %>
+              <%= f.submit 'post', class: 'post-comment', name: 'post' %>
             <% end %>
-                
-                
-                
             </div>
         </div>
     <% end %>

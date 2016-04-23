@@ -11,8 +11,17 @@
   <div class="comment-options">
     <span class="comment-user"><%= comment.user.username unless comment.user.blank? %></span>
     <span class="created-at"><%= time_ago_in_words(comment.created_at) %> ago -</span>
-    <%= link_to '- destroy', [comment.post, comment], method: :delete, class: 'created-at' %>
+    <% if !comment.parent.present? %>
+      <%= link_to '- destroy', [comment.post, comment], method: :delete, class: 'created-at' %>
+    <% end %>  
   <p><%= comment.body %></p>
   </div>
+  <%= render comment.replies if comment.replies.any? %>
+  <%# form_for [comment.post, comment.new] do |f| %>
+            <%= form_for [comment.post, comment.replies.new] do |f| %>
+               <%= f.hidden_field :parent_id, :value => comment.id %>
+               <%= f.text_field :body %>
+               <%= f.submit 'reply', name: 'reply' %>
+            <% end %>
   <hr class="comment-separater">
 </blockquote>

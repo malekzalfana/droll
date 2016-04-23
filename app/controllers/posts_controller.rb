@@ -6,17 +6,14 @@ class PostsController < ApplicationController
   
   def new
     @post = current_user.posts.build(params[:post])
-    @comment = @post.comments.build
   end
 
   def index
     @post = Post.all
-    @comment = @post.comments.build
   end
 
   def show
     @post = Post.find(params[:id])
-    @comment = @post.comments.build
   end
   
   def create

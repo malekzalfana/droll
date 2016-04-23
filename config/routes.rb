@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   resources :posts
 
   devise_for :users
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end  
+  end
+  
   # Define root URL
   root 'pages#index'
   
@@ -12,9 +19,9 @@ Rails.application.routes.draw do
   get '/user/:id' => 'pages#profile'
 
   get '/explore' => 'pages#explore'
-  
+  resources :comments
   resources :posts do
-    resources :comments
+    resources :comments#, :only => [:create, :destroy]
     member do
       put "like", to: "posts#upvote"  # maybe change it to POSTS??
       put "dislike", to: "posts#downvote" # maybe change it to POSTS??

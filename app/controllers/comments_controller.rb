@@ -3,22 +3,37 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
 
-#=begin
   def new
     @comment = Comment.new
   end
-#=end
 
   def create
-    @post = Post.find(params[:post_id])
-		@comment = @post.comments.create(comment_params)
-    @comment.user = current_user
+=begin    
+    #if params.fetch(:parent_id, nil).present?
+      @post = Post.find(params[:post_id])
+      #if !params[:parent_id] == nil
+        @comment = @parent.replies.new(comment_params)
+      #else
+  		  @comment = @post.comments.new(comment_params)
+        @comment.user = current_user
+      #end
+=end
+    
+    if params[:comment][:parent_id].present?
+      @comment = Comment.find(params[:comment][:parent_id]).replies.new(comment_params)
+      @comment.user = current_user
+    elsif params[:comment][:parent_id].blank?
+      @post = Post.find(params[:post_id])
+      @comment = @post.comments.new(comment_params)
+      @comment.user = current_user
+    end
     if @comment.save
-      flash[:success] = 'Your comment was successfully added!'
-      redirect_to :back
+    flash[:success] = 'Your comment was successfully added!'
+    redirect_to :back
     else
       render 'new'
     end
+    
   end
   
   def destroy
@@ -32,6 +47,12 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :parent_id)
+  end
+  def post?
+    params[:commit] == "post"
+  end
+  def reply?
+    params[:commit] == "reply"
   end
 end

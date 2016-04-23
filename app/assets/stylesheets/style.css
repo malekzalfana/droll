@@ -2126,5 +2126,13 @@ input::-webkit-input-placeholder {
     height: auto;
     border-color: silver;
     margin: 5px;
-
+}
+.comment-body .comment-body {
+	border-left: 2px solid #7D7D7D;
+    padding-left: 5px;
+    margin-left: 25px;
+}
+.comment-body .comment-body .comment-user-image {
+	height: 30px;
+	width: 30px;
 }
