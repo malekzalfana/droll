@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/user/:id' => 'pages#profile'
 
   get '/explore' => 'pages#explore'
+  get '/create' => 'pages#create'
   resources :comments
   resources :posts do
     resources :comments#, :only => [:create, :destroy]

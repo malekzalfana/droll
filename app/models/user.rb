@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_voter
   is_impressionable
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "missing.jpg"                
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "missing.jpg"
+  has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "missing.jpg"
   has_many :posts, dependent: :destroy
   
   has_many :active_relationships, class_name: 'Relationship', foreign_key: "follower_id", dependent: :destroy
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :comments
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates_attachment :image,
+  validates_attachment :image, :cover,
                      content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
   
   def follow(other)

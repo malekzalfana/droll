@@ -1,4 +1,5 @@
 Rails.application.configure do
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -41,4 +42,14 @@ Rails.application.configure do
   
   # configuration number ONE
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #class Application < Rails::Application
+  #config.web_console.whitelisted_ips = '77.42.183.18'
+  #end
+  class Application < Rails::Application
+  config.web_console.whiny_requests = false
+  end
+  #class Application < Rails::Application
+  #config.web_console.whiny_requests = false
+  #end
+
 end

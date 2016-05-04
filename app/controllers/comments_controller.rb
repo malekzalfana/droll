@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   def index
     @comments = Comment.all
   end
@@ -8,19 +9,9 @@ class CommentsController < ApplicationController
   end
 
   def create
-=begin    
-    #if params.fetch(:parent_id, nil).present?
-      @post = Post.find(params[:post_id])
-      #if !params[:parent_id] == nil
-        @comment = @parent.replies.new(comment_params)
-      #else
-  		  @comment = @post.comments.new(comment_params)
-        @comment.user = current_user
-      #end
-=end
-    
     if params[:comment][:parent_id].present?
       @comment = Comment.find(params[:comment][:parent_id]).replies.new(comment_params)
+      @comment_parent = Comment.find(params[:comment][:parent_id]).user
       @comment.user = current_user
     elsif params[:comment][:parent_id].blank?
       @post = Post.find(params[:post_id])
@@ -28,10 +19,13 @@ class CommentsController < ApplicationController
       @comment.user = current_user
     end
     if @comment.save
-    flash[:success] = 'Your comment was successfully added!'
-    redirect_to :back
-    else
-      render 'new'
+      respond_to do |format|
+        format.html do
+          flash[:success] = 'Comment posted.'
+          #redirect_to @comment         # i commented out this
+        end
+        format.js # JavaScript response
+      end
     end
     
   end

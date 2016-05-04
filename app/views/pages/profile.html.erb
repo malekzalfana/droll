@@ -1,14 +1,16 @@
-<div id="cover-photo">
-    <%= render '/layouts/follow_button', :user => User.find_by_username(params[:id]) %>
+<div id="cover-photo" style="background-image: url(<%= if (@user.cover.url == "missing.jpg") then "/assets/" end %><%= @user.cover.url(:medium) %>)" >
     <% if @user.image.url == "missing.jpg" %>
         <div id="profile-photo" style="background-image: url(/assets/<%= @user.image.url(:thumb) %>)"></div>
     <% else %>
         <div id="profile-photo" style="background-image: url(<%= @user.image.url(:medium) %>)"></div>
-    <% end %>    
+    <% end %>
     <h2 id="username-profile"><%= @username %></h2>
-    <h2 id="posts-number"><%= @user.posts.count %> Posts</h2>
-    <h2 id="upvotes-number"><%= @user.followers.count %> added</h2>
-    
+    <div id="profile-info">
+        <%= render '/layouts/follow_button', :user => User.find_by_username(params[:id]) %>
+        <h2 id="posts-number"><%= @user.posts.count %> Posts</h2>
+        <h2 id="upvotes-number"><%= @user.followers.count %> followers</h2>
+    </div>
+    <div id="profile-overlay"></div>
 </div>
 <div id="content">
     <% @post.each do |x| %>
@@ -17,4 +19,6 @@
             <%= image_tag x.image.url(:medium), :class => "post-image" %>
         </div>
     <% end %>
+    <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">When you get into a deep conversation with someone who understands you..<br>.<a href="https://t.co/SN2AdY8f5R">https://t.co/SN2AdY8f5R</a> <a href="https://t.co/6VvkIUJMqY">pic.twitter.com/6VvkIUJMqY</a></p>&mdash; 9GAG (@9GAG) <a href="https://twitter.com/9GAG/status/721352711535529985">April 16, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>

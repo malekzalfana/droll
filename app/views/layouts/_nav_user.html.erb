@@ -1,8 +1,18 @@
-<a href="/"><div id="logo-wrapper"><span id="logo"></span></div></a>
+<div id="logo-wrapper-wrapper">
+    <i class="material-icons left" id="left-arrow">arrow_back</i>
+    <a href="/"><div id="logo-wrapper"><span id="logo"></span></div></a>
+</div>
+<nav id="navbar-2"></nav>
 <nav id="navbar">
-    <button id="upload"><%= link_to 'Upload', new_post_path %></button>
+    <%= link_to('<button id="upload">Upload</button>'.html_safe, new_post_path) %>
     <%= link_to('<span id="settings"></span>'.html_safe, edit_user_registration_path) %>
-    <a href="/user/<%= current_user.username %>"><span id="profile-photo-small"></span></a>
+    <a href="/user/<%= current_user.username %>">
+        <% if current_user.image.url == "missing.jpg" %>
+            <span id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></span>
+        <% else %>
+            <span id="profile-photo-small" style="background-image: url(<%= current_user.image.url(:medium) %>)"></span>
+        <% end %>
+    </a>
     <a href="/user/<%= current_user.username %>"><p id="username"><%= current_user.username %></p></a>
     <form id="demo-2">
 	    <input type="search" placeholder="Search">
