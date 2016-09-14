@@ -321,7 +321,7 @@ body {
     cursor: pointer !Important;
 }
 .post-options:focus + .post-more-options {
-    displaY:inline-block !important1;
+    displaY:inline-block !important;
 }
 .overlay-full {
     width: 100%;

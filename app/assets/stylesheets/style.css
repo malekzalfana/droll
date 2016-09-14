@@ -2231,9 +2231,6 @@ position: fixed;
 #upload a{
 	color: white;
 }
-#1upload:hover {
-	background: #E53935;
-}
 #profile-info {
     width: auto;
     font-family: open sans;
@@ -2343,9 +2340,9 @@ position: fixed;
     padding: 2px 0px 5px 4px;
     font-weight: 500;
 }
-.1upvote:hover, .1downvote {
+/*.1upvote:hover, .1downvote {
 	background: url(upvote-3.png) 0px 0px no-repeat whitesmoke;
-}
+}*/
 .post-votes-word {
 	background-repeat: no-repeat;
     background-size: cover;
