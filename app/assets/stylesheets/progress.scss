@@ -1,0 +1,80 @@
+$progress: 0;
+
+$color-active: #ff3000;
+$color-inactive: #b2b2b2;
+$color-bg: none;
+$color-font: #ff3000;
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html, body {
+  min-height: 100%;
+}
+
+body {
+  background: $color-bg;
+}
+
+.progress {
+  border-radius: 50%;
+    position: absolute;
+    font-family: 'Lato', sans-serif;
+    bottom: 0;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    background: $color-inactive;
+    margin: 10px;
+    overflow: hidden;
+  &:before {
+    content: $progress + "%";
+    text-align: center;
+    color: #ff3000;
+    width: 90%;
+    padding: 9px 6px;
+    height: 90%;
+    background: #f9f9f9;
+    position: absolute;
+    border-radius: 50%;
+    left: 5%;
+    top: 5%;
+    z-index: 1000;
+    box-sizing: border-box;
+  }
+  .hide {
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+    background: $color-inactive;
+    z-index: 200;
+    transform-origin: left center;
+    $deg: (360 / 100) * $progress;
+    transform: rotate($deg + deg);
+  }
+  .active, .active2 {
+    width: 50%;
+    height: 100%;
+    background: $color-active;
+    position: absolute;
+    @if $progress > 50 {
+      z-index: 300
+    }
+    left: 50%;
+    top: 0;
+  }
+  @if $progress > 50 {
+    .active2 {
+      transform-origin: left center;
+      $deg: (360 / 100) * ($progress - 50);
+      transform: rotate($deg + deg);
+    }
+  }
+}

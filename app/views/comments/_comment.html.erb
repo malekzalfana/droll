@@ -1,34 +1,108 @@
-<blockquote class="comment-body" id="comment-<%= comment.parent.id unless comment.parent.blank? %><%= "-".html_safe  unless comment.parent.blank? %><%= comment.id %>">
+<blockquote class="comment-body <% if comment.parent.blank? %>comment-parent<% end %> <% if comment.parent %>comment-child<% end %>" id="comment-<%= comment.parent.id unless comment.parent.blank? %><%= "-".html_safe  unless comment.parent.blank? %><%= comment.id %>">
+  <% if comment.parent && comment.parent.parent.nil? %><hr class="comment-linker"><hr class=" comment-linker no-more-comments"><hr class=" comment-linker more-comments"><% end %>
+  <hr class=" comment-linker no-more-comments-2" style"display:none">
   <div class="comment-user-image-wrapper">
   <% if !comment.user.blank? %>
-    <% if comment.user.image.url == "missing.jpg" %>
-          <span class="comment-user-image" style="background-image: url(/assets/<%= comment.user.image.url(:thumb) %>)"></span>
+    <% if (comment.user == @post.user) && @post.anonymous == true %>
+      <span class="comment-user-image" style="background-image: url('../assets/anonymous.jpg')"></span>
     <% else %>
-          <span class="comment-user-image" style="background-image: url(<%= comment.user.image.url(:medium) %>)"></span>
-    <% end %> 
+    <% if comment.user.image.url == "missing.jpg" %>
+            <span class="comment-user-image" style="background-image: url(/assets/<%= comment.user.image.url(:thumb) %>)"></span>
+      <% else %>
+            <span class="comment-user-image" style="background-image: url(<%= comment.user.image.url(:medium) %>)"></span>
+      <% end %>
+    <% end %>
+    
+    <% if (!comment.replies.blank? && comment.parent && comment.parent.parent.nil?) || (comment.replies.blank? && comment.parent && comment.parent.parent) %>
+    <div class="before-replies"></div>
+    <% end %>
   <% end %>
   </div>
   <div class="comment-options">
-    <span class="comment-user"><%= comment.user.username unless comment.user.blank? %></span>
-    <span class="created-at"><%= time_ago_in_words(comment.created_at) %> ago -</span>
-    <% if !comment.parent.present? %>
-      <%= link_to '- destroy', [comment.post, comment], method: :delete, class: 'created-at' %>
-    <% end %>  
-  <p><%= "@".html_safe unless comment.parent.blank? %><%= comment.parent.user.username unless comment.parent.user.blank? unless comment.parent.blank? %><%= " ".html_safe unless comment.parent.blank? %><%= comment.body %></p>
+    <% if !comment.postid.nil? %>
+    <% if Post.find_by_id(comment.postid).anonymous!= true %><a href="/user/<%= comment.user.username %>"><% end%>
+    <span class="comment-user <%= if comment.user == Post.find_by_id(comment.postid).user && Post.find_by_id(comment.postid).anonymous == true then 'comment-user-3' end %> <%= if comment.user == Post.find_by_id(comment.postid).user then 'comment-user-2' end %>"><%= if (comment.user.blank? || comment.user == Post.find_by_id(comment.postid).user && Post.find_by_id(comment.postid).anonymous == true) then 'Anonymous' else comment.user.username end %></span>
+    <% if Post.find_by_id(comment.postid).anonymous!= true %></a><% end%>
+    <% else %>
+    <% if comment.post.anonymous != true %><a href="/user/<%= comment.user.username %>"><% end%>
+    <span class="comment-user <%= if comment.user == comment.post.user && comment.post.anonymous == true then 'comment-user-3' end %> <%= if comment.user == comment.post.user then 'comment-user-2' end %>"><%= if (comment.user.blank? || comment.user == comment.post.user && comment.post.anonymous == true) then 'Anonymous' else comment.user.username end %></span>
+    <% if comment.post.anonymous != true %></a><% end%>
+    <% end %>
+    <span class="created-at created-at-time"><%= time_ago_in_words(comment.created_at) if comment.created_at %> ago -</span>
+      
+      <% if user_signed_in? %>
+                        <span class="post-votes-word comment-points created-at" data-points="<%= comment.get_upvotes.size - comment.get_downvotes.size - if current_user.voted_up_on? comment then 1 elsif current_user.voted_down_on? comment then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? comment then 1 elsif current_user.voted_down_on? comment then -1 else 0 end %>"><%=  comment.get_upvotes.size - comment.get_downvotes.size %> points</span>
+                    <% else %>
+                        <span class="post-votes-word comment-points created-at" data-points="<%= comment.get_upvotes.size - comment.get_downvotes.size %>" data-user-votes="0"><%=  comment.get_upvotes.size - comment.get_downvotes.size %> points</span>
+
+                    <% end %>
+      <% if user_signed_in?  %>
+            <% if current_user == comment.user  %>
+                <% if current_user == (comment.user || User.find_by_username('admin')) %><%= link_to '<i class="material-icons delete-comment">cancel</i>'.html_safe, [comment.post, comment], class: "delete-comment-button", method: :delete, remote: true %><% end %>
+            <% else  %>
+              <% if !comment.parent %>
+                
+                <% if current_user.voted_up_on? comment %>
+                  <%= link_to like_post_comment_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'up upvote vote voted right-upvote small-upvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                <% else %>
+                  <%= link_to like_post_comment_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'up upvote vote right-upvote small-upvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                <% end %>
+                <% if current_user.voted_down_on? comment %>
+                  <%= link_to dislike_post_comment_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'down downvote vote downvoted voted right-downvote small-downvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                <% else %>  
+                  <%= link_to dislike_post_comment_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'down downvote vote right-downvote small-downvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                  <% end %>
+                
+                
+                
+                
+              <% else %>
+                
+                <% if current_user.voted_up_on? comment %>
+                  <%= link_to like_post_comment_reply_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'up upvote voted vote upvoted right-upvote small-upvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                <% else %>
+                  <%= link_to like_post_comment_reply_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'up upvote vote right-upvote small-upvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                <% end %>
+                <% if current_user.voted_down_on? comment %>
+                  <%= link_to dislike_post_comment_reply_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'down vote  downvote downvoted voted right-downvote small-downvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                <% else %>  
+                  <%= link_to dislike_post_comment_reply_path(comment, :id => comment.id, :comment_id => comment.id), method: :put, class: 'down downvote vote right-downvote small-downvote', :"data-comment-id" => comment.id, remote: true  do %><% end %>
+                  <% end %>
+                
+              <% end %>
+            <% end %>
+      <% else %>      
+      
+      
+      <% end %>
+      <!--<a href="/posts/<%# @post.id %>/comments/<%# comment.id %>" class="created-at">comment</a>  REMOVED--> 
+      <i class="material-icons show-reply-icon" id="show-<%= comment.id %>">reply</i>
+  <p class="comment-content"><%= "@".html_safe unless comment.parent.blank? %><%= comment.parent.user.username unless comment.parent.user.blank? unless comment.parent.blank? %><%= " ".html_safe unless comment.parent.blank? %><%= comment.body.html_safe if comment.body && comment.image.url('medium') == '/images/medium/missing.png' %>
+  <% if comment.image.url('medium') != '/images/medium/missing.png' %>
+    <img src="<%= comment.image.url(:medium) %>">
+  <% end %>
+  <% if comment.parent.blank? && !comment.replies.blank? %><span class="comment-linker-starter"></span><% end %><div class="comment-border-hide"></div></p>
   </div>
-  <div class="comment-replies">
-    <%= render comment.replies if comment.replies.any? %>  
-  </div>
+    
+    <div class="comment-replies <% if comment.replies.blank?  %>no-replies<% end %>" data-comment-id="<%= comment.id %>" id="comment-replies-<%= comment.id %>">
+      <% if comment.parent && !comment.replies.blank?  %><div class="comment-linker-vertical"></div><% end %>
+    <%= render comment.replies unless comment.replies.blank? %>
+    </div>
+    
+    <% if (!comment.parent && comment.replies.count > 3) || (comment.parent && !comment.replies.blank?) %><span id="more-replies-<%= comment.id %>"  data-comment-id="<%= comment.id %>" class="more-replies more-replies-button<% if !comment.parent && !comment.replies.blank? %> more-replies-parent<% end %>"></span><% end %>
+  
   
   <%# form_for [comment.post, comment.new] do |f| %>
-  <div class="new-reply">
-    <%= form_for [comment.post, comment.replies.new] do |f| %>
+  <div class="new-reply" id="showed-<%= comment.id %>">
+    <%= form_for [comment.post, comment.replies.new], :html => {:class => "reply-form", :autocomplete => "off"}, :remote => true do |f| %>
                <%= f.hidden_field :parent_id, :value => comment.id %>
-               <%= f.text_field :body %>
-               
-               <%= f.submit 'reply', name: 'reply' %>
+               <%= f.text_field :body, class: "reply-body" %>
+               <%= f.file_field :image, class: "hidden" %>
+               <%= f.hidden_field :post_id, :value => @post.id %>
+               <%= f.hidden_field :user_id, :value => @post.user.id %>
+               <%= f.submit 'reply', name: 'reply', class: 'reply-comment' %>
+               <i class="material-icons hide-reply">clear</i>
             <% end %>
-    
   </div>
     <hr class="comment-separater">        
   

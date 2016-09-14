@@ -1,31 +1,61 @@
 Rails.application.routes.draw do
+  #get 'activities/index'
+  mount Starburst::Engine => "/starburst"
   #root 'pages#index'
   resources :posts
-
-  devise_for :users
+  resources :invites 
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   
   resources :users do
+    resources :invites 
     member do
       get :following, :followers
     end  
   end
   resources :relationships
+  
   # Define root URL
   root 'pages#index'
   
   # Define roots for pages
   get '/home' => 'pages#home'
-
+  get '/settings' => 'pages#settings'
   get '/user/:id' => 'pages#profile'
+  get '/invite/:code' => 'pages#invited'
 
   get '/explore' => 'pages#explore'
-  get '/create' => 'pages#create'
+  get '/make' => 'pages#make'
+  get '/make2' => 'pages#make2'
+  get '/delete' => 'pages#delete'
+  get '/checkUsername' => 'pages#checkUsername'
+  get '/signup' => 'pages#signup'
+  get '/checkEmail' => 'pages#checkEmail'
+  get '/pages/loadPost' => 'pages#loadPost'
+  get '/about' => 'pages#about'
+  get '/terms' => 'pages#terms'
+  get '/contact' => 'pages#contact'
+  get '/recent' => 'pages#recent'
+  get '/register' => 'pages#register'
+  resources :activities
   resources :comments
+    
   resources :posts do
-    resources :comments#, :only => [:create, :destroy]
+    resources :comments do
+      member do
+        put "like", to: "comments#upvote"  # maybe change it to POSTS??
+        put "dislike", to: "comments#downvote" # maybe change it to POSTS??
+      end
+      resources :replies do
+        member do
+          put "like", to: "replies#upvote"  # maybe change it to POSTS??
+          put "dislike", to: "replies#downvote" # maybe change it to POSTS??
+        end
+      end
+    end
     member do
       put "like", to: "posts#upvote"  # maybe change it to POSTS??
       put "dislike", to: "posts#downvote" # maybe change it to POSTS??
+      put "report", to: "posts#report" # maybe change it to POSTS??
     end
     
   end

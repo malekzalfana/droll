@@ -1,0 +1,35 @@
+<blockquote class="comment-body" id="comment-<%= comment.parent.id unless comment.parent.blank? %><%= "-".html_safe  unless comment.parent.blank? %><%= comment.id %>">
+  <div class="comment-user-image-wrapper">
+  <% if !comment.user.blank? %>
+    <% if comment.user.image.url == "missing.jpg" %>
+          <span class="comment-user-image" style="background-image: url(/assets/<%= comment.user.image.url(:thumb) %>)"></span>
+    <% else %>
+          <span class="comment-user-image" style="background-image: url(<%= comment.user.image.url(:medium) %>)"></span>
+    <% end %> 
+  <% end %>
+  </div>
+  <div class="comment-options">
+    <span class="comment-user"><%= comment.user.username unless comment.user.blank? %></span>
+    <span class="created-at"><%= time_ago_in_words(comment.created_at) if comment.created_at %> ago -</span>
+    <% if !comment.parent.present? %>
+      <%= link_to '- destroy', [comment.post, comment], method: :delete, class: 'created-at' %>
+    <% end %>  
+  <p><%= "@".html_safe unless comment.parent.blank? %><%= comment.parent.user.username unless comment.parent.user.blank? unless comment.parent.blank? %><%= " ".html_safe unless comment.parent.blank? %><%= comment.body %></p>
+  </div>
+  <div class="comment-replies">
+    <%= render comment.replies unless comment.replies.blank? %>
+  </div>
+  
+  <%# form_for [comment.post, comment.new] do |f| %>
+  <div class="new-reply">
+    <%= form_for [comment.post, comment.replies.new] do |f| %>
+               <%= f.hidden_field :parent_id, :value => comment.id %>
+               <%= f.text_field :body %>
+               
+               <%= f.submit 'reply', name: 'reply' %>
+            <% end %>
+    
+  </div>
+    <hr class="comment-separater">        
+  
+</blockquote>

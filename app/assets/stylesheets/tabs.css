@@ -1,0 +1,421 @@
+.pagination {
+  display: none;
+}
+#tabs-wrapper{
+  width: 600px;
+    height: 50px;
+    background: none;
+    color: rgba(0, 0, 0, 0.5);
+    font-family: open sans;
+    margin: 0px auto;
+    position: absolute;
+    top: 0;
+    z-index:2;
+    left: 0;
+    right: 0;
+}
+#tabs-wrapper-1 {
+  background: #252525;
+  width: 100%;
+  height: 50px;
+  margin: 0px;
+  font-family: open sans;
+}
+#tabs-wrapper-1 h2 {
+  line-height: 50px;
+  margin: 0px 20px;
+  color: white;
+  font-size: 21px;
+  display: inline-block;
+}
+.tabs {
+  cursor: pointer;
+  width: 33.3%;
+  display: inline-block;
+  float: left;
+  text-align: center;
+  line-height: 50px;
+   font-weight: normal
+}
+.active-tab {
+  color: #fe613d;
+  font-weight: bold;
+  
+}
+#notice {
+  background: #F5F500;
+  display: inline-block;
+  float:right;
+  color: black;
+  font-size: 14px;
+  border-radius: 4px;
+  font-family: open sans;
+  margin: 12px;
+  padding: 3px 8px;
+}
+#tabs-wrapper-1 {
+    display: none;
+}
+
+.drag-or-browse-wrapper {
+  width: 100%;
+  height: 100%;
+  display: table;
+  position: relative
+}
+.drag-or-browse {
+  margin: 0px auto;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  position: relative;
+  display: inline-block;
+  pointer-events: none;
+}
+.drag-here {
+  font-family: raleway;
+  font-size: 30px;
+  color: #252525;
+}
+.browse {
+  background: #F15247;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.37);
+  padding: 4px 6px;
+  outline: none;
+  border-radius: 2px;
+  border: none;
+  font-family: raleway;
+  color: white;
+  font-size: 30px;
+  color: white;
+  pointer-events:auto;
+}
+.browse:hover {
+  background: #F15247;
+}
+.upload-post-button {
+  background: gray;
+  cursor: pointer;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.37);
+  pointer-events: auto;
+  padding: 4px 6px;
+  outline: none;
+  border-radius: 2px;
+  border: none;
+  font-family: open sans;
+  color: white;
+  font-size: 16px;
+  color: white;
+  display: none;
+}
+.upload-post-title {
+  display: none;
+  pointer-events: auto;
+}
+.dropping-wrapper {
+  width: 100%;
+  height: calc(100% - 45px);
+  position: absolute;
+  z-index: 1;
+}
+.dropping {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+}
+.post-form-wrapper {
+  position: absolute;
+  z-index: 2;
+  margin-top: 50px;
+  width: 100%;
+  height: calc(100% - 50px);
+  display: table;
+  pointer-events:none
+}
+.post-form {
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  pointer-events: none;
+}
+.post-form-wrapper {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.over-browse {
+    width: 110px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    opacity: 0;
+    height: 34px;  
+}
+#postPreview {
+  padding: 20px 50px;
+  display: inline-block !important;
+  width: 35%;
+}
+.upload-post-title {
+  font-size: 18px !important;
+    font-family: open sans;
+    border: none;
+    width: 535px;
+    resize: vertical;
+    padding: 7px 9px 7px 7px;
+    height: 31px;
+}
+.upload-post-title:focus, .upload-post-title:active {
+  border: none;
+}
+.upload-post-image {
+  width: 550px;
+}
+#postImagePreview {
+  width: 550px;
+}
+#postImagePreview img{
+  width: 550px;
+  border: 1px solid whitesmoke;
+}
+
+#community-guidelines {
+  width: 600px;
+  border-radius: 10px;
+  display: none;
+  background: yellow;
+  color: black;
+  float: right;
+  margin: 20px 30px;
+  padding: 10px;
+  font-family: open sans;
+}
+#community-guidelines h2 {
+  margin: 1px;
+  margin-left: 30px;
+}
+#community-guidelines li {
+  list-style: none;
+  margin-bottom: 7px;
+}
+.com-gui-show {
+  display: block !important;
+}
+#create #navbar2 {
+  display: block;
+}
+#make-post-title{
+  height: 24px;
+    padding: 7px;
+    width: calc(100% - 14px);
+    border: none;
+    margin: 0px 0px;
+    font-family: open sans;
+    font-size: 17px;
+    border-top: 1px solid whitesmoke;
+    display: block;
+    resize: vertical;
+    position: relative;
+}
+#make-post-title-2 {
+  height: 24px;
+    padding: 7px;
+    width: 525px;
+    border: none;
+    margin: 0px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    margin-left: 40px;
+    font-family: open sans;
+    font-size: 16px;
+    float: left;
+    resize: vertical;
+    position: relative;
+}
+#make-image-preview {
+   width: 582px;
+    min-height: 400px;
+    background: white;
+  position: relative;
+}
+#make-preview-wrapper{
+      position: absolute;
+    displaY: block;
+     margin: 0px auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+#make-preview-wrapper form {
+  position: relative;
+}
+#make-post-preview-wrapper #pictureInput {
+  width: 582px;
+    background: red;
+    position: absolute;
+    height: 400px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+    left: 0;
+}
+#reset-image {
+  position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: white;
+    cursor: pointer;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    font-size: 25px;
+    display: none;
+}
+#make-image-preview img {
+  width: 100%;
+  display: block;
+}
+#pictureInput {
+    width: 582px;
+    background: red;
+    position: absolute;
+    bottom: 46px;
+    height: 400px;
+    opacity: 0;
+    cursor: pointer;
+    z-index:2;
+}
+#make-preview-text {
+  position: absolute;
+  bottom: 220px;
+  color: gray;
+}
+#new_post {
+  display: inline-block;
+}
+#memes-content #new_post {
+  display: table-cell;
+  text-align: -webkit-right;
+}
+#preview-image-text {
+   Position: absolute;
+    bottom: 200px;
+    z-index: 1;
+    width: 100%;
+    right: 0;
+    color: gray;
+    font-family: open sans;
+    resize: vertical;
+    pointer-events: none;
+}
+#ragefaces-buttons-wrapper {
+  position: absolute;
+  bottom: 80px;
+  left: 30px;
+}
+#submit-image-button-before-3 {
+  display: inline-block !important;
+  margin-right: 9px !important;
+}
+#make2 #done-meme, #make2 #cancel-meme,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2,#submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before {
+    background: #ffffff;
+    color: #252525;
+    padding: 6px;
+    margin: 9px auto;
+    display: inline-block;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    cursor: pointer;
+    display: none;
+    font-family: open sans;
+}
+#done-meme, #make2 #cancel-meme {
+  display: inline-block !important;
+}
+#submit-image-button-2 {
+  displaY: none;
+}
+#ragefaces-filefield {
+  display: none
+}
+#created-image-button-before {
+  display: inline-block !important;
+  margin-right: 8px;
+}
+#created-image-button-before-wrapper {
+  display: block;
+  width: 100%;
+}
+#ragefaces-content #cancel-upload, #memes-content #cancel-upload-2, #cancel-upload-3 {
+  display: inline-block
+}
+#cancel-upload {
+  display: none;
+  cursor: pointer;
+}
+#make-post-preview-wrapper {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+#upload-gif-fade {
+  margin-left: -47px;
+  animation: fadingLoop1 4s infinite;
+  -webkit-animation: fadingLoop1 4s infinite;
+}
+#upload-image-fade {
+  animation: fadingLoop2 4s infinite;
+  -webkit-animation: fadingLoop2 4s infinite;
+}
+@-webkit-keyframes fadingLoop1 {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 1;
+    }
+    60% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+} 
+@-webkit-keyframes fadingLoop2 {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    60% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+}
+/*8
+@keyframes fadingLoop1 {
+    0% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+} 
+@keyframes fadingLoop2 {
+    0% {
+      opacity: 0;
+    }
+    90% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+} 
+*/

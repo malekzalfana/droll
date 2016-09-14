@@ -1,0 +1,23 @@
+<div id="logo-wrapper-wrapper">
+    <i class="material-icons left" id="left-arrow">arrow_back</i>
+</div>
+<nav id="navbar-2"></nav>
+<nav id="navbar">
+    <div id="logo-wrapper"><a href="/"><span id="logo"></span></a></div>
+    <div id="menu-button-wrapper"><i class="material-icons" id="menu-button">menu</i></div>
+    <div id="nav-icons-wrapper">
+        <div id="notification-icon"><i class="material-icons" id="notification-icon-bell">notifications_none</i><span id="notif-number"></span></div>
+        <a href="/user/<%= current_user.username %>"><p id="username"><%= current_user.username %></p></a>
+        <!--<form id="demo-2">
+    	    <input id="search-icon" type="search" placeholder="Search">
+        </form>-->
+        <a href="/user/<%= current_user.username %>">
+            <% if current_user.image.url == "missing.jpg" %>
+                <span id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></span>
+            <% else %>    
+                <span id="profile-photo-small" style="background-image: url('http://www.drolle.co/assets/missing.jpg')"></span>
+            <% end %>
+        </a>
+    </div>
+    
+</nav>

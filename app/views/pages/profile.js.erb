@@ -1,0 +1,22 @@
+if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
+    $('#left-content-profile').append('<%= j render(partial: ('posts/profilepost') ) %>' );
+        <% if @profilepost.next_page %>
+          $('#left-content-profile .pagination').replaceWith('<%= j will_paginate @profilepost %>');
+        <% else %>
+          nomoreposts = true
+          $('#left-content-profile .pagination').remove();
+        <% end %>
+}
+else {
+    $('#right-content-profile').append('<%= j render(partial: ('posts/profilefavor')) %>' );
+    <% if @profilefavor.next_page %>
+      $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
+    <% else %>
+      nomorefavors = true
+      $('#right-content-profile .pagination').remove();
+    <% end %>
+}
+$("img.post-image").lazyload({
+    	threshold: 200,
+    	//event : "load"
+});

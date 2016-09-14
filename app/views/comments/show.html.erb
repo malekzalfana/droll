@@ -1,0 +1,79 @@
+    <div id="content-full2">
+        <div class="upper-black"></div>
+        <div class="wrapper" data-post-id="<%= @post.id %>">
+            <%= link_to(@post.previous_post, class: "prev-post-a") do %>
+                <i class="material-icons prev-post">keyboard_arrow_left</i>
+            <% end %>
+            <%= link_to(@post.next_post, class: "next-post-a") do %>
+                <i class="material-icons next-post">keyboard_arrow_left</i>
+            <% end %>
+            <div class="left-wrapper">
+            <p class="post-title"><%= @post.title %></p>
+            <div class="post-image-wrapper">
+                <img data-original="<%= @post.image.url(:medium) %>" class="post-image">
+            </div>
+                <div class="voting-wrapper">
+                    <span class="post-votes count" data-post-id="<%= @post.id %>" data-votes="<%=  @post.get_upvotes.size - @post.get_downvotes.size %>">
+                    <%=  @post.get_upvotes.size - @post.get_downvotes.size %></span><span class="post-votes-word"> upvotes</span>
+                    <div class="comment-button-wrapper"><div class="comment-button"></div></div>
+                    <%= link_to dislike_post_path(@post), method: :put, class: 'down downvote', :"data-post-id" => @post.id, remote: true  do %>
+                    <% end %>
+                    <%= link_to like_post_path(@post), method: :put, class: 'up upvote', :"data-post-id" => @post.id, remote: true  do %>
+                    <% end %>
+                </div>
+            </div>
+            
+            
+            <div class="right-wrapper">
+            <div class="upvote-downvote-comment">
+                <span class="post-votes-word comments-small-title"><span class="right-post-votes" data-post-id="<%= @post.id %>" data-votes="<%=  @post.get_upvotes.size - @post.get_downvotes.size %>">
+                <%=  @post.get_upvotes.size - @post.get_downvotes.size %></span> points</span>
+                <%= link_to dislike_post_path(@post), method: :put, class: 'down downvote right-downvote', :"data-post-id" => @post.id, remote: true  do %>
+                <% end %>
+                <%= link_to like_post_path(@post), method: :put, class: 'up upvote right-upvote', :"data-post-id" => @post.id, remote: true  do %>
+                <% end %>
+            
+            <span class="comments-big-title">Comments</span>
+            
+            <div class="comments-wrapper" id="comments-wrapper-<%= @post.id %>">
+                <% if current_user %>
+                    <%= form_for [@post, @post.comments.new], remote: true do |f| %>
+                      <div class="form-group" id="form-<%= @post.id %>">
+                        <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", required: true %>
+                        <div class="right-comment-wrapper">
+                            <%= f.submit 'post', class: 'post-comment', name: 'post' %>
+                            <div class="memes-emojis"></div>
+                        </div>
+                        
+                      </div>
+                        <div class="hidden-div"></div>
+                      </div>
+                    <% end %>
+                <% else %>
+                    <p class="commentig-notice">You have to be signed in to comment</p>
+                <% end %>
+            </div>
+            <% if @comment.blank? %>
+                <p class="no-comments">No one commented yet</p>
+            <% else %>
+                <%= render @comment  %>
+            <% end %>
+            <%# render :partial => 'posts/comment', :collection => @post.comments %>
+            </div> <!-- vote-comment -->
+        </div><!-- right-wrapper -->
+        </div><!--  wrapper -->
+    </div>
+    
+    <div id="comment-pagination"><%= will_paginate @comment %></div>
+        <script>
+            $(".post-image").lazyload({
+                event: 'load',
+                threshold: '200'
+            });
+        </script>
+<script>
+    $("#comment-<%= @thiscomment.parent.id unless @thiscomment.parent.blank? %><%= "-".html_safe  unless @thiscomment.parent.blank? %><%= @thiscomment.id %>").insertAfter('.upvote-downvote-comment')
+    //$("#comment-<%# @thiscomment.parent.id unless @thiscomment.parent.blank? %><%# "-".html_safe  unless @thiscomment.parent.blank? %><%# @thiscomment.id %>").css({"box-shadow":"0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)"}).animate({boxShadow: "0px 0px 0px"}, 2000)
+    $('html,body').animate({scrollTop: 700}, 1000);
+    console.log( $("comment-<%= @thiscomment.parent.id unless @thiscomment.parent.blank? %><%= "-".html_safe  unless @thiscomment.parent.blank? %><%= @thiscomment.id %>") )
+</script>

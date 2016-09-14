@@ -1,2 +1,9 @@
-var url = window.location.href;
-//$('#comments-wrapper-<%# @post.id %>').load(url + ' #comments-wrapper-<%# @post.id %>');
+<% if !@comment_parent.nil? %>
+$('<%= j render(@comment) %>').show().appendTo('#last-reply');
+$('#last-reply').addClass('commented-on-child').removeClass('no-replies').siblings('.comment-child .comment-user-image-wrapper').append('<div class="before-replies"></div>');
+<% else %> 
+$('<%= j render(@comment) %>').insertAfter($('.wrapper:visible .right-wrapper > br:first-child'));
+console.log( $('.wrapper:visible .right-wrapper') )
+$('.loading-quarter-circle').removeClass('loading-animation')
+<% end %>
+$('.no-comments').hide()

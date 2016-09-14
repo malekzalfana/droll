@@ -1,0 +1,12 @@
+$('#content-full2.new-content').append('<%= j render(@post) %>');
+<% if @post.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @post %>');
+<% else %>
+  $(window).off('scroll');
+  $('.pagination').remove();
+<% end %>
+$("img.post-image").lazyload({
+    	threshold: 200,
+    	event : "clickedThePost"
+});
+$("img.post-image").trigger("clickedThePost");

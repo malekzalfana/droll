@@ -4,18 +4,26 @@
 </div>
 <nav id="navbar-2"></nav>
 <nav id="navbar">
-    <%= link_to('<button id="upload">Upload</button>'.html_safe, new_post_path) %>
-    <%= link_to('<span id="settings"></span>'.html_safe, edit_user_registration_path) %>
+    <span id="alpha">ALPHA</span>
+    <div id="logo-wrapper"><a href="/"><span id="logo"></span></a></div>
+    <div id="nav-icons-wrapper">
+        <div id="menu-button-wrapper"><i class="material-icons" id="menu-button">menu</i></div>
+        <div id="notification-icon"><i class="material-icons" id="notification-icon-bell">notifications_none</i><span id="notif-number"></span></div>
+    <a href="https://droll-cloned-2-malekzalfana.c9users.io/make"><i id="add-icon" class="material-icons">add</i></a>
+    <a href="/user/<%= current_user.username %>"><p id="username"><%= current_user.username %></p></a>
+    <% if controller.action_name != 'profile' %>
+    <form id="demo-2">
+	    <input id="search-icon" type="search" placeholder="Search">
+    </form>
+    <% end %>
     <a href="/user/<%= current_user.username %>">
-        <% if current_user.image.url == "missing.jpg" %>
-            <span id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></span>
-        <% else %>
+        <% if current_user.image.url != "missing.jpg" %>
             <span id="profile-photo-small" style="background-image: url(<%= current_user.image.url(:medium) %>)"></span>
+        <% else %>    
+            <span id="profile-photo-small" style="background-image: url('/assets/missing.jpg')"></span>
         <% end %>
     </a>
-    <a href="/user/<%= current_user.username %>"><p id="username"><%= current_user.username %></p></a>
-    <form id="demo-2">
-	    <input type="search" placeholder="Search">
-    </form>
-    <%= link_to('Log Out', destroy_user_session_path, :method => :delete) %>
+    </div>
+    
+    <%# link_to('Log Out', destroy_user_session_path, :method => :delete) %>
 </nav>

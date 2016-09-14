@@ -1,0 +1,6 @@
+<% if @post.comments.count == 0 %>
+    $('#right-wrapper-' + <%= @postid %> ).append('<p class="no-comments">No one commented yet</p>').fadeIn().addClass('shown')
+<% else %>
+    $('#right-wrapper-' + <%= @postid %> ).append('<%= j render(@comment) %><div class="comment-pagination"><%= will_paginate @comment %></div>').fadeIn().addClass('shown')
+<% end %>
+$('#right-wrapper-' + <%= @postid %> ).removeClass('loading-2').removeClass('loading')

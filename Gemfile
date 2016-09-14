@@ -1,9 +1,21 @@
 source 'https://rubygems.org'
 #for the comments
 #gem 'ancestry'
+
+# twitter auth
+gem 'omniauth-twitter'
+gem 'omniauth'
+#gem starbust for one-time messages
+gem "starburst"
+# for infinite scrolling
+gem 'will_paginate'
+# for jquery ui
+gem "jquery-ui-rails"
 # for the impresssions count
 gem 'closure_tree'
-
+#for notifications
+gem 'public_activity'
+#for pageviews
 gem 'impressionist'
 # for the forms
 gem 'simple_form', '~> 3.0.2'

@@ -1,52 +1,196 @@
-<div id="content" class="full-wrapper">
+<%= link_to 'Sin in with Twitter', user_omniauth_authorize_path(:twitter) %>
+<body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+    <% if user_signed_in? && @pTotal < 4 %>
+    <div id="progress-table">
+        <p class="<%= if current_user.image.url(:medium) == 'missing.jpg' then '' else 'progress-done' end %>">Set your image</p>
+        <p class="<%= if current_user.cover.url(:medium) == 'missing-2.jpg' then '' else 'progress-done' end %>">Set your blurred cover</p>
+        <p class="<%= if current_user.bio.blank?  then '' else 'progress-done' end %>">Write your bio</p>
+        <p class="<%= if current_user.posts.count == 0 then '' else 'progress-done' end %>">Upload your first post</p>
+    </div>
+    <div id="progress-number" class="hidden-imp" data-progress-number="<%= @pTotal %>"></div>
+  <div class='progress'>
+      <div class='hide'></div>
+      <div class='active'></div>
+      <div class='active2'></div>
+    </div>
+<% end %>
+    <%# render :partial => "announcements/starburst/announcement" %>
+    <div class="messages-container">
+        <div class="notice-message"></div><span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span>
+    </div>
+<%# User.find_by_id(3).votes.down.where(:vote_scope => 'report').for_type(Post).votables unless User.find_by_id(3).votes.down.where(:vote_scope => 'report').for_type(Post).votables.blank? %>
+<%# current_user.votes.where(:vote_scope => 'favor').for_type(Post).votables %>
+<%= render '/layouts/activities' %>
+<div id="overlay-under-notif"></div>
+<div class="overlay-full"></div>
+<div id="content-full2" class="full-wrapper new-content">
+    <div id="main-page-type">
+        <i class="material-icons" id="back-list">arrow_back</i>
+        <%= link_to '<span id="feed-type"  class="active-type">Feed</span>'.html_safe, '/' %><%= link_to '<span id="recent-type">Recent</span>'.html_safe, '/recent' %>
+        <i class="material-icons" id="next-post-icon">navigate_next</i>
+        <i class="material-icons" id="prev-post-icon">navigate_before</i>
+    </div>    
     <div class="content-overlay"></div>
+    <% if !user_signed_in? %>
+        <div id="unlock-feed">Log in to see your feed, or browse the recent page.</div>
+    <% elsif user_signed_in? && current_user.following.count == 0 %>    
+        <div id="unlock-feed">You haven't followed anyone yet.</div>
+    <% else %>
+    <%= will_paginate @post %>
     <% @post.each do |post| %>
+    <%# if user_signed_in?  then current_user.following? (post.user) end %>
         <div class="wrapper" data-post-id="<%= post.id %>">
             <div class="left-wrapper">
-            <h2 class="post-title"><%= post.title %></h2>
-            <div class="post-image-wrapper">
-                <%= image_tag post.image.url(:medium), :class => "post-image" %>    
-            </div>
-                <div class="voting-wrapper">
-                <span class="post-votes count" data-post-id="<%= post.id %>" data-votes="<%=  post.get_upvotes.size - post.get_downvotes.size %>">
-                <%=  post.get_upvotes.size - post.get_downvotes.size %></span><span class="post-votes-word"> upvotes</span>
-                <div class="comment-button-wrapper"><div class="comment-button"></div></div>
-                <%= link_to dislike_post_path(post), method: :put, class: 'down downvote', :"data-post-id" => post.id, remote: true  do %>
+                <% if current_user.voted_on? post, vote_scope: 'favor' %>
+                <i class="material-icons favourite-icon">favorite</i>
                 <% end %>
-                <%= link_to like_post_path(post), method: :put, class: 'up upvote', :"data-post-id" => post.id, remote: true  do %>
+                <div class="left-wrapper-overlay"></div>
+            <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
+                <% if post.long === true  %>
+                    <i class="material-icons expand-post">expand_more</i>
                 <% end %>
-            </div>
-            </div>
-            
-            
-            <div class="right-wrapper">
-            <div class="upvote-downvote-comment">
-                <span class="post-votes-word comments-small-title"><span class="right-post-votes" data-post-id="<%= post.id %>" data-votes="<%=  post.get_upvotes.size - post.get_downvotes.size %>">
-                <%=  post.get_upvotes.size - post.get_downvotes.size %></span> upvotes</span>
-                <%= link_to dislike_post_path(post), method: :put, class: 'down downvote right-downvote', :"data-post-id" => post.id, remote: true  do %>
-                <% end %>
-                <%= link_to like_post_path(post), method: :put, class: 'up upvote right-upvote', :"data-post-id" => post.id, remote: true  do %>
-                <% end %>
-            
-            <span class="comments-big-title">Comments</span>
-            
-            <div class="comments-wrapper" id="comments-wrapper-<%= post.id %>">
-                <%= render post.comments %>
-                <% if current_user %>
-                    <%= form_for [post, post.comments.new], remote: true do |f| %>
-                      <div class="form-group" id="form-<%= post.id %>">
-                        <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", required: true %>
-                        <div class="hidden-div"></div>
-                      </div>
-                      <%= f.submit 'post', class: 'post-comment', name: 'post' %>
+                <div id="loadPost" class="hidden">
+                    <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
+                        <%= text_field_tag :postid, post.id %>
+                        <%= submit_tag "Save"%>
                     <% end %>
-                <% else %>
+                </div>
+                <% if user_signed_in? %>    
+                <div class="post-more-button <%= if current_user.voted_on? post, vote_scope: 'report' then 'reported' elsif current_user.voted_on? post, vote_scope: 'favor' then 'favorited' end %>">
+                            <%= link_to dislike_post_path(post, :report => true), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="reported-post material-icons">report</i><% end %>
+                            <%= link_to like_post_path(post, :favor => true), method: :put, class: 'favor-post', title: 'Add to favorites', :"data-post-id" => post.id, remote: true  do %><i class="material-icons favorite-post">favorite</i><% end %>
+                </div>
+                <% end %>
+                <%= link_to(post) do %>
+                    <img src="<%= post.image.url(:medium) %>" class="post-image">
+                <% end %>
+            </div>
+            
+                <div class="voting-wrapper">
+                    <span class="post-votes count" data-post-id="<%= post.id %>" data-votes="<%=  post.get_upvotes.size - post.get_downvotes.size %>">
+                    <%=  post.get_upvotes.size - post.get_downvotes.size %></span><span class="post-votes-word"> upvotes</span>
+                    
+                    <%= link_to dislike_post_path(post), method: :put, class: 'down downvote', :"data-post-id" => post.id, remote: true  do %>
+                    <% end %>
+                    <%= link_to like_post_path(post), method: :put, class: 'up upvote', :"data-post-id" => post.id, remote: true  do %>
+                    <% end %>
+                </div>
+                
+                <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
+                <div class="post-footer">
+                    <i class="material-icons comment-button">chat_bubble</i>
+                    <a href="/user/<%= post.user.username%>">
+                        <div class="post-footer-user-image"></div>
+                        <span class="post-footer-user-name"><%= post.user.username %></span>
+                    </a>
+                    
+                        <i class="material-icons post-options" tabindex="12">more_vert</i>
+                    <div class="post-more-options">
+                        <p><%# link_to 'Report', report_post_path(post), method: :put, :"data-post-id" => post.id, remote: true %>
+                        <%= link_to dislike_post_path(post, :report => true), method: :put, class: 'report-post', :"data-post-id" => post.id, remote: true  do %><span class="report-icon"></span><span class="options-text">Report</span><% end %>
+                        </p>
+                        <p><%= link_to like_post_path(post, :favor => true), method: :put, class: 'favor-post', :"data-post-id" => post.id, remote: true  do %><span class="favor-icon"></span><span class="options-text">Add to favorites</span><% end %></p>
+                    </div>
+                    
+                    <% if current_user %>
+                        <%= link_to(post) do %>
+                    
+                        <% end %>
+                    <% else %>
+                        <a href="/users/sign_in"><i class="material-icons comment-butt&& !(current_user.voted_up_on? post) 
+                    <% end %>
+                    
+                    <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
+                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
+                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
+                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% else %>
+                        <span class="down downvote vote"></span>
+                    <% end %>
+                    
+                    <% if (user_signed_in?) && (current_user.voted_up_on? post) %>
+                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && !(current_user.voted_down_on? post)  %>                            
+                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && (current_user.voted_down_on? post) %>                            
+                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% else %>
+                        <span class="up upvote vote"></span>
+                    <% end %>
+                        
+                    <% if user_signed_in? %>
+                        <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %> points</span>
+                    <% else %>
+                        <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %> points</span>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            
+            <div class="middle-wrapper">
+                <div class="comments-wrapper" id="comments-wrapper-<%= post.id %>">
+                <% if current_user %>
+                    <%= form_for [post, post.comments.new], html: {multipart: true}, remote: true do |f| %>
+                      <div class="form-group comment-form" id="form-<%= post.id %>">
+                        <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
+                        <input id="base64-make" type="hidden" value="" name="base64"/>
+                        <img src="" id="base64-image">
+                        <div id="comment-html" class="post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
+                        <div class="right-comment-wrapper">
+                            <div id="cancel-meme" class="hidden-imp">Cancel</div>
+                            <%= f.submit 'post', class: 'post-comment', name: 'post' %>
+                            <div class="memes-emojis"><span class="make-meme">m</span></div>
+                        </div>
+                        
+                      </div>
+                        <div class="reactions-container">
+                            <div class="reactions-tabs-wrapper">
+                                <span class="reactions-tab active-reactions-tab">Memes</span>    
+                                <span class="reactions-tab">GIFs</span>
+                                <span class="reactions-tab">Emojis</span>
+                            </div>
+                            <img class="emoji-img" id="1" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
+                            <img class="emoji-img" id="2" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
+                            <img class="emoji-img" id="3" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
+                            <img class="emoji-img" id="4" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
+                            <img class="emoji-img" id="5" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
+                            <img class="emoji-img" id="6" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
+                            
+            </div>
+          </div>
+          <% end %>
+          <% else %>
                     <p class="commentig-notice">You have to be signed in to comment</p>
                 <% end %>
             </div>
             
-            </div> <!-- vote-comment -->
+            <div id="right-wrapper-<%= post.id %>" class="right-wrapper hidden">
+                <br>
+                <div class="loading-quarter-circle-4"></div>
+                <div class="loading-quarter-circle-3"></div>
+            </div>
         </div><!-- right-wrapper -->
-        </div><!--  wrapper -->
     <% end %>
+    <% end %>
+    
+    
+    
+    <script>
+    
+        <% if user_signed_in? %>
+            console.log(<%= @p1 %>)
+            console.log(<%= @p2 %>)
+            console.log(<%= @p3 %>)
+            console.log(<%= @p4 %>)
+            
+        <% else %>
+        $('.progress').hide()
+        <% end %>
+    
+    </script>
+
 </div>
+</body>

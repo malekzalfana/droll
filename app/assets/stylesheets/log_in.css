@@ -1,0 +1,138 @@
+#log-in-wrapper, #sign-up-wrapper {
+    width: 370px;
+    position: absolute;
+    z-index: 2;
+    left: 0;right: 0;top: 0px;
+    margin: 0px auto;
+    top: 20px;
+    font-family: open sans;
+}
+#sign-up-wrapper {
+    margin-bottom: 30px;
+}
+#log-in-wrapper h2, #sign-up-wrapper h2 {
+    font-size: 30px;
+    color: #ff461b;
+}
+#log-in-wrapper label, #sign-up-wrapper label {
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+#log-in-wrapper .field, #sign-up-wrapper .field {
+    margin: 15px 2px;
+    position: relative;
+}
+#log-in-wrapper input ,#sign-up-wrapper input  {
+    background: white;
+    padding: 7px;
+    font-size: 18px;
+    border: none;
+}
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px rgb(252, 252, 252) inset;
+}
+input:-webkit-autofill:focus, input:-webkit-autofill:hover {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+#log-in-wrapper .actions input, #sign-up-wrapper .actions button, #sign-up-wrapper .actions input  {
+    background: #ff5f3a;
+    color: white;
+    border-radius: 5%;
+    padding: 6px 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+}
+#remember-me-button label {
+    font-size: 14px;
+    opacity: 0.8;
+
+}
+#other-log-in br {
+    display: none;
+}
+#other-log-in a {
+    opacity: 0.7;
+    color: black;
+    margin-righT: 10px;
+    font-size: 13px;
+}
+#other-log-in {
+    margin-top: 10px;
+}
+body#new #sign-up, body#new #log-in, body#new #demo-2 {
+    displaY: none;
+}
+#logo-wrapper {
+    z-index:5;
+}
+#sign-up-input-wrapper {
+    background: white;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+#sign-up-input-wrapper input {
+    display: none;
+}
+#sign-up-input-wrapper div {
+    position: absolute;
+    heighT: 100%;
+    width: 100%;
+    z-index: 0;
+}
+#sign-up-input-wrapper p {
+    margin: 89px auto;
+}
+input#user_image {
+    border-radius: 5%;
+}
+#sign-up-input-wrapper.cover-input-sign-up {
+    width: 275px;
+}
+#sign-up-input-wrapper.cover-input-sign-up span {
+    font-size: 14px;
+    color: gray;
+    margin: 50px auto;
+}
+#choose-image {
+    color: gray;
+    opacity: 0.5;
+    position: absolute;
+    top: 38px;left:38px;
+    cursor: pointer;
+}
+#choose-cover {
+    color: gray;
+    opacity: 0.5;
+    position: absolute;
+    top: 38px;left:125px;
+    cursor: pointer;
+}
+.sign-up-input-visible {
+    background-position: center center;
+    background-size: cover;
+}
+#reset-cover, #reset-user-image {
+    position: absolute;
+    right: 5px;
+    font-size: 20px;
+    bottom: 5px;
+    display: none;
+    text-shadow: 1px 2px 3px 3px black;
+    opacity: 0.8;
+    color: white;
+}
+input#user_username {
+    text-transform: lowercase;
+}
+#att-before-username {
+     color: gray;
+     opacity: 0.7;
+    margin-right: 7px;
+    font-weight: 700;
+
+}

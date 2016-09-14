@@ -1,0 +1,118 @@
+    
+                <div class="wrapper" data-post-id="<%= post.id %>">
+            <div class="left-wrapper"> 
+            <div class="left-wrapper-overlay"></div>
+            <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
+                <% if post.long === true  %>
+                    <i class="material-icons expand-post">expand_more</i>
+                <% end %>
+                <div id="loadPost" class="hidden">
+                    <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
+                        <%= text_field_tag :postid, post.id %>
+                        <%= submit_tag "Save"%>
+                    <% end %>
+                </div>
+                <%= link_to(post) do %>
+                <img data-original="<%= post.image.url(:medium) %>" class="post-image">
+                <% end %>
+            </div>
+            
+                <div class="voting-wrapper">
+                    <span class="post-votes count" data-post-id="<%= post.id %>" data-votes="<%=  post.get_upvotes.size - post.get_downvotes.size %>">
+                    <%=  post.get_upvotes.size - post.get_downvotes.size %></span><span class="post-votes-word"> upvotes</span>
+                    <div class="comment-button-wrapper"><div class="comment-button"></div></div>
+                    <%= link_to dislike_post_path(post), method: :put, class: 'down downvote', :"data-post-id" => post.id, remote: true  do %>
+                    <% end %>
+                    <%= link_to like_post_path(post), method: :put, class: 'up upvote', :"data-post-id" => post.id, remote: true  do %>
+                    <% end %>
+                </div>
+                <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
+                <div class="post-footer">
+                <a href="/user/<%= post.user.username unless post.user.blank? %>">
+                    <div class="post-footer-user-image"></div>
+                    <span class="post-footer-user-name"><%= post.user.username unless post.user.blank? %></span>
+                </a>
+                    
+                    <i class="material-icons post-options" tabindex="12">more_vert</i>
+                    <div class="post-more-options">
+                        <p><%# link_to 'Report', report_post_path(post), method: :put, :"data-post-id" => post.id, remote: true %>
+                        <%= link_to dislike_post_path(post, :report => true), method: :put, class: 'report-post', :"data-post-id" => post.id, remote: true  do %><span class="report-icon"></span><span class="options-text">Report</span><% end %>
+                        </p>
+                        <p><%= link_to like_post_path(post, :favor => true), method: :put, class: 'favor-post', :"data-post-id" => post.id, remote: true  do %><span class="favor-icon"></span><span class="options-text">Add to favorites</span><% end %></p>
+                    </div>
+                    <i class="material-icons comment-button">chat_bubble</i>
+                    
+                    <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
+                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
+                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
+                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% else %>
+                        <span class="down downvote vote"></span>
+                    <% end %>
+                    
+                    <% if (user_signed_in?) && (current_user.voted_up_on? post) %>
+                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && !(current_user.voted_down_on? post)  %>                            
+                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && (current_user.voted_down_on? post) %>                            
+                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                    <% else %>
+                        <span class="up upvote vote"></span>
+                    <% end %>
+                    
+                    
+                    <% if user_signed_in? %>
+                        <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %> points</span>
+                    <% else %>
+                        <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %> points</span>
+                        </div>
+                    <% end %>
+                    
+                </div>
+            </div>
+            
+            <div class="middle-wrapper">
+                <div class="comments-wrapper" id="comments-wrapper-<%= post.id %>">
+                <% if current_user %>
+                    <%= form_for [post, post.comments.new], remote: true do |f| %>
+                      <div class="form-group comment-form" id="form-<%= post.id %>">
+                        <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
+                        <input id="base64-make" type="hidden" value="" name="base64"/>
+                        <img src="" id="base64-image">
+                        <div id="comment-html" class="post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
+                        <div class="right-comment-wrapper">
+                            <div id="cancel-meme" class="hidden-imp">Cancel</div>
+                            <%= f.submit 'post', class: 'post-comment', name: 'post' %>
+                            <div class="memes-emojis"><span class="make-meme">m</span></div>
+                        </div>
+                        
+                      </div>
+                        <div class="reactions-container">
+                            <div class="reactions-tabs-wrapper">
+                                <span class="reactions-tab active-reactions-tab">Memes</span>    
+                                <span class="reactions-tab">GIFs</span>
+                                <span class="reactions-tab">Emojis</span>
+                            </div>
+                            <img class="emoji-img" id="1" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
+                            <img class="emoji-img" id="2" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
+                            <img class="emoji-img" id="3" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
+                            <img class="emoji-img" id="4" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
+                            <img class="emoji-img" id="5" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
+                            <img class="emoji-img" id="6" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
+                            
+            </div>
+          </div>
+          <% end %>
+          <% else %>
+                    <p class="commentig-notice">You have to be signed in to comment</p>
+                <% end %>
+            </div>
+            
+            <div id="right-wrapper-<%= post.id %>" class="right-wrapper hidden">
+                <br>
+                <div class="loading-quarter-circle-4"></div>
+                <div class="loading-quarter-circle-3"></div>
+            </div>
+        </div><!-- right-wrapper -->

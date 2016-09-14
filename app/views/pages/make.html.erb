@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<link href='https://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+</head>
+<body id="<%= controller.action_name %>">	
+	<span id="make-logo">/make</span>
+	<div id="tabs-wrapper">
+	  <div id="images-tab" class="tabs active-tab">Images</div>
+	  <div id="memes-tab" class="tabs">Memes</div>
+	  <div id="rage-comics-tab" class="tabs">Rage Comics</div>
+	</div>
+	<div id="memes-content" class="choosen-content">
+		<div class="middle-column" id="meme-wrapper">
+			<%= form_for @post, html: { multipart: true } do |f| %>
+			 <input id="base64" type="hidden" value="" name="base64"/>
+			 <canvas class="middle-column" id="meme-canvas" height="1100" width="1100"></canvas>
+			 <%= f.text_area :title, id: "created-meme-title", placeholder: "Caption" %>
+			 <%= f.submit :id => "submit-image-button-2" %>
+			 <% end %>
+			 <div id="meme-textareas-wrapper">
+			 	<div id="meme-textareas">
+			 		<div>
+			 			<p>Top text</p>
+						<textarea id="text-3" data-gramm="false" spellcheck="true"></textarea>
+			 		</div>
+			 		
+			 		<div>
+			 			<p>Bottom text</p>
+					<textarea id="text-4" data-gramm="false" spellcheck="true" ></textarea>	
+			 		</div>
+			 		
+					<div id="submit-button-before-wrapper"><button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
+						<span class="anonymous-checkbox shown">
+					 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
+					 	<i class="material-icons anonymous-checked"></i>
+					 	<span>Anonymous</span>
+					 	</span>
+					</div>
+				</div>
+			 </div>
+			 
+			 
+		</div>
+			
+		  <!--<div id="more-tools-wrapper">
+			  <a id="id_download"><button class="tools" ><span class="eraser"></span></button></a>
+			  <button id="clear-button" class="tools"><span class="eraser"></span></button>
+		</div>-->
+			 
+		
+		<div id="pick-meme" class="ui-sortable">
+		    <input id="search-memes" placeholder="search memes .."></input>
+		    <div class="pick-meme-container ui-sortable-handle" style="height: 206.85px;background-image: url(&quot;assets/newmemes/1meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-1" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/2meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-2" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/3meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-3" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/4meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-4" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/5meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-5" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/6meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-6" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/7meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-7" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/8meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-8" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/9meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-9" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/10meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-10" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/11meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-11" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/12meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-12" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/13meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-13" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/14meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-14" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/15meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-15" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/16meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-16" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/17meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-17" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/18meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-18" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/19meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-19" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/20meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-20" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/21meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-21" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/22meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-22" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/23meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-23" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/24meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-24" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/25meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-25" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/26meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-26" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/27meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-27" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/28meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-28" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/29meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-29" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/30meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-30" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px;background-image: url(&quot;assets/newmemes/31meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-31" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/32meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-32" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/33meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-33" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/34meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-34" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/35meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-35" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/36meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-36" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/37meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-37" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/38meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-38" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/39meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-39" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/40meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-40" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/41meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-41" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/42meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-42" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/43meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-43" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/44meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-44" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/45meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-45" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/46meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-46" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/47meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-47" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/48meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-48" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/49meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-49" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/50meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-50" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/51meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-51" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/52meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-52" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/53meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-53" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/54meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-54" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/55meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-55" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/56meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-56" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/57meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-57" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/58meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-58" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/59meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-59" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/60meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-60" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/61meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-61" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/62meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-62" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/63meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-63" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/64meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-64" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/65meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-65" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/66meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-66" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/67meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-67" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/68meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-68" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/69meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-69" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/70meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-70" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/71meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-71" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/72meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-72" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/73meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-73" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/74meme.jpeg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-74" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/75meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-75" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/76meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-76" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/77meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-77" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/78meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-78" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/79meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-79" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/80meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-80" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/81meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-81" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/82meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-82" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/83meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-83" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/84meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-84" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/85meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-85" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/86meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-86" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/87meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-87" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/88meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-88" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/89meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-89" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/90meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-90" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/91meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-91" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/92meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-92" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/93meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-93" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/94meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-94" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/95meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-95" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/96meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-96" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/97meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-97" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/98meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-98" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/99meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-99" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/100meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-100" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/101meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-101" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/102meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-102" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/103meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-103" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/104meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-104" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/105meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-105" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/106meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-106" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/107meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-107" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/108meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-108" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/109meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-109" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/110meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-110" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/111meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-111" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/112meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-112" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/113meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-113" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/114meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-114" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/115meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-115" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/116meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-116" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/117meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-117" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/118meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-118" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/119meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-119" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/120meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-120" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/121meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-121" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/122meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-122" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/123meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-123" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/124meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-124" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/125meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-125" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/126meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-126" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/127meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-127" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/128meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-128" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/129meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-129" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/130meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-130" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/131meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-131" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/132meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-132" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/133meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-133" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/134meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-134" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/135meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-135" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/136meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-136" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/137meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-137" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/138meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-138" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/139meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-139" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/140meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-140" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/141meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-141" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/142meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-142" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/143meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-143" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/144meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-144" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/145meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-145" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/146meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-146" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/147meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-147" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/148meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-148" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/149meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-149" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/150meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-150" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/151meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-151" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/152meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-152" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/153meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-153" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/154meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-154" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/155meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-155" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/156meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-156" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/157meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-157" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/158meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-158" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/159meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-159" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/160meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-160" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/161meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-161" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/162meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-162" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/163meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-163" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/164meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-164" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/165meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-165" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/166meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-166" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/167meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-167" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/168meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-168" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/169meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-169" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/170meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-170" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/171meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-171" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/172meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-172" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/173meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-173" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/174meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-174" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/175meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-175" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/176meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-176" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/177meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-177" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/178meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-178" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/179meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-179" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/180meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-180" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/181meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-181" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/182meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-182" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/183meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-183" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/184meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-184" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/185meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-185" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/186meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-186" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/187meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-187" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/188meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-188" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/189meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-189" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/190meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-190" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/191meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-191" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/192meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-192" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/193meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-193" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/194meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-194" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/195meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-195" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/196meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-196" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/197meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-197" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/198meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-198" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/199meme.jpeg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-199" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/200meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-200" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/201meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-201" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/202meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-202" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/203meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-203" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/204meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-204" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/205meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-205" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/206meme.png&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-206" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/207meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-207" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/208meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-208" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/209meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-209" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/210meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-210" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/211meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-211" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/212meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-212" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 205.8px; background-image: url(&quot;assets/newmemes/213meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-213" contenteditable="true"></p></div><div class="pick-meme-container ui-sortable-handle" style="height: 206.85px; background-image: url(&quot;assets/newmemes/214meme.jpg&quot;);"><div class="meme-shadow"></div><p class="meme-title" id="meme-title-214" contenteditable="true"></p></div>
+		</div>
+		
+		
+		
+	  
+	</div></div>
+	<div id="rage-comics-content" class="choosen-content">
+		<div class="overlay"></div>
+<div id="upload-button-popup" class="popup">
+	<h2>Upload Image</h2>
+	<span class="close">&times;</span>
+	<div class="content">
+		<div class="file-upload">
+			<button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">browse</button>
+			<p>or just drop it here</p>
+
+			<div class="image-upload-wrap">
+				<input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+				<div class="drag-text">
+					<h3>Drop images here</h3>
+				</div>
+			</div>
+			<div class="file-upload-content">
+				<img class="file-upload-image" src="#" alt="your image" />
+				<div class="image-title-wrap">
+					<button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	<div id="clear-button-popup" class="popup">
+	<h2>Are you sure</h2>
+	<span class="close">&times;</span>
+	<div class="content">
+		<div id="clear-window">
+			<p>Are you sure you want to clear this comic?</p>
+			<div id="yes-no-wrapper">
+			<button id="no">No</button>
+			<button id="clear">Yes</button>
+			</div>	
+		</div>
+	</div>
+</div>
+
+
+
+  <div id="all-tools" class="left-column fadeInLeft animated fixed-sides">
+    <div id="tools">
+		
+      <div id="texts" tabindex="4"><div class="tools " id="texts-button"><i class="material-icons text">title</i>
+      <i class="schoolbell-text" style="display:  none">T</i>
+      <i class="material-icons text" style="display:  none">title</i>
+      </div>
+		  <div class="options"></div>
+		  <div id="texts-wrapper" class="hidden-menu hidden-wrapper">
+      	<button class="tools direct-tools" id="text-black"><i class="schoolbell-text">T</i></button>
+      	<button class="tools direct-tools" id="text-#d40000"><i class="material-icons text">title</i></button>
+      </div>
+		</div>	  
+		
+      <button class="tools direct-tools" id="edit"><img src="assets/cursor.png" height="26"></button>
+      <button class="tools direct-tools" id="brush"><i class="material-icons pencil">mode_edit</i></button>
+      
+      <div id="shapes" tabindex="1">
+      <div class="tools" id="shapes-button"><div class="line" id="replaced"></div></div>
+      <div class="options"></div>
+      <div id="shapes-wrapper" class="hidden-menu hidden-wrapper ">
+      	<button class="tools direct-tools" id="line"><div class="line"></div></button>
+      	<button class="tools direct-tools" id="circle"><i class="material-icons circle">panorama_fish_eye</i></button>
+      	<button id="rectangle" class="direct-tools tools"><div class="rectangle"></div></button>
+      	<button id="ellipse" class="tools direct-tools"><div class="ellipse"></div></button>
+      </div>
+      </div>
+
+      
+      <button id="spray" class="hidden-tools direct-tools tools"><img class="spray-can" src="assets/spray-can.png"></button>
+      <button id="eraser" class="hidden-tools direct-tools tools"><img class="eraser" src="assets/eraser.png"></button>
+      
+      <div id="colors" class="hidden-tools" tabindex="2">
+      	<div id="colors-button" class="tools"><img class="color-palette" src="assets/colors.png"><div class="dot"></div></div>
+		  
+      	<div class="options"></div>
+		<div id="colors-wrapper" class="hidden-wrapper">
+		      <span class="color-border bordered" ><button class="color-box black" id="#000000"> </button></span>
+		      <span class="color-border" ><button class="color-box gray" id='#767676'> </button></span>
+		      <span class="color-border" ><button class="color-box blue" id='#0000FF'> </button></span>
+		      <span class="color-border" ><button class="color-box red" id='#FF0000'> </button></span>
+		      <span class="color-border" ><button class="color-box yellow" id='#FFFF00'> </button></span>
+		      <span class="color-border" ><button class="color-box green" id='#008000'> </button></span>
+		      <span class="color-border" ><button class="color-box purple" id='#800080'> </button></span>
+		      <span class="color-border" ><button class="color-box orange" id='#FF7E0F'> </button></span>
+		      <span class="color-border" ><button class="color-box brown" id='#6D460A'> </button></span>
+		      <span class="color-border" ><button class="color-box pink" id='#FD2BD0'> </button></span>
+		      <input type="hidden" id="color_value_form">
+		</div>
+      </div>
+
+
+      <div id="sizes" class="hidden-tools" tabindex="3">
+      <div class="tools" id="sizes-button"><i class="material-icons line-weight">line_weight</i></div>
+      <div class="options"></div>
+      <div id="sizes-wrapper" class="hidden-wrapper hidden-menu">
+      	<div class="line-wrapper" id="line1"><div class="line-1"></div></div>
+      	<div class="line-wrapper bordered-2" id="line2"><div class="line-2"></div></div>
+      	<div class="line-wrapper" id="line3"><div class="line-3"></div></div>
+      </div>
+      </div>
+	<div class="loading-quarter-circle-2"></div>
+		<div id="ragefaces-buttons-wrapper">
+			<button id="submit-image-button-before-3">Post</button>	
+			<button id="cancel-upload-3">cancel</button>		
+			<span class="anonymous-checkbox shown">
+		 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
+		 	<i class="material-icons anonymous-checked"></i>
+		 	<span>Anonymous</span>
+		 	</span>
+		</div>
+		
+		
+
+      <div id="more-tools"></div>
+    </div>
+    
+  </div>
+
+<div id="ragecontainer">
+			<div id="tags">
+				<p id="rageface" >all</p>
+				<p id="happy" >happy</p>
+				<p id="neutral" >neutral</p>
+				<p id="sad" >sad</p>
+				<p id="angry" >angry</p>
+				<p id="dumb" >dumb</p>
+				<p id="happy" >happy</p>
+				<p id="wow" >wow</p>
+				<p id="victorious" >victorious</p>
+				<p id="pleased" >pleased</p>
+				<p id="laughing" >laughing</p>
+				<p id="mad" >mad</p>
+				<p id="angry" >angry</p>
+				<p id="evil" >evil</p>
+				<p id="thinking" >thinking</p>
+				<p id="troll" >troll</p>
+				<p id="stoned" >stoned</p>
+				<p id="confused" >confused</p>
+				<p id="challenged" >challenged</p>
+				<p id="scared" >scared</p>
+				<p id="why" >why</p>
+				<p id="time" >time</p>
+				<p id="memes" >memes</p>
+				<p id="wigs" >wigs</p>
+				<p id="panel2" >2panel</p>
+				<p id="uploads-tag" >uploads</p>
+			</div>
+			<div id="ragefaces">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/aareyoufuckingkiddingmegirl.png">
+			<!--
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/aintsomeshit.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angry.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angry3.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angry4.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angry6.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angryderpina.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angrythanks.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angryunhappy.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/angryyouwin.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/annoyedmotherofgodl.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/areyoukiddingme.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/arefuckingkiddingme.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/badlol.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/badumtss.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/badumtss2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/beerguy.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/bloodytroll.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/brokenheart.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/blushing.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/cat.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/catcuteness.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/catmeh.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/catlol.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/catstare.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/cereal-guy-newspaper-guy-tear.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/cereal.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/cerealguy.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/cerealguy2.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/cerealguy.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/CerealGuyAngry.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/CerealGuySip.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/challengeaccepted.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/challengeacceptedrunk.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/challengeconsidered.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/challengedenied.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/CleverGirl.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/closeenough.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/component-female-blonde-hair-only-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/component-female-brunette-hair-only-l.png">
+			<img class="rageface rageface-normal" data-original='ragefaces/component-female-red-hair-only-l.png'>
+			<img class="rageface rageface-normal" data-original='ragefaces/cool.png'>
+			<img class="rageface rageface-normal" data-original='ragefaces/crafty-daily-lie-l.png'>
+			<img class="rageface rageface-normal" data-original='ragefaces/crying.jpg'>
+			<img class="rageface rageface-normal" data-original='ragefaces/cuteness.png'>
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derp5.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpina.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpina2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpina3.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpina4.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpina5.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpina6.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/derpinarage.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/deskflip.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/determined-crazy-sweaty-concentrated-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/determined-feel-like-a-ninja-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/determined-feel-like-a-superhero-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/determined-i-am-determined-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/determined-not-okay-smile-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/determined-possibru-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/disgust.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/disgust2.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/disgust3.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/disgusted-oh-god-why-text-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/disgusted-oh-thats-nasty-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/disgusted-stephen-a-smith-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/dissappointed.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/epicwin.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/evilderp.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/excited.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/facepalm.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/facepalm2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fap-fap-accepted-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fap-gentleman-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fap-now-kiss-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fapfapfap.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/feelersgonnafeel.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/feellikeahero.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/feels.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/feels2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/feelsgood.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/foreveralone.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/foreveralone2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/foreveralone3.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/foreveralonehappy.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/friends.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/frog.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuck-that-bitch-fuck-that-shit-female-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuck-that-bitch-pirate-yao-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuck-that-bitch-scared-yao-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuck-yeah-duck-yeah-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuck-yeah-meow-yeah-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuckthatshit.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuckyeah.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuckyeahblonde.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuckyou.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/fuuuuu.png">
+			<img class="rageface rageface-normal" data-original='assets/ragefaces/gay.png'>
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/gentlemen.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/grandma.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/grandma2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/grumpycat.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/grumpycatgood.jpeg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-boufhama-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/gtfo.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-dolan-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-epic-win-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-everything-went-better-than-expected-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-female-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-grin-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-happy-poker-face-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-pfftch-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-little-kid-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-thumbs-up-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-winter-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy-yes-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy3.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy4.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy6.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happy7.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/happyderp.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/hatersgonnahate.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/hatersGonnaHateWhistling.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/high.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/hitler.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/ifeelsyabra.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/iknowthatfeel.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/iknowthatfeelbro.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/ilied.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/impossibru.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/imwaatchingyou.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/iseewhatyoudidthere.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/itsatrap.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/itssomething.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/jackiechan.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/jesus2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/jesus3.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/laugh.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/laughcry.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/laughing-yyyeeeeeaaaaa-sscciiieeenncceee-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/likeasir.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/likeasir2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/likeasirgirl.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/lol.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/longneck.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/longneck2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-derp-gusta-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-ich-mag-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-me-boosta-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-me-culpa-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-muy-elegante-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-no-me-gusta-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/me-gusta-troll-gusta-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/megarage.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/megusta.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/megustacreepy.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/megustacreepy2.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/melvin.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/melvinfuckyeah.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/mexicantroll.jpg">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/ming.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/mingalone.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-actually-pretty-badass-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-brad-pitt-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-creepy-glasses-guy-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-epic-fail-guy-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-female-seriously-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-genius-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/misc-gentlemen-top-hat-l.png">
+			<img class="rageface rageface-normal" data-original="assets/ragefaces/allthethings.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/megawtf.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/ilied.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/iseewhatyoudidtherestoned.jpeg">
+			<img class="rageface panel2" data-original="assets/ragefaces/darkstare.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/angrytruestory.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/foreveralonescreen.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/awye.jpg">
+			<img class="rageface panel2" data-original="assets/ragefaces/awye2.png">
+			<img class="rageface panel2" data-original="assets/ragefaces/gasp2.png">
+		 	<img class="rageface panel2" data-original="assets/ragefaces/gasphand.jpg">
+		 	-->
+			<h4>My images</h4>
+			<div id="uploads"></div>
+			<div id="uploads-area">
+				</hr>
+				<!--<button class="button" href="#popup1" id="upload-button">Upload</button>-->
+				<a ><button id="upload-button">Upload</button></a>
+			</div>	
+			</div>
+		</div>
+	
+
+		
+  <div id="sketch-wrapper" class="middle-column">
+	<div id="sketch" height="300" width="750">
+		<div id="placeholder-wrapper">
+		<div id="placeholder-1" class="cancel placeholder"></div>
+		</div>
+		
+		<p class="splitter" id="splitter-1">split</p>
+
+		<canvas id="paint" height="300" width="750"></canvas>
+
+	</div>
+	<%= form_for @post, html: { multipart: true } do |f| %>
+				 <%= f.file_field :image, id: "ragefaces-filefield" %>
+				 <%= f.text_area :title, id: "make-post-title-2", placeholder: "Caption" %>
+				 <input id="base64-2" type="hidden" value="" name="base64"/>
+			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
+			<% end %>
+	<div id="add-remove">
+		<span id="remove-panel-button">  
+      <p id="remove-panel">remove panel</p>
+  	  <span>-</span>
+		</span>
+		<p id="add-panel">add panel</p>
+		<span id="border-bottom"></span>
+	</div>
+
+</div>
+	
+	
+	
+  <div id="right-column" class="fixed-sides">
+    <div id="functions">
+      <!--<canvas id="brush_size" width="50" height="50"></canvas>Brush Size <input type="range" id="width_range" value="3"> Opacity <input type="range" id="opacity_range" value="100">-->
+      <div id='addRageFaces' class="right-button animated rotateIn"><i class="material-icons" id="add-button">add</i></div>
+		
+    </div>
+	  <div id="more-tools-wrapper">
+		  <a id="id_download" class="download-image"><button class="tools" ><span class="eraser"></span></button></a>
+		  <button id="clear-button" class="tools"><span class="eraser"></span></button>
+		<button id="undo" class="tools"><i class="material-icons">undo</i></button>
+      <button id="redo" class="tools"><i class="material-icons">redo</i></button>
+	</div>
+  </div>
+</div>
+	<div id="images-content-wrapper"><div id="images-content" class="choosen-content active-tab">
+		<div id="make-preview-wrapper">
+			<%= form_for @post, html: { multipart: true } do |f| %>
+			<div id="make-post-preview-wrapper">
+				 <%= f.file_field :image, id: "pictureInput", class: "pictureInput", onchange: "previewPostImage(event)" %>
+				 <div id="make-image-preview"><i class="material-icons" id="reset-image">cached</i></div>
+				 <span id="preview-image-text">Click or drop your <span id="upload-image-fade">image</span><span id="upload-gif-fade">GIF</span></span>
+				 <%= f.text_area :title, id: "make-post-title", placeholder: "Caption" %>
+			 </div>
+			 <%= f.submit :value => "Post", :id => "submit-image-button" %>
+			 <button id="cancel-upload">cancel</button>	
+			 <span class="anonymous-checkbox">
+			 	<%= f.check_box :anonymous, checked: false %>
+			 	<i class="material-icons anonymous-checked"></i>
+			 	<span>Anonymous</span>
+			 </span>
+			<% end %> 
+		</div>
+	</div>
+	<link href="https://fonts.googleapis.com/css?family=Schoolbell" rel="stylesheet">
+
+</body>
+</html>

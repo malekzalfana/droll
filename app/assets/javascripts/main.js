@@ -1,62 +1,144 @@
 /*global $*/
+$('.pick-meme-container').css({
+        'height': ($('.pick-meme-container').eq(0).width() )*1.3
+      })
+$(document).on('click', '.show-reply-icon', function(){
+  $('.new-reply').hide()
+  var commentID = $(this).attr('id').replace('show-','')
+  console.log(  $('#'+commentID) )
+  $('#showed-'+commentID).fadeIn();
+  $('#showed-'+commentID).children('.reply-form').children('.reply-body').focus();
+})
+$(document).on('click', '.hide-reply, .reply-comment', function(e){
+  setTimeout(function(){
+    $('.reply-body').val('');
+  }, 1000)
+  $('.new-reply').hide()
+})
+
+//var theComment = $('.comment-content').text()
+//alert(  theComment  )
+//console.log($('.comment-content'))
 var postId;
 var userImage = $('#profile-photo-small').css('background-image');
-    console.log(userImage)
     var newComments = 'nc'
 if ( $('.post-title').height() > 50 ) {
   $(this).css({'font-size':'20px'})
 }
+//if ($('.wrapper').length == 1){
+ 
+ //alert('sdsdf')
+//}
 //$(document).ready(function(){
-    $(document).on('click', '.upvote', function () {
-      var postId = $(this).attr('data-post-id');
-      var votes = $('.post-votes[data-post-id="'+ postId+'"], .right-post-votes[data-post-id="'+ postId+'"]');
-      var upvoter = $('.upvote[data-post-id="'+ postId+'"]');
-      console.log(upvoter)
-      var votesNumber = Number($(votes).data('votes'));
-      if ( !$(this).hasClass('upvoted') ) {
-        votesNumber++;
-        $(votes).text(votesNumber);
-        $(upvoter).addClass('upvoted');
-        if ( $(upvoter).siblings('.downvote').hasClass('downvoted') ){
-          votesNumber ++;
-          $(votes).text(votesNumber);
-          $(upvoter).siblings('.downvote').removeClass('downvoted');
+var postOptions;
+$(document).on('click', '.post-options', function () {
+  if ( $(this).hasClass('black-color') ) {
+    $(this).removeClass('black-color')
+    $(this).parents('.left-wrapper').children('.post-image-wrapper').children('.post-more-options').fadeOut(200);
+    $(this).parents('.left-wrapper').children('.post-image-wrapper').children('a').children('.post-image').removeClass('blurred-post-image')
+  }
+  else {
+    $(this).addClass('black-color')
+    $(this).parents('.left-wrapper').children('.post-image-wrapper').children('.post-more-options').fadeIn(200);
+    $(this).parents('.left-wrapper').children('.post-image-wrapper').children('a').children('.post-image').addClass('blurred-post-image')
+  }
+})
+$(document).on('click', '.favor-post', function () {
+  $(this).parents('.post-more-button').toggleClass('favorited')
+})
+$(document).on('click', '.report-post', function () {
+  $(this).parents('.post-more-button').toggleClass('reported')
+})
+$(document).on('click', '.expand-post', function () {
+  $(this).fadeOut(200)
+  $(this).parents('.post-image-wrapper').addClass('expanded-post')
+})
+
+/*
+$(document).on('click', '.favor-post', function () {
+  $('.post-status').addClass('favored-post').text('favored').fadeIn()
+  $(this).parents('.post-more-options').hide()
+  $(this).parents('.post-more-options').siblings('a').children('.post-image').removeClass('blurred-post-image')
+})
+$(document).on('click', '.report-post', function () {
+  $('.post-status').addClass('reported-post').text('report').fadeIn()
+  $(this).parents('.post-more-options').hide()
+  $(this).parents('.post-more-options').siblings('a').children('.post-image').removeClass('blurred-post-image')
+})
+*/
+$(document).on('click', '.delete-comment-button', function () {
+  $(this).parent('.comment-options').parent('.comment-body').delay(200).fadeOut(200)
+})
+
+$(document).on('click', '.report-post', function () {
+  if ($(this).hasClass('submitted')) {
+    $(this).children('.options-text').text('Report')
+    $(this).removeClass('submitted')
+    $(this).children('.report-icon').removeClass('reported-icon')
+  }
+  else {
+    $(this).children('.options-text').text('Reported')
+    $(this).children('.report-icon').addClass('reported-icon')
+    $(this).addClass('submitted')
+  }
+  $('.overlay-full, .left-wrapper-overlay').hide()
+  $(postOptions).delay(300).fadeOut(100)
+})
+$(document).on('click', '.favor-post', function () {
+  if ($(this).hasClass('submitted')) {
+    $(this).children('.options-text').text('Add to favorites')
+    $(this).removeClass('submitted')
+    $(this).children('.favor-icon').removeClass('favored-icon')
+  }
+  else {
+    $(this).children('.options-text').text('Favoured')
+    $(this).children('.favor-icon').addClass('favored-icon')
+    $(this).addClass('submitted')
+  }
+  $('.overlay-full, .left-wrapper-overlay').hide()
+  $(postOptions).delay(300).fadeOut(100)
+})
+
+
+    $(document).on('click', '.upvote, .downvote', function () {
+      if ( $('body').hasClass('signed-in')  ) {
+        //$(this).addClass('voted').siblings('.vote').removeClass('voted')
+        var points = $(this).siblings('.post-votes-word').attr('data-points')
+        console.log(points + 'points')
+        if ( $(this).hasClass('voted') ){
+          var userVotes = 0;
+          $(this).removeClass('voted').siblings('.vote').removeClass('voted').removeClass('not-voted')
         }
-      }
-      else {
-        votesNumber--;
-        $(votes).text(votesNumber);
-        $(upvoter).removeClass('upvoted');
-      }
-      $(votes).attr('data-votes', votesNumber);
-    });
-    $(document).on('click', '.downvote', function () {
-      var postId = $(this).attr('data-post-id');
-      var votes = $('.post-votes[data-post-id="'+ postId+'"], .right-post-votes[data-post-id="'+ postId+'"]');
-      var votesNumber = Number($(votes).data('votes'));
-      var downvoter = $('.downvote[data-post-id="'+ postId+'"]');
-      if ( !$(this).hasClass('downvoted') ) {
-        votesNumber--;
-        $(votes).text(votesNumber);
-        $(downvoter).addClass('downvoted');
-        if ( $(this).siblings('.upvote').hasClass('upvoted') ){
-          votesNumber--;
-          $(votes).text(votesNumber);
-          $(downvoter).siblings('.upvote').removeClass('upvoted');
+        else {
+          $(this).addClass('voted').siblings('.vote').removeClass('voted downvoted upvoted').addClass('not-voted')
+          if ( $(this).hasClass('upvote')){
+            var userVotes = 1
+          }
+          else if ( $(this).hasClass('downvote') ) {
+            var userVotes = -1
+          }
         }
+        
+        
+        console.log(userVotes + 'uservotes') //CONTINUE THIS
+        if (points + userVotes > 1){
+            var votesWords = 'points'
+        }
+        else if (points + userVotes == 1){
+            var votesWords = 'point'
+        }
+        else {
+            var votesWords = 'points'
+        }
+        $(this).siblings('.post-votes-word').hide().fadeIn(200).text( Number(points) + Number(userVotes) + " " + votesWords)
+        $(this).siblings('.post-votes-word').attr('data-user-votes', userVotes)
       }
-      else {
-        votesNumber++;
-        $(votes).text(votesNumber);
-        $(downvoter).removeClass('downvoted');
-      }
-      $(votes).attr('data-votes', votesNumber);
     });
     
     var thisWrapper;
     var postIndex;
 
-    $(document).on('click', '.post-image, .comment-button', function () {
+    $(document).on('click', '.post-image1, .comment-button1', function () {   // REMOVED
       $('.wrapper').hide();
     var thisDiv = $(this);
     $(window).scrollTop(0);
@@ -104,23 +186,28 @@ if ( $('.post-title').height() > 50 ) {
     //$(thisOne).scrollTop(220);
   });
   
-    $(document).on('keydown', 'body', function (e) {
-      if ( $('.full-wrapper').is('#content-full') && !$(e.target).is('input, textarea') ){
+    $(document).on('keydown', 'body1', function (e) {
+      //if ( $('.full-wrapper').is('#content-full') && !$(e.target).is('input, textarea') ){
       if (e.keyCode == 39) {
+        window.location.href = $('.next-post-a').attr('href');
         if (postIndex != ($('.wrapper').length - 1)) {
-          $('.wrapper').fadeOut(200);
+          /* $('.wrapper').fadeOut(200);
           postIndex++;
           thisWrapper = $('.wrapper').get(postIndex);
           $(thisWrapper).fadeIn(200);
           postId = $(thisWrapper).attr('data-post-id')
           //alert(postId)
-          $(window).scrollTop(0);
+          $(window).scrollTop(0); */
+          
         }
         else {
           //alert('index == length')
         }
       }
       if (e.keyCode == 37) {
+        //alert('back')
+        window.location.href = $('.prev-post-a').attr('href');
+        //alert($('.prev-post-a').attr('href'))
         if (postIndex != 0) {
           $('.wrapper').fadeOut(200);
           postIndex--;
@@ -146,7 +233,7 @@ if ( $('.post-title').height() > 50 ) {
         $('html, body').animate({ scrollTop: $(thisOne).offset().top - 48}, '100');
         //thisOne.scrollIntoView();
         //$(thisOne).scrollTop(220);
-      }}
+      }//}
     });
     var hiddenCommentHeight;
     $(document).on('keyup', '.new_comment textarea', function(){
@@ -185,9 +272,10 @@ if ( $('.post-title').height() > 50 ) {
       //$(this).closest('textarea').val($(cloningComment.innerHTML));
       newComments = newComments + '1'
     })*/
-    $(document).on('click', '.post-comment', function(){
-      alert('clicked')
-      var thisCommentContent = $(this).siblings('.form-group').children('.post-comment-body').val()
+    // NEW
+    /*$(document).on('click', '.post-comment', function(){
+      var thisCommentContent = $(this).siblings('.post-comment-body').val()
+      console.log(thisCommentContent)
       var thisCommentWrapper = $(this).parents('.comments-wrapper')
       var newComment = document.createElement('blockquote')
       newComment.className = 'comment-body'
@@ -209,12 +297,16 @@ if ( $('.post-title').height() > 50 ) {
       commentP.innerHTML = thisCommentContent
       var commentHr = document.createElement('hr')
       commentHr.className = 'comment-separater'
-      $(thisCommentWrapper).prepend(newComment)
+      $(thisCommentWrapper).prepend(newComment).addClass('fadeInUp animated-fast')
       $(newComment).append(newCommentUser, newCommentUserWrapper, commentP, commentOption, commentCreatedAt, commentHr)
       $(newCommentUserWrapper).append(newCommentUser)
       $(commentOption).append(commentUser, commentCreatedAt, commentP)
       newComments = newComments + '1'
+      setTimeout(function() {
+        $(this).siblings('.form-group').children('.post-comment-body').val('')
+      }, 500);
+      
       $(window).scrollTop()
-    })
-    
+    })*/
+    console.log('ad')
     

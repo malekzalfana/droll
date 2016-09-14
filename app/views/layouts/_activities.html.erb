@@ -1,0 +1,175 @@
+<% if user_signed_in? %>
+<div id="notif-menu" data-simplebar-direction="vertical">
+  <div id="notification-icon-2"><i class="material-icons">notifications_none</i><span id="notif-number"></span></div>
+  <div id="notif-title">Notifications</div>
+  <div id="notif-content-wrapper">
+     <div id="notif-content">
+  <% @activities.each do |activity| %>
+  
+    <%# activity.inspect %>
+      <% if activity.trackable %>
+      
+      <% if activity.owner.present? && activity.trackable.class.name == 'Post' && activity.trackable.user != current_user && current_user.following?(activity.trackable.user) && activity.key == 'posting'  %>
+      <div class="activity notification" id="activity-<%= activity.id %>">
+        <span class="pointered" onclick='location.href="/posts/<%= activity.trackable.id %>"'>
+        <div class="notif">
+          <div class="notif-left-col">
+          <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>)'"></div>
+          </div>
+          <div class="notif-right-col">
+            <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></a></strong> uploaded a post
+            <%unless activity.trackable.title.blank? %>,</span> "<%= activity.trackable.title %>"<% end %>
+          </div>
+          <hr>
+        </div>
+        </span>
+     </div>
+     
+     <% elsif activity.owner.present? && activity.key == 'following'  %>
+      <div class="activity notification" id="activity-<%= activity.id %>">
+      <span class="pointered" onclick='location.href="/user/<%= activity.trackable.username %>"'>
+        <div class="notif">
+          <div class="notif-left-col">
+          <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.image.url(:thumb) %>')"></div>
+          </div>
+          <div class="notif-right-col">
+            <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></strong> started following you</span>
+          </div>
+          <hr>
+        </div>
+      </a>  
+     </div>
+     
+     <% elsif activity.owner.present? && activity.trackable.class.name == 'Comment' && activity.key == 'commenting' && if !activity.trackable.post.nil? then  activity.trackable.post.user == current_user end %>
+     <div class="activity notification" id="activity-<%= activity.id %>">
+         <span class="pointered" onclick='location.href="/comments/<%= activity.trackable.id %>"'>
+          <div class="notif">
+          <div class="notif-left-col">
+              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>')"></div>
+          
+          </div>
+          <div class="notif-right-col">
+              <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></strong> commented on your post</span> <% if activity.trackable.image.url != '/images/original/missing.png' %> with a meme<% else %>, "<span class="notifs-comments"><%= activity.trackable.body.html_safe %></span>"<% end %>
+          </div>  
+          <hr>
+          </div>
+        </span>
+        </div>
+        
+     <% elsif activity.owner.present? && activity.key == 'mentioning'%>
+     <div class="activity notification" id="activity-<%= activity.id %>">
+      <span class="pointered" onclick='location.href="/comments/<%= activity.trackable.id %>"'>
+        <div class="notif">
+        <div class="notif-left-col">
+          <% if activity.trackable.post.anonymous ===  true ||  ( !activity.trackable.postid.nil? && Post.find(activity.trackable.postid).anonymous ===  true  ) %>
+              <div class="notif-user-image" style="background-image:url('assets/anonymous.jpg')"></div>
+            <% else %>
+              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.user.image.url(:thumb) %>)'"></div>
+          <% end %>
+        </div>
+        <div class="notif-right-col">
+          <% if activity.trackable.post.anonymous ===  true ||  ( !activity.trackable.postid.nil? && Post.find(activity.trackable.postid).anonymous ===  true  ) %>
+          <p class="notif-text"><span class="notif-first"><strong>Anonymous</strong> mentioned you in a comment,</span> "<span class="notifs-comments"><%= activity.trackable.body.html_safe %> </span>"
+          <% else %>
+          <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.trackable.user.username %>"><%= activity.trackable.user.username %></a></strong> mentioned you in a comment,</span> "<span class="notifs-comments"><%= activity.trackable.body.html_safe %> </span>"
+          <% end %>
+          
+        </div>  <hr>
+        </div>
+        </span>
+      </div>
+        
+        
+     <% elsif activity.owner.present? && activity.key == 'upvoting' && activity.trackable.class.name == 'Post' %>
+     <div class="activity notification" id="activity-<%= activity.id %>">
+     <span class="pointered" onclick='location.href="/posts/<%= activity.trackable.id %>"'>
+       <div class="notif">
+          <div class="notif-left-col">
+          <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>')"></div>
+          </div>
+          <div class="notif-right-col">
+            <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></strong>
+            <% if activity.trackable.get_upvotes.size - 1 == 2 %>
+            and <strong><a href="/user/<%= activity.trackable.votes_for.up.voters.last(2).first.username %>"><%= activity.trackable.votes_for.up.voters.last(2).first.username %></a></strong> upvoted your post
+            
+            <% elsif activity.trackable.get_upvotes.size - 1  > 2 %>
+            and <%= activity.trackable.get_upvotes.size - 1  %> others upvoted your post
+            
+            <% elsif activity.trackable.get_upvotes.size - 1 == 1 %>
+            upvoted your post
+            <% else %>
+            <%= activity.trackable.get_upvotes.size - if current_user.voted_up_on? activity.trackable then 1 else 0 end %>
+            <% end  %>
+          </div>  
+          <hr>
+        </div>
+      </span>
+     </div>
+     
+     <% elsif activity.key == 'drolling' && activity.trackable.class.name == 'User' %>
+     <div class="activity notification" id="activity-<%= activity.id %>">
+       <% if activity.parameters[:url].present? %>
+         <a href="<%activity.parameters[:url]%>">
+       <% end %>
+       <div class="notif">
+          <div class="notif-left-col">
+          <div class="notif-user-image" style="background-image:url('assets/drolle.jpg')"></div>
+          </div>
+          <div class="notif-right-col">
+            <p class="notif-text"><%= activity.parameters[:what] %></p>
+          </div>  
+          <hr>
+        </div>
+        <% if activity.parameters[:url].present? %>
+         </a>
+       <% end %>
+     </div>
+     
+     <% elsif activity.owner.present? && activity.key == 'upvoting' && activity.trackable.class.name == 'Comment' %>
+     <div class="activity notification" id="activity-<%= activity.id %>">
+     <span class="pointered" onclick='location.href="/comments/<%= activity.trackable.id %>"'>
+       <div class="notif">
+          <div class="notif-left-col">
+            <% if activity.parameters[:anonymous].present? %>
+              <div class="notif-user-image" style="background-image:url('assets/anonymous.jpg')"></div>
+            <% else %>
+              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>)'"></div>
+          <% end %>
+          <div class="notif-user-image" style="background-image:url('<%= activity.owner.image.url(:thumb) %>')"></div>
+          </div>
+          <div class="notif-right-col">
+            <% if activity.parameters[:anonymous].present? %>
+              <p class="notif-text"><span class="notif-first"><strong>Anonymous</strong>
+            <% else %>
+              <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></strong>
+            <% end %>
+            
+            <% if activity.trackable.get_upvotes.size == 2 %>
+            and <strong><a href="/user/<%= activity.trackable.votes_for.up.voters.last(2).first.username %>"><%= activity.trackable.votes_for.up.voters.last(2).first.username %></a></strong> upvoted your post
+            
+            <% elsif activity.trackable.get_upvotes.size  > 2 %>
+            and <%= activity.trackable.get_upvotes.size - 1  %> others upvoted your comment
+            
+            <% elsif activity.trackable.get_upvotes.size  == 1 %>
+            upvoted your comment
+            <% else %>
+            <%# activity.trackable.get_upvotes.size - if current_user.voted_up_on? activity.trackable then 1 else 0 end %>
+            <% end  %>
+          </div>  
+          <hr>
+        </div>
+      </span>
+     </div>
+     
+     
+    <% end %>
+    <% end %>
+<% end %>  
+</div>
+  </div>
+
+<footer id="notif-footer">
+    <span id="copy">Drolle ©</span><span id="notif-links"> <a href="/about">About</a> - <a href="/contact">Contact</a> - <a href="/terms">Privacy &amp; Terms</a></span>
+  </footer>
+</div>
+<% end  %>

@@ -1,0 +1,17 @@
+<% @profilefavor.each do |x| %>
+    <%= link_to(x) do %>
+    <div class="wrapper">
+        <div class="profile-post-overlay"></div>
+        <h2 class="post-title"><%= x.title %></h2>
+        <span class="profile-post-user">@<%= x.user.username %></span>
+        <div class="profile-post" style="background-image: url(<%= x.image.url(:medium) %>)"></div>
+        <div class="profile-post-options">
+            <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
+            <%= link_to dislike_post_path(x), method: :put, class: 'down downvote', :"data-post-id" => x.id, remote: true  do %>
+            <% end %>
+            <%= link_to like_post_path(x), method: :put, class: 'up upvote', :"data-post-id" => x.id, remote: true  do %>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+<% end %>

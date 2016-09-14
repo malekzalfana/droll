@@ -1,5 +1,7 @@
 var droppedFaces = 0;
-$(document).ready(function(){
+//if ( $('body').attr('id') == 'make' ) {
+	console.log('ss')
+	$(document).ready(function(){
 	document.getElementById('all-tools').style.height = document.body.clientHeight;
 	document.getElementById('right-column').style.height = document.body.clientHeight;
 	var canvas = document.querySelector('#paint');
@@ -23,7 +25,12 @@ $(document).ready(function(){
 	// Creating a tmp canvas
 	var tmp_canvas = document.createElement('canvas');
 	var tmp_ctx = tmp_canvas.getContext('2d');
-
+	$(document).on('click', '#button', function(){
+		alert('ss')
+		var tmp_canvas = document.createElement('canvas');
+		var tmp_ctx = tmp_canvas.getContext('2d');
+		tmp_ctx.fillText(document.getElementById('text-' + '1').value.toUpperCase(), Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + '1').parentElement.offsetLeft) + 10, Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + '1').parentElement.offsetTop) + 15);
+	})
 	tmp_canvas.id = 'tmp_canvas';
 	//tmp_canvas.width = canvas.width;
 	//tmp_canvas.height = canvas.height;
@@ -74,7 +81,7 @@ $(document).ready(function(){
 		});
 		
 		$(this).css({
-			'background': '#F44336'
+			'background': 'rgb(253, 97, 61)'
 			, 'color': 'black'
 			//, 'border-bottom': '#d40000 2px solid'
 				//,"box-shadow": "inset 0px 0px 0px 3px #D40000",
@@ -157,14 +164,15 @@ $(document).ready(function(){
 			tmp_canvas.style.cursor = "move";
 			imgIndex();
 		} else if (tool == 'brush') {
-			tmp_canvas.style.cursor = "url('pen.cur'), auto";
+			tmp_ctx.strokeStyle = lineColor;
+			tmp_canvas.style.cursor = "url('assets/pen.cur'), auto";
 			lowerIndex();
 		} else if (tool == 'spray') {
-			tmp_canvas.style.cursor = "url('spray.cur'), auto";
+			tmp_canvas.style.cursor = "url('assets/spray.cur'), auto";
 			lowerIndex();
 
 		} else if (tool == 'eraser') {
-			tmp_canvas.style.cursor = "url('eraser.cur'), auto";
+			tmp_canvas.style.cursor = "url('assets/eraser.cur'), auto";
 			lowerIndex();
 		} else if (tool == 'none') {
 			alert('mmm');
@@ -336,10 +344,18 @@ $(document).ready(function(){
 			undo_arr.push(canvas.toDataURL()); //NEWTHING
 			//window.alert(undo_arr.length);
 			undo_count = 0; //NEWTHING
+			painting = false;
+			console.log(painting)
+		}
+		function stopDrawing2() {
+			if ( painting === true ) {
+				stopDrawing()
+			}
 		}
 
 		tmp_canvas.addEventListener('mouseup', stopDrawing, false);
-		tmp_canvas.addEventListener('mouseleave', stopDrawing, false);
+		tmp_canvas.addEventListener('mouseleave', stopDrawing2, false);
+		tmp_canvas.addEventListener('ondrag', stopDrawing2, false);
 
 		//NEWTHING
 
@@ -567,10 +583,10 @@ $(document).ready(function(){
 		ctx.closePath();
 		ctx.stroke();
 	};
-
+	var toErase = false;
 	var onErase = function () {
-
-		// Saving all the points in an array
+		if (toErase === true ){
+			// Saving all the points in an array
 		ppts.push({
 			x: mouse.x
 			, y: mouse.y
@@ -614,6 +630,50 @@ $(document).ready(function(){
 			, ppts[i + 1].y
 		);
 		ctx.stroke();
+		}
+		// Else erase
+		else {
+			tmp_ctx.strokeStyle = '#ffffff';
+			// Saving all the points in an array
+		ppts.push({
+			x: mouse.x
+			, y: mouse.y
+		});
+
+		if (ppts.length < 3) {
+			var b = ppts[0];
+			tmp_ctx.beginPath();
+			//ctx.moveTo(b.x, b.y);
+			//ctx.lineTo(b.x+50, b.y+50);
+			tmp_ctx.arc(b.x, b.y, tmp_ctx.lineWidth / 2, 0, Math.PI * 2, !0);
+			tmp_ctx.fill();
+			tmp_ctx.closePath();
+
+			return;
+		}
+
+		// Tmp canvas is always cleared up before drawing.
+		tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+
+		tmp_ctx.beginPath();
+		tmp_ctx.moveTo(ppts[0].x, ppts[0].y);
+
+		for (var i = 1; i < ppts.length - 2; i++) {
+			var c = (ppts[i].x + ppts[i + 1].x) / 2;
+			var d = (ppts[i].y + ppts[i + 1].y) / 2;
+
+			tmp_ctx.quadraticCurveTo(ppts[i].x, ppts[i].y, c, d);
+		}
+
+		// For the last 2 points
+		tmp_ctx.quadraticCurveTo(
+			ppts[i].x
+			, ppts[i].y
+			, ppts[i + 1].x
+			, ppts[i + 1].y
+		);
+		tmp_ctx.stroke();
+		}
 
 	};
 
@@ -661,7 +721,7 @@ $(document).ready(function(){
 
 
 
-	function callDownload(link, canvasId, filename) {
+	function callDownload(link, canvasId, filename, todownload) {
 		//document.getElementById('paint').crossOrigin="anonymous";
 		var downloadCANVAS = document.createElement('canvas');
 		downloadCANVAS.setAttribute('id', 'downloadCanvas');
@@ -671,25 +731,42 @@ $(document).ready(function(){
 		originalCanvas = ctx.getImageData(0,0,canvas.width,canvas.height);
 		downloadCTX.putImageData(originalCanvas,0,0);
 		//downloadCTX.fillStyle = 'black';
-		//downloadCTX.font = "14px monospace";
+		downloadCTX.font="20px schoolbell";
 		downloadCTX.scale(2,2);
+		downloadCANVAS.getContext('2d').font="schoolbell";
+		downloadCTX.save()
+		
+				downloadCTX.fillStyle = "black";
+				//downloadCTX.fillText('text',-4,10);
+				//REMOVED
+				//var added1 = $('#text-11').val()
+				//var added3 = $('#text-22').val()
 		for (var textNumbers = 1; textNumbers <= textCalls; ++textNumbers) {
 			if (document.getElementById('text-' + textNumbers).classList.contains('red-textareas')) {
-				downloadCTX.font="18px sans-serif bold";
+				downloadCTX.font= 32+"px schoolbell";
 				downloadCTX.fillStyle = "#d40000";
-				//alert('done')
-				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value.toUpperCase(), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + 4 + Number(tmp_canvas.offsetLeft), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + 14 + Number(tmp_canvas.offsetTop), 199);
+				added1 = 0;
+				added2 = 32;
+				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value.toUpperCase(), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft) + added1, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetTop) + added2);
+				//downloadCTX.save()
 			//document.getElementById('text-' + textNumbers).style.display = 'none';
 			console.log(document.getElementById('text-' + textNumbers).width);
 			}
+			
 			else {
-				downloadCTX.font="17px monospace";
+				downloadCTX.font="20px schoolbell";
 				downloadCTX.fillStyle = "black";
-				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + 4 + Number(tmp_canvas.offsetLeft), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + 14 + Number(tmp_canvas.offsetTop));
+				//downloadCTX.save()
+				console.log('w')
+				added1 = 1;
+				added2 = 20;
+				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft) + Number(added1), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetTop) + Number(added2));
 			//document.getElementById('text-' + textNumbers).style.display = 'none';
 			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft));
+			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft)  )
 			}
 		};
+		//downloadCTX.scale(0.5,0.5);
 		for (var droppedNumbers = 1; droppedNumbers <= droppedFaces; ++droppedNumbers) {
 			var image = document.getElementById("rage-" + droppedNumbers);
 			var originalImage = new Image();
@@ -872,22 +949,37 @@ $(document).ready(function(){
 			//ctx.putImageData(resCV, Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetLeft) + 1 + Number(document.getElementById('paint').offsetLeft), Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetTop) + 1 + Number(document.getElementById('paint').offsetTop), image.width, image.height);
 
 		}
-		link.href = downloadCANVAS.toDataURL();
-		link.download = filename;
-		alert(droppedFaces)
+		if ( todownload === true ){
+			$('#sketch-wrapper').append(downloadCANVAS)
+			$(downloadCANVAS).css({'width':'600px'})
+				//link.href = downloadCANVAS.toDataURL();
+				//link.download = filename;
+		}
+		else {
+			//var memeCanvas = document.getElementById('paint');
+		    var dataURL3 = downloadCANVAS.toDataURL();
+		    $('#base64-2').val(dataURL3)
+		    setTimeout(function(){
+		      $("#submit-image-button-3").click();
+		    }, 2000)
+		}	
 
 	}
+	$(document).on('click', '#submit-image-button-before-3', function(){
+	    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
+	  })
 	//document.getElementsByClassName('rageface').setAttribute('crossOrigin', 'anonymous');
 	/** 
 	 * The event handler for the link's onclick event. We give THIS as a
 	 * parameter (=the link element), ID of the canvas and a filename.
 	 */
-	document.getElementById('id_download').addEventListener('click', function () {
-		callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png');
-	}, false);
-
+	$(document).on('click', '.download-image', function(){
+		callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', true);
+		console.log('called to download')
+	});
+var painting;
 	var onPaint = function () {
-
+		painting = true;
 		if (tool == 'brush') {
 			onPaintBrush();
 		} else if (tool == 'circle') {
@@ -912,9 +1004,12 @@ $(document).ready(function(){
 
 	};
 	//var textCalls = 0;
-
+	var textFocused = false;
 	function createText(e) {
-		console.log('dfsdas');
+		$('.textareas:empty').fadeOut(100).remove()
+		if ( !document.activeElement.classList.contains('textareas')) {
+		console.log(textFocused)
+			console.log('dfsdas');
 		textCalls++;
 		//tmp_ctx.fillRect(0, 0, 56, 56);
 		tmp_canvas.removeEventListener('mousemove', onPaint, false);
@@ -957,7 +1052,11 @@ $(document).ready(function(){
 		};
 		// Tmp canvas is always cleared up before drawing.
 		tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
-		textarea = document.createElement('textarea');
+		var textarea = document.createElement('textarea');
+		setTimeout(function(){
+			$(textarea).focus();
+		}, 100)
+		$(textarea).focus();
 		if (tool == 'text-#d40000') {
 			textarea.className = 'textareas red-textareas';
 			//alert('true dat')
@@ -986,12 +1085,12 @@ $(document).ready(function(){
 			cancel: ''
 			, containment: sketch
 			, start: function () {
-				$('.textareas').focus();
+				$(textarea).focus();
 				$('.ui-resizable-handle').css({});
 
 			}
 			, stop: function () {
-				$('.textareas').focus();
+				$(textarea).focus();
 			}
 		, });
 		//$('.textareas').dblclick(function(){
@@ -1027,7 +1126,13 @@ $(document).ready(function(){
 				$(this).parent().find('.delete-handle').hide();
 			});
 		tmp_canvas.removeEventListener('click', createText, false);
-	};
+		}
+		else {
+			return false
+			alert('it is focysde')
+		}
+		
+	};//ends here
 
 
 	droppedFaces = 0;
@@ -1040,23 +1145,14 @@ $(document).ready(function(){
 			$(this).addClass('clickedTag');
 		})
 
-		//$('.rageface').hide();
-
 		$('#addRageFaces').click(function () {
 			$('#ragecontainer').fadeToggle(200);
 			$('#ragecontainer').toggleClass('clicked');
 			$('#add-button').hide();
 			if ($('#ragecontainer').hasClass('clicked')) {
-				document.getElementById('add-button').innerHTML = 'remove';
-				$('#add-button').fadeIn(200);
-				//$('.rageface').fadeIn(400);
-				//alert('clicked')
+				$('#addRageFaces i').hide().text('remove').fadeIn(200)
 			} else {
-				document.getElementById('add-button').innerHTML = 'add';
-				$('#add-button').fadeIn(200);
-				//$('.rageface').hide();
-				//$('.rageface').fadeOut(400);
-				//alert('d clicked');
+				$('#addRageFaces i').hide().text('add').fadeIn(200)
 			}
 			$('#tags p').addClass('animated-very-fast fadeInUp');
 			//$(function () {
@@ -1260,7 +1356,9 @@ $("img.rageface").slice(40,184).lazyload({
 			$('.hidden-tools').fadeToggle(200);
 			$(this).toggleClass('more-tools-rotation');
 		});
-
+		$(document).on('click', '#cancel-button-3', function(){
+		    $('#clear-button').click()
+		  })
 		$('#more-tools').click();
 		$('#black').click();
 		$('.splitter').click(splitting);
@@ -1273,10 +1371,11 @@ $("img.rageface").slice(40,184).lazyload({
 		$('#line2').click();
 		$('.line-wrapper').click(function () {
 			$('.line-wrapper').css({
-				'background':'none'
+				'background':'#616161'
 			});
 			$(this).css({
-				'background': '#616161'
+				'background': 'rgb(241, 82, 71)', 
+				'color': 'white'
 			});
 		});
 
@@ -1302,6 +1401,15 @@ $("img.rageface").slice(40,184).lazyload({
 			$('#texts-button').css({'color':textStyle});
 			console.log(tool);
 		});
+		$(document).on('focus','.textareas', function(){
+			textFocused = true;
+			console.log(textFocused)
+		})
+		$(document).on('focusout','.textareas', function(){
+			textFocused = false
+			console.log(textFocused)
+			
+		})
 		
 		$('#colors, #sizes, #shapes, #texts').focusout(function () {
 			var thisTool = $(this).attr('id');
@@ -1317,7 +1425,14 @@ $("img.rageface").slice(40,184).lazyload({
 					'background': '#F15247'
 				});
 			}
-			else if (tool == 'text-#d40000' || tool == 'text-black') {
+			else if (tool == 'text-#d40000') {
+				$('#texts-button').children('.schoolbell-text').hide()
+				$('#texts-button').children('.text').eq(0).show()
+				$('#texts-button').css({'background':'#F15247'});
+			}
+			else if ( tool == 'text-black' ) {
+				$('#texts-button').children('.schoolbell-text').show()
+				$('#texts-button').children('.text').eq(0).hide()
 				$('#texts-button').css({'background':'#F15247'});
 			}
 		});
@@ -1327,8 +1442,7 @@ $("img.rageface").slice(40,184).lazyload({
 		$('#rectangle, #line, #circle, #ellipse, .hidden-wrapper, .color-box, .line-1, .line-2, .line-3').mousedown(function (e) {
 			e.preventDefault();
 		});
-
-		$('#sizes, #shapes, #colors, #texts').focus(function (e) {
+		$('#sizes, #shapes, #colors, #texts').hover(function (e) {
 			e.preventDefault();
 			var thisTool = $(this).attr('id');
 			//alert(thisTool);
@@ -1336,8 +1450,8 @@ $("img.rageface").slice(40,184).lazyload({
 			$('#' + thisTool + '-wrapper').fadeToggle(300);
 			$('#' + thisTool + ' .options').toggleClass('red-options');
 			$('#' + thisTool + '-button').toggleClass('red-button');
-			//$('#shapes-button').css({'border-bottom':'0px solid #d40000'});
-		});
+			
+		})
 		//$('#shapes-button').click(function(){
 		//  $('#shapes-button').css({'border-bottom':'0px solid #d40000'});
 		//});
@@ -1600,12 +1714,15 @@ function readURL(input) {
 
     reader.onload = function(e) {
       //$('.image-upload-wrap').hide();
-
-      $('.file-upload-image').attr('src', e.target.result);
+		var newRageface = document.createElement('img')
+      $(newRageface).attr('src', e.target.result);
       //$('.file-upload-content').show();
-	$('.file-upload-image').appendTo('#uploads');
-		$('.file-upload-image').addClass('rageface').addClass('animated-fast bigEntrance');
-$('.file-upload-image').draggable({
+	$(newRageface).appendTo('#uploads');
+		$(newRageface).addClass('rageface rageface-normal animated-fast bigEntrance');
+		setTimeout(function(){
+			$(newRageface).removeClass('bigEntrance')
+		}, 1000)
+$(newRageface).draggable({
 			helper: 'clone'
 			, appendTo: $('#sketch')
 			, revert: 'invalid'
@@ -1616,7 +1733,6 @@ $('.file-upload-image').draggable({
 					'cursor': 'move'
 				});
 				$('#edit').click();
-				$(ui.helper).removeClass('bigEntrance')
 				//$(ui.helper).animate({'width':'75','height':'auto'});
 				//if ( $(this).hasClass('panel2')) {
 				//	$(ui.helper).addClass('dragged-panel2');
@@ -1662,6 +1778,7 @@ $('.file-upload-image').draggable({
 				//	$(theClone1).focus();
 				//});
 				$(theClone1).parent().mouseover(function(){
+					$('#addRageFaces i').hide().text('remove').fadeIn(200)
 			$(theClone1).find('.delete-handle').show();
 			console.log($(theClone1).find('.delete-handle'))
 			});
@@ -1689,3 +1806,4 @@ $('.image-upload-wrap').bind('dragover', function () {
 	$('.image-upload-wrap').bind('dragleave', function () {
 		$('.image-upload-wrap').removeClass('image-dropping');
 });
+//}
