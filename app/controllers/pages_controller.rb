@@ -23,9 +23,10 @@ class PagesController < ApplicationController
     else
       @post = Post.order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
     end
-    @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
+    
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
     if user_signed_in?
+      @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
       @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
