@@ -884,7 +884,7 @@ opacity: 0;
 
 .text-parent,
 .img-parent {
-	z-index: ;
+	z-index: 1;
 }
 .dragged-panel2 {
 	z-index:3;
@@ -1213,7 +1213,7 @@ img.ui-draggable-dragging {
 	padding: 0px;
 	padding-bottom: 1px;
 	color: #6b6b6b;
-	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background, transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88);
+	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background, 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88);
 }
 #more-tools-wrapper button {
 	height: 35px;
@@ -3785,7 +3785,7 @@ iframe {
 
 
 
-@import url(http://fonts.googleapis.com/css?family=Lato:300);
+
 * {
   margin: 0;
   padding: 0;
