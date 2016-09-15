@@ -1,4 +1,4 @@
-<%= link_to 'Sin in with Twitter', user_omniauth_authorize_path(:twitter) %>
+<%# link_to 'Sin in with Twitter', user_omniauth_authorize_path(:twitter) %>
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
     <% if user_signed_in? && @pTotal < 4 %>
     <div id="progress-table">

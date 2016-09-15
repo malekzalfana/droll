@@ -1,4 +1,5 @@
-var droppedFaces = 0;
+$(document).on('click', '#rage-comics-tab', function(){
+	var droppedFaces = 0;
 //if ( $('body').attr('id') == 'make' ) {
 	console.log('ss')
 	$(document).ready(function(){
@@ -51,7 +52,10 @@ var droppedFaces = 0;
 	tmp_ctx.scale(2, 2);
 	//ctx.scale(2,2);
 	ctx.fillStyle = 'white';
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	//$(document).on('click', '#rage-comics-tab', function(){
+		ctx.fillRect(0, 0, canvas.width, canvas.height);
+	//})
+	
 	var tool = 'none';
 	var lineWidth = '3';
 	var lineColor = 'black';
@@ -1807,3 +1811,5 @@ $('.image-upload-wrap').bind('dragover', function () {
 		$('.image-upload-wrap').removeClass('image-dropping');
 });
 //}
+
+})
