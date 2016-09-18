@@ -1,15 +1,4 @@
 $(document).ready(function(){
-	$(document).ready(function(){
-	   $('.pick-meme-container').css({
-        'height': ($('.pick-meme-container').eq(4).width() )*($('#memes-content').width()/100)
-        
-      })
-      console.log(1111111111111111111111111)
-      console.log( ($('.pick-meme-container').eq(4).width() )*($(window).width()/100) )
-      //console.log( $('.pick-meme-container').eq(4).css('width') )
-      console.log( $('.pick-meme-container').eq(4).width() )
-      //console.log( $('.pick-meme-container').eq(4).style.width )
-	})
 	
 var memeCanvas = document.getElementById('meme-canvas');
 var memeCtx = memeCanvas.getContext('2d');
@@ -317,30 +306,8 @@ var newNumber = 0;
 		else
 			altHeader.addClass("height").removeClass('no-height');
 	});
-	//for (i = 1; i < 215; i++) {
-	//	document.getElementById('meme-title-' + i).parentElement.style.height = document.getElementById('meme-title-' + 2).parentElement.clientWidth * 1.05 + 'px';
-	//}
-	//$('.pick-meme-container').css({'height':$('#meme-title-1').parent().height()+'!important'})
 	$('#cancel-upload-2').click(function(){
 	})
-	/*$('#addMemes').click(function () {
-			$('#memescontainer').fadeToggle(200);
-			$('#memescontainer').toggleClass('clicked');
-			//$('#add-button').hide();
-			if ($('#memescontainer').hasClass('clicked')) {
-				document.getElementById('add-button').innerHTML = 'remove';
-				$('#add-button').fadeIn(200);
-				//$('.rageface').fadeIn(400);
-				//alert('clicked')
-			} else {
-				document.getElementById('add-button').innerHTML = 'add';
-				$('#add-button').fadeIn(200);
-				//$('.rageface').hide();
-				//$('.rageface').fadeOut(400);
-				//alert('d clicked');
-			}	$('.meme-pics').slice(0,40).trigger("loadEmBoys");
-
-		});*/
 		$('#left-arrow').click(function(){
 			//$('.middle-column').removeClass('fadeIn').addClass('fadeOut'); // REMOVED
 			$('.middle-column').hide()

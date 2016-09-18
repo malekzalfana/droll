@@ -1,9 +1,5 @@
 $(window).load(function() {
-    $('.pick-meme-container').css({
-        'height': ($('.pick-meme-container').eq(0).width() )*1.3
-      })
-    console.log( ($('.pick-meme-container').eq(0).css('width') )*4/3 )  
-    console.log( ($('.pick-meme-container').eq(0).css('width') ) )  
+    
     $('.progress').mouseover(function(){
         $('#progress-table').fadeIn()
     })

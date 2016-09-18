@@ -99,6 +99,7 @@ class PagesController < ApplicationController
     @comment = Comment.all.limit(10)
   end
   
+  
   def loadPost
     @postid = params[:postid]
     @post = Post.find(@postid)

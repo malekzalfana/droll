@@ -6,6 +6,22 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
+  <% if controller.action_name  == 'show'%>
+    <meta property="og:title" content="<%= @post.title %>" />
+    <meta property="og:type" content="article" />
+    <meta property='og:image:width' content="600" />
+    <meta property='og:image:height' content="315" />
+    <meta property="og:image" content="https://drolle-3-malekzalfana.c9users.io<%= @post.image.url(:large)%>" />
+    <meta property="og:url" content="https://drolle-3-malekzalfana.c9users.io<%= url_for(@post) %>" />
+    <meta property="og:description" content="by <%= if @post.anonymous != true then @post.user.username else 'anonymous' end %> | drolle" />
+    
+    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:site" content="drolle" />
+    <meta name="twitter:title" content="<%= if !@post.title.blank? then @post.title else @post.user end %>" />
+    <meta name="twitter:image" content="https://drolle-3-malekzalfana.c9users.io<%= @post.image.url(:large)%>" />
+    <meta name="twitter:url" content="https://drolle-3-malekzalfana.c9users.io<%= url_for(@post) %>">
+    
+  <% end %>
 </head>
 <body>
 <%= render '/layouts/nav' %>

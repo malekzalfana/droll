@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160913135705) do
+ActiveRecord::Schema.define(version: 20160915220855) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 20160913135705) do
     t.integer  "cached_votes_down",       default: 0
     t.boolean  "long"
     t.boolean  "anonymous"
+    t.integer  "facenumber"
   end
 
   add_index "posts", ["ancestry"], name: "index_posts_on_ancestry"

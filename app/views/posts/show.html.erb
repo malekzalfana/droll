@@ -44,7 +44,7 @@
                 <% if !@post.title.blank? %><div class="post-title"><%= @post.title %></div><% end %>
                 <div class="post-footer">
                 <% if @post.anonymous != true %>
-                        <a href="/user/<%= @post.user.username%>">
+                        <a href="/user/<%= @post.user.username%>" class="user-link">
                             <% if @post.user.image.url == "missing.jpg" %>
                                     <div class="post-footer-user-image" style="background-image: url(/assets/<%= @post.user.image.url(:thumb) %>)"></div>
                               <% else %>
@@ -53,6 +53,7 @@
                             <span class="post-footer-user-name"><%= @post.user.username %></span>
                         </a>
                     <% else %>
+                        <div class="post-footer-user-image" style="background-image: url(/assets/ragefaces/<%= @post.facenumber %>face.png"></div>
                         <span class="post-footer-user-name anonymous-name">Anonymous</span>
                     <% end %>
                     <i class="material-icons post-options">more_vert</i>

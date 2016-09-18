@@ -1159,19 +1159,6 @@ var painting;
 				$('#addRageFaces i').hide().text('add').fadeIn(200)
 			}
 			$('#tags p').addClass('animated-very-fast fadeInUp');
-			//$(function () {
-			//$(".rageface").slice(0, 25).each(function (index) {
-						//$(this).delay(60 * index).fadeIn();
-						//$(this).animate({
-						//	bottom: "+=10",
-						//});
-							//$(this).addClass("animated-fast fadeInUp");
-						//$(this).delay((Math.random() + 1) * 60 ).fadeIn();
-			//		});
-						//$(".rageface").slice(25, 184).each(function (index) {
-						//	$(this).delay(1500).fadeIn();
-						//});
-			//});
 			$('.rageface').slice(0,40).trigger("loadEmBoys");
 			tmp_canvas.removeEventListener('click', chooseBro);
 

@@ -1,0 +1,2 @@
+$('.user-link').remove()
+$('<% if !@post.facenumber.nil? %><div class="post-footer-user-image" style="background-image: url(/assets/ragefaces/<%= @post.facenumber %>face.png"></div><% end %><span class="post-footer-user-name anonymous-name">Anonymous</span>').prependTo('#left-wrapper-<%= @post.id %> .post-footer')

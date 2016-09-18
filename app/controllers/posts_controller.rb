@@ -66,10 +66,6 @@ class PostsController < ApplicationController
   end
   
   def create
-    #@post = Post.new(permit_post);
-    #@post = current_user.posts.build(params[:post])
-    #@post = Post.find(params[:id])
-    #@user = User.find(params[:user_id])
     @post = current_user.posts.build(permit_post)
     @post.user = current_user
     @post.user_id = current_user.id
@@ -108,13 +104,12 @@ class PostsController < ApplicationController
     if @post.save
       
       redirect_to @post
-      @post.upvote_by current_user
-      flash[:success] = "Uploaded"
+      flash[:notice] = "Post uploaded"
       if !params[:anonymous].present?
         @post.create_activity :create, owner: current_user, key: 'posting'
       end
     else
-      flash[:error] = @posts_errors_full_messages
+      flash[:notice] = "Post wasn't uploaded"
     end
   end
   
@@ -147,6 +142,42 @@ class PostsController < ApplicationController
       end
     end  
     redirect_to :back
+  end
+  
+  def edit
+      
+  end
+  
+  def update
+    @post = current_user.posts.find(params[:id])
+    @post.user_id = current_user.id
+    @post.user = current_user
+=begin    
+    if params[:post][:anonymous] == 1
+      @post.anonymous = true
+      @post.update(anonymous: true)
+    else
+      @post.anonymous = false
+      @post.update(anonymous: false)
+    end
+=end    
+    @post.update_attributes(permit_post)
+    Rails.logger.info(@post.errors.messages.inspect)
+    respond_to do |format|
+     format.html
+     format.js
+    end
+    
+    #end
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+     format.html
+     format.js
+    end
   end
   
   def report
@@ -184,6 +215,6 @@ class PostsController < ApplicationController
   
   private 
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous);
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber);
     end
 end

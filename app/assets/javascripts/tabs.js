@@ -166,6 +166,9 @@ function previewPostImage(event, thisFiler, thisPreview) {
       if ( !$(thisWrapper).children('.right-wrapper').hasClass('shown')  ) {
         $('.shown.wrapper .right-wrapper').addClass('loading-2')
         $(thisWrapper).find('#loadPost').children('form').children('input[type="submit"]').eq(0).click()
+        if (window.innerWidth > 600  ) {
+          $('.wrapper.shown').find('.post-image-2').lazyload()
+        }
       }
       $('body').addClass('shown-post')
       window.scrollTo(0, $('body').offset().top);
@@ -326,6 +329,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
     usernameChecked = true;
     $('#username-check-icon').show()
   })
+  
   $(document).on('click', '#sign-up-submit-before', function(){
     if ( usernameChecked === true) {
       if ($('#username-check-icon').text() == 'cancel'  ) {
@@ -338,10 +342,95 @@ function previewPostImage(event, thisFiler, thisPreview) {
         }, 1000)
       }
       else {
-        $('#sign-up-submit').click()
+        if ( !$('#sign-up-username-field').val() || !$('.passwords').eq(0).children('input').val() || !$('.passwords').eq(1).children('input').val() || !$('#email-field-settings').val() ) {
+                  
+          //$('.notice-message').val('Complete all fields')
+          document.getElementById('notice-message').innerHTML = 'Complete the fields please'
+                  
+        }
+        else {
+          $('#sign-up-submit').click()
+        }
       }
     }
   });
+  
+  
+    $(document).on('click', '#anonymous-image', function(){
+    $('#anonymous-faces').fadeIn();
+    $('#anonymous-faces img').lazyload()
+    $('body').addClass('anonymous')
+  })
+  
+  $(document).on('click', '#close-anonymous-faces', function(){
+    $('#anonymous-faces').hide();
+    $('body').removeClass('anonymous')
+  })
+  
+  
+  $(document).on('click', '.submit-edit', function(){
+    $(this).parents('.more-post-options-container').removeClass('active-tab')
+    $(this).parents('.anonymous-cheeckbox').empty().hide()
+  })
+  
+  $(document).on('click', '.more-post-options', function(){
+    if (  $(this).parent().siblings('.more-post-options-container').hasClass('active-tab') ){
+      $('#anonymous-faces img').removeClass('chosen')
+      $('.choosen-content:visible .anonymous-image-field').attr('value', '')
+      $('.choosen-content:visible #anonymous-image img').remove()
+      $('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop('checked', false);
+      $('.more-post-options-container').removeClass('active-tab')
+      //$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
+    }
+    else {
+      $('#anonymous-faces img').removeClass('chosen')
+      $('.choosen-content:visible .anonymous-image-field').attr('value', '')
+      $('.choosen-content:visible #anonymous-image img').remove()
+      $('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop('checked', false);
+      $('.more-post-options-container').removeClass('active-tab')
+      $(this).parent().siblings('.more-post-options-container').addClass('active-tab')
+    }
+    
+    
+  })
+  
+  /*$(document).on('click', '.less-post-options', function(){
+    $('#anonymous-image img').removeClass('chosen')
+    $('.active-tab .anonymous-image-field').attr('value', '')
+    $('.active-tab #anonnmous-image img').remove()
+    $(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
+  })*/
+  
+  
+  $(document).on('click', '#memes-content .anonymous-checkbox input[type="checkbox"]', function(){
+    if ($(this).is(':checked')) {
+      $('#created-meme-anonymous-field').prop('checked', true);
+      console.log( $('#created-meme-anonymous-field') )
+    }
+    else {
+      $('#created-meme-anonymous-field').prop('checked', false);
+    }
+  })
+  
+  
+  $(document).on('click', '#anonymous-faces img', function(){
+    var facenumber = $(this).attr('data-facenumber')
+    if ( $('.choosen-content:visible').is('#meme-content')  ) {
+      $('#created-meme-facenumber-field').attr('value', facenumber)
+    }
+    $('#anonymous-faces img').removeClass('chosen')
+    $('body').removeClass('anonymous')
+    $('#anonymous-faces').hide()
+    $('.choosen-content:visible .anonymous-image img').remove()
+    $(this).clone().prependTo('.choosen-content:visible .anonymous-image')
+    $('.choosen-content:visible .anonymous-image-field').addClass('given').attr('value' , $(this).attr('data-facenumber'))
+    $(this).addClass('chosen')
+    console.log( $(this).attr('data-facenumber') )
+    console.log( $('.choosen-content:visible .anonymous-image-field').val() )
+  })
+  $(document).on('keyup', '#make-post-title-2', function(){
+    $('#make-post-title-3').val( $('#make-post-title-2').val() );
+  })
   $(document).on('keyup', '#sign-up-username-field', function(){
     $('#username-check-field').attr('value', $('#sign-up-username-field').val() );
     $('#username-check-submit').click()
@@ -371,6 +460,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
   })
     
   //})
+  
   
   $(document).on('click', '#cancel-upload-2', function(e){
     e.preventDefault();
@@ -434,3 +524,38 @@ function previewPostImage(event, thisFiler, thisPreview) {
     }, 2000)*/
   })
   console.log('tabs.js working')
+  ;(function($){
+  
+  /**
+   * jQuery function to prevent default anchor event and take the href * and the title to make a share pupup
+   *
+   * @param  {[object]} e           [Mouse event]
+   * @param  {[integer]} intWidth   [Popup width defalut 500]
+   * @param  {[integer]} intHeight  [Popup height defalut 400]
+   * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
+   */
+  $.fn.customerPopup = function (e, intWidth, intHeight, blnResize) {
+    
+    // Prevent default anchor event
+    e.preventDefault();
+    
+    // Set values for window
+    intWidth = intWidth || '500';
+    intHeight = intHeight || '400';
+    strResize = (blnResize ? 'yes' : 'no');
+
+    // Set title and open popup with focus on it
+    var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
+        strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,            
+        objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+  }
+  
+  /* ================================================== */
+  
+  $(document).ready(function ($) {
+    $('.customer.share').on("click", function(e) {
+      $(this).customerPopup(e);
+    });
+  });
+    
+}(jQuery));

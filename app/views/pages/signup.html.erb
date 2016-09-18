@@ -1,4 +1,8 @@
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+  <div class="messages-container">
+        <div class="notice-message" id="notice-message"></div><span class="notice"><%= notice %></span>
+        <span class="alert"><%= alert %></span>
+    </div>
     <%= form_tag url_for(:controller => 'pages', :action => 'checkUsername'), :method => 'get', class: "hidden", remote: true do %>
       <%= text_field_tag 'name', '', id: "username-check-field"%>
       <%= submit_tag "Save", id: "username-check-submit" %>
@@ -48,7 +52,12 @@
   </div>
   
   <div class="field">
-    <%= f.label :bio %><br />
+    <%= f.label :bio %>
+        <span style="
+        font-size: 12px;
+        margin: 8px;
+    ">you can add this later</span>
+    <br />
     <%= f.text_field :bio %>
   </div>
   
@@ -58,7 +67,7 @@
     <i class="material-icons" id="email-check-icon">check_circle</i>
   </div>
 
-  <div class="field">
+  <div class="field passwords">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -66,7 +75,7 @@
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
+  <div class="field passwords">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>

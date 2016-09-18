@@ -42,6 +42,12 @@
     <%# if user_signed_in?  then current_user.following? (post.user) end %>
         <div class="wrapper" data-post-id="<%= post.id %>">
             <div class="left-wrapper">
+                <div id="loadImage" class="hidden">
+                        <%= form_tag 'pages/loadImage', remote: true, :method => 'get' do %>
+                            <%= text_field_tag :postid, post.id %>
+                            <%= submit_tag "Save"%>
+                        <% end %>
+                    </div>
                 <% if current_user.voted_on? post, vote_scope: 'favor' %>
                 <i class="material-icons favourite-icon">favorite</i>
                 <% end %>
@@ -80,10 +86,21 @@
                 <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
                 <div class="post-footer">
                     <i class="material-icons comment-button">chat_bubble</i>
-                    <a href="/user/<%= post.user.username%>">
-                        <div class="post-footer-user-image"></div>
-                        <span class="post-footer-user-name"><%= post.user.username %></span>
-                    </a>
+                    <% if post.anonymous != true %>
+                        <a href="/user/<%= post.user.username%>" class="user-link">
+                            <% if post.user.image.url == "missing.jpg" %>
+                                    <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:thumb) %>)"></div>
+                              <% else %>
+                                    <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
+                              <% end %>
+                            <span class="post-footer-user-name"><%= post.user.username %></span>
+                        </a>
+                    <% else %>
+                    <% if !post.facenumber.nil? %>
+                        <div class="post-footer-user-image" style="background-image: url(/assets/ragefaces/<%= post.facenumber %>face.png"></div>
+                    <% end %>
+                        <span class="post-footer-user-name anonymous-name">Anonymous</span>
+                    <% end %>
                     
                         <i class="material-icons post-options" tabindex="12">more_vert</i>
                     <div class="post-more-options">
