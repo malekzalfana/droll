@@ -1,0 +1,90 @@
+
+
+Started GET "/recent" for 94.187.48.172 at 2016-09-18 19:44:39 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (93.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (15.5ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d613f23f104da79495250b23a9096c6c"]]
+  [1m[36m (12.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (3.0ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (111.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (11.8ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (53.0ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-09-16 19:44:44.339016')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (14.4ms)
+  [1m[35m (5.4ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (39.9ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered pages/recent.html.erb within layouts/application (302.0ms)
+  Rendered layouts/_nav_user.html.erb (2.2ms)
+  Rendered layouts/_nav.html.erb (6.6ms)
+Completed 200 OK in 15490ms (Views: 12521.1ms | ActiveRecord: 345.4ms)
+
+
+Started GET "/recent" for 94.187.48.172 at 2016-09-18 19:47:11 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mImpression Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d613f23f104da79495250b23a9096c6c"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (1.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-09-16 19:47:11.379245')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (17.7ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (4.6ms)
+Completed 200 OK in 2800ms (Views: 2629.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/30" for 94.187.48.172 at 2016-09-18 19:51:58 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"30"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mImpression Exists (0.2ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "e3a96a45de062a928c5da52e84d34d5e"]]
+  [1m[36mPost Load (1.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 30]]
+Completed 404 Not Found in 29ms (ActiveRecord: 1.6ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=30):
+  app/controllers/posts_controller.rb:46:in `show'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (24.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (8.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (3.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (127.2ms)
+
+
+Started GET "/recent" for 94.187.48.172 at 2016-09-18 19:52:58 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mImpression Exists (27.7ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d613f23f104da79495250b23a9096c6c"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (1.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (1.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-09-16 19:52:58.426212')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (2.8ms)
+Completed 200 OK in 1166ms (Views: 1109.3ms | ActiveRecord: 31.5ms)
+
+
+Started GET "/recent" for 94.187.48.172 at 2016-09-18 19:55:32 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.3ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d613f23f104da79495250b23a9096c6c"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.7ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-09-16 19:55:32.396040')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered pages/recent.html.erb within layouts/application (4.2ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (4.2ms)
+Completed 200 OK in 733ms (Views: 663.1ms | ActiveRecord: 3.0ms)
