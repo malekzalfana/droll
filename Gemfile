@@ -4,7 +4,7 @@ ruby '2.3.0'
 #for the comments
 #gem 'ancestry'
 # for settings up paperclip - amazon s3
-gem 'aws-sdk', '~> 2.3'
+gem 'aws-sdk', '< 2.0'
 # twitter auth
 gem 'omniauth-twitter'
 gem 'omniauth'
