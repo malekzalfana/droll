@@ -39,9 +39,9 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 #rails 12 factor
-gem 'rails_12factor', group: :production
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
