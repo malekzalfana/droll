@@ -76,7 +76,10 @@ class PagesController < ApplicationController
   
   def make
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
-    @post = current_user.posts.build(params[:post])
+    if user_signed_in?
+      @post = current_user.posts.build(params[:post])
+    end
+    
   end  
   
   def make2

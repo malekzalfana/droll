@@ -74,7 +74,7 @@ body {
     padding-top: 0px;
 }
 .new-content .left-wrapper, .new-content .post-image, .new-content .post-title {
-    width: 100%;
+    width: calc(100% - 12px);
     /*Removed 550px*/
 }
 .new-content .wrapper {
@@ -336,6 +336,8 @@ body {
     height: 28px;width: 28px;margin:6px;
     border-radius: 5%;
     float:left;
+    background-position: center;
+    background-size: cover;
     background-image: url(maxresdefault.jpg);
 }
 .post-footer-user-name {

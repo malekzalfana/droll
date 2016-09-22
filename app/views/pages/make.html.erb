@@ -5,6 +5,42 @@
 	<link href='https://fonts.googleapis.com/css?family=Raleway:900' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
 </head>
+<% if !user_signed_in? %>
+<body id="<%= controller.action_name %>">	
+<div id="log-in-wrapper">
+  <h2>Log in</h2>
+
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field" id="remember-me-button">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+  <div id="other-log-in">
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+
+
+</div>
+</body>
+	
+<% else %>
 <body id="<%= controller.action_name %>">	
 	<span id="make-logo">/make</span>
 	<div id="tabs-wrapper">
@@ -27,15 +63,16 @@
 			 	<div id="meme-textareas">
 			 		<div>
 			 			<p>Top text</p>
-						<textarea id="text-3" data-gramm="false" spellcheck="true"></textarea>
+						<textarea id="text-top" data-gramm="false" spellcheck="true"></textarea>
 			 		</div>
 			 		
 			 		<div>
 			 			<p>Bottom text</p>
-					<textarea id="text-4" data-gramm="false" spellcheck="true" ></textarea>	
+					<textarea id="text-bottom" data-gramm="false" spellcheck="true" ></textarea>	
 			 		</div>
 			 		
 					<div id="submit-button-before-wrapper"><button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
+					<div class="loading-icon "></div>
 						<span class="anonymous-checkbox shown">
 					 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
 					 	<i class="material-icons anonymous-checked"></i>
@@ -169,7 +206,7 @@
       	<div class="line-wrapper" id="line3"><div class="line-3"></div></div>
       </div>
       </div>
-	<div class="loading-quarter-circle-2"></div>
+	<div class="loading-icon"></div>
 		<div id="ragefaces-buttons-wrapper">
 			<button id="submit-image-button-before-3">Post</button>	
 			<button id="cancel-upload-3">cancel</button>
@@ -249,8 +286,10 @@
 				 <span id="preview-image-text">Click or drop your <span id="upload-image-fade">image</span><span id="upload-gif-fade">GIF</span></span>
 				 <%= f.text_area :title, id: "make-post-title", placeholder: "Caption" %>
 			 </div>
-			 <%= f.submit :value => "Post", :id => "submit-image-button" %>
-			 <button id="cancel-upload">cancel</button>	
+			 <div class="loading-icon"></div>
+			 <%= f.submit :value => "Post", :id => "submit-image-button", class: "hidden-imp" %>
+			 <button id="submit-image-button-before" type="button">Post</button>	
+			 <button id="cancel-upload" type="button">cancel</button>	
 			 <span class="anonymous-checkbox">
 			 	<%= f.check_box :anonymous, checked: false %>
 			 	<i class="material-icons anonymous-checked"></i>
@@ -510,4 +549,5 @@
 		
 
 </body>
+<% end %>
 </html>

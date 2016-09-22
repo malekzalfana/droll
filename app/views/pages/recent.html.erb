@@ -1,4 +1,5 @@
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+    <i class="material-icons" id="hide-remote-make">clear</i>
     <% if user_signed_in? && @pTotal < 4 %>
     <div id="progress-table">
         <p class="<%= if current_user.image.url(:medium) == 'missing.jpg' then '' else 'progress-done' end %>">Set your image</p>
@@ -84,9 +85,22 @@
                     <% else %>
                         <a href="/users/sign_in"><i class="material-icons comment-button">chat_bubble</i></a>
                     <% end %>
-                    
                     <% if current_user != post.user %>
-                    <i class="material-icons more-post-options share-button">share</i>
+                    <div id="main-share-button">
+                    <% if current_user.share == '1' %>
+                        <a  href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <% elsif current_user.share == '2' %>
+                        <a href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <% elsif current_user.share == '3' %>
+                        <a href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Google Plus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <% elsif current_user.share == '4' %>
+                        <a href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
+                    <% end %>
+                    </div>
+                    <% if current_user.share == nil || current_user.share == '0' %>
+                        <i class="material-icons more-post-options share-button">share</i>
+                    <% end %>
+                    
                         <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
                             <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
                         <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
@@ -137,7 +151,8 @@
                                 <% end %>
                             </span>
                         <% end %>
-                        <span class="dott">.</span>
+                        <% if post.anonymous != true %><span class="dott">.</span><% end %>
+                        
                         <%= form_for post, method: :delete, remote: true do |f| %>
                         
                             <% f.submit 'delete post', class: "delete-post-submit" %>
@@ -154,37 +169,23 @@
                     </div>
                 
             </div>
-            
+            <%= if !user_signed_in? then '</div>'.html_safe end %>
             <div class="middle-wrapper">
                 <div class="comments-wrapper" id="comments-wrapper-<%= post.id %>">
                 <% if current_user %>
                     <%= form_for [post, post.comments.new], html: {multipart: true}, remote: true do |f| %>
                       <div class="form-group comment-form" id="form-<%= post.id %>">
                         <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
-                        <input id="base64-make" type="hidden" value="" name="base64"/>
-                        <img src="" id="base64-image">
-                        <div id="comment-html" class="post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
+                        <input class="base64-make" type="hidden" value="" name="base64"/>
+                        <img src="" class="base64-image">
+                        <div class="comment-html post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
                         <div class="right-comment-wrapper">
-                            <div id="cancel-meme" class="hidden-imp">Cancel</div>
+                            <div class="cancel-meme hidden-imp">Cancel</div>
                             <%= f.submit 'post', class: 'post-comment', name: 'post' %>
-                            <div class="memes-emojis"><span class="make-meme">m</span></div>
+                            <div class="memes-emojis"><span class="make-meme">meme</span></div>
                         </div>
                         
                       </div>
-                        <div class="reactions-container">
-                            <div class="reactions-tabs-wrapper">
-                                <span class="reactions-tab active-reactions-tab">Memes</span>    
-                                <span class="reactions-tab">GIFs</span>
-                                <span class="reactions-tab">Emojis</span>
-                            </div>
-                            <img class="emoji-img" id="1" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
-                            <img class="emoji-img" id="2" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
-                            <img class="emoji-img" id="3" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
-                            <img class="emoji-img" id="4" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
-                            <img class="emoji-img" id="5" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
-                            <img class="emoji-img" id="6" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
-                            
-            </div>
           </div>
           <% end %>
           <% else %>

@@ -2,8 +2,12 @@
 <html>
 <head>
   <title>Droll</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%# unless controller.action_name  == 'make2'  %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%# end %>
+  
+  
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
   <% if controller.action_name  == 'show'%>
@@ -21,7 +25,9 @@
     <meta name="twitter:image" content="https://drolle-3-malekzalfana.c9users.io<%= @post.image.url(:large)%>" />
     <meta name="twitter:url" content="https://drolle-3-malekzalfana.c9users.io<%= url_for(@post) %>">
     
+    
   <% end %>
+  <script src="https://use.fontawesome.com/cc1141eab9.js"></script>
 </head>
 <body>
 <%= render '/layouts/nav' %>

@@ -1,4 +1,6 @@
-$(document).on('click', '#rage-comics-tab', function(){
+//window.onload = function(){
+	var image3 = false;
+	$(document).on('click', '#rage-comics-tab', function(){
 	var droppedFaces = 0;
 //if ( $('body').attr('id') == 'make' ) {
 	console.log('ss')
@@ -435,7 +437,7 @@ $(document).on('click', '#rage-comics-tab', function(){
 		//THE LINE WIDTH FUNCTIONSSSSS
 		//NEWTHING
 		document.getElementById("clear").addEventListener("click", function () {
-			$('.dragged, .textareas').remove();
+			//.//$('.dragged, .textareas').remove();
 			droppedFaces = 0;
 			textCalls = 0;
 			$('#placeholder-1').droppable({
@@ -963,12 +965,36 @@ $(document).on('click', '#rage-comics-tab', function(){
 			//var memeCanvas = document.getElementById('paint');
 		    var dataURL3 = downloadCANVAS.toDataURL();
 		    $('#base64-2').val(dataURL3)
-		    setTimeout(function(){
-		      $("#submit-image-button-3").click();
-		    }, 2000)
+		    if ( image3 == false ) {
+			    
+			    	if ( $('.choosen-content input[type="checkbox"]:checked').length ) {
+		          if ( $('.choosen-content:visible .anonymous-image').children('img').length ) {
+		          	setTimeout(function(){
+		          	$("#submit-image-button-3").click();
+			    	image3 = true
+			    	$('#ragefaces-buttons-wrapper').hide()
+        			$('#tools .loading-icon').addClass('loading-animation')
+		          	}, 2000)
+		          }
+		          else {
+		          	$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
+		          }
+			  }
+			  else {
+			  	setTimeout(function(){
+			  		$("#submit-image-button-3").click();
+			    	image3 = true
+			    	$('#ragefaces-buttons-wrapper').hide()
+        			$('#tools .loading-icon').addClass('loading-animation')
+			  	}, 2000)
+			  }
+			    	
+			    
+		    }
 		}	
 
 	}
+	
 	$(document).on('click', '#submit-image-button-before-3', function(){
 	    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
 	  })
@@ -1010,8 +1036,14 @@ var painting;
 	//var textCalls = 0;
 	var textFocused = false;
 	function createText(e) {
-		$('.textareas:empty').fadeOut(100).remove()
-		if ( !document.activeElement.classList.contains('textareas')) {
+		for ( i=0; i <= $('.textareas').length; i++  ) {
+			if ( $('.textareas').eq(i).val() == '' ) {
+				$('.textareas').eq(i).fadeOut(100).remove()
+				textCalls -- ;
+			}
+		}
+		
+		if ( textFocused == false ) {
 		console.log(textFocused)
 			console.log('dfsdas');
 		textCalls++;
@@ -1800,3 +1832,6 @@ $('.image-upload-wrap').bind('dragover', function () {
 //}
 
 })
+
+//}
+console.log('functions.js working')

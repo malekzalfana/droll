@@ -21,12 +21,12 @@ $("img.meme-pics").slice(40,184).lazyload({
 	
 });
 $('.pick-meme-container').click(function(){
-	
-	//memeCtx.scale(1,1);
+	var MemeBackground = $(this).css('background-image').replace('url("','').replace('")','');
+	$('<img/>').attr('src', MemeBackground).load(function() {
+	   $(this).remove(); // prevent memory leaks as @benweet suggested
+	   //memeCtx.scale(1,1);
 	var thisMeme = $(this);
 	var thisImage = document.createElement('img');
-	//var thisImage = $(thisMeme).clone().css({'width':'500px'});
-	var MemeBackground = $(this).css('background-image').replace('url("','').replace('")','');
 	$(thisImage).attr('src', MemeBackground);
 	thisImage.crossOrigin = "Anonymous";
 	if ( $(window).width() < 590 ) {
@@ -190,8 +190,8 @@ var newNumber = 0;
  
 	
 	
-	$('#text-3').click(function(){
-		if ( $(window).width() >590 ) {
+	$('#text-top').click(function(){
+		if ( $(window).width() >920 ) {
 			$("html, body").animate({ scrollTop: 60 });
 		}
 		$(this).keyup(function(){
@@ -212,14 +212,14 @@ var newNumber = 0;
 			memeCtx.shadowColor="black";
 			//memeCtx.shadowBlur=1;
 			memeCtx.textBaseline = "center";
-			memeCtx.wrapText(document.getElementById('text-3').value.toUpperCase(),550,100,1100,70);
-			memeCtx.wrapTextBottom(document.getElementById('text-4').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
+			memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(),550,100,1100,70);
+			memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
 		})
 	});
 		
-	$('#text-4').click(function(){
+	$('#text-bottom').click(function(){
 		
-		if ( $(window).width() >590 ) {
+		if ( $(window).width() >920 ) {
 			$("html, body").animate({ scrollTop: $(document).height()-$(window).height() });
 		}
 		$(this).keyup(function writeDown(e){
@@ -240,10 +240,11 @@ var newNumber = 0;
 			memeCtx.save();
 			memeCtx.shadowColor="black";
 			//memeCtx.shadowBlur=1;
-			memeCtx.wrapText(document.getElementById('text-3').value.toUpperCase(),550,100,1100,70);
+			memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(),550,100,1100,70);
 			memeCtx.textBaseline = "bottom";
-			memeCtx.wrapTextBottom(document.getElementById('text-4').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
+			memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
 		})
+	});
 	});
 		
 		

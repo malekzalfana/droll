@@ -142,33 +142,12 @@ $(window).load(function() {
         commentopen = false;
         $('.loading-quarter-circle').addClass('loading-animation')
         setTimeout(function(){
-            $('#comment-html').html('');
+            $('.wrapper:visible .comment-html').html('')
+            $('.wrapper:visible .cancel-meme').click()
+            //$('.shown .base64-make').attr('value', '')
+            //$('.base64-image').remove()
         }, 2000)
     })
-    $(document).on('click', '#submit-image-button-before-3', function(){
-        $('#ragefaces-buttons-wrapper').hide()
-        $('.loading-quarter-circle-2').addClass('loading-animation-2')
-    })
-    /*function fullComment(){
-        var commentNumber = $('.comment-content').length;
-        for (i=1;i<=commentNumber;i++){
-            var commentBefore = $('.comment-content').eq(i).text();
-            var div = document.createElement('div')
-            //div.style.display = "none"
-            div.id = "new-"+i
-            $(div).appendTo('body')
-            var content = commentBefore
-            $(div).html(content)
-            $($.parseHTML(div))
-            console.log($(div+'img').length)
-            if ( $(div+'img').length > 0){
-                for (n=1;n<=$('.comment-content')){
-                    if ($(div+'img'))
-                }
-            }
-            
-        }
-    }*/
     String.prototype.replaceAt=function(index, character) {
         return this.substr(0, index) + character + this.substr(index+character.length);
     }
@@ -192,7 +171,7 @@ $(window).load(function() {
     }
     fullComment();
       $(document).on('click', '.emoji-img', function(){
-          $("#comment-html").append($(this).clone());
+          $(".wrapper:visible .comment-html").append($(this).clone());
           //fullComment();
       })
     $(document).on('click', '#notification-icon, #notification-icon-2', function(){

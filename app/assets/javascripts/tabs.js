@@ -28,7 +28,7 @@ $(document).on('click', '.make-meme', function(){
     $('body').addClass('overflow-hidden')
   }
   else {
-    $('body').append('<iframe src="https://droll-cloned-2-malekzalfana.c9users.io/make2" id="remote-make" class="fadeInUp animated-very-fast"></iframe>')
+    $('body').append('<iframe src="https://drolle-3-malekzalfana.c9users.io/make2" id="remote-make" class="fadeInUp animated-very-fast"></iframe>')
     $('body').addClass('overflow-hidden')
     $('#hide-remote-make').show()
   }
@@ -53,7 +53,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
       $('#pictureInput, #preview-image-text').hide()
     }
     reader.readAsDataURL(image);
-      $('#cancel-upload, #reset-image, #submit-image-button').show()
+      $('#cancel-upload, #reset-image, #submit-image-button-before').show()
       $('.anonymous-checkbox').addClass('shown')
   };
   function previewUserImage(event, thisFiler, thisPreview) {
@@ -137,22 +137,26 @@ function previewPostImage(event, thisFiler, thisPreview) {
     var memeCanvas = document.getElementById('meme-canvas');
     var dataURL3 = memeCanvas.toDataURL();
     $('#hide-remote-make', parent.document.body).click();
-    $("#base64-make", parent.document.body).val(dataURL3);
-    $("#base64-image", parent.document.body).attr("src", dataURL3).fadeIn(200)
-    $("#comment-html, .memes-emojis", parent.document.body).hide();
-    $("#cancel-meme", parent.document.body).removeClass('hidden-imp');
+    $(".wrapper:visible .base64-make", parent.document.body).val(dataURL3);
+    $(".wrapper:visible .base64-image", parent.document.body).attr("src", dataURL3).fadeIn(200)
+    $(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();
+    $(".wrapper:visible .cancel-meme", parent.document.body).removeClass('hidden-imp');
     console.log('worked?')
   });
+  $(document).on('click', '#share-buttons-settings div, #share-buttons-settings span', function(){
+    $('#share-buttons-settings div, #share-buttons-settings span').removeClass('chosen')
+    $(this).addClass('chosen')
+  })
   
-  $(document).on('click', '#cancel-meme', function(){
+  $(document).on('click', '.cancel-meme', function(){
     $(this).addClass('hidden-imp')
-    $("#base64-make").val('');
-    $('#base64-image').hide()
-    $("#comment-html").show();
-    if ( window.width > 600 ) {
+    $(".wrapper:visible .base64-make").val('');
+    $('.wrapper:visible .base64-image').hide()
+    $(".wrapper:visible .comment-html").show();
+    if ( window.innerWidth > 600 ) {
       $('.memes-emojis').show()
     }
-    $('#base64-make').hide();
+    $('.wrapper:visible .base64-make').hide();
     console.log('worked?')
   });
   //////////////////////
@@ -180,7 +184,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
     e.preventDefault()
     $('#back-list').click()
   })
-  $(document).on('click', '#make2 #cancel-meme' , function(){
+  $(document).on('click', '#make2 .cancel-meme' , function(){
     $('#hide-remote-make').click()
   })
   $(document).on('click', '#back-list', function(){
@@ -188,9 +192,14 @@ function previewPostImage(event, thisFiler, thisPreview) {
       window.location = '/recent'
     }
     else {
+      if ( $('.wrapper.shown .middle-wrapper').is(':visible')  ) {
+        $('.wrapper.shown .comment-button').click()
+      }
+      
       $('.wrapper').show().css({'width':'550px'}).removeClass('shown')
       $('body').removeClass('shown-post')
       $('.right-wrapper').hide()
+      
       setTimeout(function(){
         window.scrollTo(0, $(thisWrapper).offset().top);
       }, 10)
@@ -200,14 +209,13 @@ function previewPostImage(event, thisFiler, thisPreview) {
   var loadingNew = false
   $(document).on('click', '#next-post-icon', function(){
     if ( $(thisWrapper).is( $('.wrapper').last() ) && loadingNew ===  true ) {
-      alert('loading is true')
       setTimeout(function(){
         $('#next-post-icon').click()
       }, 1500)
     }
     else {
       $(thisWrapper).hide().css({'width':'550px'}).removeClass('shown')
-      thisWrapper = $(thisWrapper).next().show().css({'width':'600px'}).addClass('shown')
+      thisWrapper = $(thisWrapper).next('.wrapper').show().css({'width':'600px'}).addClass('shown')
       $('html, body').animate({
           scrollTop: $('body').offset().top
       }, 200);
@@ -225,7 +233,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
   $(document).on('click', '#prev-post-icon', function(){
     if ( !$('.wrapper').eq(0).hasClass('shown') ) {
       $(thisWrapper).hide().css({'width':'550px'}).removeClass('shown')
-    thisWrapper = $(thisWrapper).prev().show().css({'width':'600px'}).addClass('shown')
+    thisWrapper = $(thisWrapper).prev('.wrapper').show().css({'width':'600px'}).addClass('shown')
     $('html, body').animate({
         scrollTop: $('body').offset().top
     }, 200);
@@ -268,9 +276,16 @@ function previewPostImage(event, thisFiler, thisPreview) {
     }
   })
   $(document).on('mousedown', '.post-comment', function(e){
-    if ( $('#comment-html').is(':empty') ) {
+    if ( $('.wrapper:visible .comment-html').is(':empty') ) {
       e.stopPropagation()
+      e.preventDefault()
     }
+  })
+  $(document).on('click', '#cancel-meme-2', function(e){
+    $('#pick-meme').show();
+    $('#text-top, #created-meme-title, #text-bottom').val('')
+    $('#meme-canvas').css({'height':'0px'})
+    $(window).scrollTop(0);
   })
   $(document).on('click', '#cancel-edit-profile', function(){
     $('#profile-under-overlay').css({'background-image': originalCover});
@@ -418,10 +433,11 @@ function previewPostImage(event, thisFiler, thisPreview) {
     if ( $('.choosen-content:visible').is('#meme-content')  ) {
       $('#created-meme-facenumber-field').attr('value', facenumber)
     }
+    var facesrc = $(this).attr('src')
     $('#anonymous-faces img').removeClass('chosen')
     $('body').removeClass('anonymous')
     $('#anonymous-faces').hide()
-    $('.choosen-content:visible .anonymous-image img').remove()
+    $('.choosen-content:visible .anonymous-image').css({'background-image': 'url('+facesrc+')' })
     $(this).clone().prependTo('.choosen-content:visible .anonymous-image')
     $('.choosen-content:visible .anonymous-image-field').addClass('given').attr('value' , $(this).attr('data-facenumber'))
     $(this).addClass('chosen')
@@ -465,7 +481,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
   $(document).on('click', '#cancel-upload-2', function(e){
     e.preventDefault();
     $('#pick-meme').show();
-    $('#text-3, #created-meme-title, #text-4').val('')
+    $('#text-top, #created-meme-title, #text-bottom').val('')
     $('#meme-canvas').css({'height':'0px'})
     $(window).scrollTop(0);
   })
@@ -477,6 +493,10 @@ function previewPostImage(event, thisFiler, thisPreview) {
     $('#more-settings-options-wrapper').show();
     $('#less-settings-options-button').show()
     $('#more-settings-options-button').hide()
+  })
+  
+  $(document).on('click', '#share-buttons-settings span, #share-buttons-settings div', function(){
+    $('#share-buttons-field').attr('value',$(this).attr('id'))
   })
   
   $(document).on('click', '#less-settings-options-button', function(){
@@ -506,13 +526,69 @@ function previewPostImage(event, thisFiler, thisPreview) {
     }
   })
   
+  var image1 = false;
+  var image2 = false;
+  
+  $(document).on('click', '#submit-image-button-before', function(){
+    if ( image1 == false  ) {
+      if ( $('.choosen-content input[type="checkbox"]:checked').length ) {
+        if ( $('.choosen-content:visible .anonymous-image').children('img').length ) {
+          console.log( $('.choosen-content:visible .anonymous-image').children('img').length )
+          $('#submit-image-button').click()
+          $(this).hide()
+          $(this).siblings('button, .anonymous-checkbox').hide()
+          $(this).siblings('.loading-icon').addClass('loading-animation')
+          image1 = true
+        }
+        else {
+          $('.choosen-content:visible .anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
+        }
+      }
+      else {
+        $('#submit-image-button').click()
+          $(this).hide()
+          $(this).siblings('button, .anonymous-checkbox').hide()
+          $(this).siblings('.loading-icon').addClass('loading-animation')
+          image1 = true
+      }
+      
+    }
+    else {
+      alert('samir')
+    }
+  })
   $(document).on('click', '#created-image-button-before', function(){
     var memeCanvas = document.getElementById('meme-canvas');
     var dataURL3 = memeCanvas.toDataURL();
     $('#base64').val(dataURL3)
-    setTimeout(function(){
-      $("#submit-image-button-2").click();
-    }, 2000)
+    if ( image2 == false ) {
+      
+        if ( $('.choosen-content input[type="checkbox"]:checked').length ) {
+          if ( $('.choosen-content:visible .anonymous-image').children('img').length ) {
+            setTimeout(function(){
+            $("#submit-image-button-2").click();
+            $('#submit-button-before-wrapper').children().hide()
+            $('#submit-button-before-wrapper .loading-icon').addClass('loading-animation')
+            image2 = true
+            }, 1200)
+          }
+          else {
+            $('.choosen-content:visible .anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
+          }
+        }
+        else {
+          setTimeout(function(){
+          $("#submit-image-button-2").click();
+          $('#submit-button-before-wrapper').children().hide()
+          $('#submit-button-before-wrapper .loading-icon').addClass('loading-animation')
+          image2 = true
+          }, 1200)
+        }
+       
+    }
+    else {
+      console.log('a')
+    }
   })
   
   $(document).on('click', '#created-image-button-before-2', function(){

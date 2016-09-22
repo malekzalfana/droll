@@ -4,7 +4,7 @@
   <div class="comment-user-image-wrapper">
   <% if !comment.user.blank? %>
     <% if (comment.user == @post.user) && @post.anonymous == true %>
-      <span class="comment-user-image" style="background-image: url('../assets/anonymous.jpg')"></span>
+      <span class="comment-user-image" style="background-image: url(/assets/ragefaces/<%= @post.facenumber %>face.png"></span>
     <% else %>
     <% if comment.user.image.url == "missing.jpg" %>
             <span class="comment-user-image" style="background-image: url(/assets/<%= comment.user.image.url(:thumb) %>)"></span>

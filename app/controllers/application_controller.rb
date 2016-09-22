@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
   # protect database from being altered while allowing updates
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :image, :cover, :bio, :notificationsound, :nightmode, :pro) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :image, :cover, :bio, :notificationsound, :nightmode, :pro, :share) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :image, :cover, :username, :bio, :notificationsound, :nightmode) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :image, :cover, :username, :bio, :notificationsound, :nightmode, :share) }
   end
   
   module SettingsHelper
@@ -32,6 +32,18 @@ class ApplicationController < ActionController::Base
     def devise_mapping
       @devise_mapping ||= Devise.mappings[:user]
     end
+  end
+  
+  def after_sign_in_path_for(user)
+    puts URI(request.referer).path
+    if URI(request.referer).path == '/make'
+      response.location = '/make'
+    elsif URI(request.referer).path == '/settings'
+      response.location = '/settings'
+    else
+      response.location = '/'
+    end
+    
   end
   
 end

@@ -3,6 +3,7 @@
 }
 #tabs-wrapper{
   width: 600px;
+  max-width: 100%;
     height: 50px;
     background: none;
     color: rgba(0, 0, 0, 0.5);
@@ -293,7 +294,7 @@
 #new_post {
   display: inline-block;
 }
-#memes-content #new_post {
+#memes-content #new_post, #make2-meme-wrapper {
   display: table-cell;
   text-align: -webkit-right;
 }
@@ -337,7 +338,7 @@
   display: inline-block !important;
   margin-right: 9px !important;
 }
-#make2 #done-meme, #make2 #cancel-meme,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2,#submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before {
+#make2 #done-meme, #make2 #cancel-meme-2,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2, #submit-image-button-before, #submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before {
     background: #ffffff;
     color: #252525;
     padding: 6px;
@@ -351,7 +352,7 @@
     display: none;
     font-family: open sans;
 }
-#done-meme, #make2 #cancel-meme {
+#done-meme, #make2 #cancel-meme-2 {
   display: inline-block !important;
 }
 #submit-image-button-2 {
@@ -361,7 +362,7 @@
   display: none
 }
 #created-image-button-before {
-  display: inline-block !important;
+  display: inline-block;
   margin-right: 8px;
 }
 #created-image-button-before-wrapper {

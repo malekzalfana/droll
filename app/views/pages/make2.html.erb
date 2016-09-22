@@ -7,23 +7,36 @@
 </head>
 <body id="<%= controller.action_name %>">
 	<div id="tabs-wrapper">
-	  <div id="memes-tab" class="tabs">Memes</div>
-	  <div id="gifs-tab" class="tabs">GIFs</div>
+	  <div id="memes-tab" class="tabs active-tab">Memes</div>
+	  <div id="gifs-tab" class="tabs">GIFs<span>coming soon</span></div>
 	</div>
 	<div id="gifs-content" class="choosen-content">
 	    <button id="done-meme">Done</button>
 	</div>
 	<div id="memes-content" class="choosen-content">
 		<div class="middle-column" id="meme-wrapper">
+			<div id="make2-meme-wrapper">
 			 <canvas class="middle-column" id="meme-canvas" height="1200" width="1200"></canvas>
+			 </div>
+			 
+			 <div id="meme-textareas-wrapper">
+			<div id="meme-textareas">
+				<div>
+					<p>Top text</p>
+					<textarea id="text-top" data-gramm="false" spellcheck="true"></textarea>
+				</div>
+				
+				<div>
+					<p>Bottom text</p>
+				<textarea id="text-bottom" data-gramm="false" spellcheck="true" ></textarea>		
+				</div>
+				
+				<div id="submit-button-before-wrapper"><button id="done-meme">Done</button><button id="cancel-meme-2">Cancel</button></div>
+			</div>
 		</div>
-		<div id="meme-textareas">
-			<p>Top text</p>
-			<textarea id="text-3" data-gramm="false" spellcheck="true"></textarea>
-			<p>Bottom text</p>
-			<textarea id="text-4" data-gramm="false" spellcheck="true" ></textarea>	
-			<div id="submit-button-before-wrapper"><button id="done-meme">Done</button><button id="cancel-meme">Cancel</button></div>
 		</div>
+		
+		
 	   
 		
 		<div id="pick-meme" class="ui-sortable">

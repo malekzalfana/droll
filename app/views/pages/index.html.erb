@@ -1,5 +1,6 @@
 <%# link_to 'Sin in with Twitter', user_omniauth_authorize_path(:twitter) %>
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+    <i class="material-icons" id="hide-remote-make">clear</i>
     <% if user_signed_in? && @pTotal < 4 %>
     <div id="progress-table">
         <p class="<%= if current_user.image.url(:medium) == 'missing.jpg' then '' else 'progress-done' end %>">Set your image</p>
@@ -42,12 +43,6 @@
     <%# if user_signed_in?  then current_user.following? (post.user) end %>
         <div class="wrapper" data-post-id="<%= post.id %>">
             <div class="left-wrapper">
-                <div id="loadImage" class="hidden">
-                        <%= form_tag 'pages/loadImage', remote: true, :method => 'get' do %>
-                            <%= text_field_tag :postid, post.id %>
-                            <%= submit_tag "Save"%>
-                        <% end %>
-                    </div>
                 <% if current_user.voted_on? post, vote_scope: 'favor' %>
                 <i class="material-icons favourite-icon">favorite</i>
                 <% end %>
@@ -115,27 +110,49 @@
                     
                         <% end %>
                     <% else %>
-                        <a href="/users/sign_in"><i class="material-icons comment-butt&& !(current_user.voted_up_on? post) 
+                        <a href="/users/sign_in"><i class="material-icons comment-button">
                     <% end %>
                     
-                    <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
-                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
-                    <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
-                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><% end %>
-                    <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
-                        <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
-                    <% else %>
-                        <span class="down downvote vote"></span>
+                    <% if current_user != post.user %>
+                    
+                    <div id="main-share-button">
+                    <% if current_user.share == '1' %>
+                        <a  href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <% elsif current_user.share == '2' %>
+                        <a href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <% elsif current_user.share == '3' %>
+                        <a href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Google Plus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                    <% elsif current_user.share == '4' %>
+                        <a href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
+                    <% end %>
+                    </div>
+                    <% if current_user.share == nil || current_user.share == '0' %>
+                        <i class="material-icons more-post-options share-button">share</i>
                     <% end %>
                     
-                    <% if (user_signed_in?) && (current_user.voted_up_on? post) %>
-                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote voted', :"data-post-id" => post.id, remote: true  do %><% end %>
-                    <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && !(current_user.voted_down_on? post)  %>                            
-                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => post.id, remote: true  do %><% end %>
-                    <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && (current_user.voted_down_on? post) %>                            
-                        <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% else %>
+                            <span class="down downvote vote"></span>
+                        <% end %>
+                        
+                        <% if (user_signed_in?) && (current_user.voted_up_on? post) %>
+                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && !(current_user.voted_down_on? post)  %>                            
+                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && (current_user.voted_down_on? post) %>                            
+                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                        <% else %>
+                            <span class="up upvote vote"></span>
+                        <% end %>
+                            
+                        
                     <% else %>
-                        <span class="up upvote vote"></span>
+                        <i class="material-icons more-post-options">more_horiz</i>
                     <% end %>
                         
                     <% if user_signed_in? %>
@@ -145,6 +162,38 @@
                         </div>
                     <% end %>
                 </div>
+                <div class="more-post-options-container">
+                        <% if current_user == post.user %>
+                        <% if post.anonymous != true %>
+                            <span class="anonymous-checkbox" class="inline-block-imp">
+                                <%= form_for (post), remote: true do |f| %>
+                                    <%= f.check_box :anonymous %>
+                                    <i class="material-icons anonymous-checked"></i>
+                                    <div id="anonymous-image">
+                    			 		<i class="material-icons">add</i>
+                    			 	</div>
+                    			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+        			 	            <span>Anonymous</span>
+        			 	            <%= f.submit 'Save', class: "submit-edit" %>
+                                <% end %>
+                            </span>
+                        <% end %>
+                        <% if post.anonymous != true %><span class="dott">.</span><% end %>
+                        <%= form_for post, method: :delete, remote: true do |f| %>
+                        
+                            <% f.submit 'delete post', class: "delete-post-submit" %>
+                        <% end %>
+                        <% end %>
+                        
+                        <div class="share-buttons">
+                            <span class="share-word">Share</span>
+                            <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Facebook" target="_blank"><img src="http://i.imgur.com/D87RBjw.png"></a>
+                            <a class="twitter customer share" href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><img src="http://i.imgur.com/d7WTVVP.png"></a>
+                            <a class="google_plus customer share" href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Google Plus" target="_blank"><img src="http://i.imgur.com/NGKECtL.png"></a>
+                            <a class="customer share" href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
+                        </div>
+                    </div>
+                
             </div>
             
             <div class="middle-wrapper">
@@ -153,30 +202,17 @@
                     <%= form_for [post, post.comments.new], html: {multipart: true}, remote: true do |f| %>
                       <div class="form-group comment-form" id="form-<%= post.id %>">
                         <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
-                        <input id="base64-make" type="hidden" value="" name="base64"/>
-                        <img src="" id="base64-image">
-                        <div id="comment-html" class="post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
+                        <input class="base64-make" type="hidden" value="" name="base64"/>
+                        <img src="" class="base64-image">
+                        <div class="comment-html post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
                         <div class="right-comment-wrapper">
-                            <div id="cancel-meme" class="hidden-imp">Cancel</div>
+                            <div class="cancel-meme hidden-imp">Cancel</div>
                             <%= f.submit 'post', class: 'post-comment', name: 'post' %>
-                            <div class="memes-emojis"><span class="make-meme">m</span></div>
+                            <div class="memes-emojis"><span class="make-meme">meme</span></div>
                         </div>
                         
                       </div>
-                        <div class="reactions-container">
-                            <div class="reactions-tabs-wrapper">
-                                <span class="reactions-tab active-reactions-tab">Memes</span>    
-                                <span class="reactions-tab">GIFs</span>
-                                <span class="reactions-tab">Emojis</span>
-                            </div>
-                            <img class="emoji-img" id="1" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
-                            <img class="emoji-img" id="2" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
-                            <img class="emoji-img" id="3" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji1.png">
-                            <img class="emoji-img" id="4" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
-                            <img class="emoji-img" id="5" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji3.png">
-                            <img class="emoji-img" id="6" src="http://droll-cloned-malekzalfana.c9users.io/assets/emojis/emoji2.png">
-                            
-            </div>
+                        
           </div>
           <% end %>
           <% else %>

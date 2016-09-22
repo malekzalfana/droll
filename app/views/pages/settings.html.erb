@@ -1,4 +1,39 @@
-<% if current_user.present? %>
+<% if !user_signed_in? %>
+<body id="<%= controller.action_name %>">	
+<div id="log-in-wrapper">
+  <h2>Log in</h2>
+
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field" id="remember-me-button">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+  <div id="other-log-in">
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+
+
+</div>
+</body>
+	
+<% else %>
 <body id="settings">
     <div class="container">
 </div>
@@ -67,6 +102,19 @@
                     <i class="material-icons" id="email-check-icon">check_circle</i>
                   </div>
                   
+                  <div class="field">
+                    <%= f.label :share %>
+                    <%= f.text_field :share, class: "hidden", id: "share-buttons-field" %>
+                    <span id="share-buttons-settings">
+                        <div <% if current_user.share == '0' || current_user.share == nil %>class="chosen"<% end %> id="0">all</div>
+                        <span <% if current_user.share == '1' %>class="chosen"<% end %> id="1"><img src="http://i.imgur.com/D87RBjw.png"></span>
+                        <span <% if current_user.share == '2' %>class="chosen"<% end %> id="2"><img src="http://i.imgur.com/d7WTVVP.png"></span>
+                        <span <% if current_user.share == '3' %>class="chosen"<% end %> id="3"><img src="http://i.imgur.com/NGKECtL.png"></span>
+                        <span <% if current_user.share == '4' %>class="chosen"<% end %> id="4"><img src="http://i.imgur.com/wS2UoLP.png"></span>
+                    </span>
+                    
+                  </div>
+                  
                   <div id="more-settings-options-wrapper">
                       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -112,16 +160,5 @@
     </div>
 </div>
 </body>
-<% else %>
-<script type="text/javascript">
-    window.location.href="/users/sign_in"  // put your correct path in a string here
-  </script>
-<%= form_for("user", :url => user_session_path) do |f| %>
-  <%= f.text_field :email %>
-  <%= f.password_field :password %>
-  <%= f.check_box :remember_me %>
-  <%= f.label :remember_me %>
-  <%= f.submit 'Sign in' %>
-  <%= link_to "Forgot your password?", new_password_path('user') %>
-<% end %>
+
 <% end %>

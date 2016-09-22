@@ -528,15 +528,6 @@ textarea:focus {
 .middle-column {
 	width: 100%;
 }
-#text-top {
-	float: left;
-	width: 100%;
-}
-#text-bottom {
-	float: left;
-	width: 100%;
-	margin-top: 100px;
-}
 #meme-textareas textarea {
 	width: 300px;
     border: none;
@@ -871,7 +862,7 @@ opacity: 0;
 
 .text-parent,
 .img-parent {
-	z-index: 1;
+	z-index: 2;
 }
 .dragged-panel2 {
 	z-index:3;
@@ -1218,7 +1209,7 @@ img.ui-draggable-dragging {
     float: left;
     color: white !important;
 }
-#left-arrow:hover {
+#left-arrow:hover, #left-arrow:active {
 	background: rgba(255,255,255, 0.2);
 }
 .line-1 {
@@ -1808,7 +1799,7 @@ img.ui-draggable-dragging {
   font-weight: 700;
 }
 
-.remove-image:hover {
+.remove-image:hover, .remove-image:ative {
   background: #c13b2a;
   color: #ffffff;
   transition: all .2s ease;
@@ -2327,7 +2318,7 @@ position: fixed;
     padding: 2px 0px 5px 4px;
     font-weight: 500;
 }
-#sign-up:hover, #log-in:hover {
+#sign-up:hover, #log-in:hover, #sign-up:active, #log-in:active {
 	box-shadow: 0 2px 2px rgba(0,0,0,0.12), 0 1px 6px rgba(0,0,0,0.2);
 	transition: all 0.2s ease-out;
 }
@@ -2533,7 +2524,8 @@ position: fixed;
     color: black;
 }
 .post-comment-body {
-	width: 515px;
+	/*width: 515px;*/
+	width: calc(100% - 120px);
     resize: none;
     height: auto;
     border-color: silver;
@@ -3143,12 +3135,12 @@ i#add-icon:hover, #notification-icon:hover, #menu-button-wrapper.shown, #notific
 	display: inline-block;
 	margin-right: 12px;
 }
-#search-icon:hover {
+#search-icon:hover, #search-icon:active {
  	background: url(search.png) no-repeat 8px center #ff4242;
     background-size: 15px;
     padding: 8px 6px 6px 12px;
  }
-span#profile-photo-small:hover {
+span#profile-photo-small:hover, span#profile-photo-small:active {
 	opacity: 0.8
 }
 #show #content-full2 {
@@ -3178,10 +3170,11 @@ span#profile-photo-small:hover {
     color: #fd5731 !important;
 }
 #settings-wrapper {
-	position: relative;
+	    position: relative;
     margin: 0px auto;
     width: 555px;
-    top:20px;
+    top: 20px;
+    padding: 0px 10px;
 }
 #settings-options {
 	font-size: 21px;
@@ -3417,7 +3410,7 @@ span#profile-photo-small:hover {
     float: right;
     font-size: 18px;
     position: relative;
-    top: -15px;
+    top: -3px;
 }
 .upvoted {
 	opacity: 1 !important;
@@ -3579,18 +3572,21 @@ iframe {
     position: fixed;
     top: 2px;
     right: 8px;
-    color: gray;
+    color: #b1b1b1;
     cursor: pointer;
     display: none;
     z-index: 110;
 }
 .make-meme {
 	 position: relative;
-    margin: -1px 12px;
+    margin: 8px 8px;
     display: inline-block;
     color: #252525;
     font-family: schoolbell;
-    font-size: 28px;
+    font-size: 15px;
+}
+.anonymous-image img {
+	display: none !important;
 }
 .overflow-hidden {
 	overflow: hidden !important;
@@ -3632,6 +3628,11 @@ iframe {
     top: 70px;
     left: calc(50% - 14px);
 }
+#submit-button-before-wrapper {
+	position: relative;
+	width: 330px;
+	text-align: center;
+}
 .loading-quarter-circle-3 {
 	margin: 10px;
 	display: inline-block;
@@ -3642,6 +3643,36 @@ iframe {
     left: calc(50% - 30px);
     right: 0px;
     display: none;
+}
+.loading-icon {
+    display: none;
+    margin: 20px auto;
+    height: 15px;
+    width: 15px;
+}
+#tools .loading-icon {
+	margin-left: 17px;
+}
+.loading-icon.loading-animation {
+	display: inline-block !important;
+}
+.loading-icon-2 {
+	position: absolute;
+	left:0;right:0;
+}
+.loading-icon:before {
+	content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: -4px;
+    top: -4px;
+    border-right: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #d8d8d8;
+    border-bottom: 4px solid transparent;
 }
 .shown-post #main-page-type span {
 	position: relative;
@@ -3695,7 +3726,7 @@ iframe {
 }
 .loading-animation{
 	animation: spin 1.2s infinite linear;
-	display: block;
+	display: inline-block;
 }
 .loading-animation-2 {
 	animation: spin 1.2s infinite linear;
@@ -3731,13 +3762,13 @@ iframe {
     transform: rotate(360deg);
   }
 }
-#base64-image{
+.base64-image{
 	display: none;
 	width: 250px;
 	padding: 30px;
 }
 
-#cancel-meme {
+.cancel-meme, #cancel-meme-2 {
 	display: inline-block;
 	margin-top: 5px;
 	cursor: pointer;
@@ -3755,7 +3786,7 @@ iframe {
 .left-margined {
 	margin-left: 35px !important;
 }
-.notif:hover {
+.notif:hover, .notif:active {
 	background: whitesmoke;
 }
 #notif-menu a {
@@ -3767,7 +3798,7 @@ iframe {
 .pointered {
 	cursor: pointer
 }
-#notif-menu a:hover {
+#notif-menu a:hover, #notif-menu a:active {
 	opacity: 0.6;
 }
 
@@ -3898,7 +3929,7 @@ html, body {
 .post-image-wrapper:hover .reported-post, .post-image-wrapper:hover .favorite-post {
 	opacity: 0.6;
 }
-.favorite-post:hover, .reported-post:hover {
+.favorite-post:hover, .reported-post:hover, .favorite-post:active, .reported-post:active {
 	opacity: 1 !important
 }
 .reported .reported-post {
@@ -4015,6 +4046,9 @@ html, body {
 .anonymous-checkbox input:checked + i:before {
 	content: 'check_box';
 }
+#nav-icons-wrapper {
+	float: right;
+}
 @media screen and (max-width: 690px) {
 	#recent #menu-button-wrapper, #index #menu-button-wrapper, #notification-icon-2 {
 		display: inline-block;
@@ -4079,7 +4113,7 @@ html, body {
 	#show .right-comments-wrapper {
 		 width: 65px;
 	}
-	#show .post-comment-body, #show #comment-html {
+	#show .post-comment-body, #show .comment-html {
 		width: calc(100% - 65px)
 	}
 	#show blockquote {
@@ -4169,7 +4203,7 @@ html, body {
 .shown-post #back-list {
 	display: inline-block;
 }
-#back-list:hover {
+#back-list:hover,#back-list:active  {
 	color: #ff3000;
 	cursor: pointer;
 }
@@ -4229,7 +4263,7 @@ html, body {
 	display: inline-block;
 }
 .wrapper.shown .comment-button {
-	margin: 10px 12px 9px 7px;
+	margin: 10px 12px 12px 3px;
 }
 .shown-post .wrapper {
 	display: none !important;
@@ -4323,7 +4357,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	.shown-post .right-comments-wrapper {
 		 width: 65px;
 	}
-	.shown-post .post-comment-body, .shown-post #comment-html {
+	.shown-post .post-comment-body, .shown-post .comment-html {
 		width: calc(100% - 65px) !important
 	}
 	.form-group {
@@ -4494,7 +4528,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 750px) {
-	.field {
+	body:not(#settings) .field {
 		width: 240px;
     	margin: 10px auto !important;
 	}
@@ -4614,7 +4648,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 		text-align: center;
 		-webkit-text-align: center;
 	}
-	#meme-textareas > div {
+	#meme-textareas > div:not(.loading-icon) {
 		display: inline-block;
 	}
 	#meme-textareas-wrapper {
@@ -4622,7 +4656,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	    vertical-align: middle;
 	    text-align: center;
 	}
-	#memes-content #new_post, #meme-textareas-wrapper {
+	#memes-content #new_post, #meme-textareas-wrapper, #make2-meme-wrapper {
 		display: inline-table !important;
 		padding-left: 0px;
 	}
@@ -4638,12 +4672,12 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 666px) and (min-width: 560px) {
-	#meme-content #new_post {
+	#meme-content #new_post, #make2-meme-wrapper {
 		display: table-row;
 		text-align: center;
 		-webkit-text-align: center;
 	}
-	#meme-textareas > div {
+	#meme-textareas > div:not(.loading-icon) {
 		display: block;
 	}
 	#meme-textareas-wrapper {
@@ -4651,7 +4685,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	    vertical-align: middle;
 	    text-align: center;
 	}
-	#memes-content #new_post, #meme-textareas-wrapper {
+	#memes-content #new_post, #meme-textareas-wrapper, #make2-meme-wrapper {
 		display: inline-table !important;
 		padding-left: 0px;
 	}
@@ -4675,7 +4709,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	div:not(#make) #tabs-wrapper {
 		width: 100% !important;
 	}
-	#meme-textareas > div {
+	#meme-textareas > div:not(.loading-icon) {
 		display: block;
 	}
 	#meme-textareas-wrapper {
@@ -4744,7 +4778,7 @@ body.shown-post #main-page-type a:hover + #back-list {
     border-radius: 5%;
     cursor: pointer;
 }
-#anonymous-faces img:hover {
+#anonymous-faces img:hover, #anonymous-faces img:active  {
 	border-color: lightgray !important;
 }
 #anonymous-faces {
@@ -4781,13 +4815,18 @@ body.shown-post #main-page-type a:hover + #back-list {
     display: none;
     transition: all ease-out 0.2s;
     margin-left: 2px;
+    background-size: cover;
+    background-position: center center;
+}
+.new_comment .post-comment:hover {
+	color: black !important;
 }
 #anonymous-image i {
 	color: gray;
     font-size: 16px;
     margin: 6px;
 }
-#anonymous-image:hover {
+#anonymous-image:hover, #anonymous-image:active {
 	border-color: black;
 }
 #anonymous-image:hover i {
@@ -4804,7 +4843,7 @@ body.shown-post #main-page-type a:hover + #back-list {
     color: gray;
     cursor: pointer;
 }
-#anonymous-faces h3 i:hover {
+#anonymous-faces h3 i:hover, #anonymous-faces h3 i:active {
 	color: black;
 	transition: all ease-out 0.2s;
 }
@@ -4973,4 +5012,207 @@ body.shown-post .post-image-2 {
 .share-button {
 	font-size: 19px !important;
     margin-left: -3px;
+}
+#content-full2 .downvote {
+    margin-right: 7px;
+}
+a[href="/users/auth/twitter"] {
+	display: none !important;
+}
+#new #notice-to-sign {
+	display: none !important;
+}
+@media screen and (max-width: 390px) {
+	#settings-option-more .field input, label {
+		font-size: 16px;
+	}
+	#settings-options {
+		font-size: 20px;
+		margin: 25px 10px 20px 10px;
+	}
+	#save-settings-before {
+		font-size: 14px;
+	    top: 0px;
+	}
+}
+#notice-to-sign-message {
+	pointer-events: none;
+	background: white;
+}
+@media screen and (max-width: 600px) {
+	#settings #settings-wrapper {
+		width: calc(100% - 20px);
+	}
+	#setings-options-wrapper {
+		padding: 5px 10px;
+	}
+	#settings-title {
+		text-align: center;
+	}
+	#save-settings-before {
+		font-size: 15px;
+	    top: 0px;
+	}
+}
+#share-buttons-settings {
+	float: right;
+}
+#share-buttons-settings span {
+	margin-left: 5px;
+    border: 1px solid transparent;
+    display: inline-block;
+    height: 37px;
+    width: 37px;
+    cursor: pointer;
+}
+#share-buttons-settings img {
+	margin: 6px;
+}
+#share-buttons-settings div {
+	font-family: schoolbell;
+	border: 1px solid transparent;
+    font-size: 20px;
+    margin: 0px 0px 0px 0px;
+    color: #606060;
+    display: inline-block;
+    position: relative;
+    bottom: 10px;
+    padding: 5px 7px;
+    cursor: pointer;
+    width: 22px;
+}
+#share-buttons-settings div.chosen, #share-buttons-settings span.chosen, #share-buttons-settings div:hover, #share-buttons-settings span:hover {
+	border: 1px solid #d8d8d8;
+    border-radius: 100%;
+    background: #f5f5f5;
+}
+.share-main {
+	width: 22px;
+    float: right;
+    margin: 8px 10px;
+    opacity: 0.7;
+    margin-left: 0px;
+}
+/*
+a[title="Twitter"] img, a[title="Facebook"] img {
+	width: 18px;
+    margin: 10px;
+    margin-left: 0px;
+}
+*/
+#main-share-button i {
+	font-size: 16px;
+    float: right;
+    margin: 11px 10px 0px 0px;
+    color: black;
+    opacity: 0.65;
+}
+#main-share-button i:hover {
+	opacity: 1;
+}
+.fa-facebook-f:before, .fa-facebook:before {
+	margin-right: 4px;
+}
+
+@media screen and (max-width: 690px) {
+	.middle-wrapper {
+		 margin-left: 0px !important;
+		 width: 100%;
+	}
+	.comments-wrapper {
+		width:calc( 100% - 11px)
+	}
+	#show .middle-wrapper, #show .comments-wrapper, #show .form-group.comment-form {
+		width: 100%;
+	}
+	#show .memes-emojis {
+		display: none;
+	}
+}
+#content-full2 .form-group {
+	max-width: 100% !important;
+}
+#make2 #meme-wrapper {
+	top: 0px;
+}
+/*#make2 #meme-textareas-wrapper {
+	width: 100%;
+}*/
+#make2 #done-meme {
+	margin-right: 10px !important;
+}
+#make2 #meme-canvas {
+	margin: 0px auto;
+}
+.reply-form {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid whitesmoke;
+}
+input.reply-comment:hover, i.material-icons.hide-reply:hover {
+	background: whitesmoke;
+	color: #252525;
+}
+
+@media screen and (max-width: 450px) {
+	#share-buttons-settings div {
+	    font-family: schoolbell;
+	    border: 1px solid transparent;
+	    font-size: 17px;
+	    margin: 0px 0px 0px 0px;
+	    color: #606060;
+	    display: inline-block;
+	    position: relative;
+	    bottom: 11px;
+	    padding: 5px 9px;
+	    width: 15px;
+	    left: 9px;
+	}
+	#share-buttons-settings span {
+	    margin-left: 5px;
+	    border: 1px solid transparent;
+	    display: inline-block;
+	    height: 25px;
+	    width: 25px;
+	}
+}
+@media screen and (max-width: 650px) {
+	#settings-title {
+		text-align: center;
+	}
+}
+@media screen and (max-width: 650px) {
+	#settings-options {
+		font-size: 18px;
+	}
+	#settings-options-more .field input {
+		font-size: 14px
+	}
+	#share-buttons-settings span {
+    	margin-left: 10px;
+	}
+}
+@media screen and (min-width: 920px) {
+	#submit-button-before-wrapper {
+		width: 330px;
+	}
+}
+@media screen and (max-width: 920px) {
+	#submit-button-before-wrapper {
+		width: 100%;
+	}
+}
+#gifs-tab span {
+	font-size: 10px;
+    padding: 3px;
+    color: gray;
+    font-weight: 200;
+    position: relative;
+    bottom: 2px;
+    left: 4px;
+    border-radius: 5%;
+    border: 1px solid #d0d0d0;
+}
+#gifs-tab {
+	pointer-events: none
 }
