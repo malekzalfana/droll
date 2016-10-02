@@ -1,3 +1,4 @@
+//document.domain = 'https://drolle-3-malekzalfana.c9users.io'
 $(document).on('click','.tabs',function(){
   $('.choosen-content').hide();
   $('.tabs').removeClass('active-tab');
@@ -133,8 +134,12 @@ function previewPostImage(event, thisFiler, thisPreview) {
   $(document).on('click', '#choose-image, #reset-user-image', function(){
     $(this).siblings('input').click()
   })
+  $(document).on('click', '.skip-reported', function(){
+    $(this).parents('.wrapper').addClass('skipped-reported')
+  })
   $(document).on('click', '#done-meme', function(){
     var memeCanvas = document.getElementById('meme-canvas');
+    $(memeCanvas).attr('crossorigin','')
     var dataURL3 = memeCanvas.toDataURL();
     $('#hide-remote-make', parent.document.body).click();
     $(".wrapper:visible .base64-make", parent.document.body).val(dataURL3);
@@ -147,7 +152,9 @@ function previewPostImage(event, thisFiler, thisPreview) {
     $('#share-buttons-settings div, #share-buttons-settings span').removeClass('chosen')
     $(this).addClass('chosen')
   })
-  
+  $(document).on('click', '#main-message', function(){
+    $(this).hide()
+  })
   $(document).on('click', '.cancel-meme', function(){
     $(this).addClass('hidden-imp')
     $(".wrapper:visible .base64-make").val('');
@@ -161,15 +168,23 @@ function previewPostImage(event, thisFiler, thisPreview) {
   });
   //////////////////////
   var thisWrapper;
-  $(document).on('click', '.post-image-wrapper a', function(e){
-    e.preventDefault();
+  $(document).on('click', '.skipped-reported .post-image-wrapper', function(e){
+    //e.preventDefault()
+    $(this).parents('.wrapper').removeClass('skipped-reported')
+  })
+  $(document).on('click', '.wrapper:not(.skipped-reported) .post-image-wrapper', function(e){
+    //e.preventDefault();
     if ( !$(this).parents('.wrapper').hasClass('shown') ) {
+      console.log('clicked')
       thisWrapper = $(this).parents('.wrapper')
       $(thisWrapper).css({'width':'600px'}).addClass('shown')
       $('.wrapper').not($(this).parents('.wrapper')).hide().removeClass('shown')
-      if ( !$(thisWrapper).children('.right-wrapper').hasClass('shown')  ) {
+      if ( !$(thisWrapper).children('.right-wrapper').hasClass('shown') && !$(thisWrapper).children('.right-wrapper').hasClass('loading-2')  ) {
+        console.log('clickedd')
         $('.shown.wrapper .right-wrapper').addClass('loading-2')
-        $(thisWrapper).find('#loadPost').children('form').children('input[type="submit"]').eq(0).click()
+        $(thisWrapper).find('.submit-loadpost').eq(0).click()
+        console.log('clickedddddddddddddd')
+        console.log( $(thisWrapper).find('.submit-loadpost').eq(0)  )
         if (window.innerWidth > 600  ) {
           $('.wrapper.shown').find('.post-image-2').lazyload()
         }
@@ -179,10 +194,12 @@ function previewPostImage(event, thisFiler, thisPreview) {
     }
   })
   
-  
   $(document).on('click', 'body.shown-post #main-page-type a', function(e){
     e.preventDefault()
     $('#back-list').click()
+    setTimeout(function(){
+      window.scrollTo(0, $('body').offset().top);
+    }, 10)
   })
   $(document).on('click', '#make2 .cancel-meme' , function(){
     $('#hide-remote-make').click()
@@ -206,29 +223,71 @@ function previewPostImage(event, thisFiler, thisPreview) {
       
     }
   })
-  var loadingNew = false
+
   $(document).on('click', '#next-post-icon', function(){
-    if ( $(thisWrapper).is( $('.wrapper').last() ) && loadingNew ===  true ) {
-      setTimeout(function(){
-        $('#next-post-icon').click()
-      }, 1500)
+    
+    if ( !$('body').hasClass('loadingPost')  && !$(thisWrapper).is( $('.wrapper').last() ) ) {
+        if ( $(thisWrapper).next('.wrapper').length == 0 && $('body').hasClass('loadingPost') ) {
+      $('.loadingPost-icon').addClass('loading-animation')
+      var loadingPostInterval =
+        setInterval(function(){
+        if ( $(thisWrapper).next('.wrapper').length == 0  ) {
+            $('.loadingPost-icon').removeClass('loading-animation')
+            clearInterval(loadingPostInterval)
+            $('#next-post-icon').click()
+          }
+        }, 400);
+      
+      
     }
-    else {
+    else if ( $(thisWrapper).next('.wrapper').length == 0 && !$('body').hasClass('loadingPost') ) {
+      if ( $('.pagination').length > 0 ) {
+        $('body').addClass('loadingPost')
+        var theurll = $('.pagination a.next_page').attr('href')
+        $.getScript(theurll)
+        $('.loadingPost-icon').addClass('loading-animation')
+        var loadingPostInterval =
+          setInterval(function(){
+            console.log('next')
+          if ( $(thisWrapper).next('.wrapper').length > 0  ) {
+              $('.loadingPost-icon').removeClass('loading-animation')
+              clearInterval(loadingPostInterval)
+              $('#next-post-icon').click()
+            }
+          }, 400);
+      }
+      
+    }
+    else if ( $(thisWrapper).next('.wrapper').length > 0 ) {
+      console.log('post loaded successfully')
+      $('.loadingPost-icon').removeClass('loading-animation')
       $(thisWrapper).hide().css({'width':'550px'}).removeClass('shown')
       thisWrapper = $(thisWrapper).next('.wrapper').show().css({'width':'600px'}).addClass('shown')
       $('html, body').animate({
           scrollTop: $('body').offset().top
       }, 200);
       if ( !$(thisWrapper).children('.right-wrapper').hasClass('shown')  ) {
-        $(thisWrapper).find('#loadPost').children('form').children('input[type="submit"]').eq(0).click()
+        $(thisWrapper).find('#loadPost').children('form').children('input[type="submit"]:not(.removed)').eq(0).click().addClass('removed')
         $('.shown.wrapper .right-wrapper').addClass('loading-2')
       }
-      if (  $(thisWrapper).is(':nth-child(9n-1)') || $(thisWrapper).is(':nth-child(10n-1)')  ) {
-        var theurl = $('.pagination a.next_page').attr('href')
-        $.getScript(theurl)
+      
+      if ( $('.wrapper').eq( $('.wrapper').length - 3 )   ) {
+      if ( !$('body').hasClass('loadingPost') && $('.pagination').length > 0 ) {
+        //$('.loadingPost-icon').removeClass('loading-animation')
+          var theurlll = $('.pagination a.next_page').attr('href')
+          $.getScript(theurlll)
+        }
       }
       console.log('the post has been loaded right?')
     }
+        
+        
+      }
+      else {
+        $('#back-list').click()
+      }
+    
+    
   })
   $(document).on('click', '#prev-post-icon', function(){
     if ( !$('.wrapper').eq(0).hasClass('shown') ) {
@@ -254,6 +313,11 @@ function previewPostImage(event, thisFiler, thisPreview) {
   $(document).on('click', '.link', function(e){
     //e.preventDefault()//
     window.location = $(this).attr('data-url')
+  })
+  $(document).on('keydown', function(e){
+    if ( e.altKey && e.keyCode == 37 && $('body').hasClass('shown-post')  ) {
+      e.preventDefault()
+    }
   })
   $(document).on('keyup', function(e){
     if (!$("input,textarea,.post-comment-body-2.post-comment-body").is(":focus") ) {
@@ -319,7 +383,11 @@ function previewPostImage(event, thisFiler, thisPreview) {
     document.getElementById('username-profile').contentEditable='true';
     document.getElementById('username-profile-big').contentEditable='true';
   })
-  
+  $(document).on('click', '#sign-up-2', function(){
+    console.log('clicked')
+    $('#remote-login-wrapper').click()
+    $('#sign-up').click()
+  })
   $(document).on('click', '#save-profile', function(){
     if ( usernameChecked === true) {
       if ($('#username-check-icon').text() == 'cancel'  ) {
@@ -327,6 +395,9 @@ function previewPostImage(event, thisFiler, thisPreview) {
         setTimeout(function(){
           $('#username-check-icon').removeClass('flash animated-fast')
         }, 1000)
+      }
+      if ($('#username-profile').text() != ''  ) {
+        $('#cover-photo').removeClass('no-bio')
       }
       else {
         $(this).hide().removeClass('left-margined')
@@ -371,9 +442,31 @@ function previewPostImage(event, thisFiler, thisPreview) {
   });
   
   
+  $(document).ready(function() {
+    //$('#anonymous-faces img').slice(40, $('#anonymous-faces .rageface').length - 39 ).lazyload()
+  })
+    
     $(document).on('click', '#anonymous-image', function(){
+      $('#anonymous-faces img').show()
+      $("#anonymous-faces img").slice(0,40).lazyload({
+    	event: 'loadEmBoys2',
+    	//effect : "fadeIn",
+    	threshold: 100,
+    	
+    });
+    $('#anonymous-faces img.rageface').slice(0,40).trigger("loadEmBoys2");
+    //$('#anonymous-faces .rageface').lazyload()
+    $("#anonymous-faces img.rageface").slice(40,185).lazyload({         
+        //effect : "fadeIn",
+        container: $("#anonymous-faces"),
+    	threshold: 100,
+    	event: 'scrollstop'
+    	
+    });
+    
+    
     $('#anonymous-faces').fadeIn();
-    $('#anonymous-faces img').lazyload()
+    
     $('body').addClass('anonymous')
   })
   
@@ -388,11 +481,35 @@ function previewPostImage(event, thisFiler, thisPreview) {
     $(this).parents('.anonymous-cheeckbox').empty().hide()
   })
   
+  $(document).on('click', '#log-in, #sign-up, .login', function(e){
+    e.preventDefault()
+    $('#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile').addClass('blurred')
+    if ( $(this).is('#log-in') || $(this).is('.login') ) {
+      $('#remote-login-wrapper').fadeIn(200)
+      $('body').addClass('overflow-hidden')
+    }
+    else {
+      $('#remote-signup-wrapper').fadeIn(200)
+      $('body').addClass('overflow-hidden')
+    }  
+  })
+  $(document).on('click', '#remote-login-wrapper #log-in-wrapper, #remote-signup-wrapper #sign-up-wrapper', function(e){
+     e.stopPropagation();
+  });
+  
+  $(document).on('click', '#remote-login-wrapper, #remote-signup-wrapper', function(e){
+    $(this).hide()
+    $('#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile').removeClass('blurred')
+    $('body').removeClass('overflow-hidden')
+  })
+  
   $(document).on('click', '.more-post-options', function(){
-    if (  $(this).parent().siblings('.more-post-options-container').hasClass('active-tab') ){
+    console.log(  $(this).parents('.post-footer').siblings('.more-post-options-container') )
+    console.log( $(this).parents('.left-wrapper').find('.more-post-options-container') )
+    if (  $(this).parents('.left-wrapper').find('.more-post-options-container').hasClass('active-tab') ){
       $('#anonymous-faces img').removeClass('chosen')
       $('.choosen-content:visible .anonymous-image-field').attr('value', '')
-      $('.choosen-content:visible #anonymous-image img').remove()
+      $('.choosen-content:visible .anonymous-image img').remove()
       $('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop('checked', false);
       $('.more-post-options-container').removeClass('active-tab')
       //$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
@@ -400,10 +517,11 @@ function previewPostImage(event, thisFiler, thisPreview) {
     else {
       $('#anonymous-faces img').removeClass('chosen')
       $('.choosen-content:visible .anonymous-image-field').attr('value', '')
-      $('.choosen-content:visible #anonymous-image img').remove()
+      $('.choosen-content:visible .anonymous-image img').remove()
       $('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop('checked', false);
       $('.more-post-options-container').removeClass('active-tab')
-      $(this).parent().siblings('.more-post-options-container').addClass('active-tab')
+      $(this).parent('.post-footer').siblings('.more-post-options-container').addClass('active-tab')
+      console.log('shown???')
     }
     
     
@@ -528,7 +646,14 @@ function previewPostImage(event, thisFiler, thisPreview) {
   
   var image1 = false;
   var image2 = false;
-  
+  $(document).on('click', '.before-submit-edit', function(){
+    if ( $(this).siblings('#anonymous-image').children('img').length >0 ) {
+      $(this).siblings('.submit-edit').click()
+    }
+    else {
+      $(this).siblings('.anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
+    }
+  })
   $(document).on('click', '#submit-image-button-before', function(){
     if ( image1 == false  ) {
       if ( $('.choosen-content input[type="checkbox"]:checked').length ) {
@@ -554,7 +679,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
       
     }
     else {
-      alert('samir')
+      //alert('samir')
     }
   })
   $(document).on('click', '#created-image-button-before', function(){
@@ -626,12 +751,107 @@ function previewPostImage(event, thisFiler, thisPreview) {
         objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
   }
   
+  
+  
   /* ================================================== */
   
   $(document).ready(function ($) {
+    
+      
+      
+        var $container = $('#left-content-profile');
+      console.log($container)
+        $container.imagesLoaded( function() {
+          $container.masonry({
+            itemSelector: '.wrapper',
+            gutter: 10
+          });
+          console.log('worked?')
+        });
+        
+      
+
+    
     $('.customer.share').on("click", function(e) {
       $(this).customerPopup(e);
     });
   });
     
 }(jQuery));
+
+$(document).on('ready page:load', function () {
+  var $container = $('#left-content-profile');
+      console.log($container)
+        $container.imagesLoaded( function() {
+          $container.masonry({
+            itemSelector: '.wrapper',
+            gutter: 10
+          });
+          //$('#left-content-profile .wrapper').fadeIn(100)
+          console.log('worked?')
+        });
+        
+                                  //var jobCount = $('#list .in').length;
+                            //$('.list-count').text(jobCount + ' items');
+                              
+                            
+                            $("#search-memes").keyup(function () {
+                               //$(this).addClass('hidden');
+                            
+                              var searchTerm = $("#search-memes").val();
+                              if ( searchTerm != ''  ) {
+                                var listItem = $('#pick-meme').children('.pick-meme-container .meme-title');
+                            
+                              
+                              var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+                              
+                                //extends :contains to be case insensitive
+                            $.extend($.expr[':'], {
+                            'containsi': function(elem, i, match, array)
+                            {
+                              return (elem.textContent || elem.innerText || '').toLowerCase()
+                              .indexOf((match[3] || "").toLowerCase()) >= 0;
+                            }
+                          });
+                              
+                              
+                              $("#pick-meme .meme-title").not(":containsi('" + searchSplit + "')").each(function(e)   {
+                                $(this).parents('.pick-meme-container').addClass('hidden-meme')
+                              });
+                              
+                              $("#pick-meme .meme-title:containsi('" + searchSplit + "')").each(function(e) {
+                                $(this).removeClass('hidden-meme')
+                              });
+                              
+                            
+                                //var jobCount = $('#list .in').length;
+                              //$('.list-count').text(jobCount + ' items');
+                              
+                              //shows empty state text when no jobs found
+                              /*if(jobCount == '0') {
+                                $('#list').addClass('empty');
+                              }
+                              else {
+                                $('#list').removeClass('empty');
+                              }*/  
+                              }
+                              else {
+                                $('.pick-meme-container').removeClass('hidden-meme')
+                              }
+                              
+                              
+                            });
+        
+        
+});
+var $container = $('#left-content-profile');
+      console.log($container)
+        $container.imagesLoaded( function() {
+          $container.masonry({
+            itemSelector: '.wrapper',
+            gutter: window.innerWidth /200
+          });
+          console.log('worked?')
+          console.log(  window.innerWidth /200 )
+          //$('#left-content-profile .wrapper').fadeIn(100)
+        });

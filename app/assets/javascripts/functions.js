@@ -1,6 +1,6 @@
-//window.onload = function(){
+$(document).on('ready page:load', function () {
 	var image3 = false;
-	$(document).on('click', '#rage-comics-tab', function(){
+	
 	var droppedFaces = 0;
 //if ( $('body').attr('id') == 'make' ) {
 	console.log('ss')
@@ -98,9 +98,9 @@
 		function lowerIndex() {
 			$('.text-parent .ui-wrapper').css({
 				'z-index': '1'
-			});
+			}).addClass('hidden-textareas');
 			$('.img-parent .ui-wrapper, #placeholder-wrapper').css({
-				'z-index': '1'
+				'z-index': '1',
 			});
 			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
 			//$(tmp_canvas).css({'cursor':'crosshair'});
@@ -135,7 +135,7 @@
 			});
 			$('.text-parent .ui-wrapper').css({
 				'z-index': '3'
-			});
+			}).removeClass('hidden-textareas');
 			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
 			$(tmp_canvas).removeClass('default-cursor');
 			$('.text-parent .ui-resizable-handle').removeClass('transparent-handle');
@@ -747,39 +747,15 @@
 				//REMOVED
 				//var added1 = $('#text-11').val()
 				//var added3 = $('#text-22').val()
-		for (var textNumbers = 1; textNumbers <= textCalls; ++textNumbers) {
-			if (document.getElementById('text-' + textNumbers).classList.contains('red-textareas')) {
-				downloadCTX.font= 32+"px schoolbell";
-				downloadCTX.fillStyle = "#d40000";
-				added1 = 0;
-				added2 = 32;
-				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value.toUpperCase(), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft) + added1, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetTop) + added2);
-				//downloadCTX.save()
-			//document.getElementById('text-' + textNumbers).style.display = 'none';
-			console.log(document.getElementById('text-' + textNumbers).width);
-			}
-			
-			else {
-				downloadCTX.font="20px schoolbell";
-				downloadCTX.fillStyle = "black";
-				//downloadCTX.save()
-				console.log('w')
-				added1 = 1;
-				added2 = 20;
-				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft) + Number(added1), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetTop) + Number(added2));
-			//document.getElementById('text-' + textNumbers).style.display = 'none';
-			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft));
-			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft)  )
-			}
-		};
 		//downloadCTX.scale(0.5,0.5);
 		for (var droppedNumbers = 1; droppedNumbers <= droppedFaces; ++droppedNumbers) {
-			var image = document.getElementById("rage-" + droppedNumbers);
+			if (  $("#rage-" + droppedNumbers).hasClass('panel2') ) {
+				var image = document.getElementById("rage-" + droppedNumbers);
+			$(image).attr('crossOrigin', '')
 			var originalImage = new Image();
+			$(originalImage).attr('crossOrigin', '')
 			originalImage.src = image.src;
-			//ctx.drawImage(imageCanvas, Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetLeft) + 1 + Number(document.getElementById('paint').offsetLeft), Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetTop) + 1 + Number(document.getElementById('paint').offsetTop), image.width, image.height);
-			// scales the image by (float) scale < 1
-			// returns a canvas containing the scaled image.
+			originalImage.crossOrigin = "";
 			ctx.ImageSmoothingEnabled = false;
 			//ctx.webkitImageSmoothingEnabled = false;
 			ctx.mozImageSmoothingEnabled = false;
@@ -790,17 +766,8 @@
 			canvas2.height = originalImage.height;
 
 			canvas2.getContext('2d').drawImage(originalImage, 0, 0);
-
-			//var resulting_canvas = downScaleCanvas(canvas, 0.8);
-			//var resulting_img = document.createElement('img');
-
-			//resulting_img.src = resulting_canvas.toDataURL();
-			//console.log(resulting_img)
-			//document.body.appendChild(resulting_img);
-
-
-			// scales the canvas by (float) scale < 1
-			// returns a new canvas containing the scaled image.
+			canvas2.crossOrigin = "Anonymous";
+			canvas.crossOrigin = "Anonymous";
 			function downScaleCanvas(cv, scale) {
 				if (!(scale < 1) || !(scale > 0)) {
 					downloadCTX.drawImage(originalImage, Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetLeft) + Number(document.getElementById('paint').offsetLeft), Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetTop) + Number(document.getElementById('paint').offsetTop), image.width, image.height);
@@ -829,8 +796,14 @@
 				// next weight is weight of current source point within next target's point.
 				var crossX = false; // does scaled px cross its current px right border ?
 				var crossY = false; // does scaled px cross its current px bottom border ?
+				//var imgg = new Image();
+				//imgg.setAttribute('crossOrigin', 'anonymous');
+				//imgg.src = cv.toDataURL();
+				
 				var sBuffer = cv.getContext('2d').
 				getImageData(0, 0, sw, sh).data; // source buffer 8 bit rgba
+				
+				
 				var tBuffer = new Float32Array(4 * sw * sh); // target buffer Float32 rgb
 				var sR = 0
 					, sG = 0
@@ -950,21 +923,225 @@
 			var addedY = 0;
 			
 			downScaleCanvas(canvas2, theScale);
-			console.log(theScale);
-			//alert(image.width *2 / originalImage.width)
-			//ctx.putImageData(resCV, Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetLeft) + 1 + Number(document.getElementById('paint').offsetLeft), Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetTop) + 1 + Number(document.getElementById('paint').offsetTop), image.width, image.height);
+			}
 
 		}
+		for (var droppedNumbers = 1; droppedNumbers <= droppedFaces; ++droppedNumbers) {
+			if (  !$("#rage-" + droppedNumbers).hasClass('panel2') ) {
+				var image = document.getElementById("rage-" + droppedNumbers);
+			$(image).attr('crossOrigin', '')
+			var originalImage = new Image();
+			$(originalImage).attr('crossOrigin', '')
+			originalImage.src = image.src;
+			originalImage.crossOrigin = "";
+			ctx.ImageSmoothingEnabled = false;
+			//ctx.webkitImageSmoothingEnabled = false;
+			ctx.mozImageSmoothingEnabled = false;
+
+			//var img = document.getElementsByTagName('img')[0];
+			var canvas2 = document.createElement('canvas');
+			canvas2.width = originalImage.width;
+			canvas2.height = originalImage.height;
+
+			canvas2.getContext('2d').drawImage(originalImage, 0, 0);
+			canvas2.crossOrigin = "Anonymous";
+			canvas.crossOrigin = "Anonymous";
+			function downScaleCanvas(cv, scale) {
+				if (!(scale < 1) || !(scale > 0)) {
+					downloadCTX.drawImage(originalImage, Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetLeft) + Number(document.getElementById('paint').offsetLeft), Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetTop) + Number(document.getElementById('paint').offsetTop), image.width, image.height);
+				}
+				var sqScale = scale * scale; // square scale = area of source pixel within target
+				var sw = cv.width; // source image width
+				var sh = cv.height; // source image height
+				var tw = Math.floor(sw * scale); // target image width
+				var th = Math.floor(sh * scale); // target image height
+				var sx = 0
+					, sy = 0
+					, sIndex = 0; // source x,y, index within source array
+				var tx = 0
+					, ty = 0
+					, yIndex = 0
+					, tIndex = 0; // target x,y, x,y index within target array
+				var tX = 0
+					, tY = 0; // rounded tx, ty
+				var w = 0
+					, nw = 0
+					, wx = 0
+					, nwx = 0
+					, wy = 0
+					, nwy = 0; // weight / next weight x / y
+				// weight is weight of current source point within target.
+				// next weight is weight of current source point within next target's point.
+				var crossX = false; // does scaled px cross its current px right border ?
+				var crossY = false; // does scaled px cross its current px bottom border ?
+				//var imgg = new Image();
+				//imgg.setAttribute('crossOrigin', 'anonymous');
+				//imgg.src = cv.toDataURL();
+				
+				var sBuffer = cv.getContext('2d').
+				getImageData(0, 0, sw, sh).data; // source buffer 8 bit rgba
+				
+				
+				var tBuffer = new Float32Array(4 * sw * sh); // target buffer Float32 rgb
+				var sR = 0
+					, sG = 0
+					, sB = 0; // source's current point r,g,b
+				// untested !
+				var sA = 0; //source alpha    
+
+				for (sy = 0; sy < sh; sy++) {
+					ty = sy * scale; // y src position within target
+					tY = 0 | ty; // rounded : target pixel's y
+					yIndex = 4 * tY * tw; // line index within target array
+					crossY = (tY != (0 | ty + scale));
+					if (crossY) { // if pixel is crossing botton target pixel
+						wy = (tY + 1 - ty); // weight of point within target pixel
+						nwy = (ty + scale - tY - 1); // ... within y+1 target pixel
+					}
+					for (sx = 0; sx < sw; sx++, sIndex += 4) {
+						tx = sx * scale; // x src position within target
+						tX = 0 | tx; // rounded : target pixel's x
+						tIndex = yIndex + tX * 4; // target pixel index within target array
+						crossX = (tX != (0 | tx + scale));
+						if (crossX) { // if pixel is crossing target pixel's right
+							wx = (tX + 1 - tx); // weight of point within target pixel
+							nwx = (tx + scale - tX - 1); // ... within x+1 target pixel
+						}
+						sR = sBuffer[sIndex]; // retrieving r,g,b for curr src px.
+						sG = sBuffer[sIndex + 1];
+						sB = sBuffer[sIndex + 2];
+						sA = sBuffer[sIndex + 3];
+
+						if (!crossX && !crossY) { // pixel does not cross
+							// just add components weighted by squared scale.
+							tBuffer[tIndex] += sR * sqScale;
+							tBuffer[tIndex + 1] += sG * sqScale;
+							tBuffer[tIndex + 2] += sB * sqScale;
+							tBuffer[tIndex + 3] += sA * sqScale;
+						} else if (crossX && !crossY) { // cross on X only
+							w = wx * scale;
+							// add weighted component for current px
+							tBuffer[tIndex] += sR * w;
+							tBuffer[tIndex + 1] += sG * w;
+							tBuffer[tIndex + 2] += sB * w;
+							tBuffer[tIndex + 3] += sA * w;
+							// add weighted component for next (tX+1) px                
+							nw = nwx * scale
+							tBuffer[tIndex + 4] += sR * nw; // not 3
+							tBuffer[tIndex + 5] += sG * nw; // not 4
+							tBuffer[tIndex + 6] += sB * nw; // not 5
+							tBuffer[tIndex + 7] += sA * nw; // not 6
+						} else if (crossY && !crossX) { // cross on Y only
+							w = wy * scale;
+							// add weighted component for current px
+							tBuffer[tIndex] += sR * w;
+							tBuffer[tIndex + 1] += sG * w;
+							tBuffer[tIndex + 2] += sB * w;
+							tBuffer[tIndex + 3] += sA * w;
+							// add weighted component for next (tY+1) px                
+							nw = nwy * scale
+							tBuffer[tIndex + 4 * tw] += sR * nw; // *4, not 3
+							tBuffer[tIndex + 4 * tw + 1] += sG * nw; // *4, not 3
+							tBuffer[tIndex + 4 * tw + 2] += sB * nw; // *4, not 3
+							tBuffer[tIndex + 4 * tw + 3] += sA * nw; // *4, not 3
+						} else { // crosses both x and y : four target points involved
+							// add weighted component for current px
+							w = wx * wy;
+							tBuffer[tIndex] += sR * w;
+							tBuffer[tIndex + 1] += sG * w;
+							tBuffer[tIndex + 2] += sB * w;
+							tBuffer[tIndex + 3] += sA * w;
+							// for tX + 1; tY px
+							nw = nwx * wy;
+							tBuffer[tIndex + 4] += sR * nw; // same for x
+							tBuffer[tIndex + 5] += sG * nw;
+							tBuffer[tIndex + 6] += sB * nw;
+							tBuffer[tIndex + 7] += sA * nw;
+							// for tX ; tY + 1 px
+							nw = wx * nwy;
+							tBuffer[tIndex + 4 * tw] += sR * nw; // same for mul
+							tBuffer[tIndex + 4 * tw + 1] += sG * nw;
+							tBuffer[tIndex + 4 * tw + 2] += sB * nw;
+							tBuffer[tIndex + 4 * tw + 3] += sA * nw;
+							// for tX + 1 ; tY +1 px
+							nw = nwx * nwy;
+							tBuffer[tIndex + 4 * tw + 4] += sR * nw; // same for both x and y
+							tBuffer[tIndex + 4 * tw + 5] += sG * nw;
+							tBuffer[tIndex + 4 * tw + 6] += sB * nw;
+							tBuffer[tIndex + 4 * tw + 7] += sA * nw;
+						}
+					} // end for sx 
+				} // end for sy
+
+				// create result canvas
+				var resCV = document.createElement('canvas');
+				resCV.width = tw;
+				resCV.height = th;
+				var resCtx = resCV.getContext('2d');
+				var imgRes = resCtx.getImageData(0, 0, tw, th);
+				var tByteBuffer = imgRes.data;
+				// convert float32 array into a UInt8Clamped Array
+				var pxIndex = 0; //  
+				for (sIndex = 0, tIndex = 0; pxIndex < tw * th; sIndex += 4, tIndex += 4, pxIndex++) {
+					tByteBuffer[tIndex] = Math.ceil(tBuffer[sIndex]);
+					tByteBuffer[tIndex + 1] = Math.ceil(tBuffer[sIndex + 1]);
+					tByteBuffer[tIndex + 2] = Math.ceil(tBuffer[sIndex + 2]);
+					tByteBuffer[tIndex + 3] = Math.ceil(tBuffer[sIndex + 3]);
+				}
+				// writing result to canvas.
+				resCtx.putImageData(imgRes, 0, 0);
+				//downloadCTX.scale(2,2);
+				downloadCTX.drawImage(resCV, Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetLeft) + Number(document.getElementById('paint').offsetLeft), Number(document.getElementById("rage-" + droppedNumbers).parentElement.offsetTop) + Number(document.getElementById('paint').offsetTop), image.width + addedX, image.height + addedY);
+				resCtx.clearRect(0,0,resCV.width,resCV.height);
+				//stopDrawing();
+				//return resCV;
+			}
+			var theScale = image.width *2 / originalImage.width;
+			var addedX = 0;
+			var addedY = 0;
+			
+			downScaleCanvas(canvas2, theScale);
+			}
+
+		}
+		for (var textNumbers = 1; textNumbers <= textCalls; ++textNumbers) {
+			if (document.getElementById('text-' + textNumbers).classList.contains('red-textareas')) {
+				downloadCTX.font= 32+"px schoolbell";
+				downloadCTX.fillStyle = "#d40000";
+				added1 = 0;
+				added2 = 32;
+				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value.toUpperCase(), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft) + added1, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetTop) + added2);
+				//downloadCTX.save()
+			//document.getElementById('text-' + textNumbers).style.display = 'none';
+			console.log(document.getElementById('text-' + textNumbers).width);
+			}
+			
+			else {
+				downloadCTX.font="20px schoolbell";
+				downloadCTX.fillStyle = "black";
+				//downloadCTX.save()
+				console.log('w')
+				added1 = 1;
+				added2 = 20;
+				downloadCTX.fillText(document.getElementById('text-' + textNumbers).value, Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft) + Number(added1), Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetTop) + Number(added2));
+			//document.getElementById('text-' + textNumbers).style.display = 'none';
+			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft));
+			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft)  )
+			}
+		};
 		if ( todownload === true ){
-			$('#sketch-wrapper').append(downloadCANVAS)
-			$(downloadCANVAS).css({'width':'600px'})
-				//link.href = downloadCANVAS.toDataURL();
-				//link.download = filename;
+			//$('#sketch-wrapper').append(downloadCANVAS)
+			//$(downloadCANVAS).css({'width':'600px'})
+				link.href = downloadCANVAS.toDataURL();
+				link.download = filename;
 		}
 		else {
 			//var memeCanvas = document.getElementById('paint');
-		    var dataURL3 = downloadCANVAS.toDataURL();
-		    $('#base64-2').val(dataURL3)
+			$('<img/>').attr('src', downloadCANVAS.toDataURL()).load(function(){
+				var dataURL3 = downloadCANVAS.toDataURL();
+				$('#base64-2').val(dataURL3)
+			})
+		    
 		    if ( image3 == false ) {
 			    
 			    	if ( $('.choosen-content input[type="checkbox"]:checked').length ) {
@@ -981,12 +1158,13 @@
 		          }
 			  }
 			  else {
-			  	setTimeout(function(){
+			  	console.log( downloadCANVAS.toDataURL() )
+			  	$('<img/>').attr('src', downloadCANVAS.toDataURL()).load(function() {
 			  		$("#submit-image-button-3").click();
 			    	image3 = true
 			    	$('#ragefaces-buttons-wrapper').hide()
         			$('#tools .loading-icon').addClass('loading-animation')
-			  	}, 2000)
+			  	})
 			  }
 			    	
 			    
@@ -1033,6 +1211,7 @@ var painting;
 		}
 
 	};
+	
 	//var textCalls = 0;
 	var textFocused = false;
 	function createText(e) {
@@ -1191,23 +1370,24 @@ var painting;
 				$('#addRageFaces i').hide().text('add').fadeIn(200)
 			}
 			$('#tags p').addClass('animated-very-fast fadeInUp');
-			$('.rageface').slice(0,40).trigger("loadEmBoys");
+			$('#ragefaces .rageface').slice(0,40).trigger("loadEmBoys");
 			tmp_canvas.removeEventListener('click', chooseBro);
 
 		});
-$("img.rageface").slice(0,40).lazyload({
+$("#ragefaces img.rageface").slice(0,40).lazyload({
 	event: 'loadEmBoys',
 	//effect : "fadeIn",
 	threshold: 100,
 	
 });
-$("img.rageface").slice(40,184).lazyload({         
+$("#ragefaces img.rageface").slice(40,185).lazyload({         
     //effect : "fadeIn",
     container: $("#ragecontainer"),
 	threshold: 100,
 	event: 'scrollstop'
 	
 });
+
 		$('#tags p').click(function(){
 			var thisTag = $(this).attr('id');
 			console.log(thisTag);
@@ -1831,7 +2011,9 @@ $('.image-upload-wrap').bind('dragover', function () {
 });
 //}
 
-})
 
-//}
+
+})
 console.log('functions.js working')
+
+

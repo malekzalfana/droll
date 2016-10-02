@@ -87,6 +87,9 @@ class CommentsController < ApplicationController
     @comment.destroy
     if @comment.destroy
       PublicActivity::Activity.where(key: 'upvoting', trackable_id: @comment.id, owner: current_user).destroy_all
+      if !params[:post][:user_id].blank?
+        @comment.user.create_activity :create, key: 'drolling', recipient: @comment.user, parameters: {url: url_for(@comment), what: "Your comment got removed due to user feedback"}
+      end
       redirect_to :back
     end
   end
@@ -135,7 +138,17 @@ class CommentsController < ApplicationController
         @comment.unvote_by current_user
       else
         @comment.downvote_by current_user
-        puts 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
+        if (@comment.created_at > Time.now - 7.minutes) && @comment.get_downvotes.size == 2
+          @comment.hidden = true
+          @comment.update_attributes(permit_post2)
+          Rails.logger.info(@comment.errors.messages.inspect)
+          @comment.user.create_activity :create, key: 'drolling', recipient: @comment.user, parameters: {url: url_for(@comment), what: 'Your comment got removed due to user voting.'}
+        elsif ( ( 100 * @comment.get_downvotes.size ) / @comment.get_upvotes.size) > 25
+          @comment.hidden = true
+          @comment.update_attributes(permit_post2)
+          Rails.logger.info(@comment.errors.messages.inspect)
+          @comment.user.create_activity :create, key: 'drolling', recipient: @comment.user, parameters: {url: url_for(@comment), what: "Your comment got removed due to user voting."}
+        end
         redirect_to :back
       end
   end

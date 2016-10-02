@@ -49,7 +49,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                         $('.pagination').text('more posts are coming')
                         $.getScript( url )
                         console.log( url )
-                        loadingNew = true;
+                        $('body').addClass('loadingPost')
                     }
                 }
             //}

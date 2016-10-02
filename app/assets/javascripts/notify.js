@@ -1,5 +1,9 @@
+
 $(window).load(function() {
     
+    /*$('#pick-meme').sortable({
+        items: '.pick-meme-container'
+    })*/
     $('.progress').mouseover(function(){
         $('#progress-table').fadeIn()
     })

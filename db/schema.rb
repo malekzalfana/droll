@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920162151) do
+ActiveRecord::Schema.define(version: 20160927214635) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20160920162151) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "postid"
+    t.boolean  "hidden"
   end
 
   add_index "comments", ["cached_votes_down"], name: "index_comments_on_cached_votes_down"
@@ -124,6 +125,9 @@ ActiveRecord::Schema.define(version: 20160920162151) do
     t.boolean  "long"
     t.boolean  "anonymous"
     t.integer  "facenumber"
+    t.boolean  "hidden"
+    t.boolean  "reported"
+    t.boolean  "granted"
   end
 
   add_index "posts", ["ancestry"], name: "index_posts_on_ancestry"

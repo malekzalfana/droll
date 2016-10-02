@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
-
+#for binding ready to turbolinks
+gem 'jquery-turbolinks'
+#masonry gem 
+#gem 'masonry-rails', '~> 0.2.0'
+#gem 'jquery-turbolinks'
 #for the comments
 #gem 'ancestry'
 # for settings up paperclip - amazon s3

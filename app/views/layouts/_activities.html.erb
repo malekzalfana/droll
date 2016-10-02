@@ -89,13 +89,13 @@
           </div>
           <div class="notif-right-col">
             <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></strong>
-            <% if activity.trackable.get_upvotes.size - 1 == 2 %>
+            <% if activity.trackable.get_upvotes.size == 2 %>
             and <strong><a href="/user/<%= activity.trackable.votes_for.up.voters.last(2).first.username %>"><%= activity.trackable.votes_for.up.voters.last(2).first.username %></a></strong> upvoted your post
             
-            <% elsif activity.trackable.get_upvotes.size - 1  > 2 %>
+            <% elsif activity.trackable.get_upvotes.size  > 2 %>
             and <%= activity.trackable.get_upvotes.size - 1  %> others upvoted your post
             
-            <% elsif activity.trackable.get_upvotes.size - 1 == 1 %>
+            <% elsif activity.trackable.get_upvotes.size  == 1 %>
             upvoted your post
             <% else %>
             <%= activity.trackable.get_upvotes.size - if current_user.voted_up_on? activity.trackable then 1 else 0 end %>

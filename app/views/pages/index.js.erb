@@ -1,3 +1,4 @@
+$('body').removeClass('loadingPost')
 $('#content-full2.new-content').append('<%= j render(@post) %>');
 <% if @post.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @post %>');

@@ -1,12 +1,13 @@
 <a href="/"><div id="logo-wrapper"><span id="logo"></span></div></a>
 <nav id="navbar-2"></nav>
 <nav id="navbar">
-    <a href="/users/sign_in"><div id="notice-to-sign"><i class="material-icons">priority_high</i></div></a>
-    <a href="/signup"><button id="sign-up">Sign Up</button></a>
-    <%= link_to('<p id="log-in">Log In</p>'.html_safe, new_user_session_path) %>
+    <!--<a href="/users/sign_in" class="login">--><div id="notice-to-sign"><i class="material-icons">priority_high</i></div><!--</a>-->
+    <!--<a href="/signup">--><button id="sign-up">Sign Up</button><!--</a>-->
+    <button id="log-in">Log in</button>
+    <%# link_to('<p id="log-in">Log In</p>'.html_safe, new_user_session_path) %>
     <form id="demo-2">
 	    <input type="search" placeholder="Search">
     </form>
-        <div id="notice-to-sign-message">You are not signed in, that's offensive</div>
+        <div id="notice-to-sign-message">You are not signed in</div>
     
 </nav>

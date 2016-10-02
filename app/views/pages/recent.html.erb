@@ -25,10 +25,17 @@
 <div class="overlay-full"></div>
 <div class="upper-black"></div>
 <div id="content-full2" class="full-wrapper new-content">
+    <% if @welcomeMessage == true %>
+        <div id="main-message">
+            Welcome to drolle! Enjoy your time. <img src="http://2.bp.blogspot.com/-4NwAstTunj0/UPiqueKINcI/AAAAAAAAAjE/jWzjl2Brquw/s1600/09.png"> 
+            <footer>click to hide</footer>
+        </div>
+    <% end %>
     <div id="main-page-type">
         <i class="material-icons" id="back-list">arrow_back</i>
         <%= link_to '<span id="feed-type">Feed</span>'.html_safe, '/' %><%= link_to '<span id="recent-type" class="active-type">Recent</span>'.html_safe, '/recent' %>
         
+        <!-- <div class="loadingPost-icon"></div> -->
         <i class="material-icons" id="next-post-icon">navigate_next</i>
         <i class="material-icons" id="prev-post-icon">navigate_before</i>
     </div>
@@ -42,64 +49,66 @@
                 <% if post.long === true  %>
                     <i class="material-icons expand-post">expand_more</i>
                 <% end %>
-                <% if user_signed_in? %>    
+                <% if user_signed_in? && current_user != post.user %>    
                 <div class="post-more-button <%= if current_user.voted_on? post, vote_scope: 'report' then 'reported' elsif current_user.voted_on? post, vote_scope: 'favor' then 'favorited' end %>">
-                            <%= link_to dislike_post_path(post, :report => true), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="reported-post material-icons">report</i><% end %>
+                            <%= link_to report_post_path(post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="reported-post material-icons">report</i><% end %>
                             <%= link_to like_post_path(post, :favor => true), method: :put, class: 'favor-post', title: 'Add to favorites', :"data-post-id" => post.id, remote: true  do %><i class="material-icons favorite-post">favorite</i><% end %>
+                            <div class="report-words">reported</div>
+                            <div class="favor-words">favored</div>
                 </div>
                 <% end %>
-                    <div id="loadPost" class="hidden">
-                        <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
-                            <%= text_field_tag :postid, post.id %>
-                            <%= submit_tag "Save"%>
-                        <% end %>
-                    </div>
-                <%= link_to(post) do %>
+                <div id="loadPost" class="loadPost hidden">
+                    <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
+                        <%= text_field_tag :postid, post.id %>
+                        <%= submit_tag "Save", class: 'submit-loadpost'%>
+                    <% end %>
+                </div>
+                <%# link_to(post) do %>
                     <img src="<%= post.image.url(:medium) %>" class="post-image">
                     <img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2">
-                <% end %>
+                <%# end %>
             </div>
                 
-                <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
-                <div class="post-footer">
-                    <% if post.anonymous != true %>
-                        <a href="/user/<%= post.user.username%>" class="user-link">
-                            <% if post.user.image.url == "missing.jpg" %>
-                                    <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:thumb) %>)"></div>
-                              <% else %>
-                                    <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
-                              <% end %>
-                            <span class="post-footer-user-name"><%= post.user.username %></span>
-                        </a>
-                    <% else %>
-                    <% if !post.facenumber.nil? %>
-                        <div class="post-footer-user-image" style="background-image: url(/assets/ragefaces/<%= post.facenumber %>face.png"></div>
-                    <% end %>
-                        <span class="post-footer-user-name anonymous-name">Anonymous</span>
-                    <% end %>
+                    <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
+                    <div class="post-footer">
+                <% if post.anonymous != true %>
+                    <a href="/user/<%= post.user.username %>" class="user-link">
+                        <% if post.user.image.url == "missing.jpg" %>
+                                <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:thumb) %>)"></div>
+                          <% else %>
+                                <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
+                          <% end %>
+                        <span class="post-footer-user-name"><%= post.user.username %></span>
+                    </a>
+                <% else %>
+
+                            <% if !post.facenumber.nil? %><div class="post-footer-user-image" style="background-image: url(http://www.nightmug.com/drolle/ragefaces/<%= post.facenumber %>face.png)"></div><% end %>
+                                <span class="post-footer-user-name anonymous-name">Anonymous</span>
+                            <% end %>
+                            
+                            <i class="material-icons post-options" tabindex="12">more_horiz</i>
                     
-                    <i class="material-icons post-options" tabindex="12">more_horiz</i>
-                    
-                    <% if current_user %>
                         <i class="material-icons comment-button">chat_bubble</i>
-                    <% else %>
-                        <a href="/users/sign_in"><i class="material-icons comment-button">chat_bubble</i></a>
-                    <% end %>
+
+
                     <% if current_user != post.user %>
-                    <div id="main-share-button">
-                    <% if current_user.share == '1' %>
-                        <a  href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <% elsif current_user.share == '2' %>
-                        <a href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <% elsif current_user.share == '3' %>
-                        <a href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Google Plus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                    <% elsif current_user.share == '4' %>
-                        <a href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
-                    <% end %>
-                    </div>
-                    <% if current_user.share == nil || current_user.share == '0' %>
-                        <i class="material-icons more-post-options share-button">share</i>
-                    <% end %>
+                        <div id="main-share-button">
+                            <% if user_signed_in? %>
+                                <% if current_user.share == '1' %>
+                                    <a  href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <% elsif current_user.share == '2' %>
+                                    <a href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <% elsif current_user.share == '3' %>
+                                    <a href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <% elsif current_user.share == '4' %>
+                                    <a href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
+                                <% elsif current_user.share == nil || current_user.share == '0' %>    
+                                    <i title="Share this post" class="material-icons more-post-options share-button">share</i>
+                                <% end %>
+                            <% elsif !user_signed_in? %>
+                                <i class="material-icons more-post-options share-button">share</i>
+                            <% end %>
+                        </div>
                     
                         <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
                             <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
@@ -130,33 +139,36 @@
                             <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %> points</span>
                         <% else %>
                             <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %> points</span>
-                            </div>
                         <% end %>
                         
                 </div>
+
+
+
+
+
                 
-                    <div class="more-post-options-container">
-                        <% if current_user == post.user %>
-                        <% if post.anonymous != true %>
-                            <span class="anonymous-checkbox" class="inline-block-imp">
-                                <%= form_for (post), remote: true do |f| %>
-                                    <%= f.check_box :anonymous %>
-                                    <i class="material-icons anonymous-checked"></i>
-                                    <div id="anonymous-image">
-                    			 		<i class="material-icons">add</i>
-                    			 	</div>
-                    			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
-        			 	            <span>Anonymous</span>
-        			 	            <%= f.submit 'Save', class: "submit-edit" %>
-                                <% end %>
-                            </span>
-                        <% end %>
-                        <% if post.anonymous != true %><span class="dott">.</span><% end %>
+                    <div class="more-post-options-container <%= if post.anonymous != true && user_signed_in? && current_user == post.user then 'tall' end %> ">
+                        <% if user_signed_in? && current_user == post.user %>
+                            <% if post.anonymous != true %>
+                                <span class="anonymous-checkbox" class="inline-block-imp">
+                                    <%= form_for (post), remote: true do |f| %>
+                                        <%= f.check_box :anonymous %>
+                                        <i class="material-icons anonymous-checked"></i>
+                                        <div id="anonymous-image" class="anonymous-image">
+                        			 		<i class="material-icons">add</i>
+                        			 	</div>
+                        			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+            			 	            <span>Anonymous</span>
+            			 	            <input type="button" class="before-submit-edit" value="Save">
+            			 	            <%= f.submit 'Save', class: "submit-edit hidden" %>
+                                    <% end %>
+                                </span>
+                                <span class="dott">.</span>
+                            <% end %>
                         
-                        <%= form_for post, method: :delete, remote: true do |f| %>
-                        
-                            <% f.submit 'delete post', class: "delete-post-submit" %>
-                        <% end %>
+                            <%= form_for post, method: :delete, remote: true do |f| %><% f.submit 'delete post', class: "delete-post-submit" %><% end %>
+
                         <% end %>
                         
                         <div class="share-buttons">
@@ -167,12 +179,14 @@
                             <a class="customer share" href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
                         </div>
                     </div>
+
+
+                    </div>
                 
-            </div>
-            <%= if !user_signed_in? then '</div>'.html_safe end %>
+            
             <div class="middle-wrapper">
                 <div class="comments-wrapper" id="comments-wrapper-<%= post.id %>">
-                <% if current_user %>
+                <% if user_signed_in? %>
                     <%= form_for [post, post.comments.new], html: {multipart: true}, remote: true do |f| %>
                       <div class="form-group comment-form" id="form-<%= post.id %>">
                         <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
@@ -184,34 +198,165 @@
                             <%= f.submit 'post', class: 'post-comment', name: 'post' %>
                             <div class="memes-emojis"><span class="make-meme">meme</span></div>
                         </div>
-                        
                       </div>
-          </div>
-          <% end %>
-          <% else %>
-                    <p class="commentig-notice">You have to be signed in to comment</p>
+                    <% end %>  
+
+
+                <% else %>    
+                    <p class="not-signed-in-comment">You need to be signed in to comment</p>
                 <% end %>
-            </div>
-            <div id="right-wrapper-<%= post.id %>" class="right-wrapper hidden">
-                <br>
-                <div class="loading-quarter-circle-4"></div>
-                <div class="loading-quarter-circle-3"></div>
-            </div>
+                </div>
+          
+                </div>
+
+
+                    <!--<p class="commentig-notice">You have to be signed in to comment</p>-->
+                
+            
+                                    <div id="right-wrapper-<%= post.id %>" class="right-wrapper hidden">
+                                        <br>
+                                        <div class="loading-quarter-circle-4"></div>
+                                        <div class="loading-quarter-circle-3"></div>
+                                    </div>
             
         </div><!-- right-wrapper -->
+        
     <% end %>
 </div>
+
 <div id="anonymous-faces">
-				<h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
-				<img class="" data-original="assets/ragefaces/1face.png" data-facenumber="1">
-				<img class="" data-original="assets/ragefaces/2face.png" data-facenumber="2">
-				<img class="" data-original="assets/ragefaces/3face.png" data-facenumber="3">
-				<img class="" data-original="assets/ragefaces/4face.png" data-facenumber="4">
-				<img class="" data-original="assets/ragefaces/5face.png" data-facenumber="5">
-				<img class="" data-original="assets/ragefaces/6face.png" data-facenumber="6">
-				<img class="" data-original="assets/ragefaces/7face.png" data-facenumber="7">
-				<img class="" data-original="assets/ragefaces/8face.png" data-facenumber="8">
-				<img class="" data-original="assets/ragefaces/9face.png" data-facenumber="9">
-			</div>
+    <h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
+    <img class="" data-original="assets/ragefaces/1face.png" data-facenumber="1">
+    <img class="" data-original="assets/ragefaces/2face.png" data-facenumber="2">
+    <img class="" data-original="assets/ragefaces/3face.png" data-facenumber="3">
+    <img class="" data-original="assets/ragefaces/4face.png" data-facenumber="4">
+    <img class="" data-original="assets/ragefaces/5face.png" data-facenumber="5">
+    <img class="" data-original="assets/ragefaces/6face.png" data-facenumber="6">
+    <img class="" data-original="assets/ragefaces/7face.png" data-facenumber="7">
+    <img class="" data-original="assets/ragefaces/8face.png" data-facenumber="8">
+    <img class="" data-original="assets/ragefaces/9face.png" data-facenumber="9">
+</div>
+
+<% if !user_signed_in? %>
+    <div id="remote-login-wrapper">
+    <div id="log-in-wrapper">
+  <h2>Log in</h2>
+
+<%= form_for(:user, :url => session_path(:user)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field" id="remember-me-button">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+    <span id="sign-up-2">Sign up</span>
+  </div>
+  <div id="other-log-in">
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+
+
+</div>
+<% end %>
+</div>
+
+
+<div id="remote-signup-wrapper">
+      <div id="sign-up-wrapper">
+    
+    <h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <span id="att-before-username">@</span>
+    <%= f.text_field :username, autofocus: true, id:"sign-up-username-field" %>
+    <i class="material-icons" id="username-check-icon">check_circle</i>
+  </div>
+  
+  <div class="form-group">
+    <label>Image<span style="
+    font-size: 12px;
+    margin: 8px;
+">you can add this later</span></label>
+    <div id="sign-up-input-wrapper">
+      <%= f.file_field :image, id: 'choose-image-input', :onchange => "previewUserImage(event)" %>
+      <div class="sign-up-input-visible" id="choose-image-preview"></div>
+      <i id="choose-image" class="material-icons">add_circle_outline</i>
+      <i class="material-icons" id="reset-user-image">cached</i>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label>Blurred Cover<span style="
+    font-size: 12px;
+    margin: 8px;
+">you can add this later</span></label>
+    <div id="sign-up-input-wrapper" class="cover-input-sign-up">
+      <%= f.file_field :cover, id: 'choose-cover-input', :onchange => "previewUserCover(event)" %>
+      <div class="sign-up-input-visible" id="choose-cover-preview"></div>
+      <i id="choose-cover" class="material-icons">add_circle_outline</i>
+      <i class="material-icons" id="reset-cover">cached</i>
+    </div>  
+  </div>
+  
+  <div class="field">
+    <%= f.label :bio %>
+        <span style="
+        font-size: 12px;
+        margin: 8px;
+    ">you can add this later</span>
+    <br />
+    <%= f.text_field :bio %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, id: "email-field-settings" %>
+    <i class="material-icons" id="email-check-icon">check_circle</i>
+  </div>
+
+  <div class="field passwords">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field passwords">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <%= f.check_box :pro, checked: true, class: "hidden" %>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "hidden", id: "sign-up-submit" %>
+    <button type="button" id="sign-up-submit-before">Sign up</button>
+  </div>
+<% end %>
+    <div id="other-log-in">
+      <%= render "devise/shared/links" %>
+    </div>
+      
+    
+  </div>
+</div>
 			
 </body>

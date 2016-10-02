@@ -1,7 +1,7 @@
 /*global $*/
-$('.pick-meme-container').css({
+/*$('.pick-meme-container').css({
         'height': ($('.pick-meme-container').eq(0).width() )*1.3
-      })
+      })*/
 $(document).on('click', '.show-reply-icon', function(){
   $('.new-reply').hide()
   var commentID = $(this).attr('id').replace('show-','')

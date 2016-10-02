@@ -4,8 +4,9 @@
   <title>Drolle</title>
   <%# unless controller.action_name  == 'make2'  %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    
   <%# end %>
+  
   
   
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,5 +35,6 @@
 
 <%= yield %>
 
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

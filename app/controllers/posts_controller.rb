@@ -47,17 +47,18 @@ class PostsController < ApplicationController
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
     #@comment = @post.comments.order("created_at DESC").page(params[:page]).per_page(35)
     #@highestVoted = Comment.order("created_at DESC").get_votes.size
-    @comment10 = @post.comments.where('cached_votes_score > -2').where('cached_votes_score < 10').ordered
-    @comment9 = @post.comments.where('cached_votes_score > 9').where('cached_votes_score < 20').ordered
-    @comment8 = @post.comments.where('cached_votes_score > 19').where('cached_votes_score < 40').ordered
-    @comment7 = @post.comments.where('cached_votes_score > 39').where('cached_votes_score < 80').ordered
-    @comment6 = @post.comments.where('cached_votes_score > 79').where('cached_votes_score < 160').ordered
-    @comment5 = @post.comments.where('cached_votes_score > 159').where('cached_votes_score < 320').ordered
-    @comment4 = @post.comments.where('cached_votes_score > 319').where('cached_votes_score < 640').ordered
-    @comment3 = @post.comments.where('cached_votes_score > 639').where('cached_votes_score < 1280').ordered
-    @comment2 = @post.comments.where('cached_votes_score > 1279').where('cached_votes_score < 2560').ordered
-    @comment1 = @post.comments.where('cached_votes_score > 2559').ordered
-    @commentbefore = [@comment1, @comment2,@comment3,@comment4,@comment5,@comment6,@comment7,@comment8,@comment9,@comment10].flatten
+    @comment11 = @post.comments.where(hidden: nil).where('cached_votes_score < 0').where('cached_votes_score > -3').ordered
+    @comment10 = @post.comments.where(hidden: nil).where('cached_votes_score > 0').where('cached_votes_score < 10').ordered
+    @comment9 = @post.comments.where(hidden: nil).where('cached_votes_score > 9').where('cached_votes_score < 20').ordered
+    @comment8 = @post.comments.where(hidden: nil).where('cached_votes_score > 19').where('cached_votes_score < 40').ordered
+    @comment7 = @post.comments.where(hidden: nil).where('cached_votes_score > 39').where('cached_votes_score < 80').ordered
+    @comment6 = @post.comments.where(hidden: nil).where('cached_votes_score > 79').where('cached_votes_score < 160').ordered
+    @comment5 = @post.comments.where(hidden: nil).where('cached_votes_score > 159').where('cached_votes_score < 320').ordered
+    @comment4 = @post.comments.where(hidden: nil).where('cached_votes_score > 319').where('cached_votes_score < 640').ordered
+    @comment3 = @post.comments.where(hidden: nil).where('cached_votes_score > 639').where('cached_votes_score < 1280').ordered
+    @comment2 = @post.comments.where(hidden: nil).where('cached_votes_score > 1279').where('cached_votes_score < 2560').ordered
+    @comment1 = @post.comments.where(hidden: nil).where('cached_votes_score > 2559').ordered
+    @commentbefore = [@comment1, @comment2,@comment3,@comment4,@comment5,@comment6,@comment7,@comment8,@comment9,@comment10,@comment11].flatten
     @comment = @commentbefore.paginate(:per_page => 35, :page => 1)
     respond_to do |format|
      format.html
@@ -116,13 +117,14 @@ class PostsController < ApplicationController
   def upvote
     @post = Post.find(params[:id])
     if params.has_key?(:favor)
-      @post.unvote_by current_user
-      flash.now[:notice] = 'Favored'
-      @post.unvote_by current_user, vote_scope: 'favor'
       if !current_user.voted_on? @post, vote_scope: 'favor'
         @post.vote_by :voter => current_user, :vote_scope => 'favor'
-      puts 'faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-      end  
+        puts 'faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+      else 
+        @post.unvote_by current_user
+        flash.now[:notice] = 'Favored'
+        @post.unvote_by current_user, vote_scope: 'favor'
+      end
     else
       if current_user.voted_up_on? @post
         @post.unvote_by current_user
@@ -149,20 +151,25 @@ class PostsController < ApplicationController
   end
   
   def update
-    @post = current_user.posts.find(params[:id])
-    @post.user_id = current_user.id
-    @post.user = current_user
-=begin    
-    if params[:post][:anonymous] == 1
-      @post.anonymous = true
-      @post.update(anonymous: true)
+    if !params[:post][:user_id].blank?
+      puts 'sssssssssssssssssssssssssssssssss'
+      @user = User.find(params[:post][:user_id])
+      @post = @user.posts.find(params[:id])
+      @post.user = @user
+      @post.user_id = @user.id
+      @post.granted = true
+      @post.hidden = nil
+      @post.update_attributes(permit_post)
+      Rails.logger.info(@post.errors.messages.inspect)
     else
-      @post.anonymous = false
-      @post.update(anonymous: false)
+      puts params[:user_id]
+      puts params[:post][:user_id]
+      @post = current_user.posts.find(params[:id])
+      @post.user_id = current_user.id
+      @post.user = current_user
+      @post.update_attributes(permit_post)
+      Rails.logger.info(@post.errors.messages.inspect)
     end
-=end    
-    @post.update_attributes(permit_post)
-    Rails.logger.info(@post.errors.messages.inspect)
     respond_to do |format|
      format.html
      format.js
@@ -181,40 +188,69 @@ class PostsController < ApplicationController
   end
   
   def report
-    @post = Post.find(params[:id])
-    @post.unvote_by current_user
-    if !current_user.voted_on? post, vote_scope: 'report'
-      @post.downvote_by :voter => current_user, :vote_scope => 'report'
+    @postt = Post.find(params[:id])
+    @postuser = @postt.user
+    @post = @postuser.posts.find(params[:id])
+    @post.user_id = current_user.id
+    @post.user = @postuser
+    @post.hidden = true
+            @post.update_attributes(permit_post2)
+            Rails.logger.info(@post.errors.messages.inspect)
+    if !current_user.voted_on? @post, vote_scope: 'report'
+        @post.downvote_from current_user, :vote_scope => 'report'
+        unless @post.granted == true
+          @post.reported = true
+          @post.hidden = true
+          @post.update_attributes(permit_post2)
+          Rails.logger.info(@post.errors.messages.inspect)
+        end
+        if @post.get_downvotes(:vote_scope => 'report').size == 2
+          unless @post.granted == true
+            @post.reported = true
+            @post.hidden = true
+            @post.update_attributes(permit_post2)
+            Rails.logger.info(@post.errors.messages.inspect)
+          end
+          @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: '/', what: 'Your post is now hidden for review.'}
+        end
     else
-      @post.unvote_by current_user
+      @post.unvote_by current_user, vote_scope: 'report'
     end
+    
+    redirect_to :back
   end
   
   def downvote
     @post = Post.find(params[:id])
-    if params.has_key?(:report)
-      #@post.unvote_by current_user
-      if !current_user.voted_on? @post, vote_scope: 'report'
-        puts 'sM'
-        @post.downvote_from current_user, :vote_scope => 'report'
-        @post.downvote_from User.find_by_id(3), :vote_scope => 'report'
-      else
-        @post.unvote_by current_user, vote_scope: 'report'
-      end
-      puts 'sssssssssssssssssssssssssssssssssssssssssssss'
-    else    
       if current_user.voted_down_on? @post
         @post.unvote_by current_user
-        @post.create_activity :upvote, owner: current_user, key: 'upvoting'
+        #@post.create_activity :upvote, owner: current_user, key: 'upvoting'
       else
         @post.downvote_by current_user
+        unless @post.granted == true
+          if (@post.created_at > Time.now - 7.minutes) && @post.get_downvotes.size == 2
+            @post.hidden = true
+            @post.update_attributes(permit_post2)
+            Rails.logger.info(@post.errors.messages.inspect)
+            @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
+          elsif ( ( 100 * @post.get_downvotes.size ) / @post.get_upvotes.size) > 25
+            @post.hidden = true
+            @post.update_attributes(permit_post2)
+            Rails.logger.info(@post.errors.messages.inspect)
+            @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
+          end
+        end
+        
       end
-    end  
-    redirect_to '/'
+    redirect_to :back
+    
   end
   
   private 
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber);
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted);
+    end
+    def permit_post2
+      params.permit(:hidden, :id);
     end
 end

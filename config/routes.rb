@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get '/contact' => 'pages#contact'
   get '/recent' => 'pages#recent'
   get '/register' => 'pages#register'
+  get '/admin' => 'pages#admin'
   resources :activities
   resources :comments
     
