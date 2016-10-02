@@ -480,11 +480,13 @@ function previewPostImage(event, thisFiler, thisPreview) {
     $(this).parents('.more-post-options-container').removeClass('active-tab')
     $(this).parents('.anonymous-cheeckbox').empty().hide()
   })
-  
-  $(document).on('click', '#log-in, #sign-up, .login', function(e){
-    e.preventDefault()
+  $(document).on('click', '.close-wrapper', function(){
+    $(this).parent().click()
+  })
+  $(document).on('click', '#log-in, #sign-up, .login, #notice-to-sign', function(e){
+    //e.preventDefault()
     $('#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile').addClass('blurred')
-    if ( $(this).is('#log-in') || $(this).is('.login') ) {
+    if ( $(this).is('#log-in') || $(this).is('.login') || $(this).is('#notice-to-sign') ) {
       $('#remote-login-wrapper').fadeIn(200)
       $('body').addClass('overflow-hidden')
     }

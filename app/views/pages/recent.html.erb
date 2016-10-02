@@ -1,4 +1,5 @@
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+    
     <i class="material-icons" id="hide-remote-make">clear</i>
     <% if user_signed_in? && @pTotal < 4 %>
     <div id="progress-table">
@@ -239,6 +240,7 @@
 
 <% if !user_signed_in? %>
     <div id="remote-login-wrapper">
+        <i class="material-icons close-wrapper">close</i>
     <div id="log-in-wrapper">
   <h2>Log in</h2>
 
@@ -276,6 +278,7 @@
 
 
 <div id="remote-signup-wrapper">
+    <i class="material-icons close-wrapper">close</i>
       <div id="sign-up-wrapper">
     
     <h2>Sign up</h2>

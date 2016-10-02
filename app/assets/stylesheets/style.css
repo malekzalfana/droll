@@ -4167,7 +4167,7 @@ html, body {
 		right: -100%;
 	}
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
 	#make #rage-comics-tab {
 		display: none;
 	}
@@ -4726,7 +4726,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 #notice-to-sign:hover i {
 	color: #ff300;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
 	#notice-to-sign {
 		display: block;
 	}
@@ -5230,6 +5230,9 @@ a[href="/users/auth/twitter"] {
 	background: white;
 }
 @media screen and (max-width: 600px) {
+	#next-post-icon, #prev-post-icon {
+		display: none !important;
+	}
 	#settings #settings-wrapper {
 		width: calc(100% - 20px);
 	}
@@ -5452,6 +5455,10 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
 	overflow-y: auto;
 }
 #remote-login-wrapper #log-in-wrapper, #remote-signup-wrapper #sign-up-wrapper {
+	width: 370px;
+    left: 0;right: 0;
+    margin: 0px auto;
+    font-family: open sans;
 	color: white !important;
 	width: 320px;
 	/* width: 370px; */
@@ -5460,13 +5467,31 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
     left: 0;
     right: 0;
     margin: 0px auto;
-    top: 40px;
     margin-bottom: 10px;
     color: white;
     font-family: open sans;
 }
+.close-wrapper {
+	opacity: 0.4;
+	font-size: 20px !important;
+	position: absolute;
+	top:10px;
+	right: 10px;
+	color: white;
+    font-size: 28px !important;
+}
+#remote-login-wrapper .close-wrapper {
+	display: block;
+}
+#remote-signup-wrapper .close-wrapper {
+	display: block;
+}
+#remote-signup-wrapper #sign-up-wrapper {
+	top: 40px;
+	overflow-x: hidden;
+}
 #remote-login-wrapper #log-in-wrapper {
-	top: 135px;
+	top: 60px;
 }
 #remote-login-wrapper #other-log-in a, #remote-signup-wrapper #other-log-in a{
 	color: white;

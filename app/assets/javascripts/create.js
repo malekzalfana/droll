@@ -1,5 +1,18 @@
 $(document).ready(function(){
-	
+	$(".post-image-wrapper").swipe( {
+    //Generic swipe handler for all directions
+    swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+      if ( $('body').hasClass('shown-post') ) {
+          $('#next-post-icon').click()
+      }
+    }, 
+    swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+    	if ( $('body').hasClass('shown-post') ) {
+          $('#prev-post-icon').click()
+      }
+    }
+  });
+  
 var memeCanvas = document.getElementById('meme-canvas');
 var memeCtx = memeCanvas.getContext('2d');
 memeCtx.scale(2,2);

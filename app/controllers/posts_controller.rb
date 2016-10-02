@@ -180,7 +180,13 @@ class PostsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    if current_user == @post.user
+      @post.destroy
+    else
+      @post.destroy
+      @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post has been deleted.'}
+    end
+    
     respond_to do |format|
      format.html
      format.js
@@ -211,7 +217,7 @@ class PostsController < ApplicationController
             @post.update_attributes(permit_post2)
             Rails.logger.info(@post.errors.messages.inspect)
           end
-          @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: '/', what: 'Your post is now hidden for review.'}
+          @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
         end
     else
       @post.unvote_by current_user, vote_scope: 'report'

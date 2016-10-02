@@ -1,4 +1,4 @@
-#log-in-wrapper, #sign-up-wrapper {
+div:not(#remote-login-wrapper) #log-in-wrapper, div:not(#remote-login-wrapper) #sign-up-wrapper {
     width: 370px;
     position: absolute;
     z-index: 2;
