@@ -23,12 +23,12 @@ body {
 
 .progress {
   border-radius: 50%;
-    position: absolute;
+    position: fixed;
     font-family: 'Lato', sans-serif;
     bottom: 0;
     left: 0;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     background: $color-inactive;
     margin: 10px;
     overflow: hidden;
@@ -36,16 +36,18 @@ body {
     content: $progress + "%";
     text-align: center;
     color: #ff3000;
-    width: 90%;
-    padding: 9px 6px;
-    height: 90%;
+    width: 92%;
+    padding: 10px 6px;
+    height: 92%;
     background: #f9f9f9;
     position: absolute;
     border-radius: 50%;
-    left: 5%;
-    top: 5%;
+    left: 4%;
+    top: 4%;
     z-index: 1000;
     box-sizing: border-box;
+    font-size: 11px;
+
   }
   .hide {
     height: 100%;

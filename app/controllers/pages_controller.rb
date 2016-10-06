@@ -49,6 +49,10 @@ class PagesController < ApplicationController
   
   def recent
     if user_signed_in?
+      unless session[:swipe]
+        @swipeMessage = true
+        session[:swipe] = true
+      end
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
       @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
@@ -114,6 +118,12 @@ class PagesController < ApplicationController
     @comment = Comment.all.limit(10)
   end
   
+  def feedback
+    @feedback = Feedback.create
+    @feedback.text = params[:text]
+    @feedback.user = params[:user]
+    @feedback.save
+  end
   
   def loadPost
     @postid = params[:postid]
@@ -129,7 +139,7 @@ class PagesController < ApplicationController
     @comment3 = @post.comments.where(hidden: nil).where('cached_votes_score > 639').where('cached_votes_score < 1280').ordered
     @comment2 = @post.comments.where(hidden: nil).where('cached_votes_score > 1279').where('cached_votes_score < 2560').ordered
     @comment1 = @post.comments.where(hidden: nil).where('cached_votes_score > 2559').ordered
-    @commentbefore = [@comment1, @comment2,@comment3,@comment4,@comment5,@comment6,@comment7,@comment8,@comment9,@comment10].flatten
+    @commentbefore = [@comment1, @comment2,@comment3,@comment4,@comment5,@comment6,@comment7,@comment8,@comment9,@comment10, @comment11].flatten
     @comment = @commentbefore.paginate(:per_page => 35, :page => params[:page])
     respond_to do |format|
      format.html

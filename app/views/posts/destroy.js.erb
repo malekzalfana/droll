@@ -1,3 +1,9 @@
-<% if !params[:post][:user_id].blank? %>
-$('#left-wrapper-<%= @post.id %>').parents('.wrapper').remove()
-<% end %>
+<%# if !params[:post][:user_id].blank? %>
+
+<%# end %>
+if ( $('body').is('#show') ) {
+    window.location = '/recent'
+}
+else {
+    $('#left-wrapper-<%= @post.id %>').parents('.wrapper').remove()
+}

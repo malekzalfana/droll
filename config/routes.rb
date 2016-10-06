@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get '/signup' => 'pages#signup'
   get '/checkEmail' => 'pages#checkEmail'
   get '/pages/loadPost' => 'pages#loadPost'
+  get '/pages/feedback' => 'pages#feedback'
   get '/about' => 'pages#about'
   get '/terms' => 'pages#terms'
   get '/contact' => 'pages#contact'

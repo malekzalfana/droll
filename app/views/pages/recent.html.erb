@@ -1,7 +1,20 @@
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+    <% if user_signed_in? %>
+        <i class="material-icons" id="show-feedback">feedback</i>
+        <div id="feedback">
+            <%= form_tag 'pages/feedback', remote: true, :method => 'get' do %>
+                <label>Any feedback is appreciated</label>
+                <%= hidden_field_tag :user, current_user, placeholder: "Tell us everything.." %>
+                <%= text_area_tag :text %>
+                <div id="thanks-feedback">Thank you!</div>
+                <%= submit_tag "SEND", id: "submit-feedback"%>
+                <input value="CANCEL" id="cancel-feedback">
+            <% end %>
+        </div>
+    <% end %>
     
     <i class="material-icons" id="hide-remote-make">clear</i>
-    <% if user_signed_in? && @pTotal < 4 %>
+    <% if user_signed_in? && @pTotal < 100 %>
     <div id="progress-table">
         <p class="<%= if current_user.image.url(:medium) == 'missing.jpg' then '' else 'progress-done' end %>">Set your image</p>
         <p class="<%= if current_user.cover.url(:medium) == 'missing-2.jpg' then '' else 'progress-done' end %>">Set your blurred cover</p>
@@ -33,12 +46,16 @@
         </div>
     <% end %>
     <div id="main-page-type">
-        <i class="material-icons" id="back-list">arrow_back</i>
-        <%= link_to '<span id="feed-type">Feed</span>'.html_safe, '/' %><%= link_to '<span id="recent-type" class="active-type">Recent</span>'.html_safe, '/recent' %>
+        <div id="back-clicker">
+            <i class="material-icons" id="back-list">arrow_back</i>
+            <%= link_to '<span id="feed-type">Feed</span>'.html_safe, '/' %><%= link_to '<span id="recent-type" class="active-type">Recent</span>'.html_safe, '/recent' %>
+            
+            <!-- <div class="loadingPost-icon"></div> -->
+        </div>
+            <i class="material-icons" id="next-post-icon">navigate_next</i>
+            <i class="material-icons" id="prev-post-icon">navigate_before</i>
         
-        <!-- <div class="loadingPost-icon"></div> -->
-        <i class="material-icons" id="next-post-icon">navigate_next</i>
-        <i class="material-icons" id="prev-post-icon">navigate_before</i>
+        
     </div>
     <div class="content-overlay"></div>
     <%= will_paginate @post %>
@@ -75,7 +92,7 @@
                 <% if post.anonymous != true %>
                     <a href="/user/<%= post.user.username %>" class="user-link">
                         <% if post.user.image.url == "missing.jpg" %>
-                                <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:thumb) %>)"></div>
+                                <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:tiny) %>)"></div>
                           <% else %>
                                 <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
                           <% end %>
@@ -112,7 +129,7 @@
                         </div>
                     
                         <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
-                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
                         <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
                             <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><% end %>
                         <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
@@ -174,10 +191,16 @@
                         
                         <div class="share-buttons">
                             <span class="share-word">Share</span>
+                            <!--
                             <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Facebook" target="_blank"><img src="http://i.imgur.com/D87RBjw.png"></a>
                             <a class="twitter customer share" href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><img src="http://i.imgur.com/d7WTVVP.png"></a>
                             <a class="google_plus customer share" href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Google Plus" target="_blank"><img src="http://i.imgur.com/NGKECtL.png"></a>
                             <a class="customer share" href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
+                            -->
+                            <a  href="http://www.facebook.com/sharer.php?u=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="http://twitter.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://plus.google.com/share?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="http://www.reddit.com/submit?url=https://drolle-3-malekzalfana.c9users.io<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
@@ -196,7 +219,8 @@
                         <div class="comment-html post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
                         <div class="right-comment-wrapper">
                             <div class="cancel-meme hidden-imp">Cancel</div>
-                            <%= f.submit 'post', class: 'post-comment', name: 'post' %>
+                            <input class="post-comment" value="post" readonly>
+                            <%= f.submit 'post', class: 'post-comment-after hidden', name: 'post' %>
                             <div class="memes-emojis"><span class="make-meme">meme</span></div>
                         </div>
                       </div>
@@ -226,17 +250,185 @@
 </div>
 
 <div id="anonymous-faces">
-    <h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
-    <img class="" data-original="assets/ragefaces/1face.png" data-facenumber="1">
-    <img class="" data-original="assets/ragefaces/2face.png" data-facenumber="2">
-    <img class="" data-original="assets/ragefaces/3face.png" data-facenumber="3">
-    <img class="" data-original="assets/ragefaces/4face.png" data-facenumber="4">
-    <img class="" data-original="assets/ragefaces/5face.png" data-facenumber="5">
-    <img class="" data-original="assets/ragefaces/6face.png" data-facenumber="6">
-    <img class="" data-original="assets/ragefaces/7face.png" data-facenumber="7">
-    <img class="" data-original="assets/ragefaces/8face.png" data-facenumber="8">
-    <img class="" data-original="assets/ragefaces/9face.png" data-facenumber="9">
-</div>
+				<h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
+				<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">
+			
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/2face.png" data-facenumber="2">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/3face.png" data-facenumber="3">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/4face.png" data-facenumber="4">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/5face.png" data-facenumber="5">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/6face.png" data-facenumber="6">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/7face.png" data-facenumber="7">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/8face.png" data-facenumber="8">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/9face.png" data-facenumber="9">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/10face.png" data-facenumber="10">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/11face.png" data-facenumber="11">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/12face.png" data-facenumber="12">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/13face.png" data-facenumber="13">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/14face.png" data-facenumber="14">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/15face.png" data-facenumber="15">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/16face.png" data-facenumber="16">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/17face.png" data-facenumber="17">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/18face.png" data-facenumber="18">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/19face.png" data-facenumber="19">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/20face.png" data-facenumber="20">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/21face.png" data-facenumber="21">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/22face.png" data-facenumber="22">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/23face.png" data-facenumber="23">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/24face.png" data-facenumber="24">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/25face.png" data-facenumber="25">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/26face.png" data-facenumber="26">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/27face.png" data-facenumber="27">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/28face.png" data-facenumber="28">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/29face.png" data-facenumber="29">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/30face.png" data-facenumber="30">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/31face.png" data-facenumber="31">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/32face.png" data-facenumber="32">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/33face.png" data-facenumber="33">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/34face.png" data-facenumber="34">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/35face.png" data-facenumber="35">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/36face.png" data-facenumber="36">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/37face.png" data-facenumber="37">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/38face.png" data-facenumber="38">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/39face.png" data-facenumber="39">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/40face.png" data-facenumber="40">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/41face.png" data-facenumber="41">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/42face.png" data-facenumber="42">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/43face.png" data-facenumber="43">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/44face.png" data-facenumber="44">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/45face.png" data-facenumber="45">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/46face.png" data-facenumber="46">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/47face.png" data-facenumber="47">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/48face.png" data-facenumber="48">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/49face.png" data-facenumber="49">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/50face.png" data-facenumber="50">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/51face.png" data-facenumber="51">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/52face.png" data-facenumber="52">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/53face.png" data-facenumber="53">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/54face.png" data-facenumber="54">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/55face.png" data-facenumber="55">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/56face.png" data-facenumber="56">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/57face.png" data-facenumber="57">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/58face.png" data-facenumber="58">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/59face.png" data-facenumber="59">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/60face.png" data-facenumber="60">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/61face.png" data-facenumber="61">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/62face.png" data-facenumber="62">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/63face.png" data-facenumber="63">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/64face.png" data-facenumber="64">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/65face.png" data-facenumber="65">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/66face.png" data-facenumber="66">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/67face.png" data-facenumber="67">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/68face.png" data-facenumber="68">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/69face.png" data-facenumber="69">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/70face.png" data-facenumber="70">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/71face.png" data-facenumber="71">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/72face.png" data-facenumber="72">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/73face.png" data-facenumber="73">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/74face.png" data-facenumber="74">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/75face.png" data-facenumber="75">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/76face.png" data-facenumber="76">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/77face.png" data-facenumber="77">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/78face.png" data-facenumber="78">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/79face.png" data-facenumber="79">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/80face.png" data-facenumber="80">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/81face.png" data-facenumber="81">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/82face.png" data-facenumber="82">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/83face.png" data-facenumber="83">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/84face.png" data-facenumber="84">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/85face.png" data-facenumber="85">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/86face.png" data-facenumber="86">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/87face.png" data-facenumber="87">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/88face.png" data-facenumber="88">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/89face.png" data-facenumber="89">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/90face.png" data-facenumber="90">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/91face.png" data-facenumber="91">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/92face.png" data-facenumber="92">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/93face.png" data-facenumber="93">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/94face.png" data-facenumber="94">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/95face.png" data-facenumber="95">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/96face.png" data-facenumber="96">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/97face.png" data-facenumber="97">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/98face.png" data-facenumber="98">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/99face.png" data-facenumber="99">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/100face.png" data-facenumber="100">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/101face.png" data-facenumber="101">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/102face.png" data-facenumber="102">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/103face.png" data-facenumber="103">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/104face.png" data-facenumber="104">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/105face.png" data-facenumber="105">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/106face.png" data-facenumber="106">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/107face.png" data-facenumber="107">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/108face.png" data-facenumber="108">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/109face.png" data-facenumber="109">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/110face.png" data-facenumber="110">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/111face.png" data-facenumber="111">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/112face.png" data-facenumber="112">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/113face.png" data-facenumber="113">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/114face.png" data-facenumber="114">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/115face.png" data-facenumber="115">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/116face.png" data-facenumber="116">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/117face.png" data-facenumber="117">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/118face.png" data-facenumber="118">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/119face.png" data-facenumber="119">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/120face.png" data-facenumber="120">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/121face.png" data-facenumber="121">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/122face.png" data-facenumber="122">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/123face.png" data-facenumber="123">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/124face.png" data-facenumber="124">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/125face.png" data-facenumber="125">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/126face.png" data-facenumber="126">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/127face.png" data-facenumber="127">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/128face.png" data-facenumber="128">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/129face.png" data-facenumber="129">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/130face.png" data-facenumber="130">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/131face.png" data-facenumber="131">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/132face.png" data-facenumber="132">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/133face.png" data-facenumber="133">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/134face.png" data-facenumber="134">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/135face.png" data-facenumber="135">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/136face.png" data-facenumber="136">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/137face.png" data-facenumber="137">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/138face.png" data-facenumber="138">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/139face.png" data-facenumber="139">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/140face.png" data-facenumber="140">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/141face.png" data-facenumber="141">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/142face.png" data-facenumber="142">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/143face.png" data-facenumber="143">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/144face.png" data-facenumber="144">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/145face.png" data-facenumber="145">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/146face.png" data-facenumber="146">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/147face.png" data-facenumber="147">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/148face.png" data-facenumber="148">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/149face.png" data-facenumber="149">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/150face.png" data-facenumber="150">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/151face.png" data-facenumber="151">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/152face.png" data-facenumber="152">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/153face.png" data-facenumber="153">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/154face.png" data-facenumber="154">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/155face.png" data-facenumber="155">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/156face.png" data-facenumber="156">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/157face.png" data-facenumber="157">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/158face.png" data-facenumber="158">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/159face.png" data-facenumber="159">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/160face.png" data-facenumber="160">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/161face.png" data-facenumber="161">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/162face.png" data-facenumber="162">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/163face.png" data-facenumber="163">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/164face.png" data-facenumber="164">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/165face.png" data-facenumber="165">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/173face.png" data-facenumber="173">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/166face.png" data-facenumber="166">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/167face.png" data-facenumber="167">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/168face.png" data-facenumber="168">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/169face.png" data-facenumber="169">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/170face.png" data-facenumber="170">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/171face.png" data-facenumber="171">
+			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/172face.png" data-facenumber="172">
+			
+			
+			</div>
 
 <% if !user_signed_in? %>
     <div id="remote-login-wrapper">
@@ -347,7 +539,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-  <%= f.check_box :pro, checked: true, class: "hidden" %>
+  <%= f.check_box :pro, checked: false, class: "hidden" %>
 
   <div class="actions">
     <%= f.submit "Sign up", class: "hidden", id: "sign-up-submit" %>

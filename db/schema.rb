@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160927214635) do
+ActiveRecord::Schema.define(version: 20161004122441) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 20160927214635) do
   add_index "comments", ["cached_votes_up"], name: "index_comments_on_cached_votes_up"
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text     "user"
+  end
 
   create_table "impressions", force: :cascade do |t|
     t.string   "impressionable_type"

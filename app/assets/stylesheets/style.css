@@ -8,6 +8,20 @@ html body {
 	overflow-x: hidden;
 	overflow-y: visible;
 }
+#make #log-in-wrapper {
+	width: 250px;
+    margin: 0px auto;
+    position: relative;
+    top: 60px;
+    font-family: open sans;
+}
+#make #log-in, #make #sign-up {
+	display: none !important;
+}
+.shown-post, #show {
+	transition: background ease-out 0.2s;
+	/*background: #efefef !important;*/
+}
 #make body {
 	min-width: 1100px;
 }
@@ -79,7 +93,7 @@ a {
     position: fixed;
     padding: 0px;
     top: 0px;
-    z-index: 3;
+    z-index: 5;
     margin: 0px;
     background: none;
     pointer-events: none;
@@ -98,16 +112,81 @@ a {
 #show #logo-wrapper {
 	position: absolute;
 }
+#feedback {
+	position: fixed;
+    z-index: 3;
+    width: 360px;
+    height: 315px;
+    background: white;
+    max-width: 100%;
+    margin: 0px auto;
+    left: 0;
+    right: 0;
+    top: calc(100% - 470px);
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.137255) 0px 24px 38px 3px, rgba(0, 0, 0, 0.117647) 0px 9px 46px 8px, rgba(0, 0, 0, 0.2) 0px 11px 15px -7px;
+    display: none;
+}
+#thanks-feedback {
+	font-size: 17px;
+    color: gray;
+    padding: 11px;
+    float: right;
+    padding-right: 18px;
+    display: none;
+}
+#feedback label {
+	    background: #ff3000;
+    color: white;
+    display: block;
+    padding: 15px 0px;
+    font-size: 20px;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+    text-indent: 10px;
+}
+#feedback textarea {
+	border: none !important;
+	    display: block;
+    height: 200px;
+    background: #f9f9f9;
+    font-size: 14px;
+    font-family: roboto;
+    width: 96%;
+    padding: 10px 2%;
+    resize: none;
+}
+#feedback input {
+	width: 70px;
+    padding: 12px;
+    font-size: 15px;
+    background: none;
+    float: right;
+    color: #606060;
+    cursor: pointer;
+    cursor: pointer;
+}
+#show-feedback {
+	    opacity: 0.5;
+    position: fixed;
+    cursor: pointer;
+    bottom: 0;
+    margin: 5px;
+    z-index: 20;
+}
+#show-feedback:hover {
+	opacity: 0.8;
+}
+#feedback input:hover, #feedback input:active {
+	color: #252525;
+}
 #logo {
-    height: 48px;
     display: block;
     background-position: center center;
-    width: 58px;
-    background-image: url('di60.png');
-    background-size: 57px;
     float: left;
     background-repeat: no-repeat;
 	z-index: 100 !important;
+	width: 40px;
+	margin: 6px;
 }
 #alpha {
 	background: rgb(148, 148, 148);
@@ -775,6 +854,7 @@ textarea:focus {
 	padding: 5px;
 	text-align: center;
 	color: whitesmoke;
+	display: none !important;
 }
 
 #ragecontainer #tags p {
@@ -2112,7 +2192,7 @@ input::-webkit-input-placeholder {
     position: relative;
     width: 100%;
     height: 65px;
-    color: #252525;
+    color: #676767;
     font-size: 30px;
     font-family: open sans ;
     border: none;
@@ -2551,6 +2631,7 @@ position: fixed;
 }
 .post-comment {
 	border: none;
+	box-sizing: border-box;
     font-size: 15px;
     font-family: open sans;
     padding: 3px 7px;
@@ -2559,6 +2640,12 @@ position: fixed;
     border-radius: 2px;
     cursor: pointer;
     color: black;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .post-comment-body {
 	/*width: 515px;*/
@@ -3042,7 +3129,7 @@ html {
     vertical-align: middle;
     display: table-cell;
     padding-left: 0px;
-    padding-right: 15px;
+    padding-right: 25px;
 }
 
 .notif-left-col {
@@ -3133,6 +3220,14 @@ html {
 	font-weight: 800;
 	opacity: 1 !important;
 }
+
+/*.shown-post .active-type {
+	opacity: 0.7 !important;
+}
+#back-list {
+	color: #252525;
+	opacity: 0.7 !important;
+}*/
 #notification-icon-bell, #menu-button, #notification-icon-2 i {
 	margin: 5px 5px;
     font-size: 20px;
@@ -3214,7 +3309,7 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 }
 #show #navbar, #show #logo {
 	position: absolute;
-	z-index: 3;
+	z-index: 5;
 }
 #settings-title {
 	    font-size: 30px;
@@ -3589,7 +3684,7 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 		margin: 10px 10px;
 	}
 	#index #nav-icons-wrapper, #recent #nav-icons-wrapper {
-		width: 50px;
+		/*width: 50px;*/
 		position: absolute;
 		right: 0px;
 	}
@@ -3797,6 +3892,12 @@ iframe {
     border-bottom: 2px solid #252525;
 }
 
+#nav-icons-wrapper:focus {
+	background: red !important;
+}
+.progress {
+	display: none !important;
+}
 .loading-quarter-circle {
         float: left;
     display: none;
@@ -3839,6 +3940,19 @@ iframe {
   border-top: 4px solid transparent;
   border-left: 4px solid #ff562e;
   border-bottom: 4px solid transparent;
+}
+body.shown-post #back-clicker, #show #back-clicker {
+	display: inline-block;
+	cursor: pointer;
+	height: 30px;
+}
+body.wrapper .wrapper{
+	padding-top: 0px;
+}
+body.shown-post #back-clicker:hover #back-list, body.shown-post #back-clicker:hover .active-type, #show #back-clicker:hover #back-list, #show #back-clicker:hover .active-type,
+body.shown-post #back-clicker:active #back-list, body.shown-post #back-clicker:active .active-type, #show #back-clicker:active #back-list, #show #back-clicker:active .active-type
+{
+	color: #ff3000;
 }
 @keyframes spin {
   100% {
@@ -3909,7 +4023,7 @@ html, body {
 
 .progress {
     border-radius: 50%;
-    position: absolute;
+    position: fixed;
     font-family: 'Lato', sans-serif;
     bottom: 0;
     left: 0;
@@ -3957,20 +4071,43 @@ html, body {
   transform-origin: left center;
   transform: rotate(72deg);
 }*/
+.post-footer-user-name.anonymous-name {
+	text-transform: lowercase;
+	opacity: 0.5;
+	color: black;
+}
+.post-footer-user-name {
+	font-size: 16px;
+    color: black;
+    float: left;
+    margin: 11px 3px;
+    opacity: 0.7;
+    font-family: open sans;
+    font-weight: 500;
+    /*font-family: schoolbell;*/
+    text-transform: lowercase;
+}
 #progress-table {
 	background: white;
     display: inline-block;
     padding: 7px;
     position: fixed;
-    bottom: 70px;
+    bottom: 55px;
     left: 10px;
+    z-index: 10;
     font-family: open sans;
     font-size: 15px;
     display: none;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.32);
 }
+#meenu-button:focus {
+	background: #ff3000;
+}
+#unlock-feed a {
+	color: #ff3000;
+}
 #progress-table p {
-	border-left: 2px solid #b2b2b2;
+	border-left: 1px solid #b2b2b2;
     padding-left: 7px;
 }
 #make2 #tabs-wrappper {
@@ -3978,6 +4115,9 @@ html, body {
 }
 #make2 #tabs-wrapper div {
 	width: 50% !important;
+}
+.wrapper {
+	
 }
 #make #tabs-wrapper {
 	max-width: 600px;
@@ -3994,7 +4134,7 @@ html, body {
     right: 0;
 }
 #progress-table p.progress-done {
-	border-left: 2px solid red;
+	border-left: 1px solid red;
 }
 .reported-post {
 	float: right;
@@ -4014,7 +4154,9 @@ html, body {
     opacity: 0;
     transition: 0.3s all ease-out;
 }
-
+body:not(.shown-post) .post-image-wrapper {
+	cursor: pointer;
+}
 .post-image-wrapper:hover .reported-post, .post-image-wrapper:hover .favorite-post {
 	opacity: 0.6;
 }
@@ -4160,6 +4302,12 @@ html, body {
 	#nav-icons-wrapper a, #nav-icons-wrapper #notification-icon,#recent #nav-icons-wrapper a, #nav-icons-wrapper #notification-icon, .upper-black {
 		display: none;
 	}
+	#notif-title {
+		text-indent: 56px;
+	    margin: 15px 0px 20px 0px;
+	}
+}
+@media screen and (max-width: 600px) {
 	#notif-menu, #notif-footer, .post-image-wrapper {
 		width: 100%;
 	}
@@ -4281,6 +4429,9 @@ html, body {
 	#content-full2 .post-image {
 		width: 100%;
 	}
+	#main-page-type {
+		text-align: center !important;
+	}
 }
 .right-wrapper {
 	display: none !important;
@@ -4400,6 +4551,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 .shown.wrapper .post-image-wrapper {
 	max-height: none !important;
 }
+.shown-post .progress {
+	display: none;
+}
 @media screen and (max-width: 700px) {
 	.shown-post #main-page-type, #show #main-page-type {
 		 text-align: left;
@@ -4407,6 +4561,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 	    width: calc(100% - 115px);
 	    margin: 0px auto;
 	    margin-top: 11px;
+	}
+	.progress {
+		display: none;
 	}
 }
 @media screen and (max-width: 400px) {
@@ -5044,9 +5201,19 @@ body.anonymous {
 .reported-container .delete-post-submit, .reported-container .submit-edit, .skip-reported {
 	margin: 0px;
 	border-radius: 0px !important;
-    width: 33.33%;
+    width: 50%;
     padding: 0px;
     height: 40px;
+    background: white;
+    color: #606060;
+    cursor: pointer;
+}
+.shown-post #main-page-type .active-type {
+	pointer-events: auto
+}
+.shown-post #main-page-type .active-type:hover {
+	cursor: pointer;
+	color: #ff3000;
 }
 .skip-reported {
 	font-family: open sans;
@@ -5138,12 +5305,17 @@ body.anonymous {
     margin-top: 6px;
 }
 .share-word {
-	 color: gray;
-    font-family: open sans;
+	  color: black;
+    font-family: roboto;
     position: relative;
     display: inline-block;
-    bottom: 10px;
+    font-size: 16px;
+    opacity: 0.7;
 
+}
+.share-buttons {
+	margin: 7px;
+	display: inline-block;
 }
 .facebook img, .twitter img {width: 21px !important;}
 img.chosen {
@@ -5472,7 +5644,8 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
     font-family: open sans;
 }
 .close-wrapper {
-	opacity: 0.4;
+	opacity: 0.5;
+	cursor: pointer;
 	font-size: 20px !important;
 	position: absolute;
 	top:10px;
@@ -5511,7 +5684,43 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
 #log-in-wrapper a[href="/users/sign_in"], #sign-up-wrapper a[href="/users/sign_up"], #log-in-wrapper a[href="/users/sign_up"], #sign-up-wrapper a[href="/users/sign_in"],  #sign-up-wrapper a[href="/users/password/new"] {
 	display: none;
 }
+#log-in {
+	cursor: pointer;
+}
+#share-it {
+	background: white;
+    font-size: 19px;
+    font-family: roboto;
+    font-weight: 300;
+    border-bottom: 2px solid #ff3000;
+    color: #ff3000;
+}
+.cancel-share-it {
+	float: right;
+	cursor: pointer;
+}
+#share-it i {
+	font-size: 17px;
+    margin: 10px 5px;
+    color: #ff3000;
+}
+.share-buttons i.fa {
+    display: inline-block;
+    margin: 4px;
+    
+    position: relative;
+    color: black;
+    opacity: 0.7;
+    font-size: 18px;
+}
+i.fa.fa-reddit-alien {
+    bottom: 1px;
+}
 
+
+.share-buttons img {
+	opacity: 0.8;
+}
 .blurred {
 	filter: blur(5px) !important;
 	-webkit-filter: blur(5px) !important;
@@ -5546,12 +5755,18 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
 .loadingPost #next-post-icon {
 	display: none;
 }*/
-#sign-up-2 {
+#sign-up-2, #sign-up-link {
 	margin-left: 10px;
 	opacity: 0.9;
 	display: none;
 }
-@media screen and (max-width: 800px) {
+#sign-up-link {
+	display: inline-block;
+}
+#sign-up-username-field {
+	text-transform: lowercase;
+}
+@media screen and (max-width: 850px) {
 	#sign-up-2 {
 		display: inline-block;
 	}

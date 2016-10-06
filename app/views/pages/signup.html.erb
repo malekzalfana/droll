@@ -79,7 +79,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-  <%= f.check_box :pro, checked: true, class: "hidden" %>
+  <%= f.check_box :pro, checked: false, class: "hidden" %>
 
   <div class="actions">
     <%= f.submit "Sign up", class: "hidden", id: "sign-up-submit" %>

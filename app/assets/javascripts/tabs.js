@@ -1,4 +1,21 @@
 //document.domain = 'https://drolle-3-malekzalfana.c9users.io'
+$(document).on('click','#submit-feedback, #cancel-feedback',function(){
+  if( $(this).is('#submit-feedback') ) {
+    $('#submit-feedback, #cancel-feedback').hide()
+    $('#thanks-feedback').fadeIn()
+    setTimeout(function(){
+      $('#feedback').fadeOut(100)
+    }, 1000)
+  }
+  else {
+    $('#feedback').fadeOut(100)
+  }
+  
+})
+$(document).on('click','#show-feedback',function(){
+  $('#submit-feedback, #cancel-feedback, #feedback').show()
+  $('#thanks-feedback').hide()
+})
 $(document).on('click','.tabs',function(){
   $('.choosen-content').hide();
   $('.tabs').removeClass('active-tab');
@@ -111,16 +128,59 @@ function previewPostImage(event, thisFiler, thisPreview) {
     }
     reader.readAsDataURL(image);
   };
+  /*
   $(document).on('click', '#menu-button', function(){
+    setTimeout(function(){
+      $(this).parent().focus()
+    },100)
+    //$(this).focus()
+    
+    //$(this).parent().addClass('shown')
+    $('#notification-icon, #nav-icons-wrapper a').fadeIn(100)
+  })
+  
+  $(document).on('outfocus', '#menu-button', function(){
+    $('#notification-icon, #nav-icons-wrapper a').hide()
+    //$(this).removeClass('shown')
+  })
+  
+  $(document).on('mouseover', '#menu-button', function(){
     if (  $(this).parent().hasClass('shown')  ) {
       $(this).parent().removeClass('shown')
       $('#notification-icon, #nav-icons-wrapper a').hide()
+      //$('#overlay-under-notif').hide()
     }
     else {
       $(this).parent().addClass('shown')
       $('#notification-icon, #nav-icons-wrapper a').fadeIn(100)
+      //$('#overlay-under-notif').fadeIn()
     }
   })
+  */
+  
+  $(document).on('mouseover', '#menu-button-wrapper', function(){
+      $(this).addClass('shown')
+      $('#notification-icon, #nav-icons-wrapper a').fadeIn(100)
+  })
+  $(document).on('click', '#menu-button-wrapper', function(){
+      $(this).addClass('shown')
+      $('#notification-icon, #nav-icons-wrapper a').fadeIn(100)
+  })
+  $(document).on('keyup', '#sign-up-username-field', function(){
+    $(this).val( $(this).val().toLowerCase() )
+    console.log( $(this).val() )
+  })
+  
+  $(document).on('mouseleave', '#nav-icons-wrapper', function(){
+    if ( window.innerWidth <= 850  ) {
+      $('#menu-button-wrapper').removeClass('shown')
+      $('#notification-icon, #nav-icons-wrapper a').hide() 
+    }
+  })
+  $(document).on('click', '.cancel-share-it', function(){
+      $(this).parent().hide()
+  })
+  
   $(document).on('click', '#cancel-upload', function(e){
     e.preventDefault();
     $("#images-content-wrapper").load(window.location.href + " #images-content");
@@ -134,8 +194,11 @@ function previewPostImage(event, thisFiler, thisPreview) {
   $(document).on('click', '#choose-image, #reset-user-image', function(){
     $(this).siblings('input').click()
   })
-  $(document).on('click', '.skip-reported', function(){
-    $(this).parents('.wrapper').addClass('skipped-reported')
+  $(document).on('click', '.shown-post #back-clicker, #show #back-clicker', function(){
+    $('#back-list').click()
+  })
+  $(document).on('click', '.submit-edit-2', function(){
+    $(this).parents('.wrapper').addClass('hidden')
   })
   $(document).on('click', '#done-meme', function(){
     var memeCanvas = document.getElementById('meme-canvas');
@@ -182,7 +245,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
       if ( !$(thisWrapper).children('.right-wrapper').hasClass('shown') && !$(thisWrapper).children('.right-wrapper').hasClass('loading-2')  ) {
         console.log('clickedd')
         $('.shown.wrapper .right-wrapper').addClass('loading-2')
-        $(thisWrapper).find('.submit-loadpost').eq(0).click()
+        $(thisWrapper).find('.submit-loadpost').eq(0).click().remove()
         console.log('clickedddddddddddddd')
         console.log( $(thisWrapper).find('.submit-loadpost').eq(0)  )
         if (window.innerWidth > 600  ) {
@@ -228,8 +291,8 @@ function previewPostImage(event, thisFiler, thisPreview) {
     
     if ( !$('body').hasClass('loadingPost')  && !$(thisWrapper).is( $('.wrapper').last() ) ) {
         if ( $(thisWrapper).next('.wrapper').length == 0 && $('body').hasClass('loadingPost') ) {
-      $('.loadingPost-icon').addClass('loading-animation')
-      var loadingPostInterval =
+        $('.loadingPost-icon').addClass('loading-animation')
+        var loadingPostInterval =
         setInterval(function(){
         if ( $(thisWrapper).next('.wrapper').length == 0  ) {
             $('.loadingPost-icon').removeClass('loading-animation')
@@ -339,12 +402,54 @@ function previewPostImage(event, thisFiler, thisPreview) {
         }
     }
   })
-  $(document).on('mousedown', '.post-comment', function(e){
-    if ( $('.wrapper:visible .comment-html').is(':empty') ) {
-      e.stopPropagation()
-      e.preventDefault()
-    }
-  })
+  var toPost = true;
+  var commentopen = false
+  $(document).on('mousedown', '.post-comment', function(){
+        var thisCommentBody = $(this).parents('form')
+        //console.log(thisCommentBody)
+        //console.log($(thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
+        $(thisCommentBody).find('textarea.post-comment-body').val( $(thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
+    })
+    $(document).on('click', '.post-comment', function(){
+        var thisCommentBody = $(this).parents('form')
+        if(  $(thisCommentBody).find('.post-comment-body-2.post-comment-body').html() == '' && $('.shown.wrapper .base64-make').val() == '') {
+          $(this).parents('.middle-wrapper').removeClass('buzz').hide().show().addClass('buzz')
+          $('.wrapper.shown .post-comment-body-2.post-comment-body').eq(0).focus()
+        }
+        else {
+          $(thisCommentBody).find('textarea.post-comment-body').val( $(thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
+          $('.middle-wrapper').hide()
+          commentopen = false;
+          $('.loading-quarter-circle').addClass('loading-animation')
+          setTimeout(function(){
+              $('.wrapper:visible .comment-html').html('')
+              $('.wrapper:visible .cancel-meme').click()
+              //$('.shown .base64-make').attr('value', '')
+              //$('.base64-image').remove()
+          }, 2000)
+          $(this).siblings('.post-comment-after').click()
+          toPost = false;
+        }
+        
+    })
+    $(document).on('click', '.comment-button', function(){
+      $('.middle-wrapper').removeClass('buzz')
+      toPost = true;
+        if ( commentopen == false){
+            $('.middle-wrapper').show();
+            setTimeout(function(){
+                $('.wrapper.shown .post-comment-body-2.post-comment-body').eq(0).focus()
+            }, 100)
+            
+            commentopen = true
+        }
+        else {
+            $('.middle-wrapper').hide();
+            commentopen = false
+        }
+    });
+    
+  
   $(document).on('click', '#cancel-meme-2', function(e){
     $('#pick-meme').show();
     $('#text-top, #created-meme-title, #text-bottom').val('')
@@ -513,7 +618,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
       $('.choosen-content:visible .anonymous-image-field').attr('value', '')
       $('.choosen-content:visible .anonymous-image img').remove()
       $('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop('checked', false);
-      $('.more-post-options-container').removeClass('active-tab')
+      $('.more-post-options-container').removeClass('active-tab choosen-content')
       //$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
     }
     else {
@@ -521,8 +626,8 @@ function previewPostImage(event, thisFiler, thisPreview) {
       $('.choosen-content:visible .anonymous-image-field').attr('value', '')
       $('.choosen-content:visible .anonymous-image img').remove()
       $('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop('checked', false);
-      $('.more-post-options-container').removeClass('active-tab')
-      $(this).parent('.post-footer').siblings('.more-post-options-container').addClass('active-tab')
+      $('.more-post-options-container').removeClass('active-tab choosen-content')
+      $(this).parents('.post-footer').siblings('.more-post-options-container').addClass('active-tab choosen-content')
       console.log('shown???')
     }
     
@@ -782,6 +887,13 @@ function previewPostImage(event, thisFiler, thisPreview) {
 }(jQuery));
 
 $(document).on('ready page:load', function () {
+  $('.progress').mouseover(function(){
+        $('#progress-table').fadeIn()
+    })
+    $('.progress').mouseleave(function(){
+        $('#progress-table').fadeOut()
+    })
+  
   var $container = $('#left-content-profile');
       console.log($container)
         $container.imagesLoaded( function() {
@@ -797,7 +909,12 @@ $(document).on('ready page:load', function () {
                             //$('.list-count').text(jobCount + ' items');
                               
                             
-                            $("#search-memes").keyup(function () {
+                            
+        
+        
+});
+$("#search-memes").keyup(function () {
+                              console.log('search-meme working')
                                //$(this).addClass('hidden');
                             
                               var searchTerm = $("#search-memes").val();
@@ -843,9 +960,6 @@ $(document).on('ready page:load', function () {
                               
                               
                             });
-        
-        
-});
 var $container = $('#left-content-profile');
       console.log($container)
         $container.imagesLoaded( function() {

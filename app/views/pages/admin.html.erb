@@ -4,9 +4,13 @@
 <div id="content-full2" class="full-wrapper new-content">
     <div id="main-page-type">
         <i class="material-icons" id="back-list">arrow_back</i>
-        <span id="recent-type" class="active-type">Reported</span>
+        <span id="recent-type" class="active-type"><%= @post.count %> Hidden/Reported</span>
     </div>
     <div class="content-overlay"></div>
+    <div class='wrapper'><%= User.count %> signups</div>
+    <div class='wrapper'><%= Post.count %> posts</div>
+    <div class='wrapper'><%= Post.where("created_at >= ?", Time.zone.now.beginning_of_day).count %> posts today</div>
+    
     <%= will_paginate @post %>
     <% @post.each do |post| %>
         <div class="wrapper" data-post-id="<%= post.id %>">
@@ -63,11 +67,11 @@
                         <%= f.hidden_field :user_id, value: post.user.id %>
                         <%= f.submit 'delete post', class: "delete-post-submit" %>
                     <% end %>
-                    <button class="skip-reported">Skip</button>
+                    
                     <%= form_for (post), :user_id => post.user_id, remote: true do |f| %>
                         <%= f.hidden_field :granted, value: true %>
                         <%= f.hidden_field :user_id, value: post.user.id %>
-		 	            <%= f.submit 'Grant', class: "submit-edit" %>
+		 	            <%= f.submit 'Grant', class: "submit-edit submit-edit-2" %>
                     <% end %>
                 </div>
 

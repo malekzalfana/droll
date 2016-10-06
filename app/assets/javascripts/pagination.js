@@ -9,6 +9,11 @@ window.onload = function(){
     }
     var wrapperNumber = document.getElementsByClassName('wrapper').length
     $(window).scroll(function (event) {
+        if ( $('#menu-button-wrapper').hasClass('shown') ) {
+        $('#menu-button').parent().removeClass('shown')
+        $('#notification-icon, #nav-icons-wrapper a').hide()    
+        }
+        
 if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-post') ) {
     
     

@@ -186,7 +186,6 @@ class PostsController < ApplicationController
       @post.destroy
       @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post has been deleted.'}
     end
-    
     respond_to do |format|
      format.html
      format.js
@@ -199,9 +198,9 @@ class PostsController < ApplicationController
     @post = @postuser.posts.find(params[:id])
     @post.user_id = current_user.id
     @post.user = @postuser
-    @post.hidden = true
-            @post.update_attributes(permit_post2)
-            Rails.logger.info(@post.errors.messages.inspect)
+    #@post.hidden = true
+    #        @post.update_attributes(permit_post2)
+    #        Rails.logger.info(@post.errors.messages.inspect)
     if !current_user.voted_on? @post, vote_scope: 'report'
         @post.downvote_from current_user, :vote_scope => 'report'
         unless @post.granted == true
