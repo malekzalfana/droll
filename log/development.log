@@ -3547,3 +3547,9 @@ Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29
 
 
 Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.48.157 at 2016-10-06 21:53:56 +0000
+
+
+Started GET "/assets/smallicon2.png" for 94.187.48.157 at 2016-10-06 21:58:07 +0000
+
+
+Started GET "/assets/si.png" for 94.187.48.157 at 2016-10-06 22:00:11 +0000
