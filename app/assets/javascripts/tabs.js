@@ -74,20 +74,33 @@ function previewPostImage(event, thisFiler, thisPreview) {
       $('#cancel-upload, #reset-image, #submit-image-button-before').show()
       $('.anonymous-checkbox').addClass('shown')
   };
+  var toInput = true;
   function previewUserImage(event, thisFiler, thisPreview) {
-    var files = event.target.files;
-    var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
+    console.log('ssssss')
+    if ( toInput == true ) {
+      var files = event.target.files;
+      var image = files[0]
+      var reader = new FileReader();
+      reader.onload = function(file) {
       var img = new Image();
-      console.log(file);
+      //console.log(file);
       img.src = file.target.result;
       $('#choose-image-preview').css({'background-image':'url('+img.src +')'});
-      console.log('vv'+ img.src)
+      //console.log('vv'+ img.src)
       $('#choose-image').hide()
     }
     reader.readAsDataURL(image);
-      $('#reset-user-image').show()
+    $('#reset-user-image').show()
+    toInput = false
+    /*setTimeout(function(){
+      $('body').focus()
+    }, 100)*/
+    
+    }
+    
+    setTimeout(function(){
+      toInput = true
+    }, 200)
   };
   function previewUserCover(event, thisFiler, thisPreview) {
     var files = event.target.files;
@@ -185,9 +198,20 @@ function previewPostImage(event, thisFiler, thisPreview) {
     e.preventDefault();
     $("#images-content-wrapper").load(window.location.href + " #images-content");
   })
+  var toClickImage = true;
+  /*
   $(document).on('click', '#choose-image, #reset-user-image', function(){
-    $(this).siblings('input').click()
+    console.log('clickeddddddddd')
+    if ( toClickImage == true  ) {
+      $(this).siblings('#choose-image-input').click()
+      toClickImage = false
+      setTimeout(function(){
+        toClickImage = true
+      }, 1300)
+    }
+    
   })
+  */
   $(document).on('click', '#edit-profile-image, #edit-profile-cover', function(){
     $('#'+ $(this).attr('id')+ '-field' ).click()
   })
