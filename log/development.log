@@ -4323,3 +4323,325 @@ Started GET "/assets/tabs.self-6c48e7818884b151be19c7486ab076cac6f95ac19340a888b
 
 
 Started GET "/assets/drolle.jpg" for 77.42.182.209 at 2016-10-07 11:39:05 +0000
+
+
+Started GET "/" for 77.42.182.209 at 2016-10-07 11:47:27 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "c36561a7d9af6aa2cb370b14cf60e434"]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 3)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?) AND (created_at < '2016-10-05 11:47:27.292109')  ORDER BY created_at DESC[0m  [["follower_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.6ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC LIMIT 25
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 86]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 88]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", 23]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 88]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 22]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 88]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 63]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 63]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 39]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 1]]
+  Rendered layouts/_activities.html.erb (29.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  Rendered pages/index.html.erb within layouts/application (49.7ms)
+  Rendered layouts/_nav_user.html.erb (1.2ms)
+  Rendered layouts/_nav.html.erb (2.7ms)
+Completed 200 OK in 311ms (Views: 297.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/recent" for 77.42.182.209 at 2016-10-07 11:51:10 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "c36561a7d9af6aa2cb370b14cf60e434"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (1.9ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (9.9ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (1.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 2 AND (created_at >= '2016-10-05 11:51:10.241912')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 86]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 88]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 23]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 88]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", 22]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 88]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 63]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 63]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 63]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 63]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  Rendered layouts/_activities.html.erb (32.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (48.2ms)
+  Rendered layouts/_nav_user.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 366ms (Views: 221.6ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/make2" for 77.42.182.209 at 2016-10-07 11:51:40 +0000
+Processing by PagesController#make2 as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  Rendered pages/make2.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_nav_user.html.erb (0.8ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 216ms (Views: 198.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/search-3.png" for 77.42.182.209 at 2016-10-07 11:51:42 +0000
+
+
+Started GET "/recent" for 77.42.182.209 at 2016-10-07 11:54:21 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "c36561a7d9af6aa2cb370b14cf60e434"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.6ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 2 AND (created_at >= '2016-10-05 11:54:21.735529')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 86]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 88]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1  [["id", 23]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 88]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT 1[0m  [["id", 22]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 88]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 63]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 63]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 63]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 63]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 62]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 62]]
+  Rendered layouts/_activities.html.erb (27.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (33.1ms)
+  Rendered layouts/_nav_user.html.erb (1.5ms)
+  Rendered layouts/_nav.html.erb (2.8ms)
+Completed 200 OK in 345ms (Views: 309.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:22 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:22 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:22 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/tabs.self-33abfc31578b32d059935b5acc1b5fdbd83eacdee5bd8a7c21d6f6c6f5e34685.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/style.self-8bf0a0e400677e2979975c03ca57aa29a108cd5c2044c540489226b3bae2ed59.css?body=1" for 77.42.182.209 at 2016-10-07 11:54:23 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/create.self-e5dbd75c3d9e43b181fa25c25cef5d14c63a6da53445b4524d710c3e4097366e.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/functions.self-77fb6e194b04edba15b4218ec7f22f4381b12054e50925ec4611721c18979fe6.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:24 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/main.self-8ced031f3848ebe122639d829aba2db1adec4fbd949604dd9860766c6b0b1813.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/notify.self-5e3317be1fd966f0f959c3c06eaf3cf15089ef919bf06566e6e34d228e4f0d33.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/tabs.self-f64d22ab1c39069d0fbc34734ffe46493bd52bfa93edbcb65e870f2434bb841d.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
+
+
+Started GET "/assets/drolle.jpg" for 77.42.182.209 at 2016-10-07 11:54:25 +0000
