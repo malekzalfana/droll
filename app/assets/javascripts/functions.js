@@ -2016,7 +2016,6 @@ $('.image-upload-wrap').bind('dragover', function () {
 
 
 }
-console.log('functions.js working')
-$(document).on('ready page:load',functions);
-window.onload = functions()
-//$(document).ready(functions) 
+functions()
+$(document).on('page:load',functions);
+//functions()

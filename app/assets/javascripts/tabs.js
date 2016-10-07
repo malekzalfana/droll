@@ -2,7 +2,6 @@
 
 var tabs;
 tabs = function() {
-  alert('tabs')
   $('.not-signed-in .upvote,.not-signed-in .downvote').click(function(){
         if ( $(this).is('.upvote') ) {
             $('.notice-message').text('Sign in to upvote').hide()
@@ -1066,7 +1065,8 @@ $("#search-memes").keyup(function () {
           });
           console.log('worked?')
         });
-        
+        alert('a')
 }
-$(document).on('ready page:load',tabs);
-window.onload = tabs();
+tabs();
+$(document).on('page:load',tabs);
+//$(document).ready(tabs)
