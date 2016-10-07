@@ -276,8 +276,9 @@ var newNumber = 0;
 		
 		
 });	
-
- $('a.upvote').click(function(){
+	
+	/*
+	$('a.upvote').click(function(){
         alert('asd')
         $(this).css({'background':'url(upvote-3.png) 0px 0px no-repeat whitesmoke'});
         $(this).siblings('downvote').css({'background':'url(upvote-2.png) 0px 0px no-repeat whitesmoke'});
@@ -286,6 +287,8 @@ var newNumber = 0;
         $(this).css({'background':'url(upvote-3.png) 0px 0px no-repeat whitesmoke'});
         $(this).siblings('upvote').css({'background':'url(upvote-2.png) 0px 0px no-repeat whitesmoke'});
     })
+    */
+    
     $('.wrapper, #upload').click(function(){
         alert('dfgdfg')
     })
