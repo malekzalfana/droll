@@ -122,24 +122,7 @@ $(document).on('click', '#hide-remote-make', function(){
   $(this).hide();
   $('body').removeClass('overflow-hidden')
 })
-function previewPostImage(event, thisFiler, thisPreview) {
-  console.log(thisPreview)
-    var files = event.target.files;
-    var image = files[0]
-    var reader = new FileReader();
-    reader.onload = function(file) {
-      var img = new Image();
-      console.log(file);
-      img.src = file.target.result;
-      $('#make-image-preview').children('img').remove()
-      $('#make-image-preview').append(img);
-      $('#make-image-preview').css({'min-height':$('#make-image-preview img').height()});
-      $('#pictureInput, #preview-image-text').hide()
-    }
-    reader.readAsDataURL(image);
-      $('#cancel-upload, #reset-image, #submit-image-button-before').show()
-      $('.anonymous-checkbox').addClass('shown')
-  };
+
   var toInput = true;
   function previewUserImage(event, thisFiler, thisPreview) {
     console.log('ssssss')
@@ -1071,3 +1054,24 @@ $("#search-memes").keyup(function () {
 //tabs();
 $(document).on('ready page:load',tabs);
 $(document).ready(tabs)
+
+
+
+function previewPostImage(event, thisFiler, thisPreview) {
+  console.log(thisPreview)
+    var files = event.target.files;
+    var image = files[0]
+    var reader = new FileReader();
+    reader.onload = function(file) {
+      var img = new Image();
+      console.log(file);
+      img.src = file.target.result;
+      $('#make-image-preview').children('img').remove()
+      $('#make-image-preview').append(img);
+      $('#make-image-preview').css({'min-height':$('#make-image-preview img').height()});
+      $('#pictureInput, #preview-image-text').hide()
+    }
+    reader.readAsDataURL(image);
+      $('#cancel-upload, #reset-image, #submit-image-button-before').show()
+      $('.anonymous-checkbox').addClass('shown')
+  };

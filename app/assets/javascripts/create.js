@@ -292,7 +292,7 @@ var newNumber = 0;
     */
     
     $('.wrapper, #upload').click(function(){
-        alert('dfgdfg')
+        //alert('dfgdfg')
     })
 	$('#create-wrapper').focus(function(){
 		$('.create').css({'opacity':'1','display':'block'})

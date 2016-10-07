@@ -6,7 +6,7 @@ functions =  function() {
 	var droppedFaces = 0;
 	console.log('ss')
 	
-	document.getElementById('all-tools').style.height = document.body.clientHeight;
+	//document.getElementById('all-tools').style.height = document.body.clientHeight;
 	document.getElementById('right-column').style.height = document.body.clientHeight;
 	var canvas = document.querySelector('#paint');
 	var ctx = canvas.getContext('2d');
