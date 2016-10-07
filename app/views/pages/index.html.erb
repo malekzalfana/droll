@@ -284,7 +284,7 @@
 <% end %>
 </div>
 
-
+<% if !user_signed_in? %>
 <div id="remote-signup-wrapper">
       <div id="sign-up-wrapper">
     
@@ -368,6 +368,9 @@
     
   </div>
 </div>
+<% end %>
+
+
 <div id="anonymous-faces">
 				<h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
 				<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">

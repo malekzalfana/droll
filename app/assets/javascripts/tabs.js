@@ -212,9 +212,11 @@ function previewPostImage(event, thisFiler, thisPreview) {
     
   })
   */
+  //*
   $(document).on('click', '#edit-profile-image, #edit-profile-cover', function(){
     $('#'+ $(this).attr('id')+ '-field' ).click()
   })
+  //*/
   $(document).on('click', '#choose-image, #reset-user-image', function(){
     $(this).siblings('input').click()
   })

@@ -468,7 +468,7 @@
 <% end %>
 </div>
 
-
+<% if !user_signed_in? %>
 <div id="remote-signup-wrapper">
     <i class="material-icons close-wrapper">close</i>
       <div id="sign-up-wrapper">
@@ -553,5 +553,7 @@
     
   </div>
 </div>
+
+<% end %>
 			
 </body>

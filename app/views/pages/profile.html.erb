@@ -86,22 +86,24 @@
     <div id="right-content-profile">
         <%= will_paginate @profilefavor %>
         <% if !@user.votes.where(:vote_scope => 'favor').for_type(Post).votables.blank? %>
-        <% @profilefavor.each do |y| %>
-        <%= link_to(y) do %>
-        <div class="wrapper">
-            <div class="profile-post-overlay"></div>
-            <h2 class="post-title"><%= y.title %></h2>
-            <span class="profile-post-user">@<%= y.user.username %></span>
-            <div class="profile-post" style="background-image: url(<%= y.image.url(:medium) %>)"></div>
+        <% @profilefavor.each do |x| %>
+            <%= link_to(x) do %>
+            <div class="wrapper">
+                <div class="wrapper-content">
+                
+                <img class="profile-post" src="<%= x.image.url(:medium) %>)">
+                <h2 class="post-title"><%= x.title %></h2>
                 <div class="profile-post-options">
-                    <span class="post-votes-word"><%=  y.get_upvotes.size - y.get_downvotes.size %> points</span>
-                    <%= link_to dislike_post_path(y), method: :put, class: 'down downvote', :"data-post-id" => y.id, remote: true  do %>
+                    <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
+                    <%= link_to dislike_post_path(x), method: :put, class: 'down downvote', :"data-post-id" => x.id, remote: true  do %>
                     <% end %>
-                    <%= link_to like_post_path(y), method: :put, class: 'up upvote', :"data-post-id" => y.id, remote: true  do %>
+                    <%= link_to like_post_path(x), method: :put, class: 'up upvote', :"data-post-id" => x.id, remote: true  do %>
                     <% end %>
                 </div>
+                </div>
+                
             </div>
-        <% end %>    
+            <% end %>
         <% end %>
         <% else %>
         <div class="notice-message-fixed"><%= @user.username %> hasn't favoured anything yet.</div>
@@ -147,7 +149,7 @@
 <% end %>
 </div>
 
-
+<% if !user_signed_in? %>
 <div id="remote-signup-wrapper">
       <div id="sign-up-wrapper">
     
@@ -231,5 +233,6 @@
     
   </div>
 </div>
+<% end %>
 
 </body>
