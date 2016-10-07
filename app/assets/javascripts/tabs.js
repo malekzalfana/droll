@@ -1,5 +1,6 @@
 //document.domain = 'https://drolle-3-malekzalfana.c9users.io'
-$(document).on('click','#submit-feedback, #cancel-feedback',function(){
+var tabs = function() {
+  $(document).on('click','#submit-feedback, #cancel-feedback',function(){
   if( $(this).is('#submit-feedback') ) {
     $('#submit-feedback, #cancel-feedback').hide()
     $('#thanks-feedback').fadeIn()
@@ -997,3 +998,6 @@ var $container = $('#left-content-profile');
           console.log(  window.innerWidth /200 )
           //$('#left-content-profile .wrapper').fadeIn(100)
         });
+}
+tabs()
+$(document).on('turbolinks:load', tabs );

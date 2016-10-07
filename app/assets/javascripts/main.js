@@ -99,8 +99,8 @@ $(document).on('click', '.favor-post', function () {
   $(postOptions).delay(300).fadeOut(100)
 })
 
-
-    $(document).on('click', '.upvote, .downvote', function () {
+    function s() {
+      $(document).on('click', '.upvote, .downvote', function () {
       if ( $('body').hasClass('signed-in')  ) {
         //$(this).addClass('voted').siblings('.vote').removeClass('voted')
         var points = $(this).siblings('.post-votes-word').attr('data-points')
@@ -134,6 +134,10 @@ $(document).on('click', '.favor-post', function () {
         $(this).siblings('.post-votes-word').attr('data-user-votes', userVotes)
       }
     });
+    }
+    s()
+    $(document).on('turbolinks:load', s );
+    
     
     var thisWrapper;
     var postIndex;
