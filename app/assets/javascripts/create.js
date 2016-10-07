@@ -12,13 +12,15 @@ $(document).ready(function(){
       }
     }
   });
-  
-var memeCanvas = document.getElementById('meme-canvas');
+ if (  document.getElementById('meme-canvas') ){
+ 	var memeCanvas = document.getElementById('meme-canvas');
 var memeCtx = memeCanvas.getContext('2d');
 memeCtx.scale(2,2);
 memeCtx.font = '19px open sans';
 memeCtx.fillStyle = 'silver';
 memeCtx.fillText('Choose a meme',180,200);
+
+ } 
 
 $("img.meme-pics").slice(0,40).lazyload({
 	event: 'loadEmBoys',

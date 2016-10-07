@@ -1,6 +1,6 @@
 var functions;
 functions =  function() {
-	alert('functions')
+	console.log('functions')
 	var image3 = false;
 	
 	var droppedFaces = 0;
@@ -2016,6 +2016,7 @@ $('.image-upload-wrap').bind('dragover', function () {
 
 
 }
-functions()
-$(document).on('page:load',functions);
+
+$(document).load(functions);
+$(document).on('ready page:load',functions);
 //functions()

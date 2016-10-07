@@ -2,7 +2,8 @@
 
 var tabs;
 tabs = function() {
-  $('.not-signed-in .upvote,.not-signed-in .downvote').click(function(){
+        console.log('tabs')  
+  $(document).on('click', '.not-signed-in .upvote,.not-signed-in .downvote', function () {
         if ( $(this).is('.upvote') ) {
             $('.notice-message').text('Sign in to upvote').hide()
             setTimeout(function(){
@@ -1065,8 +1066,8 @@ $("#search-memes").keyup(function () {
           });
           console.log('worked?')
         });
-        alert('a')
-}
-tabs();
-$(document).on('page:load',tabs);
-//$(document).ready(tabs)
+
+};
+//tabs();
+$(document).on('ready page:load',tabs);
+$(document).ready(tabs)
