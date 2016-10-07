@@ -1,13 +1,8 @@
 
 
-
-
-
-
-
-
-
-$(document).on('ready page:load', function () {
+var tabs;
+tabs = function() {
+  alert('worked')
   $('.not-signed-in .upvote,.not-signed-in .downvote').click(function(){
         if ( $(this).is('.upvote') ) {
             $('.notice-message').text('Sign in to upvote').hide()
@@ -1071,4 +1066,7 @@ $("#search-memes").keyup(function () {
           });
           console.log('worked?')
         });
-});
+        
+}
+$(document).on('ready page:load',tabs);
+window.onload = tabs()

@@ -553,5 +553,16 @@
 </div>
 
 <% end %>
+
+
+
+<%= form_tag url_for(:controller => 'pages', :action => 'checkUsername'), :method => 'get', class: "hidden", remote: true do %>
+      <%= text_field_tag 'name', '', id: "username-check-field"%>
+      <%= submit_tag "Save", id: "username-check-submit" %>
+    <% end %>
+    <%= form_tag url_for(:controller => 'pages', :action => 'checkEmail'), :method => 'get', class: "hidden", remote: true do %>
+      <%= text_field_tag 'email', '', id: "email-check-field"%>
+      <%= submit_tag "Save", id: "email-check-submit" %>
+    <% end %>
 			
 </body>
