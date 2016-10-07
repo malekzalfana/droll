@@ -2,6 +2,7 @@
 
 var tabs;
 tabs = function() {
+  alert('tabs')
   $('.not-signed-in .upvote,.not-signed-in .downvote').click(function(){
         if ( $(this).is('.upvote') ) {
             $('.notice-message').text('Sign in to upvote').hide()

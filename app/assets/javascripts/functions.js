@@ -1,9 +1,11 @@
-function functionss() {
+var functions;
+functions =  function() {
+	alert('functions')
 	var image3 = false;
 	
 	var droppedFaces = 0;
 	console.log('ss')
-	$(document).ready(function(){
+	
 	document.getElementById('all-tools').style.height = document.body.clientHeight;
 	document.getElementById('right-column').style.height = document.body.clientHeight;
 	var canvas = document.querySelector('#paint');
@@ -1350,7 +1352,8 @@ var painting;
 
 
 	droppedFaces = 0;
-	$(document).ready(function () {
+	/*$(document).ready(function () {*/
+		
 		$('#tags p').click(function () {
 			var tag = $(this).attr("id");
 			$('.rageface').hide();
@@ -1663,7 +1666,7 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
 		//var image = new Image,
 		//image.crossOrigin = "Anonymous";
 		//$('.dragged').attr('crossorigin', 'anonymous');
-	});
+	//});
 
 	//document.getElementsByClassName('splitter').addEventListener('click', addPanel, false);
 	function splitting(y) {
@@ -1907,7 +1910,7 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
 		//loadJS( $(this).attr('id') + '.js');
 		
 	});
-});
+
 
 function readURL(input) {
   if (input.files && input.files[0]) {
@@ -2014,6 +2017,6 @@ $('.image-upload-wrap').bind('dragover', function () {
 
 }
 console.log('functions.js working')
-$(document).on('ready page:load',functionss);
-window.onload = functionss()
-
+$(document).on('ready page:load',functions);
+window.onload = functions()
+//$(document).ready(functions) 
