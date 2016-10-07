@@ -100,40 +100,7 @@ $(document).on('click', '.favor-post', function () {
 })
 
   
-    $(document).on('click', '.upvote, .downvote', function () {
-      if ( $('body').hasClass('signed-in')  ) {
-        //$(this).addClass('voted').siblings('.vote').removeClass('voted')
-        var points = $(this).siblings('.post-votes-word').attr('data-points')
-        console.log(points + 'points')
-        if ( $(this).hasClass('voted') ){
-          var userVotes = 0;
-          $(this).removeClass('voted').siblings('.vote').removeClass('voted').removeClass('not-voted')
-        }
-        else {
-          $(this).addClass('voted').siblings('.vote').removeClass('voted downvoted upvoted').addClass('not-voted')
-          if ( $(this).hasClass('upvote')){
-            var userVotes = 1
-          }
-          else if ( $(this).hasClass('downvote') ) {
-            var userVotes = -1
-          }
-        }
-        
-        
-        console.log(userVotes + 'uservotes') //CONTINUE THIS
-        if (points + userVotes > 1){
-            var votesWords = 'points'
-        }
-        else if (points + userVotes == 1){
-            var votesWords = 'point'
-        }
-        else {
-            var votesWords = 'points'
-        }
-        $(this).siblings('.post-votes-word').hide().fadeIn(200).text( Number(points) + Number(userVotes) + " " + votesWords)
-        $(this).siblings('.post-votes-word').attr('data-user-votes', userVotes)
-      }
-    });
+    
     
     var thisWrapper;
     var postIndex;
