@@ -1,6 +1,6 @@
 //document.domain = 'https://drolle-3-malekzalfana.c9users.io'
-var tabs = function() {
-  $(document).on('click','#submit-feedback, #cancel-feedback',function(){
+
+$(document).on('click','#submit-feedback, #cancel-feedback',function(){
   if( $(this).is('#submit-feedback') ) {
     $('#submit-feedback, #cancel-feedback').hide()
     $('#thanks-feedback').fadeIn()
@@ -903,6 +903,15 @@ function previewPostImage(event, thisFiler, thisPreview) {
           console.log('worked?')
         });
         
+        var $container2 = $('#right-content-profile');
+        $container2.imagesLoaded( function() {
+          $container2.masonry({
+            itemSelector: '.wrapper',
+            gutter: 10
+          });
+          console.log('worked?')
+        });
+        
       
 
     
@@ -929,6 +938,15 @@ $(document).on('ready page:load', function () {
             gutter: 10
           });
           //$('#left-content-profile .wrapper').fadeIn(100)
+          console.log('worked?')
+        });
+        
+        var $container2 = $('#right-content-profile');
+        $container2.imagesLoaded( function() {
+          $container2.masonry({
+            itemSelector: '.wrapper',
+            gutter: 10
+          });
           console.log('worked?')
         });
         
@@ -998,6 +1016,3 @@ var $container = $('#left-content-profile');
           console.log(  window.innerWidth /200 )
           //$('#left-content-profile .wrapper').fadeIn(100)
         });
-}
-tabs()
-$(document).on('turbolinks:load', tabs );
