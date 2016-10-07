@@ -1,4 +1,39 @@
-//document.domain = 'https://drolle-3-malekzalfana.c9users.io'
+
+
+
+
+
+
+
+
+
+$(document).on('ready page:load', function () {
+  $('.not-signed-in .upvote,.not-signed-in .downvote').click(function(){
+        if ( $(this).is('.upvote') ) {
+            $('.notice-message').text('Sign in to upvote').hide()
+            setTimeout(function(){
+                $('.notice-message').show()
+            },100)
+        }
+        else {
+            $('.notice-message').text('Sign in to downvote').hide()
+            setTimeout(function(){
+                $('.notice-message').show()
+            },100)
+        }
+    })
+  
+  var $container = $('#left-content-profile');
+      console.log($container)
+        $container.imagesLoaded( function() {
+          $container.masonry({
+            itemSelector: '.wrapper',
+            gutter: window.innerWidth /200
+          });
+          console.log('worked?')
+          console.log(  window.innerWidth /200 )
+          //$('#left-content-profile .wrapper').fadeIn(100)
+        });
 
 $(document).on('click','#submit-feedback, #cancel-feedback',function(){
   if( $(this).is('#submit-feedback') ) {
@@ -549,6 +584,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
   })
   
   $(document).on('click', '#sign-up-submit-before', function(){
+    console.log('sign up')
     if ( usernameChecked === true) {
       if ($('#username-check-icon').text() == 'cancel'  ) {
         $('#username-check-icon').addClass('flash animated-fast')
@@ -922,7 +958,58 @@ function previewPostImage(event, thisFiler, thisPreview) {
     
 }(jQuery));
 
-$(document).on('ready page:load', function () {
+
+$("#search-memes").keyup(function () {
+      console.log('search-meme working')
+       //$(this).addClass('hidden');
+    
+      var searchTerm = $("#search-memes").val();
+      if ( searchTerm != ''  ) {
+        var listItem = $('#pick-meme').children('.pick-meme-container .meme-title');
+    
+      
+      var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+      
+        //extends :contains to be case insensitive
+    $.extend($.expr[':'], {
+    'containsi': function(elem, i, match, array)
+    {
+      return (elem.textContent || elem.innerText || '').toLowerCase()
+      .indexOf((match[3] || "").toLowerCase()) >= 0;
+    }
+  });
+                              
+  
+  $("#pick-meme .meme-title").not(":containsi('" + searchSplit + "')").each(function(e)   {
+    $(this).parents('.pick-meme-container').addClass('hidden-meme')
+  });
+  
+  $("#pick-meme .meme-title:containsi('" + searchSplit + "')").each(function(e) {
+    $(this).removeClass('hidden-meme')
+  });
+  
+
+    //var jobCount = $('#list .in').length;
+  //$('.list-count').text(jobCount + ' items');
+  
+  //shows empty state text when no jobs found
+  /*if(jobCount == '0') {
+    $('#list').addClass('empty');
+  }
+  else {
+    $('#list').removeClass('empty');
+  }*/  
+  }
+  else {
+    $('.pick-meme-container').removeClass('hidden-meme')
+  }
+  
+  
+});
+  
+  
+  
+  
   $('.progress').mouseover(function(){
         $('#progress-table').fadeIn()
     })
@@ -949,70 +1036,4 @@ $(document).on('ready page:load', function () {
           });
           console.log('worked?')
         });
-        
-                                  //var jobCount = $('#list .in').length;
-                            //$('.list-count').text(jobCount + ' items');
-                              
-                            
-                            
-        
-        
 });
-$("#search-memes").keyup(function () {
-                              console.log('search-meme working')
-                               //$(this).addClass('hidden');
-                            
-                              var searchTerm = $("#search-memes").val();
-                              if ( searchTerm != ''  ) {
-                                var listItem = $('#pick-meme').children('.pick-meme-container .meme-title');
-                            
-                              
-                              var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-                              
-                                //extends :contains to be case insensitive
-                            $.extend($.expr[':'], {
-                            'containsi': function(elem, i, match, array)
-                            {
-                              return (elem.textContent || elem.innerText || '').toLowerCase()
-                              .indexOf((match[3] || "").toLowerCase()) >= 0;
-                            }
-                          });
-                              
-                              
-                              $("#pick-meme .meme-title").not(":containsi('" + searchSplit + "')").each(function(e)   {
-                                $(this).parents('.pick-meme-container').addClass('hidden-meme')
-                              });
-                              
-                              $("#pick-meme .meme-title:containsi('" + searchSplit + "')").each(function(e) {
-                                $(this).removeClass('hidden-meme')
-                              });
-                              
-                            
-                                //var jobCount = $('#list .in').length;
-                              //$('.list-count').text(jobCount + ' items');
-                              
-                              //shows empty state text when no jobs found
-                              /*if(jobCount == '0') {
-                                $('#list').addClass('empty');
-                              }
-                              else {
-                                $('#list').removeClass('empty');
-                              }*/  
-                              }
-                              else {
-                                $('.pick-meme-container').removeClass('hidden-meme')
-                              }
-                              
-                              
-                            });
-var $container = $('#left-content-profile');
-      console.log($container)
-        $container.imagesLoaded( function() {
-          $container.masonry({
-            itemSelector: '.wrapper',
-            gutter: window.innerWidth /200
-          });
-          console.log('worked?')
-          console.log(  window.innerWidth /200 )
-          //$('#left-content-profile .wrapper').fadeIn(100)
-        });

@@ -18,20 +18,7 @@ $(window).load(function() {
         $('.progress .active2').css({'transform-origin':'left center'})
         $('.progress .active2, .progress .active').css({'z-index':'300'})
     }
-    $('.not-signed-in .upvote,.not-signed-in .downvote').click(function(){
-        if ( $(this).is('.upvote') ) {
-            $('.notice-message').text('Sign in to upvote').hide()
-            setTimeout(function(){
-                $('.notice-message').show()
-            },100)
-        }
-        else {
-            $('.notice-message').text('Sign in to downvote').hide()
-            setTimeout(function(){
-                $('.notice-message').show()
-            },100)
-        }
-    })
+    
     var chosen = 0
     function samir(){
       $('.info-h2').hide()
