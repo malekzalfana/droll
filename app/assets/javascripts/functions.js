@@ -1,8 +1,7 @@
-$(document).on('ready page:load', function () {
+function functionss() {
 	var image3 = false;
 	
 	var droppedFaces = 0;
-//if ( $('body').attr('id') == 'make' ) {
 	console.log('ss')
 	$(document).ready(function(){
 	document.getElementById('all-tools').style.height = document.body.clientHeight;
@@ -2013,7 +2012,8 @@ $('.image-upload-wrap').bind('dragover', function () {
 
 
 
-})
+}
 console.log('functions.js working')
-
+$(document).on('ready page:load',functionss);
+window.onload = functionss()
 

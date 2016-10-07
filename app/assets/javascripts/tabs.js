@@ -1068,4 +1068,4 @@ $("#search-memes").keyup(function () {
         
 }
 $(document).on('ready page:load',tabs);
-window.onload = tabs()
+window.onload = tabs();
