@@ -107,13 +107,13 @@
                         <div id="main-share-button">
                             <% if user_signed_in? %>
                                 <% if current_user.share == '1' %>
-                                    <a  href="http://www.facebook.com/sharer.php?u=https://beta.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a  href="http://www.facebook.com/sharer.php?u=http://beta.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '2' %>
-                                    <a href="http://twitter.com/share?url=https://beta.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="http://twitter.com/share?url=http://beta.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '3' %>
-                                    <a href="https://plus.google.com/share?url=https://beta.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                    <a href="https://plus.google.com/share?url=http://beta.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '4' %>
-                                    <a href="http://www.reddit.com/submit?url=https://beta.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
+                                    <a href="http://www.reddit.com/submit?url=http://beta.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
                                 <% elsif current_user.share == nil || current_user.share == '0' %>    
                                     <i class="material-icons more-post-options share-button">share</i>
                                 <% end %>
@@ -185,15 +185,15 @@
                         <div class="share-buttons">
                             <span class="share-word">Share</span>
                             <!--
-                            <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=https://beta.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank"><img src="http://i.imgur.com/D87RBjw.png"></a>
-                            <a class="twitter customer share" href="http://twitter.com/share?url=https://beta.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><img src="http://i.imgur.com/d7WTVVP.png"></a>
-                            <a class="google_plus customer share" href="https://plus.google.com/share?url=https://beta.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank"><img src="http://i.imgur.com/NGKECtL.png"></a>
-                            <a class="customer share" href="http://www.reddit.com/submit?url=https://beta.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
+                            <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://beta.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank"><img src="http://i.imgur.com/D87RBjw.png"></a>
+                            <a class="twitter customer share" href="http://twitter.com/share?url=http://beta.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><img src="http://i.imgur.com/d7WTVVP.png"></a>
+                            <a class="google_plus customer share" href="https://plus.google.com/share?url=http://beta.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank"><img src="http://i.imgur.com/NGKECtL.png"></a>
+                            <a class="customer share" href="http://www.reddit.com/submit?url=http://beta.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
                             -->
-                            <a  href="http://www.facebook.com/sharer.php?u=https://beta.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="http://twitter.com/share?url=https://beta.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="https://plus.google.com/share?url=https://beta.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                            <a href="http://www.reddit.com/submit?url=https://beta.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                            <a  href="http://www.facebook.com/sharer.php?u=http://beta.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="http://twitter.com/share?url=http://beta.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://plus.google.com/share?url=http://beta.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="http://www.reddit.com/submit?url=http://beta.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
                         </div>
                     </div>
 
