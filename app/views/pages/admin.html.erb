@@ -1,4 +1,4 @@
-<% if user_signed_in?%>
+<% if user_signed_in? && current_user.username = 'malek'  %>
 
     <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
 <div id="content-full2" class="full-wrapper new-content">
