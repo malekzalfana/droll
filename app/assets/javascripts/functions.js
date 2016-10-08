@@ -229,7 +229,7 @@ functions =  function() {
 				$('.splitter').not('#splitter-1').remove();
 				$('#splitter-1').html('unsplit')
 				$('.placeholder').not('#placeholder-1').remove();
-				$('#remove-panel').hide();
+				$('#remove-panel-button').hide();
 				sketch.style.height = 300 + 'px';
 				ctx.fillStyle = "white";
 				ctx.fillRect(0, 0, canvas.width, canvas.height);

@@ -1,0 +1,25 @@
+
+
+Started GET "/settings" for 94.187.48.199 at 2016-10-08 14:04:25 +0000
+Processing by PagesController#settings as HTML
+  [1m[36mUser Load (52.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 9]]
+  Rendered pages/settings.html.erb within layouts/application (3544.5ms)
+  Rendered layouts/_nav_user.html.erb (25.4ms)
+  Rendered layouts/_nav.html.erb (30.8ms)
+Completed 200 OK in 6327ms (Views: 4968.5ms | ActiveRecord: 52.5ms)
+
+
+Started GET "/signup" for 94.187.48.199 at 2016-10-08 14:04:33 +0000
+Processing by PagesController#signup as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 9]]
+  Rendered devise/shared/_links.html.erb (63.8ms)
+  Rendered pages/signup.html.erb within layouts/application (98.4ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (2.0ms)
+Completed 200 OK in 1208ms (Views: 1202.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/functions.self-893f235151149d0cc55b04d032718f417fd6bf125bd646a0af89d4fd9b5338e8.js?body=1" for 94.187.48.199 at 2016-10-08 14:04:36 +0000
+
+
+Started GET "/assets/missing.jpg" for 94.187.48.199 at 2016-10-08 14:04:36 +0000
