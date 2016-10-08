@@ -1,6 +1,7 @@
+/*global $*/
 var functions;
 functions =  function() {
-	console.log('functions')
+	console.log('functionssssssssssssssssssss');
 	var image3 = false;
 	
 	var droppedFaces = 0;
@@ -30,11 +31,11 @@ functions =  function() {
 	var tmp_canvas = document.createElement('canvas');
 	var tmp_ctx = tmp_canvas.getContext('2d');
 	$(document).on('click', '#button', function(){
-		alert('ss')
+		alert('ss');
 		var tmp_canvas = document.createElement('canvas');
 		var tmp_ctx = tmp_canvas.getContext('2d');
 		tmp_ctx.fillText(document.getElementById('text-' + '1').value.toUpperCase(), Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + '1').parentElement.offsetLeft) + 10, Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + '1').parentElement.offsetTop) + 15);
-	})
+	});
 	tmp_canvas.id = 'tmp_canvas';
 	//tmp_canvas.width = canvas.width;
 	//tmp_canvas.height = canvas.height;
@@ -144,7 +145,7 @@ functions =  function() {
 			$('.textareas').removeClass('no-border');
 			$('.text-parent .delete-handle').show();
 			//$('#paint').css({'border':'blue 5px solid'});
-		}
+		};
 
 		function upperIndex() {
 			$('.img-parent .ui-wrapper, .text-parent .ui-wrapper').css({
@@ -406,37 +407,6 @@ functions =  function() {
 
 		});
 
-		//NEWTHING  
-		//document.getElementById("width_range").addEventListener("change", function() {
-		//  tmp_ctx.lineWidth = document.getElementById("width_range").value / 2;
-		//
-		//  drawBrush();
-		//  //document.getElementById("brush_size")
-		//
-		//});
-		//NEWTHING
-		//document.getElementById("opacity_range").addEventListener("change", function() {
-		//  tmp_ctx.globalAlpha = document.getElementById("opacity_range").value / 100;
-
-		//  drawBrush();
-		//  //document.getElementById("brush_size")
-
-		//});
-		/*
-		   document.getElementById('thin').addEventListener('click', function(){
-		    tmp_ctx.lineWidth = 1;
-		   });
-
-		   document.getElementById('normal').addEventListener('click', function(){
-		    tmp_ctx.lineWidth = 3;
-		   });
-
-		   document.getElementById('thick').addEventListener('click', function(){
-		    tmp_ctx.lineWidth = 6;
-		   });
-		*/
-		//THE LINE WIDTH FUNCTIONSSSSS
-		//NEWTHING
 		document.getElementById("clear").addEventListener("click", function () {
 			//.//$('.dragged, .textareas').remove();
 			droppedFaces = 0;
@@ -1254,16 +1224,6 @@ var painting;
 			// Tmp canvas is always cleared up before drawing.
 			tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
 
-			//var x = Math.min(mouse.x, start_mouse.x);
-			//var y = Math.min(mouse.y, start_mouse.y);
-			//var width = Math.abs(mouse.x - start_mouse.x);
-			//var height = Math.abs(mouse.y - start_mouse.y);
-
-			//textarea.style.left = x + 'px';
-			//textarea.style.top = y + 'px';
-			//textarea.style.width = width + 'px';
-			//textarea.style.height = height + 'px';
-
 			textarea.style.display = 'block';
 		};
 		// Tmp canvas is always cleared up before drawing.
@@ -1344,11 +1304,10 @@ var painting;
 		tmp_canvas.removeEventListener('click', createText, false);
 		}
 		else {
-			return false
-			alert('it is focysde')
+			return false;
 		}
 		
-	};//ends here
+	}//ends here
 
 
 	droppedFaces = 0;
@@ -1376,19 +1335,18 @@ var painting;
 			tmp_canvas.removeEventListener('click', chooseBro);
 
 		});
-$("#ragefaces img.rageface").slice(0,40).lazyload({
-	event: 'loadEmBoys',
-	//effect : "fadeIn",
-	threshold: 100,
-	
-});
-$("#ragefaces img.rageface").slice(40,185).lazyload({         
-    //effect : "fadeIn",
-    container: $("#ragecontainer"),
-	threshold: 100,
-	event: 'scrollstop'
-	
-});
+		$("#ragefaces img.rageface").slice(0,40).lazyload({
+			event: 'loadEmBoys',
+			//effect : "fadeIn",
+			threshold: 100,
+			
+		});
+		$("#ragefaces img.rageface").slice(40,185).lazyload({         
+		    //effect : "fadeIn",
+		    container: $("#ragecontainer"),
+			threshold: 100,
+			event: 'scrollstop'
+		});
 
 		$('#tags p').click(function(){
 			var thisTag = $(this).attr('id');
@@ -1598,7 +1556,7 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
 			} else if (tool == 'ellipse') {
 				$('#shapes-button').html('<div id="replaced" class="ellipse"></div>')
 			}
-		})
+		});
 		var textStyle = 'black';
 		$('#texts button').click(function(){
 			var textStyle = $(this).attr('id').replace('text-','');
@@ -1609,12 +1567,11 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
 		$(document).on('focus','.textareas', function(){
 			textFocused = true;
 			console.log(textFocused)
-		})
+		});
 		$(document).on('focusout','.textareas', function(){
 			textFocused = false
-			console.log(textFocused)
-			
-		})
+			console.log(textFocused)	
+		});
 		
 		$('#colors, #sizes, #shapes, #texts').focusout(function () {
 			var thisTool = $(this).attr('id');
@@ -1656,19 +1613,9 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
 			$('#' + thisTool + ' .options').toggleClass('red-options');
 			$('#' + thisTool + '-button').toggleClass('red-button');
 			
-		})
-		//$('#shapes-button').click(function(){
-		//  $('#shapes-button').css({'border-bottom':'0px solid #d40000'});
-		//});
-
-
+		});
 		$('#splitter-1').click();
-		//var image = new Image,
-		//image.crossOrigin = "Anonymous";
-		//$('.dragged').attr('crossorigin', 'anonymous');
-	//});
-
-	//document.getElementsByClassName('splitter').addEventListener('click', addPanel, false);
+		
 	function splitting(y) {
 		var numberSplitter = Number($(this).attr('id').replace('splitter-', '') - 1);
 		y = 300 * numberSplitter;
@@ -1802,7 +1749,7 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
         scrollTop: $("#add-remove").offset().top
     }, 1000);
 		$('#remove-panel-button').fadeIn();
-	}
+	};
 
 	function removePanel() {
 		var panelNumber = document.getElementsByClassName('splitter').length;
@@ -1850,7 +1797,7 @@ $("#ragefaces img.rageface").slice(40,185).lazyload({
 			//alert('none');
 		}
 
-	}
+	};
 	if (document.getElementsByClassName('splitter').length == 1) {
 		//document.getElementById('remove-panel-button').style.display = 'none';
 		$('#remove-panel-button').fadeOut();
@@ -2018,5 +1965,7 @@ $('.image-upload-wrap').bind('dragover', function () {
 }
 
 $(document).ready(functions);
-$(document).on('page:load',functions);
-//functions()
+$(document).on('page:load', function(){
+		functions;
+	}
+)
