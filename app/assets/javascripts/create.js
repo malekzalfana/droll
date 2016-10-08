@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('ready page:load',function(){
 	$(".post-image-wrapper").swipe( {
     //Generic swipe handler for all directions
     swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
