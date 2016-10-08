@@ -2018,5 +2018,5 @@ $('.image-upload-wrap').bind('dragover', function () {
 }
 
 $(document).ready(functions);
-$(document).on('ready page:load',functions);
+$(document).on('page:load',functions);
 //functions()

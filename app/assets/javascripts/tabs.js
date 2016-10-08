@@ -1052,7 +1052,7 @@ $("#search-memes").keyup(function () {
 
 };
 //tabs();
-$(document).on('ready page:load',tabs);
+$(document).on('page:load',tabs);
 $(document).ready(tabs)
 
 
