@@ -5760,13 +5760,13 @@ i.fa.fa-reddit-alien {
 	    width: 400px;
     margin: 0px auto;
     position: relative;
-    top: 40px;
+    top: 30px;
     font-family: open sans;
 }
 #sign-up-2, #sign-up-link {
 	margin-left: 10px;
 	opacity: 0.9;
-	color: #252525;
+	color: gray;
 	display: none;
 }
 #sign-up-link {
