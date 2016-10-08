@@ -1,6 +1,8 @@
 /*global $*/
 var functions;
 functions =  function() {
+	var lineWidth;
+	var lineColor;
 	console.log('functionssssssssssssssssssss');
 	var image3 = false;
 	
@@ -9,230 +11,37 @@ functions =  function() {
 	
 	//document.getElementById('all-tools').style.height = document.body.clientHeight;
 	//document.getElementById('right-column').style.height = document.body.clientHeight;
-	var canvas = document.querySelector('#paint');
-	var ctx = canvas.getContext('2d');
-
-
-	//canvas.crossOrigin="anonymous";
-	var sketch = document.querySelector('#sketch');
-	var textCalls = 0;
-
-	//var sketch_style = getComputedStyle(sketch);
-	//canvas.width = parseInt(sketch_style.getPropertyValue('width'));
-	//canvas.height = parseInt(sketch_style.getPropertyValue('height'));
-
-	//var canvas_small = document.getElementById('brush_size');
-	//var context_small = canvas_small.getContext('2d');
-	//var centerX = canvas_small.width / 2;
-	//var centerY = canvas_small.height / 2;
-	//var radius;
-
-	// Creating a tmp canvas
-	var tmp_canvas = document.createElement('canvas');
-	var tmp_ctx = tmp_canvas.getContext('2d');
-	$(document).on('click', '#button', function(){
-		alert('ss');
+	if ( $('#paint').length > 0 ) {
+		var canvas = document.querySelector('#paint');
+		var ctx = canvas.getContext('2d');
+		var sketch = document.querySelector('#sketch');
 		var tmp_canvas = document.createElement('canvas');
 		var tmp_ctx = tmp_canvas.getContext('2d');
-		tmp_ctx.fillText(document.getElementById('text-' + '1').value.toUpperCase(), Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + '1').parentElement.offsetLeft) + 10, Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + '1').parentElement.offsetTop) + 15);
-	});
-	tmp_canvas.id = 'tmp_canvas';
-	//tmp_canvas.width = canvas.width;
-	//tmp_canvas.height = canvas.height;
-	tmp_canvas.crossOrigin = "anonymous";
-	sketch.appendChild(tmp_canvas);
-
-	canvas.width = 1500; //horizontal resolution (?) - increase for better looking text
-	canvas.height = 600; //vertical resolution (?) - increase for better looking text
-	//canvas.style.width=750;//actual width of canvas
-	//canvas.style.height=300;//actual height of canvas
-
-
-	tmp_canvas.width = 1500; //horizontal resolution (?) - increase for better looking text
-	tmp_canvas.height = 600; //vertical resolution (?) - increase for better looking text
-	//tmp_canvas.style.width=750;//actual width of canvas
-	//tmp_canvas.style.height=300;//actual height of canvas
-
-	tmp_ctx.scale(2, 2);
-	//ctx.scale(2,2);
-	ctx.fillStyle = 'white';
-	//$(document).on('click', '#rage-comics-tab', function(){
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-	//})
+		tmp_canvas.id = 'tmp_canvas';
+		//tmp_canvas.width = canvas.width;
+		//tmp_canvas.height = canvas.height;
+		tmp_canvas.crossOrigin = "anonymous";
+		sketch.appendChild(tmp_canvas);
 	
-	var tool = 'none';
-	var lineWidth = '3';
-	var lineColor = 'black';
-
-	function chooseBro() {
-		$('#talking').fadeIn(200).fadeOut(1300);
-	}
-	tmp_canvas.addEventListener('click', chooseBro);
-
-	$('#tools .direct-tools').on('click', function () {
-		tmp_canvas.removeEventListener('click', chooseBro);
-
-		$('#shapes-button, #texts-button').css({
-			//'border-bottom': '0px solid #d40000',
-			//'color':'black'
-			'background':'none'
-		});
-
-		tool = $(this).attr('id');
-		//$('.rageface').toggleClass('rageface');
-		$('#tools .direct-tools').not(this).css({
-			'background': 'none'
-			//, 'color': 'black'
-			//, 'border': 'none'
-				//"box-shadow": "inset 0px 0px 0px 0px #D40000",
-				//  "background": "whitesmoke"
-		});
-		
-		$(this).css({
-			'background': 'rgb(253, 97, 61)'
-			, 'color': 'black'
-			//, 'border-bottom': '#d40000 2px solid'
-				//,"box-shadow": "inset 0px 0px 0px 3px #D40000",
-				//  'background': 'white'
-		});
-		console.log(lineWidth);
-
-		function lowerIndex() {
-			$('.text-parent .ui-wrapper').css({
-				'z-index': '1'
-			}).addClass('hidden-textareas');
-			$('.img-parent .ui-wrapper, #placeholder-wrapper').css({
-				'z-index': '1',
-			});
-			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
-			//$(tmp_canvas).css({'cursor':'crosshair'});
-			$(tmp_canvas).removeClass('default-cursor');
-			$('.ui-resizable-handle').addClass('transparent-handle');
-			$('.textareas').addClass('no-border');
-			//$('#canvas').css({'border':'red 5px solid'});
-		}
-
-		function imgIndex() {
-			$('.text-parent .ui-wrapper').css({
-				'z-index': '1'
-			});
-			$('.img-parent .ui-wrapper').css({
-				'z-index': '4'
-			});
-			$('#placeholder-wrapper').css({
-				'z-index': '3'
-			});
-			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
-			$(tmp_canvas).removeClass('default-cursor');
-			$('.img-parent .ui-resizable-handle').removeClass('transparent-handle');
-			$('.text-parent .ui-resizable-handle').addClass('transparent-handle');
-			$('.textareas').addClass('no-border');
-			$('.text-parent .delete-handle').hide();
-			//$('#canvas').css({'border':'green 5px solid'});
-		}
-
-		function textIndex() {
-			$('.img-parent .ui-wrapper, #placeholder-wrapper').css({
-				'z-index': '1'
-			});
-			$('.text-parent .ui-wrapper').css({
-				'z-index': '3'
-			}).removeClass('hidden-textareas');
-			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
-			$(tmp_canvas).removeClass('default-cursor');
-			$('.text-parent .ui-resizable-handle').removeClass('transparent-handle');
-			$('.img-parent .ui-resizable-handle').addClass('transparent-handle');
-			$('.textareas').removeClass('no-border');
-			$('.text-parent .delete-handle').show();
-			//$('#paint').css({'border':'blue 5px solid'});
-		};
-
-		function upperIndex() {
-			$('.img-parent .ui-wrapper, .text-parent .ui-wrapper').css({
-				'z-index': '4'
-			});
-			$('#placeholder-wrapper').css({
-				'z-index': '3'
-			});
-			$('.dragged-helper, .ui-wrapper').addClass('dragged-shadow');
-			//$(tmp_canvas).css({'cursor':'crosshair'});
-			$(tmp_canvas).addClass('default-cursor');
-			$('.ui-resizable-handle').fadeIn();
-			//$('#tmp_canvas').css({'border':'1px green solid'})
-		}
-		//console.log(tool);
-		if (tool == 'text-#d40000') {
-			tmp_canvas.style.cursor = "text";
-			textIndex();
-		} else if (tool == 'text-black') {
-			tmp_canvas.style.cursor = "text";
-			textIndex();
-			//alert('sds');
-		} else if (tool == 'edit') {
-			tmp_canvas.style.cursor = "move";
-			imgIndex();
-		} else if (tool == 'brush') {
-			tmp_ctx.strokeStyle = lineColor;
-			tmp_canvas.style.cursor = "url('assets/pen.cur'), auto";
-			lowerIndex();
-		} else if (tool == 'spray') {
-			tmp_canvas.style.cursor = "url('assets/spray.cur'), auto";
-			lowerIndex();
-
-		} else if (tool == 'eraser') {
-			tmp_canvas.style.cursor = "url('assets/eraser.cur'), auto";
-			lowerIndex();
-		} else if (tool == 'none') {
-			alert('mmm');
-		} else {
-			console.log('other')
-			tmp_canvas.style.cursor = "crosshair";
-		}
-		lineSize();
-
-		function lineSize() {
-			$('.line-wrapper').click(function () {
-				var linesize = $(this).attr('id');
-				//tmp_ctx.lineWidth =
-				if (linesize == 'line1') {
-					tmp_ctx.lineWidth = 2;
-				} else if (linesize == 'line2') {
-					tmp_ctx.lineWidth = 3;
-				} else {
-					tmp_ctx.lineWidth = 6;
-				}
-			})
-		}
-		//$('#addRageFaces').on('click', function(){
-		//  tool = 'none';
-		//  $('#tools button').css({
-		//  "box-shadow": "inset 0px 0px 0px 0px #D40000",
-		//  'background': 'whitesmoke'
-		//  });
-		//});
-		
-		console.log(tool);
-
-	});
-	//  COLOR FUNCTION
-
-	$('.color-box').click(function () {
-		//tool = $(this).attr('id');
-		$('.color-box').parent().css({
-			//"border": "1px solid #616161"
-			'box-shadow': 'none'
-		, });
-		$(this).parent().css({
-			//"border": "1px solid #F15247"
-			'box-shadow': '3px 3px 1px rgba(0,0,0,0.4)'
-		, });
-		var lineColor = $(this).attr('id');
-		$('.dot').css({'background':lineColor})
-	});
-	$('#line2').click();
-	$('#000000').click();
-
-	if (tool != 'text') {
+		canvas.width = 1500; //horizontal resolution (?) - increase for better looking text
+		canvas.height = 600; //vertical resolution (?) - increase for better looking text
+		//canvas.style.width=750;//actual width of canvas
+		//canvas.style.height=300;//actual height of canvas
+	
+	
+		tmp_canvas.width = 1500; //horizontal resolution (?) - increase for better looking text
+		tmp_canvas.height = 600; //vertical resolution (?) - increase for better looking text
+		//tmp_canvas.style.width=750;//actual width of canvas
+		//tmp_canvas.style.height=300;//actual height of canvas
+	
+		tmp_ctx.scale(2, 2);
+		//ctx.scale(2,2);
+		ctx.fillStyle = 'white';
+		//$(document).on('click', '#rage-comics-tab', function(){
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+		//})
+		//tmp_canvas.addEventListener('click', chooseBro);
+		if (tool != 'text') {
 		var mouse = {
 			x: 0
 			, y: 0
@@ -298,7 +107,7 @@ functions =  function() {
 
 		/* Drawing on Paint App */
 		//tmp_ctx.lineWidth = document.getElementById("width_range").value;
-		tmp_ctx.lineWidth = lineWidth;
+		tmp_ctx.lineWidth = '3';
 		tmp_ctx.lineJoin = 'round';
 		tmp_ctx.lineCap = 'round';
 		tmp_ctx.strokeStyle = lineColor;
@@ -418,12 +227,13 @@ functions =  function() {
 				tmp_canvas.height = 600;
 				$('#sketch, #paint, #tmp_canvas').css({'height':'300px'});
 				$('.splitter').not('#splitter-1').remove();
+				$('#splitter-1').html('unsplit')
 				$('.placeholder').not('#placeholder-1').remove();
 				$('#remove-panel').hide();
 				sketch.style.height = 300 + 'px';
 				ctx.fillStyle = "white";
 				ctx.fillRect(0, 0, canvas.width, canvas.height);
-				document.getElementsByClassName('splitter').innerHTML = 'split';
+				//document.getElementsByClassName('splitter').innerHTML = 'split';
 				ctx.strokeStyle = 'black';
 				ctx.lineWidth = 3;
 				ctx.beginPath();
@@ -437,7 +247,7 @@ functions =  function() {
 				tmp_ctx.strokeStyle = lineColor;
 				tmp_ctx.fillStyle = 'black';	
 				tmp_ctx.lineWidth = lineWidth;
-				console.log(lineWidth);
+				//alert(lineWidth);
 			
 		});
 
@@ -695,6 +505,226 @@ functions =  function() {
 		//window.alert('undoing'); 
 
 	};
+	var onPaint = function () {
+		painting = true;
+		if (tool == 'brush') {
+			onPaintBrush();
+		} else if (tool == 'circle') {
+			onPaintCircle();
+		} else if (tool == 'line') {
+			onPaintLine();
+		} else if (tool == 'rectangle') {
+			onPaintRect();
+		} else if (tool == 'text-#d40000' || tool == 'text-black') {
+			tmp_canvas.addEventListener('click', createText, false);
+			//textCalls++;
+			tmp_canvas.style.cursor = 'text';
+		} else if (tool == 'ellipse') {
+			drawEllipse(tmp_ctx);
+		} else if (tool == 'eraser') {
+			onErase();
+		} else if (tool == 'spray') {
+			generateSprayParticles();
+		} else if (tool == 'edit') {
+			//none();
+		}
+
+	};
+	}
+	
+	//if ( $('#sketch').length > 0 ) {
+		
+	//}
+
+	//canvas.crossOrigin="anonymous";
+	
+	var textCalls = 0;
+
+	// Creating a tmp canvas
+	
+/*	$(document).on('click', '#button', function(){
+		alert('ss');
+		var tmp_canvas = document.createElement('canvas');
+		var tmp_ctx = tmp_canvas.getContext('2d');
+		tmp_ctx.fillText(document.getElementById('text-' + '1').value.toUpperCase(), Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + '1').parentElement.offsetLeft) + 10, Number(document.getElementById('text-' + '1').parentElement.parentElement.offsetTop) + Number(document.getElementById('text-' + '1').parentElement.offsetTop) + 15);
+	});*/
+	
+	
+	var tool = 'none';
+	lineWidth = '3';
+	lineColor = 'black';
+
+	//function chooseBro() {
+	//	$('#talking').fadeIn(200).fadeOut(1300);
+	//}
+	
+
+	$('#tools .direct-tools').on('click', function () {
+
+		$('#shapes-button, #texts-button').css({
+			//'border-bottom': '0px solid #d40000',
+			//'color':'black'
+			'background':'none'
+		});
+
+		tool = $(this).attr('id');
+		//$('.rageface').toggleClass('rageface');
+		$('#tools .direct-tools').not(this).css({
+			'background': 'none'
+			//, 'color': 'black'
+			//, 'border': 'none'
+				//"box-shadow": "inset 0px 0px 0px 0px #D40000",
+				//  "background": "whitesmoke"
+		});
+		
+		$(this).css({
+			'background': 'rgb(253, 97, 61)'
+			, 'color': 'black'
+			//, 'border-bottom': '#d40000 2px solid'
+				//,"box-shadow": "inset 0px 0px 0px 3px #D40000",
+				//  'background': 'white'
+		});
+		console.log(lineWidth);
+
+		function lowerIndex() {
+			$('.text-parent .ui-wrapper').css({
+				'z-index': '1'
+			}).addClass('hidden-textareas');
+			$('.img-parent .ui-wrapper, #placeholder-wrapper').css({
+				'z-index': '1',
+			});
+			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
+			//$(tmp_canvas).css({'cursor':'crosshair'});
+			$(tmp_canvas).removeClass('default-cursor');
+			$('.ui-resizable-handle').addClass('transparent-handle');
+			$('.textareas').addClass('no-border');
+			//$('#canvas').css({'border':'red 5px solid'});
+		}
+
+		function imgIndex() {
+			$('.text-parent .ui-wrapper').css({
+				'z-index': '1'
+			});
+			$('.img-parent .ui-wrapper').css({
+				'z-index': '4'
+			});
+			$('#placeholder-wrapper').css({
+				'z-index': '3'
+			});
+			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
+			$(tmp_canvas).removeClass('default-cursor');
+			$('.img-parent .ui-resizable-handle').removeClass('transparent-handle');
+			$('.text-parent .ui-resizable-handle').addClass('transparent-handle');
+			$('.textareas').addClass('no-border');
+			$('.text-parent .delete-handle').hide();
+			//$('#canvas').css({'border':'green 5px solid'});
+		}
+
+		function textIndex() {
+			$('.img-parent .ui-wrapper, #placeholder-wrapper').css({
+				'z-index': '1'
+			});
+			$('.text-parent .ui-wrapper').css({
+				'z-index': '3'
+			}).removeClass('hidden-textareas');
+			$('.dragged-helper, .ui-wrapper').removeClass('dragged-shadow');
+			$(tmp_canvas).removeClass('default-cursor');
+			$('.text-parent .ui-resizable-handle').removeClass('transparent-handle');
+			$('.img-parent .ui-resizable-handle').addClass('transparent-handle');
+			$('.textareas').removeClass('no-border');
+			$('.text-parent .delete-handle').show();
+			//$('#paint').css({'border':'blue 5px solid'});
+		};
+
+		function upperIndex() {
+			$('.img-parent .ui-wrapper, .text-parent .ui-wrapper').css({
+				'z-index': '4'
+			});
+			$('#placeholder-wrapper').css({
+				'z-index': '3'
+			});
+			$('.dragged-helper, .ui-wrapper').addClass('dragged-shadow');
+			//$(tmp_canvas).css({'cursor':'crosshair'});
+			$(tmp_canvas).addClass('default-cursor');
+			$('.ui-resizable-handle').fadeIn();
+			//$('#tmp_canvas').css({'border':'1px green solid'})
+		}
+		//console.log(tool);
+		if (tool == 'text-#d40000') {
+			tmp_canvas.style.cursor = "text";
+			textIndex();
+		} else if (tool == 'text-black') {
+			tmp_canvas.style.cursor = "text";
+			textIndex();
+			//alert('sds');
+		} else if (tool == 'edit') {
+			tmp_canvas.style.cursor = "move";
+			imgIndex();
+		} else if (tool == 'brush') {
+			tmp_ctx.strokeStyle = lineColor;
+			tmp_canvas.style.cursor = "url('assets/pen.cur'), auto";
+			lowerIndex();
+		} else if (tool == 'spray') {
+			tmp_canvas.style.cursor = "url('assets/spray.cur'), auto";
+			lowerIndex();
+
+		} else if (tool == 'eraser') {
+			tmp_canvas.style.cursor = "url('assets/eraser.cur'), auto";
+			lowerIndex();
+		} else if (tool == 'none') {
+			alert('mmm');
+		} else {
+			console.log('other')
+			tmp_canvas.style.cursor = "crosshair";
+		}
+		lineSize();
+
+		function lineSize() {
+			$('.line-wrapper').click(function () {
+				var linesize = $(this).attr('id');
+				//tmp_ctx.lineWidth =
+				if (linesize == 'line1') {
+					lineWidth = 2;
+					tmp_ctx.lineWidth = 2;
+				} else if (linesize == 'line2') {
+					lineWidth = 3;
+					tmp_ctx.lineWidth = 3;
+				} else {
+					lineWidth = 6;
+					tmp_ctx.lineWidth = 6;
+				}
+			})
+		}
+		//$('#addRageFaces').on('click', function(){
+		//  tool = 'none';
+		//  $('#tools button').css({
+		//  "box-shadow": "inset 0px 0px 0px 0px #D40000",
+		//  'background': 'whitesmoke'
+		//  });
+		//});
+		
+		console.log(tool);
+
+	});
+	//  COLOR FUNCTION
+
+	$('.color-box').click(function () {
+		//tool = $(this).attr('id');
+		$('.color-box').parent().css({
+			//"border": "1px solid #616161"
+			'box-shadow': 'none'
+		, });
+		$(this).parent().css({
+			//"border": "1px solid #F15247"
+			'box-shadow': '3px 3px 1px rgba(0,0,0,0.4)'
+		, });
+		lineColor = $(this).attr('id');
+		$('.dot').css({'background':lineColor})
+	});
+	//$('#line2').click();
+	$('#000000').click();
+
+	
 
 
 
@@ -1157,31 +1187,7 @@ functions =  function() {
 		console.log('called to download')
 	});
 var painting;
-	var onPaint = function () {
-		painting = true;
-		if (tool == 'brush') {
-			onPaintBrush();
-		} else if (tool == 'circle') {
-			onPaintCircle();
-		} else if (tool == 'line') {
-			onPaintLine();
-		} else if (tool == 'rectangle') {
-			onPaintRect();
-		} else if (tool == 'text-#d40000' || tool == 'text-black') {
-			tmp_canvas.addEventListener('click', createText, false);
-			//textCalls++;
-			tmp_canvas.style.cursor = 'text';
-		} else if (tool == 'ellipse') {
-			drawEllipse(tmp_ctx);
-		} else if (tool == 'eraser') {
-			onErase();
-		} else if (tool == 'spray') {
-			generateSprayParticles();
-		} else if (tool == 'edit') {
-			//none();
-		}
-
-	};
+	
 	
 	//var textCalls = 0;
 	var textFocused = false;
@@ -1332,7 +1338,7 @@ var painting;
 			}
 			$('#tags p').addClass('animated-very-fast fadeInUp');
 			$('#ragefaces .rageface').slice(0,40).trigger("loadEmBoys");
-			tmp_canvas.removeEventListener('click', chooseBro);
+			//tmp_canvas.removeEventListener('click', chooseBro);
 
 		});
 		$("#ragefaces img.rageface").slice(0,40).lazyload({
@@ -1641,7 +1647,13 @@ var painting;
 			this.innerHTML = "split";
 			console.log('unsplitted');
 		};
-		tmp_ctx.restore();
+		tmp_ctx.lineWidth = lineWidth;
+		tmp_ctx.lineJoin = 'round';
+		tmp_ctx.lineCap = 'round';
+		tmp_ctx.strokeStyle = lineColor;
+		//tmp_ctx.fillStyle = 'black';	
+		tmp_ctx.lineWidth = lineWidth;
+		//tmp_ctx.restore();
 		stopDrawing();
 	};
 
@@ -1807,7 +1819,7 @@ var painting;
 		$('#remove-panel-button').fadeIn();
 		//alert('yes');
 	} else {
-		alert('wgat');
+		//alert('wgat');
 	}
 	
 	function addRage(){
@@ -1961,7 +1973,7 @@ $('.image-upload-wrap').bind('dragover', function () {
 //}
 
 
-
+//alert('functions')
 }
 
 $(document).ready(functions);
