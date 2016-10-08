@@ -5755,9 +5755,17 @@ i.fa.fa-reddit-alien {
 .loadingPost #next-post-icon {
 	display: none;
 }*/
+#signup #sign-in-wrapper {
+	    width: 400px;
+    margin: 0px auto;
+    position: relative;
+    top: 40px;
+    font-family: open sans;
+}
 #sign-up-2, #sign-up-link {
 	margin-left: 10px;
 	opacity: 0.9;
+	color: #252525;
 	display: none;
 }
 #sign-up-link {

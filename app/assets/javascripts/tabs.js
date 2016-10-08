@@ -344,6 +344,7 @@ $(document).on('click', '#hide-remote-make', function(){
   })
   $(document).on('click', '#back-list', function(){
     if ( $('body').is('#show')  ) {
+      console.log('redirected to recent')
       window.location = '/recent'
     }
     else {
