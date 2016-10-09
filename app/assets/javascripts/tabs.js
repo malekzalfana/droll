@@ -270,7 +270,7 @@ tabs = function() {
 	$(document).on('click', '#choose-image, #reset-user-image', function() {
 		$(this).siblings('input').click()
 	})
-	$(document).on('click', '.shown-post #back-clicker, #show #back-clicker',
+	$(document).on('click', '.shown-post #back-clicker',
 		function() {
 			$('#back-list').click()
 		})
@@ -351,11 +351,11 @@ tabs = function() {
 	$(document).on('click', '#make2 .cancel-meme', function() {
 		$('#hide-remote-make').click()
 	})
-	$(document).on('click', '#back-list', function() {
+	$(document).on('click', 'body:not(#show) #back-list', function() {
 		if ($('body').is('#show')) {
 			console.log('redirected to recent')
 			//window.location = '/recent'
-			$('#logo').click()
+			//$('#logo').parent('a').click()
 		} else {
 			if ($('.wrapper.shown .middle-wrapper').is(':visible')) {
 				$('.wrapper.shown .comment-button').click()

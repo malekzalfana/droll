@@ -66,7 +66,7 @@ class PagesController < ApplicationController
       @activities3 = [@activities1, @activities2, @activities0].flatten
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
     end  
-    @post = Post.where(hidden: nil).order("created_at DESC").page(params[:page]).per_page(10)
+    @post = Post.where(hidden: nil).order("created_at DESC").page(params[:page]).per_page(1)
     
     # .reject{ |e| @anonymous.include? e }
     respond_to do |format|

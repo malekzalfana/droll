@@ -5756,6 +5756,10 @@ i.fa.fa-reddit-alien {
 .loadingPost #next-post-icon {
 	display: none;
 }*/
+#show #main-page-type a, #show #main-page-type #back-clicker {
+	pointer-events: auto;
+	
+}
 #signup #sign-up-wrapper {
 	    width: 400px;
     margin: 0px auto;
