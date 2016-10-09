@@ -354,7 +354,8 @@ tabs = function() {
 	$(document).on('click', '#back-list', function() {
 		if ($('body').is('#show')) {
 			console.log('redirected to recent')
-			window.location = '/recent'
+			//window.location = '/recent'
+			$('#logo').click()
 		} else {
 			if ($('.wrapper.shown .middle-wrapper').is(':visible')) {
 				$('.wrapper.shown .comment-button').click()
