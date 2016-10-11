@@ -61,10 +61,11 @@
         <img class="random-gif" src="https://s-media-cache-ak0.pinimg.com/originals/32/a6/eb/32a6ebf6c0546ba0fb0d232e3aba49e7.gif">
     <% elsif user_signed_in? && current_user.following.count == 0 %>    
         <div id="unlock-feed">Follow funny people to see their posts here + popular ones</div>
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/32/a6/eb/32a6ebf6c0546ba0fb0d232e3aba49e7.gif" style="width: 145px;opacity: 0.9;">
+        <img class="random-gif" src="https://s-media-cache-ak0.pinimg.com/originals/32/a6/eb/32a6ebf6c0546ba0fb0d232e3aba49e7.gif">
     <% else %>
     <% if user_signed_in? && @post.count == 0 %>
             <div id="unlock-feed">There are no posts here.</div>
+            <img class="random-gif" src="https://s-media-cache-ak0.pinimg.com/originals/32/a6/eb/32a6ebf6c0546ba0fb0d232e3aba49e7.gif">
     <% end %>
     <%= will_paginate @post %>
     <% @post.each do |post| %>
