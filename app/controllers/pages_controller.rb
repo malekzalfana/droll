@@ -127,16 +127,18 @@ class PagesController < ApplicationController
   end
   
   def stock
-    @stock = Stock.create
-    @stock.base64 = params[:base64]
-    @stock.image = URI.parse(  params[:base64]  ).open
-    puts @stock.image_content_type
-    @stock.user = current_user
-    @stock.save
-    respond_to do |format|
-     format.html
-     format.js
+    if params[:base64]
+      @stock = Stock.create
+      @stock.base64 = params[:base64]
+      @stock.image = URI.parse(  params[:base64]  ).open
+      @stock.user = current_user
+      @stock.save
+      respond_to do |format|
+       format.html
+       format.js
+      end
     end
+    
   end
   
   def deleteStock

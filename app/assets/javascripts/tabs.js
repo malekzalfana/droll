@@ -197,17 +197,21 @@ tabs = function() {
 	$(document).on('click', '.delete-stock', function(){
 		$(this).siblings('form').find('input[type="submit"]').click()
 	})
-	
+	var toStock = true;
 	$(document).on('click', '#add-stocks-bar-left', function(){
-		
-	    $('#stock-base64').val($('#add-stocks-bar').val())
-		setTimeout(function(){
-			$('#submit-stock').click()
-		}, 100)
-		setTimeout(function(){
-			$('#stock-base64').val('')	
-			$('#add-stocks-bar').val('')
-		}, 300)
+		if ( toStock == true ) {
+			$('#stock-base64').val($('#add-stocks-bar').val())
+			setTimeout(function(){
+				$('#submit-stock').click()
+			}, 100)
+			toStock = false;
+			setTimeout(function(){
+				$('#stock-base64').val('')	
+				$('#add-stocks-bar').val('')
+				toStock = true;
+			}, 300)	
+		}
+	    
 	})
 	/*
 	var stockBase64;
