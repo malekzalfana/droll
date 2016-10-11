@@ -1420,7 +1420,7 @@ var painting;
 		});	
 		}*/
 		dragg = function(){
-			$('#ragefaces .rageface.rageface-normal,#ragefaces .dragged.rageface-normal').draggable({
+			$('#ragefaces .rageface.rageface-normal:not(.panel2),#ragefaces .dragged.rageface-normal:not(.panel2)').draggable({
 			helper: 'clone'
 			, appendTo: sketch
 			, revert: 'invalid'

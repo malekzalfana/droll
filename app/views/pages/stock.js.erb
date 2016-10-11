@@ -1,3 +1,8 @@
 console.log('<%= @stock.image.url %>')
-$('#ragefaces-stock').prepend('<img class="rageface stock rageface-normal" crossorigin="" src="<%= @stock.image.url %>" >	')
+alert('s')
+$('#ragefaces-stock').prepend('<div id="stock-<%= @stock.id %>"><img class="rageface stock rageface-normal" crossorigin="" src="<%= @stock.image.url %>">"></div>')
+
+alert('s')
 dragg()
+<%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %><%# text_area_tag :id, @stock.id %><%# submit_tag "SEND"%><%# end %>
+//<i class="material-icons delete-stock">cancel</i>
