@@ -209,8 +209,10 @@ tabs = function() {
 			setTimeout(function(){
 				$('#stock-base64').val('')	
 				$('#add-stocks-bar').val('')
-				toStock = true;
 			}, 300)	
+			setTimeout(function(){
+				toStock = true;
+			}, 1000)
 		}
 	    
 	})
