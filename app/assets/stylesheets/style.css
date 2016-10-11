@@ -3789,6 +3789,10 @@ iframe {
 .vote {
 	cursor: pointer;
 }
+.ranom-gif {
+	 width: 190px;
+	 opacity: 0.9;
+}
 .loading-quarter-circle-2 {
 	float: left;
     display: none;

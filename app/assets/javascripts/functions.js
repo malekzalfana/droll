@@ -1,5 +1,6 @@
 /*global $*/
 var functions;
+var finalImage;
 functions =  function() {
 	var lineWidth;
 	var lineColor;
@@ -1130,6 +1131,7 @@ functions =  function() {
 			console.log(Number(document.getElementById('text-' + textNumbers).parentElement.parentElement.offsetLeft) + Number(document.getElementById('text-' + textNumbers).parentElement.offsetLeft)  )
 			}
 		};
+		finalImage = $('<img/>').attr('src', downloadCANVAS.toDataURL())
 		if ( todownload === true ){
 			//$('#sketch-wrapper').append(downloadCANVAS)
 			//$(downloadCANVAS).css({'width':'600px'})
@@ -1137,8 +1139,7 @@ functions =  function() {
 				link.download = filename;
 		}
 		else {
-			//var memeCanvas = document.getElementById('paint');
-			$('<img/>').attr('src', downloadCANVAS.toDataURL()).load(function(){
+			$(finalImage).load(function(){
 				var dataURL3 = downloadCANVAS.toDataURL();
 				$('#base64-2').val(dataURL3)
 			})
@@ -1175,6 +1176,7 @@ functions =  function() {
 	}
 	
 	$(document).on('click', '#submit-image-button-before-3', function(){
+		finalImage = false;
 	    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
 	  })
 	//document.getElementsByClassName('rageface').setAttribute('crossOrigin', 'anonymous');
