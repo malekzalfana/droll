@@ -5803,6 +5803,9 @@ i.fa.fa-reddit-alien {
 	display: none;
 }
 #sign-up-link {
+	color: whitesmoke;
+}
+#sign-up-link {
 	display: inline-block;
 }
 #reset-user-image, #reset-cover {
