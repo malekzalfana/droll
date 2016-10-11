@@ -130,7 +130,7 @@ class PagesController < ApplicationController
     if params[:base64]
       @stock = Stock.create
       @stock.base64 = params[:base64]
-      @stock.image = URI.parse(  params[:base64]  ).open
+      @stock.image = URI.parse(  params[:base64]  )
       @stock.user = current_user
       @stock.save
       respond_to do |format|
