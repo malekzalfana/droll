@@ -200,6 +200,7 @@ tabs = function() {
 	var toStock = true;
 	$(document).on('click', '#add-stocks-bar-left', function(){
 		if ( toStock == true ) {
+			console.log('clicked')
 			$('#stock-base64').val($('#add-stocks-bar').val())
 			setTimeout(function(){
 				$('#submit-stock').click()
