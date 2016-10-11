@@ -1,5 +1,18 @@
 <%# link_to 'Sin in with Twitter', user_omniauth_authorize_path(:twitter) %>
 <body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+    <% if user_signed_in? %>
+        <i class="material-icons" id="show-feedback">feedback</i>
+        <div id="feedback">
+            <%= form_tag 'pages/feedback', remote: true, :method => 'get' do %>
+                <label>Any feedback is appreciated</label>
+                <%= hidden_field_tag :user, current_user, placeholder: "Tell us everything.." %>
+                <%= text_area_tag :text %>
+                <div id="thanks-feedback">Thank you!</div>
+                <%= submit_tag "SEND", id: "submit-feedback"%>
+                <input value="CANCEL" id="cancel-feedback">
+            <% end %>
+        </div>
+    <% end %>
     <i class="material-icons" id="hide-remote-make">clear</i>
     <% if user_signed_in? && @pTotal < 100 %>
     <div id="progress-table">

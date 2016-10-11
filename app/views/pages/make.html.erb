@@ -517,16 +517,32 @@
 			<img class="rageface rageface-normal panel2" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/142face.png" data-facenumber="142">
 			<img class="rageface rageface-normal panel2" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/10face.png" data-facenumber="10">
 			
-			
-			<!--
-			<h4>My images</h4>
-			<div id="uploads"></div>
-			<div id="uploads-area">
-				</hr>
-				<button class="button" href="#popup1" id="upload-button">Upload</button>
-				<a ><button id="upload-button">Upload</button></a>
-			</div>	
-			-->
+			<div id="stocks-wrapper">
+				<div id="stock-header">
+					<h4 id="my-images">My images</h4>
+					<input contenteditable id="add-stocks-bar" placeholder="paste image address here"><div id="add-stocks-bar-left"><i class="material-icons">add</i></div>
+					<span id="gifs-not-supported" class="hidden-imp">GIFs are not supported</span>
+				</div>
+				
+				<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
+	                <%= text_area_tag :base64, '', :id => "stock-base64" %>
+	                <%= submit_tag "SEND", :id => "submit-stock"%>
+	            <% end %>
+	            <div id="ragefaces-stock">
+	            	<% @stock.each do |s| %>
+	            	<div id="stock-<%= s.id %>">
+	            		<img class="rageface rageface-normal" crossorigin="" data-original="<%= s.image.url %>" ><i class="material-icons delete-stock">cancel</i>
+		            	<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
+			                <%= text_area_tag :id, s.id %>
+			                <%= submit_tag "SEND"%>
+			            <% end %>
+	            	</div>
+		            	
+		            <% end %>
+	            </div>
+	            
+	            
+			</div>
 			
 			</div>
 			</div>

@@ -94,6 +94,7 @@ class PagesController < ApplicationController
       @activities3 = [@activities1, @activities2, @activities0].flatten
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
       @post = current_user.posts.build(params[:post])
+      @stock = current_user.stocks.order("created_at DESC")
     end
     
   end  
@@ -123,6 +124,30 @@ class PagesController < ApplicationController
     @feedback.text = params[:text]
     @feedback.user = params[:user]
     @feedback.save
+  end
+  
+  def stock
+    @stock = Stock.create
+    @stock.base64 = params[:base64]
+    @stock.image = URI.parse(  params[:base64]  )
+    puts @stock.image_content_type
+    @stock.user = current_user
+    @stock.save
+    respond_to do |format|
+     format.html
+     format.js
+    end
+  end
+  
+  def deleteStock
+    @stockid = params[:id]
+    @stock = Stock.find(params[:id])
+    puts @stock.image.url
+    @stock.destroy
+    respond_to do |format|
+     format.html
+     format.js
+    end
   end
   
   def loadPost

@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/checkEmail' => 'pages#checkEmail'
   get '/pages/loadPost' => 'pages#loadPost'
   get '/pages/feedback' => 'pages#feedback'
+  get '/pages/stock' => 'pages#stock'
+  get '/pages/deleteStock' => 'pages#deleteStock'
   get '/about' => 'pages#about'
   get '/terms' => 'pages#terms'
   get '/contact' => 'pages#contact'

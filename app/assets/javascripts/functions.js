@@ -1347,7 +1347,7 @@ var painting;
 			threshold: 100,
 			
 		});
-		$("#ragefaces img.rageface").slice(40,185).lazyload({         
+		$("#ragefaces img.rageface").slice(40,  $('#ragefaces .rageface').length ).lazyload({         
 		    //effect : "fadeIn",
 		    container: $("#ragecontainer"),
 			threshold: 100,
@@ -1361,7 +1361,8 @@ var painting;
 				threshold: 100,
 			})
 		});
-		$('.rageface.rageface-normal, .dragged.rageface-normal').draggable({
+		/*dragg = function() {
+			$('.rageface.stock.ne').draggable({
 			helper: 'clone'
 			, appendTo: sketch
 			, revert: 'invalid'
@@ -1384,7 +1385,7 @@ var painting;
 				$(ui.helper).addClass("dragged-helper");
 				var theClone1 = $(ui.helper).clone(true).removeClass('rageface ui-draggable ui-draggable-handle ui-draggable-dragging ui-resizable').addClass('dragged').attr('id', 'rage-' + droppedFaces).appendTo(sketch).wrap('<div class="img-parent"></div>').resizable({
 					aspectRatio: true
-					, minHeight: 75
+					, minHeight: 50
 					, disabled: false
 					, handles: 'se'
 					, start: function () {
@@ -1395,6 +1396,67 @@ var painting;
 				}).parent().draggable({
 					containment: sketch
 				, });
+				var deleteHandle = document.createElement('div');
+				deleteHandle.className = 'delete-handle animated fadeIn';
+				$(deleteHandle).prependTo($(theClone1).parent().children());
+				$(deleteHandle).click(function(){
+					$(this).parent().parent().remove();
+					//$(this).parent().remove();
+					//$(this).remove();
+					$('#placeholder-1').addClass('cancel');
+					droppedFaces--;
+				});
+				//$(theClone1).click(function(){
+				//	$(theClone1).focus();
+				//});
+				$(theClone1).parent().mouseover(function(){
+			$(theClone1).find('.delete-handle').show();
+			console.log($(theClone1).find('.delete-handle'))
+			});
+			$(theClone1).parent().mouseout(function () {
+				$(this).find('.delete-handle').hide();
+			});
+			}
+		});	
+		}*/
+		dragg = function(){
+			$('#ragefaces .rageface.rageface-normal,#ragefaces .dragged.rageface-normal').draggable({
+			helper: 'clone'
+			, appendTo: sketch
+			, revert: 'invalid'
+			, disabled: false
+			, start: function (event, ui) {
+				$('#ragecontainer').hide();
+				$(tmp_canvas).css({
+					'cursor': 'move'
+				});
+				$('#edit').click();
+				//$(ui.helper).animate({'width':'75','height':'auto'});
+				//if ( $(this).hasClass('panel2')) {
+				//	$(ui.helper).addClass('dragged-panel2');
+				//}
+			}
+			
+			, stop: function (event, ui) {
+				droppedFaces++;
+				var currentFace = document.getElementById('rage' + droppedFaces);
+				$(ui.helper).addClass("dragged-helper");
+				var theClone1 = $(ui.helper).clone(true).removeClass('rageface ui-draggable ui-draggable-handle ui-draggable-dragging ui-resizable').addClass('dragged').attr('id', 'rage-' + droppedFaces).appendTo(sketch).wrap('<div class="img-parent"></div>').resizable({
+					aspectRatio: true
+					, minHeight: 65
+					, disabled: false
+					, handles: 'se'
+					, start: function () {
+						//$('.ui-wrapper').addClass('dragged-shadow');
+						//$(this).parent().addClass('img-wrapper');
+					}
+					, containment: sketch
+				}).parent().draggable({
+					containment: sketch
+				, });
+				/*if ( !$(theClone).attr('facenumber') ) {
+					$(theClone).addClass('sto')
+				}*/
 				var deleteHandle = document.createElement('div');
 				deleteHandle.className = 'delete-handle animated fadeIn';
 				$(deleteHandle).prependTo($(theClone1).parent().children());
@@ -1422,6 +1484,8 @@ var painting;
 			});
 			}
 		});
+		}
+		dragg()
 		$('.rageface.panel2').draggable({
 			helper: 'clone',
 			appendTo: sketch,

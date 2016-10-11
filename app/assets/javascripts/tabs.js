@@ -193,7 +193,64 @@ tabs = function() {
 		}
 		reader.readAsDataURL(image);
 	};
+	
+	$(document).on('click', '.delete-stock', function(){
+		$(this).siblings('form').find('input[type="submit"]').click()
+	})
+	
+	$(document).on('click', '#add-stocks-bar-left', function(){
+		
+	    $('#stock-base64').val($('#add-stocks-bar').val())
+		setTimeout(function(){
+			$('#submit-stock').click()
+		}, 100)
+		setTimeout(function(){
+			$('#stock-base64').val('')	
+			$('#add-stocks-bar').val('')
+		}, 300)
+	})
 	/*
+	var stockBase64;
+	function readStock(url) {
+    var img = new Image();
+
+    img.setAttribute('crossOrigin', 'anonymous');
+
+	    img.onload = function () {
+	        var canvas = document.createElement("canvas");
+	        canvas.width =this.width;
+	        canvas.height =this.height;
+	
+	        var ctx = canvas.getContext("2d");
+	        ctx.drawImage(this, 0, 0);
+			
+	        var dataURL = canvas.toDataURL("image/png");
+	
+	        stockBase64 = dataURL.replace(/^data:image\/(png|jpg);base64,/, "") ;
+	    };
+	
+	    img.src = url;
+	}
+	
+	function readStock(event, thisFiler, thisPreview) {
+		console.log('ssssss')
+			var files = event.target.files;
+			var image = files[0]
+			var reader = new FileReader();
+			reader.onload = function(file) {
+				var img = new Image();
+				//console.log(file);
+				img.src = file.target.result;
+				reader.readAsDataURL(image);
+				console.log(img.src)
+			//getBase64FromImageUrl(img.src)
+			//$('#input-stocks-hidden').val()
+		}
+	};
+	$(document).on('click', '#add-stocks', function(){
+		$('#input-stocks-hidden').click()
+	})
+	
   $(document).on('click', '#menu-button', function(){
     setTimeout(function(){
       $(this).parent().focus()

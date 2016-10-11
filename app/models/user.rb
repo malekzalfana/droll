@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100#", :tiny => "28x28#" }, :default_url => "missing.jpg"
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "missing-2.jpg"
   has_many :posts, dependent: :destroy
+  has_many :stocks, dependent: :destroy
   
   has_many :active_relationships, class_name: 'Relationship', foreign_key: "follower_id", dependent: :destroy
   has_many :passive_relationships, class_name: 'Relationship', foreign_key: "followed_id", dependent: :destroy
