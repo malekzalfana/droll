@@ -531,7 +531,7 @@
 	            <div id="ragefaces-stock">
 	            	<% @stock.each do |s| %>
 	            	<div id="stock-<%= s.id %>">
-	            		<img class="rageface rageface-normal" crossorigin="" data-original="<%= s.image.url %>" ><i class="material-icons delete-stock">cancel</i>
+	            		<img class="rageface rageface-normal" data-original="<%= s.image.url %>" ><i class="material-icons delete-stock">cancel</i>
 		            	<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
 			                <%= text_area_tag :id, s.id %>
 			                <%= submit_tag "SEND"%>
