@@ -5819,6 +5819,10 @@ i.fa.fa-reddit-alien {
 		display: inline-block;
 	}
 }
+.random-gif {
+	opacity: 0.9;
+	width: 190px;
+}
 #main-message {
     font-family: open sans;
     max-width: calc(100% - 116px);
