@@ -309,7 +309,6 @@ a {
     padding: 20px;
     height: 100%;
     margin: 0px auto;
-    padding-top: 0px;
 }
 
 #tools .tools {
@@ -4256,7 +4255,7 @@ body:not(.shown-post) .post-image-wrapper {
     margin: 5px;
 }
 #ragefaces-buttons-wrapper .anonymous-checkbox {
-	color: whitesmoke;
+	color: #5a5a5a;
 }
 .anonymous-checkbox.shown {
 	display: inline-block;
@@ -5202,16 +5201,16 @@ body.shown-post #main-page-type a:hover + #back-list {
 	transition: all ease-out 0.2s;
 }
 #ragefaces-buttons-wrapper #anonymous-image {
-  color: whitesmoke;
+  color: #5a5a5a;
 }
 #ragefaces-buttons-wrapper #anonymous-image i {
-  color: whitesmoke;
+  color: #5a5a5a;
 }
 #ragefaces-buttons-wrapper #anonymous-image:hover {
-  border-color: white !important;
+  border-color: black !important;
 }
 #ragefaces-buttons-wrapper #anonymous-image:hover i {
-  color: white !important;
+  color: black !important;
 }
 body.anonymous {
 	overflow: hidden;

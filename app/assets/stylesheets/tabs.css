@@ -310,29 +310,27 @@
     pointer-events: none;
 }
 #ragefaces-buttons-wrapper {
-  position: absolute;
-    bottom: 65px;
-    left: 1px;
-    text-align: center;
-    width: 185px;
+      position: relative;
+    text-align: left;
+    margin-left: 40px;
 }
 #ragefaces-buttons-wrapper .anonymous-checkbox {
-  left: -15px;
+  
 }
 #ragefaces-buttons-wrapper .anonymous-checkbox.shown {
-  margin-top: 5px;
+  
 }
 #ragefaces-buttons-wrapper #anonymous-image {
-  color: whitesmoke;
+  color: #5a5a5a;
 }
 #ragefaces-buttons-wrapper #anonymous-image i {
-  color: whitesmoke;
+  color: gray;
 }
 #ragefaces-buttons-wrapper #anonymous-image:hover {
-  color: white !important;
+  color: #252525 !important;
 }
 #ragefaces-buttons-wrapper #anonymous-image:hover i {
-  color: white !important;
+  color: #252525 !important;
 }
 #submit-image-button-before-3 {
   display: inline-block !important;

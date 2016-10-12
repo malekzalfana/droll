@@ -2394,3 +2394,1738 @@ Processing by PagesController#index as HTML
   Rendered layouts/_nav_guest.html.erb (0.1ms)
   Rendered layouts/_nav.html.erb (2.1ms)
 Completed 200 OK in 298ms (Views: 292.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 178.162.216.32 at 2016-10-12 14:55:46 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "5b7a07c147905cbb723bad8ef594978e"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  Rendered devise/shared/_links.html.erb (11.9ms)
+  Rendered devise/shared/_links.html.erb (10.4ms)
+  Rendered pages/index.html.erb within layouts/application (69.7ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 365ms (Views: 359.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:48 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:48 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:48 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:48 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:48 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:48 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:49 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:49 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:49 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:49 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:49 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:50 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:50 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:50 +0000
+
+
+Started GET "/assets/style.self-41911c3747a138773841f92a245b6537106d3006c79957dbd57e10ffc8907528.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:50 +0000
+
+
+Started GET "/assets/tabs.self-eefcfa42b90665593527d37ebc56d3987d0deb6dbb646d53c23da9a7b8334431.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:50 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 178.162.216.32 at 2016-10-12 14:55:50 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:51 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:52 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:52 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:52 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:52 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:52 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:53 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:53 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:53 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:53 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:53 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:53 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:54 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:54 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:54 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:54 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:54 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:54 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:55 +0000
+
+
+Started GET "/assets/create.self-121ca6854ef3e092bf29c6865328093ffd7922e452841b4e8367ebc4f1181ae5.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:55 +0000
+
+
+Started GET "/assets/functions.self-c4a150e1b797c4f2b5a15c9d5d23a5eb7ba9cc5b7613aa19d7bd4cbca31905d0.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:55 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:55 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:55 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:56 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:56 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:56 +0000
+
+
+Started GET "/assets/main.self-3ffc460105065618929621b3d91d5b0a272e6931721f580db4375d89c432f9df.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:56 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:56 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:56 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:57 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:57 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:57 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:57 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:57 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:57 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:58 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:58 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:58 +0000
+
+
+Started GET "/assets/tabs.self-3dd9410fe3b91864484524bf5f71470282082f5c9bdaf6faa3f92855d56bdf1a.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:59 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:59 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 178.162.216.32 at 2016-10-12 14:55:59 +0000
+
+
+Started POST "/users/sign_in" for 178.162.216.32 at 2016-10-12 14:56:26 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"93SyqzMLg2KAsColS5Wn/QmxXNdOupokcrrju4wdenGbVcbZbhgOrVJcFTH/j4JwGwV/4NKTj+G5taOG0DqgMg==", "user"=>{"email"=>"u@u.u1", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "u@u.u1"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["current_sign_in_at", "2016-10-12 14:56:27.273384"], ["current_sign_in_ip", "178.162.216.32"], ["sign_in_count", 2], ["updated_at", "2016-10-12 14:56:27.276342"], ["id", 1]]
+  [1m[36m (10.7ms)[0m  [1mcommit transaction[0m
+Redirected to https://drolle-3-malekzalfana.c9users.io/
+Completed 302 Found in 409ms (ActiveRecord: 12.7ms)
+
+
+Started GET "/" for 178.162.216.32 at 2016-10-12 14:56:28 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "b0879a02056afb15ac2d104c2a5ffa74"]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "user_id", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["impressionable_type", "Page"], ["controller_name", "pages"], ["action_name", "index"], ["user_id", 1], ["request_hash", "b4df45804e2554194b7f9de745cba8e6e1edb01d5b7ef581d5adc52bdd9427de"], ["session_hash", "b0879a02056afb15ac2d104c2a5ffa74"], ["ip_address", "178.162.216.32"], ["referrer", "https://drolle-3-malekzalfana.c9users.io/"], ["created_at", "2016-10-12 14:56:28.505171"], ["updated_at", "2016-10-12 14:56:28.505171"]]
+  [1m[35m (11.6ms)[0m  commit transaction
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 3)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?) AND (created_at < '2016-10-10 14:56:28.528847')  ORDER BY created_at DESC  [["follower_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC LIMIT 25[0m
+  Rendered layouts/_activities.html.erb (1.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 1]]
+  Rendered pages/index.html.erb within layouts/application (6.6ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 402ms (Views: 356.1ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/assets/missing.jpg" for 178.162.216.32 at 2016-10-12 14:56:31 +0000
+
+
+Started GET "/recent" for 178.162.216.32 at 2016-10-12 14:57:13 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mImpression Exists (0.2ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "b0879a02056afb15ac2d104c2a5ffa74"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 1]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 14:57:13.648989')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/recent.html.erb within layouts/application (24.8ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 402ms (Views: 388.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/make" for 178.162.216.32 at 2016-10-12 14:57:31 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 14:57:31.343979')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.3ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (50.2ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.9ms)
+Completed 200 OK in 305ms (Views: 292.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/cursor.png" for 178.162.216.32 at 2016-10-12 14:57:33 +0000
+
+
+Started GET "/assets/eraser.png" for 178.162.216.32 at 2016-10-12 14:57:33 +0000
+
+
+Started GET "/make" for 178.162.216.32 at 2016-10-12 14:57:34 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 14:57:34.098472')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 244ms (Views: 234.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/spray-can.png" for 178.162.216.32 at 2016-10-12 14:57:34 +0000
+
+
+Started GET "/assets/colors.png" for 178.162.216.32 at 2016-10-12 14:57:34 +0000
+
+
+Started GET "/assets/save.png" for 178.162.216.32 at 2016-10-12 14:57:36 +0000
+
+
+Started GET "/assets/delete.png" for 178.162.216.32 at 2016-10-12 14:57:36 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:03:28 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:03:28.728651')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (6.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 400ms (Views: 386.9ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:30 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:30 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:30 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:30 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:30 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:31 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:31 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:31 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:31 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:31 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:31 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:32 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:32 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:32 +0000
+
+
+Started GET "/assets/style.self-9fd30b0d5c469791c0421fbb4e98df3a99307a5c5e2f9f45b9013cd3589bd531.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:32 +0000
+
+
+Started GET "/assets/tabs.self-d427f0bd577d5c0089aabe88b2c0cc7f7cf28034bf3f6fdebec407e858b0e7e1.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:32 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 91.109.30.87 at 2016-10-12 15:03:32 +0000
+
+
+Started GET "/assets/missing.jpg" for 91.109.30.87 at 2016-10-12 15:03:34 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:34 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:34 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:34 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:35 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:35 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:35 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:35 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:35 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:35 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:36 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:36 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:36 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:36 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:37 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:37 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:37 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:37 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:37 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:37 +0000
+
+
+Started GET "/assets/create.self-121ca6854ef3e092bf29c6865328093ffd7922e452841b4e8367ebc4f1181ae5.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:38 +0000
+
+
+Started GET "/assets/functions.self-c4a150e1b797c4f2b5a15c9d5d23a5eb7ba9cc5b7613aa19d7bd4cbca31905d0.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:38 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:38 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:38 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:38 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:39 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:39 +0000
+
+
+Started GET "/assets/main.self-3ffc460105065618929621b3d91d5b0a272e6931721f580db4375d89c432f9df.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:39 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:39 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:39 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:40 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:40 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:40 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:40 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:40 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:40 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:41 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:41 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:41 +0000
+
+
+Started GET "/assets/tabs.self-3dd9410fe3b91864484524bf5f71470282082f5c9bdaf6faa3f92855d56bdf1a.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:41 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:41 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 91.109.30.87 at 2016-10-12 15:03:42 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:03:42 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:03:42.365607')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (8.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.0ms)
+Completed 200 OK in 322ms (Views: 312.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/cursor.png" for 91.109.30.87 at 2016-10-12 15:03:42 +0000
+
+
+Started GET "/assets/spray-can.png" for 91.109.30.87 at 2016-10-12 15:03:42 +0000
+
+
+Started GET "/assets/eraser.png" for 91.109.30.87 at 2016-10-12 15:03:42 +0000
+
+
+Started GET "/assets/colors.png" for 91.109.30.87 at 2016-10-12 15:03:43 +0000
+
+
+Started GET "/assets/save.png" for 91.109.30.87 at 2016-10-12 15:03:45 +0000
+
+
+Started GET "/assets/delete.png" for 91.109.30.87 at 2016-10-12 15:03:45 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:04:30 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:04:30.277546')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (11.4ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 244ms (Views: 235.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:31 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:31 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:32 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:32 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:32 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:32 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:33 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:33 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:33 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:33 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:33 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:33 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:34 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:34 +0000
+
+
+Started GET "/assets/style.self-9fd30b0d5c469791c0421fbb4e98df3a99307a5c5e2f9f45b9013cd3589bd531.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:34 +0000
+
+
+Started GET "/assets/tabs.self-d427f0bd577d5c0089aabe88b2c0cc7f7cf28034bf3f6fdebec407e858b0e7e1.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:34 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 91.109.30.87 at 2016-10-12 15:04:35 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:35 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:36 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:36 +0000
+
+
+Started GET "/assets/missing.jpg" for 91.109.30.87 at 2016-10-12 15:04:36 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:36 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:36 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:36 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:37 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:37 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:37 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:37 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:37 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:38 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:38 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:38 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:38 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:38 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:38 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:39 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:39 +0000
+
+
+Started GET "/assets/create.self-121ca6854ef3e092bf29c6865328093ffd7922e452841b4e8367ebc4f1181ae5.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:39 +0000
+
+
+Started GET "/assets/functions.self-c4a150e1b797c4f2b5a15c9d5d23a5eb7ba9cc5b7613aa19d7bd4cbca31905d0.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:39 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:40 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:40 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:40 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:40 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:41 +0000
+
+
+Started GET "/assets/main.self-3ffc460105065618929621b3d91d5b0a272e6931721f580db4375d89c432f9df.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:41 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:41 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:42 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:42 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:42 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:42 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:42 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:43 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:43 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:43 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:43 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:43 +0000
+
+
+Started GET "/assets/tabs.self-3dd9410fe3b91864484524bf5f71470282082f5c9bdaf6faa3f92855d56bdf1a.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:43 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:44 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 91.109.30.87 at 2016-10-12 15:04:44 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:04:44 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:04:44.340907')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (5.7ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 283ms (Views: 274.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/cursor.png" for 91.109.30.87 at 2016-10-12 15:04:44 +0000
+
+
+Started GET "/assets/spray-can.png" for 91.109.30.87 at 2016-10-12 15:04:44 +0000
+
+
+Started GET "/assets/eraser.png" for 91.109.30.87 at 2016-10-12 15:04:44 +0000
+
+
+Started GET "/assets/colors.png" for 91.109.30.87 at 2016-10-12 15:04:45 +0000
+
+
+Started GET "/assets/save.png" for 91.109.30.87 at 2016-10-12 15:04:48 +0000
+
+
+Started GET "/assets/delete.png" for 91.109.30.87 at 2016-10-12 15:04:48 +0000
+
+
+Started GET "/assets/delete-2.png" for 91.109.30.87 at 2016-10-12 15:05:48 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:07:09 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:07:09.039661')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (8.7ms)
+  Rendered layouts/_nav_upload.html.erb (0.9ms)
+  Rendered layouts/_nav.html.erb (3.0ms)
+Completed 200 OK in 404ms (Views: 387.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:10 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:11 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:11 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:11 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:11 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:11 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:11 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:12 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:12 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:12 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:12 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:12 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:13 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:13 +0000
+
+
+Started GET "/assets/style.self-9fd30b0d5c469791c0421fbb4e98df3a99307a5c5e2f9f45b9013cd3589bd531.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:13 +0000
+
+
+Started GET "/assets/tabs.self-ee7485fbbc1172d2a9ad1214579f15a07c66b86e3babf48d48b2258b5a2493a5.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:13 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 91.109.30.87 at 2016-10-12 15:07:13 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:14 +0000
+
+
+Started GET "/assets/missing.jpg" for 91.109.30.87 at 2016-10-12 15:07:15 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:15 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:15 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:15 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:15 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:17 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:17 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:17 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:17 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:17 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:19 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:19 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:19 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:20 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:20 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:20 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:20 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:20 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:21 +0000
+
+
+Started GET "/assets/create.self-121ca6854ef3e092bf29c6865328093ffd7922e452841b4e8367ebc4f1181ae5.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:21 +0000
+
+
+Started GET "/assets/functions.self-c4a150e1b797c4f2b5a15c9d5d23a5eb7ba9cc5b7613aa19d7bd4cbca31905d0.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:21 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:21 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:21 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:21 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:22 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:22 +0000
+
+
+Started GET "/assets/main.self-3ffc460105065618929621b3d91d5b0a272e6931721f580db4375d89c432f9df.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:22 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:22 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:22 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:22 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:23 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:23 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:23 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:23 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:23 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:23 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:24 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:24 +0000
+
+
+Started GET "/assets/tabs.self-3dd9410fe3b91864484524bf5f71470282082f5c9bdaf6faa3f92855d56bdf1a.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:25 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:25 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 91.109.30.87 at 2016-10-12 15:07:26 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:07:26 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:07:26.776109')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.4ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (19.4ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (3.2ms)
+Completed 200 OK in 597ms (Views: 567.0ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/cursor.png" for 91.109.30.87 at 2016-10-12 15:07:27 +0000
+
+
+Started GET "/assets/spray-can.png" for 91.109.30.87 at 2016-10-12 15:07:27 +0000
+
+
+Started GET "/assets/eraser.png" for 91.109.30.87 at 2016-10-12 15:07:27 +0000
+
+
+Started GET "/assets/colors.png" for 91.109.30.87 at 2016-10-12 15:07:27 +0000
+
+
+Started GET "/assets/delete.png" for 91.109.30.87 at 2016-10-12 15:07:39 +0000
+
+
+Started GET "/assets/save.png" for 91.109.30.87 at 2016-10-12 15:07:39 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:09:41 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:09:41.992331')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (11.2ms)
+  Rendered layouts/_nav_upload.html.erb (0.6ms)
+  Rendered layouts/_nav.html.erb (2.2ms)
+Completed 200 OK in 327ms (Views: 311.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:43 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:44 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:44 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:44 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:44 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:44 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:44 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:45 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:45 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:45 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:45 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:45 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:45 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:46 +0000
+
+
+Started GET "/assets/style.self-7d7c26d95b7c2461ea0114a517b60e2d1c789e6aa36e9da9dfc783df581d71c0.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:46 +0000
+
+
+Started GET "/assets/tabs.self-9ec070f8431a237248a3afaa1dfc1318734957c1032a9b0d91afef1aa4dcca29.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:46 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 91.109.30.87 at 2016-10-12 15:09:46 +0000
+
+
+Started GET "/assets/missing.jpg" for 91.109.30.87 at 2016-10-12 15:09:47 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:48 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:48 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:48 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:48 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:48 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:48 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:49 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:50 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:50 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:50 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:50 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:50 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:50 +0000
+
+
+Started GET "/assets/create.self-121ca6854ef3e092bf29c6865328093ffd7922e452841b4e8367ebc4f1181ae5.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:51 +0000
+
+
+Started GET "/assets/functions.self-c4a150e1b797c4f2b5a15c9d5d23a5eb7ba9cc5b7613aa19d7bd4cbca31905d0.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:51 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:51 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:51 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:51 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:51 +0000
+
+
+Started GET "/assets/main.self-3ffc460105065618929621b3d91d5b0a272e6931721f580db4375d89c432f9df.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:52 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:53 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:53 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:53 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:53 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:53 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:53 +0000
+
+
+Started GET "/assets/tabs.self-3dd9410fe3b91864484524bf5f71470282082f5c9bdaf6faa3f92855d56bdf1a.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:54 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:54 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 91.109.30.87 at 2016-10-12 15:09:54 +0000
+
+
+Started GET "/make" for 91.109.30.87 at 2016-10-12 15:09:54 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 15:09:54.822638')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (7.9ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 272ms (Views: 260.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/assets/cursor.png" for 91.109.30.87 at 2016-10-12 15:09:55 +0000
+
+
+Started GET "/assets/spray-can.png" for 91.109.30.87 at 2016-10-12 15:09:55 +0000
+
+
+Started GET "/assets/eraser.png" for 91.109.30.87 at 2016-10-12 15:09:55 +0000
+
+
+Started GET "/assets/colors.png" for 91.109.30.87 at 2016-10-12 15:09:55 +0000
+
+
+Started GET "/make" for 178.162.216.36 at 2016-10-12 16:23:31 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.4ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (4.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.9ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 16:23:31.962143')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.2ms)
+  [1m[36mStock Load (0.3ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (137.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.8ms)
+  Rendered layouts/_nav.html.erb (3.0ms)
+Completed 200 OK in 1019ms (Views: 990.0ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:35 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:36 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:36 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:36 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:36 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:36 +0000
+
+
+Started GET "/assets/profile.self-4976d78201db2a70be67fe7ca3c74d1dc1588c589f5baefadd02d43f0fb12e8d.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:37 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:37 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:37 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:37 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:37 +0000
+
+
+Started GET "/assets/style.self-7d7c26d95b7c2461ea0114a517b60e2d1c789e6aa36e9da9dfc783df581d71c0.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:38 +0000
+
+
+Started GET "/assets/tabs.self-9ec070f8431a237248a3afaa1dfc1318734957c1032a9b0d91afef1aa4dcca29.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:38 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:38 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:38 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:39 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 178.162.216.36 at 2016-10-12 16:23:40 +0000
+
+
+Started GET "/assets/missing.jpg" for 178.162.216.36 at 2016-10-12 16:23:41 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:42 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:42 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:42 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:42 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:42 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:43 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:43 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:43 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:43 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:43 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:44 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:44 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:44 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:45 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:45 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:45 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:46 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:46 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:46 +0000
+
+
+Started GET "/assets/create.self-121ca6854ef3e092bf29c6865328093ffd7922e452841b4e8367ebc4f1181ae5.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:46 +0000
+
+
+Started GET "/assets/functions.self-c4a150e1b797c4f2b5a15c9d5d23a5eb7ba9cc5b7613aa19d7bd4cbca31905d0.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:47 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:47 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:47 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:47 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:47 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:47 +0000
+
+
+Started GET "/assets/main.self-3ffc460105065618929621b3d91d5b0a272e6931721f580db4375d89c432f9df.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:48 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:48 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:48 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:48 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:48 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:48 +0000
+
+
+Started GET "/assets/pagination.self-493ed67d18535e00951cc5fb792c1092ac34879c1ef2a652d08174d53f1cd00e.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:49 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:49 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:49 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:49 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:49 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:49 +0000
+
+
+Started GET "/assets/tabs.self-3dd9410fe3b91864484524bf5f71470282082f5c9bdaf6faa3f92855d56bdf1a.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:50 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:50 +0000
+
+
+Started GET "/make" for 178.162.216.36 at 2016-10-12 16:23:50 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 1]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 16:23:50.462869')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ?  ORDER BY created_at DESC[0m  [["user_id", 1]]
+  Rendered pages/make.html.erb within layouts/application (8.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.6ms)
+  Rendered layouts/_nav.html.erb (2.9ms)
+Completed 200 OK in 345ms (Views: 333.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 178.162.216.36 at 2016-10-12 16:23:50 +0000
+
+
+Started GET "/assets/cursor.png" for 178.162.216.36 at 2016-10-12 16:23:50 +0000
+
+
+Started GET "/assets/spray-can.png" for 178.162.216.36 at 2016-10-12 16:23:50 +0000
+
+
+Started GET "/assets/eraser.png" for 178.162.216.36 at 2016-10-12 16:23:51 +0000
+
+
+Started GET "/assets/colors.png" for 178.162.216.36 at 2016-10-12 16:23:51 +0000
+
+
+Started GET "/assets/save.png" for 178.162.216.36 at 2016-10-12 16:24:16 +0000
+
+
+Started GET "/assets/delete.png" for 178.162.216.36 at 2016-10-12 16:24:16 +0000
+
+
+Started POST "/posts" for 178.162.216.36 at 2016-10-12 16:24:51 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/41FKhpLb9+O4FFEjN3cr/uwYsRtX5p+BSlw6tbFb0eXNRqRcL7FdR8GztcxbwnUg1+7jtNxhhDIQ8B+VdiY3A==", "post"=>{"title"=>"", "facenumber"=>"", "anonymous"=>"0"}, "base64"=>"data:image/png;base64,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SoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5ohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgLGNzD5YhGgAABAgQIECBA4AgY3J0EAQIECBAgQIAAgbCAwT1cjmgECBAgQIAAAQIEDO5ugAABAgQIECBAgMCOgMF9pytJCRAgQIAAAQIECHjh7gYIECBAgAABAgQIhAUM7uFyRCNAgAABAgQIECBwBAzuToIAAQIECBAgQIBAWMDgHi5HNAIECBAgQIAAAQIGdzdAgAABAgQIECBAYEfA4L7TlaQECBAgQIAAAQIEvHB3AwQIECBAgAABAgTCAgb3cDmiESBAgAABAgQIEDgCBncnQYAAAQIECBAgQCAsYHAPlyMaAQIECBAgQIAAAYO7GyBAgAABAgQIECCwI2Bw3+lKUgIECBAgQIAAAQJeuLsBAgQIECBAgAABAmEBg3u4HNEIECBAgAABAgQIHAGDu5MgQIAAAQIECBAgEBYwuIfLEY0AAQIECBAgQICAwd0NECBAgAABAgQIENgRMLjvdCUpAQIECBAgQIAAAS/c3QABAgQIECBAgACBsIDBPVyOaAQIECBAgAABAgSOgMHdSRAgQIAAAQIECBAICxjcw+WIRoAAAQIECBAgQMDg7gYIECBAgAABAgQI7AgY3He6kpQAAQIECBAgQICAF+5ugAABAgQIECBAgEBYwOAeLkc0AgQIECBAgAABAkfA4O4kCBAgQIAAAQIECIQFDO7hckQjQIAAAQIECBAgYHB3AwQIECBAgAABAgR2BAzuO11JSoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5ohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7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AjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgLGNzD5XXTSEkAACAASURBVIhGgAABAgQIECBA4AgY3J0EAQIECBAgQIAAgbCAwT1cjmgECBAgQIAAAQIEDO5ugAABAgQIECBAgMCOgMF9pytJCRAgQIAAAQIECHjh7gYIECBAgAABAgQIhAUM7uFyRCNAgAABAgQIECBwBAzuToIAAQIECBAgQIBAWMDgHi5HNAIECBAgQIAAAQIGdzdAgAABAgQIECBAYEfA4L7TlaQECBAgQIAAAQIEvHB3AwQIECBAgAABAgTCAgb3cDmiESBAgAABAgQIEDgCBncnQYAAAQIECBAgQCAsYHAPlyMaAQIECBAgQIAAAYO7GyBAgAABAgQIECCwI2Bw3+lKUgIECBAgQIAAAQJeuLsBAgQIECBAgAABAmEBg3u4HNEIECBAgAABAgQIHAGDu5MgQIAAAQIECBAgEBYwuIfLEY0AAQIECBAgQICAwd0NECBAgAABAgQIENgRMLjvdCUpAQIECBAgQIAAAS/c3QABAgQIECBAgACBsIDBPVyOaAQIECBAgAABAgSOgMHdSRAgQIAAAQIECBAICxjcw+WIRoAAAQIECBAgQMDg7gYIECBAgAABAgQI7AgY3He6kpQAAQIECBAgQICAF+5ugAABAgQIECBAgEBYwOAeLkc0AgQIECBAgAABAkfA4O4kCBAgQIAAAQIECIQFDO7hckQjQIAAAQIECBAgYHB3AwQIECBAgAABAgR2BAzuO11JSoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5ohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgL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AgQIECBAgACBsIDBPVyOaAQIECBAgAABAgSOgMHdSRAgQIAAAQIECBAICxjcw+WIRoAAAQIECBAgQMDg7gYIECBAgAABAgQI7AgY3He6kpQAAQIECBAgQICAF+5ugAABAgQIECBAgEBYwOAeLkc0AgQIECBAgAABAkfA4O4kCBAgQIAAAQIECIQFDO7hckQjQIAAAQIECBAgYHB3AwQIECBAgAABAgR2BAzuO11JSoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5aJp4uQAACotJREFUohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgLGNzD5YhGgAABAgQIECBA4AgY3J0EAQIECBAgQIAAgbCAwT1cjmgECBAgQIAAAQIEDO5ugAABAgQIECBAgMCOgMF9pytJCRAgQIAAAQIECHjh7gYIECBAgAABAgQIhAUM7uFyRCNAgAABAgQIECBwBAzuToIAAQIECBAgQIBAWMDgHi5HNAIECBAgQIAAAQIGdzdAgAABAgQIECBAYEfA4L7TlaQECBAgQIAAAQIEvHB3AwQIECBAgAABAgTCAgb3cDmiESBAgAABAgQIEDgCBncnQYAAAQIECBAgQCAsYHAPlyMaAQIECBAgQIAAAYO7GyBAgAABAgQIECCwI2Bw3+lKUgIECBAgQIAAAQJeuLsBAgQIECBAgAABAmEBg3u4HNEIECBAgAABAgQIHAGDu5MgQIAAAQIECBAgEBYwuIfLEY0AAQIECBAgQICAwd0NECBAgAABAgQIENgRMLjvdCUpAQIECBAgQIAAAS/c3QABAgQIECBAgACBsIDBPVyOaAQIECBAgAABAgSOgMHdSRAgQIAAAQIECBAICxjcw+WIRoAAAQIECBAgQMDg7gYIECBAgAABAgQI7AgY3He6kpQAAQIECBAgQICAF+5ugAABAgQIECBAgEBYwOAeLkc0AgQIECBAgAABAkfA4O4kCBAgQIAAAQIECIQFDO7hckQjQIAAAQIECBAgYHB3AwQIECBAgAABAgR2BAzuO11JSoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5ohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgLGNzD5YhGgAABAgQIECBA4AgY3J0EAQIECBAgQIAAgbCAwT1cjmgECBAgQIAAAQIEDO5ugAABAgQIECBAgMCOgMF9pytJCRAgQIAAAQIECHjh7gYIECBAgAABAgQIhAUM7uFyRCNAgAABAgQIECBwBAzuToIAAQIECBAgQIBAWMDgHi5HNAIECBAgQIAAAQIGdzdAgAABAgQIECBAYEfA4L7TlaQECBAgQIAAAQIEvHB3AwQIECBAgAABAgTCAgb3cDmiESBAgAABAgQIEDgCBncnQYAAAQIECBAgQCAsYHAPlyMaAQIECBAgQIAAAYO7GyBAgAABAgQIECCwI2Bw3+lKUgIECBAgQIAAAQJeuLsBAgQIECBAgAABAmEBg3u4HNEIECBAgAABAgQIHAGDu5MgQIAAAQIECBAgEBYwuIfLEY0AAQIECBAgQICAwd0NECBAgAABAgQIENgRMLjvdCUpAQIECBAgQIAAAS/c3QABAgQIECBAgACBsIDBPVyOaAQIECBAgAABAgSOgMHdSRAgQIAAAQIECBAICxjcw+WIRoAAAQIECBAgQMDg7gYIECBAgAABAgQI7AgY3He6kpQAAQIECBAgQICAF+5ugAABAgQIECBAgEBYwOAeLkc0AgQIECBAgAABAkfA4O4kCBAgQIAAAQIECIQFDO7hckQjQIAAAQIECBAgYHB3AwQIECBAgAABAgR2BAzuO11JSoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5ohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgLGNzD5YhGgAABAgQIECBA4AgY3J0EAQIECBAgQIAAgbCAwT1cjmgECBAgQIAAAQIEDO5ugAABAgQIECBAgMCOgMF9pytJCRAgQIAAAQIECHjh7gYIECBAgAABAgQIhAUM7uFyRCNAgAABAgQIECBwBAzuToIAAQIECBAgQIBAWMDgHi5HNAIECBAgQIAAAQIGdzdAgAABAgQIECBAYEfA4L7TlaQECBAgQIAAAQIEvHB3AwQIECBAgAABAgTCAgb3cDmiESBAgAABAgQIEDgCBncnQYAAAQIECBAgQCAsYHAPlyMaAQIECBAgQIAAAYO7GyBAgAABAgQIECCwI2Bw3+lKUgIECBAgQIAAAQJeuLsBAgQIECBAgAABAmEBg3u4HNEIECBAgAABAgQIHAGDu5MgQIAAAQIECBAgEBYwuIfLEY0AAQIECBAgQICAwd0NECBAgAABAgQIENgRMLjvdCUpAQIECBAgQIAAAS/c3QABAgQIECBAgACBsIDBPVyOaAQIECBAgAABAgSOgMHdSRAgQIAAAQIECBAICxjcw+WIRoAAAQIECBAgQMDg7gYIECBAgAABAgQI7AgY3He6kpQAAQIECBAgQICAF+5ugAABAgQIECBAgEBYwOAeLkc0AgQIECBAgAABAkfA4O4kCBAgQIAAAQIECIQFDO7hckQjQIAAAQIECBAgYHB3AwQIECBAgAABAgR2BAzuO11JSoAAAQIECBAgQMALdzdAgAABAgQIECBAICxgcA+XIxoBAgQIECBAgACBI2BwdxIECBAgQIAAAQIEwgIG93A5ohEgQIAAAQIECBAwuLsBAgQIECBAgAABAjsCBvedriQlQIAAAQIECBAg4IW7GyBAgAABAgQIECAQFjC4h8sRjQABAgQIECBAgMARMLg7CQIECBAgQIAAAQJhAYN7uBzRCBAgQIAAAQIECBjc3QABAgQIECBAgACBHQGD+05XkhIgQIAAAQIECBDwwt0NECBAgAABAgQIEAgLGNzD5YhGgAABAgQIECBA4AgY3J0EAQIECBAgQIAAgbCAwT1cjmgECBAgQIAAAQIEDO5ugAABAgQIECBAgMCOgMF9pytJCRAgQIAAAQIECHjh7gYIECBAgAABAgQIhAUM7uFyRCNAgAABAgQIECBwBAzuToIAAQIECBAgQIBAWMDgHi5HNAIECBAgQIAAAQIGdzdAgAABAgQIECBAYEfA4L7TlaQECBAgQIAAAQIEvHB3AwQIECBAgAABAgTCAndwf71ej+fzGU4sGgECBAgQIECAAIH3FTC4v2/3/pwAAQIECBAgQGBA4Pv7+/Hz8/M36efn5+Pr62sgtYgECBAgQIAAAQIE3lPgHwCrZ+kgrucQAAAAAElFTkSuQmCC", "commit"=>"Post"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+Command :: file -b --mime '/tmp/78805a221a988e79ef3f42d7c5bfd41820161012-2067-1wphkwr.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]' -auto-orient -resize "550" '/tmp/bee1f4fe24c7a1e4c66c5061e3eaff1920161012-2067-1v4jzr0'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]' -auto-orient -resize "600" '/tmp/bee1f4fe24c7a1e4c66c5061e3eaff1920161012-2067-1fzhq32'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20161012-2067-1mhoicq[0]' -auto-orient -resize "100x100>" '/tmp/bee1f4fe24c7a1e4c66c5061e3eaff1920161012-2067-1g8kl9j'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/04cffa049fabba582a44cb9f39ec1d1220161012-2067-5rthhs[0]' 2>/dev/null
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime '/tmp/78805a221a988e79ef3f42d7c5bfd41820161012-2067-159115r.png'
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "posts" ("title", "anonymous", "user_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)  [["title", ""], ["anonymous", "f"], ["user_id", 1], ["image_file_name", "image.png"], ["image_content_type", "image/png"], ["image_file_size", 19164], ["image_updated_at", "2016-10-12 16:24:51.793038"], ["created_at", "2016-10-12 16:24:52.961911"], ["updated_at", "2016-10-12 16:24:52.961911"]]
+  [1m[36m (28.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mcommit transaction[0m
+Redirected to https://drolle-3-malekzalfana.c9users.io/posts/10
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (2.2ms)[0m  [1mINSERT INTO "activities" ("owner_id", "owner_type", "key", "trackable_id", "trackable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["owner_id", 1], ["owner_type", "User"], ["key", "posting"], ["trackable_id", 10], ["trackable_type", "Post"], ["created_at", "2016-10-12 16:24:53.144540"], ["updated_at", "2016-10-12 16:24:53.144540"]]
+  [1m[35m (19.9ms)[0m  commit transaction
+Completed 302 Found in 1419ms (ActiveRecord: 52.7ms)
+
+
+Started GET "/recent" for 178.162.216.36 at 2016-10-12 16:25:14 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mImpression Exists (0.2ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "b0879a02056afb15ac2d104c2a5ffa74"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35m (0.3ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 1]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 1  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2016-10-10 16:25:14.760844')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 10], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 10], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 10], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 10], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 10], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 10], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 10], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 10], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 9], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 9], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/recent.html.erb within layouts/application (174.9ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 443ms (Views: 423.2ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/pages/loadPost?utf8=%E2%9C%93&postid=10&commit=Save" for 178.162.216.36 at 2016-10-12 16:25:40 +0000
+Processing by PagesController#loadPost as JS
+  Parameters: {"utf8"=>"✓", "postid"=>"10", "commit"=>"Save"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 10]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 2559)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 1279) AND (cached_votes_score < 2560)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 639) AND (cached_votes_score < 1280)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 319) AND (cached_votes_score < 640)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 159) AND (cached_votes_score < 320)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 79) AND (cached_votes_score < 160)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 39) AND (cached_votes_score < 80)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 19) AND (cached_votes_score < 40)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 9) AND (cached_votes_score < 20)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > -1) AND (cached_votes_score < 10)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score < 0) AND (cached_votes_score > -3)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  Rendered pages/loadPost.js.erb (0.3ms)
+Completed 200 OK in 36ms (Views: 15.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/pages/loadPost?utf8=%E2%9C%93&postid=10&commit=Save" for 178.162.216.36 at 2016-10-12 16:25:41 +0000
+Processing by PagesController#loadPost as JS
+  Parameters: {"utf8"=>"✓", "postid"=>"10", "commit"=>"Save"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 10]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 2559)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 1279) AND (cached_votes_score < 2560)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 639) AND (cached_votes_score < 1280)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 319) AND (cached_votes_score < 640)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 159) AND (cached_votes_score < 320)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 79) AND (cached_votes_score < 160)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 39) AND (cached_votes_score < 80)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 19) AND (cached_votes_score < 40)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 9) AND (cached_votes_score < 20)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > -1) AND (cached_votes_score < 10)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 10]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score < 0) AND (cached_votes_score > -3)  ORDER BY "comments"."created_at" DESC  [["post_id", 10]]
+  Rendered pages/loadPost.js.erb (0.2ms)
+Completed 200 OK in 44ms (Views: 15.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/pages/loadPost?utf8=%E2%9C%93&postid=9&commit=Save" for 91.109.30.66 at 2016-10-12 16:25:47 +0000
+Processing by PagesController#loadPost as JS
+  Parameters: {"utf8"=>"✓", "postid"=>"9", "commit"=>"Save"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 9]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 2559)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 1279) AND (cached_votes_score < 2560)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 639) AND (cached_votes_score < 1280)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 319) AND (cached_votes_score < 640)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 159) AND (cached_votes_score < 320)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 79) AND (cached_votes_score < 160)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 39) AND (cached_votes_score < 80)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 19) AND (cached_votes_score < 40)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 9) AND (cached_votes_score < 20)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > -1) AND (cached_votes_score < 10)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score < 0) AND (cached_votes_score > -3)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 51]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 51]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 50]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 50]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 48]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 47]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 47]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 46]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 46]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 45]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 45]]
+  Rendered comments/_comment.html.erb (139.4ms)
+  Rendered pages/loadPost.js.erb (145.5ms)
+Completed 200 OK in 168ms (Views: 149.5ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/pages/loadPost?utf8=%E2%9C%93&postid=9&commit=Save" for 91.109.30.66 at 2016-10-12 16:25:49 +0000
+Processing by PagesController#loadPost as JS
+  Parameters: {"utf8"=>"✓", "postid"=>"9", "commit"=>"Save"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 9]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 2559)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 1279) AND (cached_votes_score < 2560)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 639) AND (cached_votes_score < 1280)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 319) AND (cached_votes_score < 640)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 159) AND (cached_votes_score < 320)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 79) AND (cached_votes_score < 160)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 39) AND (cached_votes_score < 80)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 19) AND (cached_votes_score < 40)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 9) AND (cached_votes_score < 20)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > -1) AND (cached_votes_score < 10)  ORDER BY "comments"."created_at" DESC  [["post_id", 9]]
+  [1m[36mComment Load (0.1ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score < 0) AND (cached_votes_score > -3)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 9]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.1ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 51]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 51], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 51]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 50]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 50], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 50]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 48]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 48], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 47]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 47], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 47]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 46]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 46], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 46]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."parent_id" = ?[0m  [["parent_id", 45]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 1], ["voter_type", "User"], ["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 45], ["votable_type", "Comment"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."parent_id" = ?  [["parent_id", 45]]
+  Rendered comments/_comment.html.erb (106.0ms)
+  Rendered pages/loadPost.js.erb (109.2ms)
+Completed 200 OK in 136ms (Views: 116.3ms | ActiveRecord: 8.6ms)
+
+
+Started DELETE "/posts/9" for 91.109.30.66 at 2016-10-12 16:25:56 +0000
+Processing by PostsController#destroy as JS
+  Parameters: {"utf8"=>"✓", "commit"=>"delete post", "id"=>"9"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 9]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mActsAsVotable::Vote Load (0.4ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ?[0m  [["votable_id", 9], ["votable_type", "Post"]]
+  [1m[35mImpression Load (0.4ms)[0m  SELECT "impressions".* FROM "impressions" WHERE "impressions"."impressionable_id" = ? AND "impressions"."impressionable_type" = ?  [["impressionable_id", 9], ["impressionable_type", "Post"]]
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "posts" WHERE "posts"."id" = ?[0m  [["id", 9]]
+  [1m[35m (13.3ms)[0m  commit transaction
+[paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/009/original/image.png
+[paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/009/medium/image.png
+[paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/009/large/image.png
+[paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/009/thumb/image.png
+  Rendered posts/destroy.js.erb (0.3ms)
+Completed 200 OK in 52ms (Views: 15.5ms | ActiveRecord: 15.2ms)
+
+
+Started DELETE "/posts/9" for 91.109.30.66 at 2016-10-12 16:25:57 +0000
+Processing by PostsController#destroy as JS
+  Parameters: {"utf8"=>"✓", "commit"=>"delete post", "id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 9]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Post with 'id'=9):
+  app/controllers/posts_controller.rb:182:in `destroy'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (92.3ms)

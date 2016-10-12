@@ -300,27 +300,7 @@
       </div>
       </div>
 	<div class="loading-icon"></div>
-		<div id="ragefaces-buttons-wrapper">
-			<button id="submit-image-button-before-3">Post</button>	
-			<button id="cancel-upload-3">cancel</button>
-			<%= form_for @post, html: { multipart: true } do |f| %>
-				 <%= f.file_field :image, id: "ragefaces-filefield" %>
-				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
-				 <input id="base64-2" type="hidden" value="" name="base64"/>
-				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
-			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
-			 <span class="anonymous-checkbox shown">
-		 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
-		 	<i class="material-icons anonymous-checked"></i>
-		 	<div id="anonymous-image" class="anonymous-image">
-		 		<i class="material-icons">add</i>
-		 	</div>
-		 	<span>Anonymous</span>
-		 	</span>
-			<% end %>
-					
-			
-		</div>
+		
 		
 		
 
@@ -351,7 +331,29 @@
 		<p id="add-panel">add panel</p>
 		<span id="border-bottom"></span>
 	</div>
-
+	
+	<div id="ragefaces-buttons-wrapper">
+			<button id="submit-image-button-before-3">Post</button>	
+			<button id="cancel-upload-3">cancel</button>
+			<%= form_for @post, html: { multipart: true } do |f| %>
+				 <%= f.file_field :image, id: "ragefaces-filefield" %>
+				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
+				 <input id="base64-2" type="hidden" value="" name="base64"/>
+				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
+			 <span class="anonymous-checkbox shown">
+		 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
+		 	<i class="material-icons anonymous-checked"></i>
+		 	<div id="anonymous-image" class="anonymous-image">
+		 		<i class="material-icons">add</i>
+		 	</div>
+		 	<span>Anonymous</span>
+		 	</span>
+			<% end %>
+					
+			
+		</div>
+	
 </div>
 	
 	
