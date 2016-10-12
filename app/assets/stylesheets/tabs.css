@@ -339,7 +339,7 @@
 #make2 #done-meme, #make2 #cancel-meme-2,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2, #submit-image-button-before, #submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before {
     background: #ffffff;
     color: #252525;
-    padding: 6px;
+    padding: 6px 10px;
     margin: 9px auto;
     display: inline-block;
     border: none;
@@ -349,6 +349,9 @@
     cursor: pointer;
     display: none;
     font-family: open sans;
+}
+#submit-image-button-before {
+  margin-right: 5px;
 }
 #done-meme, #make2 #cancel-meme-2 {
   display: inline-block !important;

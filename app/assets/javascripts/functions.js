@@ -1176,6 +1176,7 @@ functions =  function() {
 	}
 	
 	$(document).on('click', '#submit-image-button-before-3', function(){
+		$('#ragefaces-buttons-wrapper').fadeOut()
 		finalImage = false;
 	    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
 	  })

@@ -4257,6 +4257,12 @@ body:not(.shown-post) .post-image-wrapper {
 #ragefaces-buttons-wrapper .anonymous-checkbox {
 	color: #5a5a5a;
 }
+#cancel-upload-3 {
+	display: none !important;
+}
+#tools .loading-icon:visible p {
+	display: none;
+}
 .anonymous-checkbox.shown {
 	display: inline-block;
 }
