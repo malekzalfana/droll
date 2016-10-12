@@ -3,14 +3,15 @@
     $('#right-wrapper-' + <%= @postid %> ).parents('.wrapper').addClass('freezed')
 <% else %>
 console.log( <%= @comment.count %> )
+console.log( <%= @postid %> )
     <% if @comment.count == 0 %>
-    if ( !$('#right-wrapper-' + <%= @postid %> ).hasClass('shown') ) {
-        $('#right-wrapper-' + <%= @postid %> ).append('<p class="no-comments">No one commented yet</p>').fadeIn().addClass('shown')
-    }
+        if ( !$('#right-wrapper-' + <%= @postid %> ).hasClass('shown') ) {
+            $('#right-wrapper-' + <%= @postid %> ).append('<p class="no-comments">No one commented yet</p>').fadeIn().addClass('shown')
+        }
     <% else %>
-    if ( !$('#right-wrapper-' + <%= @postid %> ).hasClass('shown') ) {
-        $('#right-wrapper-' + <%= @postid %> ).append('<%= j render(@comment) %><div class="comment-pagination"><%= will_paginate @comment %></div>').fadeIn().addClass('shown')
-    }
+        if ( !$('#right-wrapper-' + <%= @postid %> ).hasClass('shown') ) {
+            $('#right-wrapper-' + <%= @postid %> ).append('<%= j render(@comment) %><div class="comment-pagination"><%= will_paginate @comment %></div>').fadeIn().addClass('shown')
+        }
     <% end %>
     $('#right-wrapper-' + <%= @postid %> ).removeClass('loading-2 loading')
     $('#left-wrapper-' + <%= @postid %> ).find('.loadPost').remove()

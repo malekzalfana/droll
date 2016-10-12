@@ -156,7 +156,7 @@ class PagesController < ApplicationController
     @postid = params[:postid]
     @post = Post.find(@postid)
     @comment11 = @post.comments.where(hidden: nil).where('cached_votes_score < 0').where('cached_votes_score > -3').ordered
-    @comment10 = @post.comments.where(hidden: nil).where('cached_votes_score > 0').where('cached_votes_score < 10').ordered
+    @comment10 = @post.comments.where(hidden: nil).where('cached_votes_score > -1').where('cached_votes_score < 10').ordered
     @comment9 = @post.comments.where(hidden: nil).where('cached_votes_score > 9').where('cached_votes_score < 20').ordered
     @comment8 = @post.comments.where(hidden: nil).where('cached_votes_score > 19').where('cached_votes_score < 40').ordered
     @comment7 = @post.comments.where(hidden: nil).where('cached_votes_score > 39').where('cached_votes_score < 80').ordered

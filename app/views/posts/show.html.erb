@@ -205,7 +205,7 @@
             <br>
             <span class="comments-big-title">Comments</span>
                 
-            <% if @comment.blank? %>
+            <% if @comment.count == 0 %>
                 <p class="no-comments">No one commented yet</p>
             <% else %>
                 <%= render @comment  %>

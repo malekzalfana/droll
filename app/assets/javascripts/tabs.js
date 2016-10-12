@@ -193,9 +193,16 @@ tabs = function() {
 		}
 		reader.readAsDataURL(image);
 	};
-	
+	var toDeleteStock = true
 	$(document).on('click', '.delete-stock', function(){
-		$(this).siblings('form').find('input[type="submit"]').click()
+		if ( toDeleteStock == true ) {
+			toDeleteStock = false;
+			$(this).siblings('form').find('input[type="submit"]').click()
+			$(this).parent().remove()
+			setTimeout(function(){
+				toDeleteStock = true
+			}, 300)	
+		}
 	})
 	var toStock = true;
 	$(document).on('click', '#add-stocks-bar-left', function(){
@@ -556,28 +563,36 @@ tabs = function() {
 		$(thisCommentBody).find('textarea.post-comment-body').val($(
 			thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
 	})
+	var toComment = true
 	$(document).on('click', '.post-comment', function() {
-		var thisCommentBody = $(this).parents('form')
-		if ($(thisCommentBody).find('.post-comment-body-2.post-comment-body').html() ==
-			'' && $('.shown.wrapper .base64-make').val() == '') {
-			$(this).parents('.middle-wrapper').removeClass('buzz').hide().show().addClass(
-				'buzz')
-			$('.wrapper.shown .post-comment-body-2.post-comment-body').eq(0).focus()
-		} else {
-			$(thisCommentBody).find('textarea.post-comment-body').val($(
-				thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
-			$('.middle-wrapper').hide()
-			commentopen = false;
-			$('.loading-quarter-circle').addClass('loading-animation')
+		if ( toComment == true ){
+			var thisCommentBody = $(this).parents('form')
+			if ($(thisCommentBody).find('.post-comment-body-2.post-comment-body').html() ==
+				'' && $('.shown.wrapper .base64-make').val() == '') {
+				$(this).parents('.middle-wrapper').removeClass('buzz').hide().show().addClass(
+					'buzz')
+				$('.wrapper.shown .post-comment-body-2.post-comment-body').eq(0).focus()
+			} else {
+				$(thisCommentBody).find('textarea.post-comment-body').val($(
+					thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
+				$('.middle-wrapper').hide()
+				commentopen = false;
+				$('.loading-quarter-circle').addClass('loading-animation')
+				setTimeout(function() {
+					$('.wrapper:visible .comment-html').html('')
+					$('.wrapper:visible .cancel-meme').click()
+				}, 2000)
+				$(this).siblings('.post-comment-after').click()
+				toComment = false;
+			}
 			setTimeout(function() {
-				$('.wrapper:visible .comment-html').html('')
-				$('.wrapper:visible .cancel-meme').click()
-					//$('.shown .base64-make').attr('value', '')
-					//$('.base64-image').remove()
-			}, 2000)
-			$(this).siblings('.post-comment-after').click()
-			toPost = false;
+						toComment = true
+				}, 2000)
 		}
+		else {
+			console.log('sss')
+		}
+		
 	})
 	$(document).on('click', '.comment-button', function() {
 		$('.middle-wrapper').removeClass('buzz')
