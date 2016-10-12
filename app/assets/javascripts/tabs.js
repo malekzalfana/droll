@@ -742,6 +742,7 @@ tabs = function() {
 	})
 	$(document).on('click', '#log-in, #sign-up, .login, #notice-to-sign',
 		function(e) {
+			$('#not-logged-in').hide()
 			//e.preventDefault()
 			$(
 				'#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile'
@@ -762,6 +763,7 @@ tabs = function() {
 		});
 	$(document).on('click', '#remote-login-wrapper, #remote-signup-wrapper',
 		function(e) {
+			$('#not-logged-in').show()
 			$(this).hide()
 			$(
 				'#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile'

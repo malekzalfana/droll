@@ -76,7 +76,7 @@
       
       <% end %>
       <!--<a href="/posts/<%# @post.id %>/comments/<%# comment.id %>" class="created-at">comment</a>  REMOVED--> 
-      <i class="material-icons show-reply-icon" id="show-<%= comment.id %>">reply</i>
+      <% if user_signed_in? %><i class="material-icons show-reply-icon" id="show-<%= comment.id %>">reply</i><% end %>
   <p class="comment-content"><%= "@".html_safe unless comment.parent.blank? %><%= comment.parent.user.username unless comment.parent.user.blank? unless comment.parent.blank? %><%= " ".html_safe unless comment.parent.blank? %><%= comment.body.html_safe if comment.body && comment.image.url('medium') == '/images/medium/missing.png' %>
   <% if comment.image.url('medium') != '/images/medium/missing.png' %>
     <img src="<%= comment.image.url(:medium) %>">

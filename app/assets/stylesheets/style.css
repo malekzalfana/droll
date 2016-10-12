@@ -4905,6 +4905,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 	#log-in-wrapper, #sign-up-wrapper {
 		width: 100%;
 	}
+	#sign-up-wrapper {
+		width: 100%;
+	}
 }
 #notice-to-sign i {
 	margin: 7px 7px;
@@ -5802,8 +5805,34 @@ i.fa.fa-reddit-alien {
 	color: gray;
 	display: none;
 }
-#sign-up-link {
+#sign-up-2 {
 	color: whitesmoke;
+}
+#not-looged-in img {
+	width: 140px;
+}
+#not-logged-in {
+	margin: 0px auto;
+    position: relative;
+    top: 60px;
+    width: 200px;
+}
+#not-logged-in p {
+	text-align: center;
+    font-size: 16px;
+    font-family: open sans;
+    line-height: 3;
+    text-indent: 35px;
+}
+#signup #navbar #log-in, #signup #navb #sign-up {
+	display: none !important;
+}
+#not-logged-in #sign-up, #not-logged-in #log-in {
+	display: inline-block !important;
+}
+#not-logged-in #sign-up, #not-logged-in #log-in {
+	background: white;
+	color: #252525;
 }
 #sign-up-link {
 	display: inline-block;
