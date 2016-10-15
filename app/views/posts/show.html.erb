@@ -202,6 +202,10 @@
           </div>
             </div>
             <div class="right-wrapper">
+                <% @post.tags.any? %>
+                  <% @post.tags.each do |tag| %>
+                  <a href="/tags/<%= tag.name %>"><%= tag.name %></a>
+                <% end %>
             <br>
             <span class="comments-big-title">Comments</span>
                 

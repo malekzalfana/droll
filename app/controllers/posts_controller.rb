@@ -99,9 +99,9 @@ class PostsController < ApplicationController
       if dimensions.height > 950
         @post.long = true
       end
+      
       @post.save
     end
-    
     if @post.save
       
       redirect_to @post
@@ -253,7 +253,7 @@ class PostsController < ApplicationController
   
   private 
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted);
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list);
     end
     def permit_post2
       params.permit(:hidden, :id);

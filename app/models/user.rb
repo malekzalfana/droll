@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   #validates :password, length: {minimum: 5, maximum: 120}, on: :update, allow_blank: true
   serialize :preferences
   acts_as_voter
+  
   is_impressionable
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100#", :tiny => "28x28#" }, :default_url => "missing.jpg"
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100#" }, :default_url => "missing-2.jpg"

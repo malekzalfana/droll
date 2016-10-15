@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
+# for tags
+gem 'acts-as-taggable-on'
 #for binding ready to turbolinks
 gem 'jquery-turbolinks'
 #masonry gem 

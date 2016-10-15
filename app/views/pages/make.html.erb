@@ -152,6 +152,7 @@
 			 <canvas  class="middle-column" id="meme-canvas" height="1100" width="1100"></canvas>
 			 <%= f.text_area :title, id: "created-meme-title", placeholder: "Caption" %>
 			 <%= f.text_field :facenumber,id: "created-meme-facenumber-field", class: "hidden anonymous-image-field" %>
+			 <%= f.text_field :tag_list, class: "tag-list-field" %>
 			 <%= f.check_box :anonymous, class: "hidden-imp", id: "created-meme-anonymous-field", checked: false %>
 			 
 			 <%= f.submit :id => "submit-image-button-2" %>
@@ -169,6 +170,9 @@
 			 		</div>
 			 		
 					<div id="submit-button-before-wrapper"><button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
+					<div id="make-tags-2" class="make-tags">
+						<i class="material-icons">sort</i>
+					</div>
 					<div class="loading-icon "></div>
 						<span class="anonymous-checkbox shown">
 					 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
@@ -335,12 +339,17 @@
 	<div id="ragefaces-buttons-wrapper">
 			<button id="submit-image-button-before-3">Post</button>	
 			<button id="cancel-upload-3">cancel</button>
+			<div id="make-tags-3" class="make-tags">
+				<i class="material-icons">sort</i>
+			</div>
 			<%= form_for @post, html: { multipart: true } do |f| %>
 				 <%= f.file_field :image, id: "ragefaces-filefield" %>
 				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
 				 <input id="base64-2" type="hidden" value="" name="base64"/>
 				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+			   <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
 			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
+			 
 			 <span class="anonymous-checkbox shown">
 		 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
 		 	<i class="material-icons anonymous-checked"></i>
@@ -385,10 +394,14 @@
 			 <%= f.submit :value => "Post", :id => "submit-image-button", class: "hidden-imp" %>
 			 <button id="submit-image-button-before" type="button">Post</button>	
 			 <button id="cancel-upload" type="button">cancel</button>	
+			 <div id="make-tags-1" class="make-tags">
+				<i class="material-icons">sort</i>
+			</div>
 			 <span class="anonymous-checkbox">
 			 	<%= f.check_box :anonymous, checked: false %>
 			 	<i class="material-icons anonymous-checked"></i>
 			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+			 	<%= f.text_field :tag_list, class: "tag-list-field" %>
 			 	<div id="anonymous-image" class="anonymous-image">
 			 		<i class="material-icons">add</i>
 			 	</div>
@@ -826,6 +839,27 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/182face.png" data-facenumber="182">
 			</div>
 			
+			
+			<div id="make-tags-wrapper">
+				<h2>Tags</h2>
+				<div id="tag-food" class="make-tag">food</div>
+				<div id="tag-gaming" class="make-tag">gaming</div>
+				<div id="tag-photoshoped" class="make-tag">photoshoped</div>
+				<div id="tag-gaming" class="make-tag">gaming</div>
+				<div id="tag-sports" class="make-tag">sports</div>
+				<div id="tag-animated" class="make-tag">animated</div>
+				<div id="tag-cute" class="make-tag">cute</div>
+				<div id="tag-reaction" class="make-tag">reaction</div>
+				<div id="tag-wtf" class="make-tag">wtf</div>
+				<div id="tag-politics" class="make-tag">politics</div>
+				<div id="tag-geeky" class="make-tag">geeky</div>
+				<div id="tag-rage-comic" class="make-tag">rage comics</div>
+				<div id="tag-nsfw" class="make-tag">nsfw</div>
+				<div id="tag-braggy" class="make-tag">braggy</div>
+				<div id="tag-happy" class="make-tag">happy</div>
+				<div id="tag-awesome" class="make-tag">awesome</div>
+				<div id="done-tags">done</div>
+			</div>
 			
 		
 

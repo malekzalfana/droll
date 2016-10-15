@@ -2,6 +2,10 @@ class Post < ActiveRecord::Base
     include PublicActivity::Common
     cattr_accessor :current_user
     cattr_accessor :user_id
+    #cattr_accessor :tag_list
+    
+    acts_as_taggable_on :tags
+    #acts_as_taggable_on :tag_list
     #include PublicActivity::Model
     #tracked owner: ->(controller, model) {controller && controller.current_user}
     scope :popular, ->{ where("cached_votes_total > '2'") } # change this to a much bigger number overtime

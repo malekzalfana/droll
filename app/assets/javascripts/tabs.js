@@ -879,6 +879,7 @@ tabs = function() {
 		$('#less-settings-options-button').show()
 		$('#more-settings-options-button').hide()
 	})
+	var tagsArray;
 	$(document).on('click',
 		'#share-buttons-settings span, #share-buttons-settings div', function() {
 			$('#share-buttons-field').attr('value', $(this).attr('id'))
@@ -887,6 +888,38 @@ tabs = function() {
 		$('#more-settings-options-wrapper').hide()
 		$('#less-settings-options-button').hide()
 		$('#more-settings-options-button').show()
+	})
+	$(document).on('click', '.make-tags i', function() {
+		$('#make-tags-wrapper').show()
+		console.log( tagsArray )
+		tagsArray = []
+		console.log( tagsArray )
+	})
+	var tagsArray;
+	$(document).on('click', '.make-tag:not(.choosen-tag)', function() {
+		if ( $('.choosen-tag').length < 2 ) {
+			var tagName = $(this).attr('id').replace('tag-','')
+			$('#done-tags').addClass('done-tags')
+			$(this).addClass('choosen-tag')
+			tagsArray.push( tagName );
+			console.log( tagsArray )
+		}
+	})
+	$(document).on('click', '.make-tag.choosen-tag', function() {
+		var tagName = $(this).attr('id').replace('tag-','')
+		$(this).removeClass('choosen-tag')
+		var tagIndex = tagsArray.indexOf(tagName);
+		tagsArray.splice(tagIndex, 1)
+		console.log( tagsArray )
+		if ( $('.choosen-tag').length == 0 ) {
+			$('#done-tags').removeClass('done-tags')
+		}
+	})
+	$(document).on('click', '#done-tags', function() {
+		$('#make-tags-wrapper').fadeOut(100)
+		$('.choosen-content .tag-list-field').val( tagsArray )
+		console.log(tagsArray)
+		console.log( $('.choosen-content .tag-list-field').val() )
 	})
 	$(document).on('click', '#save-settings-before', function() {
 		if (!$('#more-settings-options-wrapper').is(':visible')) {
@@ -1115,4 +1148,5 @@ function previewPostImage(event, thisFiler, thisPreview) {
 	reader.readAsDataURL(image);
 	$('#cancel-upload, #reset-image, #submit-image-button-before').show()
 	$('.anonymous-checkbox').addClass('shown')
+	$('#make-tags-1').addClass('inline-block')
 };

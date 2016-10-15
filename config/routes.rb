@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  #get 'tags/index'
+
+  #get 'tags/show'
+
   #get 'activities/index'
   mount Starburst::Engine => "/starburst"
   #root 'pages#index'
   resources :posts
   resources :invites 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-  
+  #resources :tags
   resources :users do
     resources :invites 
     member do
@@ -40,10 +44,14 @@ Rails.application.routes.draw do
   get '/recent' => 'pages#recent'
   get '/register' => 'pages#register'
   get '/admin' => 'pages#admin'
+  get '/tags' => 'tags#index'
+  get '/tags/:name' => 'tags#tag'
+  ##get 'tags/:tag', to: 'articles#index', as: :tag
   resources :activities
   resources :comments
-    
+  #resources :tags, only: [:index, :show]
   resources :posts do
+    
     resources :comments do
       member do
         put "like", to: "comments#upvote"  # maybe change it to POSTS??
