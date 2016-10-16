@@ -973,7 +973,7 @@ tabs = function() {
 					$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide()
 						.show().addClass('buzz')
 				}
-			}
+			
 			else if ( $('.choosen-content:visible .tag-list-field').val() == ''  ) {
 				$('.choosen-content:visible .make-tags').removeClass('buzz').hide()
 						.show().addClass('buzz')
