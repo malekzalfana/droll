@@ -123,7 +123,8 @@ var searchTerm = document.getElementById("searchTerm");
 var target = document.getElementById("gifs");
 var loader = document.getElementById("loader");
 var messageOutput = document.getElementById("message");
-
+/*
 searchTerm.addEventListener("input", debounce(function() {
   initSearch("dc6zaTOxFJmzC", searchTerm.value, "search")
 }, 500));
+*/
