@@ -1,4 +1,5 @@
-function debounce(func, wait, immediate) {
+if ( $('body').is('#make2') ) {
+    function debounce(func, wait, immediate) {
 	var timeout;
 	return function() {
 		var context = this, args = arguments;
@@ -123,8 +124,9 @@ var searchTerm = document.getElementById("searchTerm");
 var target = document.getElementById("gifs");
 var loader = document.getElementById("loader");
 var messageOutput = document.getElementById("message");
-/*
+
 searchTerm.addEventListener("input", debounce(function() {
   initSearch("dc6zaTOxFJmzC", searchTerm.value, "search")
 }, 500));
-*/
+
+}
