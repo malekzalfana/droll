@@ -49,8 +49,9 @@ $(document).on('click', '.favor-post', function () {
 $(document).on('click', '.report-post', function () {
   $(this).parents('.post-more-button').toggleClass('reported')
 })
-$(document).on('click', '.expand-post', function () {
-  $(this).fadeOut(200)
+$(document).on('click', '.expand-post', function (e) {
+  e.stopPropagation();
+  $(this).fadeOut(200);
   $(this).parents('.post-image-wrapper').addClass('expanded-post')
 })
 
