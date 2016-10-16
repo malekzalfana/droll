@@ -56,6 +56,14 @@ class CommentsController < ApplicationController
         end  
       end
       
+      unless !params[:giphyid].present?
+        puts 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'
+        puts params[:giphyid]
+        puts 'sss'
+        @comment.giphyid = params[:giphyid]
+        puts @comment.giphyid
+      end
+      
       unless !params[:base64].present?
         puts "base64 existssssssssssssssssssssssssssssssss"
         data =  params[:base64]
@@ -156,7 +164,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :parent_id, :image)
+    params.require(:comment).permit(:body, :parent_id, :image, :giphyid)
   end
   def post?
     params[:commit] == "post"

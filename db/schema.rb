@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014172139) do
+ActiveRecord::Schema.define(version: 20161015214445) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20161014172139) do
     t.datetime "image_updated_at"
     t.integer  "postid"
     t.boolean  "hidden"
+    t.string   "giphyid"
   end
 
   add_index "comments", ["cached_votes_down"], name: "index_comments_on_cached_votes_down"

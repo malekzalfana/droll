@@ -2193,7 +2193,7 @@ input::-webkit-input-placeholder {
 	opacity: 0.2 !important;
 	pointer-events: none !important;
 }
-#search-memes {
+#search-memes, #searchTerm {
     position: relative;
     width: 100%;
     height: 65px;
@@ -3996,7 +3996,7 @@ body.shown-post #back-clicker:active #back-list, body.shown-post #back-clicker:a
 
 .cancel-meme, #cancel-meme-2 {
 	display: inline-block;
-	margin-top: 5px;
+	margin-top: 8px;
 	cursor: pointer;
 }
 .hidden-imp {
@@ -5621,9 +5621,9 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
     border-radius: 5%;
     border: 1px solid #d0d0d0;
 }
-#gifs-tab {
+/*#gifs-tab {
 	pointer-events: none
-}
+}*/
 
 
 #left-content-profile {
@@ -5969,13 +5969,18 @@ i.fa.fa-reddit-alien {
 #make-tags-2, #make-tags-3 {
 	float: none;
 	display: inline-block;
+	vertical-align: middle;
 }
+/*
 #make-tags-2 i, #make-tags-3 i {
 	position: relative;
 	top: 10px;
 }
+*/
 #make-tags-1 {
 	display: none;
+	 vertical-align: middle;
+    float: none;
 }
 .shown {
 	display: block;
@@ -6029,8 +6034,16 @@ i.fa.fa-reddit-alien {
 	display: inline-block;
 }
 #make-tags-wrapper h2 {
-	fon-family: open sans;
+	font-family: open sans;
 	text-align: center;
+	font-weight: 400;
+	margin: 5px;
+	margin-left: 15px;
+}
+#make-tags-wrapper h2 span {
+	font-size: 10px;
+	margin: 10px;
+	opacity: 0.8;
 }
 #tags-button {
 	background: white;
@@ -6043,13 +6056,6 @@ i.fa.fa-reddit-alien {
     color: gray;
     cursor: default;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.tags-title {
-	margin-left: 30px;
-    font-size: 20px;
-    font-weight: 900;
-    opacity: 0.8;
-    font-family: lato;
 }
 #tags-button i {
 	font-size: 20px;
@@ -6141,3 +6147,8 @@ i.fa.fa-reddit-alien {
     font-family: open sans;
     color: #252525;
 }
+#gifs img {
+	float: left;
+	width: 20%;
+}
+/*  http://api.giphy.com/v1/gifs/feqkVgjJpYtjy?api_key=dc6zaTOxFJmzC */

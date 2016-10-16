@@ -81,6 +81,9 @@
   <% if comment.image.url('medium') != '/images/medium/missing.png' %>
     <img src="<%= comment.image.url(:medium) %>">
   <% end %>
+  <% if !comment.giphyid.blank? %>
+    <img src="https://media2.giphy.com/media/<%= comment.giphyid %>/200w.gif">
+  <% end %>
   <% if comment.parent.blank? && !comment.replies.blank? %><span class="comment-linker-starter"></span><% end %><div class="comment-border-hide"></div></p>
   </div>
     

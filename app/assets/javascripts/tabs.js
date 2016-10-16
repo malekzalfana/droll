@@ -73,6 +73,7 @@ tabs = function() {
 		$('#thanks-feedback').hide()
 	})
 	$(document).on('click', '.tabs', function() {
+		$('.anonymou-image, .make-tags').removeClass('buzz')
 		$('.choosen-content').hide();
 		$('.tabs').removeClass('active-tab');
 		$('.choosen-content').hide();
@@ -105,7 +106,7 @@ tabs = function() {
 			$('body').addClass('overflow-hidden')
 		} else {
 			$('body').append(
-				'<iframe src="http://beta.drolle.co/make2" id="remote-make" class="fadeInUp animated-very-fast"></iframe>'
+				'<iframe src="https://drolle-3-malekzalfana.c9users.io/make2" id="remote-make" class="fadeInUp animated-very-fast"></iframe>'
 			)
 			$('body').addClass('overflow-hidden')
 			$('#hide-remote-make').show()
@@ -361,6 +362,16 @@ tabs = function() {
 			'hidden-imp');
 		console.log('worked?')
 	});
+	$(document).on('click', '.remote-gif', function() {
+		$('#hide-remote-make', parent.document.body).click();
+		$(".wrapper:visible .giphy-id-make", parent.document.body).val($(this).attr('data-giphy-id'));
+		console.log( $(".wrapper:visible .giphy-id-make", parent.document.body) )
+		$(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();
+		$(".wrapper:visible .cancel-meme", parent.document.body).removeClass(
+			'hidden-imp');
+		$(".wrapper:visible .make-giphy-image", parent.document.body).attr("src",
+		$(this).attr('src')  ).fadeIn(200)
+	});
 	$(document).on('click',
 		'#share-buttons-settings div, #share-buttons-settings span', function() {
 			$('#share-buttons-settings div, #share-buttons-settings span').removeClass(
@@ -373,7 +384,9 @@ tabs = function() {
 	$(document).on('click', '.cancel-meme', function() {
 		$(this).addClass('hidden-imp')
 		$(".wrapper:visible .base64-make").val('');
+		$(".wrapper:visible .giphy-id-make").val('');
 		$('.wrapper:visible .base64-image').hide()
+		$(".wrapper:visible .make-giphy-image").hide();
 		$(".wrapper:visible .comment-html").show();
 		if (window.innerWidth > 600) {
 			$('.memes-emojis').show()
@@ -568,7 +581,7 @@ tabs = function() {
 		if ( toComment == true ){
 			var thisCommentBody = $(this).parents('form')
 			if ($(thisCommentBody).find('.post-comment-body-2.post-comment-body').html() ==
-				'' && $('.shown.wrapper .base64-make').val() == '') {
+				'' && $('.shown.wrapper .base64-make').val() == '' &&  $('.shown.wrapper .giphy-id-make').val() == '' ) {
 				$(this).parents('.middle-wrapper').removeClass('buzz').hide().show().addClass(
 					'buzz')
 				$('.wrapper.shown .post-comment-body-2.post-comment-body').eq(0).focus()
@@ -711,6 +724,7 @@ tabs = function() {
 	$(document).ready(function() {
 		//$('#anonymous-faces img').slice(40, $('#anonymous-faces .rageface').length - 39 ).lazyload()
 	})
+	$(".pick-meme-container").lazyload();
 	$(document).on('click', '#anonymous-image', function() {
 		$('#anonymous-faces img').show()
 		$("#anonymous-faces img").slice(0, 40).lazyload({
@@ -812,6 +826,9 @@ tabs = function() {
 			} else {
 				$('#created-meme-anonymous-field').prop('checked', false);
 			}
+		})
+		$(document).on('click', '#memes-tab', function() {
+			$('.pick-meme-container').slice(0,18).lazyload()
 		})
 	$(document).on('click', '#anonymous-faces img', function() {
 		var facenumber = $(this).attr('data-facenumber')
@@ -952,20 +969,16 @@ tabs = function() {
 	})
 	$(document).on('click', '#submit-image-button-before', function() {
 		if (image1 == false) {
-			if ($('.choosen-content input[type="checkbox"]:checked').length) {
-				if ($('.choosen-content:visible .anonymous-image').children('img').length) {
-					console.log($('.choosen-content:visible .anonymous-image').children(
-						'img').length)
-					$('#submit-image-button').click()
-					$(this).hide()
-					$(this).siblings('button, .anonymous-checkbox').hide()
-					$(this).siblings('.loading-icon').addClass('loading-animation')
-					image1 = true
-				} else {
+			if ($('.choosen-content input[type="checkbox"]:checked').length && $('.choosen-content:visible .anonymous-image').children('img').length) {
 					$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide()
 						.show().addClass('buzz')
 				}
-			} else {
+			}
+			else if ( $('.choosen-content:visible .tag-list-field').val() == ''  ) {
+				$('.choosen-content:visible .make-tags').removeClass('buzz').hide()
+						.show().addClass('buzz')
+			}
+			else {
 				$('#submit-image-button').click()
 				$(this).hide()
 				$(this).siblings('button, .anonymous-checkbox').hide()
@@ -982,19 +995,16 @@ tabs = function() {
 		$('#base64').val(dataURL3)
 		if (image2 == false) {
 			if ($('.choosen-content input[type="checkbox"]:checked').length) {
-				if ($('.choosen-content:visible .anonymous-image').children('img').length) {
-					setTimeout(function() {
-						$("#submit-image-button-2").click();
-						$('#submit-button-before-wrapper').children().hide()
-						$('#submit-button-before-wrapper .loading-icon').addClass(
-							'loading-animation')
-						image2 = true
-					}, 1200)
-				} else {
+				if ($('.choosen-content:visible .anonymous-image').children('img').length < 1) {
 					$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide()
 						.show().addClass('buzz')
 				}
-			} else {
+			}
+			else if ( $('.choosen-content .tag-list-field').val() == '' ) {
+				$('.choosen-content:visible .make-tags').removeClass('buzz').hide()
+					.show().addClass('buzz')
+			}
+			else {
 				setTimeout(function() {
 					$("#submit-image-button-2").click();
 					$('#submit-button-before-wrapper').children().hide()
@@ -1006,14 +1016,6 @@ tabs = function() {
 		} else {
 			console.log('a')
 		}
-	})
-	$(document).on('click', '#created-image-button-before-2', function() {
-		/*var memeCanvas = document.getElementById('meme-canvas');
-    var dataURL3 = memeCanvas.toDataURL();
-    $('#base64').val(dataURL3)
-    setTimeout(function(){
-      $("#submit-image-button-2").click();
-    }, 2000)*/
 	})
 	console.log('tabs.js working');
 	(function($) {
@@ -1148,5 +1150,5 @@ function previewPostImage(event, thisFiler, thisPreview) {
 	reader.readAsDataURL(image);
 	$('#cancel-upload, #reset-image, #submit-image-button-before').show()
 	$('.anonymous-checkbox').addClass('shown')
-	$('#make-tags-1').addClass('inline-block')
+	$('#make-tags-1').addClass('inline-block-imp')
 };

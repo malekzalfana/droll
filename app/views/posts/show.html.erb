@@ -185,6 +185,7 @@
                       <div class="form-group comment-form" id="form-<%= @post.id %>">
                         <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
                         <input class="base64-make" type="hidden" value="" name="base64"/>
+                        <input class="giphy-id-make" type="hidden" value="" />
                         <img src="" class="base64-image">
                         <div class="comment-html post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
                         <div class="right-comment-wrapper">

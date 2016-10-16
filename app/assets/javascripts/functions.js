@@ -1145,21 +1145,6 @@ functions =  function() {
 			})
 		    
 		    if ( image3 == false ) {
-			    
-			    	if ( $('.choosen-content input[type="checkbox"]:checked').length ) {
-		          if ( $('.choosen-content:visible .anonymous-image').children('img').length ) {
-		          	setTimeout(function(){
-		          	$("#submit-image-button-3").click();
-			    	image3 = true
-			    	$('#ragefaces-buttons-wrapper').hide()
-        			$('#tools .loading-icon').addClass('loading-animation')
-		          	}, 2000)
-		          }
-		          else {
-		          	$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
-		          }
-			  }
-			  else {
 			  	console.log( downloadCANVAS.toDataURL() )
 			  	$('<img/>').attr('src', downloadCANVAS.toDataURL()).load(function() {
 			  		$("#submit-image-button-3").click();
@@ -1167,7 +1152,6 @@ functions =  function() {
 			    	$('#ragefaces-buttons-wrapper').hide()
         			$('#tools .loading-icon').addClass('loading-animation')
 			  	})
-			  }
 			    	
 			    
 		    }
@@ -1176,9 +1160,19 @@ functions =  function() {
 	}
 	
 	$(document).on('click', '#submit-image-button-before-3', function(){
-		$('#ragefaces-buttons-wrapper').fadeOut()
-		finalImage = false;
-	    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
+		if ( $('.choosen-content input[type="checkbox"]:checked').length && $('.choosen-content:visible .anonymous-image').children('img').length  < 1 ) {
+		          	$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
+			  }
+		else if ( $('.choosen-content .tag-list-field').val() == '' ) {
+				$('.choosen-content:visible .make-tags').removeClass('buzz').hide()
+					.show().addClass('buzz')
+			}
+		else {
+			$('#ragefaces-buttons-wrapper').fadeOut()
+			finalImage = false;
+		    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
+		}
+		
 	  })
 	//document.getElementsByClassName('rageface').setAttribute('crossOrigin', 'anonymous');
 	/** 
