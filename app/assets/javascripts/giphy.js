@@ -1,4 +1,8 @@
 if ( $('body').is('#make2') ) {
+    var gifArray = ['lol', 'wtf', 'crying', 'racist', 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy']
+    
+    
+    
     function debounce(func, wait, immediate) {
 	var timeout;
 	return function() {
@@ -47,15 +51,23 @@ function parseJSON(response) {
   return response.json();
 }
 
-function createVideoTag(src, id) {
-   var video = document.createElement("img");
-   //$(video).attr('data-giphy-id', id)
-   //video.autoplay = false;
+function createVideoTag(srcStill,src, id) {
+   //var video = document.createElement("img");
+   //video.setAttribute("data-giphy-id", id);
+   //video.setAttribute("class", "remote-gif");
+   //video.src = src;
+   var video = document.createElement('div')
    video.setAttribute("data-giphy-id", id);
-   video.setAttribute("class", "remote-gif");
-   console.log(id)
-   video.src = src;
-   //video.loop = true;
+   video.setAttribute("class", "gif-container remote-gif");
+   video.style.backgroundImage = 'url(' + srcStill + ')'
+   
+   var videoS = document.createElement('img')
+   videoS.setAttribute("data-original", src);
+   videoS.setAttribute("data-giphy-id", id);
+   videoS.setAttribute("class", "remote-gif-overlay");
+   $('#gifs img').lazyload();
+   video.appendChild(videoS)
+   
    return video;
 }
 
@@ -72,15 +84,15 @@ function getGifs(videos) {
     displayMessage("No gifs", true);
   }
   for(var gif in videos.data) {
-      let video = createVideoTag(videos.data[gif].images.fixed_width.url, videos.data[gif].id);
+      let video = createVideoTag(videos.data[gif].images.fixed_width_still.url ,videos.data[gif].images.fixed_width.url, videos.data[gif].id);
       
       insertVideoTag(video);
       var ccontainer = $('#gifs');
-			ccontainer.imagesLoaded(function() {
+			/*ccontainer.imagesLoaded(function() {
 				ccontainer.masonry({
 					itemSelector: 'img'
 				});
-			});
+			});*/
     }
 }
 
@@ -93,11 +105,11 @@ function loadGifs(url, type) {
     }
     displayLoader(false);
     var ccontainer = $('#gifs');
-			ccontainer.imagesLoaded(function() {
+			/*ccontainer.imagesLoaded(function() {
 				ccontainer.masonry({
 					itemSelector: 'img'
 				});
-			});
+			});*/
   }).catch(function(error) {
     displayLoader(false);
     displayMessage("Request failed: " + error, true);
@@ -128,5 +140,11 @@ var messageOutput = document.getElementById("message");
 searchTerm.addEventListener("input", debounce(function() {
   initSearch("dc6zaTOxFJmzC", searchTerm.value, "search")
 }, 500));
+
+var randomGif = gifArray[(Math.floor(Math.random() * 10) + 1)]
+
+  initSearch("dc6zaTOxFJmzC", randomGif , "search")
+  $('#searchTerm').attr('placeholder', randomGif)
+
 
 }
