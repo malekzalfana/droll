@@ -58,6 +58,7 @@ function createVideoTag(srcStill,src, id) {
    //video.src = src;
    var video = document.createElement('div')
    video.setAttribute("data-giphy-id", id);
+   video.setAttribute("data-src", src);
    video.setAttribute("class", "gif-container remote-gif");
    video.style.backgroundImage = 'url(' + srcStill + ')'
    

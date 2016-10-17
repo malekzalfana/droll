@@ -370,7 +370,7 @@ tabs = function() {
 		$(".wrapper:visible .cancel-meme", parent.document.body).removeClass(
 			'hidden-imp');
 		$(".wrapper:visible .make-giphy-image", parent.document.body).attr("src",
-		$(this).attr('data-giphy-id')  ).fadeIn(200)
+		$(this).attr('data-src')  ).fadeIn(200)
 	});
 	$(document).on('click',
 		'#share-buttons-settings div, #share-buttons-settings span', function() {
