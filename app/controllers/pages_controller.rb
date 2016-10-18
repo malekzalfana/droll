@@ -128,7 +128,7 @@ class PagesController < ApplicationController
   end
   
   def stock
-    if params[:base64] && current_user.stocks.last.created_at > 5.second.ago
+    if params[:base64]
       @stock = Stock.create
       @stock.base64 = params[:base64]
       @stock.stocktype = params[:stocktype]

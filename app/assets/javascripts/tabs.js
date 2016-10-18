@@ -228,7 +228,10 @@ tabs = function() {
 		$('#upload-meme-stock-field').val( $('#upload-meme-stock-input').val()  )
 		setTimeout(function(){
 			$('#upload-meme-stock-submit').click()
-		})
+		}, 100)
+		setTimeout(function(){
+			$('#upload-meme-stock-input, #upload-meme-stock-field').val('')
+		}, 200)
 	})
 	/*
 	var stockBase64;
