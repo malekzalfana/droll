@@ -128,15 +128,13 @@ class PagesController < ApplicationController
   end
   
   def stock
-    if params[:base64]
+    if params[:base64] && current_user.stocks.last.created_at > 5.second.ago
       @stock = Stock.create
       @stock.base64 = params[:base64]
       @stock.stocktype = params[:stocktype]
       @stock.image = URI.parse(  params[:base64]  )
       @stock.user = current_user
       @stock.save
-      puts @stock.stocktype
-      puts 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
       respond_to do |format|
        format.html
        format.js

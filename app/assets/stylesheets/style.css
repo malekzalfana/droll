@@ -2231,7 +2231,7 @@ input::-webkit-input-placeholder {
 	float: right;
     opacity: 0.5;
 }
-#search-memes{
+#make #search-memes{
 	width: calc(100% - 271px);
 }
 ::-webkit-input-placeholder {
@@ -6173,6 +6173,9 @@ i.fa.fa-reddit-alien {
 	animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(15) {
+	animation-duration: 1.1s
+}
+#tags-wrapper a:nth-child(16) {
 	animation-duration: 1.1s
 }
 .tag-title {

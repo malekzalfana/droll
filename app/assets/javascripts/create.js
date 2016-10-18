@@ -36,7 +36,7 @@ $("img.meme-pics").slice(40,184).lazyload({
 	
 });
 
-$('.pick-meme-container').click(function(){ 
+$(document).on('click', '.pick-meme-container',function(){ 
 	if (!$(event.target).is('.delete-stock')){
 	var MemeBackground = $(this).css('background-image').replace('url("','').replace('")','');
 	var thisImage = document.createElement('img');
@@ -44,16 +44,7 @@ $('.pick-meme-container').click(function(){
 	thisImage.src = MemeBackground
 	
 	thisImage.onload = function(){
-		//alert('sss')
-		console.log('sssssssssssssssssss')
-	   console.log($(this).attr('crossorigin') )
-	   $(this).remove(); // prevent memory leaks as @benweet suggested
-	   //memeCtx.scale(1,1);
-	//var thisMeme = $(this);
-	//var thisImage = document.createElement('img');
-	//thisImage.src = MemeBackground;
-	//thisImage.crossOrigin = "";
-	//$(thisImage).attr('crossorigin', 'Anonymous');
+	$(this).remove();
 	if ( $(window).width() < 590 ) {
 		$(thisImage).css({'width': $('#memes-content').width() });
 		console.log( $(window).width() )
@@ -67,31 +58,16 @@ $('.pick-meme-container').click(function(){
 	console.log(1111)
 	console.log(thisImage.height + 'height')
 	console.log(thisImage.width + 'width')
-	//memeCanvas.height = thisImage.height * (1200/thisImage.width);
-	//memeCanvas.style.height = memeCanvas.height / 2 ;
 	$(memeCanvas).attr('crossorigin', '')
 	$(memeCanvas).css({'height':memeCanvas.height / (memeCanvas.width/$(memeCanvas).width()) });
 	$('#meme-wrapper').css({'height':memeCanvas.height / 2});
-	//$('#meme-wrapper').css({'height':(memeCanvas.height * $('#memes-content').width() )/1100 });
 	$('#pick-meme').hide();
 	$('#left-arrow').fadeIn();
-	//$('.middle-column').addClass('animated-slightly-delayed fadeIn').removeClass('fadeOut');  // REMOVED
 	$('.middle-column').show();
 	$('#memescontainer').removeClass('clicked');
-	
-	memeCtx.drawImage(thisImage,0,0,1100,thisImage.height * (1100/thisImage.width));
-	
-			console.log( memeCtx.getImageData(0,0,memeCanvas.width,memeCanvas.height) )
+	memeCtx.drawImage(thisImage,0,0,1100,thisImage.height * (1100/thisImage.width));console.log( memeCtx.getImageData(0,0,memeCanvas.width,memeCanvas.height) )
 	$('#add-button').hide();
-	//document.getElementById('add-button').innerHTML = 'add';
-	//$('#add-button').fadeIn();
-	//memeCtx.scale(2,2);
-	//$('#meme-wrapper textarea').show();
 	var memeHeight = thisImage.height * (1100/thisImage.width);
-	
-	//console.log('clicked the meme')
-	//console.log( memeCanvas.toDataURL() )
-	
 	
 		
 		CanvasRenderingContext2D.prototype.wrapText = function (text, x, y, maxWidth, lineHeight) {
@@ -279,6 +255,22 @@ var newNumber = 0;
 		
 		
 } });	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	/*
 	$('a.upvote').click(function(){
