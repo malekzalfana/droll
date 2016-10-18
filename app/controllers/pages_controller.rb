@@ -135,9 +135,11 @@ class PagesController < ApplicationController
       @stock.image = URI.parse(  params[:base64]  )
       @stock.user = current_user
       @stock.save
-      respond_to do |format|
-       format.html
-       format.js
+      if @stock.save
+        respond_to do |format|
+         format.html
+         format.js
+        end
       end
     end
     
