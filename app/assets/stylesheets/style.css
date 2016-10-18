@@ -6156,4 +6156,7 @@ i.fa.fa-reddit-alien {
 	 background-size: cover;
     background-position: center;
 }
+.thiscomment {
+	border-left: 1px solid #d0d0d0;
+}
 /*  http://api.giphy.com/v1/gifs/feqkVgjJpYtjy?api_key=dc6zaTOxFJmzC */

@@ -5,9 +5,29 @@ class CommentsController < ApplicationController
   end
   
   def show 
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.order("created_at DESC").page(params[:page]).per_page(35)
     @thiscomment = Comment.find_by_id(params[:id])
+    @post = @thiscomment.post
+    if user_signed_in?
+      @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
+      @activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids, key: "posting" ).where('created_at >= ?', Time.now-2.days)
+      @activities2 = PublicActivity::Activity.where( key: 'drolling').order("created_at DESC")
+      @activities3 = [@activities1, @activities2, @activities0].flatten
+      @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
+    end
+    @comment10 = @post.comments.where('cached_votes_score > -2').where('cached_votes_score < 10').ordered
+    @comment9 = @post.comments.where('cached_votes_score > 9').where('cached_votes_score < 20').ordered
+    @comment8 = @post.comments.where('cached_votes_score > 19').where('cached_votes_score < 40').ordered
+    @comment7 = @post.comments.where('cached_votes_score > 39').where('cached_votes_score < 80').ordered
+    @comment6 = @post.comments.where('cached_votes_score > 79').where('cached_votes_score < 160').ordered
+    @comment5 = @post.comments.where('cached_votes_score > 159').where('cached_votes_score < 320').ordered
+    @comment4 = @post.comments.where('cached_votes_score > 319').where('cached_votes_score < 640').ordered
+    @comment3 = @post.comments.where('cached_votes_score > 639').where('cached_votes_score < 1280').ordered
+    @comment2 = @post.comments.where('cached_votes_score > 1279').where('cached_votes_score < 2560').ordered
+    @comment1 = @post.comments.where('cached_votes_score > 2559').ordered
+    @commentbefore = [@comment1, @comment2,@comment3,@comment4,@comment5,@comment6,@comment7,@comment8,@comment9,@comment10].flatten
+    @commentbefore.delete( @thiscomment )
+    @commentlast = [@thiscomment, @commentbefore].flatten
+    @comment = @commentlast.paginate(:per_page => 35, :page => 1)
   end 
   
   def new
