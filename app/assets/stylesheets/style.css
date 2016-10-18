@@ -2206,6 +2206,34 @@ input::-webkit-input-placeholder {
     background-size: 24px;
     border-top: 1px solid #e9e9e9;
 }
+#search-memes {
+	width: calc(100% - 65px);
+    float: left;
+}
+#upload-meme-stock {
+	padding: 15px;
+	margin-top: 1px;
+    cursor: pointer;
+    font-size: 35px;
+    background: whitesmoke;
+    color: #9e9e9e;
+}
+#upload-meme-stock-input {
+	float: left;
+    height: 64px;
+    margin-top: 1px;
+    background: whitesmoke;
+    font-size: 14px;
+    padding: 1px 17px;
+    border-left: 1px solid #e9e9e9;
+}
+.delete-meme-stock {
+	float: right;
+    opacity: 0.5;
+}
+#search-memes{
+	width: calc(100% - 271px);
+}
 ::-webkit-input-placeholder {
    color: #707070;
 }
@@ -2953,6 +2981,9 @@ html {
 	color: red;
 }
 #ragefaces-stock div:hover i {
+	display: block !important;
+}
+.pick-meme-container:hover .delete-stock {
 	display: block !important;
 }
 .new_comment .post-comment {
@@ -6160,3 +6191,6 @@ i.fa.fa-reddit-alien {
 	border-left: 1px solid #d0d0d0;
 }
 /*  http://api.giphy.com/v1/gifs/feqkVgjJpYtjy?api_key=dc6zaTOxFJmzC */
+.meme-stock {
+	float:left;
+}

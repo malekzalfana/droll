@@ -195,7 +195,7 @@ tabs = function() {
 		reader.readAsDataURL(image);
 	};
 	var toDeleteStock = true
-	$(document).on('click', '.delete-stock', function(){
+	$(document).on('click', '.delete-stock', function(e){
 		if ( toDeleteStock == true ) {
 			toDeleteStock = false;
 			$(this).siblings('form').find('input[type="submit"]').click()
@@ -223,6 +223,12 @@ tabs = function() {
 			}, 1000)
 		}
 	    
+	})
+	$('#upload-meme-stock').click(function(){
+		$('#upload-meme-stock-field').val( $('#upload-meme-stock-input').val()  )
+		setTimeout(function(){
+			$('#upload-meme-stock-submit').click()
+		})
 	})
 	/*
 	var stockBase64;

@@ -94,7 +94,8 @@ class PagesController < ApplicationController
       @activities3 = [@activities1, @activities2, @activities0].flatten
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
       @post = current_user.posts.build(params[:post])
-      @stock = current_user.stocks.order("created_at DESC")
+      @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
+      @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
     end
     
   end  
@@ -130,9 +131,12 @@ class PagesController < ApplicationController
     if params[:base64]
       @stock = Stock.create
       @stock.base64 = params[:base64]
+      @stock.stocktype = params[:stocktype]
       @stock.image = URI.parse(  params[:base64]  )
       @stock.user = current_user
       @stock.save
+      puts @stock.stocktype
+      puts 'dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd'
       respond_to do |format|
        format.html
        format.js

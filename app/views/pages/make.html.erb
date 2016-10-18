@@ -197,6 +197,24 @@
 		
 		<div id="pick-meme" class="ui-sortable">
 	<input id="search-memes" placeholder="search memes ..">
+	<input id="upload-meme-stock-input" placeholder="Paste image address">
+	<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
+        <%= text_area_tag :base64, '', :id => "upload-meme-stock-field" %>
+        <%= text_area_tag :stocktype, 'meme' %>
+        <%= submit_tag "SEND", :id => "upload-meme-stock-submit"%>
+    <% end %>
+	<i class="material-icons" id="upload-meme-stock">add</i>
+	<% @stock1.each do |s| %>
+		<div id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
+			<i class="material-icons delete-meme-stock delete-stock">clear</i>
+			<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
+	            <%= text_area_tag :id, s.id %>
+	            <%= submit_tag "SEND"%>
+	        <% end %>
+		</div>
+    	
+    	
+    <% end %>
 	<div crossorigin="" class="pick-meme-container" data-original="http://www.nightmug.com/drolle/newmemes/50meme.jpg">
 		<div class="meme-shadow"></div>
 		<p class="meme-title" id="meme-title-50" contenteditable="true"><span style="color: rgb(34, 34, 34); font-family: Consolas, &quot;Lucida Console&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">Condesending Wonka</span>
@@ -1491,10 +1509,11 @@
 				
 				<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
 	                <%= text_area_tag :base64, '', :id => "stock-base64" %>
+	                <%= text_area_tag :stocktype, 'rage' %>
 	                <%= submit_tag "SEND", :id => "submit-stock"%>
 	            <% end %>
 	            <div id="ragefaces-stock">
-	            	<% @stock.each do |s| %>
+	            	<% @stock2.each do |s| %>
 	            	<div id="stock-<%= s.id %>">
 	            		<img class="rageface rageface-normal" data-original="<%= s.image.url %>" ><i class="material-icons delete-stock">cancel</i>
 		            	<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>

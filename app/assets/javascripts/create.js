@@ -36,7 +36,8 @@ $("img.meme-pics").slice(40,184).lazyload({
 	
 });
 
-$('.pick-meme-container').click(function(){
+$('.pick-meme-container').click(function(){ 
+	if (!$(event.target).is('.delete-stock')){
 	var MemeBackground = $(this).css('background-image').replace('url("','').replace('")','');
 	var thisImage = document.createElement('img');
 	thisImage.crossOrigin = "";
@@ -277,7 +278,7 @@ var newNumber = 0;
 	};
 		
 		
-});	
+} });	
 	
 	/*
 	$('a.upvote').click(function(){
