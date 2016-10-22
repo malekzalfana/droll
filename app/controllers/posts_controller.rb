@@ -209,7 +209,7 @@ class PostsController < ApplicationController
           @post.update_attributes(permit_post2)
           Rails.logger.info(@post.errors.messages.inspect)
         end
-        if @post.get_downvotes(:vote_scope => 'report').size == 2
+        if @post.get_downvotes(:vote_scope => 'report').size == 5
           unless @post.granted == true
             @post.reported = true
             @post.hidden = true
@@ -233,16 +233,16 @@ class PostsController < ApplicationController
       else
         @post.downvote_by current_user
         unless @post.granted == true
-          if (@post.created_at > Time.now - 7.minutes) && @post.get_downvotes.size == 2
+          if (@post.created_at > Time.now - 7.minutes) && @post.get_downvotes.size == 5
             @post.hidden = true
             @post.update_attributes(permit_post2)
             Rails.logger.info(@post.errors.messages.inspect)
             @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
-          elsif ( ( 100 * @post.get_downvotes.size ) / @post.get_upvotes.size) > 25
-            @post.hidden = true
-            @post.update_attributes(permit_post2)
-            Rails.logger.info(@post.errors.messages.inspect)
-            @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
+          #elsif ( ( 100 * @post.get_downvotes.size ) / @post.get_upvotes.size) > 50
+          #  @post.hidden = true
+          #  @post.update_attributes(permit_post2)
+          #  Rails.logger.info(@post.errors.messages.inspect)
+          #  @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
           end
         end
         

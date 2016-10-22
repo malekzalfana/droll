@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   mount Starburst::Engine => "/starburst"
   #root 'pages#index'
   resources :posts
-  resources :invites 
+  
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   #resources :tags
   resources :users do
-    resources :invites 
+    #resources :invites 
     member do
       get :following, :followers
     end  
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/home' => 'pages#home'
   get '/settings' => 'pages#settings'
   get '/user/:id' => 'pages#profile'
-  get '/invite/:code' => 'pages#invited'
+  #get '/invite/:code' => 'pages#invited'
 
   get '/explore' => 'pages#explore'
   get '/make' => 'pages#make'
@@ -46,6 +46,8 @@ Rails.application.routes.draw do
   get '/admin' => 'pages#admin'
   get '/tags' => 'tags#index'
   get '/tags/:name' => 'tags#tag'
+  get '/invite/:id' => 'invites#show'
+  get '/pages/followTags' => 'pages#followTags'
   ##get 'tags/:tag', to: 'articles#index', as: :tag
   resources :activities
   resources :comments

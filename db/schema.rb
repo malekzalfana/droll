@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018170356) do
+ActiveRecord::Schema.define(version: 20161022145833) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -240,6 +240,7 @@ ActiveRecord::Schema.define(version: 20161018170356) do
     t.string   "provider"
     t.string   "uid"
     t.integer  "share"
+    t.string   "tag"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -15,8 +15,9 @@ class PagesController < ApplicationController
       end
     end
     if user_signed_in?
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > ?', 3)
-      @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following).where("created_at < ?", 2.days.ago)
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 2')
+      @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
+    #remove # up >>^^^^
       @post2 = [@popularPosts,@followingPosts].flatten
       @post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
@@ -119,6 +120,16 @@ class PagesController < ApplicationController
   def invited
     @comment = Comment.all.limit(10)
   end
+  
+  def followTags
+    if !params[:tag].nil?
+      puts params[:tag]
+      current_user.tag = params[:tag]
+      current_user.update_attributes
+    end
+    redirect_to :back
+  end
+  
   
   def feedback
     @feedback = Feedback.create
