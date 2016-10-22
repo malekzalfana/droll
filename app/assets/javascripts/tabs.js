@@ -48,7 +48,7 @@ tabs = function() {
 	});
 	var $container = $('#left-content-profile');
 	console.log($container)
-	$container.imagesLoaded(function() {
+	/*$container.imagesLoaded(function() {
 		$container.masonry({
 			itemSelector: '.wrapper',
 			gutter: window.innerWidth / 200
@@ -56,7 +56,7 @@ tabs = function() {
 		console.log('worked?')
 		console.log(window.innerWidth / 200)
 			//$('#left-content-profile .wrapper').fadeIn(100)
-	});
+	});*/
 	$(document).on('click', '#submit-feedback, #cancel-feedback', function() {
 		if ($(this).is('#submit-feedback')) {
 			$('#submit-feedback, #cancel-feedback').hide()
@@ -1059,40 +1059,18 @@ tabs = function() {
 		}
 	})
 	console.log('tabs.js working');
-	(function($) {
-		/**
-		 * jQuery function to prevent default anchor event and take the href * and the title to make a share pupup
-		 *
-		 * @param  {[object]} e           [Mouse event]
-		 * @param  {[integer]} intWidth   [Popup width defalut 500]
-		 * @param  {[integer]} intHeight  [Popup height defalut 400]
-		 * @param  {[boolean]} blnResize  [Is popup resizeabel default true]
-		 */
-		$.fn.customerPopup = function(e, intWidth, intHeight, blnResize) {
-				// Prevent default anchor event
-				e.preventDefault();
-				// Set values for window
-				intWidth = intWidth || '500';
-				intHeight = intHeight || '400';
-				strResize = (blnResize ? 'yes' : 'no');
-				// Set title and open popup with focus on it
-				var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr(
-						'title') : 'Social Share'),
-					strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' +
-					strResize,
-					objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
-			}
-			/* ================================================== */
-		$(document).ready(function($) {
+	//(function($) {
+	
+		/*$(document).ready(function($) {
 			var $container = $('#left-content-profile');
 			console.log($container)
-			$container.imagesLoaded(function() {
+			//$container.imagesLoaded(function() {
 				$container.masonry({
 					itemSelector: '.wrapper',
 					gutter: 10
 				});
 				console.log('worked?')
-			});
+			//});
 			var $container2 = $('#right-content-profile');
 			//$container2.imagesLoaded(function() {
 				$container2.masonry({
@@ -1104,8 +1082,8 @@ tabs = function() {
 			$('.customer.share').on("click", function(e) {
 				$(this).customerPopup(e);
 			});
-		});
-	}(jQuery));
+		});*/
+	//}(jQuery));
 	$("#search-memes").keyup(function() {
 		console.log('search-meme working')
 			//$(this).addClass('hidden');
@@ -1149,22 +1127,14 @@ tabs = function() {
 		$('#progress-table').fadeOut()
 	})
 	var $container = $('#left-content-profile');
-	console.log($container)
-	$container.imagesLoaded(function() {
-		$container.masonry({
-			itemSelector: '.wrapper',
-			gutter: 10
-		});
-		//$('#left-content-profile .wrapper').fadeIn(100)
-		//console.log('worked?')
+	$container.masonry({
+		itemSelector: '.wrapper',
+		gutter: 5
 	});
 	var $container2 = $('#right-content-profile');
-	$container2.imagesLoaded(function() {
-		$container2.masonry({
-			itemSelector: '.wrapper',
-			gutter: 10
-		});
-		//console.log('worked?')
+	$container2.masonry({
+		itemSelector: '.wrapper',
+		gutter: 5
 	});
 	//alert('tabs')
 };
