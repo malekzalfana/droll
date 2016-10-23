@@ -4794,7 +4794,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 		width: calc(50% - 5px) !important;
 		height: 270px;
 		padding: 0px;
-		margin-top: 0.5% !important;
+		margin-top: 5px !important;
 	}
 	#profile-account-id-wrapper {
 		top: 100px;
@@ -4845,7 +4845,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	#content-profile .wrapper {
 		width: calc(50% - 5px) !important;
 		padding: 0px;
-		margin-top: 0.5% !important;
+		margin-top: 5px !important;
 	}
 	#profile-account-id-wrapper {
 		top: 70px;

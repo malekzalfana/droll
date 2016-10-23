@@ -23,12 +23,19 @@ else {
     $('#right-content-profile').append(html)
     var $container2 = $('#right-content-profile');
     setTimeout(function(){
-		$container2.masonry('appended', $(html2));
-		$container2.masonry({
-			itemSelector: '.wrapper',
-			gutter: 5
-		});
+  		$container2.masonry('appended', $(html2));
+  		$container2.masonry({
+  			itemSelector: '.wrapper',
+  			gutter: 5
+  		});
 		}, 200)
+		setTimeout(function(){
+  		$container2.masonry('appended', $(html2));
+  		$container2.masonry({
+  			itemSelector: '.wrapper',
+  			gutter: 5
+  		});
+		}, 400)
     
     <% if @profilefavor.next_page %>
       $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
