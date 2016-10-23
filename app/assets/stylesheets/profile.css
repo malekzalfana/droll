@@ -10,7 +10,7 @@
     width: calc(100% - 10px);
     text-align: left;
     margin: 0px auto;
-    left: 2.5 !important;
+    left: 2.5px !important;
 }
 #profile-posts, #profile-favors {
     margin-right: 25px;    
@@ -49,11 +49,11 @@
     bottom: 0px;
 }
 #content-profile .wrapper {
-    width: calc( 24.375% );
+    width: calc( 25% - 5px );
     float: left;
     min-heighT:0px !important;
     margin: 0px;
-    margin-top: 0.5% !important;
+    margin-top: 5px !important;
     margin-bottom: 0px !important;
     box-shadow: 0 1px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);

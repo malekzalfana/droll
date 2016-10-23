@@ -205,9 +205,9 @@ class PagesController < ApplicationController
     else 
       redirect_to root_path, :notice => "User not found"
     end  
-    @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: nil).where(anonymous: false).paginate(:per_page => 5, :page => params[:page])
+    @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: nil).where(anonymous: false).paginate :page => params[:page], :per_page => 10
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
-    @profilefavor = @user.votes.where(:vote_scope => 'favor').for_type(Post).votables.paginate(:per_page => 5, :page => params[:page])
+    @profilefavor = @user.votes.where(:vote_scope => 'favor').for_type(Post).votables.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
      format.html
      format.js

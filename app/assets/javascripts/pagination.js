@@ -1,4 +1,5 @@
 window.onload = function(){
+    var leftMasonry = true;
     var nomorefavors = false;
     var nomoreposts = false;
     if ( $('body').hasClass('profile') ){
@@ -31,7 +32,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
             //alert('scrolled')
             //if ( toLoad == 100 ) {
                 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
-                    //url = $('#left-content-profile .pagination a.next_page').attr('href')
+                    url = $('#left-content-profile .pagination a.next_page').attr('href')
                     $('#left-content-profile .pagination').text('more posts are coming')
                     //alert('more pos..')
                     if ( nomoreposts == false ) {

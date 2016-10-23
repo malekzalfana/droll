@@ -1,16 +1,19 @@
-<% @profilefavor.each do |x| %>
+<% @profilepost.each do |x| %>
     <%= link_to(x) do %>
     <div class="wrapper">
-        <div class="profile-post-overlay"></div>
-        <h2 class="post-title"><%= x.title %></h2>
-        <div class="profile-post" style="background-image: url(<%= x.image.url(:medium) %>)"></div>
-        <div class="profile-post-options">
-            <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
-            <%= link_to dislike_post_path(x), method: :put, class: 'down downvote', :"data-post-id" => x.id, remote: true  do %>
-            <% end %>
-            <%= link_to like_post_path(x), method: :put, class: 'up upvote', :"data-post-id" => x.id, remote: true  do %>
-            <% end %>
-        </div>
-    </div>
+                <div class="wrapper-content">
+                
+                <img class="profile-post" src="<%= x.image.url(:medium) %>)">
+                <h2 class="post-title"><%= x.title %></h2>
+                <div class="profile-post-options">
+                    <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
+                    <%= link_to dislike_post_path(x), method: :put, class: 'down downvote', :"data-post-id" => x.id, remote: true  do %>
+                    <% end %>
+                    <%= link_to like_post_path(x), method: :put, class: 'up upvote', :"data-post-id" => x.id, remote: true  do %>
+                    <% end %>
+                </div>
+                </div>
+                
+            </div>
     <% end %>
 <% end %>
