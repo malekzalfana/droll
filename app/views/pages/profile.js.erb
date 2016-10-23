@@ -3,10 +3,13 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     $('#left-content-profile').append(html)
     var $container = $('#left-content-profile');
 		$container.masonry('appended', $(html));
+		$(document).ready(function(){
 		$container.masonry({
 			itemSelector: '.wrapper',
 			gutter: 5
 		});
+		})
+		
     
         <% if @profilepost.next_page %>
           $('#left-content-profile .pagination').replaceWith('<%= j will_paginate @profilepost %>');
