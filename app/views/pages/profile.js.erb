@@ -1,7 +1,6 @@
 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     var html = $('<%= j render(partial: ('posts/profilepost') ) %>' );
-    $('#left-content-profile').append(html)
-    $(html).load(function(){
+    $('#left-content-profile').append(html, function(){
     var $container = $('#left-content-profile');
 		$container.masonry('appended', $(html));
 		$container.masonry({
@@ -9,6 +8,7 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
 			gutter: 5
 		});
     })
+    
     
         <% if @profilepost.next_page %>
           $('#left-content-profile .pagination').replaceWith('<%= j will_paginate @profilepost %>');
