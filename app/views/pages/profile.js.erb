@@ -1,12 +1,15 @@
 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     var html = $('<%= j render(partial: ('posts/profilepost') ) %>' );
     $('#left-content-profile').append(html)
+    $(html).load(function(){
     var $container = $('#left-content-profile');
 		$container.masonry('appended', $(html));
 		$container.masonry({
 			itemSelector: '.wrapper',
 			gutter: 5
 		});
+    })
+    
         <% if @profilepost.next_page %>
           $('#left-content-profile .pagination').replaceWith('<%= j will_paginate @profilepost %>');
         <% else %>
@@ -17,12 +20,15 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
 else {
     var html2 = $('#right-content-profile').append('<%= j render(partial: ('posts/profilefavor')) %>' );
     $('#right-content-profile').append(html)
+    $(html2).load(function(){
     var $container2 = $('#right-content-profile');
 		$container2.masonry('appended', $(html2));
 		$containe2r.masonry({
 			itemSelector: '.wrapper',
 			gutter: 5
 		});
+    )
+    
     <% if @profilefavor.next_page %>
       $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
     <% else %>
