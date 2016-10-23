@@ -1126,22 +1126,16 @@ tabs = function() {
 	$('.progress').mouseleave(function() {
 		$('#progress-table').fadeOut()
 	})
-	var mLeft = function(){
-		var $container = $('#left-content-profile');
-		$container.masonry({
-			itemSelector: '.wrapper',
-			gutter: 5
-		});
-	}
-	var mRight = function(){
-		var $container2 = $('#right-content-profile');
-		$container2.masonry({
-			itemSelector: '.wrapper',
-			gutter: 5
-		});	
-	}
-	mLeft();
-	mRight();
+	var $container = $('#left-content-profile');
+	$container.masonry({
+		itemSelector: '.wrapper',
+		gutter: 5
+	});
+	var $container2 = $('#right-content-profile');
+	$container2.masonry({
+		itemSelector: '.wrapper',
+		gutter: 5
+	});
 	//alert('tabs')
 };
 //tabs();
