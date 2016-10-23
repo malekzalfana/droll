@@ -1,7 +1,7 @@
 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     var html = $('<%= j render(partial: ('posts/profilepost') ) %>' );
     $('#left-content-profile').append(html)
-		$(html).load(function(){
+		$('#left-content-profile').load(function(){
 		var $container = $('#left-content-profile');
 		$container.masonry('appended', $(html));
   		$container.masonry({
