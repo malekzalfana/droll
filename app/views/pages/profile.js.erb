@@ -22,11 +22,13 @@ else {
     var html2 = $('#right-content-profile').append('<%= j render(partial: ('posts/profilefavor')) %>' );
     $('#right-content-profile').append(html)
     var $container2 = $('#right-content-profile');
+    setTimeout(function(){
 		$container2.masonry('appended', $(html2));
 		$container2.masonry({
 			itemSelector: '.wrapper',
 			gutter: 5
 		});
+		}, 200)
     
     <% if @profilefavor.next_page %>
       $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
