@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     end  
   end
   resources :relationships
+  get "sitemap" => "pages#sitemap"
   
   # Define root URL
   root 'pages#index'

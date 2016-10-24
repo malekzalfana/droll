@@ -21,7 +21,7 @@
                         <% end %>
                     </div>
                 <%# link_to(post) do %>
-                    <img src="<%= post.image.url(:medium) %>" class="post-image">
+                    <img src="<%= post.image.url(:medium) %>" class="post-image" alt="<%= post.title %>>
                     <img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2">
                 <%# end %>
             </div>

@@ -6600,5 +6600,5 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     margin: 10px;
     border-radius: 22px;
     text-align: center;
-    text-shadow: 30px 0px 10px black;
+    text-shadow: 0px 0px 10px black;
 }
