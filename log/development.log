@@ -3023,3 +3023,2689 @@ Processing by PagesController#recent as HTML
   Rendered layouts/_nav_user.html.erb (0.2ms)
   Rendered layouts/_nav.html.erb (0.9ms)
 Completed 200 OK in 132ms (Views: 122.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/recent" for 91.109.30.102 at 2016-10-24 11:29:42 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:29:42.292369')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 147ms (Views: 136.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/recent" for 91.109.30.102 at 2016-10-24 11:33:55 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:33:55.309705')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 302ms (Views: 126.8ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/recent" for 91.109.30.66 at 2016-10-24 11:38:03 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:38:03.367207')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 275ms (Views: 157.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/recent" for 91.109.30.66 at 2016-10-24 11:42:14 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:42:15.080110')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (4.8ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 228ms (Views: 132.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/recent" for 91.109.30.66 at 2016-10-24 11:46:24 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:46:24.334218')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (141.4ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 281ms (Views: 271.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/recent" for 91.109.30.66 at 2016-10-24 11:50:34 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:50:35.089758')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (13.7ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 372ms (Views: 240.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/recent" for 91.109.30.66 at 2016-10-24 11:54:45 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:54:45.298618')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (7.7ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (2.0ms)
+Completed 200 OK in 235ms (Views: 216.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/recent" for 91.109.30.90 at 2016-10-24 11:58:55 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:58:55.344060')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (3.7ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 148ms (Views: 139.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/recent" for 91.109.30.90 at 2016-10-24 12:03:06 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 12:03:06.387876')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (88.0ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 230ms (Views: 220.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/pages/feedback?utf8=%E2%9C%93&user=%23%3CUser%3A0x007f24c6f68aa0%3E&text=&commit=SEND" for 91.109.30.72 at 2016-10-24 12:05:14 +0000
+Processing by PagesController#feedback as JS
+  Parameters: {"utf8"=>"✓", "user"=>"#<User:0x007f24c6f68aa0>", "text"=>"", "commit"=>"SEND"}
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "feedbacks" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2016-10-24 12:05:14.767513"], ["updated_at", "2016-10-24 12:05:14.767513"]]
+  [1m[35m (12.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "feedbacks" SET "text" = ?, "user" = ?, "updated_at" = ? WHERE "feedbacks"."id" = ?  [["text", ""], ["user", "#<User:0x007f24c6f68aa0>"], ["updated_at", "2016-10-24 12:05:14.784428"], ["id", 3]]
+  [1m[36m (16.2ms)[0m  [1mcommit transaction[0m
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 30.4ms)
+
+ActionView::MissingTemplate (Missing template pages/feedback, application/feedback with {:locale=>[:en], :formats=>[:js, "application/ecmascript", "application/x-ecmascript", :html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/ubuntu/workspace/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.0/gems/devise-3.5.6/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.0/gems/starburst-1.0.3/app/views"
+):
+  actionview (4.2.5) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.5) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.5) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.5) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.5) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.5) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.5) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:498:in `block (2 levels) in around'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:313:in `block (2 levels) in halting'
+  public_activity (1.5.0) lib/public_activity/utility/store_controller.rb:25:in `store_controller_for_public_activity'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:312:in `block in halting'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:497:in `block in around'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/missing_template.text.erb (0.5ms)
+
+
+Started GET "/pages/feedback?utf8=%E2%9C%93&user=%23%3CUser%3A0x007f24c6f68aa0%3E&text=&commit=SEND" for 91.109.30.72 at 2016-10-24 12:05:16 +0000
+Processing by PagesController#feedback as JS
+  Parameters: {"utf8"=>"✓", "user"=>"#<User:0x007f24c6f68aa0>", "text"=>"", "commit"=>"SEND"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "feedbacks" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", "2016-10-24 12:05:16.063353"], ["updated_at", "2016-10-24 12:05:16.063353"]]
+  [1m[36m (9.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "feedbacks" SET "text" = ?, "user" = ?, "updated_at" = ? WHERE "feedbacks"."id" = ?[0m  [["text", ""], ["user", "#<User:0x007f24c6f68aa0>"], ["updated_at", "2016-10-24 12:05:16.075017"], ["id", 4]]
+  [1m[35m (10.8ms)[0m  commit transaction
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 21.4ms)
+
+ActionView::MissingTemplate (Missing template pages/feedback, application/feedback with {:locale=>[:en], :formats=>[:js, "application/ecmascript", "application/x-ecmascript", :html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/home/ubuntu/workspace/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.0/gems/devise-3.5.6/app/views"
+  * "/usr/local/rvm/gems/ruby-2.3.0/gems/starburst-1.0.3/app/views"
+):
+  actionview (4.2.5) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.5) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.5) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.5) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.5) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.5) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.5) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.5) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.5) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+  activesupport (4.2.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+  actionpack (4.2.5) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.5) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:555:in `block (2 levels) in compile'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:498:in `block (2 levels) in around'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:313:in `block (2 levels) in halting'
+  public_activity (1.5.0) lib/public_activity/utility/store_controller.rb:25:in `store_controller_for_public_activity'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:432:in `block in make_lambda'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:312:in `block in halting'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:497:in `block in around'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:505:in `call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:92:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_process_action_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.5) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.5) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.5) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.5) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.5) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.5) lib/action_controller/metal.rb:196:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.5) lib/action_controller/metal.rb:237:in `block in action'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:76:in `dispatch'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:45:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.5) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.5) lib/action_dispatch/routing/route_set.rb:817:in `call'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:186:in `call!'
+  omniauth (1.3.1) lib/omniauth/strategy.rb:164:in `call'
+  warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+  warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+  warden (1.2.6) lib/warden/manager.rb:34:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.5) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:653:in `call'
+  activerecord (4.2.5) lib/active_record/migration.rb:377:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/missing_template.text.erb (0.4ms)
+
+
+Started GET "/settings" for 91.109.30.72 at 2016-10-24 12:06:12 +0000
+Processing by PagesController#settings as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  Rendered pages/settings.html.erb within layouts/application (21.7ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 215ms (Views: 213.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/missing.jpg" for 91.109.30.72 at 2016-10-24 12:06:14 +0000
+
+
+Started DELETE "/users/sign_out" for 91.109.30.72 at 2016-10-24 12:06:16 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"/R98fVuE8p+v1EwXjL8ARvkyAyeTxL4ebesbmeM8EGlJmUirl5PlP1I7A7regWrL5H+nMZQvRjjCYlEcyvU1yA=="}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  commit transaction
+Redirected to https://drolle-3-malekzalfana.c9users.io/
+Completed 302 Found in 19ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 91.109.30.72 at 2016-10-24 12:06:17 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  [1m[35m (0.4ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "impressions" ("impressionable_type", "controller_name", "action_name", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["impressionable_type", "Page"], ["controller_name", "pages"], ["action_name", "index"], ["request_hash", "3e69bb6c96039993537317dee55da28daa9ea1dac13c91f02769a25d9a7a958d"], ["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"], ["ip_address", "91.109.30.72"], ["referrer", "https://drolle-3-malekzalfana.c9users.io/settings"], ["created_at", "2016-10-24 12:06:17.478223"], ["updated_at", "2016-10-24 12:06:17.478223"]]
+  [1m[35m (10.9ms)[0m  commit transaction
+  Rendered pages/index.html.erb within layouts/application (18.5ms)
+  Rendered layouts/_nav_guest.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (2.5ms)
+Completed 200 OK in 329ms (Views: 202.3ms | ActiveRecord: 12.8ms)
+
+
+Started GET "/recent" for 91.109.30.72 at 2016-10-24 12:07:15 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered devise/shared/_links.html.erb (23.4ms)
+  Rendered devise/shared/_links.html.erb (9.9ms)
+  Rendered pages/recent.html.erb within layouts/application (53.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 258ms (Views: 254.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/recent" for 178.162.216.35 at 2016-10-24 12:15:36 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered devise/shared/_links.html.erb (7.4ms)
+  Rendered devise/shared/_links.html.erb (7.5ms)
+  Rendered pages/recent.html.erb within layouts/application (29.2ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 189ms (Views: 185.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 178.162.216.35 at 2016-10-24 12:21:37 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms)
+
+SyntaxError (/home/ubuntu/workspace/app/views/layouts/application.html.erb:15: syntax error, unexpected tIVAR, expecting keyword_end
+     meta_tag :description, 'Posts tagged with' @tag 
+                                                    ^):
+  app/views/layouts/application.html.erb:15: syntax error, unexpected tIVAR, expecting keyword_end
+  app/controllers/pages_controller.rb:38:in `index'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (40.7ms)
+
+
+Started GET "/" for 178.162.216.35 at 2016-10-24 12:21:55 +0000
+Processing by PagesController#index as HTML
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 139ms (Views: 136.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:56 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:57 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:58 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:58 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 178.162.216.35 at 2016-10-24 12:21:58 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:58 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 178.162.216.35 at 2016-10-24 12:21:59 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:00 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:00 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:01 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:01 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:01 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:01 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:01 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:02 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:03 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:04 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:05 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:05 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:05 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:05 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:05 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:05 +0000
+
+
+Started GET "/" for 178.162.216.35 at 2016-10-24 12:22:43 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 216ms (Views: 213.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:44 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:44 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:44 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:44 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:44 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:45 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:45 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:46 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:46 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:46 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:47 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:47 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:47 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:48 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:48 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:48 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:48 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 178.162.216.35 at 2016-10-24 12:22:49 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:49 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:50 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:50 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:50 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:50 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:51 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:51 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:51 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:51 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:52 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:52 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:52 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:53 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:53 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:53 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:54 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:54 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:54 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:54 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:54 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:54 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:55 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:55 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:55 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:55 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:55 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:56 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:56 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:56 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:56 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:56 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:57 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:57 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:57 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:57 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:57 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:58 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:58 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:58 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:58 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:58 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:59 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 178.162.216.35 at 2016-10-24 12:22:59 +0000
+
+
+Started GET "/recent" for 178.162.216.35 at 2016-10-24 12:23:54 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mImpression Exists (0.3ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered devise/shared/_links.html.erb (10.6ms)
+  Rendered devise/shared/_links.html.erb (7.2ms)
+  Rendered pages/recent.html.erb within layouts/application (38.6ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 195ms (Views: 189.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 178.162.216.35 at 2016-10-24 12:28:01 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (6.9ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 308ms (Views: 302.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:02 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:02 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:02 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:02 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:03 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:03 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:04 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:04 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:04 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:04 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:04 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:04 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:05 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:05 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:05 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:05 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:05 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 178.162.216.35 at 2016-10-24 12:28:06 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:09 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:09 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:09 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:09 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:09 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:10 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:10 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:11 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:11 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:11 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:12 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:12 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:12 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:12 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:12 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:13 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:13 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:13 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:13 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:13 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:14 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:14 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:14 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:14 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:15 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:15 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:15 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:15 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:16 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:16 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:16 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:17 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:17 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:17 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:17 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:18 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:18 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:18 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:18 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:19 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:19 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 178.162.216.35 at 2016-10-24 12:28:19 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 178.162.216.34 at 2016-10-24 12:28:36 +0000
+
+
+Started GET "/" for 178.162.216.34 at 2016-10-24 12:29:21 +0000
+Processing by PagesController#index as HTML
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (7.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 359ms (Views: 356.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:23 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:23 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:23 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:23 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:23 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:23 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:24 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:25 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:25 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:25 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:25 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 178.162.216.34 at 2016-10-24 12:29:25 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:25 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:26 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:27 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:27 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:27 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:27 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:27 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:27 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:28 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:29 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:30 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:30 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:30 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:30 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:30 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:31 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 178.162.216.34 at 2016-10-24 12:29:33 +0000
+
+
+Started GET "/recent" for 178.162.216.34 at 2016-10-24 12:32:15 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered devise/shared/_links.html.erb (9.0ms)
+  Rendered devise/shared/_links.html.erb (7.5ms)
+  Rendered pages/recent.html.erb within layouts/application (121.5ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 295ms (Views: 290.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/recent" for 91.109.30.96 at 2016-10-24 12:40:35 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mImpression Exists (0.2ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered devise/shared/_links.html.erb (7.7ms)
+  Rendered devise/shared/_links.html.erb (6.5ms)
+  Rendered pages/recent.html.erb within layouts/application (127.2ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 250ms (Views: 246.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 54.161.41.123 at 2016-10-24 13:17:18 +0000
+Processing by PagesController#index as */*
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" IS NULL LIMIT 1[0m
+  Rendered pages/index.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 192ms (Views: 188.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 54.234.113.71 at 2016-10-24 13:17:22 +0000
+Processing by PagesController#index as */*
+  [1m[35mImpression Exists (0.2ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" IS NULL LIMIT 1
+  Rendered pages/index.html.erb within layouts/application (5.8ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 146ms (Views: 143.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" IS NULL LIMIT 1[0m
+  Rendered pages/index.html.erb within layouts/application (6.0ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 147ms (Views: 144.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+Processing by PagesController#index as HTML
+  [1m[35mImpression Exists (0.3ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" IS NULL LIMIT 1
+  Rendered pages/index.html.erb within layouts/application (7.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 182ms (Views: 178.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/" for 54.205.64.220 at 2016-10-24 13:17:23 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" IS NULL LIMIT 1[0m
+  Rendered pages/index.html.erb within layouts/application (6.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 163ms (Views: 160.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:23 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 54.205.64.220 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:24 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:25 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:26 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 54.196.85.222 at 2016-10-24 13:17:27 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:28 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:28 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 54.205.64.220 at 2016-10-24 13:17:28 +0000
+
+
+Started GET "/" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+Processing by PagesController#index as HTML
+  [1m[35mImpression Exists (0.2ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" IS NULL LIMIT 1
+  Rendered pages/index.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 130ms (Views: 127.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:29 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/style.self-46c74434451ace313116ff1e9362281ca807fe6e363e2c0dc9f7e21dcb1a94ee.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:30 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:31 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:32 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 54.224.152.102 at 2016-10-24 13:17:33 +0000
+
+
+Started GET "/" for 94.187.48.61 at 2016-10-24 13:32:20 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (12.7ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 181ms (Views: 177.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:21 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:21 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:21 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:21 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:21 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/style.self-a2e9cd8c8270611fb0c125caa86324b3b96bac73f75f260ccf9983fd51ce958a.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:22 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:23 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:24 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:25 +0000
+
+
+Started GET "/" for 94.187.48.61 at 2016-10-24 13:32:51 +0000
+Processing by PagesController#index as HTML
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (12.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 289ms (Views: 286.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:57 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/style.self-a2e9cd8c8270611fb0c125caa86324b3b96bac73f75f260ccf9983fd51ce958a.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:58 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:32:59 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:00 +0000
+
+
+Started GET "/" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+Processing by PagesController#index as HTML
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "d705e6411c3338be9cc35d8c6a4f90b7"]]
+  Rendered pages/index.html.erb within layouts/application (13.9ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 215ms (Views: 211.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/post.self-4004ef2d030dce4ad28b4632e0a5b96ae8fed467d3c2b1be15110fea9c53ac7c.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:16 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:17 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:17 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:17 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:17 +0000
+
+
+Started GET "/assets/style.self-062bb57e5505b5040faf8bd6d4831dba356570a357daec5e1b0181ab01a9dc9d.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/tabs.self-e0df6d28531c98e17c86b783de58fb18a59eed004a037b8e83b80ae758175790.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:18 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/giphy.self-797fb19a1edf9a9eeed67d6d285fced44b2c28bbfef5aaa88f95feaf9e02a5db.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/pagination.self-78ead1965a13340c22fd79ed85c9cc411723f19220bb013a6ea5fdc639622c21.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/tabs.self-9552cd272bb89be912120c085e490b028d76f1bdf370ffa6c462e0509a799d20.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000

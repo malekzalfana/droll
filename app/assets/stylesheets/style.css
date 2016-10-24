@@ -6592,3 +6592,13 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 .post-footer:hover .post-user-follow, .post-footer:active .post-user-follow, .post-footer:hover .post-user-unfollow, .post-footer:active .post-user-unfollow {
 	opacity: 1;
 }
+#describe-drolle {
+	    font-size: 18px;
+    color: white;
+    font-family: open sans;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 22px;
+    text-align: center;
+    text-shadow: 30px 0px 10px black;
+}

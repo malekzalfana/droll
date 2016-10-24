@@ -3,10 +3,10 @@
 <body id="invite-screen">
     <div id="invite-screen-overlay"></div>
     <div id="invite-wrapper">
-        <img id="invite-logo-img" src="http://i.imgur.com/tC9Bvvj.png">
+        <img id="invite-logo-img" src="http://i.imgur.com/tC9Bvvj.png" alt="Drolle">
     <div id="invite-buttons-wrapper">
-            <h2 id="invite-tab-1" class="invite-tab active-invite-tab">Log in</h2>
-            <h2 id="invite-tab-2"class="invite-tab">Sign up</h2>
+            <label id="invite-tab-1" class="invite-tab active-invite-tab">Log in</label>
+            <label id="invite-tab-2"class="invite-tab">Sign up</label>
         
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "invite-2"} ) do |f| %>
   <%= devise_error_messages! %>
@@ -72,6 +72,9 @@
           </div>
         <% end %>
     </div>
+    
+    <p id="describe-drolle">Drolle is social website where users can express their thoughts and jokes using memes, gifs, and rage comics. It's all about respect and fun. Join the community!</p>
+    
     </div>
     
 </body>
@@ -102,7 +105,6 @@
     
     <% if current_user.tag.nil? %>
     <div id="follow-tags-wrapper">
-        <p>Drolle is social website where users can express their thoughts and jokes using memes, gifs, and rage comics. It's all about respect and fun. Join the community!</p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "hidden" }) do |f| %>
             <%= f.text_field :tag, :value => '', :id => 'follow-tags-field' %>
             <%= f.submit "Save", id: 'follow-tags-submit-field'%>

@@ -3,16 +3,25 @@
 <head>
   <% if controller.action_name == 'make' %>
     <title>Drolle | Make memes and rage comics</title>
+    <meta name='description' content='Make memes and rage comics easily using drolle!' />
+    <meta name='keywords' content='make,memes, rage, comics' />
+  <% elsif controller.action_name == 'index' && controller == 'pages' %>
+    <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
+    <meta name='keywords' content='drolle,memes, rage, comics, community' />
+  <% elsif controller.action_name == 'show' && controller == 'posts' %>
+    <meta name='description' content='<%= @post.title %>' />
+    <meta name='keywords' content='drolle, <%= @post.taglist %>' />
+  <% elsif controller.action_name == 'tag' && controller == 'tags' %>
+    <meta name='description' content='<%= @tag %>' />
+    <meta name='keywords' content='drolle, <%= @tag%>' />
   <%else%>
-    <title>Drolle</title>
+    <title>Drolle | Memes, GIFs and rage comics</title>
+    <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
+    <meta name='keywords' content='drolle,memes, rage, comics, community' />
   <%end%>
   
-  <%# unless controller.action_name  == 'make2'  %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Schoolbell" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans" rel="stylesheet">
+    
     <%= favicon_link_tag 'favicon.png' %>
-  <%# end %>
   
   
   
@@ -32,17 +41,17 @@
     <meta name="twitter:title" content="<%= if !@post.title.blank? then @post.title else @post.user end %>" />
     <meta name="twitter:image" content="<%= @post.image.url(:large)%>" />
     <meta name="twitter:url" content="http://beta.drolle.co<%= url_for(@post) %>">
-    
-    
   <% end %>
-  <script src="https://use.fontawesome.com/cc1141eab9.js"></script>
+  
 </head>
 <body>
 <%= render '/layouts/nav' %>
 
 <%= yield %>
-
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto:300,400|Schoolbell" rel="stylesheet">
+    <script src="https://use.fontawesome.com/cc1141eab9.js"></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
