@@ -2,13 +2,20 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     var html = $('<%= j render(partial: ('posts/profilepost') ) %>' );
     $('#left-content-profile').append(html)
     var $container = $('#left-content-profile');
+    $(document).ready(function(){
+      $container.masonry('appended', $(html));
+  		$container.masonry({
+  			itemSelector: '.wrapper',
+  			gutter: 5
+  		});
+    })
     setTimeout(function(){
     $container.masonry('appended', $(html));
 		$container.masonry({
 			itemSelector: '.wrapper',
 			gutter: 5
 		});
-    }, 200)
+    }, 1000)
 		
     
         <% if @profilepost.next_page %>

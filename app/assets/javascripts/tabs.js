@@ -938,7 +938,7 @@ tabs = function() {
 		$('#invite-2').hide();
 		$('#invite-1').fadeIn(100);
 	})
-	$(document).on('click', '.post-user-follow, .post-user-unfollow', function() {
+	$(document).on('click', '.post-user-follow, .post-user-unfollow, .follow, .unfollow', function() {
 		//$(this).parents('form').attr('id', 'current-follow')
 		$(this).attr('id', 'current-follow')
 	})
