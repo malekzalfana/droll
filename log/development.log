@@ -92,3 +92,41 @@
 [paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/042/medium/image.png
 [paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/042/large/image.png
 [paperclip] deleting /home/ubuntu/workspace/public/system/posts/images/000/000/042/thumb/image.png
+
+
+Started GET "/recent" for 91.109.30.120 at 2016-10-24 09:45:36 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (54.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mImpression Exists (9.8ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (6.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (1.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (2.9ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 09:45:38.984334')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (5.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered pages/recent.html.erb within layouts/application (200.4ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 4397ms (Views: 3013.4ms | ActiveRecord: 76.1ms)
+
+
+Started GET "/recent" for 91.109.30.120 at 2016-10-24 09:53:54 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 09:53:54.626320')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered pages/recent.html.erb within layouts/application (6.1ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 290ms (Views: 231.7ms | ActiveRecord: 1.4ms)

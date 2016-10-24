@@ -185,7 +185,7 @@
 					 	
 					 	<div id="make-tags-2-wrapper" class="inline-make-tags-wrapper">
 							<span>Tags</span>
-							<p id="tag-memes">memes</p>
+							<p id="tag-memes" class="active-make-tag">memes</p>
 							<p id="tag-food">food</p>
 							<p id="tag-photoshopped">photoshopped</p>
 							<p id="tag-gaming">gaming</p>
@@ -232,7 +232,7 @@
     <% end %>
 	<i class="material-icons" id="upload-meme-stock">add</i>
 	<% @stock1.each do |s| %>
-		<div crossorigin="anonymous" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
+		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
 			<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
 	            <%= text_area_tag :id, s.id %>
@@ -1269,7 +1269,7 @@
 				<p id="tag-reaction">reaction</p>
 				<p id="tag-wtf">wtf</p>
 				<p id="tag-politics">politics</p>
-				<p id="tag-rage-comic">rage comics</p>
+				<p id="tag-rage-comic" class="active-make-tag">rage comics</p>
 				<p id="tag-nsfw">nsfw</p>
 				<p id="tag-happy">happy</p>
 				<p id="tag-awesome">awesome</p>
