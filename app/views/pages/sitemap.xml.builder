@@ -20,7 +20,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   
   for user in @users do
     xml.url do
-      xml.loc "user/#{user.username}"
+      xml.loc "http://drolle.co/user/#{user.username}"
       xml.lastmod user.updated_at.to_date
       xml.changefreq "daily"
       xml.priority "0.5"
