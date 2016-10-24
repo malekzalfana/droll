@@ -1,6 +1,7 @@
 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     var html = $('<%= j render(partial: ('posts/profilepost') ) %>' );
     $('#left-content-profile').append(html)
+    $(html).hide()
     var $container = $('#left-content-profile');
     $(document).ready(function(){
       $container.masonry('appended', $(html));
@@ -8,6 +9,7 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
+  		$container.on( 'layoutComplete', function(){ $(html).fadeIn(100) } );
     })
     /*setTimeout(function(){
     $container.masonry('appended', $(html));
@@ -27,7 +29,8 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
 }
 else {
     var html2 = $('#right-content-profile').append('<%= j render(partial: ('posts/profilefavor')) %>' );
-    $('#right-content-profile').append(html)
+    $('#right-content-profile').append(html2)
+    $(html2).hide()
     var $container2 = $('#right-content-profile');
     $(document).ready(function(){
   		$container2.masonry('appended', $(html2));
@@ -35,6 +38,7 @@ else {
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
+  		$container2.on( 'layoutComplete', function(){ $(html2).fadeIn(100) } );
 		})
     
     <% if @profilefavor.next_page %>

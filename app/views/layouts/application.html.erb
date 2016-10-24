@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Drolle</title>
+  <% if controller.action_name == 'make' %>
+    <title>Drolle | Make memes and rage comics</title>
+  <%else%>
+    <title>Drolle</title>
+  <%end%>
+  
   <%# unless controller.action_name  == 'make2'  %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400|Schoolbell" rel="stylesheet">

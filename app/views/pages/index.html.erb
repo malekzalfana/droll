@@ -102,6 +102,7 @@
     
     <% if current_user.tag.nil? %>
     <div id="follow-tags-wrapper">
+        <p>Drolle is social website where users can express their thoughts and jokes using memes, gifs, and rage comics. It's all about respect and fun. Join the community!</p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "hidden" }) do |f| %>
             <%= f.text_field :tag, :value => '', :id => 'follow-tags-field' %>
             <%= f.submit "Save", id: 'follow-tags-submit-field'%>
