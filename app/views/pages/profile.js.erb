@@ -9,13 +9,13 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
   			gutter: 5
   		});
     })
-    setTimeout(function(){
+    /*setTimeout(function(){
     $container.masonry('appended', $(html));
 		$container.masonry({
 			itemSelector: '.wrapper',
 			gutter: 5
 		});
-    }, 1000)
+    }, 1000)*/
 		
     
         <% if @profilepost.next_page %>
@@ -29,20 +29,13 @@ else {
     var html2 = $('#right-content-profile').append('<%= j render(partial: ('posts/profilefavor')) %>' );
     $('#right-content-profile').append(html)
     var $container2 = $('#right-content-profile');
-    setTimeout(function(){
+    $(document).ready(function(){
   		$container2.masonry('appended', $(html2));
   		$container2.masonry({
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
-		}, 200)
-		setTimeout(function(){
-  		$container2.masonry('appended', $(html2));
-  		$container2.masonry({
-  			itemSelector: '.wrapper',
-  			gutter: 5
-  		});
-		}, 400)
+		})
     
     <% if @profilefavor.next_page %>
       $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
