@@ -131,9 +131,9 @@
        <div class="notif">
           <div class="notif-left-col">
             <% if activity.parameters[:anonymous].present? %>
-              <div class="notif-user-image" style="background-image:url('assets/anonymous.jpg')"></div>
+              <div class="notif-user-image" style="background-image:url('http://drolle.co/assets/anonymous.jpg')"></div>
             <% else %>
-              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>)'"></div>
+              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'http://drolle.co/assets/' end %><%= activity.owner.image.url(:thumb) %>)'"></div>
           <% end %>
           <div class="notif-user-image" style="background-image:url('<%= activity.owner.image.url(:thumb) %>')"></div>
           </div>

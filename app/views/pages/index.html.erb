@@ -195,6 +195,14 @@
                 <div class="left-wrapper" id="left-wrapper-<%= post.id %>">
                     <div class="left-wrapper-overlay"></div>
                 <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
+                    
+                    <div class="post-tags-wrapper">
+                        <% post.tags.any? %>
+                          <% post.tags.each do |tag| %>
+                          <a href="/tags/<%= tag.name %>"><%= tag.name %></a>
+                        <% end %>
+                    </div>
+                    
                     <% if post.long === true  %>
                         <i class="material-icons expand-post">expand_more</i>
                     <% end %>
@@ -229,6 +237,19 @@
                               <% end %>
                             <span class="post-footer-user-name"><%= post.user.username %></span>
                         </a>
+                        <div class="post-user-follow-wrapper">
+                            <% if user_signed_in? && current_user.id != post.user.id %>
+                                        <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+                                            <div><%= hidden_field_tag :followed_id, post.user.id %></div>
+                                            <% if current_user.following?(post.user) %>
+                                                <%= f.submit "following", class: "post-user-unfollow" %>
+                                            <% else %>
+                                                <%= f.submit "follow", class: "post-user-follow" %>
+                                            <% end %>
+                                            
+                                        <% end %>
+                            <% end %>
+                        </div>
                     <% else %>
     
                                 <% if !post.facenumber.nil? %><div class="post-footer-user-image" style="background-image: url(http://www.nightmug.com/drolle/ragefaces/<%= post.facenumber %>face.png)"></div><% end %>

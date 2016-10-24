@@ -1163,11 +1163,17 @@ functions =  function() {
 		if ( $('.choosen-content input[type="checkbox"]:checked').length && $('.choosen-content:visible .anonymous-image').children('img').length  < 1 ) {
 		          	$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide().show().addClass('buzz')
 			  }
-		else if ( $('.choosen-content .tag-list-field').val() == '' ) {
-				$('.choosen-content:visible .make-tags').removeClass('buzz').hide()
-					.show().addClass('buzz')
+		else if ( $('#rage-comics-content .inline-make-tags-wrapper .active-make-tag').length == 0  ) {
+				$('#rage-comics-content .inline-make-tags-wrapper').removeClass('buzz').hide()
+						.show().addClass('buzz')
 			}
 		else {
+			var makeTagsArray = [];
+					for ( i=0;i < $('#rage-comics-content .inline-make-tags-wrapper .active-make-tag').length ; i++ ) {
+						makeTagsArray.push( $('#rage-comics-content .inline-make-tags-wrapper .active-make-tag').eq(i).attr('id').replace('tag-', '') )
+					}
+					$('#rage-comics-content .tag-list-field').val(makeTagsArray)
+					console.log(makeTagsArray)
 			$('#ragefaces-buttons-wrapper').fadeOut()
 			finalImage = false;
 		    callDownload(this, 'downloadCanvas', 'ragecomic' + Math.round(Math.random()*500) + '.png', false);
