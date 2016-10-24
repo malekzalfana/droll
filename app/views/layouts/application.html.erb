@@ -42,13 +42,13 @@
     <meta name="twitter:image" content="<%= @post.image.url(:large)%>" />
     <meta name="twitter:url" content="http://beta.drolle.co<%= url_for(@post) %>">
   <% end %>
-  
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 </head>
 <body>
 <%= render '/layouts/nav' %>
 
 <%= yield %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Roboto:300,400|Schoolbell" rel="stylesheet">
     <script src="https://use.fontawesome.com/cc1141eab9.js"></script>

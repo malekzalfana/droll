@@ -5709,3 +5709,13 @@ Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29
 
 
 Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.48.61 at 2016-10-24 13:33:19 +0000
+
+
+Started GET "/make" for 94.187.48.61 at 2016-10-24 13:35:18 +0000
+Processing by PagesController#make as HTML
+  Rendered devise/shared/_links.html.erb (10.5ms)
+  Rendered devise/shared/_links.html.erb (9.5ms)
+  Rendered pages/make.html.erb within layouts/application (33.0ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 198ms (Views: 195.0ms | ActiveRecord: 0.0ms)
