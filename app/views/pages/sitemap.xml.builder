@@ -11,7 +11,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   
   for tag in @tag do
     xml.url do
-      xml.loc "tags/#{tag.name}"
+      xml.loc "http://drolle.co/tags/#{tag.name}"
       #xml.lastmod tag.updated_at.to_date
       xml.changefreq "always"
       xml.priority "0.5"
