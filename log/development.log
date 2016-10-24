@@ -2966,3 +2966,41 @@ Processing by PagesController#recent as HTML
   Rendered layouts/_nav_user.html.erb (0.2ms)
   Rendered layouts/_nav.html.erb (0.9ms)
 Completed 200 OK in 145ms (Views: 124.0ms | ActiveRecord: 13.5ms)
+
+
+Started GET "/recent" for 91.109.30.102 at 2016-10-24 11:17:14 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:17:14.891035')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (3.8ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 162ms (Views: 152.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/recent" for 91.109.30.102 at 2016-10-24 11:21:21 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "6a4602b2ccbfea499e6f4c41b5e3194b"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-22 11:21:21.240965')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (4.4ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 197ms (Views: 185.1ms | ActiveRecord: 1.9ms)
