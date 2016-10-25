@@ -6341,7 +6341,7 @@ i.fa.fa-reddit-alien {
 }
 #invite-wrapper {
 	position: relative;
-	top: 25px;
+	top: 10px;
 }
 @media screen and (max-width: 600px) {
 	#invite-wrapper {
@@ -6597,7 +6597,16 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     color: white;
     font-family: open sans;
     padding: 5px;
-    margin: 10px;
+    margin-top: 10px;
+    border-radius: 22px;
+    text-align: center;
+    text-shadow: 0px 0px 10px black;
+}
+.more-about-drolle {
+	font-size: 18px;
+    color: white;
+    font-family: open sans;
+    margin-top: 10px;
     border-radius: 22px;
     text-align: center;
     text-shadow: 0px 0px 10px black;
