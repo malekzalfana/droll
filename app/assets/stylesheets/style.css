@@ -6233,6 +6233,9 @@ i.fa.fa-reddit-alien {
     opacity: 0.1;
     background: black;
 }
+#invite-screen #notice-to-sign {
+	display: none;
+}
 #invite-screen #sign-up, #invite-screen #log-in {
 	display: none !important;
 }
@@ -6619,4 +6622,11 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 }
 .more-about-drolle:hover {
 	transform: scale(1.1);
+}
+#invite-screen h1 {
+	display: inline;
+	font-size: 20px;
+}
+.describe-drolle p {
+	display: inline;
 }
