@@ -6607,6 +6607,7 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 }
 .describe-drolle.hidden {
 	margin: 20px 0px;
+    background: rgba(0, 0, 0, 0.29);
 }
 .more-about-drolle {
 	font-size: 30px !important;
