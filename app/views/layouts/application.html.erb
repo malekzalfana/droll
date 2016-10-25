@@ -2,22 +2,36 @@
 <html>
 <head>
   <% if controller.action_name == 'make' %>
-    <title>Drolle | Make memes and rage comics</title>
+    <title>Make memes & rage comics | Drolle</title>
     <meta name='description' content='Make memes and rage comics easily using drolle!' />
-    <meta name='keywords' content='make,memes, rage, comics' />
+    <meta name='keywords' content='make,memes, rage comics' />
+  <% elsif controller.action_name == 'recent' %>
+    <title>Recent memes & rage comics | Drolle</title>
+    <meta name='description' content='Make memes and rage comics easily using drolle!' />
+    <meta name='keywords' content='make,memes, rage comics' />  
+  <% elsif controller.action_name == 'about' %>
+    <title>What is Drolle?</title>
+    <meta name='description' content='What is drolle?' />
+    <meta name='keywords' content='drolle, what' />  
+  <% elsif controller.action_name == 'contact' %>
+    <title>How to contact drolle?</title>
+    <meta name='description' content='How to contact drolle for business or to request/report something.' />
+    <meta name='keywords' content='drolle,contact' />    
   <% elsif controller.action_name == 'index' && controller == 'pages' %>
+    <title>Drolle | Memes, GIFs & rage comics</title>
     <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
     <meta name='keywords' content='drolle,memes, rage, comics, community' />
   <% elsif controller.action_name == 'show' && controller == 'posts' %>
     <meta name='description' content='<%= @post.title %>' />
     <meta name='keywords' content='drolle, <%= @post.taglist %>' />
   <% elsif controller.action_name == 'tag' && controller == 'tags' %>
+    <title><%= @tag.name %> memes, GIFs & rage comics | Drolle</title>
     <meta name='description' content='<%= @tag %>' />
     <meta name='keywords' content='drolle, <%= @tag%>' />
   <%else%>
     <title>Drolle | Memes, GIFs and rage comics</title>
     <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
-    <meta name='keywords' content='drolle,memes, rage, comics, community' />
+    <meta name='keywords' content='drolle,memes, rage comics, community' />
   <%end%>
   
     
