@@ -6626,6 +6626,7 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 #invite-screen h1 {
 	display: inline;
 	font-size: 20px;
+	line-height: 0;
 }
 .describe-drolle p {
 	display: inline;
