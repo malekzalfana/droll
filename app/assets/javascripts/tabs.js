@@ -942,6 +942,13 @@ tabs = function() {
 		//$(this).parents('form').attr('id', 'current-follow')
 		$(this).attr('id', 'current-follow')
 	})
+	
+	$(document).on('click', '.more-about-drolle', function() {
+		$('p.describe-drolle.hidden').fadeIn()
+		$('html, body').animate({
+		        scrollTop: $("body").height()
+		    }, 1500);
+	})
 	var followTagsArray = [];
 	$(document).on('click', '#follow-tags-wrapper .tag:not(.unticked)', function() {
 		$(this).addClass('unticked')

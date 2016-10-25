@@ -6229,7 +6229,7 @@ i.fa.fa-reddit-alien {
     left: 0px;
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     opacity: 0.1;
     background: black;
 }
@@ -6592,7 +6592,7 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 .post-footer:hover .post-user-follow, .post-footer:active .post-user-follow, .post-footer:hover .post-user-unfollow, .post-footer:active .post-user-unfollow {
 	opacity: 1;
 }
-#describe-drolle {
+.describe-drolle {
 	    font-size: 18px;
     color: white;
     font-family: open sans;
@@ -6602,12 +6602,21 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     text-align: center;
     text-shadow: 0px 0px 10px black;
 }
+.describe-drolle.hidden {
+	margin: 20px 0px;
+}
 .more-about-drolle {
-	font-size: 18px;
+	font-size: 30px !important;
+	margin: 0px auto;
+	width: 100%;
     color: white;
     font-family: open sans;
-    margin-top: 10px;
     border-radius: 22px;
     text-align: center;
     text-shadow: 0px 0px 10px black;
+    cursor: pointer;
+    transition: 0.2s all ease-in;
+}
+.more-about-drolle:hover {
+	transform: scale(1.1);
 }
