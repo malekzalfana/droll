@@ -6614,8 +6614,8 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     z-index: 60;
     left: -100px;
     pointer-events: none;
-    animation: animatedGif 15s linear infinite;
-  	-webkit-animation: animatedGif 15s linear infinite;
+    animation: animatedGif 18s linear infinite;
+  	-webkit-animation: animatedGif 18s linear infinite;
 	animation-delay: 3s;  	
 }
 @media screen and (max-width: 600px) {
