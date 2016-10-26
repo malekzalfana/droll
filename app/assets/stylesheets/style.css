@@ -6614,9 +6614,24 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     z-index: 60;
     left: -100px;
     pointer-events: none;
+    animation: animatedGif 15s linear infinite;
+  	-webkit-animation: animatedGif 15s linear infinite;
+	animation-delay: 3s;  	
+}
+@media screen and (max-width: 600px) {
+	#invite-screen .random-gif {
+	opacity: 1;
+    width: 158px;
+    position: absolute;
+    z-index: 20;
+    bottom: -5px !important;
+    z-index: 60;
+    left: -100px;
+    pointer-events: none;
     animation: animatedGif 10s linear infinite;
   	-webkit-animation: animatedGif 10s linear infinite;
 	animation-delay: 3s;  	
+}
 }
 @-webkit-keyframes  animatedGif {
   from { left: -100px; }
