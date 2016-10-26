@@ -6612,12 +6612,14 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     z-index: 20;
     bottom: -5px !important;
     z-index: 60;
-    left: -50px;
+    left: -100px;
+    pointer-events: none;
     animation: animatedGif 10s linear infinite;
   	-webkit-animation: animatedGif 10s linear infinite;
+	animation-delay: 3s;  	
 }
 @-webkit-keyframes  animatedGif {
-  from { left: -50px; }
+  from { left: -100px; }
   to { left: 100%; }
 }
 #invite-screen {
