@@ -772,7 +772,9 @@ tabs = function() {
 		$(this).parents('.anonymous-cheeckbox').empty().hide()
 	})
 	$(document).on('click', '.close-wrapper', function() {
-		$(this).parent().click()
+		$('#remote-invite-wrapper').hide()
+		$('#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile').removeClass('blurred')
+			$('body').removeClass('overflow-hidden')
 	})
 	$(document).on('click', '#log-in, #sign-up, .login, #notice-to-sign',
 		function(e) {
@@ -783,7 +785,7 @@ tabs = function() {
 			).addClass('blurred')
 			if ($(this).is('#log-in') || $(this).is('.login') || $(this).is(
 				'#notice-to-sign')) {
-				$('#remote-login-wrapper').fadeIn(200)
+				$('#remote-invite-wrapper').fadeIn(200)
 				$('body').addClass('overflow-hidden')
 			} else {
 				$('#remote-signup-wrapper').fadeIn(200)

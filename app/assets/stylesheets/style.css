@@ -4963,7 +4963,7 @@ body.shown-post #main-page-type a:hover + #back-list {
     font-size: 17px;
 }
 #notice-to-sign:hover i {
-	color: #ff300;
+	color: black;
 }
 @media screen and (max-width: 850px) {
 	#notice-to-sign {
@@ -5696,7 +5696,7 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
 #left-content-profile {
 	
 }
-#remote-login-wrapper, #remote-signup-wrapper {
+#remote-login-wrapper, #remote-signup-wrapper, #remote-invite-wrapper {
 	position: fixed;
 	width: 100%;
 	height: 100%;
@@ -5734,7 +5734,7 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
 	top:10px;
 	right: 10px;
 	color: white;
-    font-size: 28px !important;
+    font-size: 35px !important;
 }
 #remote-login-wrapper .close-wrapper {
 	display: block;
@@ -6251,6 +6251,7 @@ i.fa.fa-reddit-alien {
     font-family: open sans;
     border-radius: 1%;
     display: block;
+    margin-top: 100px;
     margin: 0px auto;
     overflow: hidden;
 }
@@ -6672,4 +6673,27 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 }
 .describe-drolle p {
 	display: inline;
+}
+#remote-invite-wrapper #invite-buttons-wrapper {
+	margin-top: 100px;
+}
+#log-in, #sign-up {
+	display: none !important;
+}
+body:not(#invite-screen) #notice-to-sign {
+	display: block !important;
+	
+}
+#notice-to-sign i {
+	margin: 7px 7px;
+	transform: rotate(90deg);
+    font-size: 17px;
+}
+#tag #back-list {
+	    font-size: 30px;
+    top: 7px;
+    color: #252525 !important;
+}
+#tag.shown-post .tag-title {
+	display: inline-block;
 }
