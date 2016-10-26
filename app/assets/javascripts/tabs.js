@@ -811,6 +811,8 @@ tabs = function() {
 				'.more-post-options-container'))
 			if ($(this).parents('.left-wrapper').find('.more-post-options-container').hasClass(
 				'active-tab')) {
+				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','false')
+				$(this).parents('.wrapper').find('.post-title').removeClass('focus')
 				$('#anonymous-faces img').removeClass('chosen')
 				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
 				$('.choosen-content:visible .anonymous-image img').remove()
@@ -830,6 +832,8 @@ tabs = function() {
 				$(this).parents('.post-footer').siblings('.more-post-options-container').addClass(
 					'active-tab choosen-content')
 				console.log('shown???')
+				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
+				$(this).parents('.wrapper').find('.post-title').addClass('focus')
 			}
 		})
 		/*$(document).on('click', '.less-post-options', function(){
@@ -871,6 +875,10 @@ tabs = function() {
 	})
 	$(document).on('keyup', '#make-post-title-2', function() {
 		$('#make-post-title-3').val($('#make-post-title-2').val());
+	})
+	$(document).on('keyup', '.wrapper .post-title', function() {
+		console.log($(this).val())
+		$(this).parents('.left-wrapper').find('.post-title-field').attr('value',  $(this).html() )
 	})
 	$(document).on('keyup', '#sign-up-username-field', function() {
 		$('#username-check-field').attr('value', $('#sign-up-username-field').val());

@@ -170,6 +170,13 @@ class PostsController < ApplicationController
       @post.update_attributes(permit_post)
       Rails.logger.info(@post.errors.messages.inspect)
     end
+    if params[:title]
+      puts 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'
+      @post.title = params[:title]
+      @post.user_id = current_user.id
+      @post.user = current_user
+      @post.update_attributes(permit_post)
+    end
     respond_to do |format|
      format.html
      format.js

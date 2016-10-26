@@ -6233,7 +6233,7 @@ i.fa.fa-reddit-alien {
     opacity: 0.1;
     background: black;
 }
-#invite-screen #notice-to-sign {
+#invite-screen #notice-to-sign, #invite-screen #notice-to-sign-message {
 	display: none;
 }
 #invite-screen #sign-up, #invite-screen #log-in {
@@ -6605,9 +6605,30 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     text-align: center;
     text-shadow: 0px 0px 10px black;
 }
+#invite-screen .random-gif {
+	opacity: 1;
+    width: 158px;
+    position: absolute;
+    z-index: 20;
+    bottom: -5px !important;
+    z-index: 60;
+    left: -50px;
+    animation: animatedGif 10s linear infinite;
+  	-webkit-animation: animatedGif 10s linear infinite;
+}
+@-webkit-keyframes  animatedGif {
+  from { left: -50px; }
+  to { left: 100%; }
+}
+#invite-screen {
+	overflow: hidden !important;
+}
+.describe-drolle a {
+	color: white
+}
 .describe-drolle.hidden {
 	margin: 20px 0px;
-    background: rgba(0, 0, 0, 0.29);
+    background: rgba(0, 0, 0, 0.40);
 }
 .more-about-drolle {
 	font-size: 30px !important;
@@ -6620,6 +6641,9 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     text-shadow: 0px 0px 10px black;
     cursor: pointer;
     transition: 0.2s all ease-in;
+}
+.post-title.focus {
+	color: gray;
 }
 .more-about-drolle:hover {
 	transform: scale(1.1);

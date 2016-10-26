@@ -72,7 +72,7 @@
                     <%= link_to like_post_path(@post), method: :put, class: 'up upvote', :"data-post-id" => @post.id, remote: true  do %>
                     <% end %>
                 </div>
-                <% if !@post.title.blank? %><div class="post-title"><%= @post.title %></div><% end %>
+                <% if !@post.title.blank? %><div class="post-title" data-gramm_editor="false"><%= @post.title %></div><% end %>
                 <div class="post-footer">
                 <% if @post.anonymous != true %>
                         <a href="/user/<%= @post.user.username%>" class="user-link">
@@ -171,6 +171,7 @@
                     			 		<i class="material-icons">add</i>
                     			 	</div>
                     			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+                    			 	<%= f.text_field :title, class: "hidden post-title-field" %>
         			 	            <span>Anonymous</span>
         			 	            <input type="button" class="before-submit-edit" value="Save">
             			 	        <%= f.submit 'Save', class: "submit-edit hidden" %>
