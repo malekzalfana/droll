@@ -505,19 +505,21 @@ tabs = function() {
 			$('#make-image-preview').css({
 				'min-height': $('#make-image-preview img').height()
 			});
+			$('#image-for-gif-wrapper').hide()
+			$('#pictureInput, #preview-image-text').hide()
 		}
 		
 		$(image).load(function(){
 			$('#iamge-for-gif-reset').show()
 			$('#image-for-gif-field').attr('value', $(image).attr('src'))
 			$('#image-for-gif-input').val('')
-			$('#image-for-gif-wrapper').hide()
 			$('#image-for-gif-reset').show()
 			$('#make-image-preview').removeClass('stopped')
-			$('#cancel-upload, #submit-image-button-before').show()
-			$('#make-tags-1-wrapper').addClass('inline-block-imp')
-			$('.anonymous-checkbox').addClass('shown')
-			$('#make-tags-1').addClass('inline-block-imp')
+			
+			//$('#cancel-upload, #submit-image-button-before').show()
+			//$('#make-tags-1-wrapper').addClass('inline-block-imp')
+			//$('.anonymous-checkbox').addClass('shown')
+			//$('#make-tags-1').addClass('inline-block-imp')
 		})
 		setTimeout(function(){
 			if ( $(image).height() < 50 ){
@@ -527,22 +529,22 @@ tabs = function() {
 				$(image).remove()
 				$('#image-for-gif-wrapper').fadeIn()
 				$('#pictureInput, #preview-image-text').show()
-				$('#cancel-upload, #submit-image-button-before').hide()
-				$('#make-tags-1-wrapper').removeClass('inline-block-imp')
-				$('.anonymous-checkbox').removeClass('shown')
-				$('#make-tags-1').removeClass('inline-block-imp')
+				//$('#cancel-upload, #submit-image-button-before').hide()
+				//$('#make-tags-1-wrapper').removeClass('inline-block-imp')
+				//$('.anonymous-checkbox').removeClass('shown')
+				//$('#make-tags-1').removeClass('inline-block-imp')
 				$('#make-image-preview').css({
 					'min-height': '100px'
 				});
-				$('#iamge-for-gif-reset').hide()
+				$('#image-for-gif-reset').hide()
 			}
 		}, 2000)
 		
-		$('#pictureInput, #preview-image-text').hide()
-		$('#cancel-upload, #submit-image-button-before').show()
-		$('#make-tags-1-wrapper').addClass('inline-block-imp')
-		$('.anonymous-checkbox').addClass('shown')
-		$('#make-tags-1').addClass('inline-block-imp')
+		//$('#pictureInput, #preview-image-text').hide()
+		//$('#cancel-upload, #submit-image-button-before').show()
+		//$('#make-tags-1-wrapper').addClass('inline-block-imp')
+		//$('.anonymous-checkbox').addClass('shown')
+		//$('#make-tags-1').addClass('inline-block-imp')
 	})
 	$(document).on('click', '#image-for-gif-reset', function(){
 		console.log('oh shitt')
@@ -683,6 +685,14 @@ tabs = function() {
 	$(document).on('click', '#choose-cover, #reset-cover', function() {
 		$(this).siblings('input').click()
 	})
+	//$('.tag').removeClass('active')
+	if ( tagname != '' ){
+		$("#tag-"+ tagname +" div").addClass('active')
+	}
+	else {
+		$('#tag-all div').addClass('active')
+	}
+    
 	$(document).on('click', '.link', function(e) {
 		//e.preventDefault()//
 		window.location = $(this).attr('data-url')
