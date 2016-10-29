@@ -8,13 +8,14 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
-    })
-    setTimeout(function(){
+  		setTimeout(function(){
     $('#left-content-profile').masonry({
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
     }, 1100)
+    })
+    
 		
     
         <% if @profilepost.next_page %>
@@ -36,11 +37,12 @@ else {
   		});
 		})
     setTimeout(function(){
-    $('#right-content-profile').masonry({
+    /*$('#right-content-profile').masonry({
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
     }, 1100)
+    */
     <% if @profilefavor.next_page %>
       $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
     <% else %>
