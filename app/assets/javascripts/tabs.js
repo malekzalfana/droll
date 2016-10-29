@@ -1282,6 +1282,38 @@ tabs = function() {
 	$('.progress').mouseleave(function() {
 		$('#progress-table').fadeOut()
 	})
+	$(document).on('click', '.more-post-options', function() {
+			console.log($(this).parents('.post-footer').siblings(
+				'.more-post-options-container'))
+			console.log($(this).parents('.left-wrapper').find(
+				'.more-post-options-container'))
+			if ($(this).parents('.left-wrapper').find('.more-post-options-container').hasClass(
+				'active-tab')) {
+				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','false')
+				$(this).parents('.wrapper').find('.post-title').removeClass('focus')
+				$('#anonymous-faces img').removeClass('chosen')
+				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
+				$('.choosen-content:visible .anonymous-image img').remove()
+				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
+					'checked', false);
+				$('.more-post-options-container').removeClass(
+						'active-tab choosen-content')
+					//$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
+			} else {
+				$('#anonymous-faces img').removeClass('chosen')
+				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
+				$('.choosen-content:visible .anonymous-image img').remove()
+				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
+					'checked', false);
+				$('.more-post-options-container').removeClass(
+					'active-tab choosen-content')
+				$(this).parents('.post-footer').siblings('.more-post-options-container').addClass(
+					'active-tab choosen-content')
+				console.log('shown???')
+				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
+				$(this).parents('.wrapper').find('.post-title').addClass('focus')
+			}
+		})
 	var $container = $('#left-content-profile');
 	$container.masonry({
 		itemSelector: '.wrapper',
@@ -1339,35 +1371,3 @@ tabs = function() {
 $(document).on('page:load', tabs);
 $(document).ready(tabs)
 
-$(document).on('click', '.more-post-options', function() {
-			console.log($(this).parents('.post-footer').siblings(
-				'.more-post-options-container'))
-			console.log($(this).parents('.left-wrapper').find(
-				'.more-post-options-container'))
-			if ($(this).parents('.left-wrapper').find('.more-post-options-container').hasClass(
-				'active-tab')) {
-				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','false')
-				$(this).parents('.wrapper').find('.post-title').removeClass('focus')
-				$('#anonymous-faces img').removeClass('chosen')
-				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
-				$('.choosen-content:visible .anonymous-image img').remove()
-				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
-					'checked', false);
-				$('.more-post-options-container').removeClass(
-						'active-tab choosen-content')
-					//$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
-			} else {
-				$('#anonymous-faces img').removeClass('chosen')
-				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
-				$('.choosen-content:visible .anonymous-image img').remove()
-				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
-					'checked', false);
-				$('.more-post-options-container').removeClass(
-					'active-tab choosen-content')
-				$(this).parents('.post-footer').siblings('.more-post-options-container').addClass(
-					'active-tab choosen-content')
-				console.log('shown???')
-				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
-				$(this).parents('.wrapper').find('.post-title').addClass('focus')
-			}
-		})
