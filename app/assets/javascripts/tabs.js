@@ -409,7 +409,6 @@ tabs = function() {
 		$('#make-gif-field').attr('value', '')
 		$('#make-gif-preview img').remove()
 		$('#image-gif-reset').hide()
-		$('#gifs, #searchTerm').show		();
 		$('#make-gif-preview img').remove()
 		$('#cancel-upload, #submit-image-button-before').hide()
 		$('#make-tags-1-wrapper').removeClass('inline-block-imp')
@@ -686,7 +685,7 @@ tabs = function() {
 		$(this).siblings('input').click()
 	})
 	//$('.tag').removeClass('active')
-	if ( tagname != '' ){
+	if ( $('body').is('#recent') || $('body').is('#tag') || tagname != '' ){
 		$("#tag-"+ tagname +" div").addClass('active')
 	}
 	else {
@@ -948,38 +947,7 @@ tabs = function() {
 			).removeClass('blurred')
 			$('body').removeClass('overflow-hidden')
 		})
-	$(document).on('click', '.more-post-options', function() {
-			console.log($(this).parents('.post-footer').siblings(
-				'.more-post-options-container'))
-			console.log($(this).parents('.left-wrapper').find(
-				'.more-post-options-container'))
-			if ($(this).parents('.left-wrapper').find('.more-post-options-container').hasClass(
-				'active-tab')) {
-				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','false')
-				$(this).parents('.wrapper').find('.post-title').removeClass('focus')
-				$('#anonymous-faces img').removeClass('chosen')
-				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
-				$('.choosen-content:visible .anonymous-image img').remove()
-				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
-					'checked', false);
-				$('.more-post-options-container').removeClass(
-						'active-tab choosen-content')
-					//$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
-			} else {
-				$('#anonymous-faces img').removeClass('chosen')
-				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
-				$('.choosen-content:visible .anonymous-image img').remove()
-				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
-					'checked', false);
-				$('.more-post-options-container').removeClass(
-					'active-tab choosen-content')
-				$(this).parents('.post-footer').siblings('.more-post-options-container').addClass(
-					'active-tab choosen-content')
-				console.log('shown???')
-				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
-				$(this).parents('.wrapper').find('.post-title').addClass('focus')
-			}
-		})
+	
 		/*$(document).on('click', '.less-post-options', function(){
     $('#anonymous-image img').removeClass('chosen')
     $('.active-tab .anonymous-image-field').attr('value', '')
@@ -1370,3 +1338,35 @@ tabs = function() {
 $(document).on('page:load', tabs);
 $(document).ready(tabs)
 
+$(document).on('click', '.more-post-options', function() {
+			console.log($(this).parents('.post-footer').siblings(
+				'.more-post-options-container'))
+			console.log($(this).parents('.left-wrapper').find(
+				'.more-post-options-container'))
+			if ($(this).parents('.left-wrapper').find('.more-post-options-container').hasClass(
+				'active-tab')) {
+				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','false')
+				$(this).parents('.wrapper').find('.post-title').removeClass('focus')
+				$('#anonymous-faces img').removeClass('chosen')
+				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
+				$('.choosen-content:visible .anonymous-image img').remove()
+				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
+					'checked', false);
+				$('.more-post-options-container').removeClass(
+						'active-tab choosen-content')
+					//$(this).parent().siblings('.more-post-options-container').removeClass('active-tab')
+			} else {
+				$('#anonymous-faces img').removeClass('chosen')
+				$('.choosen-content:visible .anonymous-image-field').attr('value', '')
+				$('.choosen-content:visible .anonymous-image img').remove()
+				$('.choosen-content:visible .anonymous-checkbox input[type="checkbox"]').prop(
+					'checked', false);
+				$('.more-post-options-container').removeClass(
+					'active-tab choosen-content')
+				$(this).parents('.post-footer').siblings('.more-post-options-container').addClass(
+					'active-tab choosen-content')
+				console.log('shown???')
+				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
+				$(this).parents('.wrapper').find('.post-title').addClass('focus')
+			}
+		})
