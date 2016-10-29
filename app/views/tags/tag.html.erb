@@ -552,6 +552,9 @@
     
     <script>
     var tagname = '<%= @tag %>'
-        
+    if ( tagname == '' )  {
+        tagname = 'all'
+    }
+    document.querySelector("tag-"+ tagname +" div").classList.add("active");
     </script>
 </body>

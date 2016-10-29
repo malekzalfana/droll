@@ -685,13 +685,14 @@ tabs = function() {
 		$(this).siblings('input').click()
 	})
 	//$('.tag').removeClass('active')
-	if ( $('body').is('#recent') || $('body').is('#tag') || tagname != '' ){
+	/*if ( $('body').is('#recent') || $('body').is('#tag') || tagname != '' ){
 		$("#tag-"+ tagname +" div").addClass('active')
 	}
+	
 	else {
 		$('#tag-all div').addClass('active')
 	}
-    
+    */
 	$(document).on('click', '.link', function(e) {
 		//e.preventDefault()//
 		window.location = $(this).attr('data-url')
