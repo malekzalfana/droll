@@ -495,8 +495,10 @@ tabs = function() {
 			}
 		}, 2000)
 	})
+	var imageforgifadd = false;
 	$(document).on('click', '#image-for-gif-add', function() {
-		if ( !$('#image-for-gif-input').val() == '' ) {
+		if ( !$('#image-for-gif-input').val() == '' && $('#make-image-preview img').length < 1) {
+			imageforgifadd = true
 			$('#make-post-preview').addClass('stopped')
 			$('#make-image-preview').children('img').remove()
 			var image = $('<img src="'+ $('#image-for-gif-input').val() +'" >');
@@ -506,14 +508,13 @@ tabs = function() {
 			});
 			$('#image-for-gif-wrapper').hide()
 			$('#pictureInput, #preview-image-text').hide()
-		}
-		
-		$(image).load(function(){
+			$(image).load(function(){
 			$('#iamge-for-gif-reset').show()
 			$('#image-for-gif-field').attr('value', $(image).attr('src'))
 			$('#image-for-gif-input').val('')
 			$('#image-for-gif-reset').show()
 			$('#make-image-preview').removeClass('stopped')
+			console.log('image is loaded')
 			
 			//$('#cancel-upload, #submit-image-button-before').show()
 			//$('#make-tags-1-wrapper').addClass('inline-block-imp')
@@ -528,6 +529,7 @@ tabs = function() {
 				$(image).remove()
 				$('#image-for-gif-wrapper').fadeIn()
 				$('#pictureInput, #preview-image-text').show()
+				imageforgifadd = false
 				//$('#cancel-upload, #submit-image-button-before').hide()
 				//$('#make-tags-1-wrapper').removeClass('inline-block-imp')
 				//$('.anonymous-checkbox').removeClass('shown')
@@ -538,6 +540,8 @@ tabs = function() {
 				$('#image-for-gif-reset').hide()
 			}
 		}, 2000)
+		}
+		
 		
 		//$('#pictureInput, #preview-image-text').hide()
 		//$('#cancel-upload, #submit-image-button-before').show()
