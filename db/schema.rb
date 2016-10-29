@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022145833) do
+ActiveRecord::Schema.define(version: 20161028140943) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -114,18 +114,18 @@ ActiveRecord::Schema.define(version: 20161022145833) do
 
   create_table "posts", force: :cascade do |t|
     t.text     "title"
-    t.integer  "posts",              default: 0
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "posts",               default: 0
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
-    t.integer  "cached_votes_total", default: 0
-    t.integer  "cached_votes_score", default: 0
-    t.integer  "cached_votes_up",    default: 0
-    t.integer  "cached_votes_down",  default: 0
+    t.integer  "cached_votes_total",  default: 0
+    t.integer  "cached_votes_score",  default: 0
+    t.integer  "cached_votes_up",     default: 0
+    t.integer  "cached_votes_down",   default: 0
     t.boolean  "long"
     t.boolean  "anonymous"
     t.integer  "facenumber"
@@ -133,6 +133,12 @@ ActiveRecord::Schema.define(version: 20161022145833) do
     t.boolean  "granted"
     t.boolean  "reported"
     t.string   "category"
+    t.string   "imageaddress"
+    t.string   "image2_file_name"
+    t.string   "image2_content_type"
+    t.integer  "image2_file_size"
+    t.datetime "image2_updated_at"
+    t.string   "giphyid"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
@@ -241,6 +247,7 @@ ActiveRecord::Schema.define(version: 20161022145833) do
     t.string   "uid"
     t.integer  "share"
     t.string   "tag"
+    t.string   "password"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

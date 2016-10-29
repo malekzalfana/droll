@@ -43,9 +43,9 @@ class PagesController < ApplicationController
   
   def admin
     @post1 = Post.where(hidden: true).order("created_at DESC")
-    @post2 = Post.where(reported: true).order("created_at DESC")
-    @postb = [@post1,@post2].flatten
-    @post = @postb.paginate(:per_page => 30, :page => params[:page])
+    #@post2 = Post.where(reported: true).order("created_at DESC")
+    #@postb = [@post1,@post2].flatten
+    @post = @post1.paginate(:per_page => 30, :page => params[:page])
   end
   
   def recent

@@ -1,5 +1,5 @@
-if ( $('body').is('#make2') ) {
-    var gifArray = ['lol', 'wtf', 'crying', 'racist', 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy']
+if ( $('body').is('#make2') || $('body').is('#make') ) {
+    var gifArray = ['lol', 'wtf', 'crying', "that's racist", 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy', 'hell no']
     
     
     

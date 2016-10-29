@@ -235,7 +235,13 @@
     resize: vertical;
     position: relative;
 }
-#make-image-preview {
+#make-image-preview, #make-gif-preview {
+   width: 582px;
+    min-height: 100px;
+    background: white;
+  position: relative;
+}
+#make #gifs {
    width: 582px;
     min-height: 400px;
     background: white;
@@ -256,7 +262,7 @@
   width: 582px;
     background: red;
     position: absolute;
-    height: 400px;
+    height: 100px;
     opacity: 0;
     cursor: pointer;
     z-index: 2;
@@ -272,7 +278,7 @@
     font-size: 25px;
     display: none;
 }
-#make-image-preview img {
+#make-image-preview img, #make-gif-preview img {
   width: 100%;
   display: block;
 }
@@ -298,6 +304,7 @@
   display: table-cell;
   text-align: -webkit-right;
 }
+/*
 #preview-image-text {
    Position: absolute;
     top: 200px;
@@ -308,6 +315,19 @@
     font-family: open sans;
     resize: vertical;
     pointer-events: none;
+}
+*/
+#preview-image-text {
+    Position: absolute;
+    top: 40px;
+    z-index: 1;
+    width: 200px;
+    right: 0;
+    color: #bfbfbf;
+    font-family: open sans;
+    resize: vertical;
+    pointer-events: none;
+    left: 10px;
 }
 #ragefaces-buttons-wrapper {
       position: relative;

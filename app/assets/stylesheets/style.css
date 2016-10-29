@@ -8,6 +8,9 @@ html body {
 	overflow-x: hidden;
 	overflow-y: visible;
 }
+html {
+	overflow-y: scroll;
+}
 #make #log-in-wrapper {
 	width: 250px;
     margin: 0px auto;
@@ -1016,6 +1019,9 @@ textarea:focus {
 	float: left;
 	background-position: center;
 	background-size: cover;
+}
+#make .gif-container {
+	width: 25%;
 }
 .meme-overlay {
 	position: absolute;
@@ -4690,7 +4696,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 600px) {
-	#make-post-preview-wrapper #pictureInput, #make-image-preview, #make-preview-wrapper form {
+	#make-post-preview-wrapper #pictureInput, #make-image-preview, #make-gif-preview, #make-preview-wrapper form {
 		width: 100% !important;
 	}
 	#make-post-title {
@@ -6115,16 +6121,26 @@ i.fa.fa-reddit-alien {
     position: fixed;
     padding-right: 50px;
     padding-bottom: 50px;
+    display: table;
+}
+.active.tag {
+	border: #ff3000 1px solid;
+    color: #ff3000 !important;
 }
 #tags-wrapper .tag {
-	font-family: roboto;
-    margin: 10px 3px;
+	    font-family: roboto;
+    margin: 2px 0px;
     -webkit-animation-fill-mode: both;
-  	animation-fill-mode: both;
+    animation-fill-mode: both;
     -webkit-animation-name: fadeInLeft;
-  	animation-name: fadeInLeft;
-  	cursor: pointer;
-  	color: #252525;
+    animation-name: fadeInLeft;
+    cursor: pointer;
+    color: #252525;
+    width: auto;
+    padding: 5px;
+    float: left;
+    border-radius: 27px;
+    padding: 5px 10px;
 }
 #tags-wrapper a {
 	-webkit-animation-fill-mode: both;
@@ -6133,7 +6149,7 @@ i.fa.fa-reddit-alien {
   	animation-name: fadeInLeft;
 }
 #tags-wrapper a {
-	display: none;
+	display: table-row;
 }
 #tags-wrapper .tag:hover {
 	color: #ff3000;
@@ -6144,9 +6160,9 @@ i.fa.fa-reddit-alien {
 #tags-wrapper:hover span i {
 	color: #ff3000;
 }
-#tags-wrapper:hover a {
+/*#tags-wrapper:hover a {
 	display: block;
-}
+}*/
 #tags-wrapper a:nth-child(1) {
 	animation-duration: 0.1s
 }
@@ -6499,7 +6515,6 @@ i.fa.fa-reddit-alien {
 #make-tags-3-wrapper {
 	float: left;
     width: 750px;
-    height: 30px;
     margin-left: 30px;
     margin-top: 0px;
     padding: 7px;
@@ -6696,4 +6711,177 @@ body:not(#invite-screen) #notice-to-sign {
 }
 #tag.shown-post .tag-title {
 	display: inline-block;
+}
+#scroll-up {
+	 display: inline-block;
+    background: white;
+    color: #252525;
+    border-radius: 50%;
+    font-size: 14px;
+    padding: 5px;
+    font-family: roboto;
+    margin: 10px auto;
+    pointer-events: auto;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.36);
+    height: 25px;
+    width: 25px;
+    display: none;
+    cursor: pointer;
+}
+#scroll-up-wrapper {
+	position:fixed;
+	z-index:10;
+	left:0;
+	right:0;
+	text-align: center;
+	pointer-events: none;
+}
+#image-for-meme {
+	    text-align: center;
+    font-size: 16px;
+    font-family: roboto;
+    background: #f9f9f9;
+    color: gray;
+    margin: 0px auto;
+    width: 284px;
+    display: block;
+    margin-bottom: 10px;
+    overflow: hidden;
+    border-bottom: 1px solid gainsboro;
+}
+#image-for-meme-input {
+	width: 250px;
+    float: left;
+    height: 34px;
+    text-indent: 10px;
+    background: none;
+}
+#image-for-meme-add {
+	float:left;
+	padding: 5px;
+	cursor: pointer;
+}
+.stopped {
+	pointer-events: none;
+	opacity: 0.5;
+}
+#image-for-meme-reset, #image-for-gif-reset, #image-gif-reset {
+	display: none;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: white;
+    background: rgba(0, 0, 0, 0.17);
+    cursor: pointer;
+    z-index: 4;
+}
+/*
+#image-for-meme-reset:hover, #image-for-gif-reset:hover {
+	color: #252525;
+}
+*/
+.middle-column #new_post {
+	position: relative;
+}
+#image-for-meme-img {
+	max-width:100%;
+	width: 550px;
+	display: block;
+}
+.post-image-2 {
+	display: none !important;
+}
+#tags-button {
+	display: none;
+}
+#image-for-gif-input {
+	padding: 10px;
+    font-family: roboto;
+}
+/*
+#image-for-gif-wrapper-wrapper {
+	    position: ABSOLUTE;
+    top: 250px;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
+*/
+#image-for-gif-wrapper-wrapper {
+	    position: ABSOLUTE;
+    top: 35px;
+    width: 200px;
+    text-align: center;
+    z-index: 3;
+    right: 35px;
+}
+#image-for-gif-wrapper i {
+	color: #afafaf;
+	 position: relative;
+    top: 5px;
+    cursor:pointer;
+    font-size: 20px !important;
+
+}
+#image-for-gif-wrapper {
+	width: 205px;
+	border-bottom: 1px solid #c9c9c9;
+	display: block;
+	margin: 0px auto;
+}
+@media screen and (max-width: 780px) {
+	#tags-wrapper-wrapper-wrapper {
+		overflow: hidden;
+	}
+	#tags-wrapper-wrapper {
+		overflow: scroll;
+		position: relative;
+		top: 20px;
+		padding-bottom: 15px;
+	}
+	#tags-wrapper {
+	    height: 35px;
+	    position: initial;
+	    width: 1000px;
+	    margin: 0px auto;
+	    overflow: hidden;
+	    display: block;
+	    PADDING: 5px;
+	    margin-top: 0px;
+	}
+	#tags-wrapper a {
+		display: inline-block;
+	}
+}
+#tags-wrapper-edge-1 {
+	right: 0px;
+	top: 0px;
+	z-index:3;
+	width: 20px;
+    height: 100%;
+    position: fixed;
+	background: rgba(249,249,249,1);
+	background: -moz-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
+	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(249,249,249,1)), color-stop(32%, rgba(243,187,182,0)), color-stop(100%, rgba(231,56,39,0)));
+	background: -webkit-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
+	background: -o-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
+	background: -ms-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
+	background: linear-gradient(to right, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e73827', GradientType=1 );
+}
+#tags-wrapper-edge-2 {
+	left: 0px;
+	top: 0px;
+	width: 20px;
+    height: 100%;
+    z-index:3;
+    position: fixed;
+	background: rgba(231,56,39,0);
+background: -moz-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231,56,39,0)), color-stop(30%, rgba(236,114,102,0)), color-stop(100%, rgba(249,249,249,1)));
+background: -webkit-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
+background: -o-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
+background: -ms-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
+background: linear-gradient(to right, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', endColorstr='#f9f9f9', GradientType=1 );
 }

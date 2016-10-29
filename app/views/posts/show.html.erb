@@ -60,7 +60,10 @@
                             <div class="favor-words">favored</div>
                 </div>
                 <% end %>
-                <img src="<%= @post.image.url(:large) %>" class="post-image"  alt="<%= @post.title %>">
+                <% if !@post.imageaddress.blank? %><img src="<%= @post.image2.url(:medium) %>" class="post-image" alt="<%= @post.title %>"><% end %>
+                <% if !@post.imageaddress.blank? %><img src="<%= @post.image2.url(:large) %>" class="post-image post-image-2" alt="<%= @post.title %>"><% end %>
+                <% if @post.image.present? %><img src="<%= @post.image.url(:large) %>" class="post-image"  alt="<%= @post.title %>"><% end %>
+                <% if !@post.giphyid.blank? %><img class="post-image" src="https://media2.giphy.com/media/<%= @post.giphyid %>/giphy.gif"><% end %>
             </div>
             
                 <div class="voting-wrapper">

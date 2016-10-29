@@ -14,12 +14,13 @@ class Post < ActiveRecord::Base
     #scope :limited, -> { limit(20) }
     #scope :paginated, -> .paginate(page: params[:page], per_page: 15)
     acts_as_votable
-    has_attached_file :image, styles: { medium: "550", large: "600", thumb: "100x100>" }, default_url: "/missing.png"
+    has_attached_file :image, styles: { medium: "550", large: "600", thumb: "100x100>" }#, default_url: "/missing.png"
+    has_attached_file :image2, styles: { medium: "550", large: "600", thumb: "100x100>"  }
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
     belongs_to :user
     belongs_to :category
     validates :user_id, presence: true
-    validates :image, presence: true
+    #validates :image, presence: true
     default_scope { order("created_at DESC")}
     has_many :comments
     is_impressionable # :counter_cache => true, :column_name => :my_column_name, :unique => true

@@ -70,7 +70,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(permit_post)
     @post.user = current_user
     @post.user_id = current_user.id
-    if !params[:base64].present?
+    if !params[:base64].present? && @post.image.exists?
       dimensions = Paperclip::Geometry.from_file(@post.image.queued_for_write[:medium].path)
       puts 'noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'
       puts dimensions
@@ -78,7 +78,10 @@ class PostsController < ApplicationController
       if dimensions.height > 950
         @post.long = true
       end
-    end  
+    end
+    if !@post.imageaddress.blank?
+      @post.image2 = URI.parse(  @post.imageaddress  )
+    end
     unless !params[:anonymous].present?
       @post.anonymous = true
     end
@@ -102,6 +105,8 @@ class PostsController < ApplicationController
       
       @post.save
     end
+    puts 's s s s'
+    puts @post
     if @post.save
       
       redirect_to @post
@@ -260,7 +265,7 @@ class PostsController < ApplicationController
   
   private 
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list);
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :giphyid,:image2, :imageaddress );
     end
     def permit_post2
       params.permit(:hidden, :id);

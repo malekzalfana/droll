@@ -141,17 +141,24 @@
 <div id="overlay-under-notif"></div>
 	<span id="make-logo">/make</span>
 	<div id="tabs-wrapper">
-	  <div id="images-tab" class="tabs active-tab">Images</div>
-	  <div id="memes-tab" class="tabs">Memes</div>
-	  <div id="rage-comics-tab" class="tabs">Rage Comics</div>
+	  <div id="images-tab" class="tabs active-tab">GIF</div>
+	  <div id="memes-tab" class="tabs">Meme</div>
+	  <div id="rage-comics-tab" class="tabs">Rage Comic</div>
 	</div>
 	<div id="memes-content" class="choosen-content">
 		<div class="middle-column" id="meme-wrapper">
 			<%= form_for @post, html: { multipart: true } do |f| %>
 			 <input id="base64" type="hidden" value="" name="base64"/>
+			 <div id="image-for-meme">
+			 	<input placeholder="paste image address.." id="image-for-meme-input"></input>
+			 	<i id="image-for-meme-add" class="material-icons">add</i>
+			 </div>
+			 <i id="image-for-meme-reset" class="material-icons">close</i>
+			 <img src="" id="image-for-meme-img">
 			 <canvas  class="middle-column" id="meme-canvas" height="1100" width="1100"></canvas>
 			 <%= f.text_area :title, id: "created-meme-title", placeholder: "Caption" %>
 			 <%= f.text_field :facenumber,id: "created-meme-facenumber-field", class: "hidden anonymous-image-field" %>
+			 <%= f.text_field :imageaddress,id: "image-for-meme-field", class: "hidden" %>
 			 <%= f.text_field :tag_list, class: "tag-list-field" %>
 			 <%= f.check_box :anonymous, class: "hidden-imp", id: "created-meme-anonymous-field", checked: false %>
 			 
@@ -169,21 +176,8 @@
 					<textarea id="text-bottom" data-gramm="false" spellcheck="true" ></textarea>	
 			 		</div>
 			 		
-					<div id="submit-button-before-wrapper"><button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
-					<div id="make-tags-2" class="make-tags">
-						<i class="material-icons">sort</i>
-					</div>
-					<div class="loading-icon "></div>
-						<span class="anonymous-checkbox shown">
-					 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
-					 	<i class="material-icons anonymous-checked"></i>
-					 	<div id="anonymous-image" class="anonymous-image">
-					 		<i class="material-icons">add</i>
-					 	</div>
-					 	<span>Anonymous</span>
-					 	</span>
-					 	
-					 	<div id="make-tags-2-wrapper" class="inline-make-tags-wrapper">
+					<div id="submit-button-before-wrapper">
+						<div id="make-tags-2-wrapper" class="inline-make-tags-wrapper">
 							<span>Tags</span>
 							<p id="tag-memes" class="active-make-tag">memes</p>
 							<p id="tag-food">food</p>
@@ -202,6 +196,21 @@
 							<p id="tag-opinion">opinion</p>
 							<p id="tag-movies">movies</p>
 						</div>
+						<button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
+					<div id="make-tags-2" class="make-tags">
+						<i class="material-icons">sort</i>
+					</div>
+					<div class="loading-icon "></div>
+						<span class="anonymous-checkbox shown">
+					 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
+					 	<i class="material-icons anonymous-checked"></i>
+					 	<div id="anonymous-image" class="anonymous-image">
+					 		<i class="material-icons">add</i>
+					 	</div>
+					 	<span>Anonymous</span>
+					 	</span>
+					 	
+					 	
 					
 					
 					</div>
@@ -1230,6 +1239,26 @@
 		<span id="border-bottom"></span>
 	</div>
 	
+	<div id="make-tags-3-wrapper" class="inline-make-tags-wrapper">
+		<span>Tags</span>
+				<p id="tag-memes">memes</p>
+				<p id="tag-food">food</p>
+				<p id="tag-photoshopped">photoshopped</p>
+				<p id="tag-gaming">gaming</p>
+				<p id="tag-sports">sports</p>
+				<p id="tag-animated">animated</p>
+				<p id="tag-cute">cute</p>
+				<p id="tag-reaction">reaction</p>
+				<p id="tag-wtf">wtf</p>
+				<p id="tag-politics">politics</p>
+				<p id="tag-rage-comic" class="active-make-tag">rage comics</p>
+				<p id="tag-nsfw">nsfw</p>
+				<p id="tag-happy">happy</p>
+				<p id="tag-awesome">awesome</p>
+				<p id="tag-opinion">opinion</p>
+				<p id="tag-movies">movies</p>
+	</div>
+	
 	<div id="ragefaces-buttons-wrapper">
 			<button id="submit-image-button-before-3">Post</button>	
 			<button id="cancel-upload-3">cancel</button>
@@ -1257,25 +1286,7 @@
 			
 		</div>
 		
-	<div id="make-tags-3-wrapper" class="inline-make-tags-wrapper">
-		<span>Tags</span>
-				<p id="tag-memes">memes</p>
-				<p id="tag-food">food</p>
-				<p id="tag-photoshopped">photoshopped</p>
-				<p id="tag-gaming">gaming</p>
-				<p id="tag-sports">sports</p>
-				<p id="tag-animated">animated</p>
-				<p id="tag-cute">cute</p>
-				<p id="tag-reaction">reaction</p>
-				<p id="tag-wtf">wtf</p>
-				<p id="tag-politics">politics</p>
-				<p id="tag-rage-comic" class="active-make-tag">rage comics</p>
-				<p id="tag-nsfw">nsfw</p>
-				<p id="tag-happy">happy</p>
-				<p id="tag-awesome">awesome</p>
-				<p id="tag-opinion">opinion</p>
-				<p id="tag-movies">movies</p>
-	</div>
+	
 	
 </div>
 	
@@ -1298,12 +1309,50 @@
 	<div id="images-content-wrapper"><div id="images-content" class="choosen-content active-tab">
 		<div id="make-preview-wrapper">
 			<%= form_for @post, html: { multipart: true } do |f| %>
+			<i id="image-for-gif-reset" class="material-icons">close</i>
+			<div id="image-for-gif-wrapper-wrapper">
+				<div id="image-for-gif-wrapper">
+					<input id="image-for-gif-input" placeholder="or paste image address..">
+					<i class="material-icons" id="image-for-gif-add">add</i>
+				</div>
+			</div>
 			<div id="make-post-preview-wrapper">
+				<%= f.text_field :imageaddress, id: "image-for-gif-field", class: "hidden" %>
+				<%= f.text_field :giphyid, id: "make-gif-field", class: "hidden" %>
+				<%# f.text_area :giphyid, value: "999" %>
 				 <%= f.file_field :image, id: "pictureInput", class: "pictureInput", onchange: "previewPostImage(event)" %>
-				 <div id="make-image-preview"><i class="material-icons" id="reset-image">cached</i></div>
+				 <div id="make-image-preview">
+				 	<i class="material-icons" id="reset-image">cached</i>
+				 </div>
+				 <div id="make-gif-preview">
+				 	<i id="image-gif-reset" class="material-icons">close</i>
+				 	<input autocomplete="false" id="searchTerm" name="searchTerm" placeholder="search GIFs ..">
+				 	<div id="gifs"></div>	
+				 	<div id="loader"></div><p id="unlock-feed"></p>
+				 </div>
 				 <span id="preview-image-text">Click or drop your <span id="upload-image-fade">image</span><span id="upload-gif-fade">GIF</span></span>
 				 <%= f.text_area :title, id: "make-post-title", placeholder: "Caption" %>
 			 </div>
+			 <div id="make-tags-1-wrapper" class="inline-make-tags-wrapper">
+				<span>Tags</span>
+				<p id="tag-memes">memes</p>
+				<p id="tag-food">food</p>
+				<p id="tag-photoshopped">photoshopped</p>
+				<p id="tag-gaming">gaming</p>
+				<p id="tag-sports">sports</p>
+				<p id="tag-animated">animated</p>
+				<p id="tag-cute">cute</p>
+				<p id="tag-reaction" class="active-tag">reaction</p>
+				<p id="tag-wtf">wtf</p>
+				<p id="tag-politics">politics</p>
+				<p id="tag-rage-comic">rage comics</p>
+				<p id="tag-gif" class="active-tag">gif</p>
+				<p id="tag-nsfw">nsfw</p>
+				<p id="tag-happy">happy</p>
+				<p id="tag-awesome">awesome</p>
+				<p id="tag-opinion">opinion</p>
+				<p id="tag-movies">movies</p>
+			</div>
 			 <div class="loading-icon"></div>
 			 <%= f.submit :value => "Post", :id => "submit-image-button", class: "hidden-imp" %>
 			 <button id="submit-image-button-before" type="button">Post</button>	
@@ -1322,25 +1371,7 @@
 			 	<span>Anonymous</span>
 			 </span>
 			 
-			 <div id="make-tags-1-wrapper" class="inline-make-tags-wrapper">
-				<span>Tags</span>
-				<p id="tag-memes">memes</p>
-				<p id="tag-food">food</p>
-				<p id="tag-photoshopped">photoshopped</p>
-				<p id="tag-gaming">gaming</p>
-				<p id="tag-sports">sports</p>
-				<p id="tag-animated">animated</p>
-				<p id="tag-cute">cute</p>
-				<p id="tag-reaction">reaction</p>
-				<p id="tag-wtf">wtf</p>
-				<p id="tag-politics">politics</p>
-				<p id="tag-rage-comic">rage comics</p>
-				<p id="tag-nsfw">nsfw</p>
-				<p id="tag-happy">happy</p>
-				<p id="tag-awesome">awesome</p>
-				<p id="tag-opinion">opinion</p>
-				<p id="tag-movies">movies</p>
-			</div>
+			 
 			 
 			<% end %> 
 		</div>

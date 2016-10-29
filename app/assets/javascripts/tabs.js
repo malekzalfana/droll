@@ -380,7 +380,7 @@ tabs = function() {
 			'hidden-imp');
 		console.log('worked?')
 	});
-	$(document).on('click', '.remote-gif', function() {
+	$(document).on('click', 'body:not(#gif) .remote-gif', function() {
 		$('#hide-remote-make', parent.document.body).click();
 		$(".wrapper:visible .giphy-id-make", parent.document.body).val($(this).attr('data-giphy-id'));
 		console.log( $(".wrapper:visible .giphy-id-make", parent.document.body) )
@@ -390,6 +390,33 @@ tabs = function() {
 		$(".wrapper:visible .make-giphy-image", parent.document.body).attr("src",
 		$(this).attr('data-src')  ).fadeIn(200)
 	});
+	$(document).on('click', 'body:not(#make2) .remote-gif', function() {
+		$('#gifs, #searchTerm').hide();
+		$('#make-gif-preview img').remove()
+		//alert( $(this).attr('data-src') )
+		var value = new Image();
+		value.src = $(this).attr('data-src')
+		$('#make-gif-preview').append(value)
+		$('#make-gif-field').attr('value', $(this).attr('data-giphy-id'))
+		$('#image-gif-reset').show()
+		$('#cancel-upload, #submit-image-button-before').show()
+		$('#make-tags-1-wrapper').addClass('inline-block-imp')
+		$('.anonymous-checkbox').addClass('shown')
+		$('#make-tags-1').addClass('inline-block-imp')
+	});
+	$(document).on('click', '#image-gif-reset', function() {
+		$('#gifs, #searchTerm').show();
+		$('#make-gif-field').attr('value', '')
+		$('#make-gif-preview img').remove()
+		$('#image-gif-reset').hide()
+		$('#gifs, #searchTerm').show		();
+		$('#make-gif-preview img').remove()
+		$('#cancel-upload, #submit-image-button-before').hide()
+		$('#make-tags-1-wrapper').removeClass('inline-block-imp')
+		$('.anonymous-checkbox').removeClass('shown')
+		$('#make-tags-1').removeClass('inline-block-imp')
+	});
+	
 	$(document).on('click',
 		'#share-buttons-settings div, #share-buttons-settings span', function() {
 			$('#share-buttons-settings div, #share-buttons-settings span').removeClass(
@@ -443,6 +470,105 @@ tabs = function() {
 				window.scrollTo(0, $('body').offset().top);
 			}
 		})
+	$(document).on('click', '#scroll-up', function() {
+		$(this).hide();
+		window.scrollTo(0, $('body').offset().top);
+	})
+	$(document).on('click', '#image-for-meme-add', function() {
+		$('#image-for-meme').addClass('stopped')
+		$('#image-for-meme-img').attr('src', $('#image-for-meme-input').val())
+		//$('#image-for-meme-field').attr('value', $('#image-for-meme-img').attr('src'))
+		$('#image-for-meme-img').load(function(){
+			$('#image-for-meme-field').attr('value', $('#image-for-meme-img').attr('src'))
+		//$('#image-for-meme-field').attr('value', $('#image-for-meme-input').val())
+		$('#image-for-meme').removeClass('stopped')
+		$('#image-for-meme-input').val('')
+		$('#image-for-meme').hide()
+		$('#image-for-meme-reset').show()
+		})
+		setTimeout(function(){
+			if ( $('#image-for-meme-img').height() < 50 ){
+				console.log('oh shitt')
+				$('#image-for-meme-field').attr('value', '')
+				$('#image-for-meme-input').val('')
+				$('#image-for-meme-img').attr('src', '')
+				$('#image-for-meme').removeClass('stopped')
+			}
+		}, 2000)
+	})
+	$(document).on('click', '#image-for-gif-add', function() {
+		if ( !$('#image-for-gif-input').val() == '' ) {
+			$('#make-post-preview').addClass('stopped')
+			$('#make-image-preview').children('img').remove()
+			var image = $('<img src="'+ $('#image-for-gif-input').val() +'" >');
+			$('#make-image-preview').append(image)
+			$('#make-image-preview').css({
+				'min-height': $('#make-image-preview img').height()
+			});
+		}
+		
+		$(image).load(function(){
+			$('#iamge-for-gif-reset').show()
+			$('#image-for-gif-field').attr('value', $(image).attr('src'))
+			$('#image-for-gif-input').val('')
+			$('#image-for-gif-wrapper').hide()
+			$('#image-for-gif-reset').show()
+			$('#make-image-preview').removeClass('stopped')
+			$('#cancel-upload, #submit-image-button-before').show()
+			$('#make-tags-1-wrapper').addClass('inline-block-imp')
+			$('.anonymous-checkbox').addClass('shown')
+			$('#make-tags-1').addClass('inline-block-imp')
+		})
+		setTimeout(function(){
+			if ( $(image).height() < 50 ){
+				console.log('oh shitt')
+				$('#image-for-gif-field').attr('value', '')
+				$('#image-for-gif-input').val('')
+				$(image).remove()
+				$('#image-for-gif-wrapper').fadeIn()
+				$('#pictureInput, #preview-image-text').show()
+				$('#cancel-upload, #submit-image-button-before').hide()
+				$('#make-tags-1-wrapper').removeClass('inline-block-imp')
+				$('.anonymous-checkbox').removeClass('shown')
+				$('#make-tags-1').removeClass('inline-block-imp')
+				$('#make-image-preview').css({
+					'min-height': '100px'
+				});
+				$('#iamge-for-gif-reset').hide()
+			}
+		}, 2000)
+		
+		$('#pictureInput, #preview-image-text').hide()
+		$('#cancel-upload, #submit-image-button-before').show()
+		$('#make-tags-1-wrapper').addClass('inline-block-imp')
+		$('.anonymous-checkbox').addClass('shown')
+		$('#make-tags-1').addClass('inline-block-imp')
+	})
+	$(document).on('click', '#image-for-gif-reset', function(){
+		console.log('oh shitt')
+		var image  = $('#make-image-preview img')
+		$('#image-for-gif-field').attr('value', '')
+		$('#image-for-gif-input').val('')
+		$(image).remove()
+		$('#image-for-gif-wrapper').fadeIn()
+		$('#pictureInput, #preview-image-text').show()
+		$('#cancel-upload, #submit-image-button-before').hide()
+		$('#make-tags-1-wrapper').removeClass('inline-block-imp')
+		$('.anonymous-checkbox').removeClass('shown')
+		$('#make-tags-1').removeClass('inline-block-imp')
+		$('#make-image-preview').css({
+			'min-height': '100px'
+		});
+		$('#image-for-gif-reset').hide()
+		$("#make-post-preview-wrapper #pictureInput").replaceWith($("#make-post-preview-wrapper #pictureInput").val('').clone(true));
+	})
+	$(document).on('click', '#image-for-meme-reset', function() {
+		$('#image-for-meme-field').attr('value', '')
+		$('#image-for-meme-img').attr('src', '')
+		$('#image-for-meme').show()
+		$('#image-for-meme-reset').hide()
+	})
+	
 	$(document).on('click', 'body.shown-post #main-page-type a', function(e) {
 		e.preventDefault()
 		$('#back-list').click()
@@ -564,6 +690,12 @@ tabs = function() {
 	$(document).on('keydown', function(e) {
 		if (e.altKey && e.keyCode == 37 && $('body').hasClass('shown-post')) {
 			e.preventDefault()
+		}
+	})
+	$(document).on('keydown', function(e) {
+		if ( e.keyCode == 13 && $('body').is('#make') ) {
+			e.preventDefault()
+			return false
 		}
 	})
 	$(document).on('keyup', function(e) {
@@ -1181,13 +1313,26 @@ tabs = function() {
 		itemSelector: '.wrapper',
 		gutter: 5
 	});
+	var previousScroll = 0;
+    var lastScrollTop = 0;
+	var toUp = false;
+	$(window).scroll(function(event){
+	   var st = $(this).scrollTop();
+	   if (st < lastScrollTop &&  lastScrollTop > 800  ){
+	   	toUp = true
+	   	setTimeout(function(){
+	   		if ( toUp == true && lastScrollTop > 800 ){
+	   			$('#scroll-up').fadeIn(100)
+	   		}
+	   	}, 800)
+	   } else {
+	   	toUp = false
+	      $('#scroll-up').hide()
+	   }
+	   lastScrollTop = st;
+	});
 	//alert('tabs')
-};
-//tabs();
-$(document).on('page:load', tabs);
-$(document).ready(tabs)
-
-function previewPostImage(event, thisFiler, thisPreview) {
+	function previewPostImage(event, thisFiler, thisPreview) {
 	console.log(thisPreview)
 	var files = event.target.files;
 	var image = files[0]
@@ -1202,9 +1347,16 @@ function previewPostImage(event, thisFiler, thisPreview) {
 			'min-height': $('#make-image-preview img').height()
 		});
 		$('#pictureInput, #preview-image-text').hide()
+		$('#image-for-gif-wrapper').hide()
+		$('#image-for-gif-reset').show()
 	}
 	reader.readAsDataURL(image);
-	$('#make-tags-1-wrapper, #cancel-upload, #reset-image, #submit-image-button-before').show()
+	/*$('#make-tags-1-wrapper, #cancel-upload, #reset-image, #submit-image-button-before').show()
 	$('.anonymous-checkbox').addClass('shown')
-	$('#make-tags-1').addClass('inline-block-imp')
+	$('#make-tags-1').addClass('inline-block-imp')*/
 };
+};
+//tabs();
+$(document).on('page:load', tabs);
+$(document).ready(tabs)
+
