@@ -8,9 +8,9 @@
         
         
         
-        <% if !x.imageaddress.blank? %><div class="profile-post" style="background-image: url(<%= x.image2.url(:medium) %>)"></div><% end %>
-        <% if x.image.present? %><div class="profile-post" style="background-image: url(<%= x.image.url(:medium) %>)"></div><% end %>
-        <% if !x.giphyid.blank? %><div class="profile-post" style="background-image: url(https://media2.giphy.com/media/<%= x.giphyid %>/giphy.gif)"></div><% end %>
+        <% if !x.imageaddress.blank? %><img src="<%= x.image2.url(:medium) %>" class="profile-post" alt="<%= x.title %>"><% end %>
+                <% if x.image.present? %><img src="<%= x.image.url(:medium) %>" class="profile-post" alt="<%= x.title %>"><% end %>
+                <% if !x.giphyid.blank? %><img class="profile-post" src="https://media2.giphy.com/media/<%= x.giphyid %>/giphy.gif"><% end %>
         
         <div class="profile-post-options">
             <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
