@@ -233,14 +233,19 @@ tabs = function() {
 		}
 	    
 	})
+	var touploadmemestock = false
 	$('#upload-meme-stock').click(function(){
-		$('#upload-meme-stock-field').val( $('#upload-meme-stock-input').val()  )
-		setTimeout(function(){
+		if ( touploadmemestock == false ) {
+			alert('clicked')
+			touploadmemestock = true
+			$('#upload-meme-stock-field').val( $('#upload-meme-stock-input').val()  )
 			$('#upload-meme-stock-submit').click()
-		}, 100)
-		setTimeout(function(){
 			$('#upload-meme-stock-input, #upload-meme-stock-field').val('')
-		}, 200)
+		}
+		setTimeout(function(){
+			touploadmemestock = false
+		}, 400)
+		
 	})
 	/*
 	var stockBase64;
