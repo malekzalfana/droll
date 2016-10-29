@@ -3,7 +3,9 @@
     <div class="wrapper">
                 <div class="wrapper-content">
                 
-                <img class="profile-post" src="<%= x.image.url(:medium) %>)">
+                <% if !x.imageaddress.blank? %><div class="profile-post" style="background-image: url(<%= x.image2.url(:medium) %>)"></div><% end %>
+                <% if x.image.present? %><div class="profile-post" style="background-image: url(<%= x.image.url(:medium) %>)"></div><% end %>
+                <% if !x.giphyid.blank? %><div class="profile-post" style="background-image: url(https://media2.giphy.com/media/<%= x.giphyid %>/giphy.gif)"></div><% end %>
                 <h2 class="post-title"><%= x.title %></h2>
                 <div class="profile-post-options">
                     <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>

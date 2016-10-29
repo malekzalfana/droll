@@ -4,7 +4,14 @@
         <div class="profile-post-overlay"></div>
         <h2 class="post-title"><%= x.title %></h2>
         <span class="profile-post-user">@<%= x.user.username %></span>
-        <div class="profile-post" style="background-image: url(<%= x.image.url(:medium) %>)"></div>
+        
+        
+        
+        
+        <% if !x.imageaddress.blank? %><div class="profile-post" style="background-image: url(<%= x.image2.url(:medium) %>)"></div><% end %>
+        <% if x.image.present? %><div class="profile-post" style="background-image: url(<%= x.image.url(:medium) %>)"></div><% end %>
+        <% if !x.giphyid.blank? %><div class="profile-post" style="background-image: url(https://media2.giphy.com/media/<%= x.giphyid %>/giphy.gif)"></div><% end %>
+        
         <div class="profile-post-options">
             <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
             <%= link_to dislike_post_path(x), method: :put, class: 'down downvote', :"data-post-id" => x.id, remote: true  do %>

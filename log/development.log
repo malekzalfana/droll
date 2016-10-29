@@ -199,3 +199,27 @@ Started GET "/assets/missing-2.jpg" for 94.187.88.54 at 2016-10-29 23:16:07 +000
 
 
 Started GET "/assets/missing.jpg" for 94.187.88.54 at 2016-10-29 23:16:07 +0000
+
+
+Started GET "/user/malekk" for 94.187.88.54 at 2016-10-29 23:20:45 +0000
+Processing by PagesController#profile as HTML
+  Parameters: {"id"=>"malekk"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "malekk"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "malekk"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "malekk"]]
+  [1m[36mActsAsVotable::Vote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 2], ["voter_type", "User"], ["vote_scope", "favor"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "malekk"]]
+  Rendered layouts/_follow_button.html.erb (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE (user_id = 2) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 2], ["voter_type", "User"], ["vote_scope", "favor"]]
+  Rendered pages/profile.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 174ms (Views: 164.1ms | ActiveRecord: 1.3ms)
