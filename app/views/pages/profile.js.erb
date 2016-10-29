@@ -8,14 +8,14 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
   			itemSelector: '.wrapper',
   			gutter: 5
   		});
-  		setTimeout(function(){
-    $('#left-content-profile').masonry({
-  			itemSelector: '.wrapper',
-  			gutter: 5
-  		});
-    }, 1100)
     })
-    
+    /*setTimeout(function(){
+    $container.masonry('appended', $(html));
+		$container.masonry({
+			itemSelector: '.wrapper',
+			gutter: 5
+		});
+    }, 1000)*/
 		
     
         <% if @profilepost.next_page %>
@@ -36,13 +36,7 @@ else {
   			gutter: 5
   		});
 		})
-    /*setTimeout(function(){
-    $('#right-content-profile').masonry({
-  			itemSelector: '.wrapper',
-  			gutter: 5
-  		});
-    }, 1100)
-    */
+    
     <% if @profilefavor.next_page %>
       $('#right-content-profile .pagination').replaceWith('<%= j will_paginate @profilefavor %>');
     <% else %>
