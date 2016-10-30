@@ -26,7 +26,7 @@ body {
 }
 #content-full2 {
     width: 600px;
-    position: absolute;
+    /*position: absolute;*/
     top: 0px;
     left: 0;
     text-align: center;
