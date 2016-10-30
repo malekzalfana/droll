@@ -1,5 +1,14 @@
 var tabs;
 tabs = function() {
+	$(document).on('click', '.inline-make-tags-wrapper p', function() {
+		console.log('tag is clicked')
+		if ($(this).hasClass('active-make-tag') ) {
+			$(this).removeClass('active-make-tag')
+		}
+		else {
+			$(this).addClass('active-make-tag')
+		}
+	})
 	console.log('tabs')
 	$(document).on('click', '.not-signed-in .upvote,.not-signed-in .downvote',
 		function() {
@@ -72,15 +81,7 @@ tabs = function() {
 		$('#submit-feedback, #cancel-feedback, #feedback').show()
 		$('#thanks-feedback').hide()
 	})
-	$(document).on('click', '.inline-make-tags-wrapper p', function() {
-		//alert('clicked')
-		if ($(this).hasClass('active-make-tag') ) {
-			$(this).removeClass('active-make-tag')
-		}
-		else {
-			$(this).addClass('active-make-tag')
-		}
-	})
+	
 	$(document).on('click', '.tabs', function() {
 		$('.anonymous-image, .make-tags').removeClass('buzz')
 		$('.choosen-content').hide();
