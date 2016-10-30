@@ -360,14 +360,13 @@ tabs = function() {
 	//*
 	
 	$(document).on('click', '#profile-favors', function() {
-		console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
-		$(document).ready(function(){
+		//console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
+		//$(document).ready(function(){
 			$('#right-content-profile').masonry({
 	  			itemSelector: '.wrapper',
 	  			gutter: 5
 	  		});
-		})
-		
+		//})
 	})
 	$(document).on('click', '#edit-profile-image, #edit-profile-cover', function() {
 			$('#' + $(this).attr('id') + '-field').click()
