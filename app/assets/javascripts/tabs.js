@@ -1338,11 +1338,14 @@ tabs = function() {
 		itemSelector: '.wrapper',
 		gutter: 5
 	});
-	var $container2 = $('#right-content-profile');
-	$container2.masonry({
-		itemSelector: '.wrapper',
-		gutter: 5
-	});
+	setTimeout(function(){
+		var $container2 = $('#right-content-profile');
+		$container2.masonry({
+			itemSelector: '.wrapper',
+			gutter: 5
+		});
+	})
+	
 	var previousScroll = 0;
     var lastScrollTop = 0;
 	var toUp = false;
