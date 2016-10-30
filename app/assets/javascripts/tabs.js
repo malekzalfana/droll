@@ -46,8 +46,8 @@ tabs = function() {
 			$(this).siblings('.post-votes-word').attr('data-user-votes', userVotes)
 		}
 	});
-	var $container = $('#left-content-profile');
-	console.log($container)
+	//var $container = $('#left-content-profile');
+	//console.log($container)
 	/*$container.imagesLoaded(function() {
 		$container.masonry({
 			itemSelector: '.wrapper',
