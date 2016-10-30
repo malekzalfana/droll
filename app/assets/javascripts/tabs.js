@@ -360,6 +360,7 @@ tabs = function() {
 	//*
 	
 	$(document).on('click', '#profile-favors', function() {
+		console.log('sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
 		$(document).ready(function(){
 			$('#right-content-profile').masonry({
 	  			itemSelector: '.wrapper',
