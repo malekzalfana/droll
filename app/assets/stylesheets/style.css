@@ -4097,7 +4097,7 @@ body.shown-post #back-clicker:active #back-list, body.shown-post #back-clicker:a
 }
 html, body {
   min-height: 100%;
-  overflow-y: visible;
+  /*overflow-y: visible;*/
 }/*
 
 .progress {
