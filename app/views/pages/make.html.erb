@@ -26,7 +26,7 @@
     margin: 8px;
 ">you can add this later</span></label>
     <div id="sign-up-input-wrapper">
-      <%= f.file_field :image, id: 'choose-image-input', :onchange => "previewUserImage(event)" %>
+      <%= f.file_field :image, id: 'choose-image-input', :onchange => "previewUserImage(event)", accept: "image/*" %>
       <div class="sign-up-input-visible" id="choose-image-preview"></div>
       <i id="choose-image" class="material-icons">add_circle_outline</i>
       <i class="material-icons" id="reset-user-image">cached</i>
@@ -39,7 +39,7 @@
     margin: 8px;
 ">you can add this later</span></label>
     <div id="sign-up-input-wrapper" class="cover-input-sign-up">
-      <%= f.file_field :cover, id: 'choose-cover-input', :onchange => "previewUserCover(event)" %>
+      <%= f.file_field :cover, id: 'choose-cover-input', :onchange => "previewUserCover(event)", accept: "image/*" %>
       <div class="sign-up-input-visible" id="choose-cover-preview"></div>
       <i id="choose-cover" class="material-icons">add_circle_outline</i>
       <i class="material-icons" id="reset-cover">cached</i>
@@ -143,6 +143,7 @@
 	<div id="tabs-wrapper">
 	  <div id="images-tab" class="tabs active-tab">GIF</div>
 	  <div id="memes-tab" class="tabs">Meme</div>
+	  <div id="video-tab" class="tabs">Video</div>
 	  <div id="rage-comics-tab" class="tabs">Rage Comic</div>
 	</div>
 	<div id="memes-content" class="choosen-content">
@@ -1100,6 +1101,51 @@
 	</div>
 </div>
 </div>
+
+<div id="video-content" class="choosen-content">
+	<%= form_for @post, html: { multipart: true } do |f| %>
+	<div id="make-video-wrapper">
+			<video id="make-video-preview" class="hidden" muted loop autoplay controls src="" type="video/mp4" preload="auto">
+				You are using an old browser pal.
+			</video>
+			<input onchange="video64()" type="file" id="make-video-input" accept="video/*" >
+			<%= f.text_area :title, id: "make-video-post-title", class: "hidden",  placeholder: "Caption" %>
+			<%= f.text_field :video64, class: "hidden video64-field", id: "video-base64" %>
+		    <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
+		    <%= f.submit :value => "Post", :id => "submit-video" %>
+			<p id="make-video-p">Click or drop your video here</p>
+			<div id="make-video-preview"></div>
+	</div>
+	<div id="make-video-options">
+		<div id="make-tags-wrapper-4" class="inline-make-tags-wrapper">
+								<span>Tags</span>
+								<p id="tag-memes" class="active-make-tag">memes</p>
+								<p id="tag-food">food</p>
+								<p id="tag-photoshopped">photoshopped</p>
+								<p id="tag-gaming">gaming</p>
+								<p id="tag-sports">sports</p>
+								<p id="tag-animated">animated</p>
+								<p id="tag-cute">cute</p>
+								<p id="tag-reaction">reaction</p>
+								<p id="tag-wtf">wtf</p>
+								<p id="tag-politics">politics</p>
+								<p id="tag-rage-comic">rage comics</p>
+								<p id="tag-nsfw">nsfw</p>
+								<p id="tag-happy">happy</p>
+								<p id="tag-awesome">awesome</p>
+								<p id="tag-opinion">opinion</p>
+								<p id="tag-movies">movies</p>
+							</div>
+	</div>
+	<div id="make-video-buttons">
+		<button type="button" id="submit-video-before">Post</button>
+		<button type="button" id="cancel-video">Cancel</button>
+	</div>
+			
+	<% end %>
+	
+</div>
+
 		
 		
 		
@@ -1266,7 +1312,7 @@
 				<i class="material-icons">sort</i>
 			</div>
 			<%= form_for @post, html: { multipart: true } do |f| %>
-				 <%= f.file_field :image, id: "ragefaces-filefield" %>
+				 <%= f.file_field :image, id: "ragefaces-filefield", accept: "image/*" %>
 				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
 				 <input id="base64-2" type="hidden" value="" name="base64"/>
 				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
@@ -1320,7 +1366,7 @@
 				<%= f.text_field :imageaddress, id: "image-for-gif-field", class: "hidden" %>
 				<%= f.text_field :giphyid, id: "make-gif-field", class: "hidden" %>
 				<%# f.text_area :giphyid, value: "999" %>
-				 <%= f.file_field :image, id: "pictureInput", class: "pictureInput", onchange: "previewPostImage(event)" %>
+				 <%= f.file_field :image, id: "pictureInput", class: "pictureInput", onchange: "previewPostImage(event)", accept: "image/*" %>
 				 <div id="make-image-preview">
 				 	<i class="material-icons" id="reset-image">cached</i>
 				 </div>

@@ -67,7 +67,7 @@
         <div id="tags-wrapper-edge-2"></div>-->
         <span id="tags-button"><i class="material-icons">sort</i></span>
         <a href="/recent"><div id="tag-all" class="tag active">All</div></a>
-        <!--<a href="/tags/video"><div class="tag">Videos</div></a>-->
+        <a href="/tags/videos"><div class="tag">Videos</div></a>
         <a href="/tags/memes"><div class="tag">Memes</div></a>
         <a href="/tags/food"><div class="tag">Food</div></a>
         <a href="/tags/gaming"><div class="tag">gaming</div></a>
@@ -81,9 +81,9 @@
         <a href="/tags/happy"><div class="tag">happy</div></a>
         <a href="/tags/animated"><div class="tag">animated</div></a>
         <a href="/tags/photoshopped"><div class="tag">photoshopped</div></a>
-        <a href="/tags/nsfw"><div class="tag">nsfw</div></a>
-        <a href="/tags/cute"><div class="tag">cute</div></a>
-        <a href="/tags/politics"><div class="tag">politics</div></a>
+        <!--<a href="/tags/nsfw"><div class="tag">nsfw</div></a>-->
+        <!--<a href="/tags/cute"><div class="tag">cute</div></a>-->
+        <!--<a href="/tags/politics"><div class="tag">politics</div></a>-->
         
     </div>
     </div>
@@ -123,11 +123,22 @@
                     <% end %>
                 </div>
                 <%# link_to(post) do %>
+                
+                    <% if !post.video64.blank? %>
+                        <div class="black-under-video"></div>
+                        <i class="material-icons video-volume hidden-imp">volume_up</i>
+                        <i class="material-icons play-video">play_arrow</i>
+                        <i class="material-icons pause-video">pause</i>
+                        <video id="post-video-<%= post.id %>" muted class="blurred-video post-image post-video" data-post-id="<%= post.id %>" autoplay loop src="<%= post.video64 %>" type="video/mp4" preload="auto">
+            				You are using an old browser pal.
+            			</video>
+                    <% end %>
+                
                     <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
-                        <% if !post.imageaddress.blank? %><img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2" alt="<%= post.title %>"><% end %>
-                        <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
-                        <% if post.image.present? %><img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2"><% end %>
-                        <% if !post.giphyid.blank? %><img class="post-image" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2" alt="<%= post.title %>"><% end %>
+                    <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+                    <% if post.image.present? %><img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2"><% end %>
+                    <% if !post.giphyid.blank? %><img class="post-image" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
                     
                 <%# end %>
             </div>

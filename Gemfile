@@ -1,5 +1,12 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
+
+# for uploading images
+gem 'paperclip', '~> 4.3.1'
+# for video support
+gem 'paperclip-av-transcoder'
+gem "paperclip-ffmpeg", "~> 1.2.0"
+
 # for tags
 gem 'acts-as-taggable-on'
 #for binding ready to turbolinks
@@ -30,8 +37,7 @@ gem 'impressionist'
 gem 'simple_form', '~> 3.0.2'
 # for voting system
 gem 'acts_as_votable'
-# for uploading images
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+
 # for devise gem
 gem 'devise'
 # for twitter bootstrap sass 

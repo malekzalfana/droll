@@ -38,7 +38,7 @@ body {
     display: block;
     margin: 0px auto !important;
     padding-top: 10px;
-    position:absolute;
+    /*position:absolute;*/
     top: 50px;
     z-index: 2;
 }

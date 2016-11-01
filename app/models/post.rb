@@ -4,6 +4,8 @@ class Post < ActiveRecord::Base
     cattr_accessor :user_id
     #cattr_accessor :tag_list
     
+    
+    
     acts_as_taggable_on :tags
     #acts_as_taggable_on :tag_list
     #include PublicActivity::Model

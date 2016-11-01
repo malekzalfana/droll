@@ -60,6 +60,17 @@
                             <div class="favor-words">favored</div>
                 </div>
                 <% end %>
+                
+                <% if !@post.video64.blank? %>
+                <div class="black-under-video"></div>
+                <i class="material-icons video-volume hidden-imp">volume_up</i>
+                <i class="material-icons play-video">play_arrow</i>
+                <i class="material-icons pause-video">pause</i>
+                <video id="post-video-<%= @post.id %>" muted class="blurred-video post-image post-video" data-post-id="<%= @post.id %>" autoplay loop src="<%= @post.video64 %>" type="video/mp4" preload="auto">
+    				You are using an old browser pal.
+    			</video>
+                <% end %>
+                
                 <% if !@post.imageaddress.blank? %><img src="<%= @post.image2.url(:medium) %>" class="post-image" alt="<%= @post.title %>"><% end %>
                 <% if !@post.imageaddress.blank? %><img src="<%= @post.image2.url(:large) %>" class="post-image post-image-2" alt="<%= @post.title %>"><% end %>
                 <% if @post.image.present? %><img src="<%= @post.image.url(:large) %>" class="post-image"  alt="<%= @post.title %>"><% end %>
@@ -247,12 +258,12 @@
     
     <div class="comment-pagination"><%= will_paginate @comment %></div>
     <% end %>
-        <script>
+        <!--<script>
             $(".post-image").lazyload({
                 event: 'load',
                 threshold: '200'
             });
-        </script>
+        </script>-->
         <link href="https://fonts.googleapis.com/css?family=Schoolbell" rel="stylesheet">
         
         

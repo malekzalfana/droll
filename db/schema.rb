@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028140943) do
+ActiveRecord::Schema.define(version: 20161031125019) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -139,6 +139,11 @@ ActiveRecord::Schema.define(version: 20161028140943) do
     t.integer  "image2_file_size"
     t.datetime "image2_updated_at"
     t.string   "giphyid"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
+    t.string   "video64"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
