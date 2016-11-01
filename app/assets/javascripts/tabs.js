@@ -1363,7 +1363,7 @@ tabs = function() {
 		}
 	})
 	
-	var video64;
+	
 	/*$(document).on('load', '.post-video', function(){
 	pauseVideo( $(this).attr('data-post-id') )
 	})
@@ -1481,3 +1481,4 @@ tabs = function() {
 //tabs();
 $(document).on('page:load', tabs);
 $(document).ready(tabs)
+var video64;
