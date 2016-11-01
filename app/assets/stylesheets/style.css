@@ -6,10 +6,7 @@ html body {
 	padding: 0px;
 	background: white;
 	overflow-x: hidden;
-	overflow-y: visible;
-}
-html {
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 #make #log-in-wrapper {
 	width: 250px;
