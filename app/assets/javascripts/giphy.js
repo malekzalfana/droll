@@ -1,5 +1,5 @@
 if ( $('body').is('#make2') || $('body').is('#make') ) {
-    var gifArray = ['lol', 'wtf', 'crying', "that's racist", 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy', 'hell no']
+    var gifArray = ['lol', 'wtf', 'crying', "that's racist", 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy', 'hell no', 'damn it', 'me gusta', 'triggered']
     
     
     
@@ -64,8 +64,9 @@ function createVideoTag(srcStill,src, id) {
    
    var videoS = document.createElement('div')
    videoS.setAttribute("data-giphy-id", id);
+   videoS.setAttribute("data-original", src);
    videoS.setAttribute("class", "remote-gif-overlay");
-   videoS.style.backgroundImage = 'url(' + src + ')'
+   //videoS.style.backgroundImage = 'url(' + src + ')'
    $('.remote-gif-overlay').lazyload();
    video.appendChild(videoS)
    

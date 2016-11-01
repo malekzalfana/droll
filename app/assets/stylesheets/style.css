@@ -6500,6 +6500,7 @@ i.fa.fa-reddit-alien {
     margin: 5px;
 }
 .inline-make-tags-wrapper p {
+	min-width: 20px;
 	float: left;
 	color: gray;
     margin-bottom: 10px !important;
@@ -6894,4 +6895,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     opacity: 0.5;
     left: 0px;
     pointer-events: none
+}
+.no-pointer {
+	pointer-events: none
 }
