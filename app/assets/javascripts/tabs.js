@@ -235,7 +235,7 @@ tabs = function() {
 	    
 	})
 	var touploadmemestock = false
-	$('#upload-meme-stock').click(function(){
+	$(document).unbind('click').on('click','#upload-meme-stock', function(){
 		if ( touploadmemestock == false ) {
 			alert('clicked')
 			touploadmemestock = true

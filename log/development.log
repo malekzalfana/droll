@@ -5677,3 +5677,501 @@ Started GET "/assets/eraser.png" for 77.42.164.82 at 2016-11-01 19:13:16 +0000
 
 
 Started GET "/assets/colors.png" for 77.42.164.82 at 2016-11-01 19:13:16 +0000
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:21:35 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (18.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (2.6ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (10.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (4.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (8.7ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:21:36.042838')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (2.5ms)
+  [1m[35mStock Load (6.0ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.8ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (227.4ms)
+  Rendered layouts/_nav_upload.html.erb (15.5ms)
+  Rendered layouts/_nav.html.erb (35.6ms)
+Completed 200 OK in 2428ms (Views: 2127.4ms | ActiveRecord: 51.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:21:39 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:21:39.879766')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (13.1ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 174ms (Views: 163.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/cursor.png" for 77.42.164.82 at 2016-11-01 19:21:42 +0000
+
+
+Started GET "/assets/eraser.png" for 77.42.164.82 at 2016-11-01 19:21:42 +0000
+
+
+Started GET "/assets/spray-can.png" for 77.42.164.82 at 2016-11-01 19:21:42 +0000
+
+
+Started GET "/assets/colors.png" for 77.42.164.82 at 2016-11-01 19:21:42 +0000
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:29:56 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (1.0ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:29:56.133010')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (36.7ms)
+  Rendered layouts/_nav_upload.html.erb (1.2ms)
+  Rendered layouts/_nav.html.erb (5.8ms)
+Completed 200 OK in 515ms (Views: 502.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:29:59 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (1.8ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (1.0ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:29:59.628439')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mStock Load (0.8ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (31.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.9ms)
+Completed 200 OK in 735ms (Views: 719.0ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:38:17 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (1.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:38:17.279369')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mStock Load (1.0ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (31.2ms)
+  Rendered layouts/_nav_upload.html.erb (0.6ms)
+  Rendered layouts/_nav.html.erb (5.6ms)
+Completed 200 OK in 504ms (Views: 362.1ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/assets/spray-can.png" for 77.42.164.82 at 2016-11-01 19:38:18 +0000
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:38:19 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:38:19.088034')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (31.1ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 192ms (Views: 181.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/cursor.png" for 77.42.164.82 at 2016-11-01 19:38:19 +0000
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:46:38 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:46:38.219773')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (61.9ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (5.3ms)
+Completed 200 OK in 211ms (Views: 203.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:46:39 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:46:39.823789')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (55.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 195ms (Views: 187.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:54:59 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:54:59.199261')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (82.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.8ms)
+Completed 200 OK in 219ms (Views: 212.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 19:55:01 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 19:55:01.211180')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.3ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (68.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 224ms (Views: 216.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:03:20 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:03:20.200905')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (79.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (4.8ms)
+Completed 200 OK in 243ms (Views: 236.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:11:41 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:11:41.296733')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (13.0ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (4.4ms)
+Completed 200 OK in 203ms (Views: 194.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:11:43 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:11:43.278259')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (28.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 255ms (Views: 185.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:20:02 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:20:02.127267')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (16.2ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (4.1ms)
+Completed 200 OK in 169ms (Views: 161.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:20:03 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:20:03.358745')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (123.3ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 314ms (Views: 306.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:28:23 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:28:23.240694')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (54.4ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (4.2ms)
+Completed 200 OK in 203ms (Views: 195.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:36:44 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:36:44.148938')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (129.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.6ms)
+Completed 200 OK in 297ms (Views: 289.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:45:05 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:45:05.190036')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (25.1ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.6ms)
+Completed 200 OK in 168ms (Views: 160.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:45:06 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:45:06.974428')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (110.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 263ms (Views: 255.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:53:26 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:53:26.186462')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (95.3ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (4.2ms)
+Completed 200 OK in 256ms (Views: 248.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 20:53:28 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 20:53:28.051670')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (27.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 177ms (Views: 169.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:01:47 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:01:47.176715')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (108.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (4.2ms)
+Completed 200 OK in 285ms (Views: 276.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:01:49 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:01:49.809317')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (72.3ms)
+  Rendered layouts/_nav_upload.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 229ms (Views: 221.0ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:10:08 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:10:08.200146')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (76.5ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.6ms)
+Completed 200 OK in 244ms (Views: 235.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:10:10 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:10:10.147208')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (12.2ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 149ms (Views: 142.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:18:29 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:18:29.161349')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (18.1ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.7ms)
+Completed 200 OK in 296ms (Views: 174.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:18:30 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:18:31.005902')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (23.3ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 263ms (Views: 254.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:26:49 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:26:49.196523')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (31.7ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.9ms)
+Completed 200 OK in 293ms (Views: 283.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:35:10 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:35:10.235965')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (17.9ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (3.7ms)
+Completed 200 OK in 201ms (Views: 193.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/make" for 77.42.164.82 at 2016-11-01 21:35:12 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 1 AND (created_at >= '2016-10-30 21:35:12.025227')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 2], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 2], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (77.0ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 216ms (Views: 207.2ms | ActiveRecord: 1.3ms)
