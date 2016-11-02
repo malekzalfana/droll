@@ -235,18 +235,10 @@ tabs = function() {
 	    
 	})
 	var touploadmemestock = false
-	$(document).on('click','#upload-meme-stock', function(){
-		if ( touploadmemestock == false ) {
-			alert('clicked')
-			touploadmemestock = true
+	$('#upload-meme-stock').unbind('click').click(function(){
 			$('#upload-meme-stock-field').val( $('#upload-meme-stock-input').val()  )
 			$('#upload-meme-stock-submit').click()
 			$('#upload-meme-stock-input, #upload-meme-stock-field').val('')
-		}
-		setTimeout(function(){
-			touploadmemestock = false
-		}, 500)
-		
 	})
 	/*
 	var stockBase64;
