@@ -748,8 +748,27 @@ tabs = function() {
 		$(thisCommentBody).find('textarea.post-comment-body').val($(
 			thisCommentBody).find('.post-comment-body-2.post-comment-body').html())
 	})
+	$('.post-reply').unbind('click').click( function() {
+		
+	})
 	var toComment = true
-	$(document).on('click', '.post-comment', function() {
+	jQuery.fn.preventDoubleSubmission = function() {
+  $('.reply-form').on('submit',function(e){
+    var $form = $(this);
+
+    if ($form.data('submitted') === true) {
+      // Previously submitted - don't submit again
+      e.preventDefault();
+    } else {
+      // Mark it so that the next submit can be ignored
+      $form.data('submitted', true);
+    }
+  });
+
+  // Keep chainability
+  return this;
+};
+	$('.post-comment').unbind('click').click( function() {
 		if ( toComment == true ){
 			var thisCommentBody = $(this).parents('form')
 			if ($(thisCommentBody).find('.post-comment-body-2.post-comment-body').html() ==
