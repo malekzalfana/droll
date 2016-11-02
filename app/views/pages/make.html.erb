@@ -1654,7 +1654,7 @@
 					<span id="gifs-not-supported" class="hidden-imp">GIFs are not supported</span>
 				</div>
 				
-				<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
+				<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp", id: "add-stock-form"  do %>
 	                <%= text_area_tag :base64, '', :id => "stock-base64" %>
 	                <%= text_area_tag :stocktype, 'rage' %>
 	                <%= submit_tag "SEND", :id => "submit-stock"%>

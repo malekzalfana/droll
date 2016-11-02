@@ -753,7 +753,7 @@ tabs = function() {
 	})
 	var toComment = true
 	jQuery.fn.preventDoubleSubmission = function() {
-  $('.reply-form').on('submit',function(e){
+  $('.reply-form, #add-stock-form').on('submit',function(e){
     var $form = $(this);
 
     if ($form.data('submitted') === true) {
