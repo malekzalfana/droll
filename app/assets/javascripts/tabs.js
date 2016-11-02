@@ -235,7 +235,7 @@ tabs = function() {
 	    
 	})
 	var touploadmemestock = false
-	$(document).unbind('click').on('click','#upload-meme-stock', function(){
+	$(document).on('click','#upload-meme-stock', function(){
 		if ( touploadmemestock == false ) {
 			alert('clicked')
 			touploadmemestock = true
@@ -245,7 +245,7 @@ tabs = function() {
 		}
 		setTimeout(function(){
 			touploadmemestock = false
-		}, 100)
+		}, 500)
 		
 	})
 	/*
