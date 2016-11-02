@@ -245,7 +245,7 @@ tabs = function() {
 		}
 		setTimeout(function(){
 			touploadmemestock = false
-		}, 400)
+		}, 100)
 		
 	})
 	/*
