@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # for uploading images
-gem 'paperclip', '~> 4.3.1'
+#gem 'paperclip', '~> 4.3.1'
+gem "paperclip", "~> 3.5.3"
 # for settings up paperclip - amazon s3
 gem 'aws-sdk', '< 2.0'
 # for video support
