@@ -32,6 +32,7 @@ class Post < ActiveRecord::Base
     has_attached_file :image, styles: { medium: "550", large: "600", thumb: "100x100>" }#, default_url: "/missing.png"
     has_attached_file :image2, styles: { medium: "550", large: "600", thumb: "100x100>"  }
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+    validates_attachment_content_type :image2, content_type: /\Aimage\/.*\Z/
     belongs_to :user
     belongs_to :category
     validates :user_id, presence: true
