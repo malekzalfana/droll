@@ -751,6 +751,16 @@ tabs = function() {
 	$('.post-reply').unbind('click').click( function() {
 		
 	})
+	/*
+	$('form :submit').click( function () {
+	    $(this).prop("disabled", true).closest('form').append($('<input/>', {
+	        type: 'hidden',
+	        name: this.name,
+	        value: this.value
+	    })).submit();
+	});
+	*/
+	
 	var toComment = true
 	jQuery.fn.preventDoubleSubmission = function() {
   $('.reply-form, #add-stock-form').on('submit',function(e){
@@ -1318,10 +1328,10 @@ tabs = function() {
 		e.stopPropagation();
 		e.preventDefault();
 		video = $(this).siblings('.post-video')
-		$(video).addClass('blurred-video')
+		$(video).addClass('hidden')
 		$(video).prop('muted', true)
 		$(video).parents('.post-image-wrapper').removeClass('playing')
-		$(video).siblings('.play-video, .black-under-video, .black-over-video').show()
+		$(video).siblings('.play-video').show()
 		$(video).siblings('.video-volume').addClass('hidden-imp')
 		$(video)[0].pause()
 	})
@@ -1329,25 +1339,24 @@ tabs = function() {
 	$(document).on('click', '.play-video', function(e) {
 		e.stopPropagation();
 		var video = $(this).siblings('.post-video')
-		if ( $(video).hasClass('blurred-video')  ) {
+		if ( $(video).hasClass('hidden-imp')  ) {
 			
 			if ( !$(video).hasClass('played')  ) {
 				$(video)[0].currentTime = 0;
 				$(video).addClass('played')
 			}
-			$(video).prop('muted', false)
-			$(video).removeClass('blurred-video')
-			$(video).siblings('.play-video, .black-under-video, .black-over-video').fadeOut()
+			$(video).removeClass('hidden-imp')
+			$(video).siblings('.play-video').fadeOut()
+			$(video).siblings('.post-image:not(.video-post)').hide()
 			$(video).siblings('.video-volume').fadeIn()
 			$(video).parents('.post-image-wrapper').addClass('playing')
 			$(video).siblings('.video-volume').removeClass('hidden-imp')
 			$(video)[0].play()
 		}
 		else {
-			$(video).addClass('blurred-video')
+			$(video).addClass('hidden-imp')
 			$(video).parents('.post-image-wrapper').removeClass('playing')
-			$(video).prop('muted', true)
-			$(video).siblings('.play-video, .black-under-video, .black-over-video').show()
+			$(video).siblings('.play-video, .post-image:not(.video-post)').show()
 			$(video).siblings('.video-volume').addClass('hidden-imp')
 			$(video)[0].pause()
 		}
@@ -1434,15 +1443,68 @@ tabs = function() {
 	   reader.readAsDataURL(file);
 	   reader.onload = function () {
 	   	$('#make-video-input, #make-video-p').hide()
-	   	
 	   	$('#make-video-options, #submit-video-before, #make-video-buttons, #cancel-video').addClass('inline-block-imp')
 	   	 $('#make-video-preview').removeClass('hidden')
-	     $('#make-video-preview').attr('src', reader.result)
+	   	 var theVideo = $('#make-video-preview')
+	   	 $('#make-video-preview').attr('src', reader.result)
+	   	 //alert( $(theVideo)[0].duration )	   	 
+	   	 /*$('#make-video-preview').on('loadeddata', function(){
+	   	 	//$(this)[0].play()
+	   	 //alert( $(theVideo)[0].duration )
+	   	 if (  $(theVideo)[0].duration > 30  ) {
+	   	 	alert('more than 30')
+	   	 }
+	   	 })
+	   	 */
+	     
 	     $('#video-base64').attr('value', reader.result)
 	   };
 	   reader.onerror = function (error) {
 	     console.log('Error: ', error);
 	   };
+	  var file = event.target.files[0];
+	  var fileReader = new FileReader();
+	    fileReader.onload = function() {
+	      var blob = new Blob([fileReader.result], {type: file.type});
+	      var url = URL.createObjectURL(blob);
+	      var video = document.createElement('video');
+	      var timeupdate = function() {
+	        if (snapImage()) {
+	          video.removeEventListener('timeupdate', timeupdate);
+	          video.pause();
+	        }
+	      };
+      video.addEventListener('loadeddata', function() {
+        if (snapImage()) {
+          video.removeEventListener('timeupdate', timeupdate);
+        }
+      });
+      var snapImage = function() {
+        var canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+        var image = canvas.toDataURL();
+        var success = image.length > 100000;
+        if (success) {
+          /*var img = document.createElement('img');
+          img.src = image;
+          document.getElementsByTagName('div')[0].appendChild(img);
+          */
+          $('#video-image-base64-field').attr('value', image)
+          URL.revokeObjectURL(url);
+        }
+        return success;
+      };
+      video.addEventListener('timeupdate', timeupdate);
+      video.preload = 'metadata';
+      video.src = url;
+      // Load video in Safari / IE11
+      video.muted = true;
+      video.playsInline = true;
+      video.play();
+    };
+    fileReader.readAsArrayBuffer(file);
 	}
 	
 	

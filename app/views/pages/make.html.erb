@@ -141,9 +141,9 @@
 <div id="overlay-under-notif"></div>
 	<span id="make-logo">/make</span>
 	<div id="tabs-wrapper">
-	  <div id="images-tab" class="tabs active-tab">GIF</div>
-	  <div id="memes-tab" class="tabs">Meme</div>
-	  <div id="video-tab" class="tabs">Video</div>
+		<div id="memes-tab" class="tabs active-tab">Meme</div>
+	  <div id="images-tab" class="tabs">GIF</div>
+	  <div id="video-tab" class="tabs prevent-cursor">Video<span class="coming-soon">coming soon</span></div>
 	  <div id="rage-comics-tab" class="tabs">Rage Comic</div>
 	</div>
 	<div id="memes-content" class="choosen-content">
@@ -233,14 +233,16 @@
 			 
 		
 		<div id="pick-meme" class="ui-sortable">
-	<input id="search-memes" placeholder="search memes ..">
+			<p class="make-how-to">React to a situation/image with a funny a meme. You can add custom memes. </p>
+	<i class="material-icons" id="upload-meme-stock">add</i>
 	<input id="upload-meme-stock-input" placeholder="Paste image address">
 	<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
         <%= text_area_tag :base64, '', :id => "upload-meme-stock-field" %>
         <%= text_area_tag :stocktype, 'meme' %>
         <%= submit_tag "SEND", :id => "upload-meme-stock-submit"%>
     <% end %>
-	<i class="material-icons" id="upload-meme-stock">add</i>
+	
+	<input id="search-memes" placeholder="search memes ..">
 	<% @stock1.each do |s| %>
 		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
@@ -1109,8 +1111,11 @@
 				You are using an old browser pal.
 			</video>
 			<input onchange="video64()" type="file" id="make-video-input" accept="video/*" >
+			<%# f.file_field :video, onchange: "video64()", id: "make-video-input", accept: "video/*" %>
 			<%= f.text_area :title, id: "make-video-post-title", class: "hidden",  placeholder: "Caption" %>
 			<%= f.text_field :video64, class: "hidden video64-field", id: "video-base64" %>
+			<%# f.text_field :base64, class: "hidden", id: "video-image-base64-field" %>
+			<input id="video-image-base64-field" type="hidden" value="" name="base64"/>
 		    <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
 		    <%= f.submit :value => "Post", :id => "submit-video" %>
 			<p id="make-video-p">Click or drop your video here</p>
@@ -1267,6 +1272,7 @@
 
 		
   <div id="sketch-wrapper" class="middle-column">
+  	<p class="make-how-to">Tell a funny story using rage faces and your own images.</p>
 	<div id="sketch" height="300" width="750">
 		<div id="placeholder-wrapper">
 		<div id="placeholder-1" class="cancel placeholder"></div>
@@ -1355,7 +1361,8 @@
 	</div>
   </div>
 </div>
-	<div id="images-content-wrapper"><div id="images-content" class="choosen-content active-tab">
+	<div id="images-content-wrapper"><div id="images-content" class="choosen-content">
+		<p class="make-how-to">React to a situation with a funny a gif or react to a custom image</p>
 		<div id="make-preview-wrapper">
 			<%= form_for @post, html: { multipart: true } do |f| %>
 			<i id="image-for-gif-reset" class="material-icons">close</i>

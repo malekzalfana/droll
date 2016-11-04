@@ -51,9 +51,7 @@
 #make-video-buttons {
   display: none;
 }
-#video-content {
-  display: none;
-}
+
 #make-video-p {
   position: absolute;
   top: 200px;
@@ -80,11 +78,14 @@
   position: absolute;
     z-index: 6;
     font-size: 76px !Important;
-    left: 0px;
     color: white;
     opacity: 0.7;
-    margin: calc(50% - 38px);
-    cursor: pointer
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-shadow: 1px 1px 100px black;
 }
 .play-video:hover, .pause-video:hover, .play-video:active, .pause-video:active {
   opacity: 1;
@@ -347,6 +348,7 @@
     left: 0;
     right: 0;
     text-align: center;
+    margin-top: 10px;
 }
 #make-preview-wrapper form {
   position: relative;
@@ -557,3 +559,9 @@ body.anonymous #ragecontainer .panel2, body.anonymous #ragecontainer #panel2, bo
   display: none !important;
 }
 */
+#video-content, #images-content-wrapper {
+  display: none;
+}
+#memes-content {
+  display: block;
+}

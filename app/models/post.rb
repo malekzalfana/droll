@@ -3,7 +3,20 @@ class Post < ActiveRecord::Base
     cattr_accessor :current_user
     cattr_accessor :user_id
     #cattr_accessor :tag_list
-    
+=begin    
+    has_attached_file :video, styles: {
+    :medium => {
+      :geometry => "x550>",
+      :format => 'mp4'
+    },
+    :thumb => { :geometry => "x550>", :format => 'jpeg', :time => 10}
+    }, :processors => [:transcoder]
+    validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
+=end
+    has_attached_file :video, :styles => {
+      :medium => { :geometry => "640x480", :format => 'flv' },
+      :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
+    }, :processors => [:transcoder]
     
     
     acts_as_taggable_on :tags

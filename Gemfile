@@ -3,6 +3,8 @@ ruby '2.3.0'
 
 # for uploading images
 gem 'paperclip', '~> 4.3.1'
+# for settings up paperclip - amazon s3
+gem 'aws-sdk', '< 2.0'
 # for video support
 gem 'paperclip-av-transcoder'
 gem "paperclip-ffmpeg", "~> 1.2.0"
@@ -16,8 +18,7 @@ gem 'jquery-turbolinks'
 #gem 'jquery-turbolinks'
 #for the comments
 #gem 'ancestry'
-# for settings up paperclip - amazon s3
-gem 'aws-sdk', '< 2.0'
+
 # twitter auth
 gem 'omniauth-twitter'
 gem 'omniauth'
