@@ -552,13 +552,16 @@
     
     
     <script>
-    var tagname = '<%= @tag %>'
-    if ( tagname == '' )  {
-        tagname = 'all'
+    if ( document.getElementById('tag').length > 0 ){
+        var tagname = '<%= @tag %>'
+        if ( tagname == '' )  {
+            tagname = 'all'
+        }
+        console.log('ddddddddddddddddddddd')
+        console.log('ddddddddddddddddddddd')
+        document.querySelector("#tag-"+ tagname + " div").classList.add("active");
+        console.log('the tag is ' + tagname)
     }
-    console.log('ddddddddddddddddddddd')
-    console.log('ddddddddddddddddddddd')
-    document.querySelector("#tag-"+ tagname + " div").classList.add("active");
-    console.log('the tag is ' + tagname)
+    
     </script>
 </body>
