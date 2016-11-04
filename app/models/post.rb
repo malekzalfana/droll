@@ -12,12 +12,12 @@ class Post < ActiveRecord::Base
     :thumb => { :geometry => "x550>", :format => 'jpeg', :time => 10}
     }, :processors => [:transcoder]
     validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
-=end
+
     has_attached_file :video, :styles => {
       :medium => { :geometry => "640x480", :format => 'flv' },
       :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
     }, :processors => [:transcoder]
-    
+=end    
     
     acts_as_taggable_on :tags
     #acts_as_taggable_on :tag_list
