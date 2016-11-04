@@ -819,3 +819,5 @@ Processing by PagesController#make as HTML
   Rendered layouts/_nav_upload.html.erb (0.4ms)
   Rendered layouts/_nav.html.erb (1.2ms)
 Completed 200 OK in 185ms (Views: 178.2ms | ActiveRecord: 1.1ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
