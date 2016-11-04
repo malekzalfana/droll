@@ -115,6 +115,7 @@ class PostsController < ApplicationController
         @post.create_activity :create, owner: current_user, key: 'posting'
       end
     else
+      redirect_to '/'
       flash[:notice] = "Post wasn't uploaded"
     end
   end
