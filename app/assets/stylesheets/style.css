@@ -36,7 +36,7 @@ html body {
 .prevent-cursor {
 	cursor: not-allowed !important;
 	pointer-events: none;
-	opacity: 0.8
+	opacity: 0.3
 }
 @-webkit-keyframes fadeInUp {
   from {
