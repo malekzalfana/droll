@@ -6,7 +6,7 @@ html body {
 	padding: 0px;
 	background: white;
 	overflow-x: hidden;
-	overflow-y: auto;
+	/*overflow-y: auto;*/
 }
 #make #log-in-wrapper {
 	width: 250px;
@@ -4117,7 +4117,7 @@ body.shown-post #back-clicker:active #back-list, body.shown-post #back-clicker:a
 }
 html, body {
   min-height: 100%;
-  overflow-y: auto;
+  /*overflow-y: auto*/
 }/*
 
 .progress {
