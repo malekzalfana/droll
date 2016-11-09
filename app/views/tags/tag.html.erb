@@ -552,7 +552,7 @@
     
     
     <script>
-    if ( document.getElementById('tag') ){
+    if ( document.contains(document.getElementById('tag') ) ){
         var tagname = '<%= @tag %>'
         if ( tagname == '' )  {
             tagname = 'all'
