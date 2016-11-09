@@ -3293,7 +3293,8 @@ html {
 #main-page-type {
     text-align: center;
     position: relative;
-    top: 10px;
+    top: 12px;
+    margin-bottom: 12px;
 }
 #main-page-type span {
 	margin: 0px 10px;
@@ -3318,9 +3319,11 @@ html {
 .active-type {
 	font-weight: 800;
 	opacity: 1 !important;
+	
+}
+body:not(.shown-post) .active-type {
 	border-bottom: 2px solid #ff3000;
 }
-
 /*.shown-post .active-type {
 	opacity: 0.7 !important;
 }
@@ -4127,6 +4130,9 @@ html, body {
 body {
 	overflow-y: auto;
 }
+html {
+	overflow-y: auto !important
+}
 /*
 
 .progress {
@@ -4720,6 +4726,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	.temp {
+		display: none;
+	}
 	#upload-meme-stock-input {
 		width: calc(100% - 100px);
 	}
