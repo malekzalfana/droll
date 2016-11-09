@@ -150,8 +150,8 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     display: block;
 }
 #content-full2 .upvote, #content-full2 .downvote {
-    background: url(upvote-3.png) 0px 1px no-repeat white;
-    border-color: white;
+    background: url(upvote-3.png) 0px 1px no-repeat transparent;
+    border-color: transparent;
     opacity: 0.65;
     width: 17px;
     height: 16px;

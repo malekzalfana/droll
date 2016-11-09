@@ -133,9 +133,11 @@ a {
     background: white;
     max-width: 100%;
     margin: 0px auto;
-    left: 0;
-    right: 0;
-    top: calc(100% - 470px);
+	top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.137255) 0px 24px 38px 3px, rgba(0, 0, 0, 0.117647) 0px 9px 46px 8px, rgba(0, 0, 0, 0.2) 0px 11px 15px -7px;
     display: none;
@@ -3290,11 +3292,13 @@ html {
 }
 #main-page-type {
     text-align: center;
-    margin-top: 13px;
+    position: relative;
+    top: 10px;
 }
 #main-page-type span {
 	margin: 0px 10px;
-	opacity: 0.4;
+	/*opacity: 0.4;*/
+	padding: 6px 8px;
 	font-family: open sans;
 	color: #252525;
 }
@@ -3314,6 +3318,7 @@ html {
 .active-type {
 	font-weight: 800;
 	opacity: 1 !important;
+	border-bottom: 2px solid #ff3000;
 }
 
 /*.shown-post .active-type {
@@ -4120,7 +4125,7 @@ html, body {
   /*overflow-y: auto*/
 }
 body {
-	overflow-y: auto
+	overflow-y: auto;
 }
 /*
 
