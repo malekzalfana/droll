@@ -136,7 +136,7 @@
 </body>
 	
 <% else %>
-<body id="<%= controller.action_name %>">	
+<body id="<%= controller.action_name %>" class="<%= if user_signed_in? %>signed-in<% end %>">	
 <%= render '/layouts/activities' %>
 <div id="overlay-under-notif"></div>
 	<span id="make-logo">/make</span>

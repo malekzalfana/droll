@@ -3321,7 +3321,7 @@ html {
 	opacity: 1 !important;
 	
 }
-body:not(.shown-post) .active-type, body:not(#show) .active-type {
+body:not(.shown-post):not(#show) .active-type {
 	border-bottom: 2px solid #ff3000;
 }
 /*.shown-post .active-type {
