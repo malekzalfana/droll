@@ -161,6 +161,7 @@
 			 <%= f.text_field :facenumber,id: "created-meme-facenumber-field", class: "hidden anonymous-image-field" %>
 			 <%= f.text_field :imageaddress,id: "image-for-meme-field", class: "hidden" %>
 			 <%= f.text_field :tag_list, class: "tag-list-field" %>
+			 <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 <%= f.check_box :anonymous, class: "hidden-imp", id: "created-meme-anonymous-field", checked: false %>
 			 
 			 <%= f.submit :id => "submit-image-button-2" %>
@@ -197,6 +198,18 @@
 							<p id="tag-opinion">opinion</p>
 							<p id="tag-movies">movies</p>
 						</div>
+						
+						<div class="make-trends-wrapper">
+							<% @trends.any? %>
+							<p class="make-trends-title">Trends</p>
+		                      <% @trends.each do |trend| %>
+		                      <p data-trend-name="<%= trend.name %>" class="make-trends">/<%= trend.name %></p>
+		                    <% end %>
+							<span class="make-add-trend-title">New trend</span>
+							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
+							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
+						</div>
+						
 						<button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
 					<div id="make-tags-2" class="make-tags">
 						<i class="material-icons">sort</i>
@@ -254,7 +267,7 @@
     <% end %>
 	<div crossorigin="" class="pick-meme-container" data-original="http://www.nightmug.com/drolle/newmemes/50meme.jpg">
 		<div class="meme-shadow"></div>
-		<p class="meme-title" id="meme-title-50" contenteditable="true"><span style="color: rgb(34, 34, 34); font-family: Consolas, &quot;Lucida Console&quot;, monospace; font-size: 12px; white-space: pre-wrap; background-color: rgb(255, 255, 255);">Condesending Wonka</span>
+		<p class="meme-title" id="meme-title-50" contenteditable="true"><span>Condesending Wonka</span>
 		</p>
 	</div>
 	<div crossorigin="" class="pick-meme-container" data-original="http://www.nightmug.com/drolle/newmemes/1meme.jpg">
@@ -1117,6 +1130,7 @@
 			<%# f.text_field :base64, class: "hidden", id: "video-image-base64-field" %>
 			<input id="video-image-base64-field" type="hidden" value="" name="base64"/>
 		    <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
+		    <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 		    <%= f.submit :value => "Post", :id => "submit-video" %>
 			<p id="make-video-p">Click or drop your video here</p>
 			<div id="make-video-preview"></div>
@@ -1143,6 +1157,16 @@
 								<p id="tag-opinion">opinion</p>
 								<p id="tag-movies">movies</p>
 							</div>
+							<div class="make-trends-wrapper">
+							<% @trends.any? %>
+							<p class="make-trends-title">Recent Trends</p>
+		                      <% @trends.each do |trend| %>
+		                      <p data-trend-name="<%= trend.name %>" class="make-trends">/<%= trend.name %></p>
+		                    <% end %>
+							<span class="make-add-trend-title">New trend</span>
+							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
+							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
+						</div>
 	</div>
 	<div id="make-video-buttons">
 		<button type="button" id="submit-video-before">Post</button>
@@ -1314,6 +1338,17 @@
 								<p id="tag-movies">movies</p>
 	</div>
 	
+	<div class="make-trends-wrapper">
+							<% @trends.any? %>
+							<p class="make-trends-title">Recent Trends</p>
+		                      <% @trends.each do |trend| %>
+		                      <p data-trend-name="<%= trend.name %>" class="make-trends">/<%= trend.name %></p>
+		                    <% end %>
+							<span class="make-add-trend-title">New trend</span>
+							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
+							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
+						</div>
+	
 	<div id="ragefaces-buttons-wrapper">
 			<button id="submit-image-button-before-3">Post</button>	
 			<button id="cancel-upload-3">cancel</button>
@@ -1326,6 +1361,7 @@
 				 <input id="base64-2" type="hidden" value="" name="base64"/>
 				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
 			   <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
+			   <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
 			 
 			 <span class="anonymous-checkbox shown">
@@ -1410,6 +1446,18 @@
 					<p id="tag-opinion">opinion</p>
 					<p id="tag-movies">movies</p>
 			</div>
+			
+			<div class="make-trends-wrapper">
+							<% @trends.any? %>
+							<p class="make-trends-title">Recent Trends</p>
+		                      <% @trends.each do |trend| %>
+		                      <p data-trend-name="<%= trend.name %>" class="make-trends">/<%= trend.name %></p>
+		                    <% end %>
+							<span class="make-add-trend-title">New trend</span>
+							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
+							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
+						</div>
+			
 			 <div class="loading-icon"></div>
 			 <%= f.submit :value => "Post", :id => "submit-image-button", class: "hidden-imp" %>
 			 <button id="submit-image-button-before" type="button">Post</button>	
@@ -1422,6 +1470,7 @@
 			 	<i class="material-icons anonymous-checked"></i>
 			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
 			 	<%= f.text_field :tag_list, class: "tag-list-field" %>
+			 	<%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 	<div id="anonymous-image" class="anonymous-image">
 			 		<i class="material-icons">add</i>
 			 	</div>

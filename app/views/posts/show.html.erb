@@ -50,6 +50,10 @@
                       <% @post.tags.each do |tag| %>
                       <a href="/tags/<%= tag.name %>"><%= tag.name %></a>
                     <% end %>
+                    <% @post.trends.any? %>
+                      <% @post.trends.each do |trend| %>
+                      <a class="post-trend" href="/trends/<%= trend.name %>">/<%= trend.name %></a>
+                    <% end %>
                 </div>
                 
                 <% if user_signed_in? && current_user != @post.user %>    

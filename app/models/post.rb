@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
     }, :processors => [:transcoder]
     validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
     
-    acts_as_taggable_on :tags
+    acts_as_taggable_on :tags,:trends 
     #acts_as_taggable_on :tag_list
     #include PublicActivity::Model
     #tracked owner: ->(controller, model) {controller && controller.current_user}

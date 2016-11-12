@@ -10,10 +10,14 @@
     font-family: open sans;
     margin: 0px auto;
     position: absolute;
-    top: 0;
-    z-index:2;
+    top: -3px;
+    z-index: 6;
     left: 0;
     right: 0;
+}
+#make #navbar {
+  box-shadow: none;
+  border-bottom: 1px solid #e4e4e4;
 }
 #tabs-wrapper-1 {
   background: #252525;

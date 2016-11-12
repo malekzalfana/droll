@@ -1,10 +1,10 @@
 <body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
-    <img class="temp" src="http://i.imgur.com/aLaoys6.png" style="
+    <!--<img class="temp" src="http://i.imgur.com/aLaoys6.png" style="
     width: 65px;
     position: fixed;
     bottom: -5px;
     right: 10px;
-">
+">-->
     <div id="scroll-up-wrapper"><div id="scroll-up"><i class="material-icons">keyboard_arrow_up</i></div></div>
     
     
@@ -47,32 +47,23 @@
 <div id="overlay-under-notif"></div>
 <div class="overlay-full"></div>
 <div class="upper-black"></div>
-<div id="content-full2" class="full-wrapper new-content">
-    <% if @welcomeMessage == true %>
-        <div id="main-message">
-            Welcome to drolle! Enjoy your time. <img src="http://2.bp.blogspot.com/-4NwAstTunj0/UPiqueKINcI/AAAAAAAAAjE/jWzjl2Brquw/s1600/09.png"> 
-            <footer>click to hide</footer>
-        </div>
-    <% end %>
-    <div id="main-page-type">
-        <div id="back-clicker">
-            <i class="material-icons" id="back-list">arrow_back</i>
-            <%= link_to '<span id="feed-type">Feed</span>'.html_safe, '/' %><%= link_to '<span id="recent-type" class="active-type">Recent</span>'.html_safe, '/recent' %>
-            
-            <!-- <div class="loadingPost-icon"></div> -->
-        </div>
-            <i class="material-icons" id="next-post-icon">navigate_next</i>
-            <i class="material-icons" id="prev-post-icon">navigate_before</i>
-        
-        
-    </div>
-    <div id="tags-wrapper-wrapper-wrapper">
+<div id="trends-wrapper-wrapper">
+        <div id="trends-wrapper">
+            <% if @trends != nil %>
+    		<p class="tags-title">Trends</p>
+              <% @trends.each do |trend| %>
+            <a href="trends/<%= trend.name %>" class="trends">/<%= trend.name %></a>
+        <% end %>
+        <% end %>
+        <hr style="border: 1px solid #f9f9f9;">
+        <div id="tags-wrapper-wrapper-wrapper">
         <div id="tags-wrapper-wrapper">
         <div id="tags-wrapper">
+        <p class="tags-title-2">Tags</p>
         <!--<div id="tags-wrapper-edge-1"></div>
         <div id="tags-wrapper-edge-2"></div>-->
         <span id="tags-button"><i class="material-icons">sort</i></span>
-        <a href="/recent"><div id="tag-all" class="tag active">All</div></a>
+        <!--<a href="/recent"><div id="tag-all" class="tag active">All</div></a>-->
         <!--<a href="/tags/videos"><div class="tag">Videos</div></a>-->
         <a href="/tags/memes"><div class="tag">Memes</div></a>
         <a href="/tags/food"><div class="tag">Food</div></a>
@@ -91,10 +82,64 @@
         <!--<a href="/tags/nsfw"><div class="tag">nsfw</div></a>-->
         <!--<a href="/tags/cute"><div class="tag">cute</div></a>-->
         <!--<a href="/tags/politics"><div class="tag">politics</div></a>-->
+    </div>
+    </div>
+    </div>
+        
+        </div>
         
     </div>
+    <% if user_signed_in? %>
+    <div id="box-3-wrapper">
+            <p>Who to follow</p>
+            <% @randomUsers.each do |user| %>
+                <div class="box-profile-wrapper">
+                    <% if user.image.url == "missing.jpg" %>
+                        <div class="box-profile-cover" style="background-image: url(/assets/missing-2.jpg)"></div>
+                      <% else %>
+                          <div class="box-profile-cover" style="background-image: url(<%= user.cover.url(:medium) %>)"></div>
+                      <% end %>
+                    <% if user.image.url == "missing.jpg" %>
+                        <div class="box-profile-image" style="background-image: url(/assets/missing.jpg)"></div>
+                      <% else %>
+                          <div class="box-profile-image" style="background-image: url(<%= user.image.url(:tiny) %>)"></div>
+                      <% end %>
+                <% if user_signed_in? %>
+                <div class="box-profile-title"><%= user.username %></div>
+                    <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+                        <div><%= hidden_field_tag :followed_id, user.id %></div>
+                        <% if current_user.following?(user) %>
+                            <%= f.submit "following", class: "post-user-unfollow" %>
+                        <% else %>
+                            <%= f.submit "follow", class: "post-user-follow" %>
+                        <% end %>
+                        
+                    <% end %>
+                </div>
+                <% end %>
+            <% end %>
     </div>
+    <% end %>
+<div id="content-full2" class="full-wrapper new-content">
+    <% if @welcomeMessage == true %>
+        <div id="main-message">
+            Welcome to drolle! Enjoy your time. <img src="http://2.bp.blogspot.com/-4NwAstTunj0/UPiqueKINcI/AAAAAAAAAjE/jWzjl2Brquw/s1600/09.png"> 
+            <footer>click to hide</footer>
+        </div>
+    <% end %>
+    <div id="main-page-type">
+        <div id="back-clicker">
+            <i class="material-icons" id="back-list">arrow_back</i>
+            <%= link_to '<span id="feed-type">Feed</span>'.html_safe, '/' %><%= link_to '<span id="recent-type" class="active-type">Recent</span>'.html_safe, '/recent' %>
+            
+            <!-- <div class="loadingPost-icon"></div> -->
+        </div>
+            
+        
+        
     </div>
+    
+    
     
     
     <div class="content-overlay"></div>
@@ -104,12 +149,18 @@
             <div class="left-wrapper" id="left-wrapper-<%= post.id %>">
                 <div class="left-wrapper-overlay"></div>
             <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
-                
+                <i class="material-icons" id="next-post-icon">navigate_next</i>
+            <i class="material-icons" id="prev-post-icon">navigate_before</i>
                 <div class="post-tags-wrapper">
                         <% post.tags.any? %>
                           <% post.tags.each do |tag| %>
                           <a href="/tags/<%= tag.name %>"><%= tag.name %></a>
                         <% end %>
+                        <% post.trends.any? %>
+                          <% post.trends.each do |trend| %>
+                          <a class="post-trend" href="/trends/<%= trend.name %>">/<%= trend.name %></a>
+                        <% end %>
+                        
                     </div>
                 
                 <% if post.long === true  %>
@@ -583,10 +634,6 @@
 
 <% end %>
 </div>
-
-
-
-
 <%= form_tag url_for(:controller => 'pages', :action => 'checkUsername'), :method => 'get', class: "hidden", remote: true do %>
       <%= text_field_tag 'name', '', id: "username-check-field"%>
       <%= submit_tag "Save", id: "username-check-submit" %>

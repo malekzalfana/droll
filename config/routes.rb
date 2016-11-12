@@ -46,7 +46,9 @@ Rails.application.routes.draw do
   get '/register' => 'pages#register'
   get '/admin' => 'pages#admin'
   get '/tags' => 'tags#index'
+  get '/trends' => 'tags#trends'
   get '/tags/:name' => 'tags#tag'
+  get '/trends/:name' => 'tags#trend'
   get '/invite/:id' => 'invites#show'
   get '/pages/followTags' => 'pages#followTags'
   ##get 'tags/:tag', to: 'articles#index', as: :tag

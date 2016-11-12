@@ -1,5 +1,80 @@
 <body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
     
+    <div id="trends-wrapper-wrapper">
+        <div id="trends-wrapper">
+            <% if @trends != nil %>
+    		<p class="tags-title">Trends</p>
+    		<a class="trends" href="/recent">All</a>
+              <% @trends.each do |trend| %>
+            <a href="/trends/<%= trend.name %>" id="<%= trend.name %>" class="trends">/<%= trend.name %></a>
+        <% end %>
+        <% end %>
+        <hr style="border: 1px solid #f9f9f9;">
+        <div id="tags-wrapper-wrapper-wrapper">
+        <div id="tags-wrapper-wrapper">
+        <div id="tags-wrapper">
+        <p class="tags-title-2">Tags</p>
+        <!--<div id="tags-wrapper-edge-1"></div>
+        <div id="tags-wrapper-edge-2"></div>-->
+        <span id="tags-button"><i class="material-icons">sort</i></span>
+        <!--<a href="/recent"><div id="tag-all" class="tag active">All</div></a>-->
+        <!--<a href="/tags/videos"><div class="tag">Videos</div></a>-->
+        <a href="/tags/memes"><div class="tag">Memes</div></a>
+        <a href="/tags/food"><div class="tag">Food</div></a>
+        <a href="/tags/gaming"><div class="tag">gaming</div></a>
+        <a href="/tags/awesome"><div class="tag">awesome</div></a>
+        <a href="/tags/photoshopped"><div class="tag">photoshopped</div></a>
+        <a href="/tags/vioceover"><div class="tag">voiceover</div></a>
+        <a href="/tags/wtf"><div class="tag">reaction</div></a>
+        <a href="/tags/opinion"><div class="tag">opinion</div></a>
+        <a href="/tags/wtf"><div class="tag">wtf</div></a>
+        <a href="/tags/sports"><div class="tag">sports</div></a>
+        <a href="/tags/ragecomics"><div class="tag">rage comics</div></a>
+        <a href="/tags/happy"><div class="tag">happy</div></a>
+        <a href="/tags/animated"><div class="tag">animated</div></a>
+        <a href="/tags/movies"><div class="tag">movies</div></a>
+        <!--<a href="/tags/nsfw"><div class="tag">nsfw</div></a>-->
+        <!--<a href="/tags/cute"><div class="tag">cute</div></a>-->
+        <!--<a href="/tags/politics"><div class="tag">politics</div></a>-->
+    </div>
+    </div>
+    </div>
+        
+        </div>
+        
+    </div>
+    <% if user_signed_in? %>
+    <div id="box-3-wrapper">
+            <p>Who to follow</p>
+            <% @randomUsers.each do |user| %>
+                <div class="box-profile-wrapper">
+                    <% if user.image.url == "missing.jpg" %>
+                        <div class="box-profile-cover" style="background-image: url(/assets/missing-2.jpg)"></div>
+                      <% else %>
+                          <div class="box-profile-cover" style="background-image: url(<%= user.cover.url(:medium) %>)"></div>
+                      <% end %>
+                    <% if user.image.url == "missing.jpg" %>
+                        <div class="box-profile-image" style="background-image: url(/assets/missing.jpg)"></div>
+                      <% else %>
+                          <div class="box-profile-image" style="background-image: url(<%= user.image.url(:tiny) %>)"></div>
+                      <% end %>
+                <% if user_signed_in? %>
+                <div class="box-profile-title"><%= user.username %></div>
+                    <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+                        <div><%= hidden_field_tag :followed_id, user.id %></div>
+                        <% if current_user.following?(user) %>
+                            <%= f.submit "following", class: "post-user-unfollow" %>
+                        <% else %>
+                            <%= f.submit "follow", class: "post-user-follow" %>
+                        <% end %>
+                        
+                    <% end %>
+                </div>
+                <% end %>
+            <% end %>
+            
+        </div>
+    <% end %>
     
     <% if user_signed_in? %>
         <i class="material-icons" id="show-feedback">feedback</i>
@@ -50,6 +125,10 @@
     <div id="main-page-type">
         <div id="back-clicker">
             <i class="material-icons" id="back-list">arrow_back</i>
+            <a href="/recent"><h2 class="tag-title-before" >Recent</h2></a>
+            <h2 class="tag-title-slash" >/</h2>
+            <a href="/tags"><h2 class="tag-title-before" >Tags</h2></a>
+            <h2 class="tag-title-slash" >/</h2>
             <h2 class="tag-title"><%= @tag %></h2>
         </div>
         
@@ -59,35 +138,8 @@
         
     </div>
     <div class="content-overlay"></div>
-    <div id="tags-wrapper-wrapper-wrapper">
-        <div id="tags-wrapper-wrapper">
-        <div id="tags-wrapper">
-        <!--<div id="tags-wrapper-edge-1"></div>
-        <div id="tags-wrapper-edge-2"></div>-->
-        <span id="tags-button"><i class="material-icons">sort</i></span>
-        <a href="/recent"><div id="tag-all" class="tag">All</div></a>
-        <!--<a href="/tags/videos"><div class="tag">Videos</div></a>-->
-        <a href="/tags/memes"><div class="tag">Memes</div></a>
-        <a href="/tags/food"><div class="tag">Food</div></a>
-        <a href="/tags/gaming"><div class="tag">gaming</div></a>
-        <a href="/tags/awesome"><div class="tag">awesome</div></a>
-        <a href="/tags/photoshopped"><div class="tag">photoshopped</div></a>
-        <a href="/tags/vioceover"><div class="tag">voiceover</div></a>
-        <a href="/tags/wtf"><div class="tag">reaction</div></a>
-        <a href="/tags/opinion"><div class="tag">opinion</div></a>
-        <a href="/tags/wtf"><div class="tag">wtf</div></a>
-        <a href="/tags/sports"><div class="tag">sports</div></a>
-        <a href="/tags/ragecomics"><div class="tag">rage comics</div></a>
-        <a href="/tags/happy"><div class="tag">happy</div></a>
-        <a href="/tags/animated"><div class="tag">animated</div></a>
-        <a href="/tags/movies"><div class="tag">movies</div></a>
-        <!--<a href="/tags/nsfw"><div class="tag">nsfw</div></a>-->
-        <!--<a href="/tags/cute"><div class="tag">cute</div></a>-->
-        <!--<a href="/tags/politics"><div class="tag">politics</div></a>-->
-        
-    </div>
-    </div>
-    </div>
+    
+    
     <%= will_paginate @post %>
     <% @post.each do |post| %>
         <div class="wrapper" data-post-id="<%= post.id %>">

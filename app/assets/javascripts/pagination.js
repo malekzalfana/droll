@@ -13,6 +13,7 @@ window.onload = function(){
         if ( $('#menu-button-wrapper').hasClass('shown') ) {
         $('#menu-button').parent().removeClass('shown')
         $('#notification-icon, #nav-icons-wrapper a').hide()    
+        $('#main-page-type').fadeIn(100)
         }
         
 if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-post') ) {

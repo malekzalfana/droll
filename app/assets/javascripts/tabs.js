@@ -1,5 +1,9 @@
 var tabs;
 tabs = function() {
+	function stoperror() {
+	   return true;
+	}
+	window.onerror = stoperror;
 	$(document).on('click', '.inline-make-tags-wrapper p', function() {
 		console.log('tag is clicked')
 		if ($(this).hasClass('active-make-tag') ) {
@@ -313,10 +317,17 @@ tabs = function() {
 	$(document).on('mouseover', '#menu-button-wrapper', function() {
 		$(this).addClass('shown')
 		$('#notification-icon, #nav-icons-wrapper a').fadeIn(100)
+		if ( window.innerWidth < 600 ) {
+			$('#main-page-type').fadeOut(100)
+		}
+		$('#main-page-')
 	})
-	$(document).on('click', '#menu-button-wrapper', function() {
+	$(document).on('click touchStart', '#menu-button-wrapper', function() {
 		$(this).addClass('shown')
 		$('#notification-icon, #nav-icons-wrapper a').fadeIn(100)
+		if ( window.innerWidth < 600 ) {
+			$('#main-page-type').fadeOut(100)
+		}
 	})
 	$(document).on('keyup', '#sign-up-username-field', function() {
 		$(this).val($(this).val().toLowerCase())
@@ -326,6 +337,11 @@ tabs = function() {
 		if (window.innerWidth <= 850) {
 			$('#menu-button-wrapper').removeClass('shown')
 			$('#notification-icon, #nav-icons-wrapper a').hide()
+			
+			if ( window.innerWidth < 600 ) {
+				
+				$('#main-page-type').fadeIn(100)
+			}
 		}
 	})
 	$(document).on('click', '.cancel-share-it', function() {
@@ -461,6 +477,7 @@ tabs = function() {
 				$(thisWrapper).css({
 					'width': '600px'
 				}).addClass('shown')
+				
 				$('.wrapper').not($(this).parents('.wrapper')).hide().removeClass('shown')
 				if (!$(thisWrapper).children('.right-wrapper').hasClass('shown') && !$(
 					thisWrapper).children('.right-wrapper').hasClass('loading-2')) {
@@ -472,6 +489,13 @@ tabs = function() {
 					if (window.innerWidth > 600) {
 						$('.wrapper.shown').find('.post-image-2').lazyload()
 					}
+				}
+				if ( window.innerWidth <= 550 ) {
+					console.log( $(thisWrapper) )
+					$(thisWrapper).addClass('fadeInUp animated-very-fast')
+					setTimeout(function(){
+						$(thisWrapper).removeClass('fadeInUp animated-very-fast')
+					}, 300)
 				}
 				$('body').addClass('shown-post')
 				window.scrollTo(0, $('body').offset().top);
@@ -613,7 +637,7 @@ tabs = function() {
 	})
 	$(document).on('click', '#next-post-icon', function() {
 		if (!$('body').hasClass('loadingPost') && !$(thisWrapper).is($('.wrapper')
-			.last())) {
+			.last() )) {
 			if ($(thisWrapper).next('.wrapper').length == 0 && $('body').hasClass(
 				'loadingPost')) {
 				$('.loadingPost-icon').addClass('loading-animation')
@@ -672,7 +696,7 @@ tabs = function() {
 		}
 	})
 	$(document).on('click', '#prev-post-icon', function() {
-			if (!$('.wrapper').eq(0).hasClass('shown')) {
+			if (!$('.wrapper').eq(0).hasClass('shown') && $(thisWrapper) != $('.wrapper').first()  ) {
 				$(thisWrapper).hide().css({
 					'width': '550px'
 				}).removeClass('shown')
@@ -807,6 +831,30 @@ tabs = function() {
 			console.log('sss')
 		}
 		
+	})
+	$(document).on('click', '.make-trends', function() {
+		$('.choosen-content:visible .make-trends').removeClass('active')
+		$(this).addClass('active')
+		$('.choosen-content:visible .make-trends-field').attr('value', $(this).attr('data-trend-name') )
+		$('.choosen-content:visible .make-add-trend-input').val('')
+		$('.choosen-content:visible .make-add-trend-input').removeClass('active')
+		//alert($(this).attr('data-trend-name'))
+		//alert( $('.choosen-content:visible .make-trends-field').attr('value') )
+	})
+	$(document).on('keyup', '.make-add-trend-input', function() {
+		if ( $(this).val().length > 5 ) {
+			$('.choosen-content:visible .make-trends').removeClass('active')
+			$(this).addClass('active')
+			$(this).val( $(this).val().replace(' ','') )
+			$('.choosen-content:visible .make-trends-field').attr('value', $(this).val() )
+		}
+		else {
+			$(this).removeClass('active')
+		}
+		
+		
+		//alert($(this).attr('data-trend-name'))
+		//alert( $('.choosen-content:visible .make-trends-field').attr('value') )
 	})
 	$(document).on('click', '.comment-button', function() {
 		$('.middle-wrapper').removeClass('buzz')
@@ -1226,26 +1274,23 @@ tabs = function() {
 		var dataURL3 = memeCanvas.toDataURL();
 		$('#base64').val(dataURL3)
 		if (image2 == false) {
-			if ($('.choosen-content input[type="checkbox"]:checked').length) {
-				if ($('.choosen-content:visible .anonymous-image').children('img').length < 1) {
+			if ($('.choosen-content input[type="checkbox"]:checked').length && $('.choosen-content:visible .anonymous-image').children('img').length < 1) {
 					$('.choosen-content:visible .anonymous-image').removeClass('buzz').hide()
 						.show().addClass('buzz')
-				}
 			}
 			else if ( $('#memes-content .inline-make-tags-wrapper .active-make-tag').length == 0  ) {
 				$('#memes-content .inline-make-tags-wrapper').removeClass('buzz').hide()
 						.show().addClass('buzz')
 			}
 			else {
-				$('#submit-button-before-wrapper .loading-icon').addClass(
-						'loading-animation');
+				$('#submit-button-before-wrapper .loading-icon').addClass('loading-animation');
 				$('#submit-button-before-wrapper').children().hide()
 				setTimeout(function() {
 					var makeTagsArray = [];
 					for ( i=0;i < $('#memes-content .inline-make-tags-wrapper .active-make-tag').length ; i++ ) {
 						makeTagsArray.push( $('#memes-content .inline-make-tags-wrapper .active-make-tag').eq(i).attr('id').replace('tag-', '') )
 					}
-					$('#images-content .tag-list-field').val(makeTagsArray)
+					$('#memes-content .tag-list-field').val(makeTagsArray)
 					console.log(makeTagsArray)
 					$("#submit-image-button-2").click();
 					image2 = true

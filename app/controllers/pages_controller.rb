@@ -49,7 +49,10 @@ class PagesController < ApplicationController
   end
   
   def recent
+    
+    @trends = Post.tag_counts_on(:trends).limit(7)
     if user_signed_in?
+      @randomUsers = User.where.not(:id => current_user.following).limit(4)
       unless session[:swipe]
         @swipeMessage = true
         session[:swipe] = true
@@ -59,6 +62,7 @@ class PagesController < ApplicationController
       @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
+      
       #@activities = PublicActivity::Activity.order("created_at DESC").where(recipient: current_user).limit(25).all
       @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
       #@activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids ).where( key: "posting" ).where("created_at > ?", PublicActivity::Activity.where(key: 'following', recipient: current_user, owner: ).created_at  )
@@ -97,6 +101,7 @@ class PagesController < ApplicationController
       @post = current_user.posts.build(params[:post])
       @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
+      @trends = Post.tag_counts_on(:trends).limit(7)
     end
     
   end  
