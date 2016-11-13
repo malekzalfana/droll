@@ -2622,3 +2622,21 @@ Started GET "/assets/style.self-61726cee804126e7130aa6fa795815adca4cf155d5773030
 Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 14:46:46 +0000
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/" for 94.187.88.37 at 2016-11-13 14:55:11 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "fca8b221fb2bf531187568f32e5cfc31"]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 2)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (0.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered pages/index.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (2.0ms)
+Completed 200 OK in 387ms (Views: 268.3ms | ActiveRecord: 2.0ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
