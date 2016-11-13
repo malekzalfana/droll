@@ -43,38 +43,7 @@
         </div>
         
     </div>
-    <% if user_signed_in? %>
-    <div id="box-3-wrapper">
-            <p>Who to follow</p>
-            <% @randomUsers.each do |user| %>
-                <div class="box-profile-wrapper">
-                    <% if user.image.url == "missing.jpg" %>
-                        <div class="box-profile-cover" style="background-image: url(/assets/missing-2.jpg)"></div>
-                      <% else %>
-                          <div class="box-profile-cover" style="background-image: url(<%= user.cover.url(:medium) %>)"></div>
-                      <% end %>
-                    <% if user.image.url == "missing.jpg" %>
-                        <div class="box-profile-image" style="background-image: url(/assets/missing.jpg)"></div>
-                      <% else %>
-                          <div class="box-profile-image" style="background-image: url(<%= user.image.url(:tiny) %>)"></div>
-                      <% end %>
-                <% if user_signed_in? %>
-                <div class="box-profile-title"><%= user.username %></div>
-                    <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
-                        <div><%= hidden_field_tag :followed_id, user.id %></div>
-                        <% if current_user.following?(user) %>
-                            <%= f.submit "following", class: "post-user-unfollow" %>
-                        <% else %>
-                            <%= f.submit "follow", class: "post-user-follow" %>
-                        <% end %>
-                        
-                    <% end %>
-                </div>
-                <% end %>
-            <% end %>
-            
-        </div>
-    <% end %>
+    <%= render '/layouts/who_to_follow' %>
     
     <% if user_signed_in? %>
         <i class="material-icons" id="show-feedback">feedback</i>
