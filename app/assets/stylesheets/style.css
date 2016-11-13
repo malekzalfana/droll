@@ -6693,7 +6693,9 @@ i.fa.fa-reddit-alien {
 }
 
 
-
+.inline-make-tags-wrapper p {
+	background: none !important;
+}
 
  #tag-wtf {
 	background-image: url(http://i.imgur.com/7MVORF1.jpg);
