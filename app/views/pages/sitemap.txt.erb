@@ -4,6 +4,9 @@
 <% for tag in @tag do %>
 http://drolle.co/tags/<%= tag.name %>
 <% end %>
+<% for trend in @trend do %>
+http://drolle.co/trends/<%= trend.name %>
+<% end %>
 <% for user in @users do %>
 http://drolle.co/user/<%= user.username %>
 <% end %>
@@ -13,3 +16,4 @@ http://drolle.co/tags
 http://drolle.co/contact
 http://drolle.co/about
 http://drolle.co/terms
+http://drolle.co/trends

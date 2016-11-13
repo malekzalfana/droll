@@ -6295,9 +6295,11 @@ i.fa.fa-reddit-alien {
     text-align: left;
     padding: 0px;
     padding-bottom: 10px;
+    color: black;
     text-indent: 5px
 }
 .tags-title {
+	color: black;
 	font-family: roboto;
     font-weight: 500;
     text-align: left;
@@ -7363,7 +7365,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 	text-transform: uppercase
 }
 #main-page-type.tags {
-	top: 11px !important;
+	top: 11px;
 }
 .trend-wrapper {
 	width: 200px;

@@ -1629,3 +1629,972 @@ Processing by PagesController#recent as HTML
 Completed 200 OK in 320ms (Views: 147.4ms | ActiveRecord: 3.1ms)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/recent" for 94.187.88.37 at 2016-11-13 13:12:15 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "fca8b221fb2bf531187568f32e5cfc31"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:12:15.177881')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 1]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (8.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered pages/recent.html.erb within layouts/application (16.6ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 379ms (Views: 366.9ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/recent" for 94.187.88.37 at 2016-11-13 13:13:41 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mImpression Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "fca8b221fb2bf531187568f32e5cfc31"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:13:41.598371')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 2]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (8.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (22.7ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 166ms (Views: 152.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:42 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/style.self-4c38c017f3c3658da4556753c23af7bd272ef57649f24ec7b4d40aa8fcb8c3bd.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/tabs.self-cb67ae010829afb6d99fcacee841a187398490cc808133e298880d65098669ca.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/post.self-359025435fa5509a429b82d4c8876b4ed75e093effd1676bc5f697bbf0acedb0.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:13:43 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:44 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/giphy.self-508c93059412590378cfb47c45cfbd04045692ce7637429e5c1467699aff6c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:45 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/pagination.self-b0d65b969c0533891d2c4788108bf564ca57e5e25ae3e28a9793bde8235781b8.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/tabs.self-bf22bf4a24182fb86700237ba27fcbf8f040d5b121432f286a572f6fe6f607dd.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:13:46 +0000
+
+
+Started GET "/trends" for 94.187.88.37 at 2016-11-13 13:14:19 +0000
+Processing by TagsController#trends as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:14:19.667545')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 50[0m
+  Rendered tags/trends.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_nav_user.html.erb (0.7ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 268ms (Views: 259.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/trends" for 94.187.88.37 at 2016-11-13 13:14:20 +0000
+Processing by TagsController#trends as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:14:20.714562')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 50
+  Rendered tags/trends.html.erb within layouts/application (40.4ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 171ms (Views: 162.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/assets/style.self-5d049bd17e8343e99fc8dc8d9b885d4d1e6d7fd1e90e6ce987b9d538d3a1c1ed.css?body=1" for 94.187.88.37 at 2016-11-13 13:14:21 +0000
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:14:22 +0000
+
+
+Started GET "/trends" for 94.187.88.37 at 2016-11-13 13:15:18 +0000
+Processing by TagsController#trends as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (131.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:15:18.626318')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 50[0m
+  Rendered tags/trends.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 358ms (Views: 216.1ms | ActiveRecord: 132.6ms)
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:19 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:19 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:19 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:19 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/style.self-3c5ff820add36c8fca8414f0764586302a81b6e096470e592fb0f33dd4963e43.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/tabs.self-cb67ae010829afb6d99fcacee841a187398490cc808133e298880d65098669ca.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/post.self-359025435fa5509a429b82d4c8876b4ed75e093effd1676bc5f697bbf0acedb0.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:15:20 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/giphy.self-508c93059412590378cfb47c45cfbd04045692ce7637429e5c1467699aff6c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:21 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/pagination.self-b0d65b969c0533891d2c4788108bf564ca57e5e25ae3e28a9793bde8235781b8.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/tabs.self-bf22bf4a24182fb86700237ba27fcbf8f040d5b121432f286a572f6fe6f607dd.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:15:22 +0000
+
+
+Started GET "/recent" for 94.187.88.37 at 2016-11-13 13:16:41 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "fca8b221fb2bf531187568f32e5cfc31"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:16:41.749486')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mActsAsTaggableOn::Tag Load (0.4ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 2]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (7.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (14.3ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 163ms (Views: 142.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/tags/awesome" for 94.187.88.37 at 2016-11-13 13:16:45 +0000
+Processing by TagsController#tag as HTML
+  Parameters: {"name"=>"awesome"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:16:45.023453')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('awesome'))[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 2]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (6.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m
+  Rendered tags/tag.html.erb within layouts/application (12.7ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 275ms (Views: 132.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/tags" for 94.187.88.37 at 2016-11-13 13:16:57 +0000
+Processing by TagsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  Rendered tags/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 130ms (Views: 128.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:16:59 +0000
+
+
+Started GET "/trends" for 94.187.88.37 at 2016-11-13 13:17:07 +0000
+Processing by TagsController#trends as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:17:07.838555')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 50[0m
+  Rendered tags/trends.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 245ms (Views: 234.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:17:09 +0000
+
+
+Started GET "/recent" for 94.187.88.37 at 2016-11-13 13:19:18 +0000
+Processing by PagesController#recent as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mImpression Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1[0m  [["session_hash", "fca8b221fb2bf531187568f32e5cfc31"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:19:18.939994')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mActsAsTaggableOn::Tag Load (4.5ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7
+  Rendered layouts/_trends_tags.html.erb (5.7ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 2]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (7.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/recent.html.erb within layouts/application (24.9ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 168ms (Views: 152.9ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/recent" for 94.187.88.37 at 2016-11-13 13:20:16 +0000
+Processing by PagesController#recent as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mImpression Exists (0.1ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "fca8b221fb2bf531187568f32e5cfc31"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:20:16.125600')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 1]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (31.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  Rendered pages/recent.html.erb within layouts/application (37.0ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 162ms (Views: 151.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/log_in.self-fa1dd5ab2a1bbd65c246934f9fb2ae223c51c56374b3d277ea6e79f08284cdc5.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/post.self-359025435fa5509a429b82d4c8876b4ed75e093effd1676bc5f697bbf0acedb0.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/profile.self-4b8fe3a75c74ea31ba5a010354629240ab9c6cbd3ffdfe68b6d471dcfa1c24d9.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/style.self-3c5ff820add36c8fca8414f0764586302a81b6e096470e592fb0f33dd4963e43.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/tabs.self-cb67ae010829afb6d99fcacee841a187398490cc808133e298880d65098669ca.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 94.187.88.37 at 2016-11-13 13:20:17 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:18 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/create.self-15829db4349ef58cdc2a29f90173aa66185ca8a2da98bc38125612c2c0714651.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/functions.self-3608ed3fcfd3c6072b7eb164537cc418a37461328e2457ffe0cf5507033c8413.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/main.self-1ba148310040df5a17ed0b876443c40b9b90cf14a4d31f5e4376e05d5daefb6a.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/notify.self-d1c144fb4455acc8f0c08d22c6a721f07542b95fbd3299c33ecac55c78dc3d95.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/giphy.self-508c93059412590378cfb47c45cfbd04045692ce7637429e5c1467699aff6c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/pagination.self-b0d65b969c0533891d2c4788108bf564ca57e5e25ae3e28a9793bde8235781b8.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/tabs.self-bf22bf4a24182fb86700237ba27fcbf8f040d5b121432f286a572f6fe6f607dd.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 94.187.88.37 at 2016-11-13 13:20:19 +0000
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:20:20 +0000
+
+
+Started GET "/tags/awesome" for 94.187.88.37 at 2016-11-13 13:20:21 +0000
+Processing by TagsController#tag as HTML
+  Parameters: {"name"=>"awesome"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:20:21.792432')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('awesome'))
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  Rendered layouts/_trends_tags.html.erb (1.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 1]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (6.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0
+  Rendered tags/tag.html.erb within layouts/application (179.7ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 338ms (Views: 325.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/tags/awesome" for 94.187.88.37 at 2016-11-13 13:28:43 +0000
+Processing by TagsController#tag as HTML
+  Parameters: {"name"=>"awesome"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:28:43.086924')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('awesome'))[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.4ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 2]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (6.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m
+  Rendered tags/tag.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 229ms (Views: 146.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/tags/awesome" for 94.187.88.37 at 2016-11-13 13:37:05 +0000
+Processing by TagsController#tag as HTML
+  Parameters: {"name"=>"awesome"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-11 13:37:05.151065')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('awesome'))
+  [1m[36mActsAsTaggableOn::Tag Load (0.4ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  Rendered layouts/_trends_tags.html.erb (1.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 1]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 4], ["id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 4], ["id", 4]]
+  Rendered layouts/_who_to_follow.html.erb (6.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" JOIN taggings posts_taggings_03d67c2  ON posts_taggings_03d67c2.taggable_id = posts.id AND posts_taggings_03d67c2.taggable_type = 'Post' AND posts_taggings_03d67c2.tag_id = 3 WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0
+  Rendered tags/tag.html.erb within layouts/application (13.7ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 170ms (Views: 153.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/settings" for 94.187.88.37 at 2016-11-13 13:37:58 +0000
+Processing by PagesController#settings as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  Rendered pages/settings.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 141ms (Views: 138.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/sitemap" for 94.187.88.37 at 2016-11-13 13:37:59 +0000
+Processing by PagesController#sitemap as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+Completed 406 Not Acceptable in 3ms (ActiveRecord: 0.2ms)
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/pages_controller.rb:210:in `sitemap'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (41.7ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 13:38:00 +0000
+
+
+Started GET "/sitemap" for 94.187.88.37 at 2016-11-13 13:38:14 +0000
+Processing by PagesController#sitemap as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+Completed 406 Not Acceptable in 3ms (ActiveRecord: 0.2ms)
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/pages_controller.rb:210:in `sitemap'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (52.6ms)
+
+
+Started GET "/sitemap.txt" for 94.187.88.37 at 2016-11-13 13:38:18 +0000
+Processing by PagesController#sitemap as TXT
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered pages/sitemap.txt.erb (2.9ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/sitemap.xml" for 94.187.88.37 at 2016-11-13 13:38:40 +0000
+Processing by PagesController#sitemap as XML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags"
+  Rendered pages/sitemap.xml.builder (40.9ms)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    26:     end
+    27:   end
+    28:   
+    29:   for tag in @trend do
+    30:     xml.url do
+    31:       xml.loc "http://drolle.co/trends/#{trend.name}"
+    32:       #xml.lastmod tag.updated_at.to_date
+  app/views/pages/sitemap.xml.builder:29:in `block in _app_views_pages_sitemap_xml_builder__4188102794295904882_44153100'
+  app/views/pages/sitemap.xml.builder:2:in `_app_views_pages_sitemap_xml_builder__4188102794295904882_44153100'
+  app/controllers/pages_controller.rb:211:in `block (2 levels) in sitemap'
+  app/controllers/pages_controller.rb:210:in `sitemap'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.1ms)
+
+
+Started GET "/sitemap.xml" for 94.187.88.37 at 2016-11-13 13:39:21 +0000
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+Processing by PagesController#sitemap as XML
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:16)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered pages/sitemap.xml.builder (15.7ms)
+Completed 200 OK in 79ms (Views: 18.0ms | ActiveRecord: 3.5ms)

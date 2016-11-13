@@ -1,5 +1,13 @@
 xml.instruct! :xml, :version => "1.0"
 xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+  
+  xml.url do
+      xml.loc "http://drolle.co/trends"
+      #xml.lastmod tag.updated_at.to_date
+      xml.changefreq "always"
+      xml.priority "0.5"
+    end
+
   for post in @post do
     xml.url do
       xml.loc post_url(post)
@@ -12,6 +20,15 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   for tag in @tag do
     xml.url do
       xml.loc "http://drolle.co/tags/#{tag.name}"
+      #xml.lastmod tag.updated_at.to_date
+      xml.changefreq "always"
+      xml.priority "0.5"
+    end
+  end
+  
+  for trend in @trend do
+    xml.url do
+      xml.loc "http://drolle.co/trends/#{trend.name}"
       #xml.lastmod tag.updated_at.to_date
       xml.changefreq "always"
       xml.priority "0.5"

@@ -206,6 +206,7 @@ class PagesController < ApplicationController
   def sitemap
     @post = Post.where(hidden: nil)
     @tag = ActsAsTaggableOn::Tag.all
+    @trend = ActsAsTaggableOn::Tag.all
     @users = User.all
     respond_to do |format|
         format.xml { render layout: false }

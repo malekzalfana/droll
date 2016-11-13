@@ -29,6 +29,14 @@
     <title><%= @tag.name %> memes, GIFs & rage comics | Drolle</title>
     <meta name='description' content='<%= @tag %>' />
     <meta name='keywords' content='drolle, <%= @tag%>' />
+  <% elsif controller.action_name == 'trend' && controller == 'tags' %>
+    <title><%= @trend.name %> memes, GIFs & ragecomics | Drolle</title>
+    <meta name='description' content='<%= @trend.name %> Drolle posts.' />
+    <meta name='keywords' content='drolle, <%= @trend.name %>' />
+  <% elsif controller.action_name == 'trend' && controller == 'tags' %>
+    <title>Drolle Trends</title>
+    <meta name='description' content='The lateset drolle trends. ' />
+    <meta name='keywords' content='drolle, trends' />  
   <%else%>
     <title>Drolle | Memes, GIFs and rage comics</title>
     <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
