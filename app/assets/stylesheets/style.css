@@ -6284,22 +6284,29 @@ i.fa.fa-reddit-alien {
 	padding-bottom: 10px;
     overflow: hidden;
     background: white;
-    width: 185px;
     padding-right: 0px;
     border-radius: 2px;
-    padding: 10px;
 }
 .tags-title-2 {
     font-family: roboto;
+    display: block;
     font-weight: 500;
     text-align: left;
+    display: block;
     padding: 0px;
     padding-bottom: 10px;
     color: black;
     text-indent: 5px
 }
+.tags-padder {
+	padding: 10px;
+    display: inline-block;
+    width: calc(100% - 20px);
+}
 .tags-title {
+	background: #fdfdfd;
 	color: black;
+	display: block;
 	font-family: roboto;
     font-weight: 500;
     text-align: left;
