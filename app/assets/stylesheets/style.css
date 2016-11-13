@@ -6865,6 +6865,15 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 	animation-delay: 3s;  	
 }
 @media screen and (max-width: 600px) {
+	 #main-page-type:not(.main) {
+		top: 14px !important;
+	}
+	.tag-title-before, .tag-title-slash {
+	    font-size: 14px !important;
+	}
+	.tag-title {
+		font-size: 14px !important;
+	}
 	#invite-screen .random-gif {
 	opacity: 1;
     width: 158px;
@@ -7258,7 +7267,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     background: whitesmoke;
     overflow: hidden;
     position: relative;
-    margin-bottom: 1px;
+    margin-bottom: 0px;
 }
 .box-profile-cover {
     width: calc(100% + 10px);
