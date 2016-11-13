@@ -2620,3 +2620,5 @@ Started GET "/assets/style.self-61726cee804126e7130aa6fa795815adca4cf155d5773030
 
 
 Started GET "/assets/missing.jpg" for 94.187.88.37 at 2016-11-13 14:46:46 +0000
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
