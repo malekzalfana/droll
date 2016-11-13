@@ -6315,12 +6315,16 @@ i.fa.fa-reddit-alien {
 }
 .new-to-drolle-button {
 	cursor: pointer;
-	 display: inline-block;
+    display: inline-block;
     background: #ff3000;
     color: white;
-    padding: 3px 9px;
+    padding: 8px 10px;
     margin-left: 10px;
+    display: block;
     border-radius: 3px;
+    width: calc(100% - 10px);
+    margin: 10px auto;
+    max-width: 200px;
 }
 .tags-title {
 	background: #fdfdfd;
