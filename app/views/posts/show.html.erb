@@ -31,6 +31,10 @@
         <div class="upper-black"></div>
         <div class="wrapper shown" data-post-id="<%= @post.id %>">
             
+            <div class="new-to-drolle">
+                New to drolle? Join the funny community in 6.66 seconds <div class="new-to-drolle-button">Join</div>
+            </div>
+            
             <div class="left-wrapper">
                 <% if user_signed_in? && @post.user == current_user && @post.created_at > Time.now-1.minute %>
                     <div id="share-it">

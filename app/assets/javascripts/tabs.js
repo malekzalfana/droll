@@ -1195,6 +1195,10 @@ tabs = function() {
 			console.log( tagsArray )
 		}
 	})
+	$(document).on('click', '.new-to-drolle-button', function() {
+		$('#invite-tab-2, #notice-to-sign').click()
+	})
+	
 	$(document).on('click', '.make-tag.choosen-tag', function() {
 		var tagName = $(this).attr('id').replace('tag-','')
 		$(this).removeClass('choosen-tag')
