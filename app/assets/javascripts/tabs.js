@@ -1470,8 +1470,11 @@ tabs = function() {
 				$(this).parents('.post-footer').siblings('.more-post-options-container').addClass(
 					'active-tab choosen-content')
 				console.log('shown???')
-				$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
-				$(this).parents('.wrapper').find('.post-title').addClass('focus')
+				if ( !$(this).hasClass('share-button') ) {
+					$(this).parents('.left-wrapper').find('.post-title').attr('contentEditable','true')
+					$(this).parents('.wrapper').find('.post-title').addClass('focus')
+				}
+				
 			}
 		})
 	var $container = $('#left-content-profile');

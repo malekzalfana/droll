@@ -3448,10 +3448,12 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 	top: 10px;
 	display: none !important;
 }
+/*
 #show #navbar, #show #logo {
 	position: absolute;
 	z-index: 5;
 }
+*/
 #settings-title {
 	    font-size: 30px;
     font-family: open sans;
