@@ -1163,6 +1163,7 @@
 		                      <% @trends.each do |trend| %>
 		                      <p data-trend-name="<%= trend.name %>" class="make-trends">/<%= trend.name %></p>
 		                    <% end %>
+		                    <% if current_user.username == 'malek' || current_user.username == 'marsrover' || current_user.username == 'zulfa'%>
 							<span class="make-add-trend-title">New trend</span>
 							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
 							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
