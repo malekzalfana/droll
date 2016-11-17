@@ -8,7 +8,8 @@
     </div>
 <div id="tags-wrapper-2">
     <% @trends.each do |trend| %>
-        <div class="trend-wrapper">
+      <a href="/trends/<%= trend.name %>">
+      <div class="trend-wrapper">
             <% if Post.tagged_with(trend).last.image.present? %>
                 <div class="trend-underlay" style="background-image: url(<%= Post.tagged_with(trend).last.image.url(:medium) %>)"></div>
             <% elsif Post.tagged_with(trend).last.giphyid.present? %>    
@@ -16,6 +17,8 @@
             <% end %>
             <p class="trend-title">/<%= trend.name %></p>
         </div>
+      </a>
+        
     <% end %>
 </div>
 <% if !user_signed_in? %>
