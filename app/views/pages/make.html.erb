@@ -261,8 +261,8 @@
 		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
 			<%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
-	            <%= text_area_tag :id, s.id %>
-	            <%= submit_tag "SEND"%>
+	            <%# text_area_tag :id, s.id %>
+	            <%# submit_tag "SEND"%>
 	        <%# end %>
 		</div>
     <%# end %>
