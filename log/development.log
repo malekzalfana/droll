@@ -4273,3 +4273,95 @@ ActionView::Template::Error (undefined local variable or method `s' for #<#<Clas
   Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
   Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
   Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.5ms)
+
+
+Started GET "/make" for 77.42.215.198 at 2016-11-18 12:36:09 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-16 12:36:09.058476')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7) subquery_for_count
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 4], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (66.5ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (2.1ms)
+Completed 200 OK in 371ms (Views: 356.1ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/tabs.self-86622d7d065a364e2e0d0e235d3e31dce05c4cc95bb6fea45b4b15fe2457cba9.css?body=1" for 77.42.215.198 at 2016-11-18 12:36:09 +0000
+
+
+Started GET "/assets/style.self-6ea64f89031aca0f28c3b9749d37fc9a43af0721d5d7225c4415c2b0975fa63a.css?body=1" for 77.42.215.198 at 2016-11-18 12:36:10 +0000
+
+
+Started GET "/make" for 77.42.215.198 at 2016-11-18 12:36:11 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-16 12:36:11.159929')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (1.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7) subquery_for_count
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 4], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (172.0ms)
+  Rendered layouts/_nav_upload.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 366ms (Views: 355.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/missing.jpg" for 77.42.215.198 at 2016-11-18 12:36:12 +0000
+
+
+Started GET "/assets/search-3.png" for 77.42.215.198 at 2016-11-18 12:36:12 +0000
+
+
+Started GET "/assets/eraser.png" for 77.42.215.198 at 2016-11-18 12:36:12 +0000
+
+
+Started GET "/assets/cursor.png" for 77.42.215.198 at 2016-11-18 12:36:12 +0000
+
+
+Started GET "/assets/colors.png" for 77.42.215.198 at 2016-11-18 12:36:12 +0000
+
+
+Started GET "/assets/spray-can.png" for 77.42.215.198 at 2016-11-18 12:36:12 +0000
+
+
+Started GET "/make" for 77.42.215.198 at 2016-11-18 12:44:37 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-16 12:44:37.651936')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (3.3ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7) subquery_for_count
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 4], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (56.1ms)
+  Rendered layouts/_nav_upload.html.erb (0.8ms)
+  Rendered layouts/_nav.html.erb (5.6ms)
+Completed 200 OK in 226ms (Views: 217.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/make" for 77.42.215.198 at 2016-11-18 12:44:39 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-16 12:44:39.254542')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7) subquery_for_count
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 4], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (52.4ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 211ms (Views: 200.6ms | ActiveRecord: 1.5ms)
