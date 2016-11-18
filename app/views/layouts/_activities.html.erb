@@ -14,7 +14,7 @@
         <span class="pointered" onclick='location.href="/posts/<%= activity.trackable.id %>"'>
         <div class="notif">
           <div class="notif-left-col">
-          <div class="notif-user-image" style="background-image:url('/<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>')"></div>
+          <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then '/assets/' end %><%= activity.owner.image.url(:thumb) %>')"></div>
           </div>
           <div class="notif-right-col">
             <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></a></strong> uploaded a post

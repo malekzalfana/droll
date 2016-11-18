@@ -199,26 +199,29 @@ var newNumber = 0;
 		if ( $(window).width() >920 ) {
 			$("html, body").animate({ scrollTop: 60 });
 		}
-		$(this).keyup(function(){
-			var prevMeme = memeCtx.getImageData(0,0,memeCanvas.width,memeCanvas.height);
-			memeCtx.clearRect(0,0,memeCanvas.width,memeCanvas.height);			
-			memeCtx.shadowColor = "transparent";
-			memeCtx.drawImage(thisImage,0,0,1100,thisImage.height * (1100/thisImage.width));
-			//memeCanvas.height = thisImage.height * (1200/thisImage.width);
-			//memeCanvas.style.height = ((thisImage.height * (600/thisImage.width)) / 2) ;
-			memeCtx.fillStyle = 'white';
-			memeCtx.strokeStyle = 'black';
-			memeCtx.lineWidth = 3; 
-			var fontSize = 72 ; 
-			memeCtx.font = fontSize + 'px Impact'; 
-			memeCtx.textAlign="center"; 
-			memeCtx.shadowColor = "transparent";
-			memeCtx.save();
-			memeCtx.shadowColor="black";
-			//memeCtx.shadowBlur=1;
-			memeCtx.textBaseline = "center";
-			memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(),550,100,1100,70);
-			memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
+		$(this).keyup(function(e){
+			if ( e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40 ) {
+				var prevMeme = memeCtx.getImageData(0,0,memeCanvas.width,memeCanvas.height);
+				memeCtx.clearRect(0,0,memeCanvas.width,memeCanvas.height);			
+				memeCtx.shadowColor = "transparent";
+				memeCtx.drawImage(thisImage,0,0,1100,thisImage.height * (1100/thisImage.width));
+				//memeCanvas.height = thisImage.height * (1200/thisImage.width);
+				//memeCanvas.style.height = ((thisImage.height * (600/thisImage.width)) / 2) ;
+				memeCtx.fillStyle = 'white';
+				memeCtx.strokeStyle = 'black';
+				memeCtx.lineWidth = 3; 
+				var fontSize = 72 ; 
+				memeCtx.font = fontSize + 'px Impact'; 
+				memeCtx.textAlign="center"; 
+				memeCtx.shadowColor = "transparent";
+				memeCtx.save();
+				memeCtx.shadowColor="black";
+				//memeCtx.shadowBlur=1;
+				memeCtx.textBaseline = "center";
+				memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(),550,100,1100,70);
+				memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
+			}
+			
 		})
 	});
 		
@@ -230,7 +233,7 @@ var newNumber = 0;
 	});
 	
 	$('#text-bottom').keyup(function writeDown(e){
-			
+		if ( e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40 ) {
 			var prevMeme = memeCtx.getImageData(0,0,memeCanvas.width,memeCanvas.height);
 			memeCtx.clearRect(0,0,memeCanvas.width,memeCanvas.height);			
 			memeCtx.shadowColor = "transparent";
@@ -248,10 +251,12 @@ var newNumber = 0;
 			memeCtx.shadowColor="black";
 			//memeCtx.shadowBlur=1;
 			memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(),550,100,1100,70);
-			memeCtx.textBaseline = "bottom";
+			memeCtx.textBaseline = "center";
 			memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition +newNumber, 1100,80);
+		}
 		})
 	};
+	
 		
 		
 } });	

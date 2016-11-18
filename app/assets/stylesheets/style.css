@@ -106,7 +106,7 @@ a {
     position: fixed;
     padding: 0px;
     top: 0px;
-    z-index: 5;
+    z-index: 6;
     margin: 0px;
     background: none;
     pointer-events: none;
@@ -135,7 +135,7 @@ a {
     z-index: 100;
 }
 #show #logo-wrapper {
-	position: absolute;
+	position: fixed;
 }
 #feedback {
 	position: fixed;
