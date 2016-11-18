@@ -4209,3 +4209,67 @@ Processing by TagsController#tag as HTML
 Completed 200 OK in 306ms (Views: 128.3ms | ActiveRecord: 2.5ms)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/make" for 77.42.215.198 at 2016-11-18 10:55:44 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 4]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-16 10:55:44.261028')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7) subquery_for_count
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 4], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 4], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (82.5ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 1.4ms)
+
+ActionView::Template::Error (undefined local variable or method `s' for #<#<Class:0x007fbcb08b2850>:0x007fbcb2c25f30>):
+    258: 	<input id="search-memes" placeholder="search memes ..">
+    259: 	<!--
+    260: 	<%# @stock1.each do |s| %>
+    261: 		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
+    262: 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
+    263: 			<%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
+    264: 	            <%= text_area_tag :id, s.id %>
+  app/views/pages/make.html.erb:261:in `_app_views_pages_make_html_erb___1633567634193721170_70224214827880'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (35.5ms)
+
+
+Started GET "/make" for 77.42.215.198 at 2016-11-18 10:55:45 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 4]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 4  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 3 AND (created_at >= '2016-11-16 10:55:45.897240')  ORDER BY created_at DESC  [["key", "posting"]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7) subquery_for_count[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT  tags.*, taggings.tags_count AS count FROM "tags" JOIN (SELECT taggings.tag_id, COUNT(taggings.tag_id) AS tags_count FROM "taggings" INNER JOIN posts ON posts.id = taggings.taggable_id WHERE (taggings.taggable_type = 'Post' AND taggings.context = 'trends') AND (taggings.taggable_id IN(SELECT posts.id FROM "posts"  ORDER BY created_at DESC)) GROUP BY taggings.tag_id HAVING COUNT(taggings.tag_id) > 0) AS taggings ON taggings.tag_id = tags.id LIMIT 7
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 4], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 4], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (58.5ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 1.3ms)
+
+ActionView::Template::Error (undefined local variable or method `s' for #<#<Class:0x007fbcb08b2850>:0x007fbcb3384c90>):
+    258: 	<input id="search-memes" placeholder="search memes ..">
+    259: 	<!--
+    260: 	<%# @stock1.each do |s| %>
+    261: 		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
+    262: 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
+    263: 			<%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
+    264: 	            <%= text_area_tag :id, s.id %>
+  app/views/pages/make.html.erb:261:in `_app_views_pages_make_html_erb___1633567634193721170_70224218250220'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.5ms)
