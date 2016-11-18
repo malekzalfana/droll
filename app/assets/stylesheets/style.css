@@ -7026,12 +7026,12 @@ body:not(#invite-screen) #notice-to-sign {
     font-family: roboto;
     background: #f9f9f9;
     color: gray;
-    margin: 0px auto;
-    width: 284px;
+    max-width: 550px;
+    width: 100%;
     display: block;
     margin-bottom: 10px;
     overflow: hidden;
-    border-bottom: 1px solid gainsboro;
+    border: 1px solid #bdbdbd;
 }
 #image-for-meme-input {
 	width: 250px;
@@ -7041,7 +7041,7 @@ body:not(#invite-screen) #notice-to-sign {
     background: none;
 }
 #image-for-meme-add {
-	float:left;
+	float:right;
 	padding: 5px;
 	cursor: pointer;
 }
@@ -7108,10 +7108,11 @@ body:not(#invite-screen) #notice-to-sign {
 
 }
 #image-for-gif-wrapper {
-	width: 205px;
-	border-bottom: 1px solid #c9c9c9;
-	display: block;
-	margin: 0px auto;
+    width: 210px;
+    border: #c9c9c9 1px solid;
+    display: block;
+    margin: 0px auto;
+    background: white;
 }
 @media screen and (max-width: 780px) {
 	/*

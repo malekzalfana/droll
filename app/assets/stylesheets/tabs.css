@@ -336,8 +336,10 @@
 #make-image-preview, #make-gif-preview {
    width: 582px;
     min-height: 100px;
-    background: white;
-  position: relative;
+    background: #fbfbfb;
+    position: relative;
+    margin-bottom: 10px;
+    border: 1px solid #dbdbdb;
 }
 #make #gifs {
    width: 582px;
@@ -496,9 +498,11 @@
   display: none;
   cursor: pointer;
 }
+/*
 #make-post-preview-wrapper {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
+*/
 #upload-gif-fade {
   margin-left: -47px;
   animation: fadingLoop1 4s infinite;

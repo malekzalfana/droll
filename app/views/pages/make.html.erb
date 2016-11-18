@@ -256,15 +256,17 @@
     <% end %>
 	
 	<input id="search-memes" placeholder="search memes ..">
-	<% @stock1.each do |s| %>
+	<!--
+	<%# @stock1.each do |s| %>
 		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
-			<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
+			<%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
 	            <%= text_area_tag :id, s.id %>
 	            <%= submit_tag "SEND"%>
-	        <% end %>
+	        <%# end %>
 		</div>
-    <% end %>
+    <%# end %>
+    -->
 	<div crossorigin="" class="pick-meme-container" data-original="http://www.nightmug.com/drolle/newmemes/50meme.jpg">
 		<div class="meme-shadow"></div>
 		<p class="meme-title" id="meme-title-50" contenteditable="true"><span>Condesending Wonka</span>
