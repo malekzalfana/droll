@@ -102,7 +102,7 @@ class PagesController < ApplicationController
   
   def reprofile
     if user_signed_in?
-      redirect_to '/user/' + current_user.username
+      redirect_to '/user/' + current_user.username + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
     else
       redirect_to '/notlogged'
     end 
