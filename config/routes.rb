@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  #get 'tags/index'
-
-  #get 'tags/show'
-
-  #get 'activities/index'
+  
+  
+  namespace :api, defaults: {format: 'json'} do
+      get '/recent' => 'api/pages#recent'
+  end
+  
+  #############################################################################
   mount Starburst::Engine => "/starburst"
   #root 'pages#index'
   resources :posts
@@ -27,8 +29,10 @@ Rails.application.routes.draw do
   get '/settings' => 'pages#settings'
   get '/user/:id' => 'pages#profile'
   #get '/invite/:code' => 'pages#invited'
-
+  get '/notifications' => 'pages#notifications'
   get '/explore' => 'pages#explore'
+  get '/reprofile' => 'pages#reprofile'
+  get '/notlogged' => 'pages#notlogged'
   get '/make' => 'pages#make'
   get '/make2' => 'pages#make2'
   get '/delete' => 'pages#delete'

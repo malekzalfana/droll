@@ -19,6 +19,7 @@ html body {
 	display: none !important;
 }
 .shown-post, #show {
+	-webkit-transition: background ease-out 0.2s;
 	transition: background ease-out 0.2s;
 	/*background: #efefef !important;*/
 }
@@ -148,7 +149,8 @@ a {
 	top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.137255) 0px 24px 38px 3px, rgba(0, 0, 0, 0.117647) 0px 9px 46px 8px, rgba(0, 0, 0, 0.2) 0px 11px 15px -7px;
@@ -293,6 +295,7 @@ a {
 	box-sizing: border-box;
 	width: 100%;
 	border-radius: 2px;
+	-webkit-transition: 0.4s linear border-opacity;
 	transition: 0.4s linear border-opacity;
 	border: none;
 	outline: none;
@@ -352,6 +355,7 @@ a {
 	background: #737373;
 	color: white !important;
 	outline: nine;
+	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 }
 
@@ -418,7 +422,9 @@ a {
 	opacity: 0;
 }
 .create {
+	-webkit-transition: 0.4s cubic-bezier(0.29, 0.71, 0.58, 0.88) opacity;
 	transition: 0.4s cubic-bezier(0.29, 0.71, 0.58, 0.88) opacity;
+	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 	margin: 0px;
 	z-index: 10;
@@ -465,6 +471,7 @@ a {
     top: 13px;
     border-width: 5px 0px 5px 6px;
 	opacity: 0;
+	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) opacity;
 	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) opacity;
 	border-color: transparent transparent transparent rgba(0,0,0,0.7);
 	box-shadow: none;
@@ -537,7 +544,6 @@ a {
 }
 
 .line {
-	-ms-transform: rotate(45deg);
 	/* IE 9 */
 	-webkit-transform: rotate(45deg);
 	/* Chrome, Safari, Opera */
@@ -649,6 +655,7 @@ textarea:focus {
     color: #252525;
     background: rgba(251, 251, 251, 0.55) ,whitesmoke;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
 #meme-textareas textarea:focus {
@@ -754,6 +761,7 @@ textarea:focus {
 }
 
 .wrapper {
+	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) all;
 	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) all;
 	width: 100%;
     height: 100%;
@@ -772,6 +780,7 @@ textarea:focus {
 	position: fixed;
 	z-index: 8;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	-webkit-transition: 0.4s height ease-in-out;
 	transition: 0.4s height ease-in-out;
 }
 #navbar-2 {
@@ -795,6 +804,7 @@ textarea:focus {
 	*/
 	background: white;
 	opacity: 0;
+	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 	transition:0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 }
 .pick-meme-container:hover .meme-shadow {
@@ -825,7 +835,6 @@ textarea:focus {
 /* Handle */
 
 ::-webkit-scrollbar-thumb {
-	-webkit-border-radius: 1px;
 	border-radius: 1px;
 	background: #cecece;
 }
@@ -850,6 +859,7 @@ textarea:focus {
 
 .height {
 	height: 65px;
+	-webkit-transition: none;
 	transition:none;
 }
 .no-height {
@@ -869,9 +879,6 @@ textarea:focus {
 	left: 30px;
 	top: 80px;
 	-webkit-transform: translatez(0);
-    -moz-transform: translatez(0);
-    -ms-transform: translatez(0);
-    -o-transform: translatez(0);
     transform: translatez(0);
 	-webkit-backface-visibility: hidden;
 	overflow-y: scroll;
@@ -892,7 +899,10 @@ textarea:focus {
 	font-size: 15px;
 	margin: 1px 13px;
 	padding: 2px;
+	-webkit-transition: -webkit-transform 0.1s ease-in-out;
+	transition: -webkit-transform 0.1s ease-in-out;
 	transition: transform 0.1s ease-in-out;
+	transition: transform 0.1s ease-in-out, -webkit-transform 0.1s ease-in-out;
 	cursor: pointer;
 }
 #memescontainer .meme-container {
@@ -994,7 +1004,8 @@ textarea:focus {
 .splitter {
 	z-index: 1;
 	position: absolute;
-	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	        transform: rotate(90deg);
 	right: -45px;
 	width: 60px;
 	text-align: center;
@@ -1084,6 +1095,7 @@ textarea:focus {
     text-align: left;
     left: 0px;
     z-index: 2;
+    -webkit-transition: opacity 0.2s ease-in;
     transition: opacity 0.2s ease-in;
     font-family: roboto;
     text-shadow: 1px 1px 20px black;
@@ -1128,7 +1140,10 @@ img.ui-draggable-dragging {
 	border-color: #ffffff transparent transparent transparent !important;
 	-webkit-filter: drop-shadow(0 1px 1px #C5C5C5);
 	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+	-webkit-transition: 0.4s -webkit-transform ease-in-out;
+	transition: 0.4s -webkit-transform ease-in-out;
 	transition: 0.4s transform ease-in-out;
+	transition: 0.4s transform ease-in-out, 0.4s -webkit-transform ease-in-out;
 	display: none;
 }
 
@@ -1173,7 +1188,10 @@ img.ui-draggable-dragging {
 	border-color: transparent transparent transparent #ffffff;
 	-webkit-filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
 	filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+	-webkit-transition: border 1.0s linear, -webkit-transform 0.2s linear;
+	transition: border 1.0s linear, -webkit-transform 0.2s linear;
 	transition: border 1.0s linear, transform 0.2s linear;
+	transition: border 1.0s linear, transform 0.2s linear, -webkit-transform 0.2s linear;
 	-webkit-transition: border 0.3s linear, transform 0.2s linear, background 1s linear;
 	opacity: 0.3;
 }
@@ -1332,6 +1350,7 @@ img.ui-draggable-dragging {
 	padding: 0px;
 	padding-bottom: 1px;
 	color: #6b6b6b;
+	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background, 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88);
 	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background, 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88);
 }
 #more-tools-wrapper button {
@@ -1482,6 +1501,7 @@ img.ui-draggable-dragging {
 	margin-top: -8px;
 	width: 750px;
 	background: none;
+	-webkit-transition: 0.2s background linear;
 	transition: 0.2s background linear;
 }
 
@@ -1531,14 +1551,16 @@ img.ui-draggable-dragging {
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-	animation-delay: 1s;
+	-webkit-animation-delay: 1s;
+	        animation-delay: 1s;
 }
 .animated-slightly-delayed {
 	-webkit-animation-duration: 1s;
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
-	animation-delay: 0.5s;
+	-webkit-animation-delay: 0.5s;
+	        animation-delay: 0.5s;
 }
 .animated-fast {
 	-webkit-animation-duration: 0.5s;
@@ -1761,6 +1783,7 @@ img.ui-draggable-dragging {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
+  -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
   visibility: hidden;
   opacity: 0;
@@ -1778,6 +1801,7 @@ img.ui-draggable-dragging {
     width: auto;
     position: absolute;
     width: 500px;
+    -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     top: 70px;
     left: 30%;
@@ -1799,6 +1823,7 @@ img.ui-draggable-dragging {
   top: 20px;
   right: 30px;
 	z-index: 10;
+  -webkit-transition: all 200ms;
   transition: all 200ms;
   font-size: 30px;
   font-weight: bold;
@@ -1849,6 +1874,7 @@ img.ui-draggable-dragging {
   border: none;
   padding: 10px;
   border-radius: 2px;
+  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
@@ -1859,12 +1885,14 @@ img.ui-draggable-dragging {
 .file-upload-btn:hover {
   background: #D83A2F;
   color: #ffffff;
+  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   cursor: pointer;
 }
 
 .file-upload-btn:active {
   border: 0;
+  -webkit-transition: all .2s ease;
   transition: all .2s ease;
 }
 
@@ -1936,6 +1964,7 @@ img.ui-draggable-dragging {
   padding: 10px;
   border-radius: 4px;
   border-bottom: 4px solid #b02818;
+  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
@@ -1945,12 +1974,14 @@ img.ui-draggable-dragging {
 .remove-image:hover, .remove-image:ative {
   background: #c13b2a;
   color: #ffffff;
+  -webkit-transition: all .2s ease;
   transition: all .2s ease;
   cursor: pointer;
 }
 
 .remove-image:active {
   border: 0;
+  -webkit-transition: all .2s ease;
   transition: all .2s ease;
 }
 .file-upload p{
@@ -1985,31 +2016,38 @@ bigEntrance
 
 @keyframes bigEntrance {
 	0% {
-		transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
+		-webkit-transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
+		        transform: scale(0.3) rotate(6deg) translateX(-30%) translateY(30%);
 		opacity: 0.2;
 	}
 	30% {
-		transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);		
+		-webkit-transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);
+		        transform: scale(1.03) rotate(-2deg) translateX(2%) translateY(-2%);		
 		opacity: 1;
 	}
 	45% {
-		transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
+		-webkit-transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
+		        transform: scale(0.98) rotate(1deg) translateX(0%) translateY(0%);
 		opacity: 1;
 	}
 	60% {
-		transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);		
+		-webkit-transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);
+		        transform: scale(1.01) rotate(-1deg) translateX(0%) translateY(0%);		
 		opacity: 1;
 	}	
 	75% {
-		transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
+		-webkit-transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
+		        transform: scale(0.99) rotate(1deg) translateX(0%) translateY(0%);
 		opacity: 1;
 	}
 	90% {
-		transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);		
+		-webkit-transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);
+		        transform: scale(1.01) rotate(0deg) translateX(0%) translateY(0%);		
 		opacity: 1;
 	}	
 	100% {
-		transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
+		-webkit-transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
+		        transform: scale(1) rotate(0deg) translateX(0%) translateY(0%);
 		opacity: 1;
 	}		
 }
@@ -2131,13 +2169,9 @@ input[type=search] {
     background-size: 15px;
     padding: 8px 6px 6px 12px;
 	width: 55px;
-	
-	-webkit-border-radius: 10em;
-	-moz-border-radius: 10em;
 	border-radius: 10em;
 	
 	-webkit-transition: width .5s, height .5s;
-	-moz-transition: width .5s, height .5s;
 	transition: width .5s, height .5s;
 }
 input[type=search]:focus {
@@ -2175,6 +2209,7 @@ input::-webkit-input-placeholder {
     margin: 0px auto;
     left: -5px;
     background-image: url(assets/missing.jpg);
+    -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
     transition: all 0.5s cubic-bezier(.25,.8,.25,1);
     top: -5px;
     background-size: cover;
@@ -2200,6 +2235,7 @@ input::-webkit-input-placeholder {
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 1px 4px rgba(0,0,0,0.16), 0 1px 4px rgba(0,0,0,0.23);
+    -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
     transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
 #profile-photo-small {
@@ -2423,11 +2459,8 @@ position: fixed;
 #profile-overlay {
 	display: none;
 	background: rgba(255,255,255,0);
-	background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.35) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,0)), color-stop(100%, rgba(0,0,0,0.35)));
 	background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.35) 100%);
-	background: -o-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.35) 100%);
-	background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(0,0,0,0.35) 100%);
 	background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(0,0,0,0.35) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000', GradientType=0 );
 	position: absolute;
@@ -2464,6 +2497,7 @@ position: fixed;
     margin: 4px 7px;
     font-size: 16px;
     font-family: open sans;
+    -webkit-transition: 0.2s ease-out background;
     transition: 0.2s ease-out background;
     cursor: pointer;
     margin-right: 10px;
@@ -2525,6 +2559,7 @@ position: fixed;
 }
 #sign-up:hover, #log-in:hover, #sign-up:active, #log-in:active {
 	box-shadow: 0 2px 2px rgba(0,0,0,0.12), 0 1px 6px rgba(0,0,0,0.2);
+	-webkit-transition: all 0.2s ease-out;
 	transition: all 0.2s ease-out;
 }
 /*.1upvote:hover, .1downvote {
@@ -2549,11 +2584,10 @@ position: fixed;
     background-size: cover;
     margin: 2px 1px;
     float: right;
-    -moz-transform: scaleX(-1);
-    -o-transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-    filter: FlipH;
+    -webkit-filter: FlipH;
+            filter: FlipH;
     -ms-filter: "FlipH";
 }
 #profile .post-user-follow, #profile .post-user-unfollow {
@@ -2587,7 +2621,8 @@ position: fixed;
     border-radius: 100%;
     border: 5px solid whitesmoke;
     float: right;
-    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
 }
 .post-user {
 	float: right;
@@ -2678,6 +2713,7 @@ position: fixed;
 }
 .comment-body {
 	padding: 0px 14px;
+	-webkit-transition: all 0.3s cubic-bezier(.25,.8,.25,1);
 	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     display: block;
     text-align: left;
@@ -2733,7 +2769,6 @@ position: fixed;
     color: black;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-    -khtml-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -3016,6 +3051,7 @@ html {
     position: relative;
     line-height: normal;
     font-size: 14.5px !important;
+    -webkit-transition: none;
     transition: none;
     min-height: 35px;
     overflow: hidden;
@@ -3190,6 +3226,7 @@ html {
 #notif-menu {
   overflow: hidden;
     padding-top: 10px;
+    -webkit-transition: 0.4s cubic-bezier(0.36, 0.12, 0.18, 0.99) all;
     transition: 0.4s cubic-bezier(0.36, 0.12, 0.18, 0.99) all;
     z-index: 15;
     font-family: open sans;
@@ -3405,7 +3442,8 @@ body:not(.shown-post):not(#show) .active-type {
     padding: 5px;
     border-radius: 100%;
     font-size: 21px;
-    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
     margin: 10px 4px;
     
 }
@@ -3474,7 +3512,8 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 #settings .checkbox {
   position: relative;
   display: inline-block;
-  transform: scale(0.6);
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
 }
 #settings .checkbox:after, .checkbox:before {
   font-family: FontAwesome;
@@ -3679,10 +3718,12 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
     color: #606060;
     position: relative;
     top: -10px;
-    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
 }
 #less-settings-options-button {
-	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	        transform: rotate(90deg);
 }
 #less-settings-options-button {
 	display: none;
@@ -3718,12 +3759,15 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
     float: right;
     -webkit-animation-name: fadeInUp2;
   	animation-name: fadeInUp2;
-  	animation-duration: 3s;
+  	-webkit-animation-duration: 3s;
+  	        animation-duration: 3s;
   	opacity: 0;
-  	animation-delay: 1s;
+  	-webkit-animation-delay: 1s;
+  	        animation-delay: 1s;
 }
 .notice-message {
-	animation-delay: 0s;
+	-webkit-animation-delay: 0s;
+	        animation-delay: 0s;
 }
 .notice-message:empty, .notice:empty, .alert:empty {
 	display: none !important;
@@ -3990,7 +4034,8 @@ iframe {
 }
 .loading-2.right-wrapper .loading-quarter-circle-4 {
 	display: block;
-	animation: spin 1.2s infinite linear;
+	-webkit-animation: spin 1.2s infinite linear;
+	        animation: spin 1.2s infinite linear;
 }
 .shown-post #back-list {
 	top: 10px;
@@ -4054,11 +4099,13 @@ iframe {
     left: 15px;
 }
 .loading-animation{
-	animation: spin 1.2s infinite linear;
+	-webkit-animation: spin 1.2s infinite linear;
+	        animation: spin 1.2s infinite linear;
 	display: inline-block;
 }
 .loading-animation-2 {
-	animation: spin 1.2s infinite linear;
+	-webkit-animation: spin 1.2s infinite linear;
+	        animation: spin 1.2s infinite linear;
 	display: block;
 }
 .loading-quarter-circle:before {
@@ -4109,9 +4156,16 @@ body.shown-post #back-clicker:hover, #show #back-clicker:hover
 {
 	border-bottom: 1px solid #FF3000;
 }
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 @keyframes spin {
   100% {
-    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
   }
 }
 .base64-image{
@@ -4302,6 +4356,7 @@ html {
     color: white;
     margin: 3px;
     opacity: 0;
+    -webkit-transition: 0.3s all ease-out;
     transition: 0.3s all ease-out;
 }
 .favorite-post {
@@ -4311,6 +4366,7 @@ html {
     color: white;
     margin: 3px;
     opacity: 0;
+    -webkit-transition: 0.3s all ease-out;
     transition: 0.3s all ease-out;
 }
 body:not(.shown-post) .post-image-wrapper {
@@ -4618,7 +4674,8 @@ body:not(.shown-post) .post-image-wrapper {
 	padding-bottom: 30px
 }
 .right-wrapper.loading .loading-quarter-circle-3 {
-	animation: spin 1.2s infinite linear;
+	-webkit-animation: spin 1.2s infinite linear;
+	        animation: spin 1.2s infinite linear;
 	display: block;
 }
 .wrapper.shown .right-wrapper {
@@ -5041,6 +5098,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 	margin-top: 10px !important;
 }
 @media screen and (max-width: 750px) {
+	#next-post-icon, #prev-post-icon, .next-post-icon, .prev-post-icon {
+		display: none !important;
+	}
 	body:not(#settings):not(#invite-screen) .field {
 		width: 240px;
     	margin: 10px auto !important;
@@ -5363,6 +5423,7 @@ body.shown-post #main-page-type a:hover + #back-list {
     cursor: pointer;
     top: -3px;
     display: none !important;
+    -webkit-transition: all ease-out 0.2s;
     transition: all ease-out 0.2s;
     margin-left: 2px;
     background-size: cover;
@@ -5395,6 +5456,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 }
 #anonymous-faces h3 i:hover, #anonymous-faces h3 i:active {
 	color: black;
+	-webkit-transition: all ease-out 0.2s;
 	transition: all ease-out 0.2s;
 }
 #ragefaces-buttons-wrapper #anonymous-image {
@@ -5839,9 +5901,7 @@ input.reply-comment:hover, i.material-icons.hide-reply:hover {
   margin-bottom: 20px;
   border-radius: 5px;
   clear: both;
-  -webkit-border-radius: 5px;
-     -moz-border-radius: 5px;
-          border-radius: 5px;
+  border-radius: 5px;
 }
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
@@ -6394,54 +6454,71 @@ i.fa.fa-reddit-alien {
 	display: block;
 }*/
 #tags-wrapper a:nth-child(1) {
-	animation-duration: 0.1s
+	-webkit-animation-duration: 0.1s;
+	        animation-duration: 0.1s
 }
 #tags-wrapper a:nth-child(2) {
-	animation-duration: 0.2s
+	-webkit-animation-duration: 0.2s;
+	        animation-duration: 0.2s
 }
 #tags-wrapper a:nth-child(3) {
-	animation-duration: 0.3s
+	-webkit-animation-duration: 0.3s;
+	        animation-duration: 0.3s
 }
 #tags-wrapper a:nth-child(4) {
-	animation-duration: 0.4s
+	-webkit-animation-duration: 0.4s;
+	        animation-duration: 0.4s
 }
 #tags-wrapper a:nth-child(5) {
-	animation-duration: 0.5s
+	-webkit-animation-duration: 0.5s;
+	        animation-duration: 0.5s
 }
 #tags-wrapper a:nth-child(6) {
-	animation-duration: 0.6s
+	-webkit-animation-duration: 0.6s;
+	        animation-duration: 0.6s
 }
 #tags-wrapper a:nth-child(7) {
-	animation-duration: 0.7s
+	-webkit-animation-duration: 0.7s;
+	        animation-duration: 0.7s
 }
 #tags-wrapper a:nth-child(8) {
-	animation-duration: 0.8s
+	-webkit-animation-duration: 0.8s;
+	        animation-duration: 0.8s
 }
 #tags-wrapper a:nth-child(9) {
-	animation-duration: 0.9s
+	-webkit-animation-duration: 0.9s;
+	        animation-duration: 0.9s
 }#tags-wrapper a:nth-child(10) {
-	animation-duration: 1s
+	-webkit-animation-duration: 1s;
+	        animation-duration: 1s
 }
 #tags-wrapper a:nth-child(11) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(12) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(13) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(14) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(15) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(16) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 #tags-wrapper a:nth-child(17) {
-	animation-duration: 1.1s
+	-webkit-animation-duration: 1.1s;
+	        animation-duration: 1.1s
 }
 .tag-title {
 	    text-align: center;
@@ -6823,6 +6900,7 @@ i.fa.fa-reddit-alien {
 	left: 5px;
 	bottom: 5px;
 	opacity:0;
+	-webkit-transition: 0.3s all ease-out;
 	transition: 0.3s all ease-out;
 	z-index: 3;
 }
@@ -6857,8 +6935,10 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     border: #5ec361 1px solid;
     color: #5ec361;
     font-family: open sans;
+    -webkit-transition: 0.2s ease-out background;
     transition: 0.2s ease-out background;
     cursor: pointer;
+    -webkit-transition: 0.1s ease-out all;
     transition: 0.1s ease-out all;
 }
 .post-user-unfollow {
@@ -6896,7 +6976,8 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     pointer-events: none;
     animation: animatedGif 18s linear infinite;
   	-webkit-animation: animatedGif 18s linear infinite;
-	animation-delay: 3s;  	
+	-webkit-animation-delay: 3s;
+	        animation-delay: 3s;  	
 }
 @media screen and (max-width: 600px) {
 	 #main-page-type:not(.main) {
@@ -6919,7 +7000,8 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     pointer-events: none;
     animation: animatedGif 10s linear infinite;
   	-webkit-animation: animatedGif 10s linear infinite;
-	animation-delay: 3s;  	
+	-webkit-animation-delay: 3s;
+	        animation-delay: 3s;  	
 }
 }
 @-webkit-keyframes  animatedGif {
@@ -6946,13 +7028,15 @@ body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
     text-align: center;
     text-shadow: 0px 0px 10px black;
     cursor: pointer;
+    -webkit-transition: 0.2s all ease-in;
     transition: 0.2s all ease-in;
 }
 .post-title.focus {
 	color: gray;
 }
 .more-about-drolle:hover {
-	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	        transform: scale(1.1);
 }
 #invite-screen h1 {
 	display: inline;
@@ -6974,7 +7058,8 @@ body:not(#invite-screen) #notice-to-sign {
 }
 #notice-to-sign i {
 	margin: 5px 5px;
-	transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	        transform: rotate(90deg);
     font-size: 17px;
 }
 #tag #back-list {
@@ -7148,11 +7233,8 @@ body:not(#invite-screen) #notice-to-sign {
     height: 100%;
     position: fixed;
 	background: rgba(249,249,249,1);
-	background: -moz-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
 	background: -webkit-gradient(left top, right top, color-stop(0%, rgba(249,249,249,1)), color-stop(32%, rgba(243,187,182,0)), color-stop(100%, rgba(231,56,39,0)));
 	background: -webkit-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
-	background: -o-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
-	background: -ms-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
 	background: linear-gradient(to right, rgba(249,249,249,1) 0%, rgba(243,187,182,0) 32%, rgba(231,56,39,0) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#e73827', GradientType=1 );
 }
@@ -7164,11 +7246,8 @@ body:not(#invite-screen) #notice-to-sign {
     z-index:3;
     position: fixed;
 	background: rgba(231,56,39,0);
-background: -moz-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
 background: -webkit-gradient(left top, right top, color-stop(0%, rgba(231,56,39,0)), color-stop(30%, rgba(236,114,102,0)), color-stop(100%, rgba(249,249,249,1)));
 background: -webkit-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
-background: -o-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
-background: -ms-linear-gradient(left, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
 background: linear-gradient(to right, rgba(231,56,39,0) 0%, rgba(236,114,102,0) 30%, rgba(249,249,249,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', endColorstr='#f9f9f9', GradientType=1 );
 }
@@ -7211,6 +7290,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     text-align: left;
     padding: 2px;
     background: #f9f9f9;
+    -webkit-transition: background ease-in 0.2s;
     transition: background ease-in 0.2s;
     cursor: pointer;
 }
@@ -7311,7 +7391,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     left: -5px;
     height: 60px;
     background-size: cover;
-    filter: blur(2px);
+    -webkit-filter: blur(2px);
+            filter: blur(2px);
 }
 .box-profile-image {
 	width: 25px;
@@ -7375,6 +7456,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     float: left;
     position: relative;
     background-size: cover;
+    -webkit-transition: all ease-out 0.3s;
     transition: all ease-out 0.3s;
 }
 .tags-tag:hover, .tags-tag:active {
@@ -7428,6 +7510,40 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     height: 100%;
     position: absolute;
     background-size: cover;
-    filter: blur(5px);
-    transform: scale(1.1);
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+}
+.app {
+	position: relative;
+	top: -45px !important;
+}
+.app #navbar, .app #main-page-type, .app #logo-wrapper {
+	display: none !important;
+	
+}
+.notif-page.app #content-full2 {
+	padding-top: 0px !important;
+}
+.notif-page.app #notif-menu {
+	top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100% !important;
+}
+.notif-page.app #notification-icon-2 {
+	display: none !Important;
+}
+.notif-page.app #notif-title {
+	display:none !important;
+}
+#invite-logo-img {
+	display: none
+}
+#notlogged #navbar, #notlogged #logo-wrapper {
+	display: none !important;
+}
+#invite-screen #logo-wrapper {
+	display: none;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-signed="<%= if user_signed_in? then 'true' else 'false' end  %>" data-username="<% if user_signed_in? %><%= current_user.username %><% end %>"
+data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% end %>">
 <head>
   <meta name="p:domain_verify" content="14efe3ec11b9fed4b646ffae304c4376"/>
   <% if controller.action_name == 'make' %>

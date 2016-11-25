@@ -616,7 +616,7 @@ tabs = function() {
 	$(document).on('click', '#make2 .cancel-meme', function() {
 		$('#hide-remote-make').click()
 	})
-	$(document).on('click', 'body:not(#show) #back-list', function() {
+	$(document).on('click', 'body:not(#show) #back-list, .app.shown-post .post-image-wrapper', function() {
 		if ($('body').is('#show')) {
 			console.log('redirected to recent')
 			//window.location = '/recent'

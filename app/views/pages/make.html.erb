@@ -2,7 +2,7 @@
 <% if !user_signed_in? %>
 
 
-<body id="<%= controller.action_name %>">	
+<body id="<%= controller.action_name %>" class"<%= if request.original_url.include?('?app=true') then 'app' end %> class">	
 
 <div id="remote-signup-wrapper">
     <i class="material-icons close-wrapper">close</i>
@@ -136,7 +136,7 @@
 </body>
 	
 <% else %>
-<body id="<%= controller.action_name %>" class="<% if user_signed_in? %>signed-in<% end %>">	
+<body id="<%= controller.action_name %>" class="<% if user_signed_in? %>signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">	
 <%= render '/layouts/activities' %>
 <div id="overlay-under-notif"></div>
 	<span id="make-logo">/make</span>

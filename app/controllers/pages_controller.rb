@@ -8,7 +8,11 @@ class PagesController < ApplicationController
   #  resource.update_without_password(params)
   #end
   def index
-    if current_user && current_user.sign_in_count == 1
+    @url =  request.base_url + request.original_fullpath
+    if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
+      redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
+    else
+        if current_user && current_user.sign_in_count == 1
       unless session[:display_welcome]
         @welcomeMessage = true
         session[:display_welcome] = true
@@ -38,7 +42,11 @@ class PagesController < ApplicationController
     respond_to do |format|
      format.html
      format.js
+     format.json {render json:  @post }
     end
+    end
+    
+    
   end
   
   def admin
@@ -46,11 +54,15 @@ class PagesController < ApplicationController
     #@post2 = Post.where(reported: true).order("created_at DESC")
     #@postb = [@post1,@post2].flatten
     @post = @post1.paginate(:per_page => 30, :page => params[:page])
+    
   end
   
   def recent
-    
-    @trends = Post.tag_counts_on(:trends).limit(7)
+    @url =  request.base_url + request.original_fullpath
+    if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
+      redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
+    else
+      @trends = Post.tag_counts_on(:trends).limit(7)
     if user_signed_in?
       @randomUsers = User.where.not(:id => current_user.following).limit(4)
       unless session[:swipe]
@@ -77,17 +89,49 @@ class PagesController < ApplicationController
     respond_to do |format|
      format.html
      format.js 
+     format.json {render json:  @post }
     end
+    end
+    
     
   end
   
   def about
     
   end
+  
+  def reprofile
+    if user_signed_in?
+      redirect_to '/user/' + current_user.username
+    else
+      redirect_to '/notlogged'
+    end 
+  end
+  
+  def notlogged
+  end
+  
   def contact
     
   end
   def terms
+    
+  end
+  
+  def notifications
+    @url =  request.base_url + request.original_fullpath
+    if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
+      redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
+    else
+      if user_signed_in?
+      @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
+      #@activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids ).where( key: "posting" ).where("created_at > ?", PublicActivity::Activity.where(key: 'following', recipient: current_user, owner: ).created_at  )
+      @activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids, key: "posting" ).where('created_at >= ?', Time.now-2.days)
+      @activities2 = PublicActivity::Activity.where( key: 'drolling').order("created_at DESC")
+      @activities3 = [@activities1, @activities2, @activities0].flatten
+      @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
+    end
+    end
     
   end
   

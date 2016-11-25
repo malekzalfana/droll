@@ -1,4 +1,4 @@
-<body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+<body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">
     <!--<img class="temp" src="http://i.imgur.com/aLaoys6.png" style="
     width: 65px;
     position: fixed;
