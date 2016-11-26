@@ -1,9 +1,8 @@
 #content-profile {
     width: 100%;
-    padding-top: 15px;
+    padding: 10px 0px;
     text-align: center;
-    padding-bottom: 25px;
-    background: white;
+    background: #fbfbfb;
     /*text-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);*/
 }
 #left-content-profile, #right-content-profile {
@@ -11,6 +10,7 @@
     text-align: left;
     margin: 0px auto;
     left: 2.5px !important;
+    background: #f1f1f1 !important;
 }
 #profile-posts, #profile-favors {
     margin-right: 25px;    
@@ -37,9 +37,11 @@
     font-size: 20px;
     width: 98%;
     margin: 0px auto;
+    padding-top: 10px;
     display: block;
+    background: #fbfbfb !important;
     font-family: open sans;
-    margin-bottom: 15px;
+    padding-bottom: 10px;
 }
 .wrapper-content {
     position: absolute;
