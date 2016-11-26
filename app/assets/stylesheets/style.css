@@ -7519,7 +7519,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 	position: relative;
 	top: -45px !important;
 }
-.app #navbar, .app #main-page-type, .app #logo-wrapper {
+.app #navbar, .app #main-page-type, .app #logo-wrapper, .app #show-feedback {
 	display: none !important;
 	
 }
