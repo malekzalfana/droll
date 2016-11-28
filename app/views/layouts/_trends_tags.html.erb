@@ -4,7 +4,16 @@
     		<a href="/trends"><p class="tags-title">Trends</p></a>
               <% @trends.each do |trend| %>
             <a href="trends/<%= trend.name %>" class="trends">/<%= trend.name %></a>
+            
+            
         <% end %>
+        <a href="trends/youtubeThumbnailsBeLike" class="trends">/youtubeThumbnailsBeLike</a>
+            <a href="trends/theDab" class="trends">/theDab</a>
+            <a href="trends/vineIsDead" class="trends">/vineIsDead</a>
+            <a href="trends/familyGatherings" class="trends">/familyGatherings</a>
+            <a href="trends/trumpetIsNowPresident" class="trends">/trumpetIsNowPresident</a>
+        <% else %>
+        
         <% end %>
         <hr style="border: 1px solid #f9f9f9;">
         <div id="tags-wrapper-wrapper-wrapper">

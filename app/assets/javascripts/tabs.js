@@ -1004,7 +1004,7 @@ tabs = function() {
 	})
 	$(document).on('click', '.close-wrapper', function() {
 		$('#remote-invite-wrapper').hide()
-		$('#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile').removeClass('blurred')
+		$('#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile, #trends-wrapper').removeClass('blurred')
 			$('body').removeClass('overflow-hidden')
 	})
 	$(document).on('click', '#log-in, #sign-up, .login, #notice-to-sign',
@@ -1012,7 +1012,7 @@ tabs = function() {
 			$('#not-logged-in').hide()
 			//e.preventDefault()
 			$(
-				'#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile'
+				'#navbar, #content-full2, #profile-account-id-wrapper, #profile-under-overlay, #content-profile, #trends-wrapper'
 			).addClass('blurred')
 			if ($(this).is('#log-in') || $(this).is('.login') || $(this).is(
 				'#notice-to-sign')) {

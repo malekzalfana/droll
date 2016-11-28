@@ -10,7 +10,7 @@ class PagesController < ApplicationController
   def index
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
-      redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
+      redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
     else
         if current_user && current_user.sign_in_count == 1
       unless session[:display_welcome]
