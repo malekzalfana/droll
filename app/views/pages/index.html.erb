@@ -95,7 +95,7 @@
     <% if user_signed_in? %>
         <i class="material-icons" id="show-feedback">feedback</i>
         <div id="feedback">
-            <%= form_tag 'pages/feedback', remote: true, :method => 'get' do %>
+            <%= form_tag '/pages/feedback', remote: true, :method => 'get' do %>
                 <label>Any feedback is appreciated</label>
                 <%= hidden_field_tag :user, current_user, placeholder: "Tell us everything.." %>
                 <%= text_area_tag :text %>
