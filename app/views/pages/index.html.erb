@@ -105,7 +105,10 @@
             <% end %>
         </div>
     <% end %>
-    <%= render '/layouts/activities' %>
+    
+    <% if !request.original_url.include?('?app=true') %>
+        <%= render '/layouts/activities' %>
+    <% end %>
     
     <% if current_user.tag.nil? %>
     <div id="follow-tags-wrapper">

@@ -165,8 +165,10 @@ $(window).load(function() {
         $("#profile-photo").removeClass("small-profile-photo")
     }
 });
+    
     $(document).ready(function(){
-        $('#notif-menu').simplebar();    
+            $('body:not(.app) #notif-menu').simplebar();
+        
     })
     
     $('#overlay').click(function(){

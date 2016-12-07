@@ -658,6 +658,21 @@ textarea:focus {
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
 }
+.app #meme-textareas textarea {
+	    height: 50px;
+    width: calc(100% - 22px);
+    margin: 0px;
+    box-shadow: none;
+    font-family: roboto;
+    margin-top: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 0px;
+}
+.app #created-meme-title {
+	margin-bottom: 10px;
+	box-shadow: none;
+    border-bottom: 1px solid gainsboro;
+}
 #meme-textareas textarea:focus {
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -1041,12 +1056,12 @@ textarea:focus {
     background: #fbfbfb;
     z-index: 7;
     min-heighT: 750px;
-    overflow: hidden;
+    
 }
 .make-how-to {
 	font-family: lato;
     padding: 8px 10px;
-    width: calc(100% - 10px);
+    width: calc(100% - 20px);
     pointer-events: none;
     text-align: center;
     opacity: .85;
@@ -1085,6 +1100,7 @@ textarea:focus {
 }
 .meme-title {
 	display: inline-block;
+	pointer-events: none;
     width: 96%;
     padding: 8% 2%;
     color: white;
@@ -2487,9 +2503,12 @@ position: fixed;
 .vote, .post-options {
 	cursor: pointer !important;
 }
+/*
 .not-voted {
-	opacity: 0.4 !important;
+	opacity: 0.55 !important;
+	border-color: #7b7b7b !important;
 }
+*/
 #posts-number {
 	float: right;
     margin: 7px 10px;
@@ -2545,16 +2564,7 @@ position: fixed;
 	width: 550px;
 	border: 1px solid whitesmoke;
 }
-.upvote, .downvote {
-	background-repeat: no-repeat;
-    background-size: cover !important;
-    background-position: center;
-    float: left;
-    font-family: open sans;
-    margin: 2px;
-    color: gray;
-    font-size: 15px;
-}
+
 .post-votes {
     background-repeat: no-repeat;
     background-size: cover;
@@ -2612,28 +2622,7 @@ position: fixed;
     border-radius: 100%;
     background: whitesmoke;
 }
-.upvote {
-	width: 20px;
-	float: right;
-    height: 18px;
-    background: url(upvote-2.png) 0px 0px no-repeat whitesmoke;
-    background-size: cover;
-    margin: 3px;
-    border-radius: 100%;
-    border: 5px solid whitesmoke;
-}
-.downvote {
-	width: 20px;
-    height: 18px;
-    background: url(upvote-2) 0px 0px no-repeat whitesmoke;
-    background-size: cover;
-    margin: 3px;
-    border-radius: 100%;
-    border: 5px solid whitesmoke;
-    float: right;
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg);
-}
+
 .post-user {
 	float: right;
 	font-family: open sans;
@@ -2890,18 +2879,31 @@ position: fixed;
     text-align:center;
 }
 .upvote.voted, .navbar-2 {
-    background: url(upvote-3.png) 0px 0px no-repeat white !important;
-    background-size: cover !important;
+    /*background: url(upvote-3.png) 0px 0px no-repeat white !important;
+    background-image: url(http://i.imgur.com/1BvZkfw.png) !important;
+    border-color: #ff3000 !important;
+    */
+    border-color: #252525 !important;
+    
     opacity: 1 !important;
 }
 .downvote.voted {
-	/*background: url(upvote8.png) 0px 0px no-repeat white !important;*/
-    background-size: cover !important;
+	/*background: url(upvote8.png) 0px 0px no-repeat white !important;
+	background-image: url(http://i.imgur.com/1BvZkfw.png) !important;
+	border-color: #ff3000 !important;
+	*/
+	border-color: #252525 !important;
+    
     opacity: 1 !important;
 }
+.downvote:hover, .upvote:hover {
+	opacity: 1 !important;
+}
+/*
 .downvoted {
    background: url(upvote-3.png) 0px 0px no-repeat whitesmoke;
 }
+*/
 
 
 
@@ -3234,7 +3236,7 @@ html {
 	display: none;
 }
 #notif-menu {
-  overflow: hidden;
+  	overflow: auto;
     padding-top: 10px;
     -webkit-transition: 0.4s cubic-bezier(0.36, 0.12, 0.18, 0.99) all;
     transition: 0.4s cubic-bezier(0.36, 0.12, 0.18, 0.99) all;
@@ -3249,6 +3251,9 @@ html {
     width: 400px;
     heighT: calc(100% - 45px) !important;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+body:not(.app) #notif-menu {
+	overflow: hidden;
 }
 #notif-menu hr  {
   width: 97%;
@@ -3265,7 +3270,7 @@ html {
 
 }
 .notif {
-   width: calc(100% - -20px);
+   width: calc(100% - 10px);
     background: white;
     border-left1: black 2px solid;
     float: left;
@@ -3286,6 +3291,8 @@ html {
 	height: 100%;
 	width: 100%;
 	display: inline-block;
+}
+body:not(.app) #notif-content {
 	overflow: hidden;
 }
 .edit_relationship {
@@ -4064,6 +4071,10 @@ iframe {
     border-left: 4px solid #d8d8d8;
     border-bottom: 4px solid transparent;
 }
+.explore-title:hover {
+	background: #f5f5f5 !important;
+	border-color: #f5f5f5 !important;
+}
 .loading-quarter-circle-4:before {
 	content: "";
     width: 13px;
@@ -4240,7 +4251,7 @@ html, body {
   /*overflow-y: auto*/
 }
 html {
-	overflow-y: auto !important
+	
 }
 /*
 
@@ -4472,6 +4483,9 @@ body:not(.shown-post) .post-image-wrapper {
     margin-top: 6px;
     margin-left: 7px;
 }
+.app .anonymous-checked {
+	display: none;
+}
 .anonymous-checkbox span {
 	margin: 4px;
     display: inline-block;
@@ -4499,7 +4513,7 @@ body:not(.shown-post) .post-image-wrapper {
 #anonymous-image img + i {
 	display: none !important;
 }
-.anonymous-checkbox input[type="checkbox"] {
+body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	opacity: 0;
     cursor: pointer;
     width: 130px;
@@ -4660,6 +4674,10 @@ body:not(.shown-post) .post-image-wrapper {
 	}
 }
 @media screen and (max-width: 550px) {
+	.post-footer .post-votes-word {
+		 margin: 13px 5px;
+    	font-size: 12px;
+	}
 	.wrapper {
 		width: 100% !important;
 	}
@@ -5179,7 +5197,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 		margin-left: 0px !important;
 	}
 	#tags-wrapper {
-		width: calc(100% - 20px) !Important;
+		width: calc(100%) !Important;
 		display: block;
 	}
 	#notice-to-sign {
@@ -5490,6 +5508,10 @@ body.anonymous {
     margin: 10px;
     color: #616161;
 }
+img.more-post-options {
+	width: 15px;
+    margin: 14px;
+}
 .more-post-options-container, .reported-container {
 	height: 40px;
 	display: none;
@@ -5688,7 +5710,7 @@ body.shown-post .post-image-2 {
 	}
 }
 .share-button {
-	font-size: 19px !important;
+	font-size: 18px !important;
     margin-left: -3px;
 }
 #content-full2 .downvote {
@@ -5787,9 +5809,9 @@ a[title="Twitter"] img, a[title="Facebook"] img {
 #main-share-button i {
 	font-size: 16px;
     float: right;
-    margin: 11px 10px 0px 0px;
+    margin: 13px 13px 0px 0px;
     color: black;
-    opacity: 0.65;
+    opacity: 0.5;
 }
 #main-share-button i:hover {
 	opacity: 1;
@@ -6452,6 +6474,10 @@ i.fa.fa-reddit-alien {
 #tags-wrapper .tag:hover {
 	color: #ff3000;
 }
+.app #tags-wrapper .tag:hover {
+	color:  black;
+	background: #f3f3f3;
+}
 #tags-wrapper .tag:first-letter, .tag-title:first-letter {
 	text-transform: capitalize
 }
@@ -6463,7 +6489,8 @@ i.fa.fa-reddit-alien {
 }*/
 #tags-wrapper a:nth-child(1) {
 	-webkit-animation-duration: 0.1s;
-	        animation-duration: 0.1s
+	        animation-duration: 0.1s;
+	        display: block;
 }
 #tags-wrapper a:nth-child(2) {
 	-webkit-animation-duration: 0.2s;
@@ -6870,7 +6897,7 @@ i.fa.fa-reddit-alien {
 }
 #make-tags-2-wrapper {
 	float: left;
-    width: 100%;
+    width: calc(100% - 14px);
     margin-left: 0px !important;
     margin-top: 10px !important;
     padding: 7px !important;
@@ -6878,6 +6905,9 @@ i.fa.fa-reddit-alien {
 }
 #make-tags-2-wrapper p {
 	margin-bottom: 10px !important;
+}
+.app #make-tags-2-wrapper p {
+	font-weight: 100;
 }
 #make-tags-1-wrapper {
 	width: 100%;
@@ -7100,6 +7130,11 @@ body:not(#invite-screen) #notice-to-sign {
     width: 25px;
     display: none;
     cursor: pointer;
+    background-image: url(http://image.flaticon.com/icons/svg/61/61032.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+
 }
 #scroll-up-wrapper {
 	position:fixed;
@@ -7109,6 +7144,9 @@ body:not(#invite-screen) #notice-to-sign {
 	top: 45px;
 	text-align: center;
 	pointer-events: none;
+}
+.app #scroll-up-wrapper {
+	top: 0px;
 }
 #profile #scroll-up-wrapper {
 	top: 20px;
@@ -7293,7 +7331,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 }
 .make-trends-wrapper p {
 	font-size: 13px;
-	width: 100%;
+	width: calc(100% - 4px);
 	float: left;
     text-align: left;
     padding: 2px;
@@ -7304,6 +7342,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 }
 .make-trends-wrapper p:not(#make-trends-title) {
 	padding: 3px;
+	width: calc(100% - 6px);
 }
 .make-trends-wrapper p.active:not(#make-trends-title), .make-add-trend-input.active {
 	color: black !important;
@@ -7312,7 +7351,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     border: 1px solid;
     border-radius: 2px;
 }
-.make-trends-wrapper p:not(#make-trends-title):hover {
+.make-trends-wrapper p:not(.make-trends-title):hover {
 	background: #ececec;
 }
 .make-trends-title {
@@ -7329,7 +7368,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 }
 .make-add-trend-input {
 	    padding: 5px;
-    width: 100%;
+    width: calc(100% - 10px);
     border: 1px solid #cecece;
     background: none;
 }
@@ -7527,6 +7566,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 	position: relative;
 	top: -45px !important;
 }
+.app#make {
+	top: 0px !important;
+}
 .app #navbar, .app #main-page-type, .app #logo-wrapper, .app #show-feedback {
 	display: none !important;
 	
@@ -7539,6 +7581,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     right: 0px;
     width: 100%;
     height: 100% !important;
+}
+#notifications.app #notif-menu {
+	    top: 0px;
+    right: 0px;
+    width: calc(100% + 10px);
+    height: 100% !important;
+    left: 0px;
 }
 .notif-page.app #notification-icon-2 {
 	display: none !Important;
@@ -7559,12 +7608,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
 	font-size: 15px !important;
     font-family: roboto;
     color: black;
-    margin-top: 12px !important;
+    margin-top: 0px !important;
     font-weight: 200;
     display: block;
-    width: calc(100% - 25px) !important;
-    padding-left: 5px;
+    width: calc(100% - 20px) !important;
+    padding: 10px;
     text-align: left;
+    margin: 0px !important;
+}
+.app .trends:hover {
+	background: #f5f5f5;
 }
 .app .tags-title-2 {
 	margin-top: 20px;
@@ -7593,4 +7646,126 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
     padding: 3px 7px;
     -webkit-animation-name: none;
     animation-name: none;
+}
+.app .make-how-to {
+	display: none;
+}
+.app #tabs-wrapper {
+	max-width: 100% !important;
+    width: calc(100% - 60px) !important;
+    padding-left: 60px !important;
+    background: white !important;
+    position: fixed !important;
+    top: 0px !important;
+    z-index: 15 !important;
+
+}
+.app #tabs-wrapper .tabs {
+	text-transform: uppercase;
+}
+@font-face {
+  font-family: "Impactt";
+  src: url(/assets/impactt.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Impacttt";
+  src: url(/assets/beyond_the_mountains.ttf) format("truetype");
+}
+.app .anonymous-checkbox input[type="checkbox"] {
+	    opacity: 1 !important;
+    display: inline-block !important;
+    position: relative !important;
+    width: auto !important;
+    margin: 5px 7px !important;
+    top: 7px !important;
+}
+.app .more-post-options-container .anonymous-checkbox input[type="checkbox"] {
+	top: 0px !important;
+}
+#tags-wrapper a, #trends-wrapper > a {
+	pointer-events: none;
+}
+.app .anonymous-checkbox input:checked ~ span {
+	left: 0;
+}
+.app#tag {
+	top: 0px !important;
+}
+.app #anonymous-image {
+	top: 5px;
+    position: initial;
+    margin: 0px;
+}
+.app #cancel-upload-2,.app #created-image-button-before {
+	padding: 8px 20px !important;
+    font-size: 15px !important;
+    font-weight: 100 !important;
+    margin-bottom: 30px !important;
+}
+#notifications #notif-footer {
+	display: none !important;
+}
+.new i.downvote {
+	border-radius: 50%;
+    padding: 2px;
+    height: auto;
+    background: none;
+    font-size: 25px;
+    border: none;
+    float: right;
+    width: auto;
+    opacity:1;
+    margin: 6px;
+    transform: rotate(180deg);
+}
+.new i.upvote {
+	border-radius: 50%;
+    padding: 2px;
+    opacity:1;
+    height: auto;
+    background: none;
+    font-size: 25px;
+    border: none;
+    width: auto;
+    float: right;
+    margin: 6px;
+}
+.new.upvote:hover, .new.downvote:hover {
+	background: whitesmoke;
+	cursor: pointer;
+}
+.new .post-footer .post-votes-word {
+	font-size: 12px;
+	font-size: 500;
+}
+#main-share-button i {
+	    float: right;
+    margin: 13px 13px 0px 7px;
+    color: black;
+    opacity: 0.5;
+}
+.new .share-button {
+	font-size: 15 !important;
+}
+/*
+.new a.down.downvote.downvote.vote {
+	display: none !important;
+}
+.new a.up.upvote.vote.upvote {
+	display: none !important;
+}
+
+.app .post-footer-user-name {
+    font-size: 15px;
+    color: black;
+    float: left;
+    margin: 5px 3px;
+    opacity: 0.7;
+    font-family: open sans;
+    font-weight: 500;
+    text-transform: lowercase;
+}
+*/
+body:not(#profile).app .post-user-follow, body:not(#profile).app .post-user-unfollow {
+	display: none;
 }

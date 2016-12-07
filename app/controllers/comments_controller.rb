@@ -4,9 +4,16 @@ class CommentsController < ApplicationController
     @comments = Comment.all
   end
   
-  def show 
-    @thiscomment = Comment.find_by_id(params[:id])
-    @post = @thiscomment.post
+  def show
+    @url =  request.base_url + request.original_fullpath
+    
+    if !@url.include?('commentid=')
+      @thiscomment = Comment.find_by_id(params[:id])
+      @post = @thiscomment.post
+      redirect_to url_for(@post) + '?commentid=' + params[:id]
+    end
+=begin
+    
     if user_signed_in?
       @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
       @activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids, key: "posting" ).where('created_at >= ?', Time.now-2.days)
@@ -28,6 +35,7 @@ class CommentsController < ApplicationController
     @commentbefore.delete( @thiscomment )
     @commentlast = [@thiscomment, @commentbefore].flatten
     @comment = @commentlast.paginate(:per_page => 35, :page => 1)
+=end
   end 
   
   def new
@@ -136,10 +144,10 @@ class CommentsController < ApplicationController
       if current_user.voted_up_on? @comment
         @comment.unvote_by current_user
         PublicActivity::Activity.where(key: 'upvoting', trackable_id: @comment.id, owner: current_user).destroy_all
-        if @comment.get_upvotes.size > 0
-          @lastvoter = User.where(@comment.votes_for.up.ids.include? :id).last
-          @comment.create_activity :upvote, owner: @lastvoter, key: 'upvoting', recipient: @comment.user
-        end
+        #if @comment.get_upvotes.size > 0
+        #  @lastvoter = User.where(@comment.votes_for.up.ids.include? :id).last
+        #  @comment.create_activity :upvote, owner: @lastvoter, key: 'upvoting', recipient: @comment.user
+        #end
       else
         @comment.upvote_by current_user
         if current_user != @comment.user
@@ -166,6 +174,7 @@ class CommentsController < ApplicationController
         @comment.unvote_by current_user
       else
         @comment.downvote_by current_user
+        PublicActivity::Activity.where(key: 'upvoting', trackable_id: @comment.id, trackable: @comment, owner: current_user).destroy_all
         if (@comment.created_at > Time.now - 7.minutes) && @comment.get_downvotes.size == 2
           @comment.hidden = true
           @comment.update_attributes(permit_post2)

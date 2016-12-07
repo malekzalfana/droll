@@ -1,7 +1,9 @@
 <body  data-no-turbolinks='true' id="tag<%# controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
     
-    <%= render '/layouts/trends_tags' %>
-    <%= render '/layouts/who_to_follow' %>
+    <% if !request.original_url.include?('?app=true') %>
+        <%= render '/layouts/trends_tags' %>
+        <%= render '/layouts/who_to_follow' %>
+    <% end %>
     <% if user_signed_in? %>
         <i class="material-icons" id="show-feedback">feedback</i>
         <div id="feedback">

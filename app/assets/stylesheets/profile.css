@@ -10,6 +10,7 @@
     text-align: left;
     margin: 0px auto;
     left: 2.5px !important;
+    
     background: #f1f1f1 !important;
 }
 #profile-posts, #profile-favors {
@@ -61,9 +62,12 @@
     transition: all 0.3s cubic-bezier(.25,.8,.25,1);
     /*display: none;*/
 }
+.app#profile {
+    overflow:auto;
+}
 .profile-post {
     width: 100%;
-    heighT: 100%;
+    
     background-size: cover;
     background-repeat: no-repeat;
     float:left;

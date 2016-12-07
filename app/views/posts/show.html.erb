@@ -3,7 +3,7 @@
 <% else %>
 
 
-<body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>">
+<body id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>" <% if @commentid != '0' %>data-commentid="<%= @commentid %>"<% end %>>
     <%= render '/layouts/activities' %>
     <div id="overlay-under-notif"></div>
     <div id="loading-wrapper">
@@ -171,7 +171,8 @@
                             
                         
                     <% else %>
-                        <i class="material-icons more-post-options">more_horiz</i>
+                        <!--<i class="material-icons more-post-options">more_horiz</i>-->
+                        <img class="more-post-options" src="http://image.flaticon.com/icons/svg/54/54175.svg">
                     <% end %>
                         
                     <% if user_signed_in? %>

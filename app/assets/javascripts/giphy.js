@@ -1,4 +1,4 @@
-if ( $('body').is('#make2') || $('body').is('#make.signed-in') ) {
+if ( $('body').is('#make2') || $('body').is('#make.signed-in:not(.app)') ) {
     var gifArray = ['lol', 'wtf', 'crying', "that's racist", 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy', 'hell no', 'damn it', 'me gusta', 'triggered', 'bitch what']
     
     
@@ -139,9 +139,11 @@ var target = document.getElementById("gifs");
 var loader = document.getElementById("loader");
 var messageOutput = document.getElementById("unlock-feed");
 
-searchTerm.addEventListener("input", debounce(function() {
+    searchTerm.addEventListener("input", debounce(function() {
   initSearch("dc6zaTOxFJmzC", searchTerm.value, "search")
 }, 500));
+
+
 
 var randomGif = gifArray[(Math.floor(Math.random() * 10) + 1)]
 

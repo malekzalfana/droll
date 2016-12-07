@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
-
+#for caching
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
 # for uploading images
 gem 'paperclip', '~> 4.3.1'
 #gem "paperclip", "~> 3.5.3"

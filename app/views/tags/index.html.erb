@@ -1,3 +1,4 @@
+<body class="<%= if request.original_url.include?('?app=true') then 'app' end %>">
 <div id="main-page-type" class="tags">
     <div id="back-clicker">
             <i class="material-icons" id="back-list">arrow_back</i>
@@ -8,50 +9,49 @@
     </div>
 <div id="tags-wrapper-2">
     
-    <a href="tags/memes">
+    <a data-name="Memes" href="tags/memes<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-memes" class="tags-tag"><p class="tags-tag-title">memes</p></div>
     </a>
     
-    <a href="tags/gaming">
+    <a data-name="Gaming" href="tags/gaming<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-gaming" class="tags-tag"><p class="tags-tag-title">gaming</p></div>
     </a>
     
-    
-    <a href="tags/reaction">
+    <a data-name="Reaction" href="tags/reaction<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-reaction" class="tags-tag"><p class="tags-tag-title">reaction</p></div>
     </a>
-    <a href="tags/wtf">
+    <a data-name="Wtf" href="tags/wtf<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-wtf" class="tags-tag"><p class="tags-tag-title">wtf</p></div>
     </a>
-    <a href="tags/cute">
+    <a data-name="Cute" href="tags/cute<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-cute" class="tags-tag"><p class="tags-tag-title">cute</p></div>
     </a>
-    <a href="tags/politics">
+    <a data-name="" href="tags/politics<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-politics" class="tags-tag"><p class="tags-tag-title">politics</p></div>
     </a>
-    <a href="tags/happy">
+    <a data-name="" href="tags/happy<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-happy" class="tags-tag"><p class="tags-tag-title">happy</p></div>
     </a>
-    <a href="tags/sports">
+    <a data-name="" href="tags/sports<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-sports" class="tags-tag"><p class="tags-tag-title">sports</p></div>
     </a>
     
-    <a href="tags/food">
+    <a data-name="Food" href="tags/food<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-food" class="tags-tag"><p class="tags-tag-title">food</p></div>
     </a>
-    <a href="tags/photoshopped">
+    <a data-name="Photoshopped" href="tags/photoshopped<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-photoshopped" class="tags-tag"><p class="tags-tag-title">photoshopped</p></div>
     </a>
-    <a href="tags/opinion">
+    <a data-name="Opinion" href="tags/opinion<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-opinion" class="tags-tag"><p class="tags-tag-title">opinion</p></div>
     </a>
-    <a href="tags/animated">
+    <a data-name="Animated" href="tags/animated<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-animated" class="tags-tag"><p class="tags-tag-title">animated</p></div>
     </a>
-    <a href="tags/gif">
+    <a data-name="Gif" href="tags/gif<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-gif" class="tags-tag"><p class="tags-tag-title">gif</p></div>
     </a>
-    <a href="tags/awesome">
+    <a data-name="Awesome" href="tags/awesome<%= if request.original_url.include?('?app=true') then '?app=true' end %>">
         <div id="tag-awesome" class="tags-tag"><p class="tags-tag-title">awesome</p></div>
     </a>
     
@@ -135,3 +135,4 @@
 
 
 <% end %>
+</body>

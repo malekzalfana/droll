@@ -149,13 +149,88 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     border: none;
     display: block;
 }
-#content-full2 .upvote, #content-full2 .downvote {
-    background: url(upvote-3.png) 0px 1px no-repeat transparent;
+/*
+#content-full2 .upvote:not(.new), #content-full2 .downvote:not(.new) {
+        background-image: url(http://image.flaticon.com/icons/svg/61/61032.svg);
     border-color: transparent;
     opacity: 0.65;
-    width: 17px;
-    height: 17px;
-    cursor: default;
+    width: 30px;
+    height: 30px;
+    background-size: 15px !important;
+    background-position: 8px;
+}
+*/
+.upvote, .downvote {
+	background-repeat: no-repeat;
+    
+    background-position: center;
+    
+    font-family: open sans;
+    margin: 2px;
+    color: gray;
+    font-size: 15px;
+}
+.upvote {
+	float: right;
+    background-size: cover;
+    border-radius: 100%;
+}
+.vote-container {
+    width: 20px;
+    margin:10px auto;
+    text-align:center;
+}
+.upvote.voted, .navbar-2 {
+    /*background: url(upvote-3.png) 0px 0px no-repeat white !important;
+    background-image: url(http://i.imgur.com/1BvZkfw.png) !important;
+    border-color: #ff3000 !important;
+    border-color: #252525 !important;
+    */
+    
+    background-color: #c7c7c7 !important;
+    opacity: 1 !important;
+}
+.downvote.voted {
+	/*background: url(upvote8.png) 0px 0px no-repeat white !important;
+	background-image: url(http://i.imgur.com/1BvZkfw.png) !important;
+	border-color: #ff3000 !important;
+	border-color: #252525 !important;
+	*/
+	
+	background-color: #c7c7c7 !important;
+    opacity: 1 !important;
+}
+.downvote:hover {
+	opacity: 1 !important;
+}
+.downvote {
+    background-size: cover;
+    margin: 3px;
+    border-radius: 100%;
+    float: right;
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+.comment-options .upvote, .comment-options .downvote {
+	background-size: 9px !important;
+    background-position: 4px 4px !important;
+    float: left;
+    width: 17px !important;
+    height: 17px !important;
+    /*border: 1px solid;*/
+    margin: 5px!important;
+    margin-top: 9px !important;
+}
+#content-full2 .upvote:not(.new), #content-full2 .downvote:not(.new) {
+    background-image: url(http://image.flaticon.com/icons/svg/61/61032.svg);
+    /*border: #cecece 1px solid;*/
+    background-color: #f1f1f1;
+    opacity: 0.65;
+    width: 26px;
+    height: 26px;
+    background-size: 12px;
+    background-position: 7px;
+    margin: 8px 3px;
 }
 .comment-points {
     margin-left: 5px;
@@ -337,7 +412,11 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     z-index:2;
     display: none;
 }
+.app .user-link {
+    pointer-events: none
+}
 .post-footer-user-image {
+    pointer-events: auto;
     background-size: cover;
     height: 28px;width: 28px;margin:6px;
     border-radius: 5%;

@@ -15,7 +15,7 @@
                 </div>
                 <% end %>
                     <div id="loadPost" class="loadPost hidden">
-                        <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
+                        <%= form_tag '/pages/loadPost', remote: true, :method => 'get' do %>
                             <%= text_field_tag :postid, post.id %>
                             <%= submit_tag "Save", class: 'submit-loadpost'%>
                         <% end %>
@@ -128,7 +128,8 @@
                             
                         
                     <% else %>
-                        <i class="material-icons more-post-options">more_horiz</i>
+                        <!--<i class="material-icons more-post-options">more_horiz</i>-->
+                        <img class="more-post-options" src="http://image.flaticon.com/icons/svg/54/54175.svg">
                     <% end %>
                     
                         <% if user_signed_in? %>

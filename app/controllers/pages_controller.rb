@@ -1,13 +1,18 @@
 class PagesController < ApplicationController
   #protected
-  impressionist :actions=>[:recent,:index], unique: [:session_hash]
+  
+  #impressionist :actions=>[:recent,:index], unique: [:session_hash]
   #require 'will_paginate/array
   #before_filter :authenticate_user!, :only => [:index, :edit, :update, :destroy]
-
   #def update_resource(resource, params)
   #  resource.update_without_password(params)
   #end
+  
+  #caches_page :makememe
+  
+  
   def index
+    
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
@@ -58,6 +63,9 @@ class PagesController < ApplicationController
   end
   
   def recent
+    #ActionController::Base.new.expire_fragment('javascript')
+    #ActionController::Base.new.expire_fragment('css')
+    #ActionController::Base.new.expire_fragment('fonts')
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
@@ -147,8 +155,17 @@ class PagesController < ApplicationController
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
       @trends = Post.tag_counts_on(:trends).limit(7)
     end
-    
   end  
+  
+  def makememe
+    #expire_fragment('javascript')
+    #expire_fragment('css')
+    @memenumber = params[:memenumber]
+    @post = current_user.posts.build(params[:post])
+    @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
+    @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
+    @trends = Post.tag_counts_on(:trends).limit(7)
+  end
   
   def make2
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all

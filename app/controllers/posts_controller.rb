@@ -44,6 +44,11 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    if params[:commentid].present?
+      @commentid = params[:commentid]
+    else
+      @commentid = '0'
+    end
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
     #@comment = @post.comments.order("created_at DESC").page(params[:page]).per_page(35)
     #@highestVoted = Comment.order("created_at DESC").get_votes.size
@@ -85,6 +90,9 @@ class PostsController < ApplicationController
     unless !params[:anonymous].present?
       @post.anonymous = true
     end
+    #if Post.tag_counts_on(params[:trend]).count == 0
+    #  ActionController::Base.new.expire_fragment('makememe')
+    #end
     unless !params[:base64].present?
       puts "base64 existssssssssssssssssssssssssssssssss"
       data =  params[:base64]
@@ -142,7 +150,7 @@ class PostsController < ApplicationController
       else
         @post.upvote_by current_user
         if current_user != @post.user
-          PublicActivity::Activity.where(key: 'upvoting', trackable_id: @post.id).destroy_all
+          PublicActivity::Activity.where(key: 'upvoting', trackable_id: @post.id, owner: current_user).destroy_all
           @post.create_activity :upvote, owner: current_user, key: 'upvoting', recipient: @post.user
           puts 'upvoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooote'
           #redirect_to :back
@@ -220,9 +228,9 @@ class PostsController < ApplicationController
           @post.reported = true
           @post.hidden = true
           @post.update_attributes(permit_post2)
-          Rails.logger.info(@post.errors.messages.inspect)
+          #Rails.logger.info(@post.errors.messages.inspect)
         end
-        if @post.get_downvotes(:vote_scope => 'report').size == 5
+        if @post.get_downvotes(:vote_scope => 'report').size == 3
           unless @post.granted == true
             @post.reported = true
             @post.hidden = true
@@ -231,6 +239,7 @@ class PostsController < ApplicationController
           end
           @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
         end
+        PublicActivity::Activity.where(key: 'upvoting', trackable_id: @post.id, owner: current_user).destroy_all
     else
       @post.unvote_by current_user, vote_scope: 'report'
     end

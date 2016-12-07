@@ -1,3 +1,5 @@
+<body class="<%= if request.original_url.include?('?app=true') then 'app' end %>">
+
 <div id="main-page-type" class="tags">
     <div id="back-clicker">
             <i class="material-icons" id="back-list">arrow_back</i>
@@ -97,3 +99,4 @@
 
 
 <% end %>
+</body>

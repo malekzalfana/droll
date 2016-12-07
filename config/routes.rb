@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   get '/explore' => 'pages#explore'
   get '/reprofile' => 'pages#reprofile'
   get '/notlogged' => 'pages#notlogged'
+  get '/makememe' => 'pages#makememe'
   get '/make' => 'pages#make'
   get '/make2' => 'pages#make2'
   get '/delete' => 'pages#delete'
