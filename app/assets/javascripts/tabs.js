@@ -860,13 +860,13 @@ tabs = function() {
 		$('.middle-wrapper').removeClass('buzz')
 		toPost = true;
 		if (commentopen == false) {
-			$('.middle-wrapper').show();
+			$('.middle-wrapper').addClass('inline-block-imp');
 			setTimeout(function() {
 				$('.wrapper.shown .post-comment-body-2.post-comment-body').eq(0).focus()
 			}, 100)
 			commentopen = true
 		} else {
-			$('.middle-wrapper').hide();
+			$('.middle-wrapper').removeClass('inline-block-imp');
 			commentopen = false
 		}
 	});
@@ -1420,15 +1420,44 @@ tabs = function() {
 		}
 	})
 	
-	$(document).on('click', '.app .post-footer-user-image, .app .post-footer-user-name, #notif-menu a', function(e) {
+	$(document).on('click', '#notif-menu a', function(e) {
 		e.preventDefault();
-		app.openActivity( $(this).parents('a').attr('href') )
-	})
-	$(document).on('click', '.pointered ', function() {
-		app.openActivity( $(this).attr('data-a') )
-		
+			app.openActivity( $(this).parents('a').attr('href') )
 	})
 	
+	$(document).on('click', '.app#recent .post-footer-user-image', function(e) {
+		e.preventDefault();
+		app.openActivity( $(this).parents('a').attr('href'), $(this).parents('a').attr('href') )
+	})
+	$(document).on('click', '.app#index .post-footer-user-image', function(e) {
+		e.preventDefault();
+		app.openActivity( $(this).parents('a').attr('href')  )
+	})
+	/*
+	$(document).on('click', '.app#recent .user-link ', function() {
+		$(this).hide();
+		app.openActivity( $(this).attr('href') )
+	})
+	*/
+	$(document).on('click', '.app .pointered ', function() {
+		app.openActivity( $(this).attr('data-a') )
+	})
+	
+	$(document).on('click', '.app .share-buttons a', function() {
+		app.sharePost( $(this).attr('href') )
+	})
+	$(document).on('click', '.app.shown-post .post-tags-wrapper a', function() {
+		app.openActivity( $(this).attr('href') )
+	})
+	$(document).on('click', '.app a[href="/settings/?app=true"]', function() {
+		app.openActivity( $(this).attr('href'), "Settings" )
+	})
+	$(document).on('click', '.app .settings-logout', function() {
+		app.logout()
+	})
+	$(document).on('click', '.app #save-settings-before.settings-save', function() {
+		app.save()
+	})
 	$('#tags-wrapper a, #trends-wrapper > a').css({'pointer-events':'auto'});
 	
 	$(document).on('click', '.app #tags-wrapper a,.app #trends-wrapper > a', function(e) {

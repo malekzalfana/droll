@@ -204,6 +204,7 @@ class PostsController < ApplicationController
     if current_user == @post.user
       @post.destroy
       PublicActivity::Activity.where(key: 'upvoting', trackable_id: @post.id).destroy_all
+      #PublicActivity::Activity.where(key: 'upvoting', trackable_id: @post.id).destroy_all
     else
       @post.destroy
       @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post has been deleted.'}

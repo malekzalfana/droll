@@ -90,7 +90,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     width: 100% !important;
 }
 #content-full2 .right-wrapper {
-    margin: 0px auto;
+    margin: 15px auto;
     width: 600px;
     display: inline-block;
     background: white;
