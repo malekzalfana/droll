@@ -2278,7 +2278,8 @@ input::-webkit-input-placeholder {
     font-size: 14px;
 }
 #hidden-post {
-	    margin-top: 100px;
+	position: relative;
+	    top: 150px;
     max-width: calc(100% - 10px);
     font-family: open sans;
     text-align: center;
@@ -2752,7 +2753,7 @@ position: fixed;
 .created-at {
 	font-size: 11px;
     float: left;
-    padding: 8px 0px;
+    padding: 5px 2px;
     color: gray;
 }
 .post-comment {
@@ -4613,9 +4614,11 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	#show .middle-wrapper, #show .comments-wrapper, #show .form-group.comment-form {
 		width: 100%;
 	}
+	/*
 	#show .middle-wrapper .comments-wrapper {
 		padding: 1px !important;
 	}
+	*/
 	#show .memes-emojis {
 		display: none;
 	}
@@ -4880,6 +4883,10 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	#content-full2 .right-wrapper {
+		margin:10px auto !important;
+		padding-top: 10px !important;
+	}
 	.post-user-unfollow, .post-user-follow {
 		font-size: 11px !important;
 	    padding: 5px 6px !important;

@@ -56,7 +56,7 @@ if ( $("body").attr('data-memenumber') > -1 ) {
 	console.log('mn')
 //function (memenumber) {	
 	//alert( $("body").attr('data-memenumber') )
-	var MemeBackground = "http://www.nightmug.com/drolle/newmemes2/meme"+ $("body").attr('data-memenumber') +".png"
+	var MemeBackground = "http://www.bestofinsta.com/drolle/newmemes2/meme"+ $("body").attr('data-memenumber') +".png"
 	var thisImage = document.createElement('img');
 	thisImage.crossOrigin = "";
 	thisImage.src = MemeBackground

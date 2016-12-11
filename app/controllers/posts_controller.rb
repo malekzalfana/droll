@@ -228,9 +228,8 @@ class PostsController < ApplicationController
         @post.downvote_from current_user, :vote_scope => 'report'
         unless @post.granted == true
           @post.reported = true
-          @post.hidden = true
+          #@post.hidden = true
           @post.update_attributes(permit_post2)
-          #Rails.logger.info(@post.errors.messages.inspect)
         end
         if @post.get_downvotes(:vote_scope => 'report').size == 3
           unless @post.granted == true

@@ -1424,7 +1424,11 @@ tabs = function() {
 		e.preventDefault();
 			app.openActivity( $(this).parents('a').attr('href') )
 	})
-	
+	$(document).on('click', '.app#profile .profile-post', function(e) {
+		e.preventDefault();
+		app.openPost( $(this).parents('a').attr('href') )
+		
+	})
 	$(document).on('click', '.app#recent .post-footer-user-image', function(e) {
 		e.preventDefault();
 		app.openActivity( $(this).parents('a').attr('href'), $(this).parents('a').attr('href') )
