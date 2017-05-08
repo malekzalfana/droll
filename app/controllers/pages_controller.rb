@@ -87,14 +87,16 @@ class PagesController < ApplicationController
     @posts.each do |post|
       puts "starteddddddddddddddddddddddddddddddddddd"
       if !post.trend_list.blank?
-
+        puts "passed first"
         @trendname = post.trend_list
         if post.trendid.blank?
+          puts "passed"
           if Trend.where(name: @trendname).first.present?
             puts "changed the id?"
             post.trendid = Trend.where(name: @trendname).first.id
             post.save
           else
+            puts "created new"
             @trend = Trend.create(name: @trendname)
             post.trendid = @trend.id
             post.save
