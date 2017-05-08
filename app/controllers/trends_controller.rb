@@ -38,7 +38,7 @@ class TrendsController < ApplicationController
 
     @followed = false
     # && !current_user.trends.blank?
-    @v = current_user.trends.split(',').include?(@trend.id.to_s)
+    #@v = current_user.trends.split(',').include?(@trend.id.to_s)
     if user_signed_in?&& current_user.trends.split(',').include?(@trend.id.to_s)
       @followed = true
     end
