@@ -192,6 +192,7 @@ class PostsController < ApplicationController
 
   def update
     if params[:post][:trendname]
+      puts "trendddddddddddddddddd"
       @post = Post.find( params[:id] )
       if Trend.where(name: params[:post][:trendname]).first.present?
         @post.trendid = Trend.where(name: params[:post][:trendname]).first.id
