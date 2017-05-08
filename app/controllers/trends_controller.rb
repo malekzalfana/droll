@@ -34,9 +34,13 @@ class TrendsController < ApplicationController
     Post.all.each do |post|
       if post.trendid.blank?
         @trendname = post.trend_list
-        post.trendid = Trend.where(name: @trendname).first.id
-        post.save
-        puts "starteddddddddddddddddddddddddddddddddddd"
+        if !@trendname.blank?
+          post.trendid = Trend.where(name: @trendname).first.id
+          post.save
+          puts "starteddddddddddddddddddddddddddddddddddd"
+        end
+
+
       end
     end
 
