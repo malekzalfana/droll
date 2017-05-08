@@ -43,6 +43,7 @@ class PostsController < ApplicationController
 
 
   def show
+=begin
     Post.all.each do |post|
       if post.trendid.nil? && !post.trend_list.blank?
         @trendname = post.trend_list.first.to_s
@@ -51,6 +52,7 @@ class PostsController < ApplicationController
           puts "starteddddddddddddddddddddddddddddddddddd"
       end
     end
+=end
 
 
     @post = Post.find(params[:id])
