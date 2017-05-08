@@ -32,8 +32,7 @@ class TrendsController < ApplicationController
   def trend
 
 
-    @posts = Post.all
-    @posts.each do |post|
+    Post.all.each do |post|
       puts "starteddddddddddddddddddddddddddddddddddd"
       puts post.trend_list
       if !post.trend_list.blank?
