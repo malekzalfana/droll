@@ -194,6 +194,7 @@ class PostsController < ApplicationController
     if params[:post][:trendname]
       puts "trendddddddddddddddddd"
       @post = Post.find( params[:id] )
+      @user = @post.user
       @post.user = @user
       @post.user_id = @user.id
       if Trend.where(name: params[:post][:trendname]).first.present?
