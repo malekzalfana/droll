@@ -94,8 +94,10 @@ class PagesController < ApplicationController
           puts "passed"
           if Trend.where(name: @trendname).first.present?
             puts "changed the id?"
+            puts post.trendid
             post.trendid = Trend.where(name: @trendname).first.id
             post.save
+            puts post.trendid
           else
             puts "created new"
             @trend = Trend.create(name: @trendname)
