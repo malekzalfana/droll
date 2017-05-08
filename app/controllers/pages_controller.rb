@@ -86,6 +86,7 @@ class PagesController < ApplicationController
     @posts = Post.all
     @posts.each do |post|
       puts "starteddddddddddddddddddddddddddddddddddd"
+      puts post.trend_list
       if !post.trend_list.blank?
         puts "passed first"
         @trendname = post.trend_list
