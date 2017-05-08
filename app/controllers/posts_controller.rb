@@ -202,9 +202,9 @@ class PostsController < ApplicationController
         @post.trendid = @trendn.id
         @post.save
       end
+    else
 
-    end
-    if !params[:post][:user_id].blank?
+      if !params[:post][:user_id].blank?
       puts 'sssssssssssssssssssssssssssssssss'
       @user = User.find(params[:post][:user_id])
       @post = @user.posts.find(params[:id])
@@ -230,6 +230,10 @@ class PostsController < ApplicationController
       @post.user = current_user
       @post.update_attributes(permit_post)
     end
+
+
+    end
+
     respond_to do |format|
      format.html
      format.js
