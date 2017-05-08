@@ -85,11 +85,13 @@ class PagesController < ApplicationController
 
     @posts = Post.all
     @posts.each do |post|
+      puts "starteddddddddddddddddddddddddddddddddddd"
       if !post.trend_list.blank?
 
         @trendname = post.trend_list
         if post.trendid.blank?
-          if Trend.where(name: @trendname).first
+          if !Trend.where(name: @trendname).first.nil?
+            puts "changed the id?"
             post.trendid = Trend.where(name: @trendname).first.id
             post.save
           else
