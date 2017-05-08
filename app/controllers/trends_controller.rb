@@ -31,6 +31,36 @@ class TrendsController < ApplicationController
 
   def trend
 
+
+    @posts = Post.all
+    @posts.each do |post|
+      puts "starteddddddddddddddddddddddddddddddddddd"
+      puts post.trend_list
+      if !post.trend_list.blank?
+        puts "passed first"
+        @trendname = post.trend_list
+        if post.trendid.blank?
+          puts "passed"
+          if Trend.where(name: @trendname).first.present?
+            puts "changed the id?"
+            puts post.trendid
+            post.trendid = Trend.where(name: @trendname).first.id
+            post.save
+            puts post.trendid
+          else
+            puts "created new"
+            @trend = Trend.create(name: @trendname)
+            post.trendid = @trend.id
+            post.save
+          end
+        else
+        end
+
+      end
+      end
+
+
+
     @trend =  Trend.where(name: params[:name])[0]
       @postnumber = Post.where(trendid: @trend.id, hidden: nil).size
     #@commentnumber = Post.where(trendid: @trend.id, hidden: nil).comments.size
