@@ -88,9 +88,9 @@ class PagesController < ApplicationController
       puts "starteddddddddddddddddddddddddddddddddddd"
       if !post.trend_list.blank?
 
-        @trendname = post.trend_list
+        @trendname = post.trend_list.to_sentence
         if post.trendid.blank?
-          if !Trend.where(name: @trendname).first.nil?
+          if Trend.where(name: @trendname).first
             puts "changed the id?"
             post.trendid = Trend.where(name: @trendname).first.id
             post.save
