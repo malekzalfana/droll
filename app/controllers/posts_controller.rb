@@ -214,15 +214,15 @@ class PostsController < ApplicationController
       @post.hidden = nil
       @post.update_attributes(permit_post)
       Rails.logger.info(@post.errors.messages.inspect)
-    else
-      puts params[:user_id]
-      puts params[:post][:user_id]
-      @post = current_user.posts.find(params[:id])
-      @post.user_id = current_user.id
-      @post.user = current_user
-      @post.update_attributes(permit_post)
-      Rails.logger.info(@post.errors.messages.inspect)
-    end
+      else
+        puts params[:user_id]
+        puts params[:post][:user_id]
+        @post = current_user.posts.find(params[:id])
+        @post.user_id = current_user.id
+        @post.user = current_user
+        @post.update_attributes(permit_post)
+        Rails.logger.info(@post.errors.messages.inspect)
+      end
     if params[:title]
       puts 'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'
       @post.title = params[:title]
