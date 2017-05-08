@@ -90,7 +90,7 @@ class PagesController < ApplicationController
         @trendname = post.trend_list
         if post.trendid.blank?
           if Trend.where(name: @trendname).exists?
-            post.trendid = Trend.where(name: @trendname).id
+            post.trendid = Trend.where(name: @trendname)[0].id
           else
             @trend = Trend.create(name: @trendname)
             post.trendid = @trend.id
