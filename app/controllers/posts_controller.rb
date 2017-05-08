@@ -189,6 +189,19 @@ class PostsController < ApplicationController
   end
 
   def update
+    if params[:post][:trendname]
+      @post = Post.find( params[:id] )
+      if Trend.where(name: params[:post][:trendname]).first.present?
+        @post.trendid = Trend.where(name: params[:post][:trendname]).first.id
+        @post.save
+      else
+        puts "ssssssssssssssssss"
+        @trendn = Trend.create(name: params[:post][:trendname])
+        @post.trendid = @trendn.id
+        @post.save
+      end
+
+    end
     if !params[:post][:user_id].blank?
       puts 'sssssssssssssssssssssssssssssssss'
       @user = User.find(params[:post][:user_id])

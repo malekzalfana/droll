@@ -65,7 +65,14 @@
                 <div class="left-wrapper-overlay"></div>
                 <i class="material-icons" id="next-post-icon">navigate_next</i>
             <i class="material-icons" id="prev-post-icon">navigate_before</i>
+            <%= form_for (post), remote: true do |f| %>
+
+			 	<%= f.text_field :trendname  %>
+
+ 	            <%= f.submit 'Save' %>
+            <% end %>
             <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
+
 
                 <div class="post-tags-wrapper">
                     <!--
@@ -236,6 +243,7 @@
                                 <span class="anonymous-checkbox" class="inline-block-imp">
                                     <%= form_for (post), remote: true do |f| %>
                                         <%= f.check_box :anonymous %>
+                                        <%= f.text_field :user_id, value: post.user.username %>
                                         <i class="material-icons anonymous-checked"></i>
                                         <div id="anonymous-image" class="anonymous-image">
                         			 		<i class="material-icons">add</i>
