@@ -1,0 +1,26 @@
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/trends/toBeOrToNot" for 94.187.48.128 at 2017-05-08 09:49:23 +0000
+Processing by TrendsController#trend as HTML
+  Parameters: {"name"=>"toBeOrToNot"}
+  [1m[36mUser Load (17.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 7]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends" WHERE "trends"."name" = ?  [["name", "toBeOrToNot"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL[0m  [["trendid", 3]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 7]]
+  [1m[36m (0.3ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 7]]
+  [1m[35mPublicActivity::Activity Load (0.7ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 7  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-06 09:49:23.489439')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 7) subquery_for_count[0m
+  [1m[35mTrend Load (0.4ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 7
+  Rendered layouts/_trends_tags.html.erb (3.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 7]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 3]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m  [["trendid", 3]]
+  Rendered trends/trend.html.erb within layouts/application (19.3ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (4.6ms)
+Completed 200 OK in 827ms (Views: 739.3ms | ActiveRecord: 21.2ms)
