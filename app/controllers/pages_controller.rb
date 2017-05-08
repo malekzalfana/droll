@@ -81,6 +81,26 @@ class PagesController < ApplicationController
     #@postb = [@post1,@post2].flatten
     @post = @post1.paginate(:per_page => 30, :page => params[:page])
 
+    puts "Ssssssssssssssssssssssssssssssssssssssssssssssssssss"
+
+    @posts = Post.all
+    @posts.each do |post|
+      if !post.trend_list.blank?
+
+        @trendname = post.trend_list
+        if post.trendid.blank?
+          if Trend.where(name: @trendname).exists?
+            post.trendid = Trend.where(name: @trendname).id
+          else
+            @trend = Trend.create(name: @trendname)
+            post.trendid = @trend.id
+          end
+        else
+        end
+
+      end
+
+
   end
 
   def explore
