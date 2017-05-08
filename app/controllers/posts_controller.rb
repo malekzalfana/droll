@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
   def show
     Post.all.each do |post|
-      if post.trendid.nil?# && !post.trendid.blank?
+      if post.trendid.nil? && !post.trend_list.blank?
         @trendname = post.trend_list
           post.trendid = Trend.where(name: @trendname).first.id
           post.save
