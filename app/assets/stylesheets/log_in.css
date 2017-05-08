@@ -31,7 +31,7 @@ div:not(#remote-login-wrapper) #log-in-wrapper, div:not(#remote-login-wrapper) #
 }
 /* Change the white to any color ;) */
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px rgb(252, 252, 252) inset;
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 input:-webkit-autofill:focus, input:-webkit-autofill:hover {
     -webkit-box-shadow: 0 0 0px 1000px white inset;

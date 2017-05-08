@@ -1,18 +1,19 @@
 class PagesController < ApplicationController
   #protected
-  
+
   #impressionist :actions=>[:recent,:index], unique: [:session_hash]
   #require 'will_paginate/array
   #before_filter :authenticate_user!, :only => [:index, :edit, :update, :destroy]
   #def update_resource(resource, params)
   #  resource.update_without_password(params)
   #end
-  
+
   #caches_page :makememe
-  
-  
+
+
   def index
-    
+
+    @trends = Trend.all.limit(10)
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
@@ -26,65 +27,80 @@ class PagesController < ApplicationController
       end
     end
     if user_signed_in?
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 2')
+      if current_user.trends.blank?
+        @trendArray = ''
+      else
+        @trendArray = current_user.trends.split(',')
+      end
+      @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > -1')
+      @trendPosts = Post.where(trendid: @trendArray, hidden: nil)#.where('cached_votes_up > -1')
       @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
     #remove # up >>^^^^
-      @post2 = [@popularPosts,@followingPosts].flatten
+      @post2 = [@popularPosts,@followingPosts, @trendPosts].flatten
       @post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
     else
       @post = Post.where(hidden: nil).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
     end
-    
+
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
     if user_signed_in?
       @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
-      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
+      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
-    end  
+    end
     respond_to do |format|
      format.html
      format.js
      format.json {render json:  @post }
     end
     end
-    
-    
+
+
   end
-  
+
+
+  def signup2
+
+    @url =  request.base_url + request.original_fullpath
+    if  user_signed_in? && !@url.include?('/?signed=true')
+      redirect_to request.base_url + request.original_fullpath + '/?signed=true'
+    #elsif !user_signed_in? && !@url.include?('/?signed=false')
+    #  redirect_to request.base_url + request.original_fullpath#+ '/?signed=false'
+    end
+  end
+
   def admin
     @post1 = Post.where(hidden: true).order("created_at DESC")
     #@post2 = Post.where(reported: true).order("created_at DESC")
     #@postb = [@post1,@post2].flatten
     @post = @post1.paginate(:per_page => 30, :page => params[:page])
-    
+
   end
-  
-  def recent
-    #ActionController::Base.new.expire_fragment('javascript')
-    #ActionController::Base.new.expire_fragment('css')
-    #ActionController::Base.new.expire_fragment('fonts')
+
+  def explore
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
     else
-      @trends = Post.tag_counts_on(:trends).limit(7)
+      @trends = Trend.all.limit(10)
     if user_signed_in?
-      @randomUsers = User.where.not(:id => current_user.following).limit(4)
+      @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
       unless session[:swipe]
         @swipeMessage = true
         session[:swipe] = true
       end
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
-      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
+      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
-      
+
       #@activities = PublicActivity::Activity.order("created_at DESC").where(recipient: current_user).limit(25).all
       @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
       #@activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids ).where( key: "posting" ).where("created_at > ?", PublicActivity::Activity.where(key: 'following', recipient: current_user, owner: ).created_at  )
@@ -92,42 +108,42 @@ class PagesController < ApplicationController
       @activities2 = PublicActivity::Activity.where( key: 'drolling').order("created_at DESC")
       @activities3 = [@activities1, @activities2, @activities0].flatten
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
-    end  
+    end
     @post = Post.where(hidden: nil).order("created_at DESC").page(params[:page]).per_page(10)
-    
+
     # .reject{ |e| @anonymous.include? e }
     respond_to do |format|
      format.html
-     format.js 
+     format.js
      format.json {render json:  @post }
     end
     end
-    
-    
+
+
   end
-  
+
   def about
-    
+
   end
-  
+
   def reprofile
     if user_signed_in?
       redirect_to '/user/' + current_user.username + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
     else
       redirect_to '/notlogged'
-    end 
+    end
   end
-  
+
   def notlogged
   end
-  
+
   def contact
-    
+
   end
   def terms
-    
+
   end
-  
+
   def notifications
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
@@ -142,9 +158,9 @@ class PagesController < ApplicationController
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
     end
     end
-    
+
   end
-  
+
   def make
     if user_signed_in?
       @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
@@ -155,10 +171,11 @@ class PagesController < ApplicationController
       @post = current_user.posts.build(params[:post])
       @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
-      @trends = Post.tag_counts_on(:trends).limit(7)
+      @trends = Trend.all.limit(10)
+      @trendname = Trend.all
     end
-  end  
-  
+  end
+
   def makememe
     #expire_fragment('javascript')
     #expire_fragment('css')
@@ -166,29 +183,29 @@ class PagesController < ApplicationController
     @post = current_user.posts.build(params[:post])
     @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
     @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
-    @trends = Post.tag_counts_on(:trends).limit(7)
+    @trends = Trend.all.limit(10)
   end
-  
+
   def make2
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
     @post = current_user.posts.build(params[:post])
-  end  
-  
+  end
+
   def settings
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
       @user = current_user
   end
   helper SettingsHelper
-  
+
   def register
     @user = current_user
     @invite = Invite.new
   end
-  
+
   def invited
     @comment = Comment.all.limit(10)
   end
-  
+
   def followTags
     if !params[:tag].nil?
       puts params[:tag]
@@ -197,15 +214,15 @@ class PagesController < ApplicationController
     end
     redirect_to :back
   end
-  
-  
+
+
   def feedback
     @feedback = Feedback.create
     @feedback.text = params[:text]
     @feedback.user = params[:user]
     @feedback.save
   end
-  
+
   def stock
     if params[:base64]
       @stock = Stock.create
@@ -221,9 +238,9 @@ class PagesController < ApplicationController
         end
       end
     end
-    
+
   end
-  
+
   def deleteStock
     @stockid = params[:id]
     @stock = Stock.find(params[:id])
@@ -234,7 +251,7 @@ class PagesController < ApplicationController
      format.js
     end
   end
-  
+
   def loadPost
     @postid = params[:postid]
     @post = Post.find(@postid)
@@ -263,9 +280,9 @@ class PagesController < ApplicationController
   end
 
   def signup
-    
+
   end
-  
+
   def sitemap
     @post = Post.where(hidden: nil)
     @tag = ActsAsTaggableOn::Tag.all
@@ -281,9 +298,9 @@ class PagesController < ApplicationController
     if (User.find_by_username(params[:id]))
       @username = params[:id]
       @user = User.find_by_username(params[:id])
-    else 
+    else
       redirect_to root_path, :notice => "User not found"
-    end  
+    end
     @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: nil).where(anonymous: false).paginate :page => params[:page], :per_page => 10
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
     @profilefavor = @user.votes.where(:vote_scope => 'favor').for_type(Post).votables.paginate :page => params[:page], :per_page => 8
@@ -302,14 +319,14 @@ class PagesController < ApplicationController
         else
           if @params.length > 13
             @usernamecheck = true
-          end  
+          end
           @usernamecheck = User.exists?(username: @params)
         end
       else
         @usernamecheck = false
-      end  
-    
-    else  
+      end
+
+    else
       @params = params[:name]
       if @params.length < 3
         @usernamecheck = true
@@ -317,10 +334,10 @@ class PagesController < ApplicationController
         @usernamecheck = User.exists?(username: @params)
         if @params.length > 13
           @usernamecheck = true
-        end  
+        end
       end
-    
-    end  
+
+    end
     puts @usernamecheck
     puts @params
       respond_to do |format|
@@ -329,7 +346,7 @@ class PagesController < ApplicationController
       end
     #redirect_to '/'
   end
-  
+
   def checkEmail
     if params[:user].present?
       @params = params[:user][:email]
@@ -341,17 +358,17 @@ class PagesController < ApplicationController
         end
       else
         @emailcheck = false
-      end  
-    
-    else  
+      end
+
+    else
       @params = params[:email]
       if @params.length < 3
         @emailcheck = true
       else
         @emailcheck = User.exists?(email: @params)
       end
-    
-    end  
+
+    end
     puts @emailcheck
     puts @params
       respond_to do |format|
@@ -360,6 +377,6 @@ class PagesController < ApplicationController
       end
     #redirect_to '/'
   end
-  
-  
+
+
 end

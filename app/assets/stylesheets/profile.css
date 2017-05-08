@@ -10,11 +10,11 @@
     text-align: left;
     margin: 0px auto;
     left: 2.5px !important;
-    
+    transition: opacity 0.2s ese-out;
     background: #f1f1f1 !important;
 }
 #profile-posts, #profile-favors {
-    margin-right: 25px;    
+    margin-right: 25px;
     padding: 2px 1px;
     cursor: pointer;
 }
@@ -31,7 +31,7 @@
     display: none;
 }
 #profile-favors {
-    
+
 }
 #profile-titles {
     text-align: left;
@@ -67,7 +67,7 @@
 }
 .profile-post {
     width: 100%;
-    
+
     background-size: cover;
     background-repeat: no-repeat;
     float:left;
@@ -181,7 +181,4 @@
     background-image: url(favored1.png);
     opacity: 1;
     background-size: cover;
-}
-#profile #logo-wrapper, #profile #navbar {
-    position: absolute;
 }

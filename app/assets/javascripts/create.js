@@ -45,6 +45,7 @@ for (i=0;i<=250;i++) {
 */
 if ( $("body").attr('data-memenumber') > -1 ) {
 	memeCtx.fillText('wait for it',180,200);
+	$(memeCanvas).css({'width':window.innerWidth });
 }
 else {
 	memeCtx.fillText('Choose a meme',180,200);
@@ -78,7 +79,9 @@ if ( $("body").attr('data-memenumber') > -1 ) {
 	console.log(thisImage.height + 'height')
 	console.log(thisImage.width + 'width')
 	$(memeCanvas).attr('crossorigin', '')
-	$(memeCanvas).css({'height':memeCanvas.height / (memeCanvas.width/$(memeCanvas).width()) });
+	//$(memeCanvas).css({'height':memeCanvas.height / (memeCanvas.width/$(memeCanvas).width()) });
+	//$(memeCanvas).css({'height':$(memeCanvas).attr('height') / 2 });
+	$(memeCanvas).css({'height':    ($(memeCanvas).attr('height') * $(memeCanvas).width() )/ $(memeCanvas).attr('width')    });
 	$('#meme-wrapper').css({'height':memeCanvas.height / 2});
 	$('#pick-meme').hide();
 	$('#left-arrow').fadeIn();

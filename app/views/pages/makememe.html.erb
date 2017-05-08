@@ -1,5 +1,5 @@
 
-<body id="make" class="<% if user_signed_in? %>signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>" data-memenumber="<%= @memenumber%>">
+<body id="make" class="makememe <% if user_signed_in? %>signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>" data-memenumber="<%= @memenumber%>">
 <div id="overlay-under-notif"></div>
 
 	<div id="memes-content" class="choosen-content">
@@ -15,7 +15,8 @@
 			 <i id="image-for-meme-reset" class="material-icons">close</i>
 			 <img src="" id="image-for-meme-img">
 			 -->
-			 <canvas  class="middle-column" id="meme-canvas" height="1100" width="1100"></canvas>
+			 <img id="memegen-img" src="">
+			 <canvas  class=" hidden-imp middle-column" id="meme-canvas" height="1100" width="1100"></canvas>
 			 <%= f.text_area :title, id: "created-meme-title", placeholder: "Caption" %>
 			 <%= f.text_field :facenumber,id: "created-meme-facenumber-field", class: "hidden anonymous-image-field" %>
 			 <%= f.text_field :imageaddress,id: "image-for-meme-field", class: "hidden" %>
@@ -27,6 +28,7 @@
 			 <% end %>
 			 <div id="meme-textareas-wrapper">
 			 	<div id="meme-textareas">
+			 		<!--
 			 		<div>
 						<textarea placeholder="Top text" id="text-top" data-gramm="false" spellcheck="true"></textarea>
 			 		</div>
@@ -34,6 +36,7 @@
 			 		<div>
 					<textarea placeholder="Bottom text" id="text-bottom" data-gramm="false" spellcheck="true" ></textarea>	
 			 		</div>
+			 		-->
 			 		
 					<div id="submit-button-before-wrapper">
 						<div id="make-tags-2-wrapper" class="inline-make-tags-wrapper">
@@ -68,7 +71,7 @@
 							-->
 						</div>
 						
-						<button id="created-image-button-before">Post</button>
+						<button id="memegen-button">Post</button>
 						<!--<button id="cancel-upload-2">cancel</button>-->
     					<div id="make-tags-2" class="make-tags">
     						<i class="material-icons">sort</i>

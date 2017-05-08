@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161031125019) do
+ActiveRecord::Schema.define(version: 20170507164534) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -144,6 +144,8 @@ ActiveRecord::Schema.define(version: 20161031125019) do
     t.integer  "video_file_size"
     t.datetime "video_updated_at"
     t.string   "video64"
+    t.integer  "trendid"
+    t.text     "trendname"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
@@ -151,6 +153,17 @@ ActiveRecord::Schema.define(version: 20161031125019) do
   add_index "posts", ["cached_votes_total"], name: "index_posts_on_cached_votes_total"
   add_index "posts", ["cached_votes_up"], name: "index_posts_on_cached_votes_up"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+
+  create_table "relationship2s", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationship2s", ["followed_id", "follower_id"], name: "index_relationship2s_on_followed_id_and_follower_id", unique: true
+  add_index "relationship2s", ["followed_id"], name: "index_relationship2s_on_followed_id"
+  add_index "relationship2s", ["follower_id"], name: "index_relationship2s_on_follower_id"
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -222,6 +235,12 @@ ActiveRecord::Schema.define(version: 20161031125019) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
+  create_table "trends", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -253,6 +272,7 @@ ActiveRecord::Schema.define(version: 20161031125019) do
     t.integer  "share"
     t.string   "tag"
     t.string   "password"
+    t.text     "trends"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -35,16 +35,18 @@ class ApplicationController < ActionController::Base
   end
   
   def after_sign_in_path_for(user)
+    puts "ssssssss"
     puts URI(request.referer).path
-    
-    if URI(request.referer).path == '/make'
+    @url = URI(request.referer) #.path.slice! "/"  
+    #response.location = @url
+    if @url == '/make'
       response.location = '/make'
-    elsif URI(request.referer).path == '/settings'
+    elsif @url == '/settings'
       response.location = '/settings'
-    elsif URI(request.referer).path == '/recent'
+    elsif @url == '/recent'
       response.location = '/recent'
     elsif Rails.application.routes.recognize_path(request.referrer)[:action] == 'show'
-      response.location = URI(request.referer).path
+      response.location = @url
     else
       response.location = '/'
     end

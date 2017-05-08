@@ -6,9 +6,18 @@ $(document).on('click', '.show-reply-icon', function(){
   $('.new-reply').hide()
   var commentID = $(this).attr('id').replace('show-','')
   console.log(  $('#'+commentID) )
-  $('#showed-'+commentID).fadeIn();
+  $('#showed-'+commentID).fadeIn().focus();
   $('#showed-'+commentID).children('.reply-form').children('.reply-body').focus();
 })
+$(document).on('focusout', '.new-body', function(e){
+
+  if ( e.target.classList != 'reply-comment'  ) {
+    $('.new-reply').hide()
+  }
+
+
+})
+
 $(document).on('click', '.hide-reply, .reply-comment', function(e){
   setTimeout(function(){
     $('.reply-body').val('');
@@ -26,7 +35,7 @@ if ( $('.post-title').height() > 50 ) {
   $(this).css({'font-size':'20px'})
 }
 //if ($('.wrapper').length == 1){
- 
+
  //alert('sdsdf')
 //}
 //$(document).ready(function(){
@@ -100,9 +109,9 @@ $(document).on('click', '.favor-post', function () {
   $(postOptions).delay(300).fadeOut(100)
 })
 
-  
-    
-    
+
+
+
     var thisWrapper;
     var postIndex;
 
@@ -139,8 +148,8 @@ $(document).on('click', '.favor-post', function () {
         $('#content-full, .content-overlay').css({'position':'initial'})
         $('#left-arrow').show();
       })
-      
-  });    
+
+  });
   $(document).on('click', '#left-arrow', function () {
     $('.post-image-wrapper').removeAttr("data-simplebar-direction","vertical")
     $('#content-full').removeAttr('id').attr('id', 'content');
@@ -153,7 +162,7 @@ $(document).on('click', '.favor-post', function () {
     //thisOne.scrollIntoView();
     //$(thisOne).scrollTop(220);
   });
-  
+
     $(document).on('keydown', 'body1', function (e) {
       //if ( $('.full-wrapper').is('#content-full') && !$(e.target).is('input, textarea') ){
       if (e.keyCode == 39) {
@@ -166,7 +175,7 @@ $(document).on('click', '.favor-post', function () {
           postId = $(thisWrapper).attr('data-post-id')
           //alert(postId)
           $(window).scrollTop(0); */
-          
+
         }
         else {
           //alert('index == length')
@@ -215,7 +224,7 @@ $(document).on('click', '.favor-post', function () {
       else {
         hiddenCommentHeight = $(commentHidden).height()
       }
-      
+
     });
     /*$(document).ready(function(){
       var userName = $('#username').val();
@@ -234,7 +243,7 @@ $(document).on('click', '.favor-post', function () {
       console.log( $(this).closest('textarea').val() )
       $(clonedComment+'.comment-user').val(userName);
       $(clonedComment+'.comment-user-image').css({'background-image':userImage})
-      
+
       console.log($(clonedComment))
       alert('done?');
       //$(this).closest('textarea').val($(cloningComment.innerHTML));
@@ -273,8 +282,7 @@ $(document).on('click', '.favor-post', function () {
       setTimeout(function() {
         $(this).siblings('.form-group').children('.post-comment-body').val('')
       }, 500);
-      
+
       $(window).scrollTop()
     })*/
     console.log('ad')
-    

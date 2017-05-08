@@ -104,7 +104,7 @@
 .blurred-video {
   filter: blur(20px);
   cursor: pointer;
-  
+
 }
 .black-under-video {
   background: rgba(0, 0, 0, 0.5);
@@ -129,7 +129,7 @@
 }
 .tabs {
   cursor: pointer;
-  width: 25%;
+  width: 33.33%;
   display: inline-block;
   float: left;
   text-align: center;
@@ -137,9 +137,11 @@
    font-weight: normal
 }
 .active-tab {
-  color: #fe613d;
+  color: #ff3000;
   font-weight: bold;
-  
+     border-bottom: #ff3000 1px solid;
+    height: 45px;
+
 }
 #notice {
   background: #F5F500;
@@ -251,7 +253,7 @@
     top: 0px;
     right: 0px;
     opacity: 0;
-    height: 34px;  
+    height: 34px;
 }
 #postPreview {
   padding: 20px 50px;
@@ -314,10 +316,11 @@
     margin: 0px 0px;
     font-family: open sans;
     font-size: 17px;
-    border-top: 1px solid whitesmoke;
+    border: 1px solid #d4d4d4;
     display: block;
     resize: vertical;
     position: relative;
+    display: none;
 }
 #make-post-title-2 {
   height: 24px;
@@ -335,15 +338,20 @@
 }
 #make-image-preview, #make-gif-preview {
    width: 582px;
-    min-height: 100px;
+   display: none;
+    min-height: 150px;
     background: #fbfbfb;
     position: relative;
     margin-bottom: 10px;
     border: 1px solid #dbdbdb;
 }
+#make-gif-preview {
+  min-height: 85px;
+  position: relative;
+}
 #make #gifs {
    width: 582px;
-    min-height: 400px;
+    min-height: 0px;
     background: white;
   position: relative;
 }
@@ -360,14 +368,16 @@
   position: relative;
 }
 #make-post-preview-wrapper #pictureInput {
-  width: 582px;
+    width: 100%;
     background: red;
     position: absolute;
-    height: 100px;
+    height: 76px;
     opacity: 0;
     cursor: pointer;
     z-index: 2;
     left: 0;
+    top: 45px;
+    width: 100%;
 }
 #reset-image {
   position: absolute;
@@ -420,7 +430,7 @@
 */
 #preview-image-text {
     Position: absolute;
-    top: 40px;
+    top: 80px;
     z-index: 1;
     width: 200px;
     right: 0;
@@ -428,7 +438,7 @@
     font-family: open sans;
     resize: vertical;
     pointer-events: none;
-    left: 10px;
+    left: 40px;
 }
 #ragefaces-buttons-wrapper {
       position: relative;
@@ -436,10 +446,10 @@
     margin-left: 40px;
 }
 #ragefaces-buttons-wrapper .anonymous-checkbox {
-  
+
 }
 #ragefaces-buttons-wrapper .anonymous-checkbox.shown {
-  
+
 }
 #ragefaces-buttons-wrapper #anonymous-image {
   color: #5a5a5a;
@@ -457,7 +467,7 @@
   display: inline-block !important;
   margin-right: 9px !important;
 }
-#submit-video,#submit-video-before, #cancel-video,#make2 #done-meme, #make2 #cancel-meme-2,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2, #submit-image-button-before, #submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before {
+#submit-video,#submit-video-before, #cancel-video,#make2 #done-meme, #make2 #cancel-meme-2,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2, #submit-image-button-before, #submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before,  #memegen-button{
     background: #ffffff;
     color: #252525;
     padding: 6px 10px;
@@ -470,6 +480,9 @@
     cursor: pointer;
     display: none;
     font-family: open sans;
+}
+#memegen-button {
+	display: inline-block ;
 }
 #submit-image-button-before {
   margin-right: 5px;
@@ -525,7 +538,7 @@
     100% {
       opacity: 0;
     }
-} 
+}
 @-webkit-keyframes fadingLoop2 {
     0% {
       opacity: 0;
@@ -551,7 +564,7 @@
     100% {
       opacity: 0;
     }
-} 
+}
 @keyframes fadingLoop2 {
     0% {
       opacity: 0;
@@ -562,7 +575,7 @@
     100% {
       opacity: 1;
     }
-} 
+}
 body.anonymous #ragecontainer .panel2, body.anonymous #ragecontainer #panel2, body.anonymous #ragecontainer #uploads, body.anonymous #ragecontainer #uploads-area, body.anonymous #ragecontainer .wigs, body.anonymous #ragecontainer .time, body.anonymous #ragecontainer .uploads, body.anonymous #ragecontainer h4, body.anonymous #ragecontainer #wigs, body.anonymous #ragecontainer #time, body.anonymous #ragecontainer #uploads-tag {
   display: none !important;
 }
@@ -571,5 +584,5 @@ body.anonymous #ragecontainer .panel2, body.anonymous #ragecontainer #panel2, bo
   display: none;
 }
 #memes-content {
-  display: block;
+  display: none;
 }

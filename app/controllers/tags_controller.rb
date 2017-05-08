@@ -14,7 +14,7 @@ class TagsController < ApplicationController
       end
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
-      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
+      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
       #@activities = PublicActivity::Activity.order("created_at DESC").where(recipient: current_user).limit(25).all
@@ -26,15 +26,15 @@ class TagsController < ApplicationController
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
     end
     @post = Post.tagged_with(@tag).where(hidden: nil).order("created_at DESC").paginate(:per_page => 35, :page => 1)
-    
+
     # .reject{ |e| @anonymous.include? e }
     respond_to do |format|
      format.html
-     format.js 
+     format.js
     end
   end
-  
-  
+
+
   def trends
     @trends = Post.tag_counts_on(:trends).limit(50)
     if user_signed_in?
@@ -45,7 +45,7 @@ class TagsController < ApplicationController
       end
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
-      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
+      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
       @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
@@ -56,9 +56,14 @@ class TagsController < ApplicationController
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
     end
   end
-  
+
   def trend
+
     @trend =  params[:name]
+    @postnumber =  Post.tagged_with(@trend).size
+    #@upvotenumber = Post.tagged_with(@trend).all.get_upvotes.size
+    #@upvotenumber = Post.tagged_with(@trend).comments.size
+  #@commentnumber = Post.tagged_with(@trend).all.comments.size
     @trends = Post.tag_counts_on(:trends).limit(7)
     if user_signed_in?
       @randomUsers = User.where.not(:id => current_user.following).limit(4)
@@ -68,7 +73,7 @@ class TagsController < ApplicationController
       end
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
       @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
-      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end 
+      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
       #@activities = PublicActivity::Activity.order("created_at DESC").where(recipient: current_user).limit(25).all
@@ -80,14 +85,14 @@ class TagsController < ApplicationController
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
     end
     @post = Post.tagged_with(@trend).where(hidden: nil).order("created_at DESC").paginate(:per_page => 35, :page => 1)
-    
+
     # .reject{ |e| @anonymous.include? e }
     respond_to do |format|
      format.html
-     format.js 
+     format.js
     end
   end
-  
-  
-  
+
+
+
 end

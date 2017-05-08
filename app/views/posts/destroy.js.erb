@@ -2,7 +2,7 @@
 
 <%# end %>
 if ( $('body').is('#show') ) {
-    window.location = '/recent'
+    window.location = '/user/<%= current_user.username %>'
 }
 else {
     $('#left-wrapper-<%= @post.id %>').parents('.wrapper').remove()

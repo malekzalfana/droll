@@ -2,12 +2,13 @@
 <% if !user_signed_in? %>
 
 
-<body id="<%= controller.action_name %>" class"<%= if request.original_url.include?('?app=true') then 'app' end %> class">	
+<body id="<%= controller.action_name %>" class"<%= if request.original_url.include?('?app=true') then 'app' end %> class">
+
 
 <div id="remote-signup-wrapper">
     <i class="material-icons close-wrapper">close</i>
       <div id="sign-up-wrapper">
-    
+
     <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -19,7 +20,7 @@
     <%= f.text_field :username, autofocus: true, id:"sign-up-username-field" %>
     <i class="material-icons" id="username-check-icon">check_circle</i>
   </div>
-  
+
   <div class="form-group">
     <label>Image<span style="
     font-size: 12px;
@@ -32,7 +33,7 @@
       <i class="material-icons" id="reset-user-image">cached</i>
     </div>
   </div>
-  
+
   <div class="form-group">
     <label>Blurred Cover<span style="
     font-size: 12px;
@@ -43,9 +44,9 @@
       <div class="sign-up-input-visible" id="choose-cover-preview"></div>
       <i id="choose-cover" class="material-icons">add_circle_outline</i>
       <i class="material-icons" id="reset-cover">cached</i>
-    </div>  
+    </div>
   </div>
-  
+
   <div class="field">
     <%= f.label :bio %>
         <span style="
@@ -55,7 +56,7 @@
     <br />
     <%= f.text_field :bio %>
   </div>
-  
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, id: "email-field-settings" %>
@@ -84,8 +85,8 @@
     <div id="other-log-in">
       <%= render "devise/shared/links" %>
     </div>
-      
-    
+
+
   </div>
 </div>
 
@@ -134,17 +135,19 @@
 </div>
 
 </body>
-	
+
 <% else %>
-<body id="<%= controller.action_name %>" class="<% if user_signed_in? %>signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">	
+<body id="<%= controller.action_name %>" class="<% if user_signed_in? %>signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
 <%= render '/layouts/activities' %>
+<%= render '/layouts/pick_trend' %>
 <div id="overlay-under-notif"></div>
+
 	<span id="make-logo">/make</span>
 	<div id="tabs-wrapper">
 		<div id="memes-tab" class="tabs active-tab">Meme</div>
 	  <div id="images-tab" class="tabs">GIF</div>
 	  <div id="rage-comics-tab" class="tabs">Rage Comic</div>
-	  <div id="video-tab" class="tabs prevent-cursor">Video<span class="coming-soon">coming soon</span></div>
+	  <div id="video-tab" class="tabs prevent-cursor hidden-imp">Video<span class="coming-soon">coming soon</span></div>
 	</div>
 	<div id="memes-content" class="choosen-content">
 		<div class="middle-column" id="meme-wrapper">
@@ -163,7 +166,7 @@
 			 <%= f.text_field :tag_list, class: "tag-list-field" %>
 			 <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 <%= f.check_box :anonymous, class: "hidden-imp", id: "created-meme-anonymous-field", checked: false %>
-			 
+
 			 <%= f.submit :id => "submit-image-button-2" %>
 			 <% end %>
 			 <div id="meme-textareas-wrapper">
@@ -172,12 +175,12 @@
 			 			<p>Top text</p>
 						<textarea id="text-top" data-gramm="false" spellcheck="true"></textarea>
 			 		</div>
-			 		
+
 			 		<div class="memetextareas">
 			 			<p>Bottom text</p>
-					<textarea id="text-bottom" data-gramm="false" spellcheck="true" ></textarea>	
+					<textarea id="text-bottom" data-gramm="false" spellcheck="true" ></textarea>
 			 		</div>
-			 		
+
 					<div id="submit-button-before-wrapper">
 						<div id="make-tags-2-wrapper" class="inline-make-tags-wrapper">
 							<span>Tags</span>
@@ -198,7 +201,7 @@
 							<p id="tag-opinion">opinion</p>
 							<p id="tag-movies">movies</p>
 						</div>
-						
+
 						<div class="make-trends-wrapper">
 							<% @trends.any? %>
 							<p class="make-trends-title">Trends</p>
@@ -209,7 +212,7 @@
 							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
 							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
 						</div>
-						
+
 						<button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
 					<div id="make-tags-2" class="make-tags">
 						<i class="material-icons">sort</i>
@@ -223,28 +226,28 @@
 					 	</div>
 					 	<span>Anonymous</span>
 					 	</span>
-					 	
-					 	
-					
-					
+
+
+
+
 					</div>
-					
-					
-					
-					
+
+
+
+
 				</div>
-			 
+
 			 </div>
-			 
-			 
+
+
 		</div>
-			
+
 		  <!--<div id="more-tools-wrapper">
 			  <a id="id_download"><button class="tools" ><span class="eraser"></span></button></a>
 			  <button id="clear-button" class="tools"><span class="eraser"></span></button>
 		</div>-->
-			 
-		
+
+
 		<div id="pick-meme" class="ui-sortable">
 			<p class="make-how-to">React to a situation/image with a funny a meme. You can add custom memes. </p>
 	<i class="material-icons" id="upload-meme-stock">add</i>
@@ -254,7 +257,7 @@
         <%= text_area_tag :stocktype, 'meme' %>
         <%= submit_tag "SEND", :id => "upload-meme-stock-submit"%>
     <% end %>
-	
+
 	<input id="search-memes" placeholder="search memes ..">
 	<!--
 	<%# @stock1.each do |s| %>
@@ -1176,14 +1179,14 @@
 		<button type="button" id="submit-video-before">Post</button>
 		<button type="button" id="cancel-video">Cancel</button>
 	</div>
-			
+
 	<% end %>
-	
+
 </div>
 
-		
-		
-		
+
+
+
 	<div id="rage-comics-content" class="choosen-content">
 		<div class="overlay"></div>
 <div id="upload-button-popup" class="popup">
@@ -1209,7 +1212,7 @@
 		</div>
 	</div>
 </div>
-	
+
 	<div id="clear-button-popup" class="popup">
 	<h2>Are you sure</h2>
 	<span class="close">&times;</span>
@@ -1219,7 +1222,7 @@
 			<div id="yes-no-wrapper">
 			<button id="no">No</button>
 			<button id="clear">Yes</button>
-			</div>	
+			</div>
 		</div>
 	</div>
 </div>
@@ -1228,7 +1231,7 @@
 
   <div id="all-tools" class="left-column fadeInLeft animated fixed-sides">
     <div id="tools">
-		
+
       <div id="texts" tabindex="4"><div class="tools " id="texts-button"><i class="material-icons text">title</i>
       <i class="schoolbell-text" style="display:  none">T</i>
       <i class="material-icons text" style="display:  none">title</i>
@@ -1238,11 +1241,11 @@
       	<button class="tools direct-tools" id="text-black"><i class="schoolbell-text">T</i></button>
       	<button class="tools direct-tools" id="text-#d40000"><i class="material-icons text">title</i></button>
       </div>
-		</div>	  
-		
+		</div>
+
       <button class="tools direct-tools" id="edit"><img src="assets/cursor.png" height="26"></button>
       <button class="tools direct-tools" id="brush"><i class="material-icons pencil">mode_edit</i></button>
-      
+
       <div id="shapes" tabindex="1">
       <div class="tools" id="shapes-button"><div class="line" id="replaced"></div></div>
       <div class="options"></div>
@@ -1254,13 +1257,13 @@
       </div>
       </div>
 
-      
+
       <button id="spray" class="direct-tools tools"><img class="spray-can" src="assets/spray-can.png"></button>
       <button id="eraser" class="direct-tools tools"><img class="eraser" src="assets/eraser.png"></button>
-      
+
       <div id="colors" tabindex="2">
       	<div id="colors-button" class="tools"><img class="color-palette" src="assets/colors.png"><div class="dot"></div></div>
-		  
+
       	<div class="options"></div>
 		<div id="colors-wrapper" class="hidden-wrapper">
 		      <span class="color-border bordered" ><button class="color-box black" id="#000000"> </button></span>
@@ -1288,39 +1291,41 @@
       </div>
       </div>
 	<div class="loading-icon"></div>
-		
-		
-		
 
-      
+
+
+
+
     </div>
-    
-  </div>
-	
 
-		
+  </div>
+
+
+
   <div id="sketch-wrapper" class="middle-column">
   	<p class="make-how-to">Tell a funny story using rage faces and your own images.</p>
 	<div id="sketch" height="300" width="750">
 		<div id="placeholder-wrapper">
 		<div id="placeholder-1" class="cancel placeholder"></div>
 		</div>
-		
+
 		<p class="splitter" id="splitter-1">split</p>
 
 		<canvas id="paint" height="300" width="750"></canvas>
 
 	</div>
+
+
 	<textarea id="make-post-title-2" placeholder="Caption"></textarea>
 	<div id="add-remove">
-		<span id="remove-panel-button">  
+		<span id="remove-panel-button">
       <p id="remove-panel">remove panel</p>
   	  <span>-</span>
 		</span>
 		<p id="add-panel">add panel</p>
 		<span id="border-bottom"></span>
 	</div>
-	
+
 	<div id="make-tags-3-wrapper" class="inline-make-tags-wrapper">
 		<span>Tags</span>
 				<p id="tag-memes">memes</p>
@@ -1341,7 +1346,7 @@
 								<p id="tag-opinion">opinion</p>
 								<p id="tag-movies">movies</p>
 	</div>
-	
+
 	<div class="make-trends-wrapper">
 							<% @trends.any? %>
 							<p class="make-trends-title">Recent Trends</p>
@@ -1352,9 +1357,9 @@
 							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
 							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
 						</div>
-	
+
 	<div id="ragefaces-buttons-wrapper">
-			<button id="submit-image-button-before-3">Post</button>	
+			<button id="submit-image-button-before-3">Post</button>
 			<button id="cancel-upload-3">cancel</button>
 			<div id="make-tags-3" class="make-tags">
 				<i class="material-icons">sort</i>
@@ -1366,8 +1371,10 @@
 				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
 			   <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
 			   <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
+			   <%= f.text_field :trendname, class: "make-trends-field hidden-imp trendname" %>
+			   <%= f.text_field :trendid, class: "make-trends-field hidden-imp trendid" %>
 			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
-			 
+
 			 <span class="anonymous-checkbox shown">
 		 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
 		 	<i class="material-icons anonymous-checked"></i>
@@ -1377,21 +1384,21 @@
 		 	<span>Anonymous</span>
 		 	</span>
 			<% end %>
-					
-			
+
+
 		</div>
-		
-	
-	
+
+
+
 </div>
-	
-	
-	
+
+
+
   <div id="right-column" class="fixed-sides">
     <div id="functions">
       <!--<canvas id="brush_size" width="50" height="50"></canvas>Brush Size <input type="range" id="width_range" value="3"> Opacity <input type="range" id="opacity_range" value="100">-->
       <div id='addRageFaces' class="right-button animated rotateIn"><i class="material-icons" id="add-button">add</i></div>
-		
+
     </div>
 	  <div id="more-tools-wrapper">
 		  <a id="id_download" class="download-image"><button class="tools" ><span class="eraser"></span></button></a>
@@ -1401,30 +1408,43 @@
 	</div>
   </div>
 </div>
-	<div id="images-content-wrapper"><div id="images-content" class="choosen-content">
+	<div id="images-content-wrapper" class="choosen-content"><div id="images-content" >
 		<p class="make-how-to">React to a situation/image with a funny gif.</p>
 		<div id="make-preview-wrapper">
 			<%= form_for @post, html: { multipart: true } do |f| %>
 			<i id="image-for-gif-reset" class="material-icons">close</i>
-			<div id="image-for-gif-wrapper-wrapper">
+
+			<div id="make-post-preview-wrapper">
+				<div class="make-dark-box">
+					<p class="make-dark-background make-dark-background-2">Upload an image</p>
+					<%= f.file_field :image, id: "pictureInput", class: "pictureInput", onchange: "previewPostImage(event)", accept: "image/*" %>
+				</div>
+				<div class="make-dark-box">
+					<p class="make-dark-background make-dark-background-2">Paste Image URL</p>
+					<div id="image-for-gif-wrapper-wrapper">
 				<div id="image-for-gif-wrapper">
 					<input id="image-for-gif-input" placeholder="or paste image address..">
 					<i class="material-icons" id="image-for-gif-add">add</i>
 				</div>
 			</div>
-			<div id="make-post-preview-wrapper">
+				</div>
 				<%= f.text_field :imageaddress, id: "image-for-gif-field", class: "hidden" %>
 				<%= f.text_field :giphyid, id: "make-gif-field", class: "hidden" %>
 				<%# f.text_area :giphyid, value: "999" %>
-				 <%= f.file_field :image, id: "pictureInput", class: "pictureInput", onchange: "previewPostImage(event)", accept: "image/*" %>
+
+
 				 <div id="make-image-preview">
+
+
 				 	<i class="material-icons" id="reset-image">cached</i>
 				 </div>
 				 <div id="make-gif-preview">
+				 	<i id="image-for-gif-reset-2" class="material-icons" style="display: inline;">close</i>
+				 	<p class="make-dark-background">Type your reaction</p>
 				 	<i id="image-gif-reset" class="material-icons">close</i>
 				 	<input autocomplete="false" id="searchTerm" name="searchTerm" placeholder="search GIFs ..">
-				 	<div id="gifs"></div>	
 				 	<div id="loader"></div><p id="unlock-feed"></p>
+				 	<div id="gifs"></div>
 				 </div>
 				 <span id="preview-image-text">Click or drop your <span id="upload-image-fade">image</span><span id="upload-gif-fade">GIF</span></span>
 				 <%= f.text_area :title, id: "make-post-title", placeholder: "Caption" %>
@@ -1450,7 +1470,7 @@
 					<p id="tag-opinion">opinion</p>
 					<p id="tag-movies">movies</p>
 			</div>
-			
+
 			<div class="make-trends-wrapper">
 							<% @trends.any? %>
 							<p class="make-trends-title">Recent Trends</p>
@@ -1461,11 +1481,11 @@
 							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
 							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
 						</div>
-			
+
 			 <div class="loading-icon"></div>
 			 <%= f.submit :value => "Post", :id => "submit-image-button", class: "hidden-imp" %>
-			 <button id="submit-image-button-before" type="button">Post</button>	
-			 <button id="cancel-upload" type="button">cancel</button>	
+			 <button id="submit-image-button-before" type="button">Post</button>
+			 <button id="cancel-upload" type="button">cancel</button>
 			 <div id="make-tags-1" class="make-tags">
 				<i class="material-icons">sort</i>
 			</div>
@@ -1480,10 +1500,10 @@
 			 	</div>
 			 	<span>Anonymous</span>
 			 </span>
-			 
-			 
-			 
-			<% end %> 
+
+
+
+			<% end %>
 		</div>
 	</div>
 	</div>
@@ -1518,7 +1538,7 @@
 			</div>
 			<div id="ragefaces">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/2face.png" data-facenumber="2">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/3face.png" data-facenumber="3">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/4face.png" data-facenumber="4">
@@ -1533,7 +1553,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/14face.png" data-facenumber="14">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/15face.png" data-facenumber="15">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/18face.png" data-facenumber="18">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/19face.png" data-facenumber="19">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/20face.png" data-facenumber="20">
@@ -1566,7 +1586,7 @@
 			<img class="rageface rageface-normal sad" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/47face.png" data-facenumber="47">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/48face.png" data-facenumber="48">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/49face.png" data-facenumber="49">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/51face.png" data-facenumber="51">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/52face.png" data-facenumber="52">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/53face.png" data-facenumber="53">
@@ -1609,7 +1629,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/90face.png" data-facenumber="90">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/91face.png" data-facenumber="91">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/92face.png" data-facenumber="92">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/94face.png" data-facenumber="94">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/95face.png" data-facenumber="95">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/96face.png" data-facenumber="96">
@@ -1622,7 +1642,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/103face.png" data-facenumber="103">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/104face.png" data-facenumber="104">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/105face.png" data-facenumber="105">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/108face.png" data-facenumber="108">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/109face.png" data-facenumber="109">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/110face.png" data-facenumber="110">
@@ -1706,14 +1726,14 @@
 			<img class="rageface rageface-normal panel2" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/169face.png" data-facenumber="169">
 			<img class="rageface rageface-normal panel2" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/142face.png" data-facenumber="142">
 			<img class="rageface rageface-normal panel2" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/10face.png" data-facenumber="10">
-			
+
 			<div id="stocks-wrapper">
 				<div id="stock-header">
 					<h4 id="my-images">My images</h4>
 					<input contenteditable id="add-stocks-bar" placeholder="paste image address"><div id="add-stocks-bar-left"><i class="material-icons">add</i></div>
 					<span id="gifs-not-supported" class="hidden-imp">GIFs are not supported</span>
 				</div>
-				
+
 				<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp", id: "add-stock-form"  do %>
 	                <%= text_area_tag :base64, '', :id => "stock-base64" %>
 	                <%= text_area_tag :stocktype, 'rage' %>
@@ -1728,18 +1748,18 @@
 			                <%= submit_tag "SEND"%>
 			            <% end %>
 	            	</div>
-		            	
+
 		            <% end %>
 	            </div>
-	            
-	            
+
+
 			</div>
-			
+
 			</div>
 			</div>
 			<div id="anonymous-faces">
 				<h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/2face.png" data-facenumber="2">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/3face.png" data-facenumber="3">
@@ -1754,7 +1774,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/13face.png" data-facenumber="13">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/14face.png" data-facenumber="14">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/15face.png" data-facenumber="15">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/18face.png" data-facenumber="18">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/19face.png" data-facenumber="19">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/20face.png" data-facenumber="20">
@@ -1784,7 +1804,7 @@
 			<img class="rageface rageface-normal sad" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/47face.png" data-facenumber="47">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/48face.png" data-facenumber="48">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/49face.png" data-facenumber="49">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/51face.png" data-facenumber="51">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/52face.png" data-facenumber="52">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/53face.png" data-facenumber="53">
@@ -1827,7 +1847,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/90face.png" data-facenumber="90">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/91face.png" data-facenumber="91">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/92face.png" data-facenumber="92">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/94face.png" data-facenumber="94">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/95face.png" data-facenumber="95">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/96face.png" data-facenumber="96">
@@ -1840,7 +1860,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/103face.png" data-facenumber="103">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/104face.png" data-facenumber="104">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/105face.png" data-facenumber="105">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/108face.png" data-facenumber="108">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/109face.png" data-facenumber="109">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/110face.png" data-facenumber="110">
@@ -1915,8 +1935,8 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/181face.png" data-facenumber="181">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/182face.png" data-facenumber="182">
 			</div>
-			
-			
+
+
 			<div id="make-tags-wrapper">
 				<h2>Tags</h2>
 				<div id="tag-memes" class="make-tag">memes</div>
@@ -1937,8 +1957,8 @@
 				<div id="tag-movies" class="make-tag">movies</div>
 				<div id="done-tags">done</div>
 			</div>
-			
-		
+
+
 
 </body>
 <% end %>

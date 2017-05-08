@@ -5,7 +5,7 @@
             <%= f.submit "Save", id: 'username-check-submit'%>
         <% end %>
     <% end %>
-    
+
     <%= render '/layouts/activities' %>
     <div id="overlay-under-notif"></div>
 <div id="cover-photo" class="<%= if user_signed_in? && current_user == @user then 'no-bio' end %>">
@@ -22,7 +22,7 @@
       <div class="hidden">
         <%= f.file_field :cover, id: 'edit-profile-cover-field', :onchange => "previewProfileCover(event)" %>
       </div>
-    
+
       <div class="actions hidden-imp">
         <%= f.submit "Update", id: 'save-profile-field' %>
       </div>
@@ -57,7 +57,7 @@
     <div id="profile-titles">
         <span class="selected-profile-posts profile-tabs" id="profile-posts">Posts</span><span class="profile-tabs" id="profile-favors">Favorites</span>
     </div>
-    <div id="left-content-profile"  class="transitions-enabled centered clearfix masonry">
+    <div id="left-content-profile"  class="opacity transitions-enabled centered clearfix masonry">
         <%= will_paginate @profilepost %>
         <% if @user.posts.count == 0 %>
             <div class="notice-message-fixed"><%= @user.username %> hasn't posted anything yet.</div>
@@ -66,11 +66,11 @@
             <%= link_to(x) do %>
             <div class="wrapper">
                 <div class="wrapper-content">
-                
+
                 <% if !x.imageaddress.blank? %><img src="<%= x.image2.url(:medium) %>" class="profile-post" alt="<%= x.title %>"><% end %>
                 <% if x.image.present? %><img src="<%= x.image.url(:medium) %>" class="profile-post" alt="<%= x.title %>"><% end %>
                 <% if !x.giphyid.blank? %><img class="profile-post" src="https://media2.giphy.com/media/<%= x.giphyid %>/giphy.gif"><% end %>
-                
+
                 <h2 class="post-title"><%= x.title %></h2>
                 <div class="profile-post-options">
                     <span class="post-votes-word"><%=  x.get_upvotes.size - x.get_downvotes.size %> points</span>
@@ -80,7 +80,7 @@
                     <% end %>
                 </div>
                 </div>
-                
+
             </div>
             <% end %>
         <% end %>
@@ -93,7 +93,7 @@
             <%= link_to(x) do %>
             <div class="wrapper">
                 <div class="wrapper-content">
-                
+
                 <img class="profile-post" src="<%= x.image.url(:medium) %>)"  alt="<%= x.title %>">
                 <h2 class="post-title"><%= x.title %></h2>
                 <div class="profile-post-options">
@@ -104,7 +104,7 @@
                     <% end %>
                 </div>
                 </div>
-                
+
             </div>
             <% end %>
         <% end %>
@@ -122,7 +122,7 @@
     <div id="invite-buttons-wrapper">
             <label id="invite-tab-1" class="invite-tab active-invite-tab">Log in</label>
             <label id="invite-tab-2"class="invite-tab">Sign up</label>
-        
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "invite-2"} ) do |f| %>
   <%= devise_error_messages! %>
 
@@ -131,7 +131,7 @@
     <%= f.text_field :username, autofocus: true, id:"sign-up-username-field", placeholder: "Username" %>
     <i class="material-icons" id="username-check-icon">check_circle</i>
   </div>
-  
+
   <div class="field">
     <%= f.email_field :email, autofocus: true, id: "email-field-settings", placeholder: "Email" %>
     <i class="material-icons" id="email-check-icon">check_circle</i>
@@ -154,28 +154,28 @@
     <button type="button" id="sign-up-submit-before" class="invite-submit">Sign up</button>
   </div>
 <% end %>
-    
-    
-    
+
+
+
         <%= form_for(:user, :url => session_path(:user), :html => {:id => "invite-1"}) do |f| %>
-        
-            
-            
+
+
+
           <div class="field">
             <%= f.email_field :email, placeholder: "Email" %>
           </div>
-        
+
           <div class="field">
             <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
           </div>
-        
+
           <% if devise_mapping.rememberable? -%>
             <div class="field" id="remember-me-button">
               <%= f.check_box :remember_me, checked: "true"%>
               <%= f.label :remember_me %>
             </div>
           <% end -%>
-        
+
           <div class="actions">
             <%= f.submit "Log in", class: "invite-submit" %>
           </div>

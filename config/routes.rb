@@ -1,29 +1,33 @@
 Rails.application.routes.draw do
-  
-  
+
+
+  get 'trends/index'
+
+  get 'trends/show'
+
   namespace :api, defaults: {format: 'json'} do
       get '/recent' => 'api/pages#recent'
   end
-  
+
   #############################################################################
   mount Starburst::Engine => "/starburst"
   #root 'pages#index'
   resources :posts
-  
+
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   #resources :tags
   resources :users do
-    #resources :invites 
+    #resources :invites
     member do
       get :following, :followers
-    end  
+    end
   end
   resources :relationships
   get "sitemap" => "pages#sitemap"
-  
+
   # Define root URL
   root 'pages#index'
-  
+
   # Define roots for pages
   get '/home' => 'pages#home'
   get '/settings' => 'pages#settings'
@@ -37,9 +41,11 @@ Rails.application.routes.draw do
   get '/make' => 'pages#make'
   get '/make2' => 'pages#make2'
   get '/delete' => 'pages#delete'
+  get '/signup2' => 'pages#signup2'
   get '/checkUsername' => 'pages#checkUsername'
   get '/signup' => 'pages#signup'
   get '/checkEmail' => 'pages#checkEmail'
+  get '/follow' => 'trends#follow'
   get '/pages/loadPost' => 'pages#loadPost'
   get '/pages/feedback' => 'pages#feedback'
   get '/pages/stock' => 'pages#stock'
@@ -51,9 +57,11 @@ Rails.application.routes.draw do
   get '/register' => 'pages#register'
   get '/admin' => 'pages#admin'
   get '/tags' => 'tags#index'
-  get '/trends' => 'tags#trends'
+  #get '/trends' => 'tags#trends'
+  get '/trends' => 'trends#index'
   get '/tags/:name' => 'tags#tag'
-  get '/trends/:name' => 'tags#trend'
+  #get '/trends/:name' => 'tags#trend'
+  get '/trends/:name' => 'trends#trend'
   get '/invite/:id' => 'invites#show'
   get '/pages/followTags' => 'pages#followTags'
   ##get 'tags/:tag', to: 'articles#index', as: :tag
@@ -61,7 +69,7 @@ Rails.application.routes.draw do
   resources :comments
   #resources :tags, only: [:index, :show]
   resources :posts do
-    
+
     resources :comments do
       member do
         put "like", to: "comments#upvote"  # maybe change it to POSTS??
@@ -79,7 +87,7 @@ Rails.application.routes.draw do
       put "dislike", to: "posts#downvote" # maybe change it to POSTS??
       put "report", to: "posts#report" # maybe change it to POSTS??
     end
-    
+
   end
   #resources :comments
   #resources :comments, only: [:index, :new, :create]
@@ -138,5 +146,5 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  
+
 end

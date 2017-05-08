@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  
+
   impressionist :actions=>[:show,:index], unique: [:session_hash]
   #is_impressionable :counter_cache => true, :column_name => :my_column_name, :unique => true
   #resources posts
-  
+
   def new
     @post = current_user.posts.build(params[:post])
   end
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   def previous
     Post.where(["id < ?", id]).last
   end
-  
+
   def next
     Post.where(["id > ?", id]).first
   end
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def index
     @post = Post.all.limit(20)
   end
-  
+
   def loadPost
     @postid = params[:user][:postid]
     @post = Post.find(params[:user][:postid])
@@ -40,10 +40,11 @@ class PostsController < ApplicationController
      format.js
     end
   end
-  
-  
+
+
   def show
     @post = Post.find(params[:id])
+    @trend = Trend.find_by_id(@post.trendid).name
     if params[:commentid].present?
       @commentid = params[:commentid]
     else
@@ -70,11 +71,20 @@ class PostsController < ApplicationController
      format.js
     end
   end
-  
+
   def create
     @post = current_user.posts.build(permit_post)
     @post.user = current_user
     @post.user_id = current_user.id
+
+    if !Trend.where(name: @post.trendname).exists? || @post.trendid.blank?
+      @trend = Trend.create(name: @post.trendname)
+      @post.trendid = @trend.id
+    end
+
+
+
+
     if !params[:base64].present? && @post.image.exists?
       dimensions = Paperclip::Geometry.from_file(@post.image.queued_for_write[:medium].path)
       puts 'noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'
@@ -96,10 +106,10 @@ class PostsController < ApplicationController
     unless !params[:base64].present?
       puts "base64 existssssssssssssssssssssssssssssssss"
       data =  params[:base64]
-      image = Paperclip.io_adapters.for(data) 
+      image = Paperclip.io_adapters.for(data)
       image.original_filename = "image.png"
       @post.image = image
-      
+
       if !@post.image.nil?
         @theimage =  @post.image
         dimensions = Paperclip::Geometry.from_file(@post.image.queued_for_write[:medium].path)
@@ -110,13 +120,13 @@ class PostsController < ApplicationController
       if dimensions.height > 950
         @post.long = true
       end
-      
+
       @post.save
     end
     puts 's s s s'
     puts @post
     if @post.save
-      
+
       redirect_to @post
       flash[:notice] = "Post uploaded"
       if !params[:anonymous].present?
@@ -127,14 +137,14 @@ class PostsController < ApplicationController
       flash[:notice] = "Post wasn't uploaded"
     end
   end
-  
+
   def upvote
     @post = Post.find(params[:id])
     if params.has_key?(:favor)
       if !current_user.voted_on? @post, vote_scope: 'favor'
         @post.vote_by :voter => current_user, :vote_scope => 'favor'
         puts 'faaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-      else 
+      else
         @post.unvote_by current_user
         flash.now[:notice] = 'Favored'
         @post.unvote_by current_user, vote_scope: 'favor'
@@ -156,14 +166,14 @@ class PostsController < ApplicationController
           #redirect_to :back
         end
       end
-    end  
+    end
     redirect_to :back
   end
-  
+
   def edit
-      
+
   end
-  
+
   def update
     if !params[:post][:user_id].blank?
       puts 'sssssssssssssssssssssssssssssssss'
@@ -195,10 +205,10 @@ class PostsController < ApplicationController
      format.html
      format.js
     end
-    
+
     #end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     if current_user == @post.user
@@ -214,7 +224,7 @@ class PostsController < ApplicationController
      format.js
     end
   end
-  
+
   def report
     @postt = Post.find(params[:id])
     @postuser = @postt.user
@@ -244,10 +254,10 @@ class PostsController < ApplicationController
     else
       @post.unvote_by current_user, vote_scope: 'report'
     end
-    
+
     redirect_to :back
   end
-  
+
   def downvote
     @post = Post.find(params[:id])
       if current_user.voted_down_on? @post
@@ -268,15 +278,15 @@ class PostsController < ApplicationController
           #  @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post is now hidden for review.'}
           end
         end
-        
+
       end
     redirect_to :back
-    
+
   end
-  
-  private 
+
+  private
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :giphyid,:image2, :imageaddress, :video64, :video, :trend_list );
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list );
     end
     def permit_post2
       params.permit(:hidden, :id);
