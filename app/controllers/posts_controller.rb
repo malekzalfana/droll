@@ -195,12 +195,15 @@ class PostsController < ApplicationController
       puts "trendddddddddddddddddd"
       @post = Post.find( params[:id] )
       if Trend.where(name: params[:post][:trendname]).first.present?
+        puts "ppppppppppp"
         @post.trendid = Trend.where(name: params[:post][:trendname]).first.id
+        @post.update_attributes(permit_post)
         @post.save
       else
         puts "ssssssssssssssssss"
         @trendn = Trend.create(name: params[:post][:trendname])
         @post.trendid = @trendn.id
+        @post.update_attributes(permit_post)
         @post.save
       end
     else
