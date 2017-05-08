@@ -46,11 +46,9 @@ class PostsController < ApplicationController
     Post.all.each do |post|
       if !post.trendid.nil?# && !post.trendid.blank?
         @trendname = post.trend_list
-        if !@trendname.blank?
           post.trendid = Trend.where(name: @trendname).first.id
           post.save
           puts "starteddddddddddddddddddddddddddddddddddd"
-        end
 
 
       end
@@ -58,7 +56,11 @@ class PostsController < ApplicationController
 
 
     @post = Post.find(params[:id])
-    @trend = Trend.find_by_id(@post.trendid).name
+    if @post.trendid
+      @trend = Trend.find_by_id(@post.trendid).name
+    end
+
+
     if params[:commentid].present?
       @commentid = params[:commentid]
     else
