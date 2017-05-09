@@ -96,9 +96,13 @@ class PostsController < ApplicationController
     if !Trend.where(name: @post.trendname).first.present? || @post.trendid.blank?
       @trend = Trend.create(name: @post.trendname)
       @post.trendid = @trend.id
+      @trend.followers = @trend.followers.to_i + 1
+      @trend.save
     elsif Trend.where(name: @post.trendname).first.present? || @post.trendid.blank?
       @trend = Trend.where(name: @post.trendname).first
       @post.trendid = @trend.id
+      @trend.followers = @trend.followers.to_i + 1
+      @trend.save
     end
 
     @t = current_user.trends

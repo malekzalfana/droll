@@ -720,8 +720,11 @@ tabs = function() {
 	var trendClick = 0;
 	$(document).on('click', '.follow-trend, .followed-trend', function() {
 		if (trendClick == 0) {
+			$(".trend-parent").removeClass("active")
+			$(this).parents(".trend-parent").addClass("active")
+			console.log (  $(this).parents(".trend-parent")  )
 			console.log("samir")
-			$("#follow-trend-submit").click();
+			$(".trend-parent.active .follow-trend-submit").click();
 			setTimeout(function(){
 				trendClick = 0
 			}, 2000)

@@ -64,8 +64,10 @@ class TrendsController < ApplicationController
 =end
 
 
-    @trend =  Trend.where(name: params[:name])[0]
+    @trend =  Trend.where(name: params[:name]).first
+
       @postnumber = Post.where(trendid: @trend.id, hidden: nil).size
+      @follownumber = @trend.followers
     #@commentnumber = Post.where(trendid: @trend.id, hidden: nil).comments.size
     @trends = Trend.all.limit(7)
 
@@ -107,12 +109,15 @@ class TrendsController < ApplicationController
 
   def follow
     @t = current_user.trends#.split(',')
+    @follow = false
+    @thetrend = Trend.find( params[:user][:trendid] )
 #=begin
     #puts "before-" + current_user.trends
      if @t.nil? || current_user.trends.empty?
        puts "ffffffffffffffff first"
        @t = params[:user][:trendid]
        puts @t
+       @follow = true
        #current_user.save
      #elsif (current_user.trends =~ /\A\d+\z/) == 0 &&  current_user.trends ==
 
@@ -120,6 +125,8 @@ class TrendsController < ApplicationController
        puts "uuuuuuuuuuuuuuuu unfollowed"
        #@t = @t.delete(params[:user][:trendid])
        @t = @t.remove(params[:user][:trendid])
+       @thetrend.followers = @thetrend.followers.to_i - 1
+       @thetrend.save
        puts @t
 
      else
@@ -127,9 +134,14 @@ class TrendsController < ApplicationController
        #@t = @t.split(',').push( params[:user][:trendid] )
        @t = @t << (',' + params[:user][:trendid])
        puts @t
-
+        @follow = true
      end
 #=end
+
+      if@follow == true
+        @thetrend.followers = @thetrend.followers.to_i + 1
+        @thetrend.save
+      end
 
       @t.sub! ',,', ','
       if @t[-1] == ','

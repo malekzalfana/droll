@@ -121,7 +121,10 @@ a {
 	background: none;
 	box-shadow: none;
 }
-
+.trend-parent.trend span {
+	    margin-left: 5px !important;
+    font-family: roboto  !important;
+}
 #navbar > * {
 	pointer-events: auto;
 }/*
@@ -8232,15 +8235,14 @@ display: none !important;
     font-weight: 100;
 }
 .trend {
-    background: white;
-    height: 170px;
-    box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15);
-    margin: 10px;
+        height: 140px;
     float: left;
     transition: 0.1s all ease-out;
     position: relative;
-    width: calc(33% - 18px);
+    width: calc(100% - 20px);
     overflow: hidden;
+    border-bottom: 1px solid #E0E0E0;
+    padding-top: 10px;
 }
 .trend-underlay {
 	    width: 100%;
@@ -8248,36 +8250,44 @@ display: none !important;
     display: block;
     background-size: cover;
 }
+/*
 .trend:hover, .trend:active {
     box-shadow: inset 0px 0px 0px 1px #F44336;
 }
 
+
 .trend:hover a p, .trend:active a p {
 	color: #ff3000;
 }
-
+*/
+.trend:hover, .trend:active {
+	background: #e8e8e8;
+}
 #trends-page-wapper {
     width: 90%;
     height: 100%;
     margin: 0px auto;
 }
-.trend p {
-     display: table-cell;
-    vertical-align: middle;
+.trend .trend-name {
+        vertical-align: middle;
     color: #424242;
-    font-size: 17px;
+    font-size: 29px;
     font-family: roboto;
-    text-align: center;
     display: block;
-    padding: 0px 10px;
-    position: absolute;
-    background: white;
-    margin-top: 100px;
+    float: left;
     padding: 10px;
-
+    width: 100%;
+    text-align: left;
+}
+.trend .trend-details {
+	font-family: roboto;
+    font-size: 18px;
+    font-weight: 100;
+    margin: 15px 10px;
+    display: inline-block;
 }
 #trends-page-wapper {
-	width: 100%;
+	width: calc(100% - 103px);
 	height: 100%;
 }
 .pick-tags-title-2 {
@@ -8469,10 +8479,10 @@ p.pick-tags-title.new {
     border-radius: 7%;
     display: none;
 }
-.active.single-trend-2 .followed-trend {
+.followed.trend-parent .followed-trend {
 	display: inline-block;
 }
-.active.single-trend-2 .follow-trend {
+.followed.trend-parent .follow-trend {
 	display: none;
 }
 .pure-message {
