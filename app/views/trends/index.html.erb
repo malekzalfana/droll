@@ -62,8 +62,14 @@
     <div id="trends-page-wapper">
         <h2 class="explore-title">Trends</h2>
         <% if @trends.count > 2 %>
+
           <% @trends.each do |trend| %>
-              <div class="trend"><a href="trends/<%= trend.name %>"><p>/<%= trend.name %></p></a></div>
+
+              <div class="trend">
+                <%if Post.where(trendid: trend.id).last != nil %>
+          <div class="trend-underlay" style="background-image: url(<%= Post.where(trendid: trend.id).last.image.url(:medium) %>)"></div>
+          <% end %>
+                <a href="trends/<%= trend.name %>"><p>/<%= trend.name %></p></a></div>
             <% end %>
         <% else %>
             <div class="trend"><a href="trends/"><p>/iLikeIcecream</p></a></div>

@@ -93,10 +93,40 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.user_id = current_user.id
 
-    if !Trend.where(name: @post.trendname).exists? || @post.trendid.blank?
+    if !Trend.where(name: @post.trendname).first.present? || @post.trendid.blank?
       @trend = Trend.create(name: @post.trendname)
       @post.trendid = @trend.id
+    elsif Trend.where(name: @post.trendname).first.present? || @post.trendid.blank?
+      @trend = Trend.where(name: @post.trendname).first
+      @post.trendid = @trend.id
     end
+
+    @t = current_user.trends
+
+    #puts "before-" + current_user.trends
+     if @t.nil? || current_user.trends.empty?
+       puts "ffffffffffffffff first"
+       @t = @trend.id
+       puts @t
+       #current_user.save
+     #elsif (current_user.trends =~ /\A\d+\z/) == 0 &&  current_user.trends ==
+
+     elsif !@t.include?( @trend.id.to_s )# ||  @t == params[:user][:trendid]
+       puts "fffffffffffffffff followed"
+       #@t = @t.split(',').push( params[:user][:trendid] )
+       @t = @t << (',' + @trend.id.to_s  )
+       puts @t
+
+     end
+
+      @t.sub! ',,', ','
+      if @t[-1] == ','
+        puts "theres comma at the end bro".chop
+        @t.chop!
+      end
+
+      current_user.trends = @t
+      current_user.save
 
 
 
