@@ -1,5 +1,5 @@
-<nav id="navbar">
-	<a href="/explore">
+<nav id="navbar" class="<%= if user_signed_in? &&  current_user.username.nil? then "not-passed" end %>">
+	<div class="link2" onClick="window.location.href = '/' ">
     	<div id="logo-wrapper"><svg id="logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 45.4 45.7" style="enable-background:new 0 0 45.4 45.7;" xml:space="preserve">
 <style type="text/css">
@@ -9,7 +9,7 @@
 	.st3{fill:#ff3000;}
 </style>
 <g id="XMLID_97_" class="st0">
-	
+
 		<image style="display:inline;overflow:visible;opacity:0.45;" width="340" height="339" id="XMLID_4_" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVwAAAFcCAYAAACEFgYsAAAACXBIWXMAAFmoAABZqAGs1AqdAAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAALfxJREFUeNrsnYt24siybVNCgO2q
 7up9//8bT3dX+81DZ9e46HQ4iMhMCUnoMdcYGlAUtgWIqaWVkZFlQAghNIpK3gKEEAK4CCEEcBFC
@@ -239,22 +239,27 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 </svg>
 </div>
 <div id="new-logo">DROLLE</div>
-</a>
+</div>
     <div id="menu-button-wrapper"><i class="material-icons" id="menu-button">menu</i></div>
     <div id="nav-icons-wrapper">
         <div id="notification-icon"><i class="material-icons" id="notification-icon-bell">notifications_none</i><span id="notif-number"></span></div>
-        <a href="/user/<%= current_user.username %>"><p id="username"><%= current_user.username %></p></a>
+        <a href="/user/<%= current_user.username %>"><p id="username"><%= if current_user.username.nil? then 'profile' else current_user.username end%></p></a>
         <!--<form id="demo-2">
     	    <input id="search-icon" type="search" placeholder="Search">
         </form>-->
         <a href="/user/<%= current_user.username %>">
             <% if current_user.image.url != "missing.jpg" %>
                 <span id="profile-photo-small" style="background-image: url(<%= current_user.image.url(:medium) %>)"></span>
-            <% else %>    
+            <% else %>
+
+               <% if user_signed_in? &&  current_user.username.nil? then "not-passed" %>
+                <span id="profile-photo-small" style="background-image: url('/assets/missing.jpg')"><i class="material-icons">lock_outline</i></span>
+                <% else %>
                 <span id="profile-photo-small" style="background-image: url('/assets/missing.jpg')"></span>
+                <% end %>
             <% end %>
         </a>
-        
+
     </div>
-    
+
 </nav>

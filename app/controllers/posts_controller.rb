@@ -93,6 +93,8 @@ class PostsController < ApplicationController
     @post.user = current_user
     @post.user_id = current_user.id
 
+
+
     if !Trend.where(name: @post.trendname).first.present? || @post.trendid.blank?
       @trend = Trend.create(name: @post.trendname)
       @post.trendid = @trend.id
@@ -119,14 +121,19 @@ class PostsController < ApplicationController
        puts "fffffffffffffffff followed"
        #@t = @t.split(',').push( params[:user][:trendid] )
        @t = @t << (',' + @trend.id.to_s  )
+       @t.sub! ',,', ','
        puts @t
 
      end
+    puts @t
 
-      @t.sub! ',,', ','
       if @t[-1] == ','
         puts "theres comma at the end bro".chop
         @t.chop!
+      end
+
+      if current_user.posted != true
+        current_user.posted = true
       end
 
       current_user.trends = @t

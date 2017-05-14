@@ -113,7 +113,7 @@ a {
     pointer-events: none;
     background: white;
 }
-#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar{
+#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar #settings #navbar{
 	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15) !important;
 }
 /* , #make #navbar */
@@ -2314,7 +2314,7 @@ input::-webkit-input-placeholder {
     background-size: 18px;
 }
 #search-memes {
-	width: calc(100% - 65px);
+	width: calc(100% - 244px);
     float: left;
 }
 #make {
@@ -2432,15 +2432,15 @@ i#upload-meme-stock:hover {
     margin: 2px 10px 10px 0px;
 }
 #make-logo {
-position: absolute;
-    left: 53px;
+    position: absolute;
+    left: 140px;
     display: inline-block;
-    color: rgba(255, 70, 27, 0.85);
+    color: #F44336;
     font-size: 24px;
-    font-family: schoolbell;
-    font-weight: 500;
-    z-index: 2;
-    top: 13px;
+    font-family: roboto;
+    font-weight: 200;
+    z-index: 7;
+    top: 10px;
 }
 #unlock-feed {
     font-family: open sans;
@@ -2580,7 +2580,9 @@ position: absolute;
 	width: 550px;
 	border: 1px solid whitesmoke;
 }
-
+.post-image-new {
+	width: 70px;margin: 0px auto;
+}
 .post-votes {
     background-repeat: no-repeat;
     background-size: cover;
@@ -2995,9 +2997,22 @@ html {
   display: none;
   border-top: 1px solid #F5F5F5;
 }
-
+.post-footer.not-passed .post-footer-user-image {
+	display: none !important;
+}
+.post-footer.not-passed .footer-left {
+	left: -30px !important;
+}
+.post-footer.not-passed .post-footer-user-name {
+text-transform: uppercase;
+}
 #content-full .voting-wrapper {
   display: none;
+}
+.memeb-wrapper a {
+	    color: white !important;
+    padding: 10px !important;
+    opacity: 0.7 !important;
 }
 #content-full .left-wrapper {
   width: 47%;
@@ -4253,10 +4268,13 @@ body.shown-post #back-clicker:hover, #show #back-clicker:hover
 .notif:hover, .notif:active {
 	background: whitesmoke;
 }
+#navbar .link2 {
+	display: initial;
+}
 #notif-menu a {
 	color: black !important;
 }
-.link {
+.link, .link2 {
 	cursor: pointer;
 }
 .pointered {
@@ -7135,16 +7153,38 @@ i.fa.fa-reddit-alien {
 }
 .post-user-follow-wrapper {
 	float: left;
+	display: none !important;
+}
+.footer-left i {
+	    float: left;
+    color: #ff3000;
+    position: relative;
+    left: 120px;
+    font-size: 18px;
+    top: 5px;
+}
+.not-passed #profile-photo-small {
+	    opacity: 0.7;
+	    pointer-events: none
+}
+body.not-passed #submit-image-button-2, body.not-passed #submit-image-button-before-3, body.not-passed #submit-image-button-before{
+	display: none !important;
+}
+.not-passed #profile-photo-small i {
+    color: #ffffff;
+    position: relative;
+    top: 4px;
+    left: 5px;
+    font-size: 20px;
 }
 body:not(#profile) .post-user-follow, body:not(#profile) .post-user-unfollow {
 	border-radius: 3px;
-	font-size: 11px;
-	float:left;
-	background: white;
-    margin: 10px 6px;
+    font-size: 12px;
+    float: left;
+    background: white;
+    margin: 23px 10px;
     padding: 2px 5px 4px 5px;
-    border: #5ec361 1px solid;
-    color: #5ec361;
+    border: #3897f0 1px solid;
     font-family: open sans;
     -webkit-transition: 0.2s ease-out background;
     transition: 0.2s ease-out background;
@@ -7609,35 +7649,46 @@ body:not(#make) .fixed-menu {
     color: #ff3000;
 }
 #box-3-wrapper {
-	width: 210px;
-    position: absolute;
+	    width: 270px;
+    position: fixed;
     height: 242px;
     margin: 10px 0px;
     border-radius: 2px;
-    background: white;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.29);
-    right: 15px;
-    top: 100px;
-
+    left: 35px;
+    top: 90px;
+}
+#box-4-wrapper {
+	    width: 270px;
+    position: fixed;
+    height: 242px;
+    margin: 10px 0px;
+    border-radius: 2px;
+    right: 35px;
+    top: 90px;
+}
+.fixed-sides {
+	top: 45px !important;
 }
 .shown-post #box-3-wrapper {
 	display: none;
 }
-#box-3-wrapper p {
+#box-3-wrapper p, #box-4-wrapper p {
 	    font-family: roboto;
     text-align: left;
-    margin: 10px 10px 10px 10px;
+    margin: 15px 10px 11px 5px;
     display: inline-block;
     width: calc(100% - 20px);
-
+    font-size: 18px;
 }
 .box-profile-wrapper {
 	width: 100%;
-    height: 50px;
-    background: whitesmoke;
+    height: 70px;
+    background: white;
     overflow: hidden;
     position: relative;
     margin-bottom: 0px;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
 }
 .box-profile-cover {
     width: calc(100% + 10px);
@@ -7650,21 +7701,26 @@ body:not(#make) .fixed-menu {
             filter: blur(2px);
 }
 .box-profile-image {
-	width: 25px;
-    height: 25px;
-    position: absolute;
+	width: 40px;
+    height: 40px;
     left: 10px;
     top: 10px;
     border-radius: 2px;
     background-size: cover;
+    float: left;
+    margin: 15px;
+}
+.box-profile-right {
+	    float: right;
+    width: 200px;
+    height: 70px;
 }
 .box-profile-title {
 	    font-family: roboto;
-    color: white;
-    text-shadow: 0px 0px 10px black;
-    position: absolute;
+    color: #424242;
     left: 45px;
-    top: 13px;
+    margin-top: 15px;
+    font-size: 16px;
 }
 .box-profile-wrapper .post-user-unfollow, .box-profile-wrapper .post-user-follow {
 	opacity: 1 !important;
@@ -7672,8 +7728,33 @@ body:not(#make) .fixed-menu {
     position: absolute;
     right: 0px;
     top: 0px;
-    color: white !important;
-    background: #5ec361 !important;
+    color: #3897f0 !important;
+    background: #ffffff !important;
+}
+#go-create {
+	    background: white;
+    height: 95px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
+    font-family: roboto;
+    font-size: 23px;
+    color: #616161;
+}
+#go-create span {
+	    position: relative;
+    top: -7px;
+}
+#go-create i {
+	font-size: 30px !important;
+    margin: 30px  !important;
+    margin-right: 10px  !important;
+    margin-left: 60px !important;
+}
+.box-profile-detail {
+	    font-family: roboto;
+    color: #424242;
+    font-size: 14px;
+    margin: 3px 2px;
+    font-weight: 100;
 }
 @media screen and (max-width: 1200px) and (min-width: 850px) {
 	#content-full2 {
@@ -8496,4 +8577,84 @@ p.pick-tags-title.new {
 .not-signed-in .follow-trend {
 	pointer-events: none;
 	opacity: 0.5;
+}
+.memeb-title {
+	    font-size: 30px;
+}
+.memeb-wrapper {
+	font-family: roboto;
+    margin: 20px auto;
+    color: white;
+    border-bottom: 1px solid #d9d9d9;
+    width: 100%;
+    background: #f44a27;
+    padding-top: 20px;
+    max-width: 538px;
+    border-radius: 2px;
+}
+.memeb-wrapper.waiting {
+    padding-bottom: 20px;
+    margin-bottom: -5px;
+}
+.memeb-wrapper.declined .memeb-field.f {
+	background-image: url(https://image.flaticon.com/icons/svg/127/127936.svg);
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 210px 14px;
+}
+/*
+.memeb-wrapper.approved .memeb-field.f {
+	background-image: url(https://image.flaticon.com/icons/svg/127/127915.svg);
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-position: 210px 14px;
+}
+*/
+.memeb-button, .memeb-submit {
+	    background: #ffffff;
+    padding: 10px 15PX;
+    font-size: 20px;
+    border-radius: 23px;
+    COLOR: #f44a27;
+    margin: 25px;
+    cursor: pointer;
+}
+.memeb-wrapper.second, .memeb-wrapper.third {
+	display: none;
+}
+.memeb-detail {
+	    margin: 20px auto;
+    width: 361px;
+    font-size: 20px;
+}
+#memes #trends-wrapper {
+	display: none !important;
+}
+#memes #memes-content {
+	display: block !important
+}
+#tabs-wrapper {
+	display: none !important;
+}
+.memeb-field {
+	display: block;
+    padding: 8px;
+    font-size: 17px;
+    margin: 18px auto;
+    background: rgb(255, 255, 255);
+}
+.memeb-field:focus {
+	background: #f2f2f2;
+}
+.memeb-notice {
+	    width: 300px;
+    margin: 0px auto;
+    margin-top: 11px;
+    color: #ffffff;
+}
+.shake {
+	background: 2px solid #ff3000;
+}
+#memeb-sign-up-submit {
+	display: none;
 }

@@ -1,6 +1,8 @@
 <% if @emailcheck == false %>
 $('#email-check-icon').text('check_circle')
+$(".memeb-wrapper.third").addClass("approved").removeClass("declined")
 <% else %>
 $('#email-check-icon').text('cancel')
+$(".memeb-wrapper.third").removeClass("approved").addClass("declined")
 <% end %>
 emailChecked = true

@@ -4,19 +4,26 @@
             <% @randomUsers.each do |user| %>
                 <div class="box-profile-wrapper">
                     <a href="/user/<%= user.username %>">
+                        <!--
                         <% if user.cover.url == "missing-2.jpg" %>
                             <div class="box-profile-cover" style="background-image: url(/assets/missing-2.jpg)"></div>
                           <% else %>
                               <div class="box-profile-cover" style="background-image: url(<%= user.cover.url(:medium) %>)"></div>
                           <% end %>
+                        -->
                         <% if user.image.url == "missing.jpg" %>
                             <div class="box-profile-image" style="background-image: url(/assets/missing.jpg)"></div>
                           <% else %>
                               <div class="box-profile-image" style="background-image: url(<%= user.image.url(:tiny) %>)"></div>
                           <% end %>
                       </a>
+                      <div class="box-profile-right">
+                          <div class="box-profile-title">@<%= user.username %></div>
+                <div class="box-profile-detail"><%= user.posts.count %> Posts</div>
+                      </div>
+
                 <% if user_signed_in? %>
-                <div class="box-profile-title"><%= user.username %></div>
+
                     <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
                         <div><%= hidden_field_tag :followed_id, user.id %></div>
                         <% if current_user.following?(user) %>
@@ -24,10 +31,42 @@
                         <% else %>
                             <%= f.submit "follow", class: "post-user-follow" %>
                         <% end %>
-                        
+
                     <% end %>
                 </div>
+
+
                 <% end %>
             <% end %>
+            <p>Make something</p>
+            <a href="/make">
+                <div id="go-create"><i class="material-icons">add</i><span>Create</span></div>
+            </a>
+
     </div>
+
+    <div id="box-4-wrapper" class="opacity">
+        <p>New Posts
+        <a href="/new">
+<span style="
+            font-size: 14px;
+            color: #404040;
+            margin: 15px;
+        ">more</span>
+        </a>
+
+        </p>
+        <div id="box-4-wrapper-inside">
+            <% Post.limit(10).each do |post| %>
+            <div class="wrapper-new">
+                 <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
+                <% if !post.imageaddress.blank? %><img data-original="<%= post.image.url(:large) %>" class="post-image-new post-image-2" alt="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
+                <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+            </div>
+        <% end %>
+        </div>
+
+    </div>
+
     <% end %>

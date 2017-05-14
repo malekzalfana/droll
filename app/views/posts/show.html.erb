@@ -105,7 +105,7 @@
                     <% end %>
                 </div>
                 <% if !@post.title.blank? %><div class="post-title" data-gramm_editor="false"><%= @post.title %></div><% end %>
-                <div class="post-footer new">
+                <div class="post-footer new <%= if @post.user.passed != true then "not-passed" end %> ">
                 <% if @post.anonymous != true %>
                     <a href="/user/<%= @post.user.username %>" class="user-link">
                         <% if @post.user.image.url == "missing.jpg" %>
@@ -114,7 +114,14 @@
                                 <div class="post-footer-user-image" style="background-image: url(<%= @post.user.image.url(:medium) %>)"></div>
                           <% end %>
                           <div class="footer-left">
-                            <span class="post-footer-user-name">@<%= @post.user.username %></span>
+                              <% if @post.user.passed != true %>
+                                    <span class="post-footer-user-name">NEW USER</span>
+                              <% elsif @post.user.passed == true && @post.user.username.nil? %>
+                                  <span class="post-footer-user-name">NEW USER</span>
+                              <% else%>
+                                  <span class="post-footer-user-name">@<%= @post.user.username %></span>
+                              <% end %>
+
                             <span class="post-footer-time"><%= time_ago_in_words(@post.created_at) %> ago</span>
                           </div>
 
@@ -199,7 +206,7 @@
                                             <% if user_signed_in? %>
                             <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size - if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>"><%=  @post.get_upvotes.size - @post.get_downvotes.size %></span>
                         <% else %>
-                            <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%=  @post.get_upvotes.size - post.get_downvotes.size %></span>
+                            <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%=  @post.get_upvotes.size - @post.get_downvotes.size %></span>
                         <% end %>
 
 
@@ -245,6 +252,16 @@
 
                 </div>
 
+
+            <% if @post.user.passed != true %>
+            <div class="accept-user">
+                <p>This post is by a new user, do you wish to accept him to Drolle? </p>
+                <%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
+                  <%= text_field_tag 'userid', @post.user.id, class: "hidden-imp" %>
+                  <%= submit_tag "ACCEPT", class: "accept-user-button"%>
+                <% end %>
+            </div>
+            <% end %>
 
             <div class="middle-wrapper">
                 <div class="comments-wrapper" id="comments-wrapper-<%= @post.id %>">

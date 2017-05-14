@@ -12,6 +12,9 @@ class PagesController < ApplicationController
 
 
   def index
+    if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
+      redirect_to '/make'
+    else
 
     @trends = Trend.all.limit(10)
     @url =  request.base_url + request.original_fullpath
@@ -60,6 +63,8 @@ class PagesController < ApplicationController
      format.json {render json:  @post }
     end
     end
+    end
+
 
 
   end
@@ -201,9 +206,51 @@ class PagesController < ApplicationController
       @post = current_user.posts.build(params[:post])
       @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
+
+    end
+    @trends = Trend.all.limit(10)
+      @trendname = Trend.all
+  end
+
+  def memes
+    if user_signed_in?
+      @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
+      @activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids, key: "posting" ).where('created_at >= ?', Time.now-2.days)
+      @activities2 = PublicActivity::Activity.where( key: 'drolling').order("created_at DESC")
+      @activities3 = [@activities1, @activities2, @activities0].flatten
+      @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
+      @post = current_user.posts.build(params[:post])
+      @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
+      @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
       @trends = Trend.all.limit(10)
       @trendname = Trend.all
     end
+    #@post = current_user.posts.build(params[:post])
+    @trends = Trend.all.limit(10)
+      @trendname = Trend.all
+  end
+  def ragaecomics
+  end
+  def gifs
+  end
+
+  def acceptUser
+    if params[:userid]
+      puts params[:userid]
+      @newuser = User.find( params[:userid] )
+      @newuser.passed = true
+      @newuser.save
+      puts @newuser.passed
+    elsif params[:username1]
+      puts params[:username1]
+      puts "Sssssssssssssssssssssss"
+      current_user.username = params[:username1];
+      current_user.save
+      @username1 = true
+      #redirect_to "/"
+    end
+
+
   end
 
   def makememe

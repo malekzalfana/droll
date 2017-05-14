@@ -46,6 +46,7 @@
     <%= render '/layouts/who_to_follow' %>
 <div id="content-full2" class="full-wrapper new-content">
 
+
     <% if @welcomeMessage == true %>
         <div id="main-message">
             Welcome to drolle! Enjoy your time. <img src="http://2.bp.blogspot.com/-4NwAstTunj0/UPiqueKINcI/AAAAAAAAAjE/jWzjl2Brquw/s1600/09.png">
@@ -54,12 +55,62 @@
     <% end %>
 
 
+<% if !user_signed_in? %>
+    <div class="memeb-wrapper first">
+        <p class="memeb-title">Can you pass the meme challenge?</p>
+        <p class="memeb-detail">Make a meme and if you were accepted, you're in!</p>
+        <button class="memeb-button first">Continue</button>
+    </div>
 
+    <div class="memeb-wrapper second">
+        <!--<p class="memeb-title">What is happening?</p>-->
+        <p class="memeb-detail">After you post your meme, current users will choose to let you in or keep you out.</p>
+        <button class="memeb-button second">Continue</button>
+    </div>
+
+    <div class="memeb-wrapper third">
+        <p class="memeb-title">Setting up your profile</p>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "i"} ) do |f| %>
+        <%= f.email_field :email, autofocus: true, class: "memeb-field f", placeholder: "Email" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", placeholder:"Password" , class: "memeb-field s" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "memeb-field t" %>
+        <p class="memeb-notice">You will be able to set up your profile when if you get accepted.</p>
+        <button class="memeb-submit" type="button">Start</button>
+        <%= f.submit "Sign up", id: "memeb-sign-up-submit" %>
+        <% end %>
+
+
+    </div>
+
+<% elsif user_signed_in? &&  !current_user.passed.nil? && current_user.username.nil? %>
+<br>
+<div class="memeb-wrapper waiting">
+<p class="memeb-title">Congratulations, welcome aboard!</p>
+<p class="memeb-detail">Choose your username</p>
+<%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
+                  <%= text_field_tag 'username1', '', class: "memeb-field",placeholder: 'bananapeeler', id: "memeb-username-field" %>
+                  <%= submit_tag "Save", class: "hidden", id:"memeb-username-submit"%>
+                  <button type="button" id="memeb-username-submit-before" class="memeb-button">Save</button>
+                <% end %>
+</div>
+<% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 1 %>
+<div class="memeb-wrapper waiting">
+    <p class="memeb-detail">Waiting for someone to let you in</p>
+</div>
+<% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 0 %>
+<div class="memeb-wrapper waiting">
+<p>Complete the meme challenge<a href="/make">click here</a></p>
+</div>
+<% end %>
 
     <div class="content-overlay"></div>
     <p class="pure-message hidden">Hi, thank you for giving this website a try. We are working hard on making this community everyone's. Help us grow by sharing this website with your friends and feel free to post the memes you like. Drolle team. This message will self destruct in 30 sec.</p>
     <%= will_paginate @post %>
     <% @post.each do |post| %>
+
         <div class="wrapper" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
             <div class="left-wrapper" id="left-wrapper-<%= post.id %>">
                 <div class="left-wrapper-overlay"></div>
@@ -126,7 +177,7 @@
             </div>
 
                     <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
-                    <div class="post-footer new">
+                    <div class="post-footer new <%= if post.user.passed != true then "not-passed" end %>">
                 <% if post.anonymous != true %>
                     <a href="/user/<%= post.user.username %>" class="user-link">
                         <% if post.user.image.url == "missing.jpg" %>
@@ -135,7 +186,11 @@
                                 <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
                           <% end %>
                           <div class="footer-left">
-                            <span class="post-footer-user-name">@<%= post.user.username %></span>
+                            <% if post.user.passed != true %>
+                                    <span class="post-footer-user-name">NEW USER</span>
+                              <% else %>
+                                  <span class="post-footer-user-name">@<%= post.user.username %></span>
+                              <% end %>
                             <span class="post-footer-time"><%= time_ago_in_words(post.created_at) %> ago</span>
                           </div>
 
@@ -278,6 +333,16 @@
 
 
                     </div>
+
+            <% if post.user.passed != true %>
+            <div class="accept-user">
+                <p>This post is by a new user, do you wish to accept him to Drolle? </p>
+                <%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
+                  <%= text_field_tag 'userid', post.user.id, class: "hidden-imp" %>
+                  <%= submit_tag "ACCEPT", class: "accept-user-button"%>
+                <% end %>
+            </div>
+            <% end %>
 
 
             <div class="middle-wrapper">

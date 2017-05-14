@@ -77,7 +77,23 @@ tabs = function() {
 			$(this).siblings('.post-votes-word.real').hide().fadeIn(200).text(Number(
 				points) + Number(userVotes) + " " + votesWords)
 			$(this).siblings('.post-votes-word.real:not(.footer-interseter)').attr('data-user-votes', userVotes)
+			if ( $(this).hasClass("upvote") ){
+				$(".wrapper").removeClass("to-accept")
+				$(this).parents(".wrapper").addClass("to-accept")
+			}
 		}
+	});
+
+		$(document).on('click', '.accept-user-button', function() {
+	$(this).parents(".accept-user").hide()
+	})
+
+	$('.memeb-wrapper form').on('keyup keypress', function(e) {
+	  var keyCode = e.keyCode || e.which;
+	  if (keyCode === 13) {
+	    e.preventDefault();
+	    return false;
+	  }
 	});
 	//var $container = $('#left-content-profile');
 	//console.log($container)
@@ -624,13 +640,17 @@ tabs = function() {
 	})
 
 	$(document).on('click', '#pick-type p', function() {
-		$('#pick-type p').removeClass('active')
-		$(this).addClass('active')
-		type = $(this).attr('data-name')
-		//alert(type)
-		if (type && trend) {
+		if ( $("body").hasClass("not-signed-in") ) {
 			$("#continue-make").addClass("active")
 		}
+			$('#pick-type p').removeClass('active')
+			$(this).addClass('active')
+			type = $(this).attr('data-name')
+			//alert(type)
+			if (type && trend) {
+				$("#continue-make").addClass("active")
+			}
+
 	})
 	$(document).on('click', '.pick-trends:not(.new-trend)', function() {
 		$('.pick-trends').removeClass('active')
@@ -643,6 +663,58 @@ tabs = function() {
 			$("#continue-make").addClass("active")
 		}
 	})
+
+	$(document).on('click', '.memeb-button.first', function() {
+		//alert("CLICKED")
+		$(".memeb-wrapper.first").hide();
+		$(".memeb-wrapper.second").fadeIn(250);
+	})
+
+	var emptyField = false;
+	$(document).on('click', '.memeb-submit', function() {
+		emptyField = false;
+		/*
+		if ( $(".memeb-field.f").val() == '' ) {
+			console.log(0)
+			$(".memeb-field.f").addClass("shake");
+			emptyField = true
+		}
+		if ( $(".memeb-field.s").val() == '' ) {
+			console.log(1)
+			$(".memeb-field.s").addClass("shake");
+			emptyField = true
+		}
+		if ( $(".memeb-field.t").val() == '' ) {
+			console.log(2)
+			$(".memeb-field.t").addClass("shake")
+			emptyField = true
+		}
+		*/
+		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && $(".memeb-wrapper.third").hasClass("approved") ) {
+			$("#memeb-sign-up-submit").click();
+		}
+	})
+
+	$(document).on('keyup outfocus', '.memeb-field.f', function() {
+		$("#email-check-field").val( $(this).val() );
+		$("#email-check-submit").click();
+	})
+
+	$(document).on('keyup', '.memeb-field.t', function() {
+		if ($(".memeb-field.s").val() != $(".memeb-field.t").val() ){
+			$(".memeb-wrapper.third").removeClass("approved").addClass("declined")
+		}
+		else {
+			$(".memeb-wrapper.third").addClass("approved").removeClass("declined")
+		}
+	})
+
+	$(document).on('click', '.memeb-button.second', function() {
+		//alert("CLICKED")
+		$(".memeb-wrapper.second").hide();
+		$(".memeb-wrapper.third").fadeIn(250);
+	})
+
 	$(document).on('click', '#continue-make', function() {
 		$(".choosen-content").hide();
 		if (type == "images") {
@@ -719,18 +791,21 @@ tabs = function() {
 
 	var trendClick = 0;
 	$(document).on('click', '.follow-trend, .followed-trend', function() {
+		//alert( this.className)
 		if (trendClick == 0) {
 			$(".trend-parent").removeClass("active")
 			$(this).parents(".trend-parent").addClass("active")
 			console.log (  $(this).parents(".trend-parent")  )
 			console.log("samir")
-			$(".trend-parent.active .follow-trend-submit").click();
+			$(".trend-parent.active .follow-trend-submit").click()
+			trendClick = 1;
 			setTimeout(function(){
-				trendClick = 0
-			}, 2000)
+				trendClick = 0;
+			}, 3000)
+
 		}
 
-		trendClick++
+
 
 	})
 
@@ -753,7 +828,7 @@ tabs = function() {
 		//$('#make-image-preview').css({
 		//	'min-height': '100px'
 		//});
-		$('#image-for-gif-reset').hide()
+		$('#image-for-gif-reset, #make-gif-preview, #make-post-title').hide()
 		$("#make-post-preview-wrapper #pictureInput").replaceWith($("#make-post-preview-wrapper #pictureInput").val('').clone(true));
 	})
 	$(document).on('click', '#image-for-gif-reset-2', function() {
@@ -960,6 +1035,26 @@ tabs = function() {
 		if (e.keyCode == 13 && $('body').is('#make')) {
 			e.preventDefault()
 			return false
+		}
+	})
+	$(document).on('keyup', '#memeb-username-field', function() {
+		console.log("canged")
+		$(this).removeClass("approved")
+		$(this).addClass("loading")
+		console.log("LOADING")
+		$("#memeb-username-field").val( $(this).val().toLowerCase().replace("  ", "").replace(" ", "").replace(" ", "").replace(/[^a-z0-9\s]/gi, '') );
+		$("#username-check-field").val( $(this).val() );
+		//if ( !$(this).hasClass("loading") ) {
+			$("#username-check-submit").click();
+		//}
+
+	})
+
+	$(document).on('click', '#memeb-username-submit-before', function() {
+		console.log("clicked")
+		if ( $("#memeb-username-field").hasClass("approved") ) {
+			//alert("clicked")
+			$("#memeb-username-submit").click();
 		}
 	})
 	$(document).on('keyup', function(e) {
@@ -1205,6 +1300,15 @@ tabs = function() {
 		//$('#anonymous-faces img').slice(40, $('#anonymous-faces .rageface').length - 39 ).lazyload()
 	})
 	$(".pick-meme-container").lazyload();
+	$("#box-4-wrapper img").lazyload();
+	var $content = $('#box-4-wrapper-inside');
+		$content.imagesLoaded(function() {
+			$content.masonry({
+				itemSelector: '.wrapper-new',
+				gutter: 5
+			});
+			$('#box-4-wrapper').removeClass("opacity");
+		});
 	$(document).on('click', '#anonymous-image', function() {
 		$('#anonymous-faces img').show()
 		$("#anonymous-faces img").slice(0, 40).lazyload({
@@ -1698,9 +1802,11 @@ tabs = function() {
 		if ($(this).scrollTop() > 44) {
 			//console.log("sssss")
 			$('#nav-menu-wrapper').addClass('fixed-menu')
+			$("#box-3-wrapper, #box-4-wrapper").addClass("fixed-sides")
 		} else {
 			//console.log("sssss")
 			$('#nav-menu-wrapper').removeClass('fixed-menu')
+			$("#box-3-wrapper, #box-4-wrapper").removeClass("fixed-sides")
 		}
 	})
 	/*

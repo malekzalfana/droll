@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
+#for scheduling
+gem 'whenever', :require => false
 #for caching
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
@@ -16,7 +18,7 @@ gem "paperclip-ffmpeg", "~> 1.2.0"
 gem 'acts-as-taggable-on'
 #for binding ready to turbolinks
 gem 'jquery-turbolinks'
-#masonry gem 
+#masonry gem
 #gem 'masonry-rails', '~> 0.2.0'
 #gem 'jquery-turbolinks'
 #for the comments
@@ -44,7 +46,7 @@ gem 'acts_as_votable'
 
 # for devise gem
 gem 'devise'
-# for twitter bootstrap sass 
+# for twitter bootstrap sass
 gem 'bootstrap-sass', '~> 3.3.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'

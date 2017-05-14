@@ -2041,7 +2041,12 @@ $('.image-upload-wrap').bind('dragover', function () {
 //alert('functions')
 }
 
-$(document).ready(functions);
+$(document).ready(
+		functions
+
+
+
+);
 $(document).on('page:load', function(){
 		functions;
 	}
