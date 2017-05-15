@@ -1,3 +1,5 @@
+<% if user_signed_in? %>
+
 <body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">oll-up-wrapper"><div id="scroll-up"></div></div>
 
 
@@ -16,12 +18,15 @@
     <% end %>
 
     <i class="material-icons" id="hide-remote-make">clear</i>
-    <% if user_signed_in? && @pTotal < 100 %>
+
+
+    <!--
+    <%# if user_signed_in? && @pTotal < 100 %>
     <div id="progress-table">
-        <p class="<%= if current_user.image.url(:medium) == 'missing.jpg' then '' else 'progress-done' end %>">Set your image</p>
-        <p class="<%= if current_user.cover.url(:medium) == 'missing-2.jpg' then '' else 'progress-done' end %>">Set your blurred cover</p>
-        <p class="<%= if current_user.bio.blank?  then '' else 'progress-done' end %>">Write your bio</p>
-        <p class="<%= if current_user.posts.count == 0 then '' else 'progress-done' end %>">Upload your first post</p>
+        <p class="<%# if current_user.image.url(:medium) == 'missing.jpg' then '' else 'progress-done' end %>">Set your image</p>
+        <p class="<%# if current_user.cover.url(:medium) == 'missing-2.jpg' then '' else 'progress-done' end %>">Set your blurred cover</p>
+        <p class="<%# if current_user.bio.blank?  then '' else 'progress-done' end %>">Write your bio</p>
+        <p class="<%# if current_user.posts.count == 0 then '' else 'progress-done' end %>">Upload your first post</p>
     </div>
     <div id="progress-number" class="hidden-imp" data-progress-number="<%= @pTotal %>"></div>
   <div class='progress'>
@@ -29,7 +34,8 @@
       <div class='active'></div>
       <div class='active2'></div>
     </div>
-<% end %>
+<%# end %>
+-->
 <div class="messages-container">
         <div class="notice-message"></div><span class="notice"><%= notice %></span>
         <span class="alert"><%= alert %></span>
@@ -109,6 +115,9 @@
     <div class="content-overlay"></div>
     <p class="pure-message hidden">Hi, thank you for giving this website a try. We are working hard on making this community everyone's. Help us grow by sharing this website with your friends and feel free to post the memes you like. Drolle team. This message will self destruct in 30 sec.</p>
     <%= will_paginate @post %>
+    <% if user_signed_in? && current_user.trends.nil? %>
+    <p class="normal-message">Posts of the trends and users you follow will appear here. Go ahead. Explore and follow what you like! <a href="/trends">click to see trends</a></p>
+    <% end %>
     <% @post.each do |post| %>
 
         <div class="wrapper" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
@@ -648,3 +657,117 @@
     <% end %>
 
 </body>
+<% else %>
+<body  data-no-turbolinks='true' id="invite-page<%# controller.action_name %>" class="<% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">oll-up-wrapper"><div id="scroll-up"></div></div>
+<div class="invite-underlay"></div>
+<div class="memeb-wrapper first">
+    <p class="memeb-title-small">Can you pass? ..</p>
+        <p class="memeb-title-big">THE MEME CHALLENGE</p>
+        <p class="memeb-detail">Make a meme and if you were accepted, you're in!</p>
+        <button class="memeb-button first">Continue</button>
+    </div>
+
+    <div class="memeb-wrapper second">
+        <!--<p class="memeb-title">What is happening?</p>-->
+        <p class="memeb-detail">After you post your meme, current users will choose to let you in or keep you out.</p>
+        <button class="memeb-button second">Continue</button>
+    </div>
+
+    <div class="memeb-wrapper third">
+        <p class="memeb-title">Setting up your profile</p>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "i"} ) do |f| %>
+        <%= f.email_field :email, autofocus: true, class: "memeb-field f", placeholder: "Email" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "off", placeholder:"Password" , class: "memeb-field s" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "memeb-field t" %>
+        <p class="memeb-notice">You will be able to set up your profile when if you get accepted.</p>
+        <button class="memeb-submit" type="button">Start</button>
+        <%= f.submit "Sign up", id: "memeb-sign-up-submit" %>
+        <% end %>
+
+
+    </div>
+    </div>
+
+    <div id="remote-invite-wrapper">
+        <i class="material-icons close-wrapper">close</i>
+
+    <div id="invite-buttons-wrapper" class="second">
+            <label id="invite-tab-1" class="invite-tab active-invite-tab">Log in</label>
+            <label id="invite-tab-2"class="invite-tab">Sign up</label>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "invite-2"} ) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <span id="att-before-username">@</span>
+    <%= f.text_field :username, autofocus: true, id:"sign-up-username-field", placeholder: "Username" %>
+    <i class="material-icons" id="username-check-icon">check_circle</i>
+  </div>
+
+  <div class="field">
+    <%= f.email_field :email, autofocus: true, id: "email-field-settings", placeholder: "Email" %>
+    <i class="material-icons" id="email-check-icon">check_circle</i>
+  </div>
+
+  <div class="field passwords">
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off", placeholder:"Password"  %>
+  </div>
+
+  <div class="field passwords">
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
+  </div>
+  <%= f.check_box :pro, checked: false, class: "hidden" %>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "hidden submit-invite", id: "sign-up-submit" %>
+    <button type="button" id="sign-up-submit-before" class="invite-submit">Sign up</button>
+  </div>
+<% end %>
+
+
+
+        <%= form_for(:user, :url => session_path(:user), :html => {:id => "invite-1"}) do |f| %>
+
+
+
+          <div class="field">
+            <%= f.email_field :email, placeholder: "Email" %>
+          </div>
+
+          <div class="field">
+            <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="field" id="remember-me-button">
+              <%= f.check_box :remember_me, checked: "true"%>
+              <%= f.label :remember_me %>
+              <a class="forgot-password-new" href="/users/password/new">Forgot passowrd</a>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: "invite-submit" %>
+          </div>
+
+        <% end %>
+    </div>
+
+
+</div>
+<%= form_tag url_for(:controller => 'pages', :action => 'checkUsername'), :method => 'get', class: "hidden", remote: true do %>
+      <%= text_field_tag 'name', '', id: "username-check-field"%>
+      <%= submit_tag "Save", id: "username-check-submit" %>
+    <% end %>
+    <%= form_tag url_for(:controller => 'pages', :action => 'checkEmail'), :method => 'get', class: "hidden", remote: true do %>
+      <%= text_field_tag 'email', '', id: "email-check-field"%>
+      <%= submit_tag "Save", id: "email-check-submit" %>
+    <% end %>
+
+<% end %>

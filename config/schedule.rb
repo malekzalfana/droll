@@ -3,7 +3,7 @@ every 1.minutes do
    #command "/usr/bin/some_great_command"
    #runner "User.where(passed: nil).update_all('passed = true')"
    #runner "User.where(passed: 'nil').update_all(passed : 'true')"
-   runner "User.where(passed: 'nil', posted: 'true').update_all('passed = 'true'')"#, :environment => "development"
+   runner "User.where(passed: nil, posted: true).update_all('passed = true ')"#, :environment => "development"
    script "acceptUsers"
    #rake "some:great:rake:task"
  end

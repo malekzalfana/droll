@@ -1,0 +1,276 @@
+<% @post.each do |post| %>
+
+        <div class="wrapper" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
+            <div class="left-wrapper" id="left-wrapper-<%= post.id %>">
+                <div class="left-wrapper-overlay"></div>
+                <i class="material-icons" id="next-post-icon">navigate_next</i>
+            <i class="material-icons" id="prev-post-icon">navigate_before</i>
+            <%= form_for (post), remote: true do |f| %>
+
+			 	<%= f.text_field :trendname  %>
+
+ 	            <%= f.submit 'Save' %>
+            <% end %>
+            <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
+
+
+                <div class="post-tags-wrapper">
+                    <!--
+                        <% post.tags.any? %>
+                          <% post.tags.each do |tag| %>
+                          <a href="/tags/<%= tag.name %>"><%= tag.name %></a>
+                        <% end %>
+                    -->
+                        <% if post.trendid.present? %>
+                          <a class="post-trend" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
+                        <% end %>
+
+                    </div>
+
+                <% if post.long === true  %>
+                    <i class="material-icons expand-post">expand_more</i>
+                <% end %>
+                <% if user_signed_in? && current_user != post.user %>
+                <div class="post-more-button <%= if current_user.voted_on? post, vote_scope: 'report' then 'reported' elsif current_user.voted_on? post, vote_scope: 'favor' then 'favorited' end %>">
+                            <%= link_to report_post_path(post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="reported-post material-icons">report</i><% end %>
+                            <%= link_to like_post_path(post, :favor => true), method: :put, class: 'favor-post', title: 'Add to favorites', :"data-post-id" => post.id, remote: true  do %><i class="material-icons favorite-post">favorite</i><% end %>
+                            <div class="report-words">reported</div>
+                            <div class="favor-words">favored</div>
+                </div>
+                <% end %>
+                <div id="loadPost" class="loadPost hidden">
+                    <%= form_tag '/pages/loadPost', remote: true, :method => 'get' do %>
+                        <%= text_field_tag :postid, post.id %>
+                        <%= submit_tag "Save", class: 'submit-loadpost'%>
+                    <% end %>
+                </div>
+                <%# link_to(post) do %>
+
+                    <% if !post.video64.blank? %>
+                        <div class="black-under-video"></div>
+                        <i class="material-icons video-volume hidden-imp">volume_up</i>
+                        <i class="material-icons play-video">play_arrow</i>
+                        <i class="material-icons pause-video">pause</i>
+                        <video id="post-video-<%= post.id %>" muted class="blurred-video post-image post-video" data-post-id="<%= post.id %>" autoplay loop src="<%= post.video64 %>" type="video/mp4" preload="auto">
+            				You are using an old browser pal.
+            			</video>
+                    <% end %>
+
+                    <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2" alt="<%= post.title %>"><% end %>
+                    <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+                    <% if post.image.present? %><img data-original="<%= post.image.url(:large) %>" class="post-image post-image-2"><% end %>
+                    <% if !post.giphyid.blank? %><img class="post-image" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+
+                <%# end %>
+            </div>
+
+                    <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
+                    <div class="post-footer new <%= if post.user.passed != true then "not-passed" end %>">
+                <% if post.anonymous != true %>
+                    <a href="/user/<%= post.user.username %>" class="user-link">
+                        <% if post.user.image.url == "missing.jpg" %>
+                                <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:tiny) %>)"></div>
+                          <% else %>
+                                <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
+                          <% end %>
+                          <div class="footer-left">
+                            <% if post.user.passed != true %>
+                                    <span class="post-footer-user-name">NEW USER</span>
+                              <% else %>
+                                  <span class="post-footer-user-name">@<%= post.user.username %></span>
+                              <% end %>
+                            <span class="post-footer-time"><%= time_ago_in_words(post.created_at) %> ago</span>
+                          </div>
+
+                    </a>
+                    <div class="post-user-follow-wrapper">
+                            <% if user_signed_in? && current_user.id != post.user.id %>
+                                        <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+                                            <div><%= hidden_field_tag :followed_id, post.user.id %></div>
+                                            <% if current_user.following?(post.user) %>
+                                                <%= f.submit "following", class: "post-user-unfollow" %>
+                                            <% else %>
+                                                <%= f.submit "follow", class: "post-user-follow" %>
+                                            <% end %>
+
+                                        <% end %>
+                            <% end %>
+                        </div>
+                <% else %>
+
+                            <% if !post.facenumber.nil? %><div class="post-footer-user-image" style="background-image: url(http://www.nightmug.com/drolle/ragefaces/<%= post.facenumber %>face.png)"></div><% end %>
+                                <span class="post-footer-user-name anonymous-name">Anonymous</span>
+                                <span class="post-footer-time"><%= time_ago_in_words(post.created_at) %> ago</span>
+                            <% end %>
+
+                            <i class="material-icons post-options" tabindex="12">more_horiz</i>
+
+                        <i class="material-icons comment-button">chat_bubble</i>
+
+
+                    <span class="post-votes-word comment-number"><%= post.comments.count %></span>
+                    <span class="footer-interseter post-votes-word">.</span>
+
+
+
+
+                    <% if current_user != post.user %>
+                        <div id="main-share-button">
+                            <% if user_signed_in? %>
+                                <% if current_user.share == '1' %>
+                                    <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <% elsif current_user.share == '2' %>
+                                    <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <% elsif current_user.share == '3' %>
+                                    <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <% elsif current_user.share == '4' %>
+                                    <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
+                                <% elsif current_user.share == nil || current_user.share == '0' %>
+                                    <i title="Share this post" class="material-icons more-post-options share-button">share</i>
+
+                                <% end %>
+                            <% elsif !user_signed_in? %>
+                                <i class="material-icons more-post-options share-button">share</i>
+                            <% end %>
+                        </div>
+
+                        <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
+                            <!--<i class="material-icons downvote new">keyboard_arrow_up</i>-->
+                        <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
+                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote not-voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
+                        <% else %>
+                            <span class="down downvote vote"><i class="material-icons">arrow_drop_up</i></span>
+                        <% end %>
+
+                        <% if (user_signed_in?) && (current_user.voted_up_on? post) %>
+                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && !(current_user.voted_down_on? post)  %>
+                        <!--<i class="material-icons new upvote">keyboard_arrow_up</i>-->
+                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
+                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && (current_user.voted_down_on? post) %>
+                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
+                        <% else %>
+                            <span class="up upvote vote"><i class="material-icons">arrow_drop_up</i></span>
+                        <% end %>
+
+
+
+                    <% else %>
+
+
+
+                        <i class="material-icons more-post-options">more_horiz</i>
+                    <% end %>
+
+
+                    <% if user_signed_in? %>
+                            <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
+                        <% else %>
+                            <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
+                        <% end %>
+
+
+                </div>
+
+
+
+
+
+
+                    <div class="more-post-options-container <%= if post.anonymous != true && user_signed_in? && current_user == post.user then 'tall' end %> ">
+                        <% if user_signed_in? && current_user == post.user %>
+                            <% if post.anonymous != true %>
+                                <span class="anonymous-checkbox" class="inline-block-imp">
+                                    <%= form_for (post), remote: true do |f| %>
+                                        <%= f.check_box :anonymous %>
+                                        <%= f.text_field :user_id, value: post.user.username %>
+                                        <i class="material-icons anonymous-checked"></i>
+                                        <div id="anonymous-image" class="anonymous-image">
+                        			 		<i class="material-icons">add</i>
+                        			 	</div>
+                        			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
+            			 	            <span>Anonymous</span>
+            			 	            <input type="button" class="before-submit-edit" value="Save">
+            			 	            <%= f.submit 'Save', class: "submit-edit hidden" %>
+                                    <% end %>
+                                </span>
+                                <span class="dott">.</span>
+                            <% end %>
+
+                            <%= form_for post, method: :delete, remote: true do |f| %><% f.submit 'delete post', class: "delete-post-submit" %><% end %>
+
+                        <% end %>
+
+                        <div class="share-buttons">
+                            <span class="share-word">Share</span>
+                            <!--
+                            <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank"><img src="http://i.imgur.com/D87RBjw.png"></a>
+                            <a class="twitter customer share" href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><img src="http://i.imgur.com/d7WTVVP.png"></a>
+                            <a class="google_plus customer share" href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank"><img src="http://i.imgur.com/NGKECtL.png"></a>
+                            <a class="customer share" href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
+                            -->
+                            <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+
+
+                    </div>
+
+            <% if post.user.passed != true %>
+            <div class="accept-user">
+                <p>This post is by a new user, do you wish to accept him to Drolle? </p>
+                <%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
+                  <%= text_field_tag 'userid', post.user.id, class: "hidden-imp" %>
+                  <%= submit_tag "ACCEPT", class: "accept-user-button"%>
+                <% end %>
+            </div>
+            <% end %>
+
+
+            <div class="middle-wrapper">
+                <div class="comments-wrapper" id="comments-wrapper-<%= post.id %>">
+                <% if user_signed_in? %>
+                    <%= form_for [post, post.comments.new], html: {multipart: true}, remote: true do |f| %>
+                      <div class="form-group comment-form" id="form-<%= post.id %>">
+                        <%= f.text_area :body, class: 'post-comment-body', "data-gramm_editor" => "false", placeholder: "Comment on this post..", id: "comment-textarea"%>
+                        <input class="base64-make" type="hidden" value="" name="base64"/>
+                        <input class="giphy-id-make" type="hidden" value="" name="giphyid"/>
+                        <img src="" class="base64-image">
+                        <img src="" class="make-giphy-image">
+                        <div class="comment-html post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
+                        <div class="right-comment-wrapper">
+                            <div class="cancel-meme hidden-imp">Cancel</div>
+                            <input class="post-comment" value="post" readonly>
+                            <%= f.submit 'post', class: 'post-comment-after hidden', name: 'post' %>
+                            <div class="memes-emojis"><span class="make-meme">meme</span></div>
+                        </div>
+                      </div>
+                    <% end %>
+
+
+                <% else %>
+                    <p class="not-signed-in-comment">You need to be signed in to comment</p>
+                <% end %>
+                </div>
+
+                </div>
+
+
+                    <!--<p class="commentig-notice">You have to be signed in to comment</p>-->
+
+
+                                    <div id="right-wrapper-<%= post.id %>" class="right-wrapper hidden">
+                                        <br>
+                                        <div class="loading-quarter-circle-4"></div>
+                                        <div class="loading-quarter-circle-3"></div>
+                                    </div>
+
+        </div>
+    <% end %>

@@ -31,6 +31,8 @@
 			 <%= f.text_field :tag_list, class: "tag-list-field" %>
 			 <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 <%= f.check_box :anonymous, class: "hidden-imp", id: "created-meme-anonymous-field", checked: false %>
+			 <%= f.text_field :trendname, class: "make-trends-field hidden-imp trendname" %>
+			   <%= f.text_field :trendid, class: "make-trends-field hidden-imp trendid" %>
 
 			 <%= f.submit :id => "submit-image-button-2" %>
 			 <% end %>
@@ -1002,6 +1004,8 @@
 			<%# f.text_field :base64, class: "hidden", id: "video-image-base64-field" %>
 			<input id="video-image-base64-field" type="hidden" value="" name="base64"/>
 		    <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
+		    <%= f.text_field :trendname, class: "make-trends-field hidden-imp trendname" %>
+			   <%= f.text_field :trendid, class: "make-trends-field hidden-imp trendid" %>
 		    <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 		    <%= f.submit :value => "Post", :id => "submit-video" %>
 			<p id="make-video-p">Click or drop your video here</p>
@@ -1302,6 +1306,9 @@
 				</div>
 				<%= f.text_field :imageaddress, id: "image-for-gif-field", class: "hidden" %>
 				<%= f.text_field :giphyid, id: "make-gif-field", class: "hidden" %>
+				<%= f.text_field :trendname, class: "make-trends-field hidden-imp trendname" %>
+			   <%= f.text_field :trendid, class: "make-trends-field hidden-imp trendid" %>
+
 				<%# f.text_area :giphyid, value: "999" %>
 
 

@@ -13,7 +13,8 @@ class PagesController < ApplicationController
 
   def index
     if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
-      redirect_to '/make'
+      #redirect_to '/make'
+      puts "nothing"
     else
 
     @trends = Trend.all.limit(10)
@@ -36,7 +37,7 @@ class PagesController < ApplicationController
         @trendArray = current_user.trends.split(',')
       end
       @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > -1')
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 10')
       @trendPosts = Post.where(trendid: @trendArray, hidden: nil)#.where('cached_votes_up > -1')
       @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
     #remove # up >>^^^^
@@ -49,6 +50,7 @@ class PagesController < ApplicationController
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
+#=begin
     if user_signed_in?
       @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
       @p1 = if current_user.posts.count == 0 then '0' else '1' end
@@ -57,6 +59,7 @@ class PagesController < ApplicationController
       @p4 = if current_user.bio.blank? then '0' else '1' end
       @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
     end
+#=end
     respond_to do |format|
      format.html
      format.js
@@ -78,6 +81,10 @@ class PagesController < ApplicationController
     #elsif !user_signed_in? && !@url.include?('/?signed=false')
     #  redirect_to request.base_url + request.original_fullpath#+ '/?signed=false'
     end
+  end
+
+  def new
+    @post = Post.where(trendid: nil).all
   end
 
   def admin

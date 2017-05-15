@@ -113,7 +113,7 @@ a {
     pointer-events: none;
     background: white;
 }
-#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar #settings #navbar{
+#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar #settings #navbar, #invite-page #navbar {
 	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15) !important;
 }
 /* , #make #navbar */
@@ -2582,6 +2582,7 @@ i#upload-meme-stock:hover {
 }
 .post-image-new {
 	width: 70px;margin: 0px auto;
+	margin-top: 10px;
 }
 .post-votes {
     background-repeat: no-repeat;
@@ -7650,11 +7651,11 @@ body:not(#make) .fixed-menu {
 }
 #box-3-wrapper {
 	    width: 270px;
-    position: fixed;
+    position: absolute;
     height: 242px;
     margin: 10px 0px;
     border-radius: 2px;
-    left: 35px;
+    left: 65px;
     top: 90px;
 }
 #box-4-wrapper {
@@ -7663,22 +7664,47 @@ body:not(#make) .fixed-menu {
     height: 242px;
     margin: 10px 0px;
     border-radius: 2px;
-    right: 35px;
+    right: 65px;
     top: 90px;
+    display: none;
+}
+#box-5-wrapper {
+	    width: 270px;
+    position: absolute;
+    height: 242px;
+    margin: 10px 0px;
+    border-radius: 2px;
+    right: 65px;
+    top: 90px;
+}
+#box-5-wrapper img {
+	width: 250px;
+}
+.wrapper-new-2 {
+    background: #ffffff;
+    padding: 0px 10px;
+    BORDER-BOTTOM: 1PX SOLID #DFDFDF;
+}
+.wrapper-new-2 p {
+	margin: 7px 3px;
+    font-size: 13px;
 }
 .fixed-sides {
 	top: 45px !important;
 }
-.shown-post #box-3-wrapper {
+.shown-post #box-3-wrapper, .shown-post #box-4-wrapper, .shown-post .memeb-wrapper {
 	display: none;
 }
-#box-3-wrapper p, #box-4-wrapper p {
+#box-3-wrapper p, #box-4-wrapper p, #box-5-wrapper p  {
 	    font-family: roboto;
     text-align: left;
     margin: 15px 10px 11px 5px;
     display: inline-block;
     width: calc(100% - 20px);
     font-size: 18px;
+}
+#invite-tab-2 {
+	display: none !important;
 }
 .box-profile-wrapper {
 	width: 100%;
@@ -7731,6 +7757,7 @@ body:not(#make) .fixed-menu {
     color: #3897f0 !important;
     background: #ffffff !important;
 }
+
 #go-create {
 	    background: white;
     height: 95px;
@@ -7772,12 +7799,12 @@ body:not(#make) .fixed-menu {
 	    position: relative;
 		float: left;
 	}
-	#box-3-wrapper {
+	#box-3-wrapper, #box-4-wrapper {
 		display: none;
 	}
 }
 @media screen and (max-width: 1200px)  {
-	#box-3-wrapper {
+	#box-3-wrapper, #box-4-wrapper {
 		display: none;
 	}
 }
@@ -8592,9 +8619,66 @@ p.pick-tags-title.new {
     max-width: 538px;
     border-radius: 2px;
 }
+#invite-page {
+	background: url(https://img.memesuper.com/41133be7d2bda27e380d0a32d715100b_hd-meme-wallpapers-and-all-memes-wallpaper_1548-1094.jpeg) !important;
+}
+.not-signed-in .memeb-wrapper {
+	font-family: roboto;
+    color: #515151;
+    border-bottom: none;
+    background: none !important;
+    border-radius: 2px;
+    text-align: center;
+    height: 350px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.memeb-title-big {
+	    font-size: 44px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+.memeb-title-small {
+	    font-size: 20px;
+	    font-weight: 600;
+}
+.not-signed-in .memeb-field {
+	    display: block;
+    padding: 8px;
+    font-size: 17px;
+    margin: 18px auto;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
+}
+.not-signed-in .memeb-notice {
+	    color: #424242;
+}
+.invite-underlay {
+	    width: 100%;
+    height: 100%;
+    top:0;
+    position: absolute;
+    background: white;
+    opacity: 0.98;
+}
+.not-signed-in .memeb-button,.not-signed-in .memeb-submit {
+	    background: #f44a27;
+    padding: 10px 15PX;
+    font-size: 20px;
+    border-radius: 23px;
+    COLOR: #ffffff;
+    margin: 25px;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
+}
 .memeb-wrapper.waiting {
     padding-bottom: 20px;
-    margin-bottom: -5px;
+
 }
 .memeb-wrapper.declined .memeb-field.f {
 	background-image: url(https://image.flaticon.com/icons/svg/127/127936.svg);
@@ -8657,4 +8741,34 @@ p.pick-tags-title.new {
 }
 #memeb-sign-up-submit {
 	display: none;
+}
+.normal-message {
+	font-family: roboto;
+    padding: 10px 33px;
+    color: #424242;
+}
+.normal-message a {
+	color:#F44336;
+}
+.post-new-trend {
+	    font-family: roboto;
+    text-align: left !important;
+    margin: 3px 10px 0px 5px !important;
+    display: inline-block !important;
+    width: calc(100% - 20px) !important;
+    font-size: 13px !important;
+}
+
+.post-new-p {
+	    font-family: roboto;
+    text-align: left !important;
+    margin: 7px 10px 11px 5px !important;
+    display: inline-block !important;
+    width: calc(100% - 20px) !important;
+    font-size: 15px !important;
+}
+.post-new-username {
+	font-weight: 600;
+	    font-family: montserrat;
+    opacity: 0.7;
 }

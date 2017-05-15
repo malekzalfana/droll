@@ -1042,7 +1042,7 @@ tabs = function() {
 		$(this).removeClass("approved")
 		$(this).addClass("loading")
 		console.log("LOADING")
-		$("#memeb-username-field").val( $(this).val().toLowerCase().replace("  ", "").replace(" ", "").replace(" ", "").replace(/[^a-z0-9\s]/gi, '') );
+		$("#memeb-username-field").val( $(this).val().toLowerCase().replace("  ", "").replace(" ", "").replace(" ", "").replace("-", '').replace("!", '').replace("@", '').replace("$", '').replace("#", '').replace("&", '').replace("(", '').replace("(", '').replace(")", '') );
 		$("#username-check-field").val( $(this).val() );
 		//if ( !$(this).hasClass("loading") ) {
 			$("#username-check-submit").click();
@@ -1301,6 +1301,7 @@ tabs = function() {
 	})
 	$(".pick-meme-container").lazyload();
 	$("#box-4-wrapper img").lazyload();
+	$("#box-5-wrapper img").lazyload();
 	var $content = $('#box-4-wrapper-inside');
 		$content.imagesLoaded(function() {
 			$content.masonry({
@@ -2160,7 +2161,7 @@ function previewPostImage(event, thisFiler, thisPreview) {
 		$('#image-for-gif-reset').show()
 	}
 	reader.readAsDataURL(image);
-	$('#cancel-upload, #reset-image, #submit-image-button-before,  #make-image-preview, #make-post-title, #make-gif-preview').show()
+	$('#cancel-upload, #reset-image, #submit-image-button-before,  #make-image-preview, #make-post-title, #make-gif-preview, #make-post-title').show()
 	$('#make-tags-1-wrapper').css('inline-imp')
 	$('.anonymous-checkbox').addClass('shown')
 	$('#make-tags-1').addClass('inline-block-imp')

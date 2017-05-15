@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   get '/notifications' => 'pages#notifications'
   get '/explore' => 'pages#explore'
   get '/reprofile' => 'pages#reprofile'
+  get '/new' => 'pages#new'
   get '/notlogged' => 'pages#notlogged'
   get '/makememe' => 'pages#makememe'
   get '/make' => 'pages#make'

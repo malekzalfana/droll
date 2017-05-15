@@ -59,14 +59,29 @@
         <div id="box-4-wrapper-inside">
             <% Post.limit(10).each do |post| %>
             <div class="wrapper-new">
-                 <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                <% if !post.imageaddress.blank? %><img data-original="<%= post.image.url(:large) %>" class="post-image-new post-image-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
+                 <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:thumb) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img data-original="<%= post.image.url(:thumb) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
                 <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
             </div>
         <% end %>
         </div>
 
+    </div>
+
+    <div id="box-5-wrapper">
+        <p>New Posts</p>
+        <div class="reco-trend">
+            <% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(10).reverse.each do |post| %>
+                <div class="wrapper-new-2">
+
+                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
+                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
+                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+                    <p class="post-new-trend">/<%= Trend.find(post.trendid).name %></p>
+                    <p class="post-new-p"><span class="post-new-username">@username<%= post.user.username %></span> <%= post.title unless post.title.nil? %></p>
+                </div>
+            <% end %>
+        </div>
     </div>
 
     <% end %>

@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
     cattr_accessor :current_user
     cattr_accessor :user_id
     #cattr_accessor :tag_list
-=begin    
+=begin
     has_attached_file :video, styles: {
     :medium => {
       :geometry => "x550>",
@@ -11,15 +11,15 @@ class Post < ActiveRecord::Base
     },
     :thumb => { :geometry => "x550>", :format => 'jpeg', :time => 10}
     }, :processors => [:transcoder]
-    
+
 =end
     has_attached_file :video, :styles => {
       :medium => { :geometry => "640x480", :format => 'flv' },
       :thumb => { :geometry => "100x100#", :format => 'jpg', :time => 10 }
     }, :processors => [:transcoder]
     validates_attachment_content_type :video, content_type: /\Avideo\/.*\Z/
-    
-    acts_as_taggable_on :tags,:trends 
+
+    acts_as_taggable_on :tags,:trends
     #acts_as_taggable_on :tag_list
     #include PublicActivity::Model
     #tracked owner: ->(controller, model) {controller && controller.current_user}
@@ -43,7 +43,7 @@ class Post < ActiveRecord::Base
       def previous_post
         self.class.where("created_at < ?", created_at).order(created_at: :desc).first
       end
-      
+
       def next_post
         self.class.where("created_at > ?", created_at).order(created_at: :asc).last
       end
