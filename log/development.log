@@ -1571,3 +1571,7 @@ ActionView::Template::Error (undefined method `image' for nil:NilClass):
   [1m[35mPost Load (0.8ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 10]]
   [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 10]]
   [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends"  ORDER BY "trends"."id" DESC LIMIT 1
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:16)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
+  [1m[36mPost Load (3.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at ASC LIMIT 1[0m
