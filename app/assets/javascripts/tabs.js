@@ -667,7 +667,9 @@ tabs = function() {
 	$(document).on('click', '.memeb-button.first', function() {
 		//alert("CLICKED")
 		$(".memeb-wrapper.first").hide();
-		$(".memeb-wrapper.second").fadeIn(250);
+		//$(".memeb-wrapper.second").fadeIn(250);
+		$(".memeb-wrapper.second").addClass("shown");
+
 	})
 
 	var emptyField = false;

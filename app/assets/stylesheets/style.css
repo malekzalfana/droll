@@ -7690,10 +7690,20 @@ body:not(#make) .fixed-menu {
 	margin: 7px 3px;
     font-size: 13px;
 }
+.wrapepr-new-2 p i {
+	font-size: 15px !important;
+    margin-left: 7px !important;
+    position: relative !important;
+    top: 3px;
+    opacity: 0;
+}
+.wrapepr-new-2 p:hover i,.wrapepr-new-2 p:active i {
+	color: #ff3000;
+}
 .fixed-sides {
 	top: 45px !important;
 }
-.shown-post #box-3-wrapper, .shown-post #box-4-wrapper, .shown-post .memeb-wrapper {
+.shown-post #box-3-wrapper, .shown-post #box-4-wrapper, .shown-post .memeb-wrapper, .shown-post #box-5-wrapper {
 	display: none;
 }
 #box-3-wrapper p, #box-4-wrapper p, #box-5-wrapper p  {
@@ -8622,12 +8632,14 @@ p.pick-tags-title.new {
 }
 #invite-page {
 	background: url(https://img.memesuper.com/41133be7d2bda27e380d0a32d715100b_hd-meme-wallpapers-and-all-memes-wallpaper_1548-1094.jpeg) !important;
+	background-size: cover !important;
 }
 .not-signed-in .memeb-wrapper {
 	font-family: roboto;
     color: #515151;
     border-bottom: none;
-    background: none !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
+    background: #fff !important;
     border-radius: 2px;
     text-align: center;
     height: 350px;
@@ -8638,6 +8650,16 @@ p.pick-tags-title.new {
     right: 0;
     bottom: 0;
     margin: auto;
+}
+.not-signed-in .memeb-wrapper {
+	display: table;
+}
+.not-signed-in .memeb-wrapper > div {
+	display: table-cell;
+	vertical-align: middle;
+}
+.not-signed-in .memeb-wrapper.shown {
+	display: table !important;
 }
 .memeb-title-big {
 	    font-size: 44px;
@@ -8653,7 +8675,7 @@ p.pick-tags-title.new {
     padding: 8px;
     font-size: 17px;
     margin: 18px auto;
-    background: rgb(255, 255, 255);
+    background:rgb(232, 232, 232);
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
 }
 .not-signed-in .memeb-notice {
@@ -8665,7 +8687,7 @@ p.pick-tags-title.new {
     top:0;
     position: absolute;
     background: white;
-    opacity: 0.98;
+    opacity: 0;
 }
 .not-signed-in .memeb-button,.not-signed-in .memeb-submit {
 	    background: #f44a27;
@@ -8752,21 +8774,25 @@ p.pick-tags-title.new {
 	color:#F44336;
 }
 .post-new-trend {
-	    font-family: roboto;
-    text-align: left !important;
-    margin: 3px 10px 0px 5px !important;
-    display: inline-block !important;
-    width: calc(100% - 20px) !important;
-    font-size: 13px !important;
+    font-family: roboto;
+    text-align: left!important;
+    margin: 3px 10px 0px 5px!important;
+    display: inline-block!important;
+    width: calc(100% - 20px)!important;
+    font-size: 13px!important;
+    padding-bottom: 7px;
+    color: #424242;
 }
 
 .post-new-p {
-	    font-family: roboto;
-    text-align: left !important;
-    margin: 7px 10px 11px 5px !important;
-    display: inline-block !important;
-    width: calc(100% - 20px) !important;
-    font-size: 15px !important;
+	font-family: roboto;
+    text-align: left!important;
+    margin: 3px 10px 2px 4px!important;
+    display: inline-block!important;
+    width: calc(100% - 20px)!important;
+    font-size: 12px!important;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 7px;
 }
 .post-new-username {
 	font-weight: 600;

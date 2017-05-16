@@ -77,8 +77,8 @@
                     <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
                     <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
                     <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-                    <p class="post-new-trend">/<%= Trend.find(post.trendid).name %></p>
-                    <p class="post-new-p"><span class="post-new-username">@username<%= post.user.username %></span> <%= post.title unless post.title.nil? %></p>
+                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %></p></a>
+                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@username<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
                 </div>
             <% end %>
         </div>
