@@ -268,7 +268,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
           <% @trendname.each do |trend| %>
           <div class="trend-container">
               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
-              <% if !Post.where(trendid: trend.id).last().image.nil? %><img src="<%= Post.where(trendid: trend.id).last().image.url(:medium) %>" class="post-" alt="<%= Post.where(trendid: trend.id).last().title %>"><% end %>
+              <% if Post.where(trendid: trend.id).last().exists? && !Post.where(trendid: trend.id).last().image.nil? %><img src="<%= Post.where(trendid: trend.id).last().image.url(:medium) %>" class="post-" alt="<%= Post.where(trendid: trend.id).last().title %>"><% end %>
           </div>
 
 
