@@ -1183,3 +1183,391 @@ Completed 200 OK in 482ms (Views: 456.5ms | ActiveRecord: 8.3ms)
 Started GET "/assets/missing.jpg" for 77.42.208.208 at 2017-05-16 18:27:45 +0000
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/" for 77.42.208.208 at 2017-05-16 18:36:11 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (12.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  Rendered layouts/_trends_tags.html.erb (2.1ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (17.5ms)
+  Rendered pages/index.html.erb within layouts/application (119.4ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 334ms (Views: 319.4ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 77.42.208.208 at 2017-05-16 18:44:32 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 2]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (12.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 10
+  Rendered layouts/_trends_tags.html.erb (1.6ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 4]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 6]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 8]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 9]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 9]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10[0m  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (18.2ms)
+  Rendered pages/index.html.erb within layouts/application (48.2ms)
+  Rendered layouts/_nav_user.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 292ms (Views: 277.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 77.42.208.208 at 2017-05-16 18:52:53 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (18.6ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  Rendered layouts/_trends_tags.html.erb (2.2ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (20.3ms)
+  Rendered pages/index.html.erb within layouts/application (46.6ms)
+  Rendered layouts/_nav_user.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 360ms (Views: 340.6ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/make" for 77.42.208.208 at 2017-05-16 18:59:43 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" IN (1, 2, 3, 5, 7) AND (created_at >= '2017-05-14 18:59:43.014796')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Stock> at /home/ubuntu/workspace/app/models/stock.rb:4)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (37.0ms)
+  [1m[35mTrend Load (0.3ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at DESC[0m
+  Rendered layouts/_pick_trend.html.erb (13.5ms)
+  Rendered pages/make.html.erb within layouts/application (60.4ms)
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 4.7ms)
+
+ActionView::Template::Error (undefined method `image' for #<Post::ActiveRecord_Relation:0x007f2d2876e998>):
+    268:           <% @trendname.each do |trend| %>
+    269:           <div class="trend-container">
+    270:               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+    271:               <% if Post.where(terndid: trend.id).image.present? %><img src="<%= Post.where(terndid: trend.id).image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+    272:           </div>
+    273: 
+    274: 
+  app/views/layouts/_pick_trend.html.erb:271:in `block in _app_views_layouts__pick_trend_html_erb___84486350582571120_69916017779440'
+  app/views/layouts/_pick_trend.html.erb:268:in `_app_views_layouts__pick_trend_html_erb___84486350582571120_69916017779440'
+  app/views/pages/make.html.erb:4:in `_app_views_pages_make_html_erb___3102262051718574832_69916022076640'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (44.5ms)
+
+
+Started GET "/make" for 77.42.208.208 at 2017-05-16 18:59:45 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.5ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" IN (1, 2, 3, 5, 7) AND (created_at >= '2017-05-14 18:59:45.403054')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (93.3ms)
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Load (1.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at DESC
+  Rendered layouts/_pick_trend.html.erb (10.3ms)
+  Rendered pages/make.html.erb within layouts/application (113.1ms)
+Completed 500 Internal Server Error in 126ms (ActiveRecord: 3.8ms)
+
+ActionView::Template::Error (undefined method `image' for #<Post::ActiveRecord_Relation:0x007f2d2856ab88>):
+    268:           <% @trendname.each do |trend| %>
+    269:           <div class="trend-container">
+    270:               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+    271:               <% if Post.where(terndid: trend.id).image.present? %><img src="<%= Post.where(terndid: trend.id).image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+    272:           </div>
+    273: 
+    274: 
+  app/views/layouts/_pick_trend.html.erb:271:in `block in _app_views_layouts__pick_trend_html_erb___84486350582571120_69915963821700'
+  app/views/layouts/_pick_trend.html.erb:268:in `_app_views_layouts__pick_trend_html_erb___84486350582571120_69915963821700'
+  app/views/pages/make.html.erb:4:in `_app_views_pages_make_html_erb___3102262051718574832_69916020083660'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (40.2ms)
+
+
+Started GET "/make" for 77.42.208.208 at 2017-05-16 18:59:59 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" IN (1, 2, 3, 5, 7) AND (created_at >= '2017-05-14 18:59:59.876712')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (22.5ms)
+  [1m[35mTrend Load (0.4ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (1.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at ASC LIMIT 1[0m
+  Rendered layouts/_pick_trend.html.erb (7.3ms)
+  Rendered pages/make.html.erb within layouts/application (31.7ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 4.1ms)
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: posts.terndid: SELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at ASC LIMIT 1):
+    268:           <% @trendname.each do |trend| %>
+    269:           <div class="trend-container">
+    270:               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+    271:               <% if Post.where(terndid: trend.id).last().image.present? %><img src="<%= Post.where(terndid: trend.id).image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+    272:           </div>
+    273: 
+    274: 
+  app/views/layouts/_pick_trend.html.erb:271:in `block in _app_views_layouts__pick_trend_html_erb___84486350582571120_69916018481520'
+  app/views/layouts/_pick_trend.html.erb:268:in `_app_views_layouts__pick_trend_html_erb___84486350582571120_69916018481520'
+  app/views/pages/make.html.erb:4:in `_app_views_pages_make_html_erb___3102262051718574832_69916020083660'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (42.8ms)
+
+
+Started GET "/make" for 77.42.208.208 at 2017-05-16 19:00:12 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.8ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.7ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" IN (1, 2, 3, 5, 7) AND (created_at >= '2017-05-14 19:00:12.703645')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (4.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (20.6ms)
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Load (1.8ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at ASC LIMIT 1
+  Rendered layouts/_pick_trend.html.erb (9.0ms)
+  Rendered pages/make.html.erb within layouts/application (31.8ms)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 9.3ms)
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: posts.terndid: SELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at ASC LIMIT 1):
+    268:           <% @trendname.each do |trend| %>
+    269:           <div class="trend-container">
+    270:               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+    271:               <% if Post.where(terndid: trend.id).last().image.present? %><img src="<%= Post.where(terndid: trend.id).last().image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+    272:           </div>
+    273: 
+    274: 
+  app/views/layouts/_pick_trend.html.erb:271:in `block in _app_views_layouts__pick_trend_html_erb___84486350582571120_69916023401960'
+  app/views/layouts/_pick_trend.html.erb:268:in `_app_views_layouts__pick_trend_html_erb___84486350582571120_69916023401960'
+  app/views/pages/make.html.erb:4:in `_app_views_pages_make_html_erb___3102262051718574832_69916020083660'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.3ms)
+
+
+Started GET "/make" for 77.42.208.208 at 2017-05-16 19:00:22 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" IN (1, 2, 3, 5, 7) AND (created_at >= '2017-05-14 19:00:22.262437')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (12.7ms)
+  [1m[35mTrend Load (0.4ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (2.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at ASC LIMIT 1[0m
+  Rendered layouts/_pick_trend.html.erb (27.0ms)
+  Rendered pages/make.html.erb within layouts/application (41.1ms)
+Completed 500 Internal Server Error in 55ms (ActiveRecord: 5.0ms)
+
+ActionView::Template::Error (SQLite3::SQLException: no such column: posts.terndid: SELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 1  ORDER BY created_at ASC LIMIT 1):
+    268:           <% @trendname.each do |trend| %>
+    269:           <div class="trend-container">
+    270:               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+    271:               <% if Post.where(terndid: trend.id).last().image.present? %><img src="<%= Post.where(terndid: trend.id).last().image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+    272:           </div>
+    273: 
+    274: 
+  app/views/layouts/_pick_trend.html.erb:271:in `block in _app_views_layouts__pick_trend_html_erb___84486350582571120_69916023401960'
+  app/views/layouts/_pick_trend.html.erb:268:in `_app_views_layouts__pick_trend_html_erb___84486350582571120_69916023401960'
+  app/views/pages/make.html.erb:4:in `_app_views_pages_make_html_erb___3102262051718574832_69916020083660'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (37.6ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:16)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."terndid" = 10  ORDER BY created_at ASC LIMIT 1[0m
+
+
+Started GET "/make" for 77.42.208.208 at 2017-05-16 19:02:18 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" IN (1, 2, 3, 5, 7) AND (created_at >= '2017-05-14 19:02:18.243540')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (12.8ms)
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 1]]
+  Rendered layouts/_pick_trend.html.erb (7.9ms)
+  Rendered pages/make.html.erb within layouts/application (22.7ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 2.8ms)
+
+ActionView::Template::Error (undefined method `image' for nil:NilClass):
+    268:           <% @trendname.each do |trend| %>
+    269:           <div class="trend-container">
+    270:               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+    271:               <% if Post.where(trendid: trend.id).last().image.present? %><img src="<%= Post.where(trendid: trend.id).last().image.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
+    272:           </div>
+    273: 
+    274: 
+  app/views/layouts/_pick_trend.html.erb:271:in `block in _app_views_layouts__pick_trend_html_erb___84486350582571120_69915963866980'
+  app/views/layouts/_pick_trend.html.erb:268:in `_app_views_layouts__pick_trend_html_erb___84486350582571120_69915963866980'
+  app/views/pages/make.html.erb:4:in `_app_views_pages_make_html_erb___3102262051718574832_69916020083660'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.3ms)
+  [1m[35mPost Load (0.8ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 10]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 10]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends"  ORDER BY "trends"."id" DESC LIMIT 1

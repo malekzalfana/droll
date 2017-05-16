@@ -266,7 +266,11 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
       <p class="pick-tags-title">Pick a trend</p>
       <div id="pick-trends-wrapper">
           <% @trendname.each do |trend| %>
-        <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends">/<%= trend.name %></span>
+          <div class="trend-container">
+              <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+              <% if Post.where(trendid: trend.id).last().image.present? %><img src="<%= Post.where(trendid: trend.id).last().image.url(:medium) %>" class="post-" alt="<%= post.title %>"><% end %>
+          </div>
+
 
       <% end %>
       <span class="add-trend">+</span>

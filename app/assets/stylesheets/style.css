@@ -8470,20 +8470,38 @@ display: none !important;
     cursor: pointer;
         MIN-WIDTH: 17px;
 }
+.pick-trends.new{
+    float: none;
+    font-family: roboto;
+    color: #5f5f5f;
+    display: inline-block;
+    padding: 9px;
+    font-size: 15px;
+    margin: 8px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    min-width: 17px;
+    height: 180px;
+    width: calc(33% - 37px);
+    text-align: left;
+}
 .pick-trends.active {
 	border: 1px solid #F44336;
 }
 #pick-trends-wrapper, #pick-trends-wrapper-2 {
-	width: 100%;
-	height: auto;
-	text-align: center;
-	display: block;
+	    width: 100%;
+    height: auto;
+    text-align: center;
+    display: block;
+    max-width: 700px;
+    margin: 0px auto;
+    padding: 10px 0px;
 }
 #pick-trends-wrapper-2 {
 	display: none;
 }
 #nav-menu-wrapper.second {
-	height: calc(100% - 50px);
+	height: auto;
 	transition: 0.2s all ease-in;
 }
 #nav-menu-wrapper.closed {
@@ -8798,4 +8816,8 @@ p.pick-tags-title.new {
 	font-weight: 600;
 	    font-family: montserrat;
     opacity: 0.7;
+    color: #ff3000;
+}
+.post-new-username:hover, .post-new-username:active {
+	opacity: 0.8;
 }
