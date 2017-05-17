@@ -7794,6 +7794,7 @@ body:not(#make) .fixed-menu {
     margin: 3px 2px;
     font-weight: 100;
 }
+
 @media screen and (max-width: 1200px) and (min-width: 850px) {
 	#content-full2 {
 		top: 0px;
@@ -7810,12 +7811,12 @@ body:not(#make) .fixed-menu {
 	    position: relative;
 		float: left;
 	}
-	#box-3-wrapper, #box-4-wrapper {
+	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper {
 		display: none;
 	}
 }
 @media screen and (max-width: 1200px)  {
-	#box-3-wrapper, #box-4-wrapper {
+	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper {
 		display: none;
 	}
 }
@@ -8792,16 +8793,28 @@ p.pick-tags-title.new {
 	color:#F44336;
 }
 .post-new-trend {
-    font-family: roboto;
     text-align: left!important;
-    margin: 3px 10px 0px 5px!important;
+    margin: 3px 10px 0 5px!important;
     display: inline-block!important;
     width: calc(100% - 20px)!important;
     font-size: 13px!important;
-    padding-bottom: 7px;
+    padding-bottom: 4px;
     color: #424242;
+    border-bottom: 1px solid #e2e2e2;
 }
-
+.post-new-trend:hover {
+	opacity: 0.9;
+}
+.post-new-trend i {
+	opacity: 0;
+	font-size: 14px !important;
+    margin-left: 5px !important;
+    position: relative;
+    top: 2px;
+}
+.post-new-trend:hover i, .post-new-trend:active i {
+	opacity: 1;
+}
 .post-new-p {
 	font-family: roboto;
     text-align: left!important;
