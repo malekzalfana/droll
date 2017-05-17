@@ -266,8 +266,8 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
       <p class="pick-tags-title">Pick a trend</p>
       <div id="pick-trends-wrapper">
           <% @trendname.each do |trend| %>
-          <div class="trend-container">
-              <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="pick-trends new">/<%= trend.name %></span>
+          <div class="trend-container pick-trends">
+              <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="new">/<%= trend.name %></span>
               <div>
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>
                 <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
@@ -276,7 +276,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
               <% end %>
 
               </div>
-              <span class="post-trend-2-number"><%= Post.where(trendid: trend.id).size %></span>
+              <span class="post-trend-2-number"><%= Post.where(trendid: trend.id).size %> Posts</span>
           </div>
 
 
