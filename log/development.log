@@ -1575,3 +1575,274 @@ DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
   [1m[36mPost Load (3.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at ASC LIMIT 1[0m
+
+
+Started GET "/" for 77.42.208.208 at 2017-05-16 22:37:50 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (26.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 670ms (Views: 661.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/activities.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:52 +0000
+
+
+Started GET "/assets/animations.self-35095781476aa1d48a0dbf23e62517c56819ae3dcdb9e28e236308a75eee7bb5.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:52 +0000
+
+
+Started GET "/assets/pages.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/comments.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/invites.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/log_in.self-9b65a0a4da22d05fefbbbc7fae0925fff736be16dd15018d4e90259afe324eb7.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/omniauth.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/progress.self-0e0a00078cb6dc40fb45acee9afc5e93727cad43f4b55683c0f48b7327bea125.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/registrations_controller.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/simplebar.self-19c7ea6f4db059c97ab90f80f500eb9349f8b8a0c63095950e5137c5f6ec07f3.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/post.self-4cd01e738d04953cd651652db170e6306f68e559b55e392c8deb66b66f806f98.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/style.self-20049ceecd07b886dfc6e03a88db22226947f9c84a34705e4188416553cd3a26.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:53 +0000
+
+
+Started GET "/assets/tabs.self-431db84b91090efd532740a60b559c1a7acf8df097f3f20f028345a1d47b2fec.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/posts.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/tags.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/trends.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/profile.self-591fb0ed6451869582a3633a1ca6a3635363f0e86d8bb406dc831bdb10397c72.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/application.self-9755ca68842cc5c24e67b60099f985706e97e47f19aa737902d1e791d80859c6.css?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/affix.self-3555752f8a930795ee9e56751a52e6871104ae85d01b3ab8363da3802a5ecc78.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/alert.self-d8b7bd612b3dcfdefb7b5539b9d5848d66ccbd3e7af8bb8d48bfb3288aaa7be8.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/collapse.self-056c40532d9f0f126ec17e839f60c942f573fbd61a086e7f156306e3fc5e8c1f.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/dropdown.self-e56c2ffee4618411d43ecf15c89273f6223847ad756e1cd17545d04afa732ed4.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/button.self-e74d33ba39500940a78d6fa4d2d64f6ca7fd86d60a2149641f7fde7ba711d8a1.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/carousel.self-35d204878d906298e55bc24553e11fd89b980fc4ffe5792fe36af8c0da289c54.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/modal.self-62463080dba6b9d024ff0a3192da0e76eacbc683194f3395047c6f5cfa0acb59.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:54 +0000
+
+
+Started GET "/assets/bootstrap/tab.self-dad0d5c377f9fae26394484535ebb23ccf68afae084f896af6ea4cdf8c9f6ae0.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/bootstrap/transition.self-3b268d4cd8c79e46ded7392885f72f64ffb5b0d49948a12b8cf9779f6163e13a.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/bootstrap/tooltip.self-facdc69246a072acb927ded77ff655f7c27a518b9357fddd45d119fbc8a0ab9f.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/bootstrap/popover.self-210cff1fb4b72b71a29b5122180cb5937c8145cd13a934dc838280f1d9607a3e.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/bootstrap-sprockets.self-fbfa5ad7d9aa0afe439ec4ff3883acc4cb92b62cb67c40d674320c9aa1d4642d.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/activities.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/animations.self-aeca2ce79bac9fd150d77da5c6d698557db07371255a272da9c29156ac4ff0c9.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/bootstrap/scrollspy.self-52afd90e8ba97d9f08617a13986e8869d6c4a45751c0bff59a6f91241e722aca.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/create.self-632052b72bfcd5854a57a567fcb312d8d8b05c7cae6ba0a9ebb3ca290914e717.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/functions.self-31b85a5e66551e4c69abd37e4ae67c52ada8df97e486e041eff8f252a1cdfd4a.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/giphy.self-4bcdd91de20738520f454a7caf76c5bee9a1becb589e14ea09b1d10d6e97daf5.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/hammer.min.self-e2514c52b150c137c16471f019733b1d2fa94015577efcc45a04118d76c1e032.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/invites.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/jquery-ui.min.self-1f37fd37d8db0404488ac8f6505560e48d1364ef1c81e384ac695e143049ab0f.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/jquery.lazyload.min.self-865fbb534894797ad97d3626e2fe979062ae595a74b810dabb9e01deb5a8267b.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/jquery.scrollstop.min.self-6b88ded98b0a8ba85fdc2b00f956dd7e7b80349eaedf25f8d3a1a5e08b2fe644.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/masonry.min.self-c81db811a7268d1fc4c6aaa67fb5113a91364e2a1984a1638b299ae88946aed3.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:55 +0000
+
+
+Started GET "/assets/notify.self-de3330441ccc664b8351c492c2abf76e71289318c97063a8877ffd2d0ebafa8a.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/omniauth.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/omniauth_callbacks.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/main.self-9bdd6af5be5a4391b0493f8d8f236ba6b651a4f556d5a6865b119e58244cada9.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/pages.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/pagination.self-b0d65b969c0533891d2c4788108bf564ca57e5e25ae3e28a9793bde8235781b8.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/posts.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/progress.self-f16d6f55dd53f5849c27dcc789cbab1ca53443840a8d63aa99022b8e6ce1e859.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/registrations_controller.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/simplebar.min.self-27835c54f1ec045506a5f79a87a246d31a23e6e413d6495add8011593a1fdc76.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/swiping.self-290dc4d470a16722e7053018a40cbb12bae8433af31d87d2baaabb1ada842b10.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:56 +0000
+
+
+Started GET "/assets/tabs.self-2276ed4489cbb4e825004bc6720cc46b24d178b50ef9e1b65f3020987bb1cba6.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:57 +0000
+
+
+Started GET "/assets/trends.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:57 +0000
+
+
+Started GET "/assets/starburst/starburst.self-449fcacdf21a18b29acc221a6c75687a29f6cdcd395ed89331b3d990ee26a68e.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:57 +0000
+
+
+Started GET "/assets/application.self-7862a8a8b42407b4741a1adeeea35f0d13ddc4f702ec532adb0674491d296495.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:57 +0000
+
+
+Started GET "/assets/tags.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 77.42.208.208 at 2017-05-16 22:37:57 +0000
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/" for 77.42.208.208 at 2017-05-17 08:48:48 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#index as HTML
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:16)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
+  Rendered pages/index.html.erb within layouts/application (121.1ms)
+  Rendered layouts/_nav_guest.html.erb (1.4ms)
+  Rendered layouts/_nav.html.erb (4.0ms)
+Completed 200 OK in 1231ms (Views: 1142.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/style.self-20049ceecd07b886dfc6e03a88db22226947f9c84a34705e4188416553cd3a26.css?body=1" for 77.42.208.208 at 2017-05-17 08:48:50 +0000
+
+
+Started POST "/users/sign_in" for 77.42.208.208 at 2017-05-17 08:50:04 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v8SbLv31swXpJId0FqJXZb6rl4Y7+yPnMEmZe38KBcwPpCjRHjUAnkjACX//gFsJY1aBjLJbRjOqx9eh+PW0LA==", "user"=>{"email"=>"zalfanamalek@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "zalfanamalek@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-05-16 18:27:39.381802"], ["current_sign_in_at", "2017-05-17 08:50:04.694849"], ["sign_in_count", 47], ["updated_at", "2017-05-17 08:50:04.696505"], ["id", 2]]
+  [1m[36m (12.2ms)[0m  [1mcommit transaction[0m
+Redirected to https://drolle-viral-2-malekzalfana.c9users.io/
+Completed 302 Found in 149ms (ActiveRecord: 13.2ms)
+
+
+Started GET "/" for 77.42.208.208 at 2017-05-17 08:50:05 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.6ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (45.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  Rendered layouts/_trends_tags.html.erb (10.0ms)
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 4]]
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 4]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (30.0ms)
+  Rendered pages/index.html.erb within layouts/application (90.2ms)
+  Rendered layouts/_nav_user.html.erb (1.7ms)
+  Rendered layouts/_nav.html.erb (2.9ms)
+Completed 200 OK in 391ms (Views: 311.1ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/assets/style.self-9c06681d7e3400080fcab5d7d4ded76e365ad2dc373f4f11e87b566315ade8af.css?body=1" for 77.42.208.208 at 2017-05-17 08:50:06 +0000
+
+
+Started GET "/assets/missing.jpg" for 77.42.208.208 at 2017-05-17 08:50:07 +0000
