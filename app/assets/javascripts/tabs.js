@@ -652,9 +652,13 @@ tabs = function() {
 			}
 
 	})
+	$(document).on('click', '#refresh-trends', function() {
+		$('.pick-trends').removeClass('active').removeClass("less-opacity")
+	})
 	$(document).on('click', '.pick-trends:not(.new-trend)', function() {
 		$('.pick-trends').removeClass('active').addClass("less-opacity")
-		$(this).addClass('active')
+		$(this).addClass('active').removeClass("less-opacity")
+		$("#refresh-trends").addClass("active")
 		trend = $(this).attr('data-name')
 		trendname = $(this).attr('data-name')
 		trendid = $(this).attr('data-trendid')

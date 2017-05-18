@@ -8492,7 +8492,7 @@ img.post-trend-2 {
     width: 200%;
     overflow: hidden;
 }
-.pick-trends.new, .pick-trends span{
+.pick-trends.new, .pick-trends .new{
     float: none;
     font-family: roboto;
     color: #424242;
@@ -8513,7 +8513,9 @@ img.post-trend-2 {
 	border: 1px solid #F44336;
 }
 .trend-container.active {
-	border: 2px solid #F44336;
+	display: block;
+	float: none;
+	margin: 0px auto;
 	opacity: 1 !important;
 }
 #pick-trends-wrapper, #pick-trends-wrapper-2 {
@@ -8872,4 +8874,16 @@ p.pick-tags-title.new {
 }
 .less-opacity {
 	opacity: 0.7;
+	display: none;
+}
+.pick-tags-title i {
+	    margin-left: 10px !important;
+	    cursor: pointer;
+	    display: none !important;
+    font-size: 21px !important;
+    position: relative;
+    top: 2px;
+}
+#refresh-trends.active{
+	display: inline-block !important;
 }
