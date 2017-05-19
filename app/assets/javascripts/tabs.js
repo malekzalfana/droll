@@ -652,16 +652,23 @@ tabs = function() {
 			}
 
 	})
-	$(document).on('click', '#refresh-trends', function() {
+	$(document).on('click', '.refresh-trends', function() {
+		$(".refresh-trends").removeClass("active")
+		$(".pick-trends.new-trend").val("")
+		$("#pick-trends-wrapper-2, p.pick-tags-title.new").hide();
+		$("#continue-make").removeClass("active")
+		trend = false;
 		$('.pick-trends').removeClass('active').removeClass("less-opacity")
+		$(".new-trend, .add-trend").show();
 	})
 	$(document).on('click', '.pick-trends:not(.new-trend)', function() {
 		$('.pick-trends').removeClass('active').addClass("less-opacity")
 		$(this).addClass('active').removeClass("less-opacity")
-		$("#refresh-trends").addClass("active")
+		$(".refresh-trends").addClass("active")
 		trend = $(this).attr('data-name')
 		trendname = $(this).attr('data-name')
 		trendid = $(this).attr('data-trendid')
+		$(".pick-tags-title.new, .new-trend, .add-trend").hide();
 		//alert(trend)
 		if (type && trend) {
 			$("#continue-make").addClass("active")
@@ -792,7 +799,10 @@ tabs = function() {
 
 	})
 	$(document).on('click', '.add-trend', function() {
+		$(".pick-tags-title.pick, .add-trend").hide();
+		$('.pick-trends.trend-container, .add-trend').removeClass('active').addClass("less-opacity")
 		$('.pick-tags-title.new, #pick-trends-wrapper-2').fadeIn(200)
+		$(".refresh-trends").addClass("active")
 	})
 
 	var trendClick = 0;

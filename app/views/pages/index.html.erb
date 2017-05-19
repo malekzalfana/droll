@@ -42,7 +42,7 @@
     </div>
 <%# User.find_by_id(3).votes.down.where(:vote_scope => 'report').for_type(Post).votables unless User.find_by_id(3).votes.down.where(:vote_scope => 'report').for_type(Post).votables.blank? %>
 <%# current_user.votes.where(:vote_scope => 'favor').for_type(Post).votables %>
-<% if !request.original_url.include?('?app=true') %>
+<% if !request.original_url.include?('?app=true') && !@activities.nil?  %>
         <%= render '/layouts/activities' %>
     <% end %>
 <div id="overlay-under-notif"></div>

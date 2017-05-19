@@ -113,7 +113,7 @@ a {
     pointer-events: none;
     background: white;
 }
-#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar #settings #navbar, #invite-page #navbar {
+#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar, #settings #navbar, #invite-page #navbar, #settings #navbar {
 	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15) !important;
 }
 /* , #make #navbar */
@@ -322,6 +322,7 @@ a {
 	height: 40px;
 }
 */
+
 #all-tools {
 	display: inline-block;
     float: left;
@@ -330,15 +331,19 @@ a {
     height: 100%;
     background: none;
     top: 0px;
-    padding-top: 105px;
+    padding-top: 75px;
     z-index: 0;
 }
-
+/*
 #undo,
 #redo {
 	display: inline-block !important;
 }
-
+*/
+#undo,
+#redo {
+	display: none !important;
+}
 #tools {
 	width: 70px;
     padding: 20px;
@@ -3476,7 +3481,14 @@ body:not(.shown-post):not(#show) .active-type {
 	margin: 5px 5px;
     font-size: 20px;
 
-}/*
+}
+#notification-icon-bell-2 {
+	    margin-right: 10px;
+    top: 5px;
+    position: relative;
+    cursor: pointer;
+}
+/*
 #index input[type=search] {
 	background: url(search-black.png) no-repeat 10px center;
 	background-size: 16px;
@@ -3557,15 +3569,17 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 }
 */
 #settings-title {
-	    font-size: 30px;
+	     font-size: 39px;
     font-family: open sans;
     color: #fd5731 !important;
+    font-weight: 300;
+    margin-top: 0px;
 }
 #settings-wrapper {
 	    position: relative;
     margin: 0px auto;
     width: 555px;
-    top: 55px;
+    top: 60px;
     padding: 0px 10px;
 }
 #settings-options {
@@ -4664,9 +4678,11 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	}
 }
 @media screen and (max-width: 600px) {
+	/*
 	#new-logo {
 		display: none !important;
 	}
+	*/
 	#show .wrapper {
 		width: 100% !important;
 		top: 35px;
@@ -4951,11 +4967,37 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	.trend:hover, .trend:active { background: none !important; }
+	.explore-title {
+		margin: 10px 0px;
+		font-size: 26px ;
+	}
+	/*
 	.trend p {
 		font-size: 14px !important;
 	}
 	.trend {
 		height: 40px !important;
+	}
+	*/
+	.trend {
+		heighT: 110px !important;
+	}
+	.trend .trend-name {
+		font-size: 24px !important;
+	}
+	.trend .trend-details {
+		font-size: 16px;
+	}
+	.trend-parent.trend span {
+		font-size: 13px;
+	}
+	#trends-page-wapper {
+		    width: calc(100% - 40px) !important;
+    padding: 0px 20px;
+	}
+	.trend .trend-name:hover {
+		color: #ff3000;
 	}
 	/*
 	#nav-icons-wrapper a, #nav-icons-wrapper #notification-icon,#recent #nav-icons-wrapper a, #nav-icons-wrapper #notification-icon, .upper-black {
@@ -5150,6 +5192,15 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 400px){
+	.not-signed-in .memeb-wrapper {
+		max-width: 300px !important;
+	}
+	.memeb-title-big {
+		font-size: 21px !important;
+	}
+	.memeb-title {
+		font-size: 21px !important;
+	}
 	.more-post-options-container.tall {
 		height: 80px;
 	}
@@ -6285,6 +6336,22 @@ i.fa.fa-reddit-alien {
     font-size: 14px;
     cursor: pointer;
     font-family: open sans;
+    display: none !important;
+}
+.back-to-trend {
+	    width: 600px;
+    margin: 0px auto;
+    color: #424242;
+    font-size: 30px;
+    max-width: 100%;
+    text-align: left;
+    text-indent: 10px;
+    padding: 10px 0px;
+    font-family: roboto;
+    font-weight: 100;
+}
+.back-to-trend:active {
+	color: #ff3000;
 }
 #main-message img {
 	width: 24px;
@@ -7635,11 +7702,11 @@ body:not(#make) .fixed-menu {
 }
 #trends-wrapper {
     border-radius: 2px;
-    overflow-x: scroll;
     height: 100%;
     overflow-y: hidden;
     padding-bottom: 25px;
     width: calc(100% - 135px) !important;
+    text-align: center;
 }
 #back-clicker {
 	display: inline-block;
@@ -8383,6 +8450,9 @@ display: none !important;
 .trend:hover, .trend:active {
 	background: #e8e8e8;
 }
+.trend:active {
+	opacity: 0.5;
+}
 #trends-page-wapper {
     width: 90%;
     height: 100%;
@@ -8458,6 +8528,7 @@ display: none !important;
 .closed .pick-tags-title {
 	margin: 0px;
 }
+/*
 .add-trend {
 	float: none;
 	font-family: roboto;
@@ -8470,6 +8541,17 @@ display: none !important;
     border-radius: 20px;
     cursor: pointer;
         MIN-WIDTH: 17px;
+}
+*/
+span.trend-container {
+	    color: #cfcfcf;
+    font-size: 80px;
+    line-height: 1.7;
+}
+.pick-trends.new-trend {
+	    PADDING: 13px;
+    border: 1px solid #e1e1e1;
+    font-size: 20px;
 }
 span.post-trend-2-number {
     position: absolute;
@@ -8522,7 +8604,7 @@ img.post-trend-2 {
 	    width: 100%;
     height: auto;
     text-align: center;
-    display: block;
+    display: inline-block;
     max-width: 700px;
     margin: 0px auto;
     padding: 10px 0px;
@@ -8533,6 +8615,10 @@ img.post-trend-2 {
 #nav-menu-wrapper.second {
 	height: auto;
 	transition: 0.2s all ease-in;
+
+}
+#nav-menu-wrapper.second:not(.closed) {
+	min-height: calc(100% - 51px);
 }
 #nav-menu-wrapper.closed {
 	height: 50px;
@@ -8691,13 +8777,13 @@ p.pick-tags-title.new {
     border-radius: 2px;
     text-align: center;
     height: 350px;
-    width: 100%;
+    width: 327px;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
+    margin: 100px auto;
 }
 .not-signed-in .memeb-wrapper {
 	display: table;
@@ -8779,8 +8865,9 @@ p.pick-tags-title.new {
 }
 .memeb-detail {
 	    margin: 20px auto;
-    width: 361px;
+    width: 300px;
     font-size: 20px;
+    max-width: 80%;
 }
 #memes #trends-wrapper {
 	display: none !important;
@@ -8871,6 +8958,7 @@ p.pick-tags-title.new {
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    min-height: 140px;
 }
 .less-opacity {
 	opacity: 0.7;
@@ -8884,6 +8972,9 @@ p.pick-tags-title.new {
     position: relative;
     top: 2px;
 }
-#refresh-trends.active{
+.refresh-trends.active{
 	display: inline-block !important;
+}
+.not-signed-in #submit-image-button-before-3 {
+	display: none !important;
 }

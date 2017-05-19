@@ -263,10 +263,10 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
       </div>
       <% if user_signed_in? %>
       <br>
-      <p class="pick-tags-title">Pick a trend<i id="refresh-trends" class="material-icons">refresh</i></p>
+      <p class="pick-tags-title pick">Pick a trend<i class="refresh-trends material-icons">refresh</i></p>
       <div id="pick-trends-wrapper">
           <% @trendname.each do |trend| %>
-          <div class="trend-container pick-trends">
+          <div data-name="<%= trend.name %>" class="trend-container pick-trends">
               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="new">/<%= trend.name %></span>
               <div>
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>
@@ -281,10 +281,10 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 
 
       <% end %>
-      <span class="add-trend">+</span>
+      <span class="trend-container add-trend">+</span>
       </div>
       <% end %>
-      <p class="pick-tags-title new hidden">New Trend</p>
+      <p class="pick-tags-title new hidden">New Trend<i class="refresh-trends material-icons">refresh</i></p>
               <div id="pick-trends-wrapper-2">
                     <input data-name="" class="pick-trends new-trend" onDrop="return false" onPaste="return false" autocomplete=off>
               </div>

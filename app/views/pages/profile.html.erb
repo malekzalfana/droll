@@ -48,7 +48,8 @@
             <% if @user == current_user %>
             <i class="material-icons" id="edit-profile">edit</i>
             <% end %>
-            <% if user_signed_in? && @user == current_user %><a href="/settings/?app=true"><i id="setting-button" class="material-icons">settings</i></a><% end %>
+            <!--<% if user_signed_in? && @user == current_user %><a href="/settings/?app=true"><i id="setting-button" class="material-icons">settings</i></a><% end %>-->
+            <a href="/settings"><i id="setting-button" class="material-icons">settings</i></a>
             <%= render '/layouts/follow_button', :user => User.find_by_username(params[:id]) %>
             <h2 id="posts-number"><%= @user.posts.count %> Posts</h2>
             <h2 id="upvotes-number"><%= @user.following.count %> Following</h2>

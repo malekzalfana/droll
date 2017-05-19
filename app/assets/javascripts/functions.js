@@ -1604,9 +1604,9 @@ var painting;
 		$('#remove-panel').click(removePanel);
 		$('#line2').click();
 		$('.line-wrapper').click(function () {
-			$('.line-wrapper').css({
-				'background':'#616161'
-			});
+			//$('.line-wrapper').css({
+			//	'background':'#616161'
+			//});
 			$(this).css({
 				'background': 'rgb(239, 239, 237)',
 				'border': '1px solid rgb(255, 48, 0)'

@@ -141,7 +141,7 @@ class PostsController < ApplicationController
 
 
 
-
+=begin
     if !params[:base64].present? && @post.image.present?
       dimensions = Paperclip::Geometry.from_file(@post.image.queued_for_write[:medium].path)
       puts 'noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'
@@ -151,6 +151,7 @@ class PostsController < ApplicationController
         @post.long = true
       end
     end
+=end
     if !@post.imageaddress.blank?
       @post.image2 = URI.parse(  @post.imageaddress  )
     end
