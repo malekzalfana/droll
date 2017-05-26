@@ -12,11 +12,14 @@ class PagesController < ApplicationController
 
 
   def index
-    if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
-      #redirect_to '/make'
-      puts "nothing"
-    else
-
+    #if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
+    #  #redirect_to '/make'
+   #   puts "nothing"
+    #else
+    unless session[:display_welcome]
+        @welcomeMessage = true
+        session[:display_welcome] = true
+    end
     @trends = Trend.all.limit(10)
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
@@ -68,7 +71,7 @@ class PagesController < ApplicationController
      format.json {render json:  @post }
     end
     end
-    end
+    #end
 
 
 

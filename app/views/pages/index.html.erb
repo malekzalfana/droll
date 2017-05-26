@@ -95,16 +95,23 @@
 <br>
 <div class="memeb-wrapper waiting">
 <p class="memeb-title">Congratulations, welcome aboard!</p>
-<p class="memeb-detail">Choose your username</p>
+<p class="memeb-detail-2">Choose your username</p>
 <%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
-                  <%= text_field_tag 'username1', '', class: "memeb-field",placeholder: 'bananapeeler', id: "memeb-username-field" %>
+                  <%= text_field_tag 'username1', '', class: "memeb-field-2",placeholder: 'eg. bananapeeler', id: "memeb-username-field" %>
                   <%= submit_tag "Save", class: "hidden", id:"memeb-username-submit"%>
-                  <button type="button" id="memeb-username-submit-before" class="memeb-button">Save</button>
+                  <button type="button" id="memeb-username-submit-before" class="memeb-button-2">Save</button>
                 <% end %>
 </div>
-<% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 1 %>
+<% elsif user_signed_in? && current_user.username.nil? &&  current_user.passed.nil? && current_user.posts.count == 1 %>
 <div class="memeb-wrapper waiting">
-    <p class="memeb-detail">Waiting for someone to let you in</p>
+    Waiting for someone to let you in..
+    <p class="memeb-detail-2">meanwhile, choose your username</p>
+<%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
+                  <%= text_field_tag 'username1', '', class: "memeb-field-2",placeholder: 'eg. bananapeeler', id: "memeb-username-field" %>
+                  <%= submit_tag "Save", class: "hidden", id:"memeb-username-submit"%>
+                  <button type="button" id="memeb-username-submit-before" class="memeb-button-2">Save</button>
+                <% end %>
+
 </div>
 <% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 0 %>
 <div class="memeb-wrapper waiting">
@@ -116,7 +123,7 @@
     <p class="pure-message hidden">Hi, thank you for giving this website a try. We are working hard on making this community everyone's. Help us grow by sharing this website with your friends and feel free to post the memes you like. Drolle team. This message will self destruct in 30 sec.</p>
     <%= will_paginate @post %>
     <% if user_signed_in? && current_user.trends.nil? %>
-    <p class="normal-message">Posts of the trends and users you follow will appear here. Go ahead. Explore and follow what you like! <a href="/trends">click to see trends</a></p>
+    <p class="normal-message"><img src="https://media.giphy.com/media/jWexOOlYe241y/giphy.gif" class="gif-message">Posts of the trends and users you follow will appear here. Go ahead. Explore and follow what you like! <a href="/trends">click to see trends</a></p>
     <% end %>
     <% @post.each do |post| %>
 

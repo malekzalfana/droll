@@ -7,6 +7,12 @@ var trendid;
 var trendname;
 var type;
 tabs = function() {
+	$(document).on('click', 'a:not(.settings-logout):not(.vote)',
+		function(e) {
+			e.preventDefault();
+			console.log("clicked this bitch")
+			window.location = $(this).attr("href")
+		})
 	toBase64Field = function(base64) {
 		$('body').addClass('blurred')
 		$('#base64').val(base64);

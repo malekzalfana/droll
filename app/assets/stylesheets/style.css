@@ -116,6 +116,9 @@ a {
 #explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar, #settings #navbar, #invite-page #navbar, #settings #navbar {
 	box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.15) !important;
 }
+#invite-page #navbar {
+	background: rgba(255, 255, 255, 0.92) !important;
+}
 /* , #make #navbar */
 #profile #navbar {
 	background: none;
@@ -3020,6 +3023,12 @@ text-transform: uppercase;
     padding: 10px !important;
     opacity: 0.7 !important;
 }
+.memeb-wrapper a {
+    color: #ff1100 !important;
+    padding: 10px !important;
+    opacity: 0.7 !important;
+    font-weight: 100;
+}
 #content-full .left-wrapper {
   width: 47%;
   float: left;
@@ -4434,9 +4443,7 @@ html {
 #make2 #tabs-wrapper div {
 	width: 50% !important;
 }
-.wrapper {
 
-}
 #make #tabs-wrapper {
 	max-width: 600px;
     height: 50px;
@@ -7705,8 +7712,16 @@ body:not(#make) .fixed-menu {
     height: 100%;
     overflow-y: hidden;
     padding-bottom: 25px;
-    width: calc(100% - 135px) !important;
+    width: 100%;
     text-align: center;
+    /**
+    width: calc(100% - 135px) !important;
+    text-align: left;
+    */
+}
+div:not(.second) #trends-wrapper {
+	width: calc(100% - 135px) !important;
+    text-align: left;
 }
 #back-clicker {
 	display: inline-block;
@@ -8751,8 +8766,9 @@ p.pick-tags-title.new {
 	opacity: 0.5;
 }
 .memeb-title {
-	    font-size: 30px;
+	    font-size: 24px;
 }
+/*
 .memeb-wrapper {
 	font-family: roboto;
     margin: 20px auto;
@@ -8763,6 +8779,19 @@ p.pick-tags-title.new {
     padding-top: 20px;
     max-width: 538px;
     border-radius: 2px;
+}
+*/
+.memeb-wrapper {
+	font-family: montserrat;
+    margin: 25px auto 15px auto;
+    color: #ff3838;
+    border-bottom: 1px solid #d9d9d9;
+    width: 100%;
+    padding-top: 20px;
+    max-width: 538px;
+    border-radius: 2px;
+    font-size: 25px;
+    font-weight: 800;
 }
 #invite-page {
 	background: url(https://img.memesuper.com/41133be7d2bda27e380d0a32d715100b_hd-meme-wallpapers-and-all-memes-wallpaper_1548-1094.jpeg) !important;
@@ -8796,24 +8825,33 @@ p.pick-tags-title.new {
 	display: table !important;
 }
 .memeb-title-big {
-	    font-size: 35px;
+	font-size: 40px;
     font-weight: 900;
     margin-bottom: 40px;
+    LINE-HEIGHT: 0.8;
+    MARGIN-TOP: 30PX;
+}
+.gif-message {
+	    width: 200px;
+    margin: 10px auto;
+    display: block;
+    border-bottom: 1px solid lightgray;
 }
 .memeb-title-small {
 	    font-size: 20px;
 	    font-weight: 600;
 }
 .not-signed-in .memeb-field {
-	    display: block;
+	display: block;
     padding: 8px;
     font-size: 17px;
     margin: 18px auto;
-    background:rgb(232, 232, 232);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
+    border-bottom: 1px solid lightgrey;
 }
 .not-signed-in .memeb-notice {
 	    color: #424242;
+    WIDTH: CALC(100% - 80PX);
+    FONT-SIZE: 14PX;
 }
 .invite-underlay {
 	    width: 100%;
@@ -8860,6 +8898,17 @@ p.pick-tags-title.new {
     margin: 25px;
     cursor: pointer;
 }
+.memeb-button-2 {
+	background: #ff3838;
+    color: white;
+    margin: 25px;
+    cursor: pointer;
+    padding: 10px 15PX;
+    font-size: 20px;
+    width: 320px;
+    height: 55px;
+    border-radius: 7px;
+}
 .memeb-wrapper.second, .memeb-wrapper.third {
 	display: none;
 }
@@ -8868,6 +8917,13 @@ p.pick-tags-title.new {
     width: 300px;
     font-size: 20px;
     max-width: 80%;
+}
+.memeb-detail-2 {
+    margin: 10px auto;
+    width: 350px;
+    font-size: 20px;
+    max-width: 80%;
+    font-weight: 200;
 }
 #memes #trends-wrapper {
 	display: none !important;
@@ -8885,8 +8941,17 @@ p.pick-tags-title.new {
     margin: 18px auto;
     background: rgb(255, 255, 255);
 }
+.memeb-field-2 {
+	    font-size: 30px;
+    text-align: center;
+    margin: 18px auto;
+    padding: 20px;
+    display: block;
+    background: none;
+    border-bottom: 1px solid lightgray;
+}
 .memeb-field:focus {
-	background: #f2f2f2;
+	border-color: #ff3000;
 }
 .memeb-notice {
 	    width: 300px;
@@ -8904,6 +8969,8 @@ p.pick-tags-title.new {
 	font-family: roboto;
     padding: 10px 33px;
     color: #424242;
+    max-width: 450px;
+    margin: 0px auto;
 }
 .normal-message a {
 	color:#F44336;
@@ -8938,17 +9005,16 @@ p.pick-tags-title.new {
     display: inline-block!important;
     width: calc(100% - 20px)!important;
     font-size: 12px!important;
-    border-bottom: 1px solid #eeeeee;
     padding-bottom: 7px;
 }
 .post-new-username {
 	font-weight: 600;
 	    font-family: montserrat;
-    opacity: 0.7;
+    opacity: 0.9;
     color: #ff3000;
 }
 .post-new-username:hover, .post-new-username:active {
-	opacity: 0.8;
+	opacity: 0.7;
 }
 .trend-container {
 	width: calc(50% - 25px);
