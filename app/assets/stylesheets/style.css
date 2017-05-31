@@ -9412,6 +9412,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 }
 #tag .follow-trend, #tag .followed-trend {
 	    float: none !Important;
-    margin: 20px !important;
+    margin: 0PX 20px !important;
     font-size: 16px !important;
 }
