@@ -34,7 +34,7 @@
           <% if !activity.owner.pic.nil? && activity.owner.image.url == 'missing.jpg' %>
               <div class="notif-user-image" style="background-image:url(http://drolle.net/profilepics/pic<%= activity.owner.pic %>.jpg)'"></div>
             <%else%>
-              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.user.image.url(:thumb) %>)'"></div>
+              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.image.url(:thumb) %>)'"></div>
             <%end%>
           </div>
           <div class="notif-right-col">

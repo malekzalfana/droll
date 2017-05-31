@@ -4988,7 +4988,7 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	display: block !important;
 }
 .comment-button {
-	    margin: 16px 5px 6px 0px !important;
+	    margin: 15px 5px 6px 0px !important;
 }
 body.shown-post .wrapper.shown .middle-wrapper {
 	 margin-left: -25px;
@@ -9406,7 +9406,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 }
 .shown-post .click-mini {
 	displaY: inline-block;
-	margin-bottom: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    top: 12px;
 }
 #tag .follow-trend, #tag .followed-trend {
 	    float: none !Important;
