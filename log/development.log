@@ -20,3 +20,1265 @@ Completed 200 OK in 3614ms (Views: 3085.4ms | ActiveRecord: 158.2ms)
 
 
 Started GET "/assets/missing.jpg" for 199.115.116.211 at 2017-05-31 01:05:43 +0000
+
+
+Started GET "/trends/goToSleep" for 199.115.116.183 at 2017-05-31 01:07:02 +0000
+Processing by TrendsController#trend as HTML
+  Parameters: {"name"=>"goToSleep"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mTrend Load (8.2ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."name" = ?  ORDER BY "trends"."id" ASC LIMIT 1  [["name", "goToSleep"]]
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 8.5ms)
+
+NoMethodError (undefined method `id' for nil:NilClass):
+  app/controllers/trends_controller.rb:69:in `trend'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (2.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.text.erb (11.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.text.erb (82.1ms)
+
+
+Started GET "/trends" for 172.98.85.54 at 2017-05-31 01:14:08 +0000
+Processing by TrendsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (1.7ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (1.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 01:14:08.589767')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (5.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "trends"
+  Rendered trends/index.html.erb within layouts/application (49.1ms)
+  Rendered layouts/_nav_user.html.erb (7.0ms)
+  Rendered layouts/_nav.html.erb (31.6ms)
+Completed 200 OK in 1003ms (Views: 986.6ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/user/hurryup" for 172.98.87.116 at 2017-05-31 01:21:27 +0000
+Processing by PagesController#profile as HTML
+  Parameters: {"id"=>"hurryup"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mUser Load (1.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mActsAsVotable::Vote Load (2.9ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  [1m[35mPublicActivity::Activity Load (2.3ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (2.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  Rendered layouts/_follow_button.html.erb (1.4ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (1.7ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35m (2.6ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 44]]
+  [1m[36m (3.5ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  Rendered pages/profile.html.erb within layouts/application (51.4ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 397ms (Views: 371.8ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/assets/style.self-09b31f3bf27b220c6c1171bf0467c70b08fdc16286288fc0c0e5b7f97e30f0cd.css?body=1" for 172.98.87.116 at 2017-05-31 01:21:29 +0000
+
+
+Started GET "/assets/missing.jpg" for 172.98.87.116 at 2017-05-31 01:21:31 +0000
+
+
+Started GET "/assets/missing-2.jpg" for 172.98.87.116 at 2017-05-31 01:21:33 +0000
+
+
+Started GET "/settings" for 172.98.87.116 at 2017-05-31 01:21:37 +0000
+Processing by PagesController#settings as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  Rendered pages/settings.html.erb within layouts/application (33.1ms)
+  Rendered layouts/_nav_user.html.erb (4.2ms)
+  Rendered layouts/_nav.html.erb (10.9ms)
+Completed 200 OK in 287ms (Views: 283.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/missing.jpg" for 172.98.87.116 at 2017-05-31 01:21:39 +0000
+
+
+Started DELETE "/users/sign_out" for 172.98.87.116 at 2017-05-31 01:21:41 +0000
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"yTLs6QrSE7LSV3b5xGIKcz0tnBptyeyd2BpGIJOYZCuBE+dgDwTilM+U0pESnDtR4AMjTVvyTqFUjBYtonL01g=="}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (2.2ms)[0m  [1mcommit transaction[0m
+Redirected to https://drolle-viral-2-malekzalfana.c9users.io/
+Completed 302 Found in 324ms (ActiveRecord: 2.6ms)
+
+
+Started GET "/" for 172.98.87.116 at 2017-05-31 01:21:43 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (43.5ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (8.2ms)
+Completed 200 OK in 603ms (Views: 600.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 88.202.181.9 at 2017-05-31 01:22:20 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (109.6ms)
+  Rendered layouts/_nav_guest.html.erb (3.4ms)
+  Rendered layouts/_nav.html.erb (9.3ms)
+Completed 200 OK in 668ms (Views: 659.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style.self-2a17bf82f992c80814ba626683cd3158177a9e2eb9a0f8f829906c2abe9b422f.css?body=1" for 88.202.181.9 at 2017-05-31 01:22:23 +0000
+
+
+Started GET "/" for 88.202.181.9 at 2017-05-31 01:23:13 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (47.9ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (5.2ms)
+Completed 200 OK in 238ms (Views: 235.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/checkEmail?utf8=%E2%9C%93&email=&commit=Save" for 88.202.181.9 at 2017-05-31 01:23:13 +0000
+Processing by PagesController#checkEmail as JS
+  Parameters: {"utf8"=>"✓", "email"=>"", "commit"=>"Save"}
+  Rendered pages/checkEmail.js.erb (2.4ms)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 88.202.181.9 at 2017-05-31 01:23:36 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (27.0ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 215ms (Views: 212.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/checkEmail?utf8=%E2%9C%93&email=&commit=Save" for 88.202.181.9 at 2017-05-31 01:23:36 +0000
+Processing by PagesController#checkEmail as JS
+  Parameters: {"utf8"=>"✓", "email"=>"", "commit"=>"Save"}
+  Rendered pages/checkEmail.js.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 88.202.181.13 at 2017-05-31 01:24:20 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (13.9ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 307ms (Views: 305.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style.self-d4b9609598dbd63ec013d919c65b48ec2dd46b79d2d9f84cbca499cfc3a0f475.css?body=1" for 88.202.181.13 at 2017-05-31 01:24:21 +0000
+
+
+Started GET "/" for 88.202.181.18 at 2017-05-31 01:26:19 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (30.3ms)
+  Rendered layouts/_nav_guest.html.erb (1.1ms)
+  Rendered layouts/_nav.html.erb (3.8ms)
+Completed 200 OK in 352ms (Views: 349.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/checkEmail?utf8=%E2%9C%93&email=&commit=Save" for 88.202.181.18 at 2017-05-31 01:26:19 +0000
+Processing by PagesController#checkEmail as JS
+  Parameters: {"utf8"=>"✓", "email"=>"", "commit"=>"Save"}
+  Rendered pages/checkEmail.js.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style.self-d481a1092c7ddcbec5fd3455af819b066e0bd30125b71a3c685e8954f134bf2d.css?body=1" for 88.202.181.18 at 2017-05-31 01:26:20 +0000
+
+
+Started GET "/checkEmail?utf8=%E2%9C%93&email=&commit=Save" for 88.202.181.18 at 2017-05-31 01:26:37 +0000
+Processing by PagesController#checkEmail as JS
+  Parameters: {"utf8"=>"✓", "email"=>"", "commit"=>"Save"}
+  Rendered pages/checkEmail.js.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 88.202.181.11 at 2017-05-31 01:26:38 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (13.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 354ms (Views: 352.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/checkEmail?utf8=%E2%9C%93&email=&commit=Save" for 88.202.181.11 at 2017-05-31 01:26:38 +0000
+Processing by PagesController#checkEmail as JS
+  Parameters: {"utf8"=>"✓", "email"=>"", "commit"=>"Save"}
+  Rendered pages/checkEmail.js.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style.self-35dd9d255b29fb5c9bbd7744fbd3a10149430d61b1d73aa4ece42feebaa70a6d.css?body=1" for 88.202.181.11 at 2017-05-31 01:26:40 +0000
+
+
+Started GET "/" for 142.234.115.34 at 2017-05-31 01:28:16 +0000
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.erb within layouts/application (14.0ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 337ms (Views: 335.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/checkEmail?utf8=%E2%9C%93&email=&commit=Save" for 142.234.115.34 at 2017-05-31 01:28:17 +0000
+Processing by PagesController#checkEmail as JS
+  Parameters: {"utf8"=>"✓", "email"=>"", "commit"=>"Save"}
+  Rendered pages/checkEmail.js.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/style.self-8b7a60216a8f4d70162f1dd81e047ccd20db0b163a2f94d849e9912adce96863.css?body=1" for 142.234.115.34 at 2017-05-31 01:28:19 +0000
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/" for 88.202.186.220 at 2017-05-31 09:40:11 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#index as HTML
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:16)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
+  Rendered pages/index.html.erb within layouts/application (178.5ms)
+  Rendered layouts/_nav_guest.html.erb (1.4ms)
+  Rendered layouts/_nav.html.erb (4.7ms)
+Completed 200 OK in 1430ms (Views: 1327.5ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users/sign_in" for 199.115.116.194 at 2017-05-31 09:40:42 +0000
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yJLIaYMIQAhW4Al1aH6DJiqxYPvkkZ98jPqDw3ssMwwIyrIT3m3nQCmQG5hLf0AKjVywQ86PeG5vI0RVOIhvUA==", "user"=>{"email"=>"m34@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."email" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["email", "m34@gmail.com"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "current_sign_in_at" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["current_sign_in_at", "2017-05-31 09:40:42.976216"], ["current_sign_in_ip", "199.115.116.194"], ["sign_in_count", 2], ["updated_at", "2017-05-31 09:40:42.978962"], ["id", 44]]
+  [1m[36m (12.4ms)[0m  [1mcommit transaction[0m
+Redirected to https://drolle-viral-2-malekzalfana.c9users.io/
+Completed 302 Found in 191ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/" for 199.115.116.194 at 2017-05-31 09:40:44 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 44]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m  [["trendid", nil]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25[0m
+  Rendered layouts/_activities.html.erb (7.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (6.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 3]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10[0m  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (39.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  Rendered pages/index.html.erb within layouts/application (63.8ms)
+  Rendered layouts/_nav_user.html.erb (2.1ms)
+  Rendered layouts/_nav.html.erb (3.7ms)
+Completed 200 OK in 445ms (Views: 265.4ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.194 at 2017-05-31 09:40:47 +0000
+
+
+Started GET "/make" for 199.115.116.194 at 2017-05-31 09:40:54 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (112.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:40:54.604874')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Stock> at /home/ubuntu/workspace/app/models/stock.rb:4)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (5.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 10
+  [1m[36mStock Load (0.4ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (53.3ms)
+  Rendered layouts/_nav_upload.html.erb (2.1ms)
+  Rendered layouts/_nav.html.erb (4.7ms)
+Completed 200 OK in 462ms (Views: 269.8ms | ActiveRecord: 117.7ms)
+
+
+Started GET "/make" for 199.115.116.194 at 2017-05-31 09:40:57 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:40:57.166843')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (2.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.3ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (150.8ms)
+  Rendered layouts/_nav_upload.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (2.8ms)
+Completed 200 OK in 432ms (Views: 420.4ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/assets/colors.png" for 199.115.116.194 at 2017-05-31 09:40:57 +0000
+
+
+Started GET "/assets/cursor.png" for 199.115.116.194 at 2017-05-31 09:40:57 +0000
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.194 at 2017-05-31 09:40:57 +0000
+
+
+Started GET "/assets/eraser.png" for 199.115.116.194 at 2017-05-31 09:40:57 +0000
+
+
+Started GET "/assets/spray-can.png" for 199.115.116.194 at 2017-05-31 09:40:57 +0000
+
+
+Started GET "/assets/impactt.ttf" for 199.115.116.194 at 2017-05-31 09:40:59 +0000
+
+
+Started GET "/assets/save.png" for 199.115.116.194 at 2017-05-31 09:41:04 +0000
+
+
+Started GET "/assets/delete.png" for 199.115.116.194 at 2017-05-31 09:41:04 +0000
+
+
+Started POST "/posts" for 199.115.116.194 at 2017-05-31 09:41:10 +0000
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"c4YuyfPTDtMdFw1wrzpDenjN1YaIGSNlpuqhP/IRyoxaqg9+zPtdeDc2hBIPcq+UueBzHZHd/YQqk9JE7vGXXg==", "post"=>{"title"=>"", "facenumber"=>"", "tag_list"=>"rage-comic", "trend_list"=>"bro", "trendname"=>"bro", "trendid"=>""}, "base64"=>"data:image/png;base64,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", "commit"=>"Post"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" IS NULL  ORDER BY "trends"."id" ASC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "trends" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "bro"], ["created_at", "2017-05-31 09:41:10.164377"], ["updated_at", "2017-05-31 09:41:10.164377"]]
+  [1m[36m (11.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "trends" SET "followers" = ?, "updated_at" = ? WHERE "trends"."id" = ?[0m  [["followers", 1], ["updated_at", "2017-05-31 09:41:10.183013"], ["id", 42]]
+  [1m[35m (14.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "users" SET "posted" = ?, "trends" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["posted", "t"], ["trends", "42"], ["updated_at", "2017-05-31 09:41:10.205995"], ["id", 44]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "posts" ("title", "trendname", "user_id", "trendid", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["title", ""], ["trendname", "bro"], ["user_id", 44], ["trendid", 42], ["created_at", "2017-05-31 09:41:10.209547"], ["updated_at", "2017-05-31 09:41:10.209547"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('rage-comic'))
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 227], ["taggable_type", "Post"]]
+  [1m[35mActsAsTaggableOn::Tagging Exists (0.3ms)[0m  SELECT  1 AS one FROM "taggings" WHERE ("taggings"."tag_id" = 25 AND "taggings"."taggable_type" = 'Post' AND "taggings"."taggable_id" = 227 AND "taggings"."context" = 'tags' AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL) LIMIT 1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "taggings" ("tag_id", "context", "taggable_id", "taggable_type", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["tag_id", 25], ["context", "tags"], ["taggable_id", 227], ["taggable_type", "Post"], ["created_at", "2017-05-31 09:41:10.415468"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT 1  [["id", 25]]
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + 1 WHERE "tags"."id" = ?[0m  [["id", 25]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('bro'))
+  [1m[36mActsAsTaggableOn::Tag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" WHERE "tags"."name" = 'bro' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("name") VALUES (?)  [["name", "bro"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'trends' AND taggings.tagger_id IS NULL)[0m  [["taggable_id", 227], ["taggable_type", "Post"]]
+  [1m[35mActsAsTaggableOn::Tagging Exists (0.1ms)[0m  SELECT  1 AS one FROM "taggings" WHERE ("taggings"."tag_id" = 40 AND "taggings"."taggable_type" = 'Post' AND "taggings"."taggable_id" = 227 AND "taggings"."context" = 'trends' AND "taggings"."tagger_id" IS NULL AND "taggings"."tagger_type" IS NULL) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "taggings" ("tag_id", "context", "taggable_id", "taggable_type", "created_at") VALUES (?, ?, ?, ?, ?)[0m  [["tag_id", 40], ["context", "trends"], ["taggable_id", 227], ["taggable_type", "Post"], ["created_at", "2017-05-31 09:41:10.435885"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."id" = ? LIMIT 1  [["id", 40]]
+  [1m[36mSQL (0.1ms)[0m  [1mUPDATE "tags" SET "taggings_count" = COALESCE("taggings_count", 0) + 1 WHERE "tags"."id" = ?[0m  [["id", 40]]
+  [1m[35m (13.7ms)[0m  commit transaction
+Command :: file -b --mime '/tmp/78805a221a988e79ef3f42d7c5bfd41820170531-2382-p7vx8.png'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]' -auto-orient -resize "550" '/tmp/f98e90b403ab6bcb32fa744d59dac41120170531-2382-1rzd2o1'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]' -auto-orient -resize "600" '/tmp/f98e90b403ab6bcb32fa744d59dac41120170531-2382-cp9g7s'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]' 2>/dev/null
+Command :: identify -format %m '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]'
+Command :: convert '/tmp/8d777f385d3dfec8815d20f7496026dc20170531-2382-aef1la[0]' -auto-orient -resize "100x100>" '/tmp/f98e90b403ab6bcb32fa744d59dac41120170531-2382-1lslflq'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/tmp/8dacee0b073b74eaa3bde4c49bba4eea20170531-2382-uty7py[0]' 2>/dev/null
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+Command :: file -b --mime '/tmp/78805a221a988e79ef3f42d7c5bfd41820170531-2382-qfket6.png'
+  [1m[35mSQL (0.5ms)[0m  UPDATE "posts" SET "image_file_name" = ?, "image_content_type" = ?, "image_file_size" = ?, "image_updated_at" = ?, "updated_at" = ? WHERE "posts"."id" = ?  [["image_file_name", "image.png"], ["image_content_type", "image/png"], ["image_file_size", 19143], ["image_updated_at", "2017-05-31 09:41:10.464077"], ["updated_at", "2017-05-31 09:41:11.428879"], ["id", 227]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('rage-comic'))[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  [["taggable_id", 227], ["taggable_type", "Post"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('bro'))[0m
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'trends' AND taggings.tagger_id IS NULL)  [["taggable_id", 227], ["taggable_type", "Post"]]
+  [1m[36m (13.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('rage-comic'))[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'tags' AND taggings.tagger_id IS NULL)  [["taggable_id", 227], ["taggable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE (LOWER(name) = LOWER('bro'))[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND (taggings.context = 'trends' AND taggings.tagger_id IS NULL)  [["taggable_id", 227], ["taggable_type", "Post"]]
+  [1m[36m (0.2ms)[0m  [1mcommit transaction[0m
+Redirected to https://drolle-viral-2-malekzalfana.c9users.io/posts/227
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "activities" ("owner_id", "owner_type", "key", "trackable_id", "trackable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["owner_id", 44], ["owner_type", "User"], ["key", "posting"], ["trackable_id", 227], ["trackable_type", "Post"], ["created_at", "2017-05-31 09:41:11.522846"], ["updated_at", "2017-05-31 09:41:11.522846"]]
+  [1m[35m (17.1ms)[0m  commit transaction
+Completed 302 Found in 1413ms (ActiveRecord: 79.8ms)
+
+
+Started GET "/posts/227" for 199.115.116.194 at 2017-05-31 09:41:13 +0000
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"227"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mImpression Exists (0.3ms)[0m  SELECT  1 AS one FROM "impressions" WHERE "impressions"."session_hash" = ? LIMIT 1  [["session_hash", "13a7846383ac064751e48acb877d5626"]]
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "impressions" ("impressionable_type", "impressionable_id", "controller_name", "action_name", "user_id", "request_hash", "session_hash", "ip_address", "referrer", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)  [["impressionable_type", "Post"], ["impressionable_id", 227], ["controller_name", "posts"], ["action_name", "show"], ["user_id", 44], ["request_hash", "1a69fd61fae8bb30c0f4611314582a53daf8625c085d1c7794a659d0c32a4021"], ["session_hash", "13a7846383ac064751e48acb877d5626"], ["ip_address", "199.115.116.194"], ["referrer", "https://drolle-viral-2-malekzalfana.c9users.io/make"], ["created_at", "2017-05-31 09:41:13.348113"], ["updated_at", "2017-05-31 09:41:13.348113"]]
+  [1m[36m (18.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 227]]
+  [1m[36mTrend Load (0.7ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Comment> at /home/ubuntu/workspace/app/models/comment.rb:5)
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 2559)  ORDER BY "comments"."created_at" DESC  [["post_id", 227]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 1279) AND (cached_votes_score < 2560)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 227]]
+  [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 639) AND (cached_votes_score < 1280)  ORDER BY "comments"."created_at" DESC  [["post_id", 227]]
+  [1m[36mComment Load (0.5ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 319) AND (cached_votes_score < 640)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 227]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 159) AND (cached_votes_score < 320)  ORDER BY "comments"."created_at" DESC  [["post_id", 227]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 79) AND (cached_votes_score < 160)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 227]]
+  [1m[35mComment Load (0.2ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 39) AND (cached_votes_score < 80)  ORDER BY "comments"."created_at" DESC  [["post_id", 227]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 19) AND (cached_votes_score < 40)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 227]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > 9) AND (cached_votes_score < 20)  ORDER BY "comments"."created_at" DESC  [["post_id", 227]]
+  [1m[36mComment Load (0.3ms)[0m  [1mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score > -1) AND (cached_votes_score < 10)  ORDER BY "comments"."created_at" DESC[0m  [["post_id", 227]]
+  [1m[35mComment Load (0.3ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ? AND "comments"."hidden" IS NULL AND (cached_votes_score < 0) AND (cached_votes_score > -3)  ORDER BY "comments"."created_at" DESC  [["post_id", 227]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25[0m
+  Rendered layouts/_activities.html.erb (1.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.3ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 227]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 227]]
+  Rendered posts/show.html.erb within layouts/application (98.6ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (2.0ms)
+Completed 200 OK in 641ms (Views: 528.3ms | ActiveRecord: 29.4ms)
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.194 at 2017-05-31 09:41:16 +0000
+
+
+Started GET "/trends/bro" for 199.115.116.194 at 2017-05-31 09:41:22 +0000
+Processing by TrendsController#trend as HTML
+  Parameters: {"name"=>"bro"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36mTrend Load (0.4ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."name" = ?  ORDER BY "trends"."id" ASC LIMIT 1[0m  [["name", "bro"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:41:22.355236')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 7) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 7
+  Rendered layouts/_trends_tags.html.erb (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m  [["trendid", 42]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 44]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 227]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered trends/trend.html.erb within layouts/application (43.7ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 338ms (Views: 317.4ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.194 at 2017-05-31 09:41:24 +0000
+
+
+Started GET "/trends" for 199.115.116.194 at 2017-05-31 09:41:52 +0000
+Processing by TrendsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:41:52.970692')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "trends"[0m
+  Rendered trends/index.html.erb within layouts/application (12.3ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 446ms (Views: 433.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.194 at 2017-05-31 09:41:55 +0000
+
+
+Started GET "/trends/pages/loadPost?utf8=%E2%9C%93&postid=227&commit=Save" for 199.115.116.194 at 2017-05-31 09:42:04 +0000
+
+ActionController::RoutingError (No route matches [GET] "/trends/pages/loadPost"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb (12.1ms)
+
+
+Started GET "/trends/bro" for 199.115.116.201 at 2017-05-31 09:45:56 +0000
+Processing by TrendsController#trend as HTML
+  Parameters: {"name"=>"bro"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."name" = ?  ORDER BY "trends"."id" ASC LIMIT 1[0m  [["name", "bro"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:45:56.019853')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 7) subquery_for_count[0m
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 7
+  Rendered layouts/_trends_tags.html.erb (1.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m  [["trendid", 42]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 227]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered trends/trend.html.erb within layouts/application (119.0ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 339ms (Views: 323.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.201 at 2017-05-31 09:45:59 +0000
+
+
+Started GET "/trends/pages/loadPost?utf8=%E2%9C%93&postid=227&commit=Save" for 199.115.116.201 at 2017-05-31 09:46:47 +0000
+
+ActionController::RoutingError (No route matches [GET] "/trends/pages/loadPost"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb (7.3ms)
+
+
+Started GET "/assets/profile.self-7d79d6b9cb0cf58016bb20a27eedc48887bca5a356c8119748fed3d44b4d16a3.css?body=1" for 94.187.48.207 at 2017-05-31 09:49:50 +0000
+
+
+Started GET "/assets/style.self-c475f7647f965139adebb5a1dd538d1483f0336293bee012e75f21648e5cbf72.css?body=1" for 94.187.48.207 at 2017-05-31 09:49:50 +0000
+
+
+Started GET "/trends/bro" for 88.202.186.212 at 2017-05-31 09:50:38 +0000
+Processing by TrendsController#trend as HTML
+  Parameters: {"name"=>"bro"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."name" = ?  ORDER BY "trends"."id" ASC LIMIT 1[0m  [["name", "bro"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:50:38.543318')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 7) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 7
+  Rendered layouts/_trends_tags.html.erb (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m  [["trendid", 42]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 227]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered trends/trend.html.erb within layouts/application (20.7ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 270ms (Views: 247.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/assets/style.self-59d0eb36fda34846e147013448ee5364ab617843647edfbf448055782161ade2.css?body=1" for 88.202.186.212 at 2017-05-31 09:50:40 +0000
+
+
+Started GET "/assets/missing.jpg" for 88.202.186.212 at 2017-05-31 09:50:41 +0000
+
+
+Started GET "/trends/pages/loadPost?utf8=%E2%9C%93&postid=227&commit=Save" for 88.202.186.212 at 2017-05-31 09:50:56 +0000
+
+ActionController::RoutingError (No route matches [GET] "/trends/pages/loadPost"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.text.erb (0.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.text.erb (7.3ms)
+
+
+Started GET "/trends" for 88.202.186.212 at 2017-05-31 09:51:15 +0000
+Processing by TrendsController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:51:15.482632')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "trends"[0m
+  Rendered trends/index.html.erb within layouts/application (4.3ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 188ms (Views: 179.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/assets/missing.jpg" for 88.202.186.212 at 2017-05-31 09:51:17 +0000
+
+
+Started GET "/trends" for 199.115.116.201 at 2017-05-31 09:59:40 +0000
+Processing by TrendsController#index as HTML
+  [1m[35mUser Load (4.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 09:59:40.641085')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (3.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "trends"[0m
+  Rendered trends/index.html.erb within layouts/application (17.0ms)
+  Rendered layouts/_nav_user.html.erb (1.5ms)
+  Rendered layouts/_nav.html.erb (7.0ms)
+Completed 200 OK in 354ms (Views: 342.3ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/trends" for 94.187.48.207 at 2017-05-31 10:07:23 +0000
+Processing by TrendsController#index as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "trends"
+  Rendered trends/index.html.erb within layouts/application (23.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 358ms (Views: 355.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/style.self-66d910fad92722bf22160daef85a916cc4c4ad42729011bc16a14e905fc31023.css?body=1" for 94.187.48.207 at 2017-05-31 10:07:25 +0000
+
+
+Started GET "/assets/tabs.self-6481c46268c9eeaf7a915c128b38d5e186754b993acc0385c0852acf755474eb.js?body=1" for 94.187.48.207 at 2017-05-31 10:07:25 +0000
+
+
+Started GET "/trends" for 172.98.79.34 at 2017-05-31 10:08:01 +0000
+Processing by TrendsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.2ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:08:01.720413')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "trends"
+  Rendered trends/index.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (3.6ms)
+Completed 200 OK in 358ms (Views: 214.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/trends" for 172.98.87.18 at 2017-05-31 10:16:23 +0000
+Processing by TrendsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:16:23.294351')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "trends"
+  Rendered trends/index.html.erb within layouts/application (6.4ms)
+  Rendered layouts/_nav_user.html.erb (2.9ms)
+  Rendered layouts/_nav.html.erb (6.6ms)
+Completed 200 OK in 281ms (Views: 270.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/trends" for 172.98.87.18 at 2017-05-31 10:16:32 +0000
+Processing by TrendsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:16:32.453531')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "trends"
+  Rendered trends/index.html.erb within layouts/application (4.0ms)
+  Rendered layouts/_nav_user.html.erb (1.9ms)
+  Rendered layouts/_nav.html.erb (2.8ms)
+Completed 200 OK in 240ms (Views: 229.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/post.self-4001944fd32a6070e6fccd7e310218910c21ef51a72235cefb9c366b6e1290b8.css?body=1" for 172.98.87.18 at 2017-05-31 10:16:34 +0000
+
+
+Started GET "/assets/style.self-66d910fad92722bf22160daef85a916cc4c4ad42729011bc16a14e905fc31023.css?body=1" for 172.98.87.18 at 2017-05-31 10:16:34 +0000
+
+
+Started GET "/assets/missing.jpg" for 172.98.87.18 at 2017-05-31 10:16:37 +0000
+
+
+Started GET "/user/hurryup" for 172.98.87.18 at 2017-05-31 10:16:49 +0000
+Processing by PagesController#profile as HTML
+  Parameters: {"id"=>"hurryup"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mUser Load (2.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mActsAsVotable::Vote Load (0.4ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  [1m[35mPublicActivity::Activity Load (4.4ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (5.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  Rendered layouts/_follow_button.html.erb (0.9ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 44]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  Rendered pages/profile.html.erb within layouts/application (181.3ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 447ms (Views: 428.0ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/assets/missing-2.jpg" for 172.98.87.18 at 2017-05-31 10:16:52 +0000
+
+
+Started GET "/assets/missing.jpg" for 172.98.87.18 at 2017-05-31 10:16:52 +0000
+
+
+Started GET "/user/hurryup" for 199.115.116.182 at 2017-05-31 10:18:06 +0000
+Processing by PagesController#profile as HTML
+  Parameters: {"id"=>"hurryup"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mActsAsVotable::Vote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  Rendered layouts/_follow_button.html.erb (0.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 44]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  Rendered pages/profile.html.erb within layouts/application (62.5ms)
+  Rendered layouts/_nav_user.html.erb (2.0ms)
+  Rendered layouts/_nav.html.erb (2.9ms)
+Completed 200 OK in 286ms (Views: 278.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/missing-2.jpg" for 199.115.116.182 at 2017-05-31 10:18:08 +0000
+
+
+Started GET "/user/hurryup" for 88.202.186.222 at 2017-05-31 10:18:47 +0000
+Processing by PagesController#profile as HTML
+  Parameters: {"id"=>"hurryup"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1  [["username", "hurryup"]]
+  [1m[36mActsAsVotable::Vote Load (0.1ms)[0m  [1mSELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'[0m  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."username" = ? LIMIT 1[0m  [["username", "hurryup"]]
+  Rendered layouts/_follow_button.html.erb (0.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?  [["followed_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE (user_id = 44) AND "posts"."hidden" IS NULL AND "posts"."anonymous" = ?  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m  [["anonymous", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT "votes".* FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."vote_scope" = ? AND "votes"."votable_type" = 'Post'  [["voter_id", 44], ["voter_type", "User"], ["vote_scope", "favor"]]
+  Rendered pages/profile.html.erb within layouts/application (22.1ms)
+  Rendered layouts/_nav_user.html.erb (2.1ms)
+  Rendered layouts/_nav.html.erb (3.0ms)
+Completed 200 OK in 229ms (Views: 220.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/missing-2.jpg" for 88.202.186.222 at 2017-05-31 10:18:49 +0000
+
+
+Started GET "/make" for 88.202.186.222 at 2017-05-31 10:19:21 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:19:21.642964')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (9.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (73.2ms)
+  Rendered layouts/_nav_upload.html.erb (9.9ms)
+  Rendered layouts/_nav.html.erb (10.9ms)
+Completed 500 Internal Server Error in 153ms (ActiveRecord: 2.6ms)
+
+SyntaxError (/home/ubuntu/workspace/app/views/layouts/_nav_upload.html.erb:273: syntax error, unexpected keyword_end, expecting end-of-input
+             end 
+                ^):
+  app/views/layouts/_nav_upload.html.erb:273: syntax error, unexpected keyword_end, expecting end-of-input
+  app/views/layouts/_nav.html.erb:6:in `_app_views_layouts__nav_html_erb__3550074735154229939_69881743117940'
+  app/views/layouts/application.html.erb:74:in `_app_views_layouts_application_html_erb___2699697101805098848_69881737738380'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.7ms)
+
+
+Started GET "/make" for 88.202.186.222 at 2017-05-31 10:19:39 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:19:40.008730')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (4.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (113.1ms)
+  Rendered layouts/_nav_upload.html.erb (2.6ms)
+  Rendered layouts/_nav.html.erb (3.5ms)
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 2.2ms)
+
+SyntaxError (/home/ubuntu/workspace/app/views/layouts/_nav_upload.html.erb:281: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  app/views/layouts/_nav_upload.html.erb:281: syntax error, unexpected keyword_ensure, expecting end-of-input
+  app/views/layouts/_nav.html.erb:6:in `_app_views_layouts__nav_html_erb__3550074735154229939_69881743117940'
+  app/views/layouts/application.html.erb:74:in `_app_views_layouts_application_html_erb___2699697101805098848_69881737738380'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.3ms)
+
+
+Started GET "/make" for 199.115.116.175 at 2017-05-31 10:20:03 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:20:03.763154')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (4.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.2ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (19.1ms)
+  Rendered layouts/_nav_upload.html.erb (2.2ms)
+  Rendered layouts/_nav.html.erb (3.2ms)
+Completed 200 OK in 250ms (Views: 237.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/impactt.ttf" for 199.115.116.175 at 2017-05-31 10:20:06 +0000
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.175 at 2017-05-31 10:20:06 +0000
+
+
+Started GET "/assets/cursor.png" for 199.115.116.175 at 2017-05-31 10:20:06 +0000
+
+
+Started GET "/assets/spray-can.png" for 199.115.116.175 at 2017-05-31 10:20:06 +0000
+
+
+Started GET "/assets/eraser.png" for 199.115.116.175 at 2017-05-31 10:20:06 +0000
+
+
+Started GET "/assets/colors.png" for 199.115.116.175 at 2017-05-31 10:20:07 +0000
+
+
+Started GET "/make" for 199.115.116.175 at 2017-05-31 10:20:08 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:20:08.048733')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (6.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (23.7ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 350ms (Views: 267.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/make" for 199.115.116.175 at 2017-05-31 10:20:27 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:20:27.309764')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (4.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (17.8ms)
+  Rendered layouts/_nav_upload.html.erb (1.8ms)
+  Rendered layouts/_nav.html.erb (2.7ms)
+Completed 200 OK in 245ms (Views: 235.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/impactt.ttf" for 199.115.116.175 at 2017-05-31 10:20:29 +0000
+
+
+Started GET "/assets/cursor.png" for 199.115.116.175 at 2017-05-31 10:20:29 +0000
+
+
+Started GET "/assets/spray-can.png" for 199.115.116.175 at 2017-05-31 10:20:30 +0000
+
+
+Started GET "/assets/eraser.png" for 199.115.116.175 at 2017-05-31 10:20:30 +0000
+
+
+Started GET "/assets/colors.png" for 199.115.116.175 at 2017-05-31 10:20:30 +0000
+
+
+Started GET "/make" for 199.115.116.175 at 2017-05-31 10:20:30 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 44]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-05-29 10:20:30.520345')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (5.5ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 10[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 44], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (22.9ms)
+  Rendered layouts/_nav_upload.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 213ms (Views: 203.2ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for 199.115.116.175 at 2017-05-31 10:21:20 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 44]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" = 42 AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (1.6ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 10
+  Rendered layouts/_trends_tags.html.erb (2.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 1]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 2]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 3]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 3]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 4]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10[0m  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (36.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36mActsAsTaggableOn::Tag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 227]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (100.5ms)
+  Rendered layouts/_nav_user.html.erb (0.4ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 450ms (Views: 427.3ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/assets/missing.jpg" for 199.115.116.175 at 2017-05-31 10:21:23 +0000
+
+
+Started GET "/" for 104.200.148.184 at 2017-05-31 10:29:45 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 44]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" = 42 AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (4.3ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 10
+  Rendered layouts/_trends_tags.html.erb (1.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 3]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10[0m  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (89.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 227]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (119.3ms)
+  Rendered layouts/_nav_user.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 283ms (Views: 266.1ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 207.244.71.179 at 2017-05-31 10:38:05 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 44]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 44]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" = 42 AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 44]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 44  ORDER BY created_at DESC LIMIT 25
+  Rendered layouts/_activities.html.erb (5.7ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 10) subquery_for_count[0m
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 10
+  Rendered layouts/_trends_tags.html.erb (1.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 1]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 3]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 3]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 4]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 44], ["id", 4]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE ("posts"."title" != ?) AND ("posts"."trendid" IS NOT NULL)  ORDER BY created_at DESC LIMIT 10[0m  [["title", ""]]
+  Rendered layouts/_who_to_follow.html.erb (17.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 44]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 227], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 44]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 227]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 44], ["voter_type", "User"], ["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 227], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (53.8ms)
+  Rendered layouts/_nav_user.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 256ms (Views: 242.5ms | ActiveRecord: 4.7ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)

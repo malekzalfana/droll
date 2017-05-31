@@ -2240,16 +2240,16 @@ input[type=search]:focus {
 }
 
 
-div:not(#invite-page) input:-moz-placeholder {
+body:not(#invite-page) input:-moz-placeholder {
 	color: #999;
 }
-div:not(#invite-page) input::-webkit-input-placeholder {
+body:not(#invite-page) input::-webkit-input-placeholder {
 	color: #999;
 }
-#invite-page input:-moz-placeholder {
+input.new:-moz-placeholder {
 	color: #ffffff;
 }
-#invite-page input::-webkit-input-placeholder {
+input.new::-webkit-input-placeholder {
 	color: #ffffff;
 }
 #cover-photo {
@@ -2275,7 +2275,7 @@ div:not(#invite-page) input::-webkit-input-placeholder {
     transition: all 0.5s cubic-bezier(.25,.8,.25,1);
     top: -5px;
     background-size: cover;
-    -webkit-filter: blur(2px);
+    -webkit-filter: blur(6px);
     background-size: cover;
     background-position: center;
 }
@@ -5055,7 +5055,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 
 @media screen and (max-width: 880px) and (min-width: 650px) {
 		#trends-page-wapper {
-		    width: calc(100% - 10px) !important;
+		    width: calc(100% - 20px) !important;
 		    padding: 0px 0px;
 		}
 	.pick-meme-container, .gif-container {
@@ -5082,6 +5082,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	.memeb-wrapper-3 .memeb-field {
+		font-size: 20px !Important;
+	}
 	.trend {
 	    height: 245px;
 	    width: calc(100% - 20px) !important;
@@ -6784,16 +6787,18 @@ i.fa.fa-reddit-alien {
     max-width: 200px;
 }
 .tags-title {
-    font-family: roboto;
-    color: #424242;
-    font-weight: 100;
+        font-family: roboto;
+    color: #4b4b4b;
     font-size: 14px;
     opacity: 0.9;
     padding: 10px 5px;
     display: inline-block;
     float: left;
-        position: relative;
+    position: relative;
     left: 5px;
+}
+.shown-post .single-trend-2  {
+	display: none !important;
 }
 #new-logo {
 	    font-family: oswald;
@@ -8595,9 +8600,9 @@ display: none !important;
     margin: 15px;
     font-size: 30px;
     font-family: roboto;
-    color: #7b7b7b;
+    color: #5f5f5f;
     margin-top: 70px;
-    font-weight: 500;
+    font-weight: 300;
 }
 .bordered-2 div {
 	color: white !important;
@@ -9067,7 +9072,7 @@ p.pick-tags-title.new {
     color: white !important;
     font-weight: 100;
     font-family: roboto;
-    font-size: 30px !important;
+    font-size: 30px;
 }
 .not-signed-in .memeb-notice {
 	    color: #424242;

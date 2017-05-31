@@ -272,9 +272,6 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>
                 <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
                 <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
                 <% if !post.giphyid.blank? %><img class="post-trend-2" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
               <% end %>
 

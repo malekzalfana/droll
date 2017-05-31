@@ -67,7 +67,12 @@
           <% if activity.trackable.post.anonymous ===  true ||  ( !activity.trackable.postid.nil? && Post.find(activity.trackable.postid).anonymous ===  true  ) %>
               <div class="notif-user-image" style="background-image:url('assets/anonymous.jpg')"></div>
             <% else %>
-              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.user.image.url(:thumb) %>)'"></div>
+            <% if !@user.pic.nil? && activity.owner.image.url == 'missing.jpg' %>
+            <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.user.image.url(:thumb) %>)'"></div>
+            <%else%>
+            <div class="notif-user-image" style="background-image:url(http://drolle.net/profilepics/pic<%= activity.owner.pic %>.jpg)'"></div>
+            <%end%>
+
           <% end %>
         </div>
         <div class="notif-right-col">
@@ -89,7 +94,11 @@
        <span class="pointered" <% if !request.original_url.include?('?app=true') %>onclick='location.href="/posts/<%= activity.trackable.id %>"<% else %>data-a="/posts/<%= activity.trackable.id %>"<% end %>'>
        <div class="notif">
           <div class="notif-left-col">
-          <div class="notif-user-image" style="background-image:url('/<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.owner.image.url(:thumb) %>')"></div>
+          <% if !@user.pic.nil? && activity.owner.image.url == 'missing.jpg' %>
+            <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.user.image.url(:thumb) %>)'"></div>
+            <%else%>
+            <div class="notif-user-image" style="background-image:url(http://drolle.net/profilepics/pic<%= activity.owner.pic %>.jpg)'"></div>
+            <%end%>
           </div>
           <div class="notif-right-col">
             <p class="notif-text"><span class="notif-first"><strong><a href="/user/<%= activity.owner.username %>"><%= activity.owner.username %></a></strong>
@@ -138,7 +147,11 @@
             <% if activity.parameters[:anonymous].present? %>
               <div class="notif-user-image" style="background-image:url('http://www.drolle.co/assets/anonymous.jpg')"></div>
             <% else %>
-              <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == '/missing.jpg' then 'http://drolle.co/assets/' end %><%= activity.owner.image.url(:thumb) %>)'"></div>
+              <% if !@user.pic.nil? && activity.owner.image.url == 'missing.jpg' %>
+            <div class="notif-user-image" style="background-image:url('<%= if activity.owner.image.url == 'missing.jpg' then 'assets/' end %><%= activity.trackable.user.image.url(:thumb) %>)'"></div>
+            <%else%>
+            <div class="notif-user-image" style="background-image:url(http://drolle.net/profilepics/pic<%= activity.owner.pic %>.jpg)'"></div>
+            <%end%>
           <% end %>
           <div class="notif-user-image" style="background-image:url('<%= activity.owner.image.url(:thumb) %>')"></div>
           </div>

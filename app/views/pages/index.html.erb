@@ -706,6 +706,13 @@
 </body>
 <% else %>
 <body  data-no-turbolinks='true' id="invite-page<%# controller.action_name %>" class="<%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">
+    <style>
+        input:-moz-placeholder {
+	color: #ffffff;
+}input::-webkit-input-placeholder {
+	color: #ffffff;
+}
+    </style>
 <div class="invite-underlay"></div>
 <div id="invite-logo-wrapper-2">
     <div id="logo-wrapper"><svg id="logo" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -956,13 +963,13 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 <div class="memeb-wrapper-3">
     <p class="memeb-title">Setting up your profile</p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "i"} ) do |f| %>
-        <%= f.email_field :email, autofocus: true, class: "memeb-field f", placeholder: "Email" %>
+        <%= f.email_field :email, autofocus: true, class: "memeb-field f new", placeholder: "Email" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
         <%= f.text_field :pic, value: rand(1..20), class: "hidden-imp" %>
-        <%= f.password_field :password, autocomplete: "off", placeholder:"Password" , class: "memeb-field s" %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "memeb-field t" %>
+        <%= f.password_field :password, autocomplete: "off", placeholder:"Password" , class: "memeb-field s new" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "memeb-field t new" %>
         <p class="memeb-notice">You can create your meme, after this step</p>
         <button class="memeb-submit" type="button">Start</button>
         <%= f.submit "Sign up", id: "memeb-sign-up-submit", class: "memeb-button-3"%>

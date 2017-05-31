@@ -213,6 +213,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     /*border: 1px solid;*/
     margin: 5px!important;
     margin-top: 9px !important;
+    image-rendering: initial;
 }
 #content-full2 .upvote:not(.new), #content-full2 .downvote:not(.new) {
 
@@ -320,7 +321,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     height: 12px !important;
     margin-top: 5px !important;
     margin-left: -2px !important;
-    transform: rotate(180deg);
+    transform: rotate(90deg);
 }
 .reply-body {
     border: none;
@@ -483,7 +484,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
 .show-reply-icon {
     font-size: 14px !important;
     color: #BABABA;
-    margin: 7px 0px;
+    margin: 9px 0px;
     opacity:0 !important;
     cursor: default;
 }

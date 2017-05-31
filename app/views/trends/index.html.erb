@@ -82,9 +82,7 @@
                 <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
                 <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
                 <% if !post.giphyid.blank? %><img class="post-trend-2" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                
               <% end %>
 
               <div class="trend-overlay"></div>
