@@ -31,7 +31,13 @@
     <div id="profile-overlay"></div>
     <div id="profile-account-id-wrapper">
     <% if @user.image.url == "missing.jpg" %>
-        <div id="profile-photo" style="background-image: url(/assets/<%= @user.image.url(:thumb) %>)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+    <% if @user.pic.nil? %>
+      <div id="profile-photo" style="background-image: url(/assets/<%= @user.image.url(:thumb) %>)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+    <% else %>
+      <div id="profile-photo" style="background-image: url(http://drolle.net/profilepics/pic<%= @user.pic %>.jpg)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+    <% end%>
+
+
     <% else %>
         <div id="profile-photo" style="background-image: url(<%= @user.image.url(:medium) %>)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
     <% end %>
@@ -48,8 +54,8 @@
             <% if @user == current_user %>
             <i class="material-icons" id="edit-profile">edit</i>
             <% end %>
-            <!--<% if user_signed_in? && @user == current_user %><a href="/settings/?app=true"><i id="setting-button" class="material-icons">settings</i></a><% end %>-->
-            <a href="/settings"><i id="setting-button" class="material-icons">settings</i></a>
+            <% if user_signed_in? && @user == current_user %><a href="/settings"><i id="setting-button" class="material-icons">settings</i></a><% end %>
+
             <%= render '/layouts/follow_button', :user => User.find_by_username(params[:id]) %>
             <h2 id="posts-number"><%= @user.posts.count %> Posts</h2>
             <h2 id="upvotes-number"><%= @user.following.count %> Following</h2>

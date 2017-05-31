@@ -7,7 +7,7 @@ var trendid;
 var trendname;
 var type;
 tabs = function() {
-	$(document).on('click', 'a:not(.settings-logout):not(.vote)',
+	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link)',
 		function(e) {
 			e.preventDefault();
 			console.log("clicked this bitch")
@@ -91,8 +91,24 @@ tabs = function() {
 	});
 
 		$(document).on('click', '.accept-user-button', function() {
+			$(this).parents(".wrapper").children(".add-user").fadeOut(3000)
 	$(this).parents(".accept-user").hide()
 	})
+
+	$(document).on('click', '.flag-post', function() {
+		$(this).addClass("flagged bounce animated")
+		/*
+		var th = $(this).parents(".wrapper").addClass("rollOut animated")
+		setTimeout(function(){
+			$(th).remove();
+		}, 500)
+		*/
+	})
+
+	$(document).on('click', '.delete-post-before', function() {
+		$(this).siblings(".edit_post").children(".delete-post-submit").click()
+	})
+
 
 	$('.memeb-wrapper form').on('keyup keypress', function(e) {
 	  var keyCode = e.keyCode || e.which;
@@ -519,6 +535,7 @@ tabs = function() {
 				//alert('back')
 				console.log('clicked')
 				thisWrapper = $(this).parents('.wrapper')
+				//alert(  $(thisWrapper).attr("id"))
 				console.log(thisWrapper)
 				$(thisWrapper).css({
 					'width': '600px'
@@ -548,6 +565,8 @@ tabs = function() {
 			}
 			//alert($(thisWrapper).attr('id'))
 			//alert(  e.target.id )
+			console.log( $(thisWrapper) )
+			//alert(  $(thisWrapper).attr("id"))
 		})
 	$(document).on('click', '#scroll-up', function() {
 		$(this).hide();
@@ -755,6 +774,8 @@ tabs = function() {
 		$('.make-trends-field.trendname').val(trendname)
 		if ( trendid != '' ) {
 			$('.make-trends-field.trendid').val(trendid)
+			alert(trendid)
+			alert( $('.make-trends-field.trendid').val() )
 		}
 
 
@@ -898,128 +919,79 @@ tabs = function() {
 	})
 
 	$(document).on('click', '#next-post-icon', function() {
-		var thisWrapper = $(this).parents('.wrapper')
-		console.log('start')
-		console.log($(thisWrapper))
-		console.log($('.wrapper')
-			.last())
-		if (!$('body').hasClass('loadingPost') && !$(thisWrapper).is($('.wrapper')
-				.last())) {
-			//alert('d')
-			if ($(thisWrapper).next('.wrapper').length == 0 && $('body').hasClass(
-					'loadingPost')) {
+		var wrapper = $(this).parents(".wrapper")
+		//!$('body').hasClass('loadingPost') &&  REMOVED
+		if ($(wrapper).attr("id") != $('.wrapper').last().attr("id") ) { // not last
+			///*
+			if ($(wrapper).next('.wrapper').length == 0 && $('body').hasClass('loadingPost')) { // next existst + comments are loaing
 				alert("first")
 				$('.loadingPost-icon').addClass('loading-animation')
 				var loadingPostInterval = setInterval(function() {
-					if ($(thisWrapper).next('.wrapper').length == 0) {
+					if ($(wrapper).next('.wrapper').length == 0) {
 						$('.loadingPost-icon').removeClass('loading-animation')
 						clearInterval(loadingPostInterval)
 						$('#next-post-icon').click()
 					}
 				}, 400);
-			} else if ($(thisWrapper).next('.wrapper').length > 0) {
+			} else if ($(wrapper).next('.wrapper').length > 0) {
+				//*/
 				//alert("econdt")
-				$(thisWrapper).hide().css({
+				$(wrapper).hide().css({
 					'width': '550px'
 				}).removeClass('shown')
-				thisWrapper = $(thisWrapper).next('.wrapper').show().css({
+				$(wrapper).next('.wrapper').show().css({
 					'width': '600px'
 				}).addClass('shown')
 				$('html, body').animate({
 					scrollTop: $('body').offset().top
 				}, 200);
-				/*
-				if ($('.pagination').length > 0) {
-					$('body').addClass('loadingPost')
-					var theurll = $('.pagination a.next_page').attr('href')
-					$.getScript(theurll)
-					$('.loadingPost-icon').addClass('loading-animation')
-					var loadingPostInterval = setInterval(function() {
-						console.log('next')
-						if ($(thisWrapper).next('.wrapper').length > 0) {
-							$('.loadingPost-icon').removeClass('loading-animation')
-							clearInterval(loadingPostInterval)
-							$('#next-post-icon').click()
-						}
-					}, 400);
-				}
-				*/
-			}
-			/*
-			else if ($(thisWrapper).next('.wrapper').length ==  0) {
-				alert("3")
-				console.log('post loaded successfully')
-				$('.loadingPost-icon').removeClass('loading-animation')
-				$(thisWrapper).hide().css({
-					'width': '550px'
-				}).removeClass('shown')
-				thisWrapper = $(thisWrapper).next('.wrapper').show().css({
-					'width': '600px'
-				}).addClass('shown')
-				$('html, body').animate({
-					scrollTop: $('body').offset().top
-				}, 200);
-				if (!$(thisWrapper).children('.right-wrapper').hasClass('shown')) {
-					$(thisWrapper).find('#loadPost').children('form').children(
-						'input[type="submit"]:not(.removed)').eq(0).click().addClass(
-						'removed')
-					$('.shown.wrapper .right-wrapper').addClass('loading-2')
-				}
-				if ($('.wrapper').eq($('.wrapper').length - 3)) {
-					if (!$('body').hasClass('loadingPost') && $('.pagination').length > 0) {
-						//$('.loadingPost-icon').removeClass('loading-animation')
-						var theurlll = $('.pagination a.next_page').attr('href')
-						$.getScript(theurlll)
-					}
-				}
+				var wrapper2 = $(wrapper).next()
+				//console.log( $(wrapper2).children(".submit-loadpost") )
+				console.log($(".wrapper.shown .submit-loadpost") )
+				//console.log("Ssss")
+				$(".wrapper.shown .submit-loadpost").click().remove();
+				$(".wrapper.shown .right-wrapper:not(.shown)").addClass("loading-2")
 
-				console.log('the post has been loaded right?')
 
-		}
-		*/
-			else {
-				//alert('ddd')
 
-				console.log('backkkkkk')
-				$('.wrapper').show().css({
-					'width': '550px'
-				}).removeClass('shown')
-				$('body').removeClass('shown-post')
-				$('.right-wrapper').hide()
-				setTimeout(function() {
-					window.scrollTo(0, $(thisWrapper).offset().top);
-				}, 10)
 
 			}
+
 		}
+		else {
+			alert("dd")
+		}
+		//alert(  $(thisWrapper).attr("id"))
 	})
 
 	$(document).on('click', '#prev-post-icon', function() {
-		thisWrapper = $(this).parents('.wrapper')
-		console.log(thisWrapper.id)
-		console.log( $('.wrapper').first().attr('id') )
-		if ($(thisWrapper).attr('id') != $('.wrapper').first().attr("id") ) {
-			console.log('prevvv')
-			console.log( $(this).parents('.wrapper') )
-			console.log( $(this).parents('.wrapper').prev('.wrapper') )
-			$(this).parents('.wrapper').hide().css({
+		var wrapper = $(this).parents('.wrapper')
+		if ( $(wrapper).attr('id') != $('.wrapper').first().attr("id") ) {
+			$(wrapper).hide().css({
 				'width': '550px'
 			}).removeClass('shown')
-			thisWrapper = $(thisWrapper).prev('.wrapper').show().css({
+			var wrapper2 = $(wrapper).prev(".wrapper");
+			//thisWrapper = $(this).parents('.wrapper').prev()
+			$(wrapper).prev(".wrapper").show().css({
 				'width': '600px'
 			}).addClass('shown')
 			$('html, body').animate({
 				scrollTop: $('body').offset().top
 			}, 200);
 
-			if (!$(thisWrapper).children('.right-wrapper').hasClass('shown')) {
-				$(thisWrapper).find('#loadPost').children('form').children(
+			$(".wrapper.shown .submit-loadpost").click().remove();
+				$(".wrapper.shown .right-wrapper:not(.shown)").addClass("loading-2")
+/*
+			if (!$(wrapper2).children('.right-wrapper').hasClass('shown')) {
+				alert("something")
+				$(wrapper2).find('#loadPost').children('form').children(
 					'input[type="submit"]').eq(0).click()
 				$('.shown.wrapper .right-wrapper').addClass('loading-2')
 				//console.log($(thisWrapper).children('.left-wrapper'))
 			}
-
-		} else {
+*/
+		}
+		else {
 			console.log('backkkkkk')
 			$('.wrapper').show().css({
 				'width': '550px'
@@ -1027,9 +999,11 @@ tabs = function() {
 			$('body').removeClass('shown-post')
 			$('.right-wrapper').hide()
 			setTimeout(function() {
-				window.scrollTo(0, $(thisWrapper).offset().top);
+				window.scrollTo(0, $(wrapper2).offset().top);
 			}, 10)
 		}
+
+		//console.log( $(thisWrapper) )
 	})
 	//////////////////////
 	$(document).on('click', '#choose-cover, #reset-cover', function() {
@@ -1072,11 +1046,28 @@ tabs = function() {
 
 	})
 
+	$(document).on('click', '.add-user:not(.followed)', function() {
+
+		$(".wrapper").removeClass("to-accept2")
+		$(this).parents(".wrapper").addClass("to-accept2")
+		$(this).parents(".wrapper").children(".accept-user").fadeIn(100)
+	})
+	$(document).on('click', '.follow-user', function() {
+		$(this).siblings(".new_relationship").children(".submit").click();
+	})
+
 	$(document).on('click', '#memeb-username-submit-before', function() {
 		console.log("clicked")
 		if ( $("#memeb-username-field").hasClass("approved") ) {
 			//alert("clicked")
 			$("#memeb-username-submit").click();
+			/*
+			setTimeout(
+				function(){
+					window.location = '/make'
+
+				}, 1000)
+				*/
 		}
 	})
 	$(document).on('keyup', function(e) {
@@ -1084,7 +1075,9 @@ tabs = function() {
 				":focus")) {
 			if (e.keyCode == 37) {
 				//alert("left")
+				alert("c")
 				if ($('body').hasClass('shown-post')) {
+					alert("cc")
 					$('#prev-post-icon').click()
 				}
 			} else if (e.keyCode == 39) {
@@ -1177,6 +1170,12 @@ tabs = function() {
 		}
 
 	})
+
+	$(document).on('click', '.memeb-button-3', function() {
+		$(".memeb-wrapper-2").hide();
+		$(".memeb-wrapper-3").show();
+
+	})
 	$(document).on('click', '.make-trends', function() {
 		$('.choosen-content:visible .make-trends').removeClass('active')
 		$(this).addClass('active')
@@ -1200,7 +1199,12 @@ tabs = function() {
 		//alert( $('.choosen-content:visible .make-trends-field').attr('value') )
 	})
 	$(document).on('click', '.comment-button', function() {
-		$('.middle-wrapper').removeClass('buzz')
+		if ( !$("body").hasClass("shown-post") ){
+			$(this).parents(".left-wrapper").children(".post-image-wrapper").click();
+			console.log( $(this).parents(".left-wrapper").children(".post-image-wrapper") )
+		}
+		else {
+			$('.middle-wrapper').removeClass('buzz')
 		toPost = true;
 		if (commentopen == false) {
 			$('.middle-wrapper').addClass('inline-block-imp');
@@ -1212,6 +1216,8 @@ tabs = function() {
 			$('.middle-wrapper').removeClass('inline-block-imp');
 			commentopen = false
 		}
+		}
+
 	});
 	$(document).on('click', '#cancel-meme-2', function(e) {
 		$('#pick-meme').show();

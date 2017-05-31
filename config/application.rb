@@ -25,5 +25,7 @@ module Droll
     config.assets.initialize_on_precompile = false
     config.middleware.use Rack::Deflater
 
+    URL1 = "http://i2.kym-cdn.com/photos/images/facebook/000/862/065/0e9.jpg"
+
   end
 end

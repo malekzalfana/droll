@@ -139,7 +139,6 @@
 .active-tab {
   color: #ff3000;
   font-weight: bold;
-     border-bottom: #ff3000 1px solid;
     height: 45px;
 
 }

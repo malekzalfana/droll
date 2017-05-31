@@ -47,7 +47,8 @@ class PagesController < ApplicationController
     #remove # up >>^^^^
       @post2 = [@popularPosts,@followingPosts, @trendPosts].flatten
       @post2 = @post2.uniq
-      @post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
+      #@post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
+      @post = Post.limit(30).paginate(:per_page => 10, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
     else

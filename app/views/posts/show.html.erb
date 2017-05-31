@@ -47,14 +47,19 @@
             <div class="left-wrapper">
                  <i class="material-icons" id="next-post-icon">navigate_next</i>
                 <i class="material-icons" id="prev-post-icon">navigate_before</i>
-                <% if user_signed_in? && @post.user == current_user && @post.created_at > Time.now-1.minute %>
+                <% if user_signed_in? && @post.user == current_user && @post.created_at > Time.now-20.minute %>
                     <div id="share-it">
-                        Share it?
+                        <% if current_user.posts.count == 1 %>
+                        <p>Share using the hashtag <span>#memeChallenge</span>!</p>
+                        <% else %>
+                        <p>Share this with your friends!</p>
+                        <% end %>
                         <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(@post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(@post) %>&amp;<%= @post.title %>  #memeChallenge&amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(@post) %>&amp;<%= @post.title %>&amp;hashtags=drolle,<%= if @post.user.posts.count == 1 then " #memeChallenge" end %>" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(@post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                            <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(@post) %>&title=<%= @post.title %>   #memeChallenge" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                            <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(@post) %>&title=<%= @post.title %>  <%= if @post.user.posts.count == 1 then " #memeChallenge" end %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
                             <i class="material-icons cancel-share-it">clear</i>
+
                     </div>
                 <% end %>
             <div
@@ -116,14 +121,12 @@
                                 <div class="post-footer-user-image" style="background-image: url(<%= @post.user.image.url(:medium) %>)"></div>
                           <% end %>
                           <div class="footer-left">
-                              <% if @post.user.passed != true %>
-                                    <span class="post-footer-user-name">NEW USER</span>
-                              <% elsif @post.user.passed == true && @post.user.username.nil? %>
-                                  <span class="post-footer-user-name">NEW USER</span>
-                              <% else%>
-                                  <span class="post-footer-user-name">@<%= @post.user.username %></span>
+                            <% if @post.user.username.nil? %>
+                                    <span class="post-footer-user-name second">NEW USER</span>
+                              <% else %>
+                                  <span class="post-footer-user-name">@<%= @post.user.username %>
+                                  </span>
                               <% end %>
-
                             <span class="post-footer-time"><%= time_ago_in_words(@post.created_at) %> ago</span>
                           </div>
 
@@ -149,14 +152,19 @@
 
                             <i class="material-icons post-options" tabindex="12">more_horiz</i>
 
-                        <i class="material-icons comment-button">chat_bubble</i>
+
 
 
                     <span class="post-votes-word comment-number"><%= @post.comments.count %></span>
+                    <i class="material-icons comment-button">chat_bubble</i>
                     <span class="footer-interseter post-votes-word">.</span>
 
 
-
+                <% if user_signed_in? %>
+                            <span class="post-votes-word real" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size - if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>"><%=  @post.get_upvotes.size - @post.get_downvotes.size %></span>
+                        <% else %>
+                            <span class="post-votes-word real" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%=  @post.get_upvotes.size - @post.get_downvotes.size %></span>
+                        <% end %>
 
                     <% if current_user != @post.user %>
                         <div id="main-share-button">
@@ -177,6 +185,8 @@
                                 <i class="material-icons more-post-options share-button">share</i>
                             <% end %>
                         </div>
+
+
 
                         <% if (user_signed_in?) && (current_user.voted_down_on? @post) %>
                             <%= link_to dislike_post_path(@post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => @post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
@@ -205,11 +215,24 @@
 
                         <i class="material-icons more-post-options">more_horiz</i>
                     <% end %>
-                                            <% if user_signed_in? %>
-                            <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size - if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>"><%=  @post.get_upvotes.size - @post.get_downvotes.size %></span>
-                        <% else %>
-                            <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%=  @post.get_upvotes.size - @post.get_downvotes.size %></span>
+
+                    <% if @post.user.passed.nil? %>
+                        <i class="material-icons footer-interseter add-user post-votes-word" title="Accept user">person_outline</i>
                         <% end %>
+                        <% if !@post.user.passed.nil? && user_signed_in? %>
+                            <i class="material-icons footer-interseter follow-user post-votes-word <%= if current_user.following?(@post.user) then " followed " end %>" title="Follow user">
+                                <%= if current_user.following?(@post.user) then "person".html_safe else "person_add".html_safe end %></i>
+                            <% if user_signed_in? && current_user.id != @post.user.id %>
+                                        <%= form_for(current_user.active_relationships.build, remote: true, class: "hidden-imp") do |f| %>
+                                            <div><%= hidden_field_tag :followed_id, @post.user.id %></div>
+                                                <%= f.submit "following", class: "submit post-user-unfollow" %>
+
+
+                                        <% end %>
+                            <% end %>
+                        <% end %>
+                        <%= link_to report_post_path(@post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => @post.id, remote: true  do %><i class="flag-post material-icons">flag</i><% end %>
+
 
 
                 </div>

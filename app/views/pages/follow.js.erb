@@ -1,5 +1,10 @@
 <% if current_user.following?(@theuser) %>
+
+    $('#current-follow').parents(".new_relationship").siblings(".follow-user").html("person").removeClass("bounce").addClass("followed bounce animated opacity-1")
     $('#current-follow').attr('value', 'following').addClass('post-user-unfollow').removeClass('post-user-follow').attr('id', '')
+
 <% else %>
+    $('#current-follow').parents(".new_relationship").siblings(".follow-user").html("person_add").removeClass("followed bounce").addClass(" bounce animated opacity-1")
     $('#current-follow').attr('value', 'follow').removeClass('post-user-unfollow').addClass('post-user-follow').attr('id', '')
-<% end %>                                        
+
+<% end %>

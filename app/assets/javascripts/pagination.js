@@ -12,14 +12,14 @@ window.onload = function(){
     $(window).scroll(function (event) {
         if ( $('#menu-button-wrapper').hasClass('shown') ) {
         $('#menu-button').parent().removeClass('shown')
-        $('#notification-icon, #nav-icons-wrapper a').hide()    
+        $('#notification-icon, #nav-icons-wrapper a').hide()
         $('#main-page-type').fadeIn(100)
         }
-        
+
 if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-post') ) {
-    
-    
-        console.log('this is the main')
+
+
+        //console.log('this is the main')
     if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
         var url = $('#left-content-profile .pagination a.next_page').attr('href')
     }

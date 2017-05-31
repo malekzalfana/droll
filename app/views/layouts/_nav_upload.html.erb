@@ -242,7 +242,9 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 </div>
     <div id="menu-button-wrapper"><i class="material-icons" id="menu-button">menu</i></div>
     <div id="nav-icons-wrapper">
-        <div id="notification-icon"><i class="material-icons" id="notification-icon-bell">notifications_none</i><span id="notif-number"></span></div>
+        <% if !current_user.username.nil? %>
+            <div id="notification-icon"><i class="material-icons" id="notification-icon-bell">notifications_none</i><span id="notif-number"></span></div>
+        <% end %>
         <a href="/user/<%= current_user.username %>"><p id="username"><%= if current_user.username.nil? then 'profile' else current_user.username end%></p></a>
         <!--<form id="demo-2">
     	    <input id="search-icon" type="search" placeholder="Search">
@@ -252,7 +254,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
                 <span id="profile-photo-small" style="background-image: url(<%= current_user.image.url(:medium) %>)"></span>
             <% else %>
 
-               <% if user_signed_in? &&  current_user.username.nil? then "not-passed" %>
+               <% if user_signed_in? &&  current_user.username.nil? %>
                 <span id="profile-photo-small" style="background-image: url('/assets/missing.jpg')"><i class="material-icons">lock_outline</i></span>
                 <% else %>
                 <span id="profile-photo-small" style="background-image: url('/assets/missing.jpg')"></span>

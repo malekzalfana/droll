@@ -99,6 +99,10 @@ class TrendsController < ApplicationController
     end
     @post = Post.where(trendid: @trend.id ,hidden: nil).order("created_at DESC").paginate(:per_page => 35, :page => 1)
 
+
+    puts @trend.id
+    puts Post.where(trendid: @trend.id ).size
+    puts "ssssssssssssssssss"
     # .reject{ |e| @anonymous.include? e }
     respond_to do |format|
      format.html

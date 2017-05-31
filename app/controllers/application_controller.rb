@@ -15,29 +15,31 @@ class ApplicationController < ActionController::Base
   # protect database from being altered while allowing updates
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :image, :cover, :bio, :notificationsound, :nightmode, :pro, :share) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :image, :cover, :pic,:bio, :notificationsound, :nightmode, :pro, :share) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :image, :cover, :username, :bio, :notificationsound, :nightmode, :share, :tag) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :image, :cover, :pic, :username, :bio, :notificationsound, :nightmode, :share, :tag) }
   end
-  
+
   module SettingsHelper
     def resource_name
       :user
     end
-  
+
     def resource
       @resource ||= User.new
     end
-  
+
     def devise_mapping
       @devise_mapping ||= Devise.mappings[:user]
     end
   end
-  
+
+
+
   def after_sign_in_path_for(user)
     puts "ssssssss"
     puts URI(request.referer).path
-    @url = URI(request.referer) #.path.slice! "/"  
+    @url = URI(request.referer) #.path.slice! "/"
     #response.location = @url
     if @url == '/make'
       response.location = '/make'
@@ -50,7 +52,7 @@ class ApplicationController < ActionController::Base
     else
       response.location = '/'
     end
-    
+
   end
-  
+
 end

@@ -163,7 +163,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
 */
 .upvote, .downvote {
 	background-repeat: no-repeat;
-    border-radius: 15%;
+    border-radius: 50%;
     background-position: center;
 
     font-family: open sans;
@@ -186,11 +186,13 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
 }
 .upvote.voted {
     opacity: 1 !important;
-    background-image: url(voted.png);
+    background-image: url(http://i.imgur.com/aaZNwCr.png);
+    background-color: #EF5350;
 }
 .downvote.voted {
 	opacity: 1 !important;
-    background-image: url(voted-2.png);
+    background-image: url(http://i.imgur.com/aaZNwCr.png);
+    background-color: black !important;
 }
 .downvote:hover {
 	opacity: 1 !important;
@@ -432,11 +434,13 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
 }
 .post-footer .post-votes-word {
     float: right;
-    font-weight: 300;
     color: #616161;
-    font-family: lato;
+    font-family: roboto;
     margin: 18px 3px;
     font-size: 13px;
+}
+.opacity-1 {
+    opacity: 1 !important;
 }
 .comment-number {
     margin-right: 15px !important;
@@ -446,7 +450,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     margin-right: 5px !important;
 }
 .post-footer .comment-button, .post-footer .post-options {
-    color: black;
+        color: black;
     background: none;
     margin: 10px 8px;
     position: relative;
@@ -457,10 +461,14 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
 .post-footer .comment-button {
     cursor: pointer;
     font-size: 0 !important;
-    background-image: url(https://image.flaticon.com/icons/svg/134/134789.svg);
-        background-size: 15px;
+    background-image: url(https://image.flaticon.com/icons/svg/61/61157.svg);
+    background-size: 10px;
     background-repeat: no-repeat;
-    background-position: 0px 2px;
+    background-position: 8px 9px;
+    background-color: #f0f0f0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
 }
 .post-footer .downvote, .post-footer .upvote {
     margin-right: 2px !important;
@@ -576,9 +584,11 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     width: 100%;
     margin: 0px;
     font-family: roboto;
-    padding: 15px 0px;
+    padding: 0px 0px 22px 0px;
     background: white;
     border-radius: 1px;
+    color: #424242;
+    font-weight: 100;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
 }
 .accept-user p {
@@ -586,11 +596,12 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
 }
 .accept-user-button {
     padding: 10px;
-    cursor:pointer;
+    cursor: pointer;
     border-radius: 5px;
     margin-left: 5px;
-    background: #ff3000;
-    color: white;
+    border: #ff3000 1px solid;
+    color: #ff3000;
+    background: white;
 }
 .comments-wrapper {
     display: inline-block;

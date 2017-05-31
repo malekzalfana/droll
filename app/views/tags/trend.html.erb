@@ -64,6 +64,13 @@
     <%= will_paginate @post %>
     <% @post.each do |post| %>
         <div class="wrapper" data-post-id="<%= post.id %>">
+            <span class="click-mini">click on post to minimize</span>
+            <div id="loadPost" class="loadPost hidden">
+                    <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
+                        <%= text_field_tag :postid, post.id %>
+                        <%= submit_tag "Save", class: 'submit-loadpost'%>
+                    <% end %>
+                </div>
             <div class="left-wrapper" id="left-wrapper-<%= post.id %>">
                 <i class="material-icons" id="next-post-icon">navigate_next</i>
             <i class="material-icons" id="prev-post-icon">navigate_before</i>
@@ -80,12 +87,7 @@
                             <div class="favor-words">favored</div>
                 </div>
                 <% end %>
-                <div id="loadPost" class="loadPost hidden">
-                    <%= form_tag 'pages/loadPost', remote: true, :method => 'get' do %>
-                        <%= text_field_tag :postid, post.id %>
-                        <%= submit_tag "Save", class: 'submit-loadpost'%>
-                    <% end %>
-                </div>
+
                 <%# link_to(post) do %>
                     <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-image" alt="<%= post.title %>"><% end %>
                         <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:large) %>" class="post-image post-image-2" alt="<%= post.title %>"><% end %>
@@ -117,8 +119,9 @@
 
                             <i class="material-icons post-options" tabindex="12">more_horiz</i>
 
-                        <i class="material-icons comment-button">chat_bubble</i>
+
                         <span class="post-votes-word comment-number"><%= post.comments.count %></span>
+                        <i class="material-icons comment-button">chat_bubble</i>
                     <span class="footer-interseter post-votes-word">.</span>
 
 
@@ -140,6 +143,12 @@
                                 <i class="material-icons more-post-options share-button">share</i>
                             <% end %>
                         </div>
+
+                        <% if user_signed_in? %>
+                            <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
+                        <% else %>
+                            <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
+                        <% end %>
 
                         <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
                             <%= link_to dislike_post_path(post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => post.id, remote: true  do %><% end %>
@@ -166,11 +175,7 @@
                         <i class="material-icons more-post-options">more_horiz</i>
                     <% end %>
 
-                        <% if user_signed_in? %>
-                            <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
-                        <% else %>
-                            <span class="post-votes-word" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
-                        <% end %>
+
 
                 </div>
 

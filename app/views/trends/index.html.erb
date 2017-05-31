@@ -73,9 +73,28 @@
                 <% end %>
                 <% end %>
                 <a href="trends/<%= trend.name %>"><p class="trend-name">/<%= trend.name %></p></a>
-                <p class="trend-details"><%= Post.where(trendid: trend.id).size %> Posts</p>
+                <p class="trend-details first"><%= Post.where(trendid: trend.id).size %> Posts</p>
                 <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
-                <span class="follow-trend">Follow</span><span class="followed-trend" >Followed</span>
+
+
+                <div>
+                  <% Post.where(trendid: trend.id).limit(4).each do |post| %>
+                <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if !post.giphyid.blank? %><img class="post-trend-2" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+              <% end %>
+
+              <div class="trend-overlay"></div>
+
+              </div>
+              <span class="follow-trend">Follow</span><span class="followed-trend" >Followed</span>
+
+              <a href="trends/<%= trend.name %>" target="_blank" class="not-link">
+              <i class="material-icons new-tab-trend">open_in_new</i>
+              </a>
 
               </div>
             <% end %>
