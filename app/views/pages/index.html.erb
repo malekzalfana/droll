@@ -215,11 +215,18 @@
                     <div class="post-footer new <%= if post.user.passed != true then "not-passed" end %>">
                 <% if post.anonymous != true %>
                     <a href="/user/<%= post.user.username %>" class="user-link">
-                        <% if post.user.image.url == "missing.jpg" %>
-                                <div class="post-footer-user-image" style="background-image: url(/assets/<%= post.user.image.url(:tiny) %>)"></div>
-                          <% else %>
-                                <div class="post-footer-user-image" style="background-image: url(<%= post.user.image.url(:medium) %>)"></div>
-                          <% end %>
+
+
+
+
+
+                        <% if !post.user.pic.nil? && post.user.image.url == 'missing.jpg' %>
+                        <div class="post-footer-user-image" style="background-image: url(http://drolle.net/profilepics/pic<%= post.user.pic %>.jpg)"></div>
+                        <% else %>
+                        <div class="post-footer-user-image" style="background-image: url('<%= if post.user.image.url == 'missing.jpg' then 'assets/' end %><%= post.user.image.url(:thumb) %>)"></div>
+                        <%end%>
+
+
                           <div class="footer-left">
                             <% if post.user.username.nil? %>
                                     <span class="post-footer-user-name second">NEW USER</span>

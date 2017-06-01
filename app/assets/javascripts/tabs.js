@@ -1228,6 +1228,7 @@ tabs = function() {
 		$(window).scrollTop(0);
 	})
 	$(document).on('click', '#cancel-edit-profile', function() {
+		$("#setting-button, #posts-number, #upvotes-number").fadeIn(100);
 		$('#profile-under-overlay').css({
 			'background-image': originalCover
 		});
@@ -1252,24 +1253,29 @@ tabs = function() {
 	var originalUsername;
 	var originalBio;
 	$(document).on('click', '#edit-profile', function() {
+		$("#setting-button, #posts-number, #upvotes-number").hide();
 		originalCover = $('#profile-under-overlay').css('background-image');
 		originalImage = $('#profile-photo').css('background-image');
 		originalBio = $('#username-profile').text()
 		originalUsername = $('#username-profile-big').text()
 		$('#edit-profile-image, #edit-profile-cover').show();
 		$(this).hide();
-		$('#cancel-edit-profile, #profile #username-check-icon').show()
-		$('#save-profile').show().addClass('left-margined')
-		document.getElementById('username-profile').contentEditable = 'true';
-		document.getElementById('username-profile-big').contentEditable = 'true';
+		$('#cancel-edit-profile, .profile-buttons').show()
+		//$('#save-profile').show().addClass('left-margined')
+		//document.getElementById('username-profile').contentEditable = 'true';
+		//document.getElementById('username-profile-big').contentEditable = 'true';
 	})
 	$(document).on('click', '#sign-up-2', function() {
 		console.log('clicked')
 		$('#remote-login-wrapper').click()
 		$('#sign-up').click()
 	})
+	var approvedUsername;
 	$(document).on('click', '#save-profile', function() {
-		if (usernameChecked === true) {
+		console.log(usernameChecked)
+		console.log( approvedUsername )
+		if (usernameChecked ) { // && approvedUsername REMOVED
+			alert("true")
 			$('#save-profile-field').click()
 			if ($('#username-check-icon').text() == 'cancel') {
 				$('#username-check-icon').addClass('flash animated-fast')
@@ -1294,7 +1300,7 @@ tabs = function() {
 	//$(document).on('focus', '#profile-username', function(){
 	$(document).on('keyup', '#username-profile', function() {
 		$('#profile-bio-field').attr('value', $('#username-profile').text())
-		usernameChecked = true;
+		usernameChecked = false;
 		$('#username-check-icon').show()
 	})
 	if ($('body').attr('data-commentid') > '0') {
@@ -1465,11 +1471,17 @@ tabs = function() {
 		emailChecked = false
 	})
 	$(document).on('keyup', '#username-profile-big', function() {
-		$('#profile-username-field').attr('value', $('#username-profile-big').text())
-		$('#username-check-field').val($('#username-profile-big').text())
+		//$(this).text( $(this).text().toLowerCase().replace(/\s/g,'').replace("-", '').replace("!", '').replace("^", '').replace("%", '').replace("@", '').replace("$", '').replace("#", '').replace("&", '').replace("(", '').replace("(", '').replace(")", '') );
+		console.log("changed")
+
+		$('#profile-username-field').attr('value', $('#username-profile-big').text().toLowerCase().replace(/\s/g,'').replace("-", '').replace("!", '').replace("^", '').replace("%", '').replace("@", '').replace("$", '').replace("#", '').replace("&", '').replace("(", '').replace("(", '').replace(")", '') )
+		$('#username-check-field').val($('#username-profile-big').text().toLowerCase().replace(/\s/g,'').replace("-", '').replace("!", '').replace("^", '').replace("%", '').replace("@", '').replace("$", '').replace("#", '').replace("&", '').replace("(", '').replace("(", '').replace(")", '') )
 		$('#username-check-submit').click()
-		usernameChecked = false
+		usernameChecked = false;
+		approvedUsername = false;
 		$('#username-check-icon').show()
+
+
 	})
 	//})
 	$(document).on('click', '#cancel-upload-2', function(e) {

@@ -22,15 +22,15 @@
                     <span id="recent-type" class="active-type">Recent</span>
                 </div>
             </a>
-            
+
                 <i class="material-icons" id="next-post-icon">navigate_next</i>
                 <i class="material-icons" id="prev-post-icon">navigate_before</i>
-            
-            
+
+
         </div>
         <div class="upper-black"></div>
         <div class="wrapper shown" data-post-id="<%= @post.id %>">
-            
+
             <div class="left-wrapper">
                 <% if user_signed_in? && @post.user == current_user && @post.created_at > Time.now-1.minute %>
                     <div id="share-it">
@@ -42,9 +42,9 @@
                             <i class="material-icons cancel-share-it">clear</i>
                     </div>
                 <% end %>
-            <div 
+            <div
             <div class="post-image-wrapper">
-                <% if user_signed_in? && current_user != @post.user %>    
+                <% if user_signed_in? && current_user != @post.user %>
                 <div class="post-more-button <%= if current_user.voted_on? @post, vote_scope: 'report' then 'reported' elsif current_user.voted_on? @post, vote_scope: 'favor' then 'favorited' end %>">
                             <%= link_to report_post_path(@post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => @post.id, remote: true  do %><i class="reported-post material-icons">report</i><% end %>
                             <%= link_to like_post_path(@post, :favor => true), method: :put, class: 'favor-post', title: 'Add to favorites', :"data-post-id" => @post.id, remote: true  do %><i class="material-icons favorite-post">favorite</i><% end %>
@@ -54,7 +54,7 @@
                 <% end %>
                 <img src="<%= @post.image.url(:large) %>" class="post-image">
             </div>
-            
+
                 <div class="voting-wrapper">
                     <span class="post-votes count" data-post-id="<%= @post.id %>" data-votes="<%=  @post.get_upvotes.size - @post.get_downvotes.size %>">
                     <%=  @post.get_upvotes.size - @post.get_downvotes.size %></span><span class="post-votes-word"> upvotes</span>
@@ -68,11 +68,11 @@
                 <div class="post-footer">
                 <% if @post.anonymous != true %>
                         <a href="/user/<%= @post.user.username%>" class="user-link">
-                            <% if @post.user.image.url == "missing.jpg" %>
-                                    <div class="post-footer-user-image" style="background-image: url(/assets/<%= @post.user.image.url(:thumb) %>)"></div>
-                              <% else %>
-                                    <div class="post-footer-user-image" style="background-image: url(<%= @post.user.image.url(:medium) %>)"></div>
-                              <% end %>
+                            <% if !@post.user.pic.nil? && @post.user.image.url == 'missing.jpg' %>
+                        <div class="post-footer-user-image" style="background-image: url(http://drolle.net/profilepics/pic<%= @post.user.pic %>.jpg)"></div>
+                        <% else %>
+                        <div class="post-footer-user-image" style="background-image: url('<%= if @post.user.image.url == 'missing.jpg' then 'assets/' end %><%= @post.user.image.url(:thumb) %>)"></div>
+                        <%end%>
                             <span class="post-footer-user-name"><%= @post.user.username %></span>
                         </a>
                     <% else %>
@@ -81,11 +81,11 @@
                     <% end %>
                     <i class="material-icons post-options">more_vert</i>
                     <i class="material-icons comment-button">chat_bubble</i>
-                    
-                    
-                    
+
+
+
                     <% if current_user != @post.user %>
-                    
+
                     <div id="main-share-button">
                             <% if user_signed_in? %>
                                 <% if current_user.share == '1' %>
@@ -96,14 +96,14 @@
                                     <a href="https://plus.google.com/share?url=http://beta.drolle.co<%= url_for(@post) %>" title="Google Plus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '4' %>
                                     <a href="http://www.reddit.com/submit?url=http://beta.drolle.co<%= url_for(@post) %>&title=<%= @post.title %>" target="_blank"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
-                                <% elsif current_user.share == nil || current_user.share == '0' %>    
+                                <% elsif current_user.share == nil || current_user.share == '0' %>
                                     <i class="material-icons more-post-options share-button">share</i>
                                 <% end %>
                             <% elsif !user_signed_in? || current_user.share == nil || current_user.share == '0' %>
                                 <i class="material-icons more-post-options share-button">share</i>
                             <% end %>
                         </div>
-                    
+
                         <% if (user_signed_in?) && (current_user.voted_down_on? @post) %>
                             <%= link_to dislike_post_path(@post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => @post.id, remote: true  do %><% end %>
                         <% elsif (user_signed_in?) && !(current_user.voted_down_on? @post) && !(current_user.voted_up_on? @post)  %>
@@ -113,31 +113,31 @@
                         <% else %>
                             <span class="down downvote vote"></span>
                         <% end %>
-                        
+
                         <% if (user_signed_in?) && (current_user.voted_up_on? @post) %>
                             <%= link_to like_post_path(@post), method: :put, class: 'up upvote vote voted', :"data-post-id" => @post.id, remote: true  do %><% end %>
-                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? @post) && !(current_user.voted_down_on? @post)  %>                            
+                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? @post) && !(current_user.voted_down_on? @post)  %>
                             <%= link_to like_post_path(@post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => @post.id, remote: true  do %><% end %>
-                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? @post) && (current_user.voted_down_on? @post) %>                            
+                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? @post) && (current_user.voted_down_on? @post) %>
                             <%= link_to like_post_path(@post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => @post.id, remote: true  do %><% end %>
                         <% else %>
                             <span class="up upvote vote"></span>
                         <% end %>
-                            
-                        
+
+
                     <% else %>
                         <i class="material-icons more-post-options">more_horiz</i>
                     <% end %>
-                        
+
                     <% if user_signed_in? %>
                         <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size - if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? @post then 1 elsif current_user.voted_down_on? @post then -1 else 0 end %>"><%=  @post.get_upvotes.size - @post.get_downvotes.size %> points</span>
                     <% else %>
                         <span class="post-votes-word" data-points="<%= @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%=  @post.get_upvotes.size - @post.get_downvotes.size %> points</span>
-                        
+
                     <% end %>
-                    
+
                 </div>
-                
+
                 <div class="more-post-options-container <%= if @post.anonymous != true && user_signed_in? && current_user == @post.user then 'tall' end %> ">
                         <% if current_user == @post.user %>
                         <% if @post.anonymous != true %>
@@ -158,7 +158,7 @@
                         <% if @post.anonymous != true %><span class="dott">.</span><% end %>
                         <%= form_for @post, method: :delete, remote: true do |f| %><% f.submit 'delete post', class: "delete-post-submit" %><% end %>
                         <% end %>
-                        
+
                         <div class="share-buttons">
                             <span class="share-word">Share</span>
                             <!--
@@ -171,13 +171,13 @@
                             <a href="http://twitter.com/share?url=http://beta.drolle.co<%= url_for(@post) %>&amp;<%= @post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                             <a href="https://plus.google.com/share?url=http://beta.drolle.co<%= url_for(@post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                             <a href="http://www.reddit.com/submit?url=http://beta.drolle.co<%= url_for(@post) %>&title=<%= @post.title %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
-                            
+
                         </div>
                     </div>
-                
+
                 </div>
-            
-            
+
+
             <div class="middle-wrapper">
                 <div class="comments-wrapper" id="comments-wrapper-<%= @post.id %>">
                 <% if user_signed_in? %>
@@ -195,7 +195,7 @@
                             <div class="memes-emojis"><span class="make-meme">meme</span></div>
                         </div>
                       </div>
-                        
+
             <% end %>
             <% else %>
             <p class="not-signed-in-comment">You need to be signed in to comment</p>
@@ -205,7 +205,7 @@
             <div class="right-wrapper">
             <br>
             <span class="comments-big-title">Comments</span>
-                
+
             <% if @comment.count == 0 %>
                 <p class="no-comments">No one commented yet</p>
             <% else %>
@@ -218,7 +218,7 @@
         </div>
     </div>
     <% if @post.comments.count > 35 %>
-    
+
     <div class="comment-pagination"><%= will_paginate @comment %></div>
     <% end %>
         <script>
@@ -228,8 +228,8 @@
             });
         </script>
         <link href="https://fonts.googleapis.com/css?family=Schoolbell" rel="stylesheet">
-        
-        
+
+
         <% if !user_signed_in? %>
     <div id="remote-invite-wrapper">
         <i class="material-icons close-wrapper">close</i>
@@ -237,7 +237,7 @@
     <div id="invite-buttons-wrapper">
             <label id="invite-tab-1" class="invite-tab active-invite-tab">Log in</label>
             <label id="invite-tab-2"class="invite-tab">Sign up</label>
-        
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "invite-2"} ) do |f| %>
   <%= devise_error_messages! %>
 
@@ -246,7 +246,7 @@
     <%= f.text_field :username, autofocus: true, id:"sign-up-username-field", placeholder: "Username" %>
     <i class="material-icons" id="username-check-icon">check_circle</i>
   </div>
-  
+
   <div class="field">
     <%= f.email_field :email, autofocus: true, id: "email-field-settings", placeholder: "Email" %>
     <i class="material-icons" id="email-check-icon">check_circle</i>
@@ -269,28 +269,28 @@
     <button type="button" id="sign-up-submit-before" class="invite-submit">Sign up</button>
   </div>
 <% end %>
-    
-    
-    
+
+
+
         <%= form_for(:user, :url => session_path(:user), :html => {:id => "invite-1"}) do |f| %>
-        
-            
-            
+
+
+
           <div class="field">
             <%= f.email_field :email, placeholder: "Email" %>
           </div>
-        
+
           <div class="field">
             <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
           </div>
-        
+
           <% if devise_mapping.rememberable? -%>
             <div class="field" id="remember-me-button">
               <%= f.check_box :remember_me, checked: "true"%>
               <%= f.label :remember_me %>
             </div>
           <% end -%>
-        
+
           <div class="actions">
             <%= f.submit "Log in", class: "invite-submit" %>
           </div>
@@ -306,12 +306,12 @@
 
 
 <% end %>
-        
+
         </body>
-        
+
         <div id="anonymous-faces">
 				<h3>Choose your anonymous user image <i class="material-icons" id="close-anonymous-faces">clear</i></h3>
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/1face.png" data-facenumber="1">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/2face.png" data-facenumber="2">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/3face.png" data-facenumber="3">
@@ -326,7 +326,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/13face.png" data-facenumber="13">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/14face.png" data-facenumber="14">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/15face.png" data-facenumber="15">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/18face.png" data-facenumber="18">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/19face.png" data-facenumber="19">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/20face.png" data-facenumber="20">
@@ -356,7 +356,7 @@
 			<img class="rageface rageface-normal sad" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/47face.png" data-facenumber="47">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/48face.png" data-facenumber="48">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/49face.png" data-facenumber="49">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/51face.png" data-facenumber="51">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/52face.png" data-facenumber="52">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/53face.png" data-facenumber="53">
@@ -399,7 +399,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/90face.png" data-facenumber="90">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/91face.png" data-facenumber="91">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/92face.png" data-facenumber="92">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/94face.png" data-facenumber="94">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/95face.png" data-facenumber="95">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/96face.png" data-facenumber="96">
@@ -412,7 +412,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/103face.png" data-facenumber="103">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/104face.png" data-facenumber="104">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/105face.png" data-facenumber="105">
-			
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/108face.png" data-facenumber="108">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/109face.png" data-facenumber="109">
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/110face.png" data-facenumber="110">
@@ -488,7 +488,7 @@
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.nightmug.com/drolle/ragefaces/182face.png" data-facenumber="182">
 			</div>
         <% end %>
-    
+
     <div id="comment-pagination"><%= will_paginate @comment %></div>
         <script>
             $(".post-image").lazyload({

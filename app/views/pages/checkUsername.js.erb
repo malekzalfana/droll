@@ -1,11 +1,14 @@
 console.log("ssssdd")
 <% if @usernamecheck == false %>
-$('#username-check-icon').text('check_circle')
+//$('#username-check-icon').text('check_circle')
 $("#memeb-username-field").addClass("approved").removeClass("loading")
 console.log("approved")
 //alert("bitch zabat")
+approvedUsername = true
 <% else %>
 $('#username-check-icon').text('cancel')
+$("#username-profile-big").addClass("declined")
 console.log("no")
 <% end %>
-usernameChecked = true
+usernameChecked = true;
+//alert(usernameChecked)

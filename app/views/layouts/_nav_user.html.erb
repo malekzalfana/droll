@@ -262,15 +262,15 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
         <% else %>
             <% if user_signed_in? &&  current_user.username.nil? %>
                 <% if current_user.pic.nil? %>
-                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></div>
                 <% else %>
-                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"></div>
                 <% end%><i class="material-icons">lock_outline</i></span>
                 <% else %>
                 <% if current_user.pic.nil? %>
-                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></div>
                 <% else %>
-                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
+                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"></div>
                 <% end%>
                 <% end %>
         <% end %>
