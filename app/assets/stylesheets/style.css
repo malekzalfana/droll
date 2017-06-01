@@ -3675,9 +3675,7 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
     top: 4px;
     position: relative;
 }
-#tag .click-mini {
-	margin-top: 10px !Important;
-}
+
 .shown-post .single-trend {
 	display: none;
 }
@@ -9456,4 +9454,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 	    float: none !Important;
     margin: 0PX 20px !important;
     font-size: 16px !important;
+}
+#tag .wrapper.shown {
+	margin-top: 20px !Important;
 }
