@@ -256,21 +256,21 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 	    <input id="search-icon" type="search" placeholder="Search">
     </form>
     <% end %>
-    <a href="/user/<%= current_user.username %>" class="<% if user_signed_in? &&  current_user.username.nil? then "no-pointer" end %>">
+    <a href="/user/<%= current_user.username %>" class="<%= if user_signed_in? &&  current_user.username.nil? then "no-pointer" end %>">
         <% if current_user.image.url != "missing.jpg" %>
             <span id="profile-photo-small" style="background-image: url(<%= current_user.image.url(:medium) %>)"></span>
         <% else %>
             <% if user_signed_in? &&  current_user.username.nil? %>
                 <% if current_user.pic.nil? %>
-                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></div>
+                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"><i class="material-icons">lock_outline</i></span></div>
                 <% else %>
-                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"></div>
-                <% end%><i class="material-icons">lock_outline</i></span>
+                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"><i class="material-icons">lock_outline</i></span></div>
+                <% end%>
                 <% else %>
                 <% if current_user.pic.nil? %>
-                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"></div>
+                  <div id="profile-photo-small" style="background-image: url(/assets/<%= current_user.image.url(:thumb) %>)"><i class="material-icons">lock_outline</i></span></div>
                 <% else %>
-                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"></div>
+                  <div id="profile-photo-small" style="background-image: url(http://drolle.net/profilepics/pic<%= current_user.pic %>.jpg)"><i class="material-icons">lock_outline</i></span></div>
                 <% end%>
                 <% end %>
         <% end %>

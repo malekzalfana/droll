@@ -5121,6 +5121,12 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	.memeb-field-2 {
+		font-size: 23px;
+	}
+	.trend-container {
+		width: calc(100% - 25px) !important;
+	}
 	.memeb-wrapper-3 .memeb-field {
 		font-size: 20px !Important;
 	}
@@ -9237,6 +9243,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     width: 320px;
     height: 55px;
     border-radius: 7px;
+    max-width: calc(100% - 60px);
 }
 .memeb-wrapper.second, .memeb-wrapper.third {
 	display: none;
@@ -9251,7 +9258,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     margin: 10px auto;
     width: 350px;
     font-size: 20px;
-    max-width: 80%;
+    max-width: 90%;
     font-weight: 200;
 }
 #memes #trends-wrapper {
@@ -9278,6 +9285,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     display: block;
     background: none;
     border-bottom: 1px solid lightgray;
+        max-width: calc(100% - 45px);
 }
 .memeb-field:focus {
 	border-color: #ff3000;
@@ -9457,4 +9465,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 }
 #tag .wrapper.shown {
 	margin-top: 20px !Important;
+}
+#scroll-up {
+	display: none !important;
 }
