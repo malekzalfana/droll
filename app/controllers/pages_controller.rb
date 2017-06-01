@@ -136,7 +136,7 @@ class PagesController < ApplicationController
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '/?app=true&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
     else
-      @trends = Trend.all.limit(10)
+      @trends = Trend.all.limit(15)
     if user_signed_in?
       @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
       unless session[:swipe]
