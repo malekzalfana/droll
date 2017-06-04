@@ -261,6 +261,10 @@ class PagesController < ApplicationController
       current_user.save
       @username1 = true
       #redirect_to "/"
+    elsif params[:acceptAll]
+      puts "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+      puts User.where(passed: nil, posted: true).size
+      User.where(passed: nil, posted: true).update_all(passed: true )
     end
 
 
