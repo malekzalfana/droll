@@ -6,12 +6,15 @@
             <p class="pick-tags-title-2">Type <span id="type-word">Meme</span>   Trend <span id="trend-word">/samirIsABoy</span> -->
             <p class="pick-tags-title-2"><span id="trend-word-2"></span><span id="trend-word-details"></span>
             <span class="to-hide-trend">
-                <span id="trend-word-details-2">|</span>
+
                 <% if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 1 %>
+                <span id="trend-word-details-2">|</span>
                 You cannot upload a post until you get accepted by a member.
                 <% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 0 %>
+                <span id="trend-word-details-2">|</span>
                 You can only upload one post, until you become accepted by a member
                 <% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 %>
+                <span id="trend-word-details-2">|</span>
                 You already uploaded a post, until you get accepted, you can only download your memes
                 <% end %>
             </span>
@@ -36,7 +39,7 @@
       <p class="pick-tags-title pick">Pick a trend<i class="refresh-trends material-icons">refresh</i></p>
       <div id="pick-trends-wrapper">
           <% @trendname.each do |trend| %>
-          <div data-trendid="<%= trend.id %>" data-name="<%= trend.name %>" data-followers="<%= trend.followers.size unless trend.followers.nil? then "0" %>" data-posts="<%= Post.where(trendid: trend.id).size %>" class="trend-container pick-trends">
+          <div data-trendid="<%= trend.id %>" data-name="<%= trend.name %>" data-followers="<%=  unless trend.followers.nil? then trend.followers.size end %>" data-posts="<%= Post.where(trendid: trend.id).size %>" class="trend-container pick-trends">
               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="new">/<%= trend.name %></span>
               <div>
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>

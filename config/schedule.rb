@@ -4,6 +4,7 @@ every 1.minutes do
    #runner "User.where(passed: nil).update_all('passed = true')"
    #runner "User.where(passed: 'nil').update_all(passed : 'true')"
    runner "User.where(passed: nil, posted: true).update_all('passed = true ')"#, :environment => "development"
+   runner "puts 'tooooooooooooo'"
    script "acceptUsers"
    #rake "some:great:rake:task"
  end

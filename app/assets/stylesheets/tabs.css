@@ -471,7 +471,7 @@ pointer-events: auto
   margin-right: 9px !important;
 }
 #submit-video,#submit-video-before, #cancel-video,#make2 #done-meme, #make2 #cancel-meme-2,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2, #submit-image-button-before, #submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before,  #memegen-button{
-    
+
     background: #ffffff;
     color: #252525;
     width: 100px;
@@ -502,16 +502,19 @@ pointer-events: auto
 #ragefaces-filefield {
   display: none
 }
-#created-image-button-before {
+#created-image-button-before, #submit-image-button-before, #submit-image-button-before-3 {
   display: inline-block;
   margin-right: 8px;
+      background: #F44336;
+    color: white;
 }
 #created-image-button-before-wrapper {
   display: block;
   width: 100%;
 }
 #ragefaces-content #cancel-upload, #memes-content #cancel-upload-2, #cancel-upload-3 {
-  display: inline-block
+  display: inline-block;
+      background: #FAFAFA;
 }
 #cancel-upload {
   display: none;
