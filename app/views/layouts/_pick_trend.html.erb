@@ -1,9 +1,12 @@
 <div id="nav-menu-wrapper" class="second">
 
     <i id="reset-make-settings" class="material-icons expand-trends">clear</i>
+
         <div id="trends-wrapper">
             <!--
             <p class="pick-tags-title-2">Type <span id="type-word">Meme</span>   Trend <span id="trend-word">/samirIsABoy</span> -->
+            <% if user_signed_in? %>
+
             <p class="pick-tags-title-2"><span id="trend-word-2"></span><span id="trend-word-details"></span>
             <span class="to-hide-trend">
 
@@ -19,6 +22,9 @@
                 <% end %>
             </span>
             </p>
+            <% else %>
+                <p class="pick-tags-title-2"><span id="trend-word-3">You are not signed..</span></p>
+            <% end %>
 
             <% if user_signed_in? %>
             <p class="pick-tags-title">Welcome, <%= current_user.username %></p>

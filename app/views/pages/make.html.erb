@@ -128,7 +128,7 @@
     <% end %>
 
 	<input id="search-memes" placeholder="search memes ..">
-
+	<% if user_signed_in? %>
 	<% @stock1.each do |s| %>
 		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
@@ -137,6 +137,7 @@
 	            <%= submit_tag "SEND"%>
 	        <% end %>
 		</div>
+    <% end %>
     <% end %>
 
 	<div crossorigin="" class="pick-meme-container" data-original="http://www.bestofinsta.com/drolle/newmemes2/meme0.png">

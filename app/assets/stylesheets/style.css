@@ -87,7 +87,7 @@ a {
 .add-image-to-meme {
 	cursor: pointer;
 }
-#trend-word-2 {
+#trend-word-2, #trend-word-3 {
 	    font-family: roboto;
     font-weight: 400;
     margin: 5px;
@@ -4703,11 +4703,14 @@ body:not(.shown-post) .post-image-wrapper {
 #ragefaces-buttons-wrapper .anonymous-checkbox {
 	color: #5a5a5a;
 }
-/*
-#cancel-upload-3 {
+
+.not-signed-in #cancel-upload-3 {
 	display: none !important;
 }
-*/
+.not-signed-in #make-post-title-2 {
+	opacity: 0.2;
+	pointer-events: none
+}
 #tools .loading-icon:visible p {
 	display: none;
 }
