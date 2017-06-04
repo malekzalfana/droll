@@ -7508,6 +7508,9 @@ i.fa.fa-reddit-alien {
 body.not-passed #submit-image-button-2, body.not-passed #submit-image-button-before-3, body.not-passed #submit-image-button-before{
 	display: none !important;
 }
+#navbar:not(.passed) #profile-photo-small i {
+	display: none;
+}
 .not-passed #profile-photo-small i {
     color: #ffffff;
     position: relative;

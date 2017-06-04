@@ -36,7 +36,7 @@
       <p class="pick-tags-title pick">Pick a trend<i class="refresh-trends material-icons">refresh</i></p>
       <div id="pick-trends-wrapper">
           <% @trendname.each do |trend| %>
-          <div data-trendid="<%= trend.id %>" data-name="<%= trend.name %>" data-followers="<%= trend.followers.size %>" data-posts="<%= Post.where(trendid: trend.id).size %>" class="trend-container pick-trends">
+          <div data-trendid="<%= trend.id %>" data-name="<%= trend.name %>" data-followers="<%= trend.followers.size unless trend.followers.nil? then "0" %>" data-posts="<%= Post.where(trendid: trend.id).size %>" class="trend-container pick-trends">
               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="new">/<%= trend.name %></span>
               <div>
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>
