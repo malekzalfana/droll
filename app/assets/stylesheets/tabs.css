@@ -310,7 +310,7 @@
 #make-post-title{
   height: 24px;
     padding: 7px;
-    width: calc(100% - 14px);
+    width: calc(100% - 65px);
     border: none;
     margin: 0px 0px;
     font-family: open sans;
@@ -336,20 +336,25 @@
     position: relative;
 }
 #make-image-preview, #make-gif-preview {
-   width: 582px;
+   width: 530px;
    display: none;
     min-height: 150px;
     background: #fbfbfb;
     position: relative;
+    margin: 0px 25px;
     margin-bottom: 10px;
+
     border: 1px solid #dbdbdb;
+}
+#make-gif-preview {
+  display: block;
 }
 #make-gif-preview {
   min-height: 85px;
   position: relative;
 }
 #make #gifs {
-   width: 582px;
+   width: 531px;
     min-height: 0px;
     background: white;
   position: relative;
@@ -411,8 +416,7 @@
   display: inline-block;
 }
 #memes-content #new_post, #make2-meme-wrapper {
-  display: table-cell;
-  text-align: -webkit-right;
+pointer-events: auto
 }
 /*
 #preview-image-text {
@@ -467,18 +471,21 @@
   margin-right: 9px !important;
 }
 #submit-video,#submit-video-before, #cancel-video,#make2 #done-meme, #make2 #cancel-meme-2,#submit-image-button, #submit-image-button-before-3, #submit-image-button-2, #submit-image-button-before, #submit-image-button-3,#cancel-upload-3, #cancel-upload,#cancel-upload-2, #created-image-button-before,  #memegen-button{
+    
     background: #ffffff;
     color: #252525;
-    padding: 6px 10px;
-    margin: 9px auto;
-    display: inline-block;
+    width: 100px;
+    padding: 10px 0px;
     border: none;
     border-radius: 3px;
-    font-weight: bold;
+    font-weight: 400;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     cursor: pointer;
     display: none;
-    font-family: open sans;
+    font-family: roboto;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
 #memegen-button {
 	display: inline-block ;

@@ -8,7 +8,7 @@
 	<div id="tabs-wrapper">
 		<div id="memes-tab" class="tabs active-tab">Meme</div>
 	  <div id="images-tab" class="tabs">GIF</div>
-	  <div id="rage-comics-tab" class="tabs">Rage Comic</div>
+	  <div id="rage-comics-tab" class="tabs">Rage Comic<i class="material-icons hidden">computer</i></div>
 	  <div id="video-tab" class="tabs prevent-cursor hidden-imp">Video<span class="coming-soon">coming soon</span></div>
 	</div>
 	<div id="memes-content" class="choosen-content">
@@ -19,13 +19,14 @@
 			<%= form_for @post, html: { multipart: true } do |f| %>
 			 <input id="base64" type="hidden" value="" name="base64"/>
 			 <div id="image-for-meme">
-			 	<input placeholder="paste image address.." id="image-for-meme-input"></input>
-			 	<i id="image-for-meme-add" class="material-icons">add</i>
+			 	<p class="add-image-to-meme"><i class="material-icons">add_a_photo</i>Add Top Image</p>
+			 	<input placeholder="paste image address.." id="image-for-meme-input" class="hidden-imp"></input>
+			 	<i id="image-for-meme-add" class="material-icons hidden-imp">add</i>
 			 </div>
 			 <i id="image-for-meme-reset" class="material-icons">close</i>
 			 <img src="" id="image-for-meme-img">
 			 <canvas  class="middle-column" id="meme-canvas" height="1100" width="1100"></canvas>
-			 <%= f.text_area :title, id: "created-meme-title", placeholder: "Caption" %>
+			 <%= f.text_area :title, id: "created-meme-title", placeholder: "Caption This Meme" %>
 			 <%= f.text_field :facenumber,id: "created-meme-facenumber-field", class: "hidden anonymous-image-field" %>
 			 <%= f.text_field :imageaddress,id: "image-for-meme-field", class: "hidden" %>
 			 <%= f.text_field :tag_list, class: "tag-list-field" %>
@@ -117,7 +118,7 @@
 
 
 		<div id="pick-meme" class="ui-sortable">
-			<p class="make-how-to">React to a situation/image with a funny a meme. You can add custom memes. </p>
+			<p class="make-how-to"><i class="material-icons">info</i>React to a situation/image with a funny a meme. You can add custom memes. </p>
 	<i class="material-icons" id="upload-meme-stock">add</i>
 	<input id="upload-meme-stock-input" placeholder="Paste image address">
 	<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
@@ -127,17 +128,17 @@
     <% end %>
 
 	<input id="search-memes" placeholder="search memes ..">
-	<!--
-	<%# @stock1.each do |s| %>
-		<div crossorigin="" id="stock-<%# s.id %>" class="pick-meme-container" data-original="<%# s.image.url %>" >
+
+	<% @stock1.each do |s| %>
+		<div crossorigin="" id="stock-<%= s.id %>" class="pick-meme-container" data-original="<%= s.image.url %>" >
 			<i class="material-icons delete-meme-stock delete-stock">clear</i>
-			<%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
-	            <%# text_area_tag :id, s.id %>
-	            <%# submit_tag "SEND"%>
-	        <%# end %>
+			<%= form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %>
+	            <%= text_area_tag :id, s.id %>
+	            <%= submit_tag "SEND"%>
+	        <% end %>
 		</div>
-    <%# end %>
-    -->
+    <% end %>
+
 	<div crossorigin="" class="pick-meme-container" data-original="http://www.bestofinsta.com/drolle/newmemes2/meme0.png">
 		<div class="meme-shadow"></div>
 		<p class="meme-title" id="meme-title-50" contenteditable="true"><span>Condesending Wonka</span>
@@ -1175,7 +1176,7 @@
 
 
   <div id="sketch-wrapper" class="middle-column">
-  	<p class="make-how-to">Tell a funny story using rage faces and your own images.</p>
+  	<p class="make-how-to"><i class="material-icons">info</i>Tell a funny story using rage faces and your own images.</p>
 	<div id="sketch" height="300" width="750">
 		<div id="placeholder-wrapper">
 		<div id="placeholder-1" class="cancel placeholder"></div>
@@ -1284,7 +1285,7 @@
   </div>
 </div>
 	<div id="images-content-wrapper" class="choosen-content"><div id="images-content" >
-		<p class="make-how-to">React to a situation/image with a funny gif.</p>
+		<p class="make-how-to"><i class="material-icons">info</i>React to an image with a funny gif.</p>
 		<div id="make-preview-wrapper">
 			<% if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>

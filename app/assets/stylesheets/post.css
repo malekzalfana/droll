@@ -85,7 +85,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     display: block;
     position: relative !important;
     top : 0px !important;
-    widTH: 550px;
+    widTH: 512px;
 }
 .shown-post .left-wrapper {
     width: 100% !important;

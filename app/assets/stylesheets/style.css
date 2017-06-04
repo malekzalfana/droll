@@ -84,21 +84,32 @@ a {
     margin: 0px auto;
 	padding-top: 15px;
 }
+.add-image-to-meme {
+	cursor: pointer;
+}
+#trend-word-2 {
+	    font-family: roboto;
+    font-weight: 400;
+    margin: 5px;
+    margin-right: 10px;
+    display: inline-block;
+}
+#trend-word-details, #trend-word-details-2 {
+	margin-right: 30px;
+}
 #created-meme-title, #created-meme-title-2 {
-	 width: 587px;
+	    width: 587px;
     display: block;
     border: none;
     background: white;
-    font-family: open sans;
-    padding: 5px 7px;
+    font-family: roboto;
+    padding: 12px 6px;
     font-size: 16px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     resize: vertical;
-    height: 25px;
+    height: 22px;
 }
 #created-meme-title {
 	width: 537px;
-	margin-bottom: 30px;
 }
 
 #navbar {
@@ -268,7 +279,7 @@ a {
 }
 #memes-content, #gifs-content {
 	display: none;
-	margin-top:50px;
+	margin-top:90px;
 }
 #rage-comics-content {
 	display: none;
@@ -631,9 +642,9 @@ div:not(.second) #trends-wrapper {
 	height: 300px;
 }
 #meme-wrapper {
-	background: #f9f9f9;
+	background: #efefef;
     position: relative;
-    top: 10px;
+    top: 45px;
     display: table;
     padding-lefT: 0px;
     text-align: center;
@@ -664,10 +675,9 @@ textarea:focus {
 	border: 1px solid gray;
 }
 #meme-textareas-wrapper {
-	display: table-cell;
 	padding-left: 25px;
-    vertical-align: middle;
     text-align: left;
+    display: inline-block;
 }
 #meme-textareas {
 	width: 400px;
@@ -709,9 +719,12 @@ textarea:focus {
 	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 #meme-textareas p {
-	margin: 5px 0px;
-    font-family: open sans;
-    color: #252525;
+margin: 7px 0px;
+    font-family: roboto;
+    color: #616161;
+    font-size: 19px;
+    font-weight: 400;
+    margin-top: 15px;
 }
  #left-arrow-2 {
  	cursor: pointer;
@@ -2525,15 +2538,15 @@ i#upload-meme-stock:hover {
     margin: 2px 10px 10px 0px;
 }
 #make-logo {
-    position: absolute;
+        position: absolute;
     left: 140px;
     display: inline-block;
     color: #F44336;
-    font-size: 24px;
+    font-size: 19px;
     font-family: roboto;
-    font-weight: 200;
+    font-weight: 300;
     z-index: 7;
-    top: 10px;
+    top: 12px;
 }
 #unlock-feed {
     font-family: open sans;
@@ -4820,6 +4833,9 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	}
 }
 @media screen and (max-width: 600px) {
+	.to-hide-trend {
+		display: none;
+	}
 	/*
 	#new-logo {
 		display: none !important;
@@ -4847,7 +4863,7 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 		 width: 65px;
 	}
 	#show .post-comment-body, #show .comment-html {
-		width: calc(100% - 65px)
+		width: calc(100% - 65px) !important
 	}
 	#show blockquote {
 		width: 100%;
@@ -4897,7 +4913,7 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 		width: 100%;
 	}
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 512px) {
 	/*
 	.post-footer .post-votes-word {
 		 margin: 13px 5px;
@@ -5055,6 +5071,17 @@ body.shown-post #main-page-type a:hover + #back-list {
 	display: none;
 }
 @media screen and (max-width: 700px) {
+	p[data-name="rage-comics"] {
+		opacity: 0.5;
+		pointer-events: none
+	}
+	p[data-name="rage-comics"] i {
+		display: inline-block !important;
+		float: right;
+		top: 1px;
+		position: relative;
+		margin-left: 5px
+	}
 	.trend {
 	    height: 245px;
 	    width: calc(50% - 20px) !important;
@@ -5203,7 +5230,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 		display: none;
 	}
 	#upload-meme-stock-input {
-		width: calc(100% - 100px);
+		width: calc(100% - 74px);
 	}
 	#make #search-memes {
 		width: 100%;
@@ -5217,8 +5244,23 @@ body.shown-post #main-page-type a:hover + #back-list {
 		font-size: 22px;
 	}
 }
+.make-how-to i {
+	    font-size: 21px;
+    margin-right: 10px;
+    line-height: 0;
+    opacity: 0.6;
+    position: relative;
+    top: 4px;
+}
 @media screen and (max-width: 600px) {
-	#make-post-preview-wrapper #pictureInput, #make-image-preview, #make-gif-preview, #make-preview-wrapper form {
+	.make-dark-box {
+		width: calc(100% - 37px) !important;
+	}
+	#make-gif-preview {
+		    width: calc(100% - 33px) !important;
+    margin: 0px 17px !important;
+	}
+	#make-post-preview-wrapper #pictureInput, #make-image-preview, #make-preview-wrapper form {
 		width: 100% !important;
 	}
 	#make-post-title {
@@ -7382,6 +7424,7 @@ i.fa.fa-reddit-alien {
     margin-left: 0px !important;
     margin-top: 10px !important;
     padding: 7px !important;
+    display: none !important;
 
 }
 #make-tags-2-wrapper p {
@@ -7670,7 +7713,17 @@ body:not(#invite-screen) #notice-to-sign {
     display: block;
     margin-bottom: 10px;
     overflow: hidden;
-    border: 1px solid #bdbdbd;
+}
+#image-for-meme p {
+	    font-family: roboto;
+    padding: 5px 1px 10px 0px;
+    color: #BDBDBD;
+}
+#image-for-meme p i {
+	    position: relative;
+    top: 5px;
+    margin-right: 8px !important;
+    font-size: 22px !important;
 }
 #image-for-meme-input {
 	width: 250px;
@@ -7683,6 +7736,7 @@ body:not(#invite-screen) #notice-to-sign {
 	float:right;
 	padding: 5px;
 	cursor: pointer;
+	background: #efefef;
 }
 .stopped {
 	pointer-events: none;
@@ -7691,12 +7745,16 @@ body:not(#invite-screen) #notice-to-sign {
 #image-for-meme-reset, #image-for-gif-reset, #image-gif-reset, #image-for-gif-reset-2 {
 	display: none;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 40px;
+    top: 15px;
     color: white;
     background: rgba(0, 0, 0, 0.17);
     cursor: pointer;
     z-index: 4;
+}
+#image-for-gif-reset-2 {
+	right: 10px;
+    top: 10px;
 }
 #image-for-gif-reset-2 {
 	display: inline-block;
@@ -7708,6 +7766,11 @@ body:not(#invite-screen) #notice-to-sign {
 */
 .middle-column #new_post {
 	position: relative;
+    padding: 0px;
+    background: white;
+    vertical-align: top;
+    display: inline-block;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 #image-for-meme-img {
 	max-width:100%;
@@ -8333,7 +8396,14 @@ body:not(#make) .fixed-menu {
     font-weight: 100 !important;
     margin-bottom: 30px !important;
 }
-
+#cancel-upload-2 {
+	    background: #f7f7f7;
+    color: #757575;
+}
+#created-image-button-before {
+	    background: #2196F3;
+    color: white;
+}
 #notifications #notif-footer {
 	display: none !important;
 }
@@ -8622,7 +8692,7 @@ display: none !important;
     float: left;
     padding: 13px;
     background: #ffffff;
-    width: 557px;
+        width: calc(100% - 26px);
     color: #424242;
     border-bottom: 1px solid #e8e8e8;
 }
@@ -8748,14 +8818,14 @@ right: 0px;
 }
 .pick-tags-title-2 {
 	display: none;
-	font-size: 20px !important;
-	margin-top: -3px;
+	    font-size: 16px !important;
+    margin-top: 1px;
 }
 .closed .pick-tags-title, .closed .pick-tags-title-2 {
 	font-size: 27px;
     font-family: roboto;
     color: #424242;
-    font-weight: 100;
+    font-weight: 300;
     opacity: 1;
     padding: 10px 5px;
     display: inline-block;
@@ -8833,6 +8903,7 @@ span.post-trend-2-number {
 img.post-trend-2 {
     height: 100px;
     float: left;
+    pointer-events: none
 }
 .trend-container > div {
 	    height: 100px;
@@ -8951,15 +9022,14 @@ background: #F44336;
 }
 #type-word, #trend-word {
 	    font-family: roboto;
-    color: #424242;
     display: inline-block;
     padding: 9px;
     font-size: 16px;
-    border: 1px solid #F44336;
     border-radius: 20px;
     margin-right: 15px;
-        min-width: 40px;
+    min-width: 40px;
     text-align: center;
+    background: #efefed;
 }
 .opacity {
 	opacity: 0;

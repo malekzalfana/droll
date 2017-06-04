@@ -5,6 +5,8 @@ var hide;
 var trend;
 var trendid;
 var trendname;
+var trendposts;
+var trendfollowers;
 var type;
 tabs = function() {
 	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link)',
@@ -692,6 +694,9 @@ tabs = function() {
 		$(".refresh-trends").addClass("active")
 		trend = $(this).attr('data-name')
 		trendname = $(this).attr('data-name')
+		trendfollowers = $(this).attr('data-followers')
+		trendposts = $(this).attr('data-posts')
+
 		trendid = $(this).attr('data-trendid')
 		$(".pick-tags-title.new, .new-trend, .add-trend").hide();
 		//alert(trend)
@@ -753,6 +758,12 @@ tabs = function() {
 		$(".memeb-wrapper.third").fadeIn(250);
 	})
 
+
+	$(document).on('click', '.add-image-to-meme', function() {
+		$(this).hide();
+		$("#image-for-meme-input, #image-for-meme-add").removeClass("hidden-imp");
+	})
+
 	$(document).on('click', '#continue-make', function() {
 		$(".choosen-content").hide();
 		if (type == "images") {
@@ -769,13 +780,14 @@ tabs = function() {
 		} else {
 			$('#type-word').html("Gif")
 		}
-		$('#trend-word').html(trend)
+		$('#trend-word, #trend-word-2').html("/" + trend)
+		$("#trend-word-details").html(trendfollowers + " Followers - " +trendposts+ " Posts")
 		$('.make-trends-field').val(trend)
 		$('.make-trends-field.trendname').val(trendname)
 		if ( trendid != '' ) {
 			$('.make-trends-field.trendid').val(trendid)
-			alert(trendid)
-			alert( $('.make-trends-field.trendid').val() )
+			//alert(trendid)
+			//alert( $('.make-trends-field.trendid').val() )
 		}
 
 
@@ -906,7 +918,7 @@ tabs = function() {
 					$('.wrapper.shown .comment-button').click()
 				}
 				$('.wrapper').show().css({
-					'width': '550px'
+					'width': '512px'
 				}).removeClass('shown')
 				$('body').removeClass('shown-post')
 				$('.right-wrapper').hide()
@@ -937,7 +949,7 @@ tabs = function() {
 				//*/
 				//alert("econdt")
 				$(wrapper).hide().css({
-					'width': '550px'
+					'width': '512px'
 				}).removeClass('shown')
 				$(wrapper).next('.wrapper').show().css({
 					'width': '600px'
@@ -968,7 +980,7 @@ tabs = function() {
 		var wrapper = $(this).parents('.wrapper')
 		if ( $(wrapper).attr('id') != $('.wrapper').first().attr("id") ) {
 			$(wrapper).hide().css({
-				'width': '550px'
+				'width': '512px'
 			}).removeClass('shown')
 			var wrapper2 = $(wrapper).prev(".wrapper");
 			//thisWrapper = $(this).parents('.wrapper').prev()
@@ -994,7 +1006,7 @@ tabs = function() {
 		else {
 			console.log('backkkkkk')
 			$('.wrapper').show().css({
-				'width': '550px'
+				'width': '512px'
 			}).removeClass('shown')
 			$('body').removeClass('shown-post')
 			$('.right-wrapper').hide()
@@ -1091,7 +1103,7 @@ tabs = function() {
 					e.preventDefault()
 					console.log('backkkkkk')
 				$('.wrapper').show().css({
-					'width': '550px'
+					'width': '512px'
 				}).removeClass('shown')
 				$('body').removeClass('shown-post')
 				$('.right-wrapper').hide()

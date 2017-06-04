@@ -256,7 +256,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 	    <input id="search-icon" type="search" placeholder="Search">
     </form>
     <% end %>
-    <a href="/user/<%= current_user.username %>" class="<%= if user_signed_in? &&  current_user.username.nil? then "no-pointer" end %>">
+    <a href="/user/<%= current_user.username %>" class="<%= if user_signed_in? &&  current_user.passed.nil? then "no-pointer" end %>">
         <% if current_user.image.url != "missing.jpg" %>
             <span id="profile-photo-small" style="background-image: url(<%= current_user.image.url(:medium) %>)"></span>
         <% else %>
