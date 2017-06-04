@@ -765,6 +765,7 @@ tabs = function() {
 	})
 
 	$(document).on('click', '#continue-make', function() {
+		$(".pick-meme-container").slice(0,15).trigger('loadMemes')
 		$(".choosen-content").hide();
 		if (type == "images") {
 			$("#images-content-wrapper").show();
@@ -1345,7 +1346,16 @@ tabs = function() {
 	$(document).ready(function() {
 		//$('#anonymous-faces img').slice(40, $('#anonymous-faces .rageface').length - 39 ).lazyload()
 	})
-	$(".pick-meme-container").lazyload();
+	var loadMemes;
+	$(".pick-meme-container").slice(0,15).lazyload({
+	    event: "loadMemes"
+	}).addClass("bitches");
+	$(".pick-meme-container").slice(15,300).lazyload()
+
+	//$(window).bind("load", function() {
+
+	//});
+	//$(".pick-meme-container").lazyload();
 	$("#box-4-wrapper img").lazyload();
 	$("#box-5-wrapper img").lazyload();
 	var $content = $('#box-4-wrapper-inside');
@@ -1922,6 +1932,10 @@ tabs = function() {
 		e.preventDefault();
 		app.openActivity($(this).parents('a').attr('href'))
 	})
+	$(document).on('click', '#cancel-upload-3', function(e) {
+		$("#clear-button").click();
+	})
+
 	/*
 	$(document).on('click', '.app#recent .user-link ', function() {
 		$(this).hide();

@@ -397,13 +397,20 @@ a {
 	outline: nine;
 	-webkit-transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
 	transition: 0.3s cubic-bezier(0.29, 0.71, 0.58, 0.88) background;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
 }
 
 #tools > .tools:hover, #texts-wrapper .direct-tools:hover, .direct-tools {
 	cursor: pointer;
 }
 #tools .tools:hover {
-    background: #efefed;
+    background: #f9f9f9;
+}
+.gif-hr {
+	background: lightgray;
+    margin: 15px 0px 25px 26px;
+    width: 530px;
+    height: 1px;
 }
 .create:nth-child(1) {
 	font-family: open sans;
@@ -5260,6 +5267,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 @media screen and (max-width: 600px) {
 	.make-dark-box {
 		width: calc(100% - 37px) !important;
+	}
+	.gif-hr {
+		width: calc(100% - 45px) !important;
 	}
 	#make-gif-preview {
 		    width: calc(100% - 33px) !important;

@@ -1,7 +1,7 @@
 if ( $('body').is('#make2') || $('body').is('#make.signed-in:not(.app)') ) {
     var gifArray = ['lol', 'wtf', 'crying', "that's racist", 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy', 'hell no', 'damn it', 'me gusta', 'triggered', 'bitch what']
-    
-    
+
+
     function debounce(func, wait, immediate) {
 	var timeout;
 	return function() {
@@ -60,7 +60,7 @@ function createVideoTag(srcStill,src, id) {
    video.setAttribute("data-src", src);
    video.setAttribute("class", "gif-container remote-gif");
    video.style.backgroundImage = 'url(' + srcStill + ')'
-   
+
    var videoS = document.createElement('div')
    videoS.setAttribute("data-giphy-id", id);
    videoS.setAttribute("data-original", src);
@@ -68,7 +68,7 @@ function createVideoTag(srcStill,src, id) {
    //videoS.style.backgroundImage = 'url(' + src + ')'
    $('.remote-gif-overlay').lazyload();
    video.appendChild(videoS)
-   
+
    return video;
 }
 
@@ -82,11 +82,15 @@ function deleteVideos() {
 
 function getGifs(videos) {
   if(videos.data.length == 0) {
+
     displayMessage("No gifs found", true);
+  }
+  else {
+      $('#gifs').fadeIn(100);
   }
   for(var gif in videos.data) {
       let video = createVideoTag(videos.data[gif].images.fixed_width_still.url ,videos.data[gif].images.fixed_width.url, videos.data[gif].id);
-      
+
       insertVideoTag(video);
       var ccontainer = $('#gifs');
 			/*ccontainer.imagesLoaded(function() {
@@ -128,7 +132,7 @@ function initSearch(api_key, value, type) {
   } else if(type === "random") {
     url = "https://api.giphy.com/v1/gifs/" + type + "?tag=" + encodeInputValue(value) + "&api_key=" + api_key;
     loadGifs(url, type);
-  } 
+  }
 }
 
 
@@ -138,7 +142,7 @@ var target = document.getElementById("gifs");
 var loader = document.getElementById("loader");
 var messageOutput = document.getElementById("unlock-feed");
 
-    
+
     searchTerm.addEventListener("input", debounce(function() {
   initSearch("dc6zaTOxFJmzC", searchTerm.value, "search")
 }, 500));

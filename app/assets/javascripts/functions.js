@@ -580,7 +580,7 @@ functions =  function() {
 
 		$(this).css({
 			 'background': '#efefed'
-		, 'border': '#ff3000 1px solid'
+		, 'border': '#424242 1px solid'
 	//,"box-shadow": "inset 0px 0px 0px 3px #D40000"
 				//  'background': 'white'
 		});
