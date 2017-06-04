@@ -1,12 +1,15 @@
 #job_type :script, "'#{path}/script/:task' :output"
+set :output, 'log/whenever.log'
 every 1.minutes do
    #command "/usr/bin/some_great_command"
    #runner "User.where(passed: nil).update_all('passed = true')"
    #runner "User.where(passed: 'nil').update_all(passed : 'true')"
-   runner "User.where(passed: nil, posted: true).update_all('passed = true ')"#, :environment => "development"
-   runner "puts 'tooooooooooooo'"
-   script "acceptUsers"
+   #runner "User.where(passed: nil, posted: true).update_all('passed = true ')", :environment => "development"
+   #runner "puts 'tooooooooooooo'"
+   #script "acceptUsers"
    #rake "some:great:rake:task"
+   runner "User.acceptUsers"
+   #Rails.logger.debug '===========whenever is working================'
  end
 
 

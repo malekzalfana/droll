@@ -67,6 +67,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def acceptUsers
+    puts "sss"
+    Rails.logger.debug User.where(passed: nil, posted: true).size
+    User.where(passed: nil, posted: true).update_all('passed =  true ')
+    logger.debug User.where(passed: nil, posted: true).size
+    logger.info User.where(passed: nil, posted: true).size
+  end
+
 
 
 end
