@@ -4854,6 +4854,7 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	float: right;
 	position: relative;
 	top: -3px;
+	width: 200px;
 }
 #content-full2 {
 	padding-top: 80px;

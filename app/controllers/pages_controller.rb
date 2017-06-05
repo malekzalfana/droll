@@ -50,8 +50,9 @@ class PagesController < ApplicationController
       @post2 = @post2.uniq
       #@post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
       @post = Post.limit(30).paginate(:per_page => 10, :page => params[:page])
-      @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC").limit(8)
+      @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
+      @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
     else

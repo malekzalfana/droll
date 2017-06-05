@@ -1666,7 +1666,7 @@ tabs = function() {
 				});
 				});
 				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
-			}, 600)
+			}, 500)
 
 
 	})
