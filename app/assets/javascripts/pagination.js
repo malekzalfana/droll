@@ -50,6 +50,14 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                         console.log( url )
                     }
                 }
+                else if ( $('#box-5-wrapper').hasClass('active') ) {
+                    var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
+                    $('#box-5-wrapper .pagination').text('more posts are coming')
+                    //if ( nomorefavors == false ) {
+                        $.getScript( urlNEWPOSTS )
+                        console.log( url )
+                    //}
+                }
                 else {
                     console.log('yes')
                     if ( !$('body').hasClass('shown-post') ){

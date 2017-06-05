@@ -1,13 +1,30 @@
-$('body').removeClass('loadingPost')
-$('#content-full2.new-content').append('<%= j render(@post) %>');
-<% if @post.next_page %>
-  $('.pagination').replaceWith('<%= j will_paginate @post %>');
-<% else %>
-  $(window).off('scroll');
-  $('.pagination').remove();
-<% end %>
-$("img.post-image").lazyload({
-    	threshold: 200,
-    	event : "clickedThePost"
-});
-$("img.post-image").trigger("clickedThePost");
+if ( $("#box-5-wrapper").hasClass("active")  ) {
+  $('body').removeClass('loadingPost')
+  $('#box-5-wrapper .reco-trend').append('<%= j render(@newposts) %>');
+  <% if @post.next_page %>
+    $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
+  <% else %>
+    //$(window).off('scroll');
+    $('.pagination').remove();
+  <% end %>
+  //$("img.post-image").lazyload({
+  //    	threshold: 200,
+  //    	event : "clickedThePost"
+  //});
+  //$("img.post-image").trigger("clickedThePost");
+}
+else {
+  $('body').removeClass('loadingPost')
+  $('#content-full2.new-content').append('<%= j render(@post) %>');
+  <% if @post.next_page %>
+    $('#content-full2 > .pagination').replaceWith('<%= j will_paginate @post %>');
+  <% else %>
+    $(window).off('scroll');
+    $('.pagination').remove();
+  <% end %>
+  $("img.post-image").lazyload({
+      	threshold: 200,
+      	event : "clickedThePost"
+  });
+  $("img.post-image").trigger("clickedThePost");
+}
