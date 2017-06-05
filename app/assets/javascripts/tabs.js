@@ -1662,11 +1662,11 @@ tabs = function() {
 				$content3.imagesLoaded(function() {
 				$content3.masonry({
 					itemSelector: '.wrapper-new-2',
-					gutter: 20
+					gutter: 35
 				});
 				});
 				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
-			}, 900)
+			}, 600)
 
 
 	})

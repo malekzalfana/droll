@@ -7,7 +7,7 @@
         <p id="new-posts"><i class="material-icons">access_time</i>New Posts<span>click to slide page</span></p>
         <div class="reco-trend">
             <% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
+                <div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
 
                     <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
                     <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
@@ -48,87 +48,12 @@
 
 
 
-            <% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %><% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %><% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %><% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %><% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %><% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %><% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
-                <div class="wrapper-new-2">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                </div>
-            <% end %>
-
-
-
-
 
 
         </div>
     </div>
     <div id="box-3-wrapper">
-            <p>Who to follow</p>
+            <p ID="who-to-follow"><i class="material-icons">person_outline</i>Who to follow</p>
             <% @randomUsers.each do |user| %>
                 <div class="box-profile-wrapper">
                     <a href="/user/<%= user.username %>">
