@@ -4185,24 +4185,24 @@ iframe {
     top: 0 !important;
 }
 #go-back {
-	POSITION: ABSOLUTE;
-    top: 110px;
-
-    padding: 160px 0px !IMPORTANT;
-    background: #e2e2e2 !IMPORTANT;
-    color: #969696;
+	    POSITION: FIXED;
+    display: inline-block;
+    PADDING: 5PX;
+    background: #ff3000 !IMPORTANT;
+    color: #ffffff;
     margin-left: 10px !IMPORTANT;
     CURSOR: POINTER;
-        left: 290px;
+    RIGHT: 0PX;
     transform: rotate(180deg);
 }
 #go-back:hover, #go-back:active {
 	background: #d2d2d2;
 }
 #box-5-wrapper.active #go-back {
-	display: block;
-	LEFT: -80PX !important;
-	transform: rotate(0deg);
+	    display: block;
+    RIGHT: INHERIT;
+    LEFT: -10PX !important;
+    transform: rotate(0deg);
 }
 #box-5-wrapper .post-votes-word {
         padding: 1px 4px 0px 0px;
@@ -9506,6 +9506,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     margin-left: 5px !important;
     position: relative;
     top: 2px;
+    DISPLAY: NONE !important;
 }
 .post-new-trend:hover i, .post-new-trend:active i {
 	opacity: 1;

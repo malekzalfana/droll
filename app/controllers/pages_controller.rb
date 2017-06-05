@@ -20,7 +20,7 @@ class PagesController < ApplicationController
         @welcomeMessage = true
         session[:display_welcome] = true
     end
-    @trends = Trend.all.limit(10)
+    @trends = Trend.all.limit(15)
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
@@ -221,7 +221,7 @@ class PagesController < ApplicationController
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
 
     end
-    @trends = Trend.all.limit(10)
+    @trends = Trend.all.limit(15)
       @trendname = Trend.all
   end
 
@@ -235,11 +235,11 @@ class PagesController < ApplicationController
       @post = current_user.posts.build(params[:post])
       @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
-      @trends = Trend.all.limit(10)
+      @trends = Trend.all.limit(15)
       @trendname = Trend.all
     end
     #@post = current_user.posts.build(params[:post])
-    @trends = Trend.all.limit(10)
+    @trends = Trend.all.limit(15)
       @trendname = Trend.all
   end
   def ragaecomics
@@ -277,7 +277,7 @@ class PagesController < ApplicationController
     @post = current_user.posts.build(params[:post])
     @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
     @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
-    @trends = Trend.all.limit(10)
+    @trends = Trend.all.limit(15)
   end
 
   def make2
