@@ -6146,6 +6146,9 @@ body.shown-post .post-image-2 {
 #content-full2 .downvote {
     margin-right: 7px;
 }
+#content-full2.go-left .wrapper {
+	display: none !important;
+}
 a[href="/users/auth/twitter"] {
 	display: none !important;
 }
@@ -8069,16 +8072,18 @@ body:not(#make) .fixed-menu {
 #box-5-wrapper.active {
 	width: 1160px;
 }
+.reco-trend {
+	WIDTH: 100%;
+}
 #box-5-wrapper.active .wrapper-new-2 {
 	transition: width none;
+	transition: opacity 0.1s ease-out !important;
 	background: #ffffff;
     padding: 0px 10px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     width: 250px;
     box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.14);
     float: left;
-    margin-right: 20px;
-    margin-bottom: 20px;
 }
 .wrapper-new-2 {
     background: #ffffff;
@@ -9320,6 +9325,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     background-repeat: no-repeat;
     background-size: 10px;
     background-position: 210px 14px;
+}
+.no-opacity{
+	opacity: 0;
+}
+.no-click {
+	pointer-events: none
 }
 /*
 .memeb-wrapper.approved .memeb-field.f {

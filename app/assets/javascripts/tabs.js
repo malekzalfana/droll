@@ -1368,7 +1368,7 @@ tabs = function() {
 	//});
 	//$(".pick-meme-container").lazyload();
 	$("#box-4-wrapper img").lazyload();
-	$("#box-5-wrapper img").lazyload();
+
 	var $content = $('#box-4-wrapper-inside');
 		$content.imagesLoaded(function() {
 			$content.masonry({
@@ -1626,8 +1626,9 @@ tabs = function() {
 		$('.choosen-content .tag-list-field').val(tagsArray)
 	})
 	$(document).on('click', '#new-posts', function() {
-		$("#content-full2, #box-3-wrapper, #box-4-wrapper").addClass("transition")
+		$("#content-full2").addClass("transition")
 		if ( $(this).hasClass("active") ) {
+
 			$(this).removeClass("active")
 			$("#box-5-wrapper").removeClass("active")
 			$("#content-full2").removeClass("go-left")
@@ -1641,6 +1642,9 @@ tabs = function() {
 			*/
 		}
 		else {
+			$('#box-5-wrapper .wrapper-new-2').addClass("no-opacity no-click")
+
+
 			$(this).addClass("active")
 			$("#box-5-wrapper").addClass("active")
 		$("#content-full2").addClass("go-left")
@@ -1652,9 +1656,25 @@ tabs = function() {
 		})
 		*/
 		}
+		setTimeout(function(){
+				var $content3 = $('.reco-trend');
+				$content3.imagesLoaded(function() {
+				$content3.masonry({
+					itemSelector: '.wrapper-new-2',
+					gutter: 20
+				});
+				});
+				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+			}, 900)
 
 
 	})
+	var loadnew;
+
+	$("#box-5-wrapper img").lazyload({
+		event: "loadnew"
+	});
+	$("#box-5-wrapper img").trigger("loadnew")
 	$(document).on('click', '#save-settings-before', function() {
 		if (!$('#more-settings-options-wrapper').is(':visible')) {
 			$('#new-password-field').val('')
@@ -2111,6 +2131,7 @@ tabs = function() {
 			});
 			//$('#left-content-profile').removeClass("opacity");
 		});
+
 	});
 
 	//$('#left-content-profile').fadeIn();
