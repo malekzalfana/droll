@@ -1,40 +1,3 @@
-<% if @newpostss %>
-<div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
-
-                    <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
-                    <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
-
-                    <p class="post-new-p"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
-                    <% if user_signed_in? %>
-                            <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
-                        <% else %>
-                            <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
-                        <% end %>
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
-                                            <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
-                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
-                        <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
-                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
-                            <!--<i class="material-icons downvote new">keyboard_arrow_up</i>-->
-                        <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && (current_user.voted_up_on? post) %>
-                            <%= link_to dislike_post_path(post), method: :put, class: 'down downvote downvote vote not-voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
-                        <% else %>
-                            <span class="down downvote vote"><i class="material-icons">arrow_drop_up</i></span>
-                        <% end %>
-
-                        <% if (user_signed_in?) && (current_user.voted_up_on? post) %>
-                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
-                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && !(current_user.voted_down_on? post)  %>
-                        <!--<i class="material-icons new upvote">keyboard_arrow_up</i>-->
-                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
-                        <% elsif (user_signed_in?) && !(current_user.voted_up_on? post) && (current_user.voted_down_on? post) %>
-                            <%= link_to like_post_path(post), method: :put, class: 'up upvote vote upvote not-voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
-                        <% else %>
-                            <span class="up upvote vote"><i class="material-icons">arrow_drop_up</i></span>
-                        <% end %>
-                </div>
-<% else %>
 <div class="wrapper" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
     <span class="click-mini">click on post to minimize</span>
     <i class="material-icons" id="prev-post-icon">navigate_before</i>
@@ -335,4 +298,3 @@
                                     </div>
 
         </div>
-<% end %>
