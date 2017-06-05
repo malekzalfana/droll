@@ -4187,19 +4187,22 @@ iframe {
 #go-back {
 	POSITION: ABSOLUTE;
     top: 110px;
-    LEFT: -80PX;
+
     padding: 160px 0px !IMPORTANT;
     background: #e2e2e2 !IMPORTANT;
     color: #969696;
-    display: none;
     margin-left: 10px !IMPORTANT;
     CURSOR: POINTER;
+        left: 290px;
+    transform: rotate(180deg);
 }
 #go-back:hover, #go-back:active {
 	background: #d2d2d2;
 }
 #box-5-wrapper.active #go-back {
 	display: block;
+	LEFT: -80PX !important;
+	transform: rotate(0deg);
 }
 #box-5-wrapper .post-votes-word {
         padding: 1px 4px 0px 0px;
