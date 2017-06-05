@@ -1,6 +1,6 @@
 if ( $("#box-5-wrapper").hasClass("active")  ) {
   $('body').removeClass('loadingPost')
-  $('#box-5-wrapper .reco-trend').append('<%= j render(@newposts) %>');
+  $('#box-5-wrapper .reco-trend').append('<%= render partial: 'posts/post', collection: @newposts %>');
   <% if @post.next_page %>
     $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
   <% else %>
@@ -12,6 +12,18 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
   //    	event : "clickedThePost"
   //});
   //$("img.post-image").trigger("clickedThePost");
+
+				var $content3 = $('.reco-trend');
+				$content3.imagesLoaded(function() {
+				$content3.masonry({
+					itemSelector: '.wrapper-new-2',
+					gutter: 35
+				});
+				});
+
+			setTimeout(function(){
+				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+			}, 500)
 }
 else {
   $('body').removeClass('loadingPost')

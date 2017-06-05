@@ -1,4 +1,4 @@
-<% if @newposts %>
+<% if @newpostss %>
 <div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
 
                     <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
