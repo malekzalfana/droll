@@ -1927,9 +1927,11 @@ tabs = function() {
 		if ($(this).scrollTop() > 44) {
 			//console.log("sssss")
 			$('#nav-menu-wrapper').addClass('fixed-menu')
+			$("#go-back").addClass("fixed")
 			$("#box-3-wrapper, #box-4-wrapper").addClass("fixed-sides")
 		} else {
 			//console.log("sssss")
+			$("#go-back").removeClass("fixed")
 			$('#nav-menu-wrapper').removeClass('fixed-menu')
 			$("#box-3-wrapper, #box-4-wrapper").removeClass("fixed-sides")
 		}

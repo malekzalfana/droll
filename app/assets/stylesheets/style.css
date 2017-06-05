@@ -4188,12 +4188,32 @@ iframe {
 	    POSITION: FIXED;
     display: inline-block;
     PADDING: 5PX;
-    background: #ff3000 !IMPORTANT;
-    color: #ffffff;
+        background: #dcdcdc !IMPORTANT;
+    color: #969696;
     margin-left: 10px !IMPORTANT;
     CURSOR: POINTER;
     RIGHT: 0PX;
     transform: rotate(180deg);
+}
+#go-back-wrapper
+{
+	display: none !important;
+}
+#new-posts i {
+	    font-size: 19px;
+    line-height: 0;
+    position: relative;
+    top: 3px;
+    margin-right: 8px;
+
+}
+#new-posts {
+	cursoR:pointer;
+}
+#new-posts span {
+	    font-size: 11px;
+    margin: 11px;
+    opacity: 0.5;
 }
 #go-back:hover, #go-back:active {
 	background: #d2d2d2;
