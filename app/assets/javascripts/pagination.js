@@ -56,6 +56,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     //if ( nomorefavors == false ) {
                         $.getScript( urlNEWPOSTS )
                         console.log( url )
+                        console.log("box5")
                     //}
                 }
                 else {
