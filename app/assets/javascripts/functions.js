@@ -1662,12 +1662,12 @@ var painting;
 			else if (tool == 'text-#d40000') {
 				$('#texts-button').children('.schoolbell-text').hide()
 				$('#texts-button').children('.text').eq(0).show()
-				$('#texts-button').css({'background':'#F15247'});
+				$('#texts-button').css({'border':'1px solid rgb(66, 66, 66)', 'background':'#efefed'});
 			}
 			else if ( tool == 'text-black' ) {
 				$('#texts-button').children('.schoolbell-text').show()
 				$('#texts-button').children('.text').eq(0).hide()
-				$('#texts-button').css({'background':'#F15247'});
+				$('#texts-button').css({'border':'1px solid rgb(66, 66, 66)', 'background':'#efefed'});
 			}
 		});
 		//$('#shapes').click(function(){

@@ -1352,6 +1352,17 @@ tabs = function() {
 	}).addClass("bitches");
 	$(".pick-meme-container").slice(15,300).lazyload()
 
+	var backgroundImage = function(){
+		$(".invite-underlay").css({'opacity':'0.7'})
+	}
+	var loadbi;
+
+	$("#invite-page").lazyload({
+		event: 'loadbi',
+		load: backgroundImage
+	})
+	$("#invite-page").trigger('loadbi')
+
 	//$(window).bind("load", function() {
 
 	//});
@@ -1506,7 +1517,7 @@ tabs = function() {
 
 	})
 	//})
-	$(document).on('click', '#cancel-upload-2', function(e) {
+	$(document).on('click', '#cancel-upload-2:not(.second)', function(e) {
 		e.preventDefault();
 		$('#pick-meme').show();
 		$('#text-top, #created-meme-title, #text-bottom').val('')
@@ -1613,6 +1624,36 @@ tabs = function() {
 	$(document).on('click', '#done-tags', function() {
 		$('#make-tags-wrapper').fadeOut(100)
 		$('.choosen-content .tag-list-field').val(tagsArray)
+	})
+	$(document).on('click', '#new-posts', function() {
+		$("#content-full2, #box-3-wrapper, #box-4-wrapper").addClass("transition")
+		if ( $(this).hasClass("active") ) {
+			$(this).removeClass("active")
+			$("#box-5-wrapper").removeClass("active")
+			$("#content-full2").removeClass("go-left")
+			//$("#box-5-wrapper").removeClass("go-left-2")
+			//$("#box-5-wrapper").css({"left":"65px"})
+			/*
+			$("#box-5-wrapper").animate({
+				right: 65,
+				left: 'toggle'
+			})
+			*/
+		}
+		else {
+			$(this).addClass("active")
+			$("#box-5-wrapper").addClass("active")
+		$("#content-full2").addClass("go-left")
+		//$("#box-5-wrapper").addClass("go-left-2")
+		//$("#box-5-wrapper").css({"left":"65px"})
+		/*
+		$("#box-5-wrapper").animate({
+			left: 65
+		})
+		*/
+		}
+
+
 	})
 	$(document).on('click', '#save-settings-before', function() {
 		if (!$('#more-settings-options-wrapper').is(':visible')) {

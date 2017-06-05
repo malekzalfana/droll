@@ -3374,9 +3374,16 @@ t
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 */
-.not-passed #profile-photo-small {
+.not-passed#navbar #profile-photo-small {
 	margin-right: 15px !important;
 
+}
+.main-icons {
+	    line-height: 0;
+    position: relative;
+    top: 6px;
+    margin-right: 7px;
+    color: #ff3000;
 }
 #profile-navbar {
 	background: none;
@@ -8032,9 +8039,9 @@ body:not(#make) .fixed-menu {
 	    width: 270px;
     position: absolute;
     height: 242px;
-    margin: 10px 0px;
+    margin: 0px 0px;
     border-radius: 2px;
-    left: 65px;
+    left: -280px;
     top: 90px;
 }
 #box-4-wrapper {
@@ -8051,16 +8058,31 @@ body:not(#make) .fixed-menu {
 	    width: 270px;
     position: absolute;
     height: 242px;
-    margin: 10px 0px;
+    margin: 0px 0px;
     border-radius: 2px;
-    right: 65px;
-    top: 90px;
+    left: 610px;
+    transition: all 0.6s ease-out;
 }
 #box-5-wrapper img {
 	width: 250px;
 }
+#box-5-wrapper.active {
+	width: 1160px;
+}
+#box-5-wrapper.active .wrapper-new-2 {
+	transition: width none;
+	background: #ffffff;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    width: 250px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.14);
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 .wrapper-new-2 {
     background: #ffffff;
+    width: 250px;
     padding: 0px 10px;
     margin-bottom: 10px;
     box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.14);
@@ -8137,6 +8159,7 @@ body:not(#make) .fixed-menu {
     left: 45px;
     margin-top: 15px;
     font-size: 16px;
+    text-align: left;
 }
 .box-profile-wrapper .post-user-unfollow, .box-profile-wrapper .post-user-follow {
 	opacity: 1 !important;
@@ -8172,6 +8195,7 @@ body:not(#make) .fixed-menu {
     font-size: 14px;
     margin: 3px 2px;
     font-weight: 100;
+    text-align: left;
 }
 
 @media screen and (max-width: 1200px) and (min-width: 850px) {
@@ -8416,6 +8440,20 @@ body:not(#make) .fixed-menu {
 #cancel-upload-2 {
 	    background: #f7f7f7;
     color: #757575;
+    margin-righT: 10px;
+}
+#cancel-upload-2.second {
+	displaY: none !important;
+    color: white;
+    width: 60px;
+    margin-righT: 10px;
+}
+#cancel-upload-2.second i {
+	    font-size: 22px !important;
+    line-height: 0;
+    position: relative;
+    top: 5px;
+    color: #616161;
 }
 #created-image-button-before {
 	    background: #2196F3;
@@ -9139,7 +9177,9 @@ p.pick-tags-title.new {
     font-weight: 800;
 }
 #invite-page {
+	/*
 	background: url(https://img.memesuper.com/41133be7d2bda27e380d0a32d715100b_hd-meme-wallpapers-and-all-memes-wallpaper_1548-1094.jpeg) !important;
+	*/
 	background-size: cover !important;
 }
 .not-signed-in .memeb-wrapper {
@@ -9221,7 +9261,7 @@ background: -moz-linear-gradient(45deg, #e50000 0%, #ff3000 100%);
 background: -webkit-linear-gradient(45deg, #e50000 0%,#ff3000 100%);
 background: linear-gradient(45deg, #e50000 0%,#ff3000 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', endColorstr='#ff3000',GradientType=1 );
-    opacity: 0.7;
+    opacity: 1;
     z-index: -1;
 }
 .memeb-wrapper-2,  .memeb-wrapper-3 {
@@ -9403,14 +9443,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 	color:#F44336;
 }
 .post-new-trend {
-    text-align: left!important;
-    margin: 3px 10px 0 5px!important;
+        text-align: left!important;
+    margin: -2px 10px 0 5px!important;
     display: inline-block!important;
     width: calc(100% - 20px)!important;
     font-size: 13px!important;
-    padding-bottom: 4px;
+    padding: 7px 0px;
     color: #424242;
-    border-bottom: 1px solid #e2e2e2;
+    border-top: 1px solid #e2e2e2;
 }
 .post-new-trend:hover {
 	opacity: 0.9;
@@ -9555,4 +9595,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 }
 #scroll-up {
 	display: none !important;
+}
+.go-left {
+	position: relative !important;
+	left: calc(-100% + 480px) !important
+
+}
+.transition {
+	transition: 0.6s ease-out all;
+}
+.go-left-2 {
+
+	position: absolute;
+	RIGHT: initial;
+	BOTTOM: initial;
+	TOP: 90PX;
+	left: 65px !Important;
 }

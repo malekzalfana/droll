@@ -49,8 +49,9 @@
 <div class="overlay-full"></div>
 <div class="upper-black"></div>
     <%= render '/layouts/trends_tags' %>
-    <%= render '/layouts/who_to_follow' %>
+
 <div id="content-full2" class="full-wrapper new-content">
+    <%= render '/layouts/who_to_follow' %>
 
 
     <% if @welcomeMessage == true %>
@@ -712,7 +713,7 @@
 
 </body>
 <% else %>
-<body  data-no-turbolinks='true' id="invite-page<%# controller.action_name %>" class="<%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">
+<body  data-no-turbolinks='true' id="invite-page<%# controller.action_name %>" data-original="https://img.memesuper.com/41133be7d2bda27e380d0a32d715100b_hd-meme-wallpapers-and-all-memes-wallpaper_1548-1094.jpeg" class="<%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">
     <style>
         input:-moz-placeholder {
 	color: #ffffff;

@@ -1,4 +1,4 @@
-body {
+body:not(#invite-page) {
     background: #efefed !important;
 }
 #content-full2 .post-comment {
@@ -27,6 +27,7 @@ body {
 
 #content-full2 {
     width: 600px;
+    position: relative;
     /*position: absolute;*/
     top: 0px;
     left: 0;

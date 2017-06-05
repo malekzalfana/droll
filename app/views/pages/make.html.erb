@@ -81,7 +81,14 @@
 							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
 						</div>
 
-						<button id="created-image-button-before">Post</button><button id="cancel-upload-2">cancel</button>
+						<button id="created-image-button-before">Post</button>
+
+						<a id="downloadImgLink" onclick="$('#downloadImgLink').attr('href', memeCanvas.toDataURL());" download="meme.png" href="#" target="_blank">
+						<button id="cancel-upload-2" class="second"><i class="material-icons">file_download</i></button>
+						</a>
+
+						<button id="cancel-upload-2">cancel</button>
+
 					<div id="make-tags-2" class="make-tags">
 						<i class="material-icons">sort</i>
 					</div>
@@ -1278,7 +1285,7 @@
 
     </div>
 	  <div id="more-tools-wrapper">
-		  <a id="id_download" class="download-image"><button class="tools" ><span class="eraser"></span></button></a>
+		  <a id="id_download" class="download-image not-link"><button class="tools" ><span class="eraser"></span></button></a>
 		  <button id="clear-button" class="tools"><span class="eraser"></span></button>
 		<button id="undo" class="tools"><i class="material-icons">undo</i></button>
       <button id="redo" class="tools"><i class="material-icons">redo</i></button>
