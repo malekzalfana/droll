@@ -1625,6 +1625,7 @@ tabs = function() {
 		$('#make-tags-wrapper').fadeOut(100)
 		$('.choosen-content .tag-list-field').val(tagsArray)
 	})
+	$(document).on('click', '#go-back', function() { $("#new-posts").click() })
 	$(document).on('click', '#new-posts', function() {
 		$("#content-full2").addClass("transition")
 		if ( $(this).hasClass("active") ) {
