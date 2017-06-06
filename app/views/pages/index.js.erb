@@ -1,7 +1,7 @@
 var html3;
 if ( $("#box-5-wrapper").hasClass("active")  ) {
   $('body').removeClass('loadingPost')
-  html3 = $(<%= j render :partial => 'posts/newpost', :collection => @newposts %>);
+  html3 = $('<%= j render :partial => 'posts/newpost', :collection => @newposts %>');
   $('#box-5-wrapper .reco-trend').append(html3);
 
   <% if @post.next_page %>
