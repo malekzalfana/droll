@@ -8,11 +8,7 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
     //$(window).off('scroll');
     $('.pagination').remove();
   <% end %>
-  //$("img.post-image").lazyload({
-  //    	threshold: 200,
-  //    	event : "clickedThePost"
-  //});
-  //$("img.post-image").trigger("clickedThePost");
+
 
 				var $content3 = $('.reco-trend');
 				$content3.imagesLoaded(function() {
@@ -23,8 +19,12 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
 				});
 
 			setTimeout(function(){
-				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
-			}, 500)
+    				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+    			}, 500)
+    			$("#box-5-wrapper img").lazyload({
+    		event: "loadnew"
+    	});
+    	$("#box-5-wrapper img").trigger("loadnew")
 }
 else {
   $('body').removeClass('loadingPost')
