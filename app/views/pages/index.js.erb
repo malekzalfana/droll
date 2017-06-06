@@ -12,7 +12,13 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
   <% end %>
 
 
+    $(document).ready(function(){
+    $("#box-5-wrapper img").lazyload({
+    		event: "loadnew"
+    	});
+    $("#box-5-wrapper img").trigger("loadnew")
 
+		})
 
 			setTimeout(function(){
     				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
