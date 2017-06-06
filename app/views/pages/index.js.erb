@@ -7,7 +7,7 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
   <% if @post.next_page %>
     $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
   <% else %>
-    //$(window).off('scroll');
+    $(window).off('scroll');
     $('.pagination').remove();
   <% end %>
 
@@ -16,8 +16,15 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
     $("#box-5-wrapper img").lazyload({
     		event: "loadnew"
     	});
+    	$content3 = $("#box-5-wrapper .reco-trend")
     $("#box-5-wrapper img").trigger("loadnew")
-
+  		$content3.masonry('appended', $(html3);
+  		$content3.imagesLoaded(function() {
+				$content3.masonry({
+					itemSelector: '.wrapper-new-2',
+					gutter: 35
+				});
+				});
 		})
 
 			setTimeout(function(){
