@@ -7,7 +7,7 @@
 
         <p id="new-posts"><i class="material-icons">access_time</i>New Posts<span>click to slide page</span></p>
         <div class="reco-trend">
-            <% Post.where.not(title: "", trendid: nil).order("created_at DESC").limit(8).reverse.each do |post| %>
+            <% @newposts.each do |post| %>
                 <div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
 
                     <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>

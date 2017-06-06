@@ -52,7 +52,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') && !$("body").hasClass("loadingPost") ) {
                     //var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
-                    $('#box-5-wrapper .pagination').text('more posts are coming')
+                    $('#box-5-wrapper .pagination').html('more posts are coming')
                     //if ( nomorefavors == false ) {
                         $.getScript( $('#box-5-wrapper .pagination a.next_page').attr('href') )
                         //console.log( url )
