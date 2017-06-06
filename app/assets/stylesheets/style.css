@@ -8158,6 +8158,9 @@ body:not(#make) .fixed-menu {
     margin-bottom: 20px;
     box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.14);
 }
+#box-5-wrapper:not(.active) div:nth-child(n+9) {
+	display: none !important;
+}
 .wrapper-new-2 p {
 	margin: 7px 3px;
     font-size: 13px;
