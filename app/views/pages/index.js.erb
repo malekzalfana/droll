@@ -1,6 +1,6 @@
 if ( $("#box-5-wrapper").hasClass("active")  ) {
   $('body').removeClass('loadingPost')
-  var html3 = "<%= j render :partial => 'posts/newpost', :collection => @newposts %>"
+  var html3 = <%= j render :partial => 'posts/newpost', :collection => @newposts %>
   $('#box-5-wrapper .reco-trend').append(html3);
   <% if @post.next_page %>
     $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
