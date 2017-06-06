@@ -55,8 +55,8 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     $('#box-5-wrapper .pagination').text('more posts are coming')
                     //if ( nomorefavors == false ) {
                         $.getScript( urlNEWPOSTS )
-                        console.log( url )
-                        console.log("box5")
+                        //console.log( url )
+                        //console.log("box5")
                     //}
                 }
                 else {
