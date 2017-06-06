@@ -1,4 +1,4 @@
-<% @newposts.each do |post| %>
+
 <div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
 
                     <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
@@ -34,4 +34,3 @@
                             <span class="up upvote vote"><i class="material-icons">arrow_drop_up</i></span>
                         <% end %>
                 </div>
-                <% end %>
