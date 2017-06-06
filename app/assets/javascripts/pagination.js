@@ -50,7 +50,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                         console.log( url )
                     }
                 }
-                else if ( $('#box-5-wrapper').hasClass('active') ) {
+                else if ( $('#box-5-wrapper').hasClass('active') && !$("body").hasClass("loadingPost") ) {
                     //var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
                     $('#box-5-wrapper .pagination').text('more posts are coming')
                     //if ( nomorefavors == false ) {
