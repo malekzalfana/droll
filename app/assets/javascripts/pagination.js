@@ -52,9 +52,11 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') && !$("body").hasClass("loadingPost") ) {
                     //var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
-                    $('#box-5-wrapper .pagination').html('more posts are coming')
+
                     //if ( nomorefavors == false ) {
+                    console.log( $('#box-5-wrapper .pagination a.next_page'))
                         $.getScript( $('#box-5-wrapper .pagination a.next_page').attr('href') )
+                        $('#box-5-wrapper .pagination').html('more posts are coming')
                         //console.log( url )
                         //console.log("box5")
                         $('body').addClass('loadingPost')
