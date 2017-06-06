@@ -1,4 +1,4 @@
-<% if local_assigns[:newp] == true%>
+<% if local_assigns[:newp].nil? %>
 <div class="wrapper" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
     <span class="click-mini">click on post to minimize</span>
     <i class="material-icons" id="prev-post-icon">navigate_before</i>
