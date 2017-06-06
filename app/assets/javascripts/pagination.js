@@ -27,12 +27,13 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
         var url = $('#right-content-profile .pagination a.next_page').attr('href')
     }
     else {
-        var url = $('.pagination a.next_page').attr('href')
+        var url = $('.pagination > a.next_page').attr('href')
     }
         if ( $(window).scrollTop() > $(document).height() - $(window).height() - toLoad && url ){
             //alert('scrolled')
             //if ( toLoad == 100 ) {
                 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
+                    console.log("5")
                     url = $('#left-content-profile .pagination a.next_page').attr('href')
                     $('#left-content-profile .pagination').text('more posts are coming')
                     //alert('more pos..')
@@ -43,6 +44,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     }
                 }
                 else if ( $('#profile-favors').hasClass('selected-profile-posts') ) {
+                    console.log("4")
                     //url = $('#right-content-profile .pagination a.next_page').attr('href')
                     $('#right-content-profile .pagination').text('more posts are coming')
                     if ( nomorefavors == false ) {
@@ -51,6 +53,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     }
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') && !$("body").hasClass("loadingPost") ) {
+                    console.log("3")
                     //var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
 
                     //if ( nomorefavors == false ) {
@@ -63,9 +66,11 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     //}
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') && $("body").hasClass("loadingPost") ) {
+                    console.log("2")
                     console.log("bitch")
                 }
                 else {
+                    console.log("1")
                     console.log('yes')
                     if ( !$('body').hasClass('shown-post') ){
                         $('.pagination').text('more posts are coming')
