@@ -6,7 +6,7 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
   //console.log("new<%= @newposts %>")
   <% if @newposts.next_page %>
   $( document ).ready(function() {
-      $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
+      //$('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
   });
 
   <% else %>
