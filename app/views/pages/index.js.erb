@@ -37,6 +37,7 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
 
 }
 else {
+alert("page")
   $('body').removeClass('loadingPost')
   $('#content-full2.new-content').append('<%= j render(@post) %>');
   <% if @post.next_page %>
