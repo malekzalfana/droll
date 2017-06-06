@@ -51,12 +51,13 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     }
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') ) {
-                    var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
+                    //var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
                     $('#box-5-wrapper .pagination').text('more posts are coming')
                     //if ( nomorefavors == false ) {
-                        $.getScript( urlNEWPOSTS )
+                        $.getScript( $('#box-5-wrapper .pagination a.next_page').attr('href') )
                         //console.log( url )
                         //console.log("box5")
+                        $('body').addClass('loadingPost')
                     //}
                 }
                 else {

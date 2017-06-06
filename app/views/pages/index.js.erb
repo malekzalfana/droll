@@ -5,7 +5,7 @@ if ( $("#box-5-wrapper").hasClass("active")  ) {
   $('#box-5-wrapper .reco-trend').append(html3);
 
   <% if @newposts.next_page %>
-    $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
+    $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts.next_page %>');
   <% else %>
     $(window).off('scroll');
     $('.pagination').remove();
