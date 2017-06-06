@@ -1,13 +1,13 @@
 var html3;
 if ( $("#box-5-wrapper").hasClass("active")  ) {
   $('body').removeClass('loadingPost')
-  html3 = $('<%= j render @newposts, newp: true %>');
+  html3 = $('<%= j render (@newposts), newp: true %>');
   $('#box-5-wrapper .reco-trend').append(html3);
   //console.log("new<%= @newposts %>")
   <% if @newposts.next_page %>
   $( document ).ready(function() {
-    $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
-});
+      $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
+  });
 
   <% else %>
     $(window).off('scroll');
