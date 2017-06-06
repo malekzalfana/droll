@@ -62,6 +62,9 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                         $('body').addClass('loadingPost')
                     //}
                 }
+                else if ( $('#box-5-wrapper').hasClass('active') && $("body").hasClass("loadingPost") ) {
+                    console.log("bitch")
+                }
                 else {
                     console.log('yes')
                     if ( !$('body').hasClass('shown-post') ){
