@@ -876,7 +876,7 @@ tabs = function() {
 		$('#image-for-gif-input').val('')
 		$(image).remove()
 		$('#image-for-gif-wrapper').fadeIn()
-		$('#pictureInput, #preview-image-text, .make-dark-box').show();
+		$('#pictureInput, #preview-image-text, .make-dark-box, #make-gif-preview').show();
 		$('#cancel-upload, #submit-image-button-before,#make-image-preview').hide();
 		$('#make-tags-1-wrapper').removeClass('inline-block-imp')
 		$('.anonymous-checkbox').removeClass('shown')
@@ -884,7 +884,7 @@ tabs = function() {
 		//$('#make-image-preview').css({
 		//	'min-height': '100px'
 		//});
-		$('#image-for-gif-reset, #make-gif-preview, #make-post-title').hide()
+		$('#image-for-gif-reset, #make-post-title').hide()
 		$("#make-post-preview-wrapper #pictureInput").replaceWith($("#make-post-preview-wrapper #pictureInput").val('').clone(true));
 	})
 	$(document).on('click', '#image-for-gif-reset-2', function() {
@@ -1666,7 +1666,7 @@ tabs = function() {
 				});
 				});
 				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
-			}, 500)
+			}, 300)
 
 
 	})

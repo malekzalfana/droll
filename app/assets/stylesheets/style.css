@@ -656,6 +656,7 @@ div:not(.second) #trends-wrapper {
     padding-lefT: 0px;
     text-align: center;
     z-index: 2;
+    padding-bottom: 30px;
 }
 #meme-wrapper #text-1 {
 	position: absolute;
@@ -5222,11 +5223,32 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	#share-it {
+		height: 75px !important;
+	}
+	#share-it i {
+		font-size: 24px !Important;
+	}
+	#image-for-gif-reset {
+		right: 13px !important;
+		top: 11px !important;
+	}
+	#make #gifs {
+		width: 100% !important;
+	}
+	#make-post-title {
+		margin: 15px 0px !important;
+		widtH: calc(100% - 45px) !important;
+	}
+	#pick-type p {
+		font-size: 18px !important;
+	}
 	.memeb-field-2 {
 		font-size: 23px;
 	}
 	.trend-container {
-		width: calc(100% - 25px) !important;
+		width: calc(100% - 65px) !important;
+    margin: 10px 30px !important;
 	}
 	.memeb-wrapper-3 .memeb-field {
 		font-size: 20px !Important;
@@ -5338,7 +5360,11 @@ body.shown-post #main-page-type a:hover + #back-list {
     margin: 0px 17px !important;
 	}
 	#make-post-preview-wrapper #pictureInput, #make-image-preview, #make-preview-wrapper form {
-		width: 100% !important;
+		    width: calc(100% - 34px) !important;
+    margin: 0px 18px !important;
+	}
+	.pick-tags-title {
+		font-size: 25px !important;
 	}
 	#make-post-title {
 		width: calc(100% - 14px)
@@ -6177,7 +6203,7 @@ body.shown-post .post-image-2 {
 }
 @media screen and (max-width: 550px) and (min-width: 450px) {
 	.pick-meme-container, .gif-container {
-		height: 140px;
+		height: 110px;
 	}
 	.tags-tag {
 		width: calc(50% - 20px) !important;
@@ -7520,7 +7546,7 @@ i.fa.fa-reddit-alien {
     padding: 7px !important;
     color: black;
     font-weight: normal;
-    display: none;
+    display: none !important;
 }
 #make-tags-1-wrapper p {
 	margin-bottom: 10px !important;
@@ -7794,7 +7820,6 @@ body:not(#invite-screen) #notice-to-sign {
     max-width: 550px;
     width: 100%;
     display: block;
-    margin-bottom: 10px;
     overflow: hidden;
 }
 #image-for-meme p {

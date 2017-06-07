@@ -70,7 +70,7 @@ if ( $('body').is('#recent, #index, #profile') && !$('body').hasClass('shown-pos
                     console.log("bitch")
                 }
                 else {
-                    console.log("1")
+                    //console.log("1")
                     console.log('yes')
                     if ( !$('body').hasClass('shown-post') ){
                         $('.pagination').text('more posts are coming')

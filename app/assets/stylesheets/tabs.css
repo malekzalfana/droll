@@ -366,6 +366,7 @@
     left: 0;
     right: 0;
     text-align: center;
+    padding-bottom: 30px;
     margin-top: 10px;
 }
 #make-preview-wrapper form {
