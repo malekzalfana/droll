@@ -54,6 +54,7 @@ Rails.application.routes.draw do
   get '/follow' => 'trends#follow'
   get '/pages/loadPost' => 'pages#loadPost'
   get '/pages/feedback' => 'pages#feedback'
+  get '/pages/renderTrends' => 'pages#renderTrends'
   get '/pages/stock' => 'pages#stock'
   get '/pages/deleteStock' => 'pages#deleteStock'
   get '/about' => 'pages#about'

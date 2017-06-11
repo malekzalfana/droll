@@ -46,11 +46,7 @@ tabs = function() {
 			$(this).addClass('active-make-tag')
 		}
 	})
-	$(document).on('click', '.mobile-tab:not(.active):not(#tab-3)', function() {
-		$(".mobile-tab").removeClass("active")
-		$(this).addClass("active")
-			$("#new-posts").click()
-	})
+
 	console.log('tabs')
 	$(document).on('click', '.not-signed-in .upvote,.not-signed-in .downvote',
 		function() {
@@ -1642,38 +1638,42 @@ tabs = function() {
 		$('.choosen-content .tag-list-field').val(tagsArray)
 	})
 	$(document).on('click', '#go-back', function() { $("#new-posts").click() })
-	$(document).on('click', '#new-posts', function() {
+
+
+	$(document).on('click', '.mobile-tab', function() {
+		$(".mobile-tab").removeClass("active")
+		$(this).addClass("active")
 		$("#content-full2").addClass("transition")
-		if ( $(this).hasClass("active") ) {
-
-			$(this).removeClass("active")
+		if ( $(this).is("#tab-1") ) {
+			$(".mobile-tab").removeClass("active")
+			$("#tab-1").addClass("active")
 			$("#box-5-wrapper").removeClass("active")
-			$("#content-full2").removeClass("go-left")
-			//$("#box-5-wrapper").removeClass("go-left-2")
-			//$("#box-5-wrapper").css({"left":"65px"})
-			/*
-			$("#box-5-wrapper").animate({
-				right: 65,
-				left: 'toggle'
-			})
-			*/
+			$("#content-full2").removeClass("go-left go-left-2")
+			$(".wrapper").removeClass("hidden-imp")
+			$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
 		}
-		else {
-			$('#box-5-wrapper .wrapper-new-2').addClass("no-opacity no-click")
+		else if ( $(this).is("#tab-2") ) {
+			$(".mobile-tab").removeClass("active")
+			$("#tab-2").addClass("active")
+			//$('#box-5-wrapper .wrapper-new-2').addClass("no-opacity no-click")
 
+			setTimeout(function(){
+				$(".wrapper").addClass("hidden-imp")
+			}, 600)
 
-			$(this).addClass("active")
 			$("#box-5-wrapper").addClass("active")
-		$("#content-full2").addClass("go-left")
-		//$("#box-5-wrapper").addClass("go-left-2")
-		//$("#box-5-wrapper").css({"left":"65px"})
-		/*
-		$("#box-5-wrapper").animate({
-			left: 65
-		})
-		*/
+			$("#content-full2").addClass("go-left").removeClass("go-left-2")
 		}
-		setTimeout(function(){
+		else if ( $(this).is("#tab-3") ) {
+			$(".mobile-tab").removeClass("active")
+			$(this).addClass("active")
+			$("#content-full2").removeClass("go-left")
+			$("#content-full2").addClass("go-left-2")
+			$("#renderTrends-submit").click().remove();
+		}
+		if ( !$("#box-5-wrapper").hasClass("loaded") &&  !$(this).is("#tab-3")  ) {
+			$("#box-5-wrapper").addClass("loaded")
+			setTimeout(function(){
 				var $content3 = $('.reco-trend');
 				$content3.imagesLoaded(function() {
 				$content3.masonry({
@@ -1681,8 +1681,10 @@ tabs = function() {
 					gutter: newpostGutter
 				});
 				});
-				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+				//$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
 			}, 500)
+		}
+
 
 
 	})

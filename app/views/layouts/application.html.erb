@@ -66,6 +66,7 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
     <meta name="twitter:image" content="<%= @post.image.url(:large)%>" />
     <meta name="twitter:url" content="http://beta.drolle.co<%= url_for(@post) %>">
   <% end %>
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <%# cache 'css'  do %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%# end %>

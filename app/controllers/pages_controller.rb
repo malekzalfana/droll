@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
 
   def index
+    @alltrends = Trend.all
     #if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
     #  #redirect_to '/make'
    #   puts "nothing"
@@ -196,6 +197,14 @@ class PagesController < ApplicationController
 
   end
 
+  def renderTrends
+    @alltrends = Trend.all
+    respond_to do |format|
+     format.html
+     format.js
+    end
+  end
+
   def notifications
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
@@ -327,7 +336,7 @@ class PagesController < ApplicationController
       @stock.base64 = params[:base64]
       @stock.stocktype = params[:stocktype]
       @stock.image = URI.parse(  params[:base64]  )
-      
+
       @stock.user = current_user
       @stock.save
       if @stock.save

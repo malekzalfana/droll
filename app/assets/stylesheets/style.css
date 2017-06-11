@@ -156,15 +156,29 @@ a {
 	    font-size: 13px !important;
     float: right;
     color: #9c9c9c;
-    margin: 4px 11px;
+    margin: 0px 12px;
     border: 1px solid #cecece;
-    padding: 7px;
+    padding: 6px 9px;
+    padding-top: 8px;
     border-radius: 17px;
+    font-family: roboto;
+    padding-bottom: 8px;
+}
+.new-tab-trend i {
+	    font-size: 13px !important;
+    color: #9c9c9c;
+    padding: 4px;
+    border-radius: 17px;
+    line-height: 0 !important;
+    position: relative;
+    top: 2px;
 }
 .new-tab-trend:active {
-	background: #ff3000;
-	color: white;
-	border: none;
+	color: gray;
+	border-color: gray;
+}
+.new-tab-trend:hover {
+	background: #f9f9f9;
 }
 #navbar > * {
 	pointer-events: auto;
@@ -2169,19 +2183,6 @@ bigEntrance
 }
 
 
-@-webkit-keyframes go-left {
-  from {
-    opacity: 0;
-    -webkit-transform: transllate();
-    transform: translate3d(0, 100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: none;
-    transform: none;
-  }
-}
 
 @keyframes go-left {
   from {
@@ -2196,10 +2197,39 @@ bigEntrance
     transform: none;
   }
 }
+@keyframes go-left-2 {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 200%, 0);
+    transform: translate3d(0, 200%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+@keyframes go-right {
+  from {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
 
 .go-left {
   -webkit-animation-name: fadeInUp;
   animation-name: fadeInUp;
+}
+.go-left-2 {
+  -webkit-animation-name: go-left-2;
+  animation-name: go-left-2;
 }
 #demo-2 {
     float: right;
@@ -5164,14 +5194,6 @@ body.shown-post #main-page-type a:hover + #back-list {
 .transition {
 	transition: 0.4s ease-out all;
 }
-.go-left-2 {
-
-	position: absolute;
-	RIGHT: initial;
-	BOTTOM: initial;
-	TOP: 90PX;
-	left: 65px !Important;
-}
 @media screen and (max-width: 700px) {
 	#index #navbar {
 		box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15) !important;
@@ -5186,7 +5208,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	    padding-top: 40px !important;
 	}
 	.transition {
-		transition: 0.6s ease-out all;
+		transition: 0.4s ease-out all;
 	}
 	#new-posts {
 		display: none !important;
@@ -6361,9 +6383,11 @@ body.shown-post .post-image-2 {
 #content-full2 .downvote {
     margin-right: 7px;
 }
+/*
 #content-full2.go-left .wrapper {
 	display: none !important;
 }
+*/
 a[href="/users/auth/twitter"] {
 	display: none !important;
 }
@@ -8284,6 +8308,19 @@ body:not(#make) .fixed-menu {
     left: 610px;
     transition: all 0.6s ease-out;
 }
+#box-6-wrapper {
+	left: 0%;
+	position: absolute;
+	width: 100%;
+	display: none;
+}
+.go-left-2 #box-6-wrapper {
+	display: block;
+}
+/* , .go-left-2 #box-5-wrapper  */
+.go-left-2 .wrapper{
+	display: none !important;
+}
 #box-5-wrapper img {
 	width: 100%;
 }
@@ -9078,6 +9115,7 @@ display: none !important;
     padding-top: 5px;
     background: white;
     margin: 10px;
+    text-align: left;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
 }
 
@@ -9760,10 +9798,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 }
 .post-new-p.empty {
     padding: 8px !important;
+    display: none !important;
+}
+#nav-menu-wrapper.closed #seach-trends {
+	display: none;
 }
 #search-trends textarea {
 	    border-bottom: 1px solid #E0E0E0;
-    padding: 0px 8px;
+    padding: 0px 1px;
     padding-top: 7px;
     resize: none;
     color: #5f5f5f;
@@ -9772,10 +9814,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     height: 25px;
     background: none;
     font-size: 14px;
+    WIDTH: 150PX;
+    FLOAT: NONE;
 
 }
 #search-trends {
-	margin-top: 10px;
+	    margin-top: 10px;
+    MAX-WIDTH: 210PX;
+
+}
+#box-6-wrapper #search-trends {
+	MARGIN-LEFT: 10PX;
 }
 #search-trends textarea:focus {
 	border:none;
@@ -9785,7 +9834,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 	        color: black;
     opacity: 0.3;
     position: relative;
-    top: -5px !Important;
+    top: -6px !Important;
     margin-right: 10px;
     font-size: 18px !important;
 
@@ -9814,10 +9863,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     padding: 13px 0px;
 }
 .post-new-username {
-	font-weight: 600;
-	    font-family: montserrat;
-    opacity: 0.9;
-    color: #ff3000;
+	    font-weight: 600;
+    font-family: montserrat;
+    color: #778a8a;
+    font-size: 12px;
+    float: left;
+    margin: 10px;
+    margin-right: 0px;
 }
 .post-new-username:hover, .post-new-username:active {
 	opacity: 0.7;

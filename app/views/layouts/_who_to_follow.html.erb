@@ -10,7 +10,7 @@
             <% @newposts.each do |post| %>
                 <div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
 
-                    <p class="post-new-p <%= if post.title.blank? then "empty" end %>"><a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a> <%= post.title unless post.title.nil? %></p>
+                    <p class="post-new-p <%= if post.title.blank? then "empty" end %>"><!--<a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a>--> <%= post.title unless post.title.nil? %></p>
                     <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
                     <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-image-new" alt="<%= post.title %>"><% end %>
                     <% if !post.giphyid.blank? %><img class="post-image-new" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
@@ -21,7 +21,10 @@
                         <% else %>
                             <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
                         <% end %>
+                        <a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a>
+                        <!--
                     <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
+                    -->
                                             <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
                             <%= link_to dislike_post_path(post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>
                         <% elsif (user_signed_in?) && !(current_user.voted_down_on? post) && !(current_user.voted_up_on? post)  %>
@@ -54,6 +57,15 @@
 
         </div>
     </div>
+
+    <div id="box-6-wrapper">
+        <div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
+        <%= form_tag url_for(:controller => 'pages', :action => 'renderTrends'), :method => 'get', class: "hidden-imp", remote: true do %>
+      <%= text_field_tag 'name', '' %>
+      <%= submit_tag "Save", id: "renderTrends-submit" %>
+    <% end %>
+    </div>
+
     <div id="box-3-wrapper">
             <p ID="who-to-follow"><i class="material-icons">person_outline</i>Who to follow</p>
             <% @randomUsers.each do |user| %>
