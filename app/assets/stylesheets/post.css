@@ -135,13 +135,13 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     max-height: none !important
 }
 #content-full2 .post-title {
-    display: inline-block;
-    font-size: 17px;
+        display: inline-block;
+    font-size: 18px;
     width: calc(100% - 12px);
     margin: 0px auto;
     margin-left: 10px;
-    padding: 12px 0px;
-    font-family: lato;
+    padding: 15px 0px;
+    font-family: Arial,sans-serif;
 }
 #content-full2 .post-title:first-letter {
     text-transform: capitalize;
@@ -178,7 +178,6 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     -webkit-transform: rotate(-90deg);
     transform: rotate(-90deg);
     position: relative;
-    top: 2px;
 }
 .vote-container {
     width: 20px;
@@ -221,7 +220,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     width: 26px;
     height: 26px;
 
-    margin: 14px 3px;
+    margin: 12px 3px;
 }
 .vote i {
         font-size: 0px;
@@ -438,7 +437,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     float: right;
     color: #616161;
     font-family: roboto;
-    margin: 18px 3px;
+    margin: 14px 3px;
     font-size: 13px;
 }
 .opacity-1 {

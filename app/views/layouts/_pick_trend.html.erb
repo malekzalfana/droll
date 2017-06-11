@@ -42,10 +42,10 @@
       </div>
       <% if user_signed_in? %>
       <br>
-      <p class="pick-tags-title pick">Pick a trend<i class="refresh-trends material-icons">refresh</i></p>
+      <p class="pick-tags-title pick">Pick a trend<i class="refresh-trends material-icons">refresh</i><div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div></p>
       <div id="pick-trends-wrapper">
           <% @trendname.each do |trend| %>
-          <div data-trendid="<%= trend.id %>" data-name="<%= trend.name %>" data-followers="<%=  unless trend.followers.nil? then trend.followers.size end %>" data-posts="<%= Post.where(trendid: trend.id).size %>" class="trend-container pick-trends">
+          <div data-trendid="<%= trend.id %>" data-filter-name="<%= trend.name %>" data-filter-item  data-name="<%= trend.name %>" data-followers="<%=  unless trend.followers.nil? then trend.followers.size end %>" data-posts="<%= Post.where(trendid: trend.id).size %>" class="trend-container pick-trends">
               <span data-name="<%= trend.name %>" data-trendid="<%= trend.id %>" class="new">/<%= trend.name %></span>
               <div>
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>

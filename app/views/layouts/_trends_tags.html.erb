@@ -236,8 +236,12 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 	c0-0.5,0-1,0-1.5c0-0.5,0-1,0-1.5C24.1,10.1,24.1,9.6,24.1,9.1z"></path>
 </svg>
         <div id="trends-wrapper">
-            <p class="tags-title">Trends</p>
-        <% if @trends.count >0 %>
+
+            <div id="trends-wrapper-inside-wrapper">
+                <div id="trends-wrapper-inside">
+                    <p class="tags-title">Trends</p>
+
+        <% if @trends.count > 2 %>
 
               <% @trends.each do |trend| %>
             <a data-name="<%= trend.name %>" href="/trends/<%= trend.name %>" class="trends">/<%= trend.name %></a>
@@ -255,7 +259,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
             <a data-name="random" href="trends/vineIsDead" class="trends">/vineIsDead</a>
             <a data-name="random" href="trends/familyGatherings" class="trends">/familyGatherings</a>
             <a data-name="random" href="trends/trumpetIsNowPresident" class="trends">/trumpetIsNowPresident</a>
-            <a href="/explore" onClick="window.location = "/trends" "><div id="toggle-trends">Browse Trends<i class="material-icons">keyboard_arrow_right</i></div></a>
+
         <% end %>
         <hr style="border: 1px solid #f9f9f9; display: none;">
         <div id="tags-wrapper">
@@ -286,7 +290,9 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
         </div>
 
     </div>
-
+</div>
+            </div>
+            <a href="/trends" onClick="window.location = "/trends" "><div id="toggle-trends">Browse Trends<i class="material-icons">keyboard_arrow_right</i></div></a>
         </div>
 
     </div>

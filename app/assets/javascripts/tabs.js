@@ -1,3 +1,4 @@
+var newpostGutter;
 var followTrend;
 var tabs;
 var toBase64Field;
@@ -9,7 +10,13 @@ var trendposts;
 var trendfollowers;
 var type;
 tabs = function() {
-	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link)',
+	if ( $(window).width() > 700 ) {
+		newpostGutter = 35
+	}
+	else {
+		newpostGutter = 10
+	}
+	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment)',
 		function(e) {
 			e.preventDefault();
 			console.log("clicked this bitch")
@@ -38,6 +45,11 @@ tabs = function() {
 		} else {
 			$(this).addClass('active-make-tag')
 		}
+	})
+	$(document).on('click', '.mobile-tab:not(.active):not(#tab-3)', function() {
+		$(".mobile-tab").removeClass("active")
+		$(this).addClass("active")
+			$("#new-posts").click()
 	})
 	console.log('tabs')
 	$(document).on('click', '.not-signed-in .upvote,.not-signed-in .downvote',
@@ -1088,15 +1100,19 @@ tabs = function() {
 				":focus")) {
 			if (e.keyCode == 37) {
 				//alert("left")
-				alert("c")
+				if ($('#box-5-wrapper').hasClass('active')) {
+					$('#new-posts').click()
+				}
 				if ($('body').hasClass('shown-post')) {
-					alert("cc")
 					$('#prev-post-icon').click()
 				}
 			} else if (e.keyCode == 39) {
 				//alert("next")
 				if ($('body').hasClass('shown-post')) {
 					$('#next-post-icon').click()
+				}
+				if ($("body").hasClass(".shown-post") && !$('#box-5-wrapper').hasClass('active') && $("body").is("#index") ) {
+					$('#new-posts').click()
 				}
 			} else if (e.keyCode == 8) {
 				//alert("basck")
@@ -1662,7 +1678,7 @@ tabs = function() {
 				$content3.imagesLoaded(function() {
 				$content3.masonry({
 					itemSelector: '.wrapper-new-2',
-					gutter: 35
+					gutter: newpostGutter
 				});
 				});
 				$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
@@ -2267,6 +2283,17 @@ tabs = function() {
 		$('.anonymous-checkbox').addClass('shown')
 		$('#make-tags-1').addClass('inline-block-imp')*/
 	};
+	$('[data-search]').on('keyup', function() {
+	var searchVal = $(this).val();
+	var filterItems = $('[data-filter-item]');
+
+	if ( searchVal != '' ) {
+		filterItems.addClass('hidden');
+		$('[data-filter-item][data-filter-name*="' + searchVal.toLowerCase() + '"]').removeClass('hidden');
+	} else {
+		filterItems.removeClass('hidden');
+	}
+});
 };
 //tabs();
 $(document).on('page:load', tabs);

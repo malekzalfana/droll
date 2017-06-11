@@ -69,7 +69,7 @@ class TrendsController < ApplicationController
       @postnumber = Post.where(trendid: @trend.id, hidden: nil).size
       @follownumber = @trend.followers
     #@commentnumber = Post.where(trendid: @trend.id, hidden: nil).comments.size
-    @trends = Trend.all.limit(7)
+    @trends = Trend.all.limit(15)
 
     @followed = false
     # && !current_user.trends.blank?

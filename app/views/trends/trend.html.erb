@@ -92,6 +92,7 @@
 
  	            <%# f.submit 'Save' %>
             <%# end %>
+            <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
             <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
 
 
@@ -143,7 +144,7 @@
                 <%# end %>
             </div>
 
-                    <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
+
                     <div class="post-footer new <%= if post.user.passed != true then "not-passed" end %>">
                 <% if post.anonymous != true %>
                     <a href="/user/<%= post.user.username %>" class="user-link">

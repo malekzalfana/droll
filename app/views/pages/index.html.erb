@@ -49,8 +49,15 @@
 <div class="overlay-full"></div>
 <div class="upper-black"></div>
     <%= render '/layouts/trends_tags' %>
+<div id="mobile-tabs">
+        <div id="tab-1" class="mobile-tab active"><i class="material-icons">home</i>Feed</div>
+        <div id="tab-2" class="mobile-tab"><i class="material-icons">access_time</i>New</div>
+        <div id="tab-3" class="mobile-tab"><i class="material-icons">whatshot</i>Trends</div>
 
+
+    </div>
 <div id="content-full2" class="full-wrapper new-content">
+
     <%= render '/layouts/who_to_follow' %>
 
 
@@ -161,6 +168,7 @@
 
  	            <%# f.submit 'Save' %>
             <%# end %>
+            <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
             <div class="post-image-wrapper <%= if post.long === true then 'long-wrapper' end %>">
 
 
@@ -212,7 +220,7 @@
                 <%# end %>
             </div>
 
-                    <% if !post.title.blank? %><div class="post-title"><%= post.title %></div><% end %>
+
                     <div class="post-footer new <%= if post.user.passed != true then "not-passed" end %>">
                 <% if post.anonymous != true %>
                     <a href="/user/<%= post.user.username %>" class="user-link">
@@ -224,7 +232,7 @@
                         <% if !post.user.pic.nil? && post.user.image.url == 'missing.jpg' %>
                         <div class="post-footer-user-image" style="background-image: url(http://drolle.net/profilepics/pic<%= post.user.pic %>.jpg)"></div>
                         <% else %>
-                        <div class="post-footer-user-image" style="background-image: url('<%= if post.user.image.url == 'missing.jpg' then 'assets/' end %><%= post.user.image.url(:thumb) %>)"></div>
+                        <div class="post-footer-user-image" style="background-image: url('<%= if post.user.image.url == 'missing.jpg' then 'assets/' end %><%= post.user.image.url(:thumb) %>')"></div>
                         <%end%>
 
 
