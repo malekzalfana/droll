@@ -52,7 +52,7 @@
         <%= f.submit "Save", id: 'email-check-submit'%>
     <% end %>
 <div id="settings-wrapper">
-    <h2 id="settings-title">Settings<% if current_user.pro == true %><span id="settings-pro">PRO</span><% end %></h2>
+    <h2 id="settings-title"><i class="material-icons">settings</i>Settings<% if current_user.pro == true %><span id="settings-pro">PRO</span><% end %></h2>
     <div id="settings-options">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                   <%= devise_error_messages! %>
@@ -107,7 +107,7 @@
                     <%= f.email_field :email, :value => @user.email, :id => 'email-field-settings', :autocomplete => :off  %>
                     <i class="material-icons" id="email-check-icon">check_circle</i>
                   </div>
-
+<!--
                   <div class="field">
                     <%= f.label :share %>
                     <%= f.text_field :share, class: "hidden", id: "share-buttons-field" %>
@@ -120,7 +120,7 @@
                     </span>
 
                   </div>
-
+-->
                   <div id="more-settings-options-wrapper">
                       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

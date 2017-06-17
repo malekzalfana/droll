@@ -156,7 +156,7 @@
                         <% if !post.user.pic.nil? && post.user.image.url == 'missing.jpg' %>
                         <div class="post-footer-user-image" style="background-image: url(http://drolle.net/profilepics/pic<%= post.user.pic %>.jpg)"></div>
                         <% else %>
-                        <div class="post-footer-user-image" style="background-image: url('<%= if post.user.image.url == 'missing.jpg' then 'assets/' end %><%= post.user.image.url(:thumb) %>)"></div>
+                        <div class="post-footer-user-image" style="background-image: url('<%= if post.user.image.url == 'missing.jpg' then 'assets/' end %><%= post.user.image.url(:thumb) %>')"></div>
                         <%end%>
 
 
@@ -654,6 +654,7 @@
 
     <script>
     var tagname = '<%= @trend %>'
+    //alert(tagname)
     if ( document.getElementById('tag') != null ){
         document.getElementById(tagname).classList.add("active");
     }

@@ -223,6 +223,12 @@ class PagesController < ApplicationController
   end
 
   def make
+    @trend = false
+    @url =  request.base_url + request.original_fullpath
+    if @url.include?('trend')
+      @trend = @url.match(/\?trend=.*/).to_s
+      @trend.slice! "?trend="
+    end
     if user_signed_in?
       @activities1 = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user)
       @activities0 = PublicActivity::Activity.order("created_at DESC").where( owner_id: current_user.following.ids, key: "posting" ).where('created_at >= ?', Time.now-2.days)
@@ -295,7 +301,9 @@ class PagesController < ApplicationController
 
   def make2
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
-    @post = current_user.posts.build(params[:post])
+    if user_signed_in?
+     @post = current_user.posts.build(params[:post])
+   end
   end
 
   def settings
@@ -403,6 +411,7 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @recusers = User.order("RANDOM()").first(20)
     if (User.find_by_username(params[:id]))
       @username = params[:id]
       @user = User.find_by_username(params[:id])

@@ -10,6 +10,10 @@ var trendposts;
 var trendfollowers;
 var type;
 tabs = function() {
+
+	//document.getElementById(trend).click()
+	//}
+	//console.log(c);
 	if ( $(window).width() > 700 ) {
 		newpostGutter = 35
 	}
@@ -401,18 +405,15 @@ tabs = function() {
 		$(this).val($(this).val().toLowerCase())
 		console.log($(this).val())
 	})
+	/*
 	$(document).on('mouseleave', '#nav-icons-wrapper', function() {
 		if (window.innerWidth <= 500) {
 			$('#menu-button-wrapper').removeClass('shown')
 			$('#notification-icon, #nav-icons-wrapper a').hide()
 
-			/*
-			if ( window.innerWidth < 600 ) {
-
-				$('#main-page-type').fadeIn(100)
-			}*/
 		}
 	})
+	*/
 	$(document).on('click', '.cancel-share-it', function() {
 		$(this).parent().hide()
 	})
@@ -1300,7 +1301,7 @@ tabs = function() {
 		console.log(usernameChecked)
 		console.log( approvedUsername )
 		if (usernameChecked ) { // && approvedUsername REMOVED
-			alert("true")
+			//alert("true")
 			$('#save-profile-field').click()
 			if ($('#username-check-icon').text() == 'cancel') {
 				$('#username-check-icon').addClass('flash animated-fast')
@@ -1356,7 +1357,30 @@ tabs = function() {
 		}
 	});
 	$(document).ready(function() {
-		//$('#anonymous-faces img').slice(40, $('#anonymous-faces .rageface').length - 39 ).lazyload()
+		var $content = $('#left-content-profile');
+		$content.imagesLoaded(function() {
+			$content.masonry({
+				itemSelector: '.wrapper',
+				gutter: 15
+			});
+			$('#left-content-profile').removeClass("opacity");
+		});
+		var $content2 = $('#right-content-profile');
+		$content2.imagesLoaded(function() {
+			$content2.masonry({
+				itemSelector: '.wrapper',
+				gutter: 15
+			});
+			//$('#left-content-profile').removeClass("opacity");
+		});
+		var url_string = window.location
+		var url = new URL(url_string);
+		var trend = false;
+		trend = url.searchParams.get("trend").toString();
+		//if ( trend ) {
+		console.log($("#"+trend))
+		console.log("bra")
+		$("#"+trend).click()
 	})
 	var loadMemes;
 	$(".pick-meme-container").slice(0,15).lazyload({
@@ -1639,9 +1663,33 @@ tabs = function() {
 	})
 	$(document).on('click', '#go-back', function() { $("#new-posts").click() })
 
-
+	$(document).on('click', '#new-posts', function() {
+		if ( $("#tab-1").hasClass("active") ) {
+			$("#tab-2").click()
+		}
+		else {
+			$("#tab-1").click();
+			$("#box-5-wrapper").addClass("loaded")
+			setTimeout(function(){
+				var $content3 = $('.reco-trend');
+				$content3.imagesLoaded(function() {
+				$content3.masonry({
+					itemSelector: '.wrapper-new-2',
+					gutter: newpostGutter
+				});
+				});
+				//$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+			}, 500)
+		}
+	})
+	var tabClick = true;
 	$(document).on('click', '.mobile-tab', function() {
-		$(".mobile-tab").removeClass("active")
+		setTimeout(function(){
+			tabClick = true
+		},300)
+		if ( tabClick == true ) {
+			tabClick = false
+			$(".mobile-tab").removeClass("active")
 		$(this).addClass("active")
 		$("#content-full2").addClass("transition")
 		if ( $(this).is("#tab-1") ) {
@@ -1684,6 +1732,11 @@ tabs = function() {
 				//$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
 			}, 500)
 		}
+		}
+		else {
+			console.log("b")
+		}
+
 
 
 
@@ -1884,7 +1937,7 @@ tabs = function() {
   }*/
 		} else {
 			$('.pick-meme-container').removeClass('hidden-meme')
-			alert('ss')
+			//alert('ss')
 		}
 	});
 	$('.progress').mouseover(function() {
@@ -2135,25 +2188,7 @@ tabs = function() {
 	});
 	*/
 
-	$(function() {
-		var $content = $('#left-content-profile');
-		$content.imagesLoaded(function() {
-			$content.masonry({
-				itemSelector: '.wrapper',
-				gutter: 5
-			});
-			$('#left-content-profile').removeClass("opacity");
-		});
-		var $content2 = $('#right-content-profile');
-		$content2.imagesLoaded(function() {
-			$content2.masonry({
-				itemSelector: '.wrapper',
-				gutter: 5
-			});
-			//$('#left-content-profile').removeClass("opacity");
-		});
 
-	});
 
 	//$('#left-content-profile').fadeIn();
 	//    }, 1000)

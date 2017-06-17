@@ -308,11 +308,11 @@
   display: block;
 }
 #make-post-title{
-  height: 24px;
+   height: 24px;
     padding: 7px;
-    width: calc(100% - 65px);
+    width: calc(100% - 41px);
     border: none;
-    margin: 0px 0px;
+    margin: 10px 0px;
     font-family: open sans;
     font-size: 17px;
     border: 1px solid #d4d4d4;
@@ -320,6 +320,7 @@
     resize: vertical;
     position: relative;
     display: none;
+    float: right;
 }
 #make-post-title-2 {
   height: 24px;
@@ -336,7 +337,7 @@
     position: relative;
 }
 #make-image-preview, #make-gif-preview {
-   width: 530px;
+   width: 510px;
    display: none;
     min-height: 150px;
     background: #fbfbfb;
@@ -354,7 +355,7 @@
   position: relative;
 }
 #make #gifs {
-   width: 531px;
+   width: 510px;
     min-height: 0px;
     background: white;
   position: relative;

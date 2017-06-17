@@ -166,7 +166,7 @@ $(window).load(function() {
 		$(this).hide()
 		$('body').removeClass('overflow-hidden')
 	});
-
+/*
 	$(window).scroll(function() {
 		var sc = $(window).scrollTop()
 		if (sc > 85) {
@@ -176,7 +176,7 @@ $(window).load(function() {
 			$("#profile-photo").removeClass("small-profile-photo")
 		}
 	});
-
+*/
 	$(document).ready(function() {
 		$('body:not(.app) #notif-menu').simplebar();
 

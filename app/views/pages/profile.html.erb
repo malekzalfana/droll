@@ -7,6 +7,27 @@
     <% end %>
 
     <%= render '/layouts/activities' %>
+    <div id="rec-users"><p>More</p>
+      <% @recusers.each do |u| %>
+  <div class="rec-user-wrapper">
+<a href="/user/<%= u.username %>" target="_blank" class="not-link">
+
+              <% if u.image.url == "missing.jpg" %>
+                <% if !u.pic.nil? && u.image.url == 'missing.jpg' %>
+                <div class="rec-profile-pic" style="background-image: url(http://drolle.net/profilepics/pic<%= u.pic %>.jpg)"></div>
+
+                <% else %>
+                  <div class="rec-profile-pic" style="background-image: url(/assets/<%= u.image.url(:thumb) %>)"></div>
+                <% end%>
+
+              <% else %>
+                  <div class="rec-profile-pic" style="background-image: url(<%= u.image.url(:medium) %>)">></div>
+              <% end %>
+</a>
+<p class="rec-users-name">@<%= u.username %></p>
+</div>
+      <% end %>
+    </div>
     <div id="overlay-under-notif"></div>
 <div id="cover-photo" class="<%= if user_signed_in? && @user.bio.nil? then 'no-bio' end %>">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -42,13 +63,23 @@
     <% else %>
         <div id="profile-photo" style="background-image: url(<%= @user.image.url(:medium) %>)"><i class="material-icons fadeInUp animated-fast" id="edit-profile-image">edit</i></div>
     <% end %>
-    <h2 id="username-profile-big" spellcheck="false"><%= @username %></h2>
-    <i class="material-icons" id="username-check-icon">check_circle</i>
+    <div id="profile-names">
+      <h2 id="username-profile-big" spellcheck="false">@<%= @username %></h2>
+      <span class="user-profile-details"><%= @profilepost.count %> Posts - <%= @user.followers.count %> Followers - <%= @user.following.count %> Following</span>
+      <% if user_signed_in? && current_user != @user %>
+                                        <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
+                                            <div><%= hidden_field_tag :followed_id, @user.id %></div>
+                                            <% if current_user.following?(@user) %>
+                                                <%= f.submit "following", class: "post-user-unfollow" %>
+                                            <% else %>
+                                                <%= f.submit "follow", class: "post-user-follow" %>
+                                            <% end %>
+                                        <% end %>
+                            <% end %>
     </div>
-    <p id="username-profile"><%= @user.bio unless @user.bio.blank? %></p>
-    <i class="material-icons fadeInUp animated-fast" id="edit-profile-cover">edit</i>
-</div>
-<div id="content-profile">
+
+    <i class="material-icons" id="username-check-icon">check_circle</i>
+<% if @user == current_user %>
     <div id="profile-info">
       <button id="cancel-edit-profile" class="profile-buttons">Cancel</button>
       <button id="save-profile" class="profile-buttons">Save</button>
@@ -57,19 +88,28 @@
             <i class="material-icons" id="edit-profile">edit</i>
             <% end %>
             <% if user_signed_in? && @user == current_user %><a href="/settings"><i id="setting-button" class="material-icons">settings</i></a><% end %>
-
-            <%= render '/layouts/follow_button', :user => User.find_by_username(params[:id]) %>
-            <h2 id="posts-number"><%= @user.posts.count %> Posts</h2>
-            <h2 id="upvotes-number"><%= @user.following.count %> Following</h2>
-            <h2 id="upvotes-number"><%= @user.followers.count %> Followers</h2>
         </div>
+        <% end %>
+        </div>
+    <div id="profile-bio">
+      <% if !@user.bio.blank? %>
+    <p id="username-profile"><%= @user.bio %></p>
+    <% else %>
+    <div class="empty-bio"><p><i class="material-icons">info_outline</i>User haven't filled a bio yet. Lame.</p></div>
+    <% end %>
+    </div>
+
+    <i class="material-icons fadeInUp animated-fast" id="edit-profile-cover">edit</i>
+</div>
+<div id="content-profile">
+
     <div id="profile-titles">
         <span class="selected-profile-posts profile-tabs" id="profile-posts">Posts</span><span class="profile-tabs" id="profile-favors">Favorites</span>
     </div>
     <div id="left-content-profile"  class="opacity transitions-enabled centered clearfix masonry">
         <%= will_paginate @profilepost %>
-        <% if @user.posts.count == 0 %>
-            <div class="notice-message-fixed"><%= @user.username %> hasn't posted anything yet.</div>
+        <% if @profilepost.size == 0 %>
+            <div class="notice-message-fixed"><img src="https://31.media.tumblr.com/dd01d9d6b9d3e97d95fa524d97249ec4/tumblr_inline_o4jv3mzCqc1tp7zdv_500.gif">No posts here.</div>
         <% else %>
         <% @profilepost.each do |x| %>
             <%= link_to(x) do %>
@@ -118,7 +158,6 @@
             <% end %>
         <% end %>
         <% else %>
-        <div class="notice-message-fixed"><%= @user.username %> hasn't favoured anything yet.</div>
         <% end %>
     </div>
 </div>
