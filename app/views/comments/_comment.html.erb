@@ -38,7 +38,7 @@
                     <% end %>
       <% if user_signed_in?  %>
             <% if current_user == comment.user  %>
-                <% if current_user == (comment.user || User.find_by_username('admin')) %><%= link_to '<i class="material-icons delete-comment">cancel</i>'.html_safe, [comment.post, comment], class: "delete-comment-button", method: :delete, remote: true %><% end %>
+                <% if current_user == (comment.user || User.find_by_username('admin')) %><%= link_to '<i class="material-icons delete-comment not-link">cancel</i>'.html_safe, [comment.post, comment], class: "delete-comment-button not-link", method: :delete, remote: true %><% end %>
             <% else  %>
               <% if !comment.parent %>
 

@@ -308,19 +308,18 @@
   display: block;
 }
 #make-post-title{
-   height: 24px;
+     height: 24px;
     padding: 7px;
-    width: calc(100% - 41px);
+    width: calc(100% - 60px);
     border: none;
-    margin: 10px 0px;
-    font-family: open sans;
+    margin: 10px 25px;
+    font-family: open\ sans;
     font-size: 17px;
     border: 1px solid #d4d4d4;
     display: block;
     resize: vertical;
     position: relative;
     display: none;
-    float: right;
 }
 #make-post-title-2 {
   height: 24px;

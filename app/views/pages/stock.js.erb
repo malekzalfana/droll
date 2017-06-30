@@ -1,5 +1,7 @@
 <% if @stock.stocktype == 'meme' %>
-    $('<div crossorigin class="pick-meme-container" style="background-image: url(<%= @stock.image.url %>);"><i class="material-icons delete-stock delete-meme-stock">clear</i></div> ').insertAfter('#search-memes')
+    $('<div crossorigin class="pick-meme-container" style="background-image: url(<%= @stock.image.url %>);"><i class="material-icons delete-stock delete-meme-stock">clear</i><p class="meme-title><span>Custom</span>
+			<i class="material-icons delete-meme-stock delete-stock">clear</i>
+			</p></div>').insertAfter('#meme-above')
 <% elsif @stock.stocktype == 'rage' %>
 alert("a")
     $('#ragefaces-stock').prepend('<div id="stock-<%= @stock.id %>"><img class="rageface stock rageface-normal" crossorigin="" src="<%= @stock.image.url %>"></div>')
@@ -8,4 +10,3 @@ alert("a")
 
 
 <%# form_tag 'pages/deleteStock', remote: true, :method => 'get', class: "hidden-imp"    do %><%# text_area_tag :id, @stock.id %><%# submit_tag "SEND"%><%# end %>
-<i class="material-icons delete-stock">cancel</i>

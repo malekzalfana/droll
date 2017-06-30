@@ -98,25 +98,7 @@ $(window).load(function() {
 		}
 
 	})
-	//////////////////////// LATER ON REMOVE SLICE(-2) !IMPORTANTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
-	/*$(document).on('mousedown', '.post-comment', function(){
-	    var imgsNumber = $('#comment-html img').length
-	    var commentHTML = $('#comment-html').html()
-	    if (imgsNumber > 0){
-	        var add = 0;
-	        for (i=0;i<imgsNumber;i++){
-	            console.log(i)
-	            $('#comment-html img').eq(i+add).replaceWith("{{"+$('#comment-html img').eq(i+add).attr('id')+"}}")
-	            add = -1
-	            if (i == imgsNumber -1){
-	                console.log(1)
-	                $('#comment-textarea').val( $('#comment-html').html())
-	                $('#comment-html').html( commentHTML )
-	            }
-	        }
-	    }
-	})
-	*/
+
 
 	String.prototype.replaceAt = function(index, character) {
 		return this.substr(0, index) + character + this.substr(index + character.length);
@@ -177,10 +159,7 @@ $(window).load(function() {
 		}
 	});
 */
-	$(document).ready(function() {
-		$('body:not(.app) #notif-menu').simplebar();
 
-	})
 
 	$('#overlay').click(function() {
 		$('#notif-menu').removeClass('notif-show')

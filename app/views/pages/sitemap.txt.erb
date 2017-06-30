@@ -1,9 +1,9 @@
 <% for post in @post do %>
 <%= post_url(post) %>
 <% end %>
-<% for tag in @tag do %>
-http://drolle.co/tags/<%= tag.name %>
-<% end %>
+<%# for tag in @tag do %>
+<!--http://drolle.co/tags/<%# tag.name %>-->
+<%# end %>
 <% for trend in @trend do %>
 http://drolle.co/trends/<%= trend.name %>
 <% end %>
@@ -11,8 +11,6 @@ http://drolle.co/trends/<%= trend.name %>
 http://drolle.co/user/<%= user.username %>
 <% end %>
 http://drolle.co/make
-http://drolle.co/recent
-http://drolle.co/tags
 http://drolle.co/contact
 http://drolle.co/about
 http://drolle.co/terms

@@ -1,15 +1,6 @@
 body:not(#invite-page) {
     background: #efefed !important;
 }
-#content-full2 .post-comment {
-	border: none;
-    font-size: 15px;
-    font-family: open sans;
-    border-radius: 2px;
-    color: black;
-    float:right;
-    pointer-events: auto;
-}
 .send-wrapper i {
 	font-size: 28px;
 	color: #616161;
@@ -232,17 +223,15 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     margin-left: 5px;
 }
 #content-full2 .post-comment {
-    padding: 7px;
-    width: 60px;
+       padding: 10px;
+    height: 60px;
     margin: 0px;
     background: white;
-    bottom: 15px;
     color: #656565;
-    text-transform: uppercase;
-    font-weight: 500;
     position: initial;
-    height: 36px;
+    font-size: 19px;
     border-radius: 0px;
+    float: right;
 }
 #content-full2 textarea {
     float: left;
@@ -486,7 +475,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     color: #BABABA;
     margin: 9px 0px;
     opacity:0 !important;
-    cursor: default;
+    cursor: pointer;
 }
 .comment-body .comment-options:hover > .show-reply-icon, .comment-body .comment-options:hover > a .delete-comment {
     opacity: 1 !important;

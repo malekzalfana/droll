@@ -35,12 +35,20 @@
 
         </div>
         <div class="upper-black"></div>
-        <div class="wrapper shown" data-post-id="<%= @post.id %>">
+        <div class="wrapper shown <%= if @post.user == current_user then "mine" end %>" data-post-id="<%= @post.id %>">
+
             <% if !user_signed_in? %>
+            <!--
             <div class="new-to-drolle">
                 New to drolle? Join the funny community in seconds <div class="new-to-drolle-button">Join</div>
             </div>
+            -->
+            <div id="post-memechallenge-banner">
+                <img src="http://i.imgur.com/Wc725vd.png">
+                <button onclick="window.location.href = "/" ">Continue</button>
+            </div>
             <% end %>
+
 
             <a href="/trends/<%= Trend.find(@post.trendid).name %>"><p class="back-to-trend"><i class="material-icons">arrow_back</i> /<%= Trend.find(@post.trendid).name %></p></a>
 
@@ -62,8 +70,9 @@
 
                     </div>
                 <% end %>
-            <div
             <div class="post-image-wrapper">
+
+                <% if !@post.title.blank? %><div class="post-title" data-gramm_editor="false"><%= @post.title %></div><% end %>
 
                 <div class="post-tags-wrapper">
                     <!--
@@ -111,7 +120,7 @@
                     <%= link_to like_post_path(@post), method: :put, class: 'up upvote', :"data-post-id" => @post.id, remote: true  do %>
                     <% end %>
                 </div>
-                <% if !@post.title.blank? %><div class="post-title" data-gramm_editor="false"><%= @post.title %></div><% end %>
+
                 <div class="post-footer new <%= if @post.user.passed != true then "not-passed" end %> ">
                 <% if @post.anonymous != true %>
                     <a href="/user/<%= @post.user.username %>" class="user-link">
@@ -300,7 +309,7 @@
                         <div class="comment-html post-comment-body-2 post-comment-body" data-gramm-editor="false" contentEditable="true"></div>
                         <div class="right-comment-wrapper">
                             <div class="cancel-meme hidden-imp">Cancel</div>
-                            <input class="post-comment" value="post" readonly>
+                            <i class="material-icons post-comment">send</i>
                             <%= f.submit 'post', class: 'post-comment-after hidden', name: 'post' %>
                             <div class="memes-emojis"><span class="make-meme">meme</span></div>
                         </div>

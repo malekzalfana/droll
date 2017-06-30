@@ -340,11 +340,13 @@ class PagesController < ApplicationController
 
   def stock
     if params[:base64]
+
+      if !Stock.where(base64: params[:base64]).present?
+
       @stock = Stock.create
       @stock.base64 = params[:base64]
       @stock.stocktype = params[:stocktype]
       @stock.image = URI.parse(  params[:base64]  )
-
       @stock.user = current_user
       @stock.save
       if @stock.save
@@ -353,6 +355,13 @@ class PagesController < ApplicationController
          format.js
         end
       end
+
+    else
+      puts "already made on!!!!!!!!!!!!!"
+      redirect_to :back
+    end
+
+
     end
 
   end

@@ -249,6 +249,7 @@ functions =  function() {
 				tmp_ctx.strokeStyle = lineColor;
 				tmp_ctx.fillStyle = 'black';
 				tmp_ctx.lineWidth = lineWidth;
+				$(".textareas, .rageface-normal").remove();
 				//alert(lineWidth);
 
 		});
@@ -563,27 +564,13 @@ functions =  function() {
 
 	$('#tools .direct-tools').on('click', function () {
 
-		$('#shapes-button, #texts-button').css({
-			//'border-bottom': '0px solid #d40000',
-			//'color':'black'
-		});
+		$('#shapes-button, #texts-button').removeClass("active");
 
 		tool = $(this).attr('id');
 		//$('.rageface').toggleClass('rageface');
-		$('#tools .direct-tools').not(this).css({
-		'border': 'none',
-			'background': 'white',
-			//, 'color': 'black'
-				//"box-shadow": "inset 0px 0px 0px 0px #D40000",
-				  //"background": "#424242"
-		});
+		$('#tools .direct-tools').not(this).removeClass("active")
 
-		$(this).css({
-			 'background': '#efefed'
-		, 'border': '#424242 1px solid'
-	//,"box-shadow": "inset 0px 0px 0px 3px #D40000"
-				//  'background': 'white'
-		});
+		$(this).addClass("active")
 		console.log(lineWidth);
 
 		function lowerIndex() {
@@ -1608,10 +1595,8 @@ var painting;
 			//$('.line-wrapper').css({
 			//	'background':'#616161'
 			//});
-			$(this).css({
-				'background': 'rgb(239, 239, 237)',
-				'border': '1px solid rgb(255, 48, 0)'
-			});
+			$('.line-wrapper').removeClass("bordered-2")
+			$(this).addClass("bordered-2")
 		});
 
 
@@ -1655,19 +1640,17 @@ var painting;
 			$('#' + thisTool + ' .options').removeClass('red-options');
 			$('#' + thisTool + '-button').removeClass('red-button');
 			if (tool == 'line' || tool == 'rectangle' || tool == 'ellipse' || tool == 'circle') {
-				$('#' + thisTool + '-button').css({
-					'background': '#F15247'
-				});
+				$('#' + thisTool + '-button').addClass("active")
 			}
 			else if (tool == 'text-#d40000') {
 				$('#texts-button').children('.schoolbell-text').hide()
 				$('#texts-button').children('.text').eq(0).show()
-				$('#texts-button').css({'border':'1px solid rgb(66, 66, 66)', 'background':'#efefed'});
+				$('#texts-button').addClass("active")
 			}
 			else if ( tool == 'text-black' ) {
 				$('#texts-button').children('.schoolbell-text').show()
 				$('#texts-button').children('.text').eq(0).hide()
-				$('#texts-button').css({'border':'1px solid rgb(66, 66, 66)', 'background':'#efefed'});
+				$('#texts-button').addClass("active")
 			}
 		});
 		//$('#shapes').click(function(){

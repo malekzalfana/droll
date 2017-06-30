@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170529222822) do
+ActiveRecord::Schema.define(version: 20170628205650) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -206,6 +206,7 @@ ActiveRecord::Schema.define(version: 20170529222822) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "stocktype"
+    t.string   "url"
   end
 
   create_table "taggings", force: :cascade do |t|

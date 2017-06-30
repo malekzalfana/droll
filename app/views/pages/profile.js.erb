@@ -15,8 +15,8 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
   			gutter: 5
   		});
     }, 1200)
-		
-    
+
+
         <% if @profilepost.next_page %>
           $('#left-content-profile .pagination').replaceWith('<%= j will_paginate @profilepost %>');
         <% else %>
