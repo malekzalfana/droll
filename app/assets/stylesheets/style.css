@@ -10045,6 +10045,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 #tabs-wrapper {
 	display: none !important;
 }
+#make2 #tabs-wrapper {
+	display: block !important;
+}
 .memeb-field {
 	display: block;
     padding: 8px;
