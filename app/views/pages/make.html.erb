@@ -1080,8 +1080,7 @@
 
 
 
-
-	<div id="rage-comics-content" class="choosen-content">
+<div id="rage-comics-content" class="choosen-content">
 		<div class="overlay"></div>
 <div id="upload-button-popup" class="popup">
 	<h2>Upload Image</h2>
@@ -1210,7 +1209,7 @@
 	</div>
 
 
-	<textarea id="make-post-title-2" placeholder="Meme Title"></textarea>
+	<textarea id="make-post-title-2" placeholder="Caption"></textarea>
 	<div id="add-remove">
 		<span id="remove-panel-button">
       <p id="remove-panel">remove panel</p>
@@ -1261,7 +1260,7 @@
 			<% if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
 				 <%= f.file_field :image, id: "ragefaces-filefield", accept: "image/*" %>
-				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Meme Title" %>
+				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
 				 <input id="base64-2" type="hidden" value="" name="base64"/>
 				 <%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
 			   <%= f.text_field :tag_list, class: "hidden tag-list-field" %>
@@ -1346,7 +1345,7 @@
 				 	<i id="image-for-gif-reset-2" class="material-icons" style="display: inline;">close</i>
 				 	<p class="make-dark-background">Type your reaction</p>
 				 	<i id="image-gif-reset" class="material-icons">close</i>
-				 	<input autocomplete="false" data-search2 id="searchTerm" name="searchTerm" placeholder="search GIFs ..">
+				 	<input autocomplete="false" data-search id="searchTerm" name="searchTerm" placeholder="search GIFs ..">
 				 	<div id="loader"></div><p id="unlock-feed"></p>
 				 	<div id="gifs"></div>
 				 </div>

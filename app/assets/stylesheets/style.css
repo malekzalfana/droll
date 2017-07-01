@@ -1166,8 +1166,10 @@ margin: 7px 0px;
     background: #fbfbfb;
     z-index: 2;
     min-heighT: 750px;
-        PADDING-TOP: 10PX;
-
+    PADDING-TOP: 10PX;
+}
+#make2 #pick-meme {
+	top: 60px;
 }
 .make-how-to {
 	font-family: lato;
@@ -1198,7 +1200,8 @@ margin: 7px 0px;
 	    float: right;
 }
 #make .gif-container {
-	width: 25%;
+	    width: 25% !important;
+    margin: 0px !important;
 }
 .meme-overlay {
 	position: absolute;
@@ -2508,6 +2511,9 @@ input.new::-webkit-input-placeholder {
     text-indent: 55px;
     background: url(search-3.png) no-repeat 20px #fbfbfb;
     background-size: 18px;
+}
+#make2 #search-memes {
+	width: 100% !important;
 }
 #meme-above {
 	widtH: 100%;
@@ -5710,6 +5716,9 @@ body.shown-post #main-page-type a:hover + #back-list {
     top: 4px;
 }
 @media screen and (max-width: 600px) {
+	.gif-container {
+		height: 90px !important;
+	}
 	.make-dark-box {
 		width: calc(100% - 20px) !important;
 	}
