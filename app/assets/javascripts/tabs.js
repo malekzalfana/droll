@@ -510,6 +510,7 @@ $("#sketch").on("contextmenu",function(){
 	});
 	$(document).on('click', 'body:not(#gif) .remote-gif', function() {
 		$('#hide-remote-make', parent.document.body).click();
+
 		$(".wrapper:visible .giphy-id-make", parent.document.body).val($(this).attr('data-giphy-id'));
 		console.log($(".wrapper:visible .giphy-id-make", parent.document.body))
 		$(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();

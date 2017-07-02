@@ -67,7 +67,8 @@ function createVideoTag(srcStill,src, id) {
    videoS.setAttribute("class", "remote-gif-overlay");
    //videoS.style.backgroundImage = 'url(' + src + ')'
    $('.remote-gif-overlay').lazyload();
-   video.appendChild(videoS)
+   //video.appendChild(videoS)
+   //REMOVED
 
    return video;
 }
