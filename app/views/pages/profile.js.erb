@@ -2,19 +2,29 @@ if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
     var html = $('<%= j render(partial: ('posts/profilepost') ) %>' );
     $('#left-content-profile').append(html)
     var $container = $('#left-content-profile');
-    $(document).ready(function(){
-      $container.masonry('appended', $(html));
-  		$container.masonry({
-  			itemSelector: '.wrapper',
-  			gutter: 5
-  		});
-    })
-    setTimeout(function(){
-      $('#left-content-profile').masonry({
-  			itemSelector: '.wrapper',
-  			gutter: 5
-  		});
-    }, 1200)
+    //document.addEventListener("DOMContentLoaded", function(event) {
+      $container.imagesLoaded(function() {
+        $container.masonry('appended', $(html));
+    		$container.masonry({
+    			itemSelector: '.wrapper',
+    			gutter: 15
+    		});
+      })
+    //})
+    function onReady() {
+    $container.imagesLoaded(function() {
+        $container.masonry('appended', $(html));
+    		$container.masonry({
+    			itemSelector: '.wrapper',
+    			gutter: 15
+    		});
+      })
+}
+if (document.readyState !== "complete") {
+    onReady(); // Or setTimeout(onReady, 0); if you want it consistently async
+} else {
+    document.addEventListener("DOMContentLoaded", onReady);
+}
 
 
         <% if @profilepost.next_page %>
@@ -28,7 +38,8 @@ else {
     var html2 = $('#right-content-profile').append('<%= j render(partial: ('posts/profilefavor')) %>' );
     $('#right-content-profile').append(html)
     var $container2 = $('#right-content-profile');
-    $(document).ready(function(){
+    //$(window).load(function(){
+    $container2.imagesLoaded(function() {
   		$container2.masonry('appended', $(html2));
   		$container2.masonry({
   			itemSelector: '.wrapper',

@@ -9,9 +9,11 @@ var trendname;
 var trendposts;
 var trendfollowers;
 var type;
+var dReady
 $(document).ready(function() {
 		$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
+
 		$content.imagesLoaded(function() {
 			$content.masonry({
 				itemSelector: '.wrapper',

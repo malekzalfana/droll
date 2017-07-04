@@ -2407,7 +2407,7 @@ input.new::-webkit-input-placeholder {
     text-align: center;
     float: left;
     display: inline-block;
-    border-radius: 5%;
+    border-radius: 50%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -2418,10 +2418,11 @@ input.new::-webkit-input-placeholder {
 	    margin-top: 50px;
     display: inline-block;
     width: calc(100% - 30px);
-    padding: 6px 15px;
+    padding: 7px 15px;
     overflow: hidden;
     height: 60px;
-        border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    BACKGROUND: #e8e8e8;
 }
 .rec-users-name {
 	    font-family: roboto;
@@ -10048,6 +10049,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
 #make2 #tabs-wrapper {
 	display: block !important;
 	top: 2px !important;
+}
+#make2 #gifs-content {
+	margin-top: 70px !important;
 }
 .memeb-field {
 	display: block;
