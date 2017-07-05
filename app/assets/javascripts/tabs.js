@@ -9,7 +9,9 @@ var trendname;
 var trendposts;
 var trendfollowers;
 var type;
-var dReady
+var dReady;
+var usernameChecked = true;
+	var emailChecked = true;
 $(document).ready(function() {
 		$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
@@ -1364,10 +1366,11 @@ $("#sketch").on("contextmenu",function(){
 	})
 	var approvedUsername;
 	$(document).on('click', '#save-profile', function() {
+		alert("ss")
 		console.log(usernameChecked)
 		console.log( approvedUsername )
 		if (usernameChecked ) { // && approvedUsername REMOVED
-			//alert("true")
+			alert("true")
 			$('#save-profile-field').click()
 			if ($('#username-check-icon').text() == 'cancel') {
 				$('#username-check-icon').addClass('flash animated-fast')
@@ -1566,8 +1569,7 @@ $("#sketch").on("contextmenu",function(){
 		$('#username-check-submit').click()
 		$('#username-check-icon').show()
 	})
-	var usernameChecked = true;
-	var emailChecked = true;
+
 	$(document).on('keyup', '#username-field-settings', function() {
 		$('#username-check-field').attr('value', $('#username-field-settings').val())
 		$('#username-check-submit').click()

@@ -149,7 +149,7 @@ a {
     pointer-events: none;
     background: white;
 }
-#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar, #settings #navbar, #invite-page #navbar, #settings #navbar, #profile #navbar{
+#explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar, #settings #navbar, #invite-page #navbar, #settings #navbar, #profile #navbar, #tag #navbar{
 	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15) !important;
 }
 
@@ -682,7 +682,7 @@ a {
 	box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.1);
 	outline: none;
 }
-div:not(.second) #trends-wrapper {
+body:not(#tag) div:not(.second) #trends-wrapper {
 	width: calc(100% - 135px) !important;
     text-align: left;
 }
@@ -2414,6 +2414,10 @@ input.new::-webkit-input-placeholder {
     -webkit-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
     transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
+.rec-profile-pic:hover {
+	    border: 2px solid #c3c3c3;
+    box-sizing: border-box;
+}
 #rec-users {
 	    margin-top: 50px;
     display: inline-block;
@@ -2448,10 +2452,11 @@ input.new::-webkit-input-placeholder {
     float: left;
 }
 #rec-users > p {
-	display: none;
-	margin: 29px 10px;
-	float: left;
-	font-family: roboto
+	    margin: 20px 5px;
+    float: left;
+    font-family: roboto;
+    font-size: 14px;
+    color: #6f6f6f;
 }
 #profile-photo-small {
 	width: 30px;
@@ -3261,7 +3266,9 @@ html {
   width: 100%;
   height: 100%;
 }
-
+#tag #content-full2 {
+	padding-top: 60px !Important;
+}
 #content-full .wrapper {
   width: 100%;
   height: 100%;
@@ -5294,11 +5301,11 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	display: none;
 }
 #logo-wrapper {
-    width: 35px;
+        width: 35px;
     height: 35px;
-    background-image: url(http://i.imgur.com/7PeGQF5.png);
+    background-image: url(http://i.imgur.com/nQApz5w.png);
     background-repeat: no-repeat;
-    background-size: 26px;
+    background-size: 16px;
     background-position: center center;
     float: left;
     margin: 8px 10px;
@@ -5533,6 +5540,11 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 	#rec-users {
 		    height: 45px;
+		    margin-top: 45px;
+	}
+	#rec-users > p {
+		    margin: 28px 5px;
+		    line-height: 0;
 	}
 	div:not(#trends-page-wapper) #search-trends {
 		margin-left: 25px !important;
@@ -7461,11 +7473,11 @@ i.fa.fa-reddit-alien {
 	display: none !important;
 }
 #new-logo {
-	    font-family: montserrat;
-    font-size: 18px;
+	    font-family: sniglet;
+    font-size: 20px;
     color: #ff3000;
     display: inline-block;
-    margin: 15px -5px;
+    margin: 14px -10px;
     font-weight: 500;
     letter-spacing: 0px;
 }
@@ -7505,6 +7517,21 @@ i.fa.fa-reddit-alien {
     background: #ffffff;
     margin-left: 7px;
     margin-bottom: 10px;
+}
+#tag .trends {
+	    font-size: 14px;
+    font-family: roboto;
+    color: #424242;
+    margin: 0px 0px;
+    display: inline-block;
+    padding: 9px 12px;
+    text-align: left;
+    border-radius: 20px;
+    background: #ffffff;
+    margin-left: 7px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15) !important;
 }
 .trends:hover, .trends:active {
 	opacity: 0.8;
@@ -8552,6 +8579,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
   	height: 40px;
   	overflow: hidden;
 }
+#tag #nav-menu-wrapper {
+	    background: none;
+    position: absolute;
+    width: calc(100% - 6px);
+    z-index: 3;
+    padding: 3px;
+    top: 61px;
+    height: 40px;
+    BOX-SHADOW: NONE;
+    overflow: hidden;
+}
 body:not(#make) .fixed-menu {
 	position: fixed !important;
 	top:0px !important;
@@ -9314,6 +9352,9 @@ display: none !important;
     FONT-SIZE: 13PX;
     background: rgba(255, 255, 255, 1);
 }
+#tag #toggle-trends {
+	display: none !Important;
+}
 .mobile-tab {
 	    width: 95px;
     padding: 11px 0px;
@@ -9406,11 +9447,12 @@ display: none !important;
 }
 
 .single-trend {
-	font-family: roboto;
-    margin-top: 40px;
+	font-family: SNIGLET;
+    margin-top: 35px;
     font-size: 35px;
-    margin-bottom: 25px;
-    font-weight: 100;
+    margin-bottom: 5px;
+    font-weight: 500;
+    COLOR: #424242;
 }
 .trend {
         height: 223px;
@@ -9745,7 +9787,7 @@ p.pick-tags-title.new {
 .single-trend-2 {
 	    font-family: roboto;
     margin-top: 10px;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 25px;
     font-weight: 300;
 }
