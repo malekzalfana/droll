@@ -44,7 +44,7 @@
             </div>
             -->
             <div id="post-memechallenge-banner">
-                <img src="http://i.imgur.com/Wc725vd.png">
+                <img src="http://i.imgur.com/Qvh21qf.png">
                 <button onclick="window.location.href = "/" ">Continue</button>
             </div>
             <% end %>
@@ -82,7 +82,7 @@
                     <% end %>
                     -->
                     <% if @post.trendid.present? %>
-                          <a class="post-trend" href="/trends/<%= Trend.find_by_id(@post.trendid).name %>">/<%= Trend.find_by_id(@post.trendid).name %></a>
+                          <a class="post-trend" target="_blank" href="/trends/<%= Trend.find_by_id(@post.trendid).name %>">/<%= Trend.find_by_id(@post.trendid).name %></a>
                         <% end %>
                 </div>
 

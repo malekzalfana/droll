@@ -31,7 +31,7 @@
                         <% end %>
                     -->
                         <% if post.trendid.present? %>
-                          <a class="post-trend" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
+                          <a class="post-trend"  target="_blank" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
                         <% end %>
 
                     </div>

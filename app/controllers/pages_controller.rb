@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
 
   def index
+    @randomPic = rand(1..50)
     @alltrends = Trend.all
     #if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
     #  #redirect_to '/make'

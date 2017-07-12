@@ -49,7 +49,7 @@
 <div class="overlay-full"></div>
 <div class="upper-black"></div>
     <%= render '/layouts/trends_tags' %>
-    <% if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 1%>
+    <% if user_signed_in? && current_user.posts.count > -1%>
 <div id="mobile-tabs">
         <div id="tab-1" class="mobile-tab active"><i class="material-icons">home</i>Feed</div>
         <div id="tab-2" class="mobile-tab"><i class="material-icons">access_time</i>New</div>
@@ -113,6 +113,7 @@
                 <% end %>
 </div>
 <% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 1 %>
+<!--
 <div class="memeb-wrapper waiting">
     Waiting for someone to let you in..
   <% if current_user.username.nil? %>
@@ -125,18 +126,26 @@
                 <% end %>
 
 </div>
+-->
 <% elsif user_signed_in? &&  current_user.passed.nil? && current_user.posts.count == 0 %>
-<div class="memeb-wrapper waiting">
+<div class="memeb-wrapper waiting next-wrapper">
+    <img src="http://i.imgur.com/1NJqG41.png" style="
+    width: 100%;
+">
+<button class="next-button">Next <i class="material-icons">navigate_next</i></button>
+    </div>
+<div class="memeb-wrapper waiting second next-wrapper">
+
     Complete the meme challenge
     <% if current_user.username.nil? %>
-    <p class="memeb-detail-2">first, choose your username</p>
+    <p class="memeb-detail-2 second">first, choose your username</p>
 <%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
                   <%= text_field_tag 'username1', '', class: "memeb-field-2",placeholder: 'eg. bananapeeler', id: "memeb-username-field" %>
                   <%= submit_tag "Save", class: "hidden", id:"memeb-username-submit"%>
-                  <button type="button" id="memeb-username-submit-before" class="memeb-button-2">Continue</button>
+                  <button type="button" id="memeb-username-submit-before" class="memeb-button-2 second">Continue</button>
                 <% end %>
                 <% else %>
-                <a href="/make"><button class="memeb-button-2">Continue</button></a>
+                <a href="/make"><button class="memeb-button-2 second">Continue</button></a>
                 <% end %>
 </div>
 <% end %>
@@ -180,7 +189,7 @@
                         <% end %>
                     -->
                         <% if post.trendid.present? %>
-                          <a class="post-trend" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
+                          <a class="post-trend"  target="_blank" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
                         <% end %>
 
                     </div>
@@ -743,11 +752,15 @@
 <div class="memeb-wrapper-3">
     <p class="memeb-title">Setting up your profile</p>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "starting-form"} ) do |f| %>
+        <div class="generated-pic">
+            <div style="background-image:url(http://drolle.net/profilepics/pic<%= @randomPic %>.jpg)" ></div>
+            <span>your auto-generated profile pic, you can change it later</span>
+        </div>
         <%= f.email_field :email, autofocus: true, class: "memeb-field f new", placeholder: "Email" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
-        <%= f.text_field :pic, value: rand(1..20), class: "hidden-imp" %>
+        <%= f.text_field :pic, value: @randomPic, class: "hidden-imp" %>
         <%= f.password_field :password, autocomplete: "off", placeholder:"Password" , class: "memeb-field s new" %>
         <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "memeb-field t new" %>
         <p class="memeb-notice">You can create your meme, after this step</p>

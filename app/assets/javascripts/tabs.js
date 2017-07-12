@@ -54,7 +54,7 @@ tabs = function() {
 	else {
 		newpostGutter = 10
 	}
-	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment)',
+	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend)',
 		function(e) {
 			e.preventDefault();
 			console.log("clicked this bitch")
@@ -1321,6 +1321,9 @@ $("#sketch").on("contextmenu",function(){
 		})
 		$(window).scrollTop(0);
 	})
+	$(document).on('click', '.next-button', function() {
+		$(this).parent(".next-wrapper").hide().next(".next-wrapper").fadeIn();
+	})
 	$(document).on('click', '#cancel-edit-profile', function() {
 		$("#setting-button, #posts-number, #upvotes-number").fadeIn(100);
 		$('#profile-under-overlay').css({
@@ -1340,7 +1343,7 @@ $("#sketch").on("contextmenu",function(){
 		$('#edit-profile').show();
 		document.getElementById('username-profile').contentEditable = 'false';
 		document.getElementById('username-profile-big').contentEditable = 'false';
-		$('#save-profile, #profile #username-check-icon').hide();
+		$('#save-profile, #profile #username-check-icon, #save-profile').hide();
 	});
 	var originalCover;
 	var originalImage;
@@ -1726,6 +1729,10 @@ $("#sketch").on("contextmenu",function(){
 		}
 	})
 	var tabClick = true;
+	$(document).on('click', '#new-posts',function(){
+			$("#tab-1").click();
+			alert("ss")
+	})
 	$(document).on('click', '.mobile-tab', function() {
 		setTimeout(function(){
 			tabClick = true
