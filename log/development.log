@@ -217,3 +217,95 @@ Completed 200 OK in 247ms (Views: 243.7ms | ActiveRecord: 1.6ms)
 Started GET "/assets/search-3.png" for 199.115.116.195 at 2017-07-13 23:32:30 +0000
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/make" for 77.42.231.198 at 2017-07-13 23:43:10 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 50]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE "users" SET "last_sign_in_at" = ?, "current_sign_in_at" = ?, "last_sign_in_ip" = ?, "current_sign_in_ip" = ?, "sign_in_count" = ?, "updated_at" = ? WHERE "users"."id" = ?  [["last_sign_in_at", "2017-07-12 21:45:54.847705"], ["current_sign_in_at", "2017-07-13 23:43:10.475676"], ["last_sign_in_ip", "94.187.90.186"], ["current_sign_in_ip", "77.42.231.198"], ["sign_in_count", 6], ["updated_at", "2017-07-13 23:43:10.477744"], ["id", 50]]
+  [1m[36m (11.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 50]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 50  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.3ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND "activities"."owner_id" = 48 AND (created_at >= '2017-07-11 23:43:10.564991')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Stock> at /home/ubuntu/workspace/app/models/stock.rb:4)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 50]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 50]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 50]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (7.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  [1m[35mStock Load (0.3ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 50], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 50], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (45.4ms)
+  Rendered layouts/_nav_upload.html.erb (2.0ms)
+  Rendered layouts/_nav.html.erb (3.4ms)
+Completed 200 OK in 449ms (Views: 320.5ms | ActiveRecord: 18.0ms)
+
+
+Started GET "/assets/style.self-2ed94cfbc8b6338f6c0a44a3b256f1aad581fbc5689285f246aaa8ce837732dd.css?body=1" for 77.42.231.198 at 2017-07-13 23:43:13 +0000
+
+
+Started GET "/assets/tabs.self-f08fddfc3e3555e3b6f5562169430e1aff8fbff7e9f71adfb3f6d2b53af969e7.css?body=1" for 77.42.231.198 at 2017-07-13 23:43:13 +0000
+
+
+Started GET "/assets/tabs.self-d4e32c222b859beb893f38d664765c682bdbe8794146c4107dfe207812fba78c.js?body=1" for 77.42.231.198 at 2017-07-13 23:43:15 +0000
+
+
+Started GET "/make" for 172.98.84.182 at 2017-07-13 23:46:10 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.2ms)
+  [1m[35mTrend Load (0.6ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (12.8ms)
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.4ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  Rendered pages/make.html.erb within layouts/application (38.8ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 393ms (Views: 387.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/tabs.self-d4e32c222b859beb893f38d664765c682bdbe8794146c4107dfe207812fba78c.js?body=1" for 172.98.84.182 at 2017-07-13 23:46:11 +0000
+
+
+Started GET "/assets/cursor.png" for 172.98.84.182 at 2017-07-13 23:46:12 +0000
+
+
+Started GET "/assets/spray-can.png" for 172.98.84.182 at 2017-07-13 23:46:12 +0000
+
+
+Started GET "/assets/eraser.png" for 172.98.84.182 at 2017-07-13 23:46:12 +0000
+
+
+Started GET "/assets/colors.png" for 172.98.84.182 at 2017-07-13 23:46:12 +0000
+
+
+Started GET "/make" for 172.98.84.182 at 2017-07-13 23:46:13 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.2ms)
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (7.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  Rendered pages/make.html.erb within layouts/application (19.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 292ms (Views: 289.1ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/search-3.png" for 198.7.60.138 at 2017-07-13 23:47:28 +0000
