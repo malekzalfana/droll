@@ -107,8 +107,8 @@ a {
     font-size: 16px;
     resize: vertical;
     height: 33px;
-    padding-top: 10px;
-    padding-bottom: 0PX;
+    padding-top: 15px;
+    padding-bottom: 5PX;
 }
 #post-memechallenge-banner {
 	width: 100%;
@@ -2740,7 +2740,7 @@ i#upload-meme-stock:hover {
 }
 #make-logo {
         position: absolute;
-    left: 130px;
+    left: 106px;
     display: inline-block;
     color: #F44336;
     font-size: 19px;
@@ -9660,7 +9660,8 @@ span.post-trend-2-number {
 img.post-trend-2 {
     height: 100px;
     float: left;
-    pointer-events: none
+    pointer-events: none;
+    border-right: 1px solid #BDBDBD;
 }
 .trend-container > div {
 	    height: 100px;
@@ -10059,9 +10060,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e50000', end
     box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
 }
 .memeb-wrapper.waiting {
+	/*
     padding-bottom: 20px;
 	max-width: 85%;
 	padding-top: 0px !important;
+	*/
+	    padding-bottom: 20px;
+    max-width: 400px;
+    padding-top: 0px !important;
+    height: 450px;
 }
 .memeb-wrapper.declined .memeb-field.f {
 	background-image: url(https://image.flaticon.com/icons/svg/127/127936.svg);

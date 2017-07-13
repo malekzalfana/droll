@@ -309,7 +309,7 @@
 }
 #make-post-title{
      height: 24px;
-    padding: 7px;
+    padding: 12px 7px;
     width: calc(100% - 60px);
     border: none;
     margin: 10px 25px;

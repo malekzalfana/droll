@@ -135,12 +135,13 @@
 <button class="next-button">Next <i class="material-icons">navigate_next</i></button>
     </div>
 <div class="memeb-wrapper waiting second next-wrapper">
-
-    Complete the meme challenge
+<img src="http://i.imgur.com/TAGCMD0.png" style="
+    width: 100%;
+">
     <% if current_user.username.nil? %>
     <p class="memeb-detail-2 second">first, choose your username</p>
 <%= form_tag url_for(:controller => 'pages', :action => 'acceptUser'), :method => 'get', class: "i", remote: true do %>
-                  <%= text_field_tag 'username1', '', class: "memeb-field-2",placeholder: 'eg. bananapeeler', id: "memeb-username-field" %>
+                  <%= text_field_tag 'username1', '', class: "memeb-field-2",placeholder: '[funny username]', id: "memeb-username-field" %>
                   <%= submit_tag "Save", class: "hidden", id:"memeb-username-submit"%>
                   <button type="button" id="memeb-username-submit-before" class="memeb-button-2 second">Continue</button>
                 <% end %>
