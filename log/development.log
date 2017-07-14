@@ -762,3 +762,5 @@ Started GET "/assets/colors.png" for 88.202.186.221 at 2017-07-14 20:33:04 +0000
 
 
 Started GET "/assets/search-3.png" for 88.202.186.221 at 2017-07-14 20:33:07 +0000
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
