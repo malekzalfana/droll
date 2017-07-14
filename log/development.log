@@ -309,3 +309,49 @@ Completed 200 OK in 292ms (Views: 289.1ms | ActiveRecord: 1.5ms)
 
 
 Started GET "/assets/search-3.png" for 198.7.60.138 at 2017-07-13 23:47:28 +0000
+
+
+Started GET "/make" for 172.98.84.195 at 2017-07-13 23:59:55 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mTrend Load (0.5ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (12.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.3ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  Rendered pages/make.html.erb within layouts/application (30.2ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 235ms (Views: 230.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/cursor.png" for 172.98.84.195 at 2017-07-13 23:59:57 +0000
+
+
+Started GET "/assets/spray-can.png" for 172.98.84.195 at 2017-07-13 23:59:57 +0000
+
+
+Started GET "/assets/eraser.png" for 172.98.84.195 at 2017-07-13 23:59:58 +0000
+
+
+Started GET "/assets/colors.png" for 172.98.84.195 at 2017-07-13 23:59:58 +0000
+
+
+Started GET "/make" for 172.98.84.195 at 2017-07-13 23:59:58 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (7.8ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  Rendered pages/make.html.erb within layouts/application (19.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 247ms (Views: 243.7ms | ActiveRecord: 1.1ms)
