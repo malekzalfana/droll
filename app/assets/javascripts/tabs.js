@@ -12,7 +12,7 @@ var type;
 var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
-	var memeCanvas;
+	var memeCanvas
 $(document).ready(function() {
 	$(document).on('click', '#choose-image, #reset-user-image', function() {
 		$(this).siblings('input').click()
@@ -41,6 +41,8 @@ $(document).ready(function() {
 	console.log("brsa")
 	//$('.pick-meme-container').onclick(function()
 	//alert('llll')
+	memeCanvas = document.getElementById('meme-canvas');
+		$(memeCanvas).attr('crossorigin', '')
 	if (!$(event.target).is('.delete-stock')) {
 		var MemeBackground = $(this).css('background-image').replace('url("', '').replace('")', '');
 		var thisImage = document.createElement('img');
