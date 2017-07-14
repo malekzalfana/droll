@@ -1785,3 +1785,275 @@ Started GET "/assets/eraser.png" for 88.202.181.12 at 2017-07-14 20:51:27 +0000
 Started GET "/assets/search-3.png" for 88.202.181.12 at 2017-07-14 20:51:30 +0000
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/make" for 207.244.66.95 at 2017-07-14 20:55:57 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 53]]
+  [1m[36m (0.3ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 53]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 20:55:57.902534')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mTrend Load (0.3ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (9.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.3ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (29.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 219ms (Views: 193.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/assets/cursor.png" for 207.244.66.95 at 2017-07-14 20:55:59 +0000
+
+
+Started GET "/assets/spray-can.png" for 207.244.66.95 at 2017-07-14 20:55:59 +0000
+
+
+Started GET "/assets/eraser.png" for 207.244.66.95 at 2017-07-14 20:55:59 +0000
+
+
+Started GET "/assets/colors.png" for 207.244.66.95 at 2017-07-14 20:56:00 +0000
+
+
+Started GET "/make" for 207.244.66.95 at 2017-07-14 20:56:00 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 53]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 53]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 20:56:00.189731')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (9.4ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.2ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (26.6ms)
+  Rendered layouts/_nav_upload.html.erb (0.3ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 202ms (Views: 190.7ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/impactt.ttf" for 207.244.66.95 at 2017-07-14 20:56:00 +0000
+
+
+Started GET "/make" for 142.234.115.115 at 2017-07-14 21:04:24 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 53]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 53]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 21:04:24.459530')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (4.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (7.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (40.3ms)
+  Rendered layouts/_nav_upload.html.erb (1.0ms)
+  Rendered layouts/_nav.html.erb (5.3ms)
+Completed 200 OK in 179ms (Views: 171.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/make" for 142.234.115.115 at 2017-07-14 21:04:25 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 53]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 53]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 21:04:25.577242')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (7.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (125.7ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 253ms (Views: 243.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/make" for 172.98.85.53 at 2017-07-14 21:05:47 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 53]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 53]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.1ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 21:05:47.471880')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (5.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (26.7ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 287ms (Views: 279.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/cursor.png" for 172.98.85.53 at 2017-07-14 21:05:48 +0000
+
+
+Started GET "/assets/tabs.self-13ef063517987ffb8fe919f0f71b81bb468d91b039df102236182c8a1bb16d0e.js?body=1" for 172.98.85.53 at 2017-07-14 21:05:49 +0000
+
+
+Started GET "/assets/spray-can.png" for 172.98.85.53 at 2017-07-14 21:05:50 +0000
+
+
+Started GET "/assets/eraser.png" for 172.98.85.53 at 2017-07-14 21:05:50 +0000
+
+
+Started GET "/assets/colors.png" for 172.98.85.53 at 2017-07-14 21:05:50 +0000
+
+
+Started GET "/make" for 172.98.85.53 at 2017-07-14 21:05:50 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 53]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 53]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.1ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 21:05:50.181764')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (5.6ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (16.4ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 140ms (Views: 131.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/assets/impactt.ttf" for 172.98.85.53 at 2017-07-14 21:05:50 +0000
+
+
+Started GET "/assets/search-3.png" for 172.98.85.53 at 2017-07-14 21:05:52 +0000
+
+
+Started GET "/make" for 172.98.85.53 at 2017-07-14 21:06:21 +0000
+Processing by PagesController#make as HTML
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 53]]
+  [1m[36m (0.1ms)[0m  [1mSELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 53]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC[0m  [["key", "drolling"]]
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 21:06:21.249546')  ORDER BY created_at DESC  [["key", "posting"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (5.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (15.0ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 262ms (Views: 254.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/assets/cursor.png" for 172.98.85.53 at 2017-07-14 21:06:22 +0000
+
+
+Started GET "/assets/tabs.self-a65e59a95b29dbb4224cd07ee107c811a028ce36407458310c7fcf309359e67b.js?body=1" for 172.98.85.53 at 2017-07-14 21:06:23 +0000
+
+
+Started GET "/assets/spray-can.png" for 172.98.85.53 at 2017-07-14 21:06:23 +0000
+
+
+Started GET "/assets/eraser.png" for 172.98.85.53 at 2017-07-14 21:06:23 +0000
+
+
+Started GET "/assets/colors.png" for 172.98.85.53 at 2017-07-14 21:06:23 +0000
+
+
+Started GET "/make" for 172.98.85.53 at 2017-07-14 21:06:23 +0000
+Processing by PagesController#make as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 53]]
+  [1m[35m (0.1ms)[0m  SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?  [["follower_id", 53]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 53  ORDER BY created_at DESC[0m
+  [1m[35mPublicActivity::Activity Load (0.2ms)[0m  SELECT "activities".* FROM "activities" WHERE "activities"."key" = ?  ORDER BY created_at DESC  [["key", "drolling"]]
+  [1m[36mPublicActivity::Activity Load (0.2ms)[0m  [1mSELECT "activities".* FROM "activities" WHERE "activities"."key" = ? AND 1=0 AND (created_at >= '2017-07-12 21:06:23.852050')  ORDER BY created_at DESC[0m  [["key", "posting"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  Rendered layouts/_activities.html.erb (0.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 53]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 53]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (6.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  [1m[35mStock Load (0.1ms)[0m  SELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC  [["user_id", 53], ["stocktype", "meme"]]
+  [1m[36mStock Load (0.1ms)[0m  [1mSELECT "stocks".* FROM "stocks" WHERE "stocks"."user_id" = ? AND "stocks"."stocktype" = ?  ORDER BY created_at DESC[0m  [["user_id", 53], ["stocktype", "rage"]]
+  Rendered pages/make.html.erb within layouts/application (17.3ms)
+  Rendered layouts/_nav_upload.html.erb (0.2ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 200ms (Views: 191.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/impactt.ttf" for 172.98.85.53 at 2017-07-14 21:06:24 +0000
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)

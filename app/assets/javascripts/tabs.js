@@ -12,247 +12,7 @@ var type;
 var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
-	var memeCanvas
 $(document).ready(function() {
-	$(document).on('click', '#choose-image, #reset-user-image', function() {
-		$(this).siblings('input').click()
-	})
-	$(document).on('click', '.shown-post #back-clicker',
-		function() {
-			$('#back-list').click()
-		})
-	$(document).on('click', '.submit-edit-2', function() {
-		$(this).parents('.wrapper').addClass('hidden')
-	})
-	$(document).on('click', '#done-meme', function() {
-		memeCanvas = document.getElementById('meme-canvas');
-		$(memeCanvas).attr('crossorigin', '')
-		var dataURL3 = memeCanvas.toDataURL();
-		$('#hide-remote-make', parent.document.body).click();
-		$(".wrapper:visible .base64-make", parent.document.body).val(dataURL3);
-		$(".wrapper:visible .base64-image", parent.document.body).attr("src",
-			dataURL3).fadeIn(200)
-		$(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();
-		$(".wrapper:visible .cancel-meme", parent.document.body).removeClass(
-			'hidden-imp');
-		console.log('worked?')
-	});
-	$(document).on('click', '.pick-meme-container', function() {
-	console.log("brsa")
-	//$('.pick-meme-container').onclick(function()
-	//alert('llll')
-	memeCanvas = document.getElementById('meme-canvas');
-		$(memeCanvas).attr('crossorigin', '')
-	if (!$(event.target).is('.delete-stock')) {
-		var MemeBackground = $(this).css('background-image').replace('url("', '').replace('")', '');
-		var thisImage = document.createElement('img');
-		thisImage.crossOrigin = "";
-		thisImage.src = MemeBackground
-
-		thisImage.onload = function() {
-			alert("Ss")
-			$(this).remove();
-			if ($(window).width() < 590) {
-				$(thisImage).css({
-					'width': $('#memes-content').width()
-				});
-				console.log($(window).width())
-			} else {
-				$(thisImage).css({
-					'width': '550px'
-				});
-			}
-			console.log($(thisImage).width());
-			memeCanvas.width = 1100;
-			memeCanvas.height = thisImage.height * (1100 / thisImage.width);
-			console.log(1111)
-			console.log(thisImage.height + 'height')
-			console.log(thisImage.width + 'width')
-			$(memeCanvas).attr('crossorigin', '')
-			$(memeCanvas).css({
-				'height': memeCanvas.height / (memeCanvas.width / $(memeCanvas).width())
-			});
-			$('#meme-wrapper').css({
-				'height': memeCanvas.height / 2
-			});
-			$('#pick-meme').hide();
-			$('#left-arrow').fadeIn();
-			$('.middle-column').show();
-			$('#memescontainer').removeClass('clicked');
-			memeCtx.drawImage(thisImage, 0, 0, 1100, thisImage.height * (1100 / thisImage.width));
-			console.log(memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height))
-			$('#add-button').hide();
-			var memeHeight = thisImage.height * (1100 / thisImage.width);
-			CanvasRenderingContext2D.prototype.wrapText = function(text, x, y, maxWidth, lineHeight) {
-				var lines = text.split("\n");
-				for (var i = 0; i < lines.length; i++) {
-					var words = lines[i].split(' ');
-					var line = '';
-					for (var n = 0; n < words.length; n++) {
-						var testLine = line + words[n] + ' ';
-						//console.log(testLine)
-						var metrics = this.measureText(testLine);
-						//console.log(metrics+'= metric')
-						var testWidth = metrics.width;
-						if (testWidth > maxWidth && n > 0) {
-							this.fillText(line, x, y);
-							this.lineWidth = 3;
-							this.strokeText(line, x, y);
-							//this.strokeText(line, x, y );
-							this.shadowColor = "black";
-							this.shadowBlur = 3;
-							this.fillText(line, x, y);
-							line = words[n] + ' ';
-							y += lineHeight;
-							console.log(y + 'is it equal to =?' + Number(Yposition + lineHeight + lineHeight + newNumber));
-						} else {
-							line = testLine;
-						}
-					}
-					this.fillText(line, x, y);
-					this.lineWidth = 3;
-					//this.strokeText(line, x, y );
-					this.strokeText(line, x, y);
-					this.shadowColor = "black";
-					this.shadowBlur = 3;
-					this.fillText(line, x, y);
-					y += lineHeight;
-				}
-			};
-			var newNumber = 0;
-			var Yposition = memeCanvas.height - 50;
-			CanvasRenderingContext2D.prototype.wrapTextBottom = function(text, x, y, maxWidth, lineHeight) {
-				var lines = text.split("\n");
-				for (var i = 0; i < lines.length; i++) {
-					//console.log('i = '+i)
-					var words = lines[i].split(' ');
-					//console.log(words +"+"+ lines);
-					var line = '';
-					for (var n = 0; n < words.length; n++) {
-						//console.log('n = '+n)
-						var testLine = line + words[n] + ' ';
-						var metrics = this.measureText(testLine);
-						var testWidth = metrics.width;
-						if (testWidth > maxWidth && n > 0) {
-							this.fillText(line, x, y);
-							this.lineWidth = 3;
-							this.strokeText(line, x, y);
-							this.strokeText(line, x, y);
-							this.shadowColor = "black";
-							this.shadowBlur = 3;
-							this.fillText(line, x, y);
-							line = words[n] + ' ';
-							y += lineHeight;
-							console.log(y + 'is it equal to =?' + Number(Yposition + lineHeight + lineHeight + newNumber));
-							//newNumber = -160
-							//alert('zxZX')
-						} else {
-							line = testLine;
-						}
-					}
-					//console.log(newNumber)
-					this.fillText(line, x, y);
-					this.lineWidth = 3;
-					this.strokeText(line, x, y);
-					this.strokeText(line, x, y);
-					this.shadowColor = "black";
-					this.shadowBlur = 3;
-					this.fillText(line, x, y);
-					//console.log(  memeCanvas.height - y);
-					//console.log('y=' + y)
-					//Yposition = lineHeight -70 + memeCanvas.height - 90;
-					//console.log(lineHeight)
-					//console.log('yposition = '+Yposition)
-					//console.log(y + '=?' + Number(Yposition  + lineHeight +80 + newNumber))
-					//console.log('y = '+y)
-					//console.log('newNumber = '+newNumber)
-					if (y == Number(Yposition + lineHeight + newNumber)) {
-						newNumber = -80;
-						//alert('second?')
-					} else if (y == Number(Yposition + 2 * lineHeight + newNumber)) {
-						newNumber = -160;
-						//alert('third?')
-					} else if (y == Number(Yposition + newNumber)) {
-						newNumber = 0;
-					} else if (y == Number(Yposition + 3 * lineHeight + newNumber)) {
-						newNumber = -240;
-					} else if (y == Number(Yposition + 4 * lineHeight + newNumber)) {
-						newNumber = -320;
-					}
-					y += lineHeight;
-				}
-			};
-			//ctx.textBaseline = "top";
-			//ctx.wrapText("Hello World!Let's stop taking line breaks for granted.Let's thank the inventors of line breaks for all they went through.",20,20,160,16);
-			/*$('#cancel-upload-2.second').click(function(){
-		var canvas = document.getElementById("meme-canvas");
-        canvas.toBlob(function(blob) {
-            saveAs(blob, "output.png");
-        }, "image/png").download = "filename";;
-
-	})
-	*/
-			$('#text-top').click(function() {
-				if ($(window).width() > 920) {
-					$("html, body").animate({
-						scrollTop: 60
-					});
-				}
-				$(this).keyup(function(e) {
-					if (e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40) {
-						var prevMeme = memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height);
-						memeCtx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
-						memeCtx.shadowColor = "transparent";
-						memeCtx.drawImage(thisImage, 0, 0, 1100, thisImage.height * (1100 / thisImage.width));
-						//memeCanvas.height = thisImage.height * (1200/thisImage.width);
-						//memeCanvas.style.height = ((thisImage.height * (600/thisImage.width)) / 2) ;
-						memeCtx.fillStyle = 'white';
-						memeCtx.strokeStyle = 'black';
-						memeCtx.lineWidth = 3;
-						var fontSize = 72;
-						memeCtx.font = fontSize + 'px Impactt';
-						memeCtx.textAlign = "center";
-						memeCtx.shadowColor = "transparent";
-						memeCtx.save();
-						memeCtx.shadowColor = "black";
-						//memeCtx.shadowBlur=1;
-						memeCtx.textBaseline = "center";
-						memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(), 550, 100, 1100, 70);
-						memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition + newNumber, 1100, 80);
-					}
-				})
-			});
-			$('#text-bottom').click(function() {
-				if ($(window).width() > 920) {
-					$("html, body").animate({
-						scrollTop: $(document).height() - $(window).height()
-					});
-				}
-			});
-			$('#text-bottom').keyup(function writeDown(e) {
-				if (e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40) {
-					var prevMeme = memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height);
-					memeCtx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
-					memeCtx.shadowColor = "transparent";
-					memeCtx.drawImage(thisImage, 0, 0, 1100, thisImage.height * (1100 / thisImage.width));
-					//memeCtx.textBaseline = "top";
-					memeCtx.fillStyle = 'white';
-					memeCtx.strokeStyle = 'black';
-					memeCtx.lineWidth = 3;
-					var fontSize = 72;
-					memeCtx.font = fontSize + 'px Impactt';
-					memeCtx.textAlign = "center";
-					memeCtx.shadowColor = "transparent";
-					memeCtx.save();
-					memeCtx.shadowColor = "black";
-					//memeCtx.shadowBlur=1;
-					memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(), 550, 100, 1100, 70);
-					memeCtx.textBaseline = "center";
-					memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition + newNumber, 1100, 80);
-				}
-			})
-		};
-	}});
 	$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
 
@@ -729,7 +489,29 @@ $("#sketch").on("contextmenu",function(){
 		$('#' + $(this).attr('id') + '-field').click()
 	})
 	//*/
-
+	$(document).on('click', '#choose-image, #reset-user-image', function() {
+		$(this).siblings('input').click()
+	})
+	$(document).on('click', '.shown-post #back-clicker',
+		function() {
+			$('#back-list').click()
+		})
+	$(document).on('click', '.submit-edit-2', function() {
+		$(this).parents('.wrapper').addClass('hidden')
+	})
+	$(document).on('click', '#done-meme', function() {
+		var memeCanvas = document.getElementById('meme-canvas');
+		$(memeCanvas).attr('crossorigin', '')
+		var dataURL3 = memeCanvas.toDataURL();
+		$('#hide-remote-make', parent.document.body).click();
+		$(".wrapper:visible .base64-make", parent.document.body).val(dataURL3);
+		$(".wrapper:visible .base64-image", parent.document.body).attr("src",
+			dataURL3).fadeIn(200)
+		$(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();
+		$(".wrapper:visible .cancel-meme", parent.document.body).removeClass(
+			'hidden-imp');
+		console.log('worked?')
+	});
 	$(document).on('click', 'body:not(#gif) .remote-gif', function() {
 		$('#hide-remote-make', parent.document.body).click();
 
@@ -2859,7 +2641,220 @@ setTimeout(function() {
 	}
 }, 1000)
 
+$(document).on('click', '.pick-meme-container', function() {
+	console.log("brsa")
+	//$('.pick-meme-container').onclick(function()
+	//alert('llll')
+	if (!$(event.target).is('.delete-stock')) {
+		var MemeBackground = $(this).css('background-image').replace('url("', '').replace('")', '');
+		var thisImage = document.createElement('img');
+		thisImage.crossOrigin = "";
+		thisImage.src = MemeBackground
 
+		thisImage.onload = function() {
+			//alert("Ss")
+			$(this).remove();
+			if ($(window).width() < 590) {
+				$(thisImage).css({
+					'width': $('#memes-content').width()
+				});
+				console.log($(window).width())
+			} else {
+				$(thisImage).css({
+					'width': '550px'
+				});
+			}
+			console.log($(thisImage).width());
+			memeCanvas.width = 1100;
+			memeCanvas.height = thisImage.height * (1100 / thisImage.width);
+			console.log(1111)
+			console.log(thisImage.height + 'height')
+			console.log(thisImage.width + 'width')
+			$(memeCanvas).attr('crossorigin', '')
+			$(memeCanvas).css({
+				'height': memeCanvas.height / (memeCanvas.width / $(memeCanvas).width())
+			});
+			$('#meme-wrapper').css({
+				'height': memeCanvas.height / 2
+			});
+			$('#pick-meme').hide();
+			$('#left-arrow').fadeIn();
+			$('.middle-column').show();
+			$('#memescontainer').removeClass('clicked');
+			memeCtx.drawImage(thisImage, 0, 0, 1100, thisImage.height * (1100 / thisImage.width));
+			console.log(memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height))
+			$('#add-button').hide();
+			var memeHeight = thisImage.height * (1100 / thisImage.width);
+			CanvasRenderingContext2D.prototype.wrapText = function(text, x, y, maxWidth, lineHeight) {
+				var lines = text.split("\n");
+				for (var i = 0; i < lines.length; i++) {
+					var words = lines[i].split(' ');
+					var line = '';
+					for (var n = 0; n < words.length; n++) {
+						var testLine = line + words[n] + ' ';
+						//console.log(testLine)
+						var metrics = this.measureText(testLine);
+						//console.log(metrics+'= metric')
+						var testWidth = metrics.width;
+						if (testWidth > maxWidth && n > 0) {
+							this.fillText(line, x, y);
+							this.lineWidth = 3;
+							this.strokeText(line, x, y);
+							//this.strokeText(line, x, y );
+							this.shadowColor = "black";
+							this.shadowBlur = 3;
+							this.fillText(line, x, y);
+							line = words[n] + ' ';
+							y += lineHeight;
+							console.log(y + 'is it equal to =?' + Number(Yposition + lineHeight + lineHeight + newNumber));
+						} else {
+							line = testLine;
+						}
+					}
+					this.fillText(line, x, y);
+					this.lineWidth = 3;
+					//this.strokeText(line, x, y );
+					this.strokeText(line, x, y);
+					this.shadowColor = "black";
+					this.shadowBlur = 3;
+					this.fillText(line, x, y);
+					y += lineHeight;
+				}
+			};
+			var newNumber = 0;
+			var Yposition = memeCanvas.height - 50;
+			CanvasRenderingContext2D.prototype.wrapTextBottom = function(text, x, y, maxWidth, lineHeight) {
+				var lines = text.split("\n");
+				for (var i = 0; i < lines.length; i++) {
+					//console.log('i = '+i)
+					var words = lines[i].split(' ');
+					//console.log(words +"+"+ lines);
+					var line = '';
+					for (var n = 0; n < words.length; n++) {
+						//console.log('n = '+n)
+						var testLine = line + words[n] + ' ';
+						var metrics = this.measureText(testLine);
+						var testWidth = metrics.width;
+						if (testWidth > maxWidth && n > 0) {
+							this.fillText(line, x, y);
+							this.lineWidth = 3;
+							this.strokeText(line, x, y);
+							this.strokeText(line, x, y);
+							this.shadowColor = "black";
+							this.shadowBlur = 3;
+							this.fillText(line, x, y);
+							line = words[n] + ' ';
+							y += lineHeight;
+							console.log(y + 'is it equal to =?' + Number(Yposition + lineHeight + lineHeight + newNumber));
+							//newNumber = -160
+							//alert('zxZX')
+						} else {
+							line = testLine;
+						}
+					}
+					//console.log(newNumber)
+					this.fillText(line, x, y);
+					this.lineWidth = 3;
+					this.strokeText(line, x, y);
+					this.strokeText(line, x, y);
+					this.shadowColor = "black";
+					this.shadowBlur = 3;
+					this.fillText(line, x, y);
+					//console.log(  memeCanvas.height - y);
+					//console.log('y=' + y)
+					//Yposition = lineHeight -70 + memeCanvas.height - 90;
+					//console.log(lineHeight)
+					//console.log('yposition = '+Yposition)
+					//console.log(y + '=?' + Number(Yposition  + lineHeight +80 + newNumber))
+					//console.log('y = '+y)
+					//console.log('newNumber = '+newNumber)
+					if (y == Number(Yposition + lineHeight + newNumber)) {
+						newNumber = -80;
+						//alert('second?')
+					} else if (y == Number(Yposition + 2 * lineHeight + newNumber)) {
+						newNumber = -160;
+						//alert('third?')
+					} else if (y == Number(Yposition + newNumber)) {
+						newNumber = 0;
+					} else if (y == Number(Yposition + 3 * lineHeight + newNumber)) {
+						newNumber = -240;
+					} else if (y == Number(Yposition + 4 * lineHeight + newNumber)) {
+						newNumber = -320;
+					}
+					y += lineHeight;
+				}
+			};
+			//ctx.textBaseline = "top";
+			//ctx.wrapText("Hello World!Let's stop taking line breaks for granted.Let's thank the inventors of line breaks for all they went through.",20,20,160,16);
+			/*$('#cancel-upload-2.second').click(function(){
+		var canvas = document.getElementById("meme-canvas");
+        canvas.toBlob(function(blob) {
+            saveAs(blob, "output.png");
+        }, "image/png").download = "filename";;
+
+	})
+	*/
+			$('#text-top').click(function() {
+				if ($(window).width() > 920) {
+					$("html, body").animate({
+						scrollTop: 60
+					});
+				}
+				$(this).keyup(function(e) {
+					if (e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40) {
+						var prevMeme = memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height);
+						memeCtx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
+						memeCtx.shadowColor = "transparent";
+						memeCtx.drawImage(thisImage, 0, 0, 1100, thisImage.height * (1100 / thisImage.width));
+						//memeCanvas.height = thisImage.height * (1200/thisImage.width);
+						//memeCanvas.style.height = ((thisImage.height * (600/thisImage.width)) / 2) ;
+						memeCtx.fillStyle = 'white';
+						memeCtx.strokeStyle = 'black';
+						memeCtx.lineWidth = 3;
+						var fontSize = 72;
+						memeCtx.font = fontSize + 'px Impactt';
+						memeCtx.textAlign = "center";
+						memeCtx.shadowColor = "transparent";
+						memeCtx.save();
+						memeCtx.shadowColor = "black";
+						//memeCtx.shadowBlur=1;
+						memeCtx.textBaseline = "center";
+						memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(), 550, 100, 1100, 70);
+						memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition + newNumber, 1100, 80);
+					}
+				})
+			});
+			$('#text-bottom').click(function() {
+				if ($(window).width() > 920) {
+					$("html, body").animate({
+						scrollTop: $(document).height() - $(window).height()
+					});
+				}
+			});
+			$('#text-bottom').keyup(function writeDown(e) {
+				if (e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40) {
+					var prevMeme = memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height);
+					memeCtx.clearRect(0, 0, memeCanvas.width, memeCanvas.height);
+					memeCtx.shadowColor = "transparent";
+					memeCtx.drawImage(thisImage, 0, 0, 1100, thisImage.height * (1100 / thisImage.width));
+					//memeCtx.textBaseline = "top";
+					memeCtx.fillStyle = 'white';
+					memeCtx.strokeStyle = 'black';
+					memeCtx.lineWidth = 3;
+					var fontSize = 72;
+					memeCtx.font = fontSize + 'px Impactt';
+					memeCtx.textAlign = "center";
+					memeCtx.shadowColor = "transparent";
+					memeCtx.save();
+					memeCtx.shadowColor = "black";
+					//memeCtx.shadowBlur=1;
+					memeCtx.wrapText(document.getElementById('text-top').value.toUpperCase(), 550, 100, 1100, 70);
+					memeCtx.textBaseline = "center";
+					memeCtx.wrapTextBottom(document.getElementById('text-bottom').value.toUpperCase(), 550, Yposition + newNumber, 1100, 80);
+				}
+			})
+		};
+	}});
 	$('.wrapper, #upload').click(function() {
 	//alert('dfgdfg')
 })
