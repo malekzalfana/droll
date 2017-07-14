@@ -13,6 +13,29 @@ var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
 $(document).ready(function() {
+	$(document).on('click', '#choose-image, #reset-user-image', function() {
+		$(this).siblings('input').click()
+	})
+	$(document).on('click', '.shown-post #back-clicker',
+		function() {
+			$('#back-list').click()
+		})
+	$(document).on('click', '.submit-edit-2', function() {
+		$(this).parents('.wrapper').addClass('hidden')
+	})
+	$(document).on('click', '#done-meme', function() {
+		var memeCanvas = document.getElementById('meme-canvas');
+		$(memeCanvas).attr('crossorigin', '')
+		var dataURL3 = memeCanvas.toDataURL();
+		$('#hide-remote-make', parent.document.body).click();
+		$(".wrapper:visible .base64-make", parent.document.body).val(dataURL3);
+		$(".wrapper:visible .base64-image", parent.document.body).attr("src",
+			dataURL3).fadeIn(200)
+		$(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();
+		$(".wrapper:visible .cancel-meme", parent.document.body).removeClass(
+			'hidden-imp');
+		console.log('worked?')
+	});
 	$(document).on('click', '.pick-meme-container', function() {
 	console.log("brsa")
 	//$('.pick-meme-container').onclick(function()
@@ -703,29 +726,7 @@ $("#sketch").on("contextmenu",function(){
 		$('#' + $(this).attr('id') + '-field').click()
 	})
 	//*/
-	$(document).on('click', '#choose-image, #reset-user-image', function() {
-		$(this).siblings('input').click()
-	})
-	$(document).on('click', '.shown-post #back-clicker',
-		function() {
-			$('#back-list').click()
-		})
-	$(document).on('click', '.submit-edit-2', function() {
-		$(this).parents('.wrapper').addClass('hidden')
-	})
-	$(document).on('click', '#done-meme', function() {
-		var memeCanvas = document.getElementById('meme-canvas');
-		$(memeCanvas).attr('crossorigin', '')
-		var dataURL3 = memeCanvas.toDataURL();
-		$('#hide-remote-make', parent.document.body).click();
-		$(".wrapper:visible .base64-make", parent.document.body).val(dataURL3);
-		$(".wrapper:visible .base64-image", parent.document.body).attr("src",
-			dataURL3).fadeIn(200)
-		$(".wrapper:visible .comment-html, .memes-emojis", parent.document.body).hide();
-		$(".wrapper:visible .cancel-meme", parent.document.body).removeClass(
-			'hidden-imp');
-		console.log('worked?')
-	});
+
 	$(document).on('click', 'body:not(#gif) .remote-gif', function() {
 		$('#hide-remote-make', parent.document.body).click();
 
