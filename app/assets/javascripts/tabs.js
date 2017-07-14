@@ -13,41 +13,6 @@ var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
 $(document).ready(function() {
-	('body:not(.app) #notif-menu').simplebar();
-		var $content = $('#left-content-profile');
-
-		$content.imagesLoaded(function() {
-			$content.masonry({
-				itemSelector: '.wrapper',
-				gutter: 15
-			});
-			$('#left-content-profile').removeClass("opacity");
-		});
-		var $content2 = $('#right-content-profile');
-		$content2.imagesLoaded(function() {
-			$content2.masonry({
-				itemSelector: '.wrapper',
-				gutter: 15
-			});
-			//$('#left-content-profile').removeClass("opacity");
-		});
-		var url_string = window.location
-		if ( window.location.href.indexOf("trend=") > -1 ) {
-			var url = new URL(url_string);
-		var trend = false;
-		trend = url.searchParams.get("trend").toString();
-		//if ( trend ) {
-		console.log($("#"+trend))
-		console.log("bra")
-		$("#"+trend).click()
-		}
-
-	})
-tabs = function() {
-
-	//document.getElementById(trend).click()
-	//}
-	//console.log(c);
 	$(document).on('click', '.pick-meme-container', function() {
 	console.log("brsa")
 	//$('.pick-meme-container').onclick(function()
@@ -57,7 +22,7 @@ tabs = function() {
 		var thisImage = document.createElement('img');
 		thisImage.crossOrigin = "";
 		thisImage.src = MemeBackground
-		alert( MemeBackground )
+
 		thisImage.onload = function() {
 			alert("Ss")
 			$(this).remove();
@@ -261,8 +226,42 @@ tabs = function() {
 				}
 			})
 		};
-	}
-});
+	}});
+	$('body:not(.app) #notif-menu').simplebar();
+		var $content = $('#left-content-profile');
+
+		$content.imagesLoaded(function() {
+			$content.masonry({
+				itemSelector: '.wrapper',
+				gutter: 15
+			});
+			$('#left-content-profile').removeClass("opacity");
+		});
+		var $content2 = $('#right-content-profile');
+		$content2.imagesLoaded(function() {
+			$content2.masonry({
+				itemSelector: '.wrapper',
+				gutter: 15
+			});
+			//$('#left-content-profile').removeClass("opacity");
+		});
+		var url_string = window.location
+		if ( window.location.href.indexOf("trend=") > -1 ) {
+			var url = new URL(url_string);
+		var trend = false;
+		trend = url.searchParams.get("trend").toString();
+		//if ( trend ) {
+		console.log($("#"+trend))
+		console.log("bra")
+		$("#"+trend).click()
+		}
+
+	})
+tabs = function() {
+
+	//document.getElementById(trend).click()
+	//}
+	//console.log(c);
 	if ( $(window).width() > 700 ) {
 		newpostGutter = 35
 	}
@@ -2856,7 +2855,8 @@ setTimeout(function() {
 	}
 }, 1000)
 
-$('.wrapper, #upload').click(function() {
+
+	$('.wrapper, #upload').click(function() {
 	//alert('dfgdfg')
 })
 $('#create-wrapper').focus(function() {

@@ -35,7 +35,7 @@ class Post < ActiveRecord::Base
     validates_attachment_content_type :image2, content_type: /\Aimage\/.*\Z/
     belongs_to :user
     belongs_to :category
-    validates :user_id, presence: true
+    #validates :user_id, presence: true
     #validates :image, presence: true
     default_scope { order("created_at DESC")}
     has_many :comments
