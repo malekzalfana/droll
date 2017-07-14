@@ -12,6 +12,7 @@ var type;
 var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
+	var memeCanvas;
 $(document).ready(function() {
 	$(document).on('click', '#choose-image, #reset-user-image', function() {
 		$(this).siblings('input').click()
@@ -24,7 +25,7 @@ $(document).ready(function() {
 		$(this).parents('.wrapper').addClass('hidden')
 	})
 	$(document).on('click', '#done-meme', function() {
-		var memeCanvas = document.getElementById('meme-canvas');
+		memeCanvas = document.getElementById('meme-canvas');
 		$(memeCanvas).attr('crossorigin', '')
 		var dataURL3 = memeCanvas.toDataURL();
 		$('#hide-remote-make', parent.document.body).click();

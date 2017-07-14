@@ -710,3 +710,55 @@ Completed 200 OK in 142ms (Views: 139.6ms | ActiveRecord: 1.0ms)
 Started GET "/assets/search-3.png" for 207.244.109.172 at 2017-07-14 20:13:56 +0000
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/make" for 88.202.186.221 at 2017-07-14 20:33:01 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (5.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" LIMIT 15
+  Rendered pages/make.html.erb within layouts/application (13.8ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (0.7ms)
+Completed 200 OK in 426ms (Views: 424.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/cursor.png" for 88.202.186.221 at 2017-07-14 20:33:03 +0000
+
+
+Started GET "/assets/tabs.self-744a48cd7eca0d22bd11e46c4d753699dd258256bda6b4169d5707badb9ca7c5.js?body=1" for 88.202.186.221 at 2017-07-14 20:33:03 +0000
+
+
+Started GET "/assets/spray-can.png" for 88.202.186.221 at 2017-07-14 20:33:03 +0000
+
+
+Started GET "/make" for 88.202.186.221 at 2017-07-14 20:33:03 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (4.7ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" LIMIT 15[0m
+  Rendered pages/make.html.erb within layouts/application (12.4ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.8ms)
+Completed 200 OK in 134ms (Views: 132.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/eraser.png" for 88.202.186.221 at 2017-07-14 20:33:04 +0000
+
+
+Started GET "/assets/colors.png" for 88.202.186.221 at 2017-07-14 20:33:04 +0000
+
+
+Started GET "/assets/search-3.png" for 88.202.186.221 at 2017-07-14 20:33:07 +0000
