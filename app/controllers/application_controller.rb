@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
   # protect database from being altered while allowing updates
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :image, :cover, :pic,:bio, :notificationsound, :nightmode, :pro, :share) }
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation, :remember_me, :image, :cover, :pic, :username, :bio, :notificationsound, :nightmode, :share, :tag) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :image, :cover, :pic,:bio, :notificationsound, :nightmode, :pro, :share, :pic, :new) }
+    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :pic, :new) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:email, :password, :password_confirmation,:current_password, :remember_me, :image, :cover, :pic, :username, :bio, :notificationsound, :nightmode, :share, :tag, :pic, :new) }
   end
 
   module SettingsHelper

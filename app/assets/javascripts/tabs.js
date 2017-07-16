@@ -781,8 +781,26 @@ $("#sketch").on("contextmenu",function(){
 			emptyField = true
 		}
 		*/
-		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && $(".memeb-wrapper.third").hasClass("approved") ) {
+		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && !$(".memeb-wrapper.third").hasClass("declined") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approved") && $(".memeb-wrapper input#user_password_confirmation").val() == $(".memeb-wrapper input#user_password").val() &&  $(".memeb-wrapper input#user_password").val() != ''  ) {
 			$("#memeb-sign-up-submit").click();
+		}
+		if ( $(".memeb-wrapper.third").hasClass("declined") ) {
+			$(".memeb-wrapper input#user_username").addClass("buzz")
+			setTimeout(function(){
+				$(".memeb-wrapper input#user_username").removeClass("buzz")
+			}, 2000)
+		}
+		if ( $(".memeb-wrapper.third").hasClass("declinedemail") ) {
+			$(".memeb-wrapper input#user_email").addClass("buzz")
+			setTimeout(function(){
+				$(".memeb-wrapper input#user_email").removeClass("buzz")
+			}, 2000)
+		}
+		if ( $(".memeb-wrapper input#user_password_confirmation").val() != $(".memeb-wrapper input#user_password").val() ||  $(".memeb-wrapper input#user_password").val() == '' ) {
+			$(".memeb-wrapper input#user_password, .memeb-wrapper input#user_password_confirmation").addClass("buzz")
+			setTimeout(function(){
+				$(".memeb-wrapper input#user_password, .memeb-wrapper input#user_password_confirmation").removeClass("buzz")
+			}, 2000)
 		}
 	})
 

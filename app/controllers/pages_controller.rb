@@ -100,7 +100,9 @@ class PagesController < ApplicationController
   end
 
   def admin
-    @post1 = Post.where(hidden: true).order("created_at DESC")
+    if user_signed_in?
+
+      @post1 = Post.where(hidden: true).order("created_at DESC")
     #@post2 = Post.where(reported: true).order("created_at DESC")
     #@postb = [@post1,@post2].flatten
     @post = @post1.paginate(:per_page => 30, :page => params[:page])
@@ -133,6 +135,12 @@ class PagesController < ApplicationController
 
       end
       end
+
+
+    else
+      redirect_to '/'
+    end
+
 
 
   end
@@ -239,7 +247,8 @@ class PagesController < ApplicationController
       @post = current_user.posts.build(params[:post])
       @stock1 = current_user.stocks.where(stocktype: 'meme').order("created_at DESC")
       @stock2 = current_user.stocks.where(stocktype: 'rage').order("created_at DESC")
-
+    else
+      @post = Post.new
     end
     @trends = Trend.all.limit(15)
       @trendname = Trend.all

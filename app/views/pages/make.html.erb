@@ -1,5 +1,5 @@
 
-<body id="<%= controller.action_name %>" class="<%= if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 then "not-passed" end %> <% if user_signed_in? %>signed-in<% end %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
+<body id="<%= controller.action_name %>" class="<%= if user_signed_in? != true then 'new-user' end %> <%= if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 then "not-passed" end %> <% if user_signed_in? %>signed-in<% end %> <% if user_signed_in? %> signed-in<% else %> REMOVEDnot-signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
 <%= render '/layouts/activities' %>
 <%= render '/layouts/pick_trend' %>
 <div id="overlay-under-notif"></div>
@@ -15,7 +15,7 @@
 
 
 		<div class="middle-column" id="meme-wrapper">
-			<% if user_signed_in? %>
+			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
 			<%= f.text_area :title, id: "created-meme-title", placeholder: "Meme Title " %>
 			 <input id="base64" type="hidden" value="" name="base64"/>
@@ -37,7 +37,7 @@
 			   <%= f.text_field :trendid, class: "make-trends-field hidden-imp trendid" %>
 
 			 <%= f.submit :id => "submit-image-button-2" %>
-			 <% end %>
+			 <%# end %>
 			 <div id="meme-textareas-wrapper">
 			 	<div id="meme-textareas">
 			 		<div class="memetextareas">
@@ -1257,7 +1257,7 @@
 			<div id="make-tags-3" class="make-tags">
 				<i class="material-icons">sort</i>
 			</div>
-			<% if user_signed_in? %>
+			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
 				 <%= f.file_field :image, id: "ragefaces-filefield", accept: "image/*" %>
 				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
@@ -1269,17 +1269,17 @@
 			   <%= f.text_field :trendid, class: "make-trends-field hidden-imp trendid" %>
 			 <%= f.submit :value => "Post", :id => "submit-image-button-3" %>
 			<% end %>
-			<% if user_signed_in? && current_user.passed == true%>
-			 <span class="anonymous-checkbox shown">
-		 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
-		 	<i class="material-icons anonymous-checked"></i>
-		 	<div id="anonymous-image" class="anonymous-image">
-		 		<i class="material-icons">add</i>
-		 	</div>
-		 	<span>Anonymous</span>
-		 	</span>
-		 	<% end %>
-			<% end %>
+				<% if user_signed_in? && current_user.passed == true%>
+				 <span class="anonymous-checkbox shown">
+			 	<input name="post[anonymous]" type="hidden" value="0"><input type="checkbox" value="1" name="post[anonymous]" id="post_anonymous">
+			 	<i class="material-icons anonymous-checked"></i>
+			 	<div id="anonymous-image" class="anonymous-image">
+			 		<i class="material-icons">add</i>
+			 	</div>
+			 	<span>Anonymous</span>
+			 	</span>
+			 	<% end %>
+			<%# end %>
 
 
 		</div>
@@ -1307,7 +1307,7 @@
 	<div id="images-content-wrapper" class="choosen-content"><div id="images-content" >
 		<p class="make-how-to"><i class="material-icons">info</i>React to an image with a funny gif.</p>
 		<div id="make-preview-wrapper">
-			<% if user_signed_in? %>
+			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
 
 
@@ -1409,7 +1409,7 @@
 
 
 			<% end %>
-			<% end %>
+			<%# end %>
 		</div>
 	</div>
 	</div>

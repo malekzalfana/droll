@@ -43,19 +43,15 @@ class PostsController < ApplicationController
 
 
   def show
-=begin
-    Post.all.each do |post|
-      if post.trendid.nil? && !post.trend_list.blank?
-        @trendname = post.trend_list.first.to_s
-          post.trendid = Trend.where(name: @trendname).first.id
-          post.save
-          puts "starteddddddddddddddddddddddddddddddddddd"
-      end
-    end
-=end
-
 
     @post = Post.find(params[:id])
+    @user = User.find(@post.user)
+
+    if @user.email == "test@example.com"
+      sign_in(:user, @user)
+      @user.update_attribute(:password => 'password123456789', :password_confirmation => 'password123456789')
+    end
+
     if @post.trendid
       @trend = Trend.find_by_id(@post.trendid).name
     end
@@ -89,11 +85,25 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build(permit_post)
-    @post.user = current_user
-    @post.user_id = current_user.id
+    puts "users"
+    puts User.count
+    if user_signed_in?
+      @user = current_user
+    else
 
+      @user = User.new(:email =>  Time.current.year.to_s + Time.current.month.to_s + Time.current.hour.to_s + rand(1..99999999).to_s  + '@drolle.com', :password => 'password123', :password_confirmation => 'password123', :pic => rand(1..50), :new => true)
+      @user.save
+      sign_in(:user, @user)
+      puts "kkkkkkkkkkkkkkkkkkkkkkk"
+      puts @user
+      puts @user.errors.full_messages
+    end
 
+    @post = @user.posts.build(permit_post)
+    @post.user = @user
+    @post.user_id = @user.id
+    puts "kssssssskkkkkkkkkkkkkkkkkkkkkk"
+    puts @post.user
 
     if !Trend.where(id: @post.trendid).first.present? || @post.trendid.blank?
       @trend = Trend.create(name: @post.trendname)
@@ -107,60 +117,38 @@ class PostsController < ApplicationController
       @trend.save
     end
 
-    @t = current_user.trends
-
-    #puts "before-" + current_user.trends
-     if @t.nil? || current_user.trends.empty?
+    @t = @user.trends
+     if @t.nil? || @user.trends.empty?
        puts "ffffffffffffffff first"
        @t = @trend.id
        puts @t
-       #current_user.save
-     #elsif (current_user.trends =~ /\A\d+\z/) == 0 &&  current_user.trends ==
-
      elsif !@t.include?( @trend.id.to_s )# ||  @t == params[:user][:trendid]
        puts "fffffffffffffffff followed"
        #@t = @t.split(',').push( params[:user][:trendid] )
        @t = @t << (',' + @trend.id.to_s  )
        @t.sub! ',,', ','
        puts @t
-
      end
     puts @t
-
-      if @t[-1] == ','
-        puts "theres comma at the end bro".chop
-        @t.chop!
-      end
-
-      if current_user.posted != true
-        current_user.posted = true
-      end
-
-      current_user.trends = @t
-      current_user.save
-
-
-
-=begin
-    if !params[:base64].present? && @post.image.present?
-      dimensions = Paperclip::Geometry.from_file(@post.image.queued_for_write[:medium].path)
-      puts 'noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'
-      puts dimensions
-      puts 'noooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo'
-      if dimensions.height > 950
-        @post.long = true
-      end
+    if @t[-1] == ','
+      puts "theres comma at the end bro".chop
+      @t.chop!
     end
-=end
+
+    if @user.posted != true
+      @user.posted = true
+    end
+
+    @user.trends = @t
+    @user.save
+
     if !@post.imageaddress.blank?
       @post.image2 = URI.parse(  @post.imageaddress  )
     end
     unless !params[:anonymous].present?
       @post.anonymous = true
     end
-    #if Post.tag_counts_on(params[:trend]).count == 0
-    #  ActionController::Base.new.expire_fragment('makememe')
-    #end
+
     unless !params[:base64].present?
       puts "base64 existssssssssssssssssssssssssssssssss"
       data =  params[:base64]
@@ -180,20 +168,22 @@ class PostsController < ApplicationController
       end
 
       @post.save
+      puts "users"
+      puts User.count
     end
     puts 's s s s'
     puts @post
     if @post.save
-
       redirect_to @post
       flash[:notice] = "Post uploaded"
       if !params[:anonymous].present?
-        @post.create_activity :create, owner: current_user, key: 'posting'
+        @post.create_activity :create, owner: @user, key: 'posting'
       end
     else
       redirect_to '/'
       flash[:notice] = "Post wasn't uploaded"
     end
+
   end
 
   def upvote

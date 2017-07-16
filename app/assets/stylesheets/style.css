@@ -5081,6 +5081,14 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	}
 }
 @media screen and (max-width: 600px) {
+	#mc-wrapper h2 {
+		font-size: 24px !important;
+	}
+	#mc-wrapper .memeb-field {
+	    background: none;
+	    border-bottom: 1px solid #bfbfbf;
+	    font-size: 21px !important;
+	}
 	#post-memechallenge-banner button {
 		bottom: 40px;
 		    font-size: 14px;
@@ -9763,15 +9771,16 @@ img.post-trend-2 {
 	text-align: center;
 }
 #continue-make {
-	    margin: 0px auto;
+	margin: 0px auto;
     pointer-events: none;
-    padding: 10px;
+    padding: 10px 19px;
     font-family: roboto;
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     display: block;
     color: white;
     margin-top: 35px;
+    margin-bottom: 30px;
     border-radius: 30px;
     background: #EF9A9A;
 }
@@ -9893,6 +9902,7 @@ p.pick-tags-title.new {
     padding: 10px 15px 10px 20px;
     color: white;
     font-family: roboto;
+    cursor: pointer;
     font-size: 15px;
 }
 .next-button:hover {
@@ -10503,4 +10513,52 @@ div#nav-menu-wrapper.closed.second #search-trends {
     top: 3px;
     font-size: 17px !important;
     line-height: 0 !important;
+}
+#mc-wrapper .memeb-field {
+	    background: none;
+    border-bottom: 1px solid #bfbfbf;
+    font-size: 23px;
+}
+#mc-wrapper .generated-pic {
+    width: 350px;
+    margin: 20px auto;
+    color: #848484;
+    font-family: roboto;
+}
+#mc-wrapper {
+	display: block;
+	font-weight: 400;
+}
+#mc-wrapper .memeb-submit {
+	color: white;
+	background: #ff3000;
+	    padding: 10px 28px;
+}
+#mc-wrapper input#user_username {
+	text-transform: none !important;
+}
+.new-user .wrapper {
+	display: none !important
+}
+#mc-wrapper h2 {
+	font-family: sniglet;
+	color: #ff3000;
+}
+#meme-wrapper  #new_post {
+	background: none! important;
+	box-shadow: none !Important;
+}
+.new-user #trends-wrapper {
+	display: none;
+}
+.new-user .memeb-wrapper {
+	text-align: center;
+}
+.new-user .pick-tags-title-2 {
+    display: none;
+    font-size: 16px !important;
+    margin-top: 8px;
+}
+#make:not(.new-user) .next-wrapper:not(.except) {
+	display: none;
 }

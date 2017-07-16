@@ -26,6 +26,8 @@ class User < ActiveRecord::Base
                      content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
 
+
+
   def follow(other)
     active_relationships.create(followed_id: other.id)
   end
@@ -37,7 +39,7 @@ class User < ActiveRecord::Base
   def following?(other)
     following.include?(other)
   end
-
+#=begin
   def update_with_password(params, *options)
     current_password = params.delete(:current_password)
 
@@ -58,7 +60,7 @@ class User < ActiveRecord::Base
     clean_up_passwords
     result
   end
-
+#=end
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
