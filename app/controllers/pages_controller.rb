@@ -12,6 +12,9 @@ class PagesController < ApplicationController
 
 
   def index
+    if user_signed_in? && current_user.new == true
+      redirect_to current_user.posts.first
+    else
     @randomPic = rand(1..50)
     @alltrends = Trend.all
     #if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
@@ -79,7 +82,7 @@ class PagesController < ApplicationController
     end
     end
     #end
-
+  end
 
 
   end

@@ -144,7 +144,7 @@
                     <% end %>
                 </div>
 
-                <div class="post-footer new <%= if @post.user.passed != true then "not-passed" end %> ">
+                <div class="post-footer new <%= if @post.user.passed != true then "not-passedREMOVED" end %> ">
                 <% if @post.anonymous != true %>
                     <a href="/user/<%= @post.user.username %>" class="user-link">
                         <% if @post.user.image.url == "missing.jpg" %>
