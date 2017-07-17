@@ -781,10 +781,10 @@ $("#sketch").on("contextmenu",function(){
 			emptyField = true
 		}
 		*/
-		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && !$(".memeb-wrapper.third").hasClass("declined") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approved") && $(".memeb-wrapper input#user_password_confirmation").val() == $(".memeb-wrapper input#user_password").val() &&  $(".memeb-wrapper input#user_password").val() != ''  ) {
+		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && !$(".memeb-wrapper.third").hasClass("declinedusername") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approvedusername") && $(".memeb-wrapper input#user_password_confirmation").val() == $(".memeb-wrapper input#user_password").val() &&  $(".memeb-wrapper input#user_password").val() != ''  ) {
 			$("#memeb-sign-up-submit").click();
 		}
-		if ( $(".memeb-wrapper.third").hasClass("declined") ) {
+		if ( $(".memeb-wrapper.third").hasClass("declinedusername") ) {
 			$(".memeb-wrapper input#user_username").addClass("buzz")
 			setTimeout(function(){
 				$(".memeb-wrapper input#user_username").removeClass("buzz")
@@ -824,17 +824,21 @@ $("#sketch").on("contextmenu",function(){
 	  }
 	});
 
-	$(document).on('keyup outfocus', '.memeb-field.f', function() {
+	$(document).on('keyup outfocus', '.memeb-field.email', function() {
 		$("#email-check-field").val( $(this).val() );
 		$("#email-check-submit").click();
+	})
+	$(document).on('keyup outfocus', '.memeb-field.username', function() {
+		$("#username-check-field").val( $(this).val() );
+		$("#username-check-submit").click();
 	})
 
 	$(document).on('keyup', '.memeb-field.t', function() {
 		if ($(".memeb-field.s").val() != $(".memeb-field.t").val() ){
-			$(".memeb-wrapper.third").removeClass("approved").addClass("declined")
+			$(".memeb-wrapper.third").removeClass("approvedpass").addClass("declinedpass")
 		}
 		else {
-			$(".memeb-wrapper.third").addClass("approved").removeClass("declined")
+			$(".memeb-wrapper.third").addClass("approvedpass").removeClass("declinedpass")
 		}
 	})
 
@@ -1486,7 +1490,7 @@ $("#sketch").on("contextmenu",function(){
 			threshold: 100,
 		});
 		$('#anonymous-faces img.rageface').slice(0, 40).trigger("loadEmBoys2");
-		//$('#anonymous-faces .rageface').lazyload()
+		$('#anonymous-faces .rageface').lazyload()
 		$("#anonymous-faces img.rageface").slice(40, 185).lazyload({
 			//effect : "fadeIn",
 			container: $("#anonymous-faces"),
@@ -1749,7 +1753,6 @@ $("#sketch").on("contextmenu",function(){
 	var tabClick = true;
 	$(document).on('click', '#new-posts',function(){
 			$("#tab-1").click();
-			alert("ss")
 	})
 	$(document).on('click', '.mobile-tab', function() {
 		setTimeout(function(){
@@ -1787,7 +1790,7 @@ $("#sketch").on("contextmenu",function(){
 			$("#content-full2").addClass("go-left-2")
 			$("#renderTrends-submit").click().remove();
 		}
-		if ( !$("#box-5-wrapper").hasClass("loaded") &&  !$(this).is("#tab-3")  ) {
+		if ( !$("#box-5-wrapper").hasClass("loaded") &&  !$(this).is("#tab-3") || $("body").width() > 600  ) {
 			$("#box-5-wrapper").addClass("loaded")
 			setTimeout(function(){
 				var $content3 = $('.reco-trend');

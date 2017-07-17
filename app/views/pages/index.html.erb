@@ -757,7 +757,7 @@
             <div style="background-image:url(http://drolle.net/profilepics/pic<%= @randomPic %>.jpg)" ></div>
             <span>your auto-generated profile pic, you can change it later</span>
         </div>
-        <%= f.email_field :email, autofocus: true, class: "memeb-field f new", placeholder: "Email" %>
+        <%= f.email_field :email, autofocus: true, class: "memeb-field f new email", placeholder: "Email" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>

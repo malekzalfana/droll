@@ -10,7 +10,7 @@
 <% else %>
 
 
-<body id="<%= controller.action_name %>" class="<%= if @user.new == true then 'new-user' end %> <%= if request.original_url.include?('?app=true') then 'app' end %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>" <% if @commentid != '0' %>data-commentid="<%= @commentid %>"<% end %>>
+<body id="<%= controller.action_name %>" class="<%= if @user.new == true && @post.user == current_user then 'new-user' end %> <%= if request.original_url.include?('?app=true') then 'app' end %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>" <% if @commentid != '0' %>data-commentid="<%= @commentid %>"<% end %>>
     <%= render '/layouts/activities' %>
     <div id="overlay-under-notif"></div>
     <div id="loading-wrapper">
@@ -47,8 +47,8 @@
             <div style="background-image:url(http://drolle.net/profilepics/pic<%= @user.pic %>.jpg)" ></div>
             <span>your auto-generated profile pic, you can change it later</span>
         </div>
-        <%= f.text_field :username, autofocus: true, class: "memeb-field f new", placeholder: "Username" %>
-        <%= f.email_field :email, autofocus: true, class: "memeb-field f new", placeholder: "Email" %>
+        <%= f.text_field :username, autofocus: true, class: "memeb-field f new username", placeholder: "Username" %>
+        <%= f.email_field :email, autofocus: true, class: "memeb-field f new email", placeholder: "Email" %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>

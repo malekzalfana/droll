@@ -134,7 +134,7 @@ body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-cont
     padding: 15px 0px;
     font-family: Arial,sans-serif;
 }
-#content-full2 .post-title:first-letter {
+#content-full2 .post-title:first-letter, .post-new-p:first-letter  {
     text-transform: capitalize;
 }
 #content-full2 .post-image {
@@ -897,4 +897,10 @@ transform: rotate(90deg);
     transition: ease-out 0.3s all;
     height: 0px;
     overflow: hidden;
+}
+#tiny-logo {
+    width: 16px;
+    margin: 11px 2px 12px 15px;
+    float: left;
+    display: none;
 }

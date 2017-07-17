@@ -15,7 +15,7 @@ class PagesController < ApplicationController
     if user_signed_in? && current_user.new == true
       redirect_to current_user.posts.first
     else
-    @randomPic = rand(1..50)
+    @randomPic = rand(1..75)
     @alltrends = Trend.all
     #if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
     #  #redirect_to '/make'
@@ -456,7 +456,7 @@ class PagesController < ApplicationController
         if @params.length < 3
           @usernamecheck = true
         else
-          if @params.length > 13
+          if @params.length > 20
             @usernamecheck = true
           end
           @usernamecheck = User.exists?(username: @params)
@@ -471,7 +471,7 @@ class PagesController < ApplicationController
         @usernamecheck = true
       else
         @usernamecheck = User.exists?(username: @params)
-        if @params.length > 13
+        if @params.length > 20
           @usernamecheck = true
         end
       end

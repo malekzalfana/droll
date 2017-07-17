@@ -91,7 +91,7 @@ class PostsController < ApplicationController
       @user = current_user
     else
 
-      @user = User.new(:email =>  Time.current.year.to_s + Time.current.month.to_s + Time.current.hour.to_s + rand(1..99999999).to_s  + '@drolle.com', :password => 'password123', :password_confirmation => 'password123', :pic => rand(1..50), :new => true)
+      @user = User.new(:email =>  Time.current.year.to_s + Time.current.month.to_s + Time.current.hour.to_s + rand(1..99999999).to_s  + '@drolle.com', :password => 'password123', :password_confirmation => 'password123', :pic => rand(1..75), :new => true)
       @user.save
       sign_in(:user, @user)
       puts "kkkkkkkkkkkkkkkkkkkkkkk"

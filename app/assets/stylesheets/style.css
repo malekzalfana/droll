@@ -7484,15 +7484,16 @@ i.fa.fa-reddit-alien {
     max-width: 200px;
 }
 .tags-title {
-        font-family: roboto;
-    color: #4b4b4b;
-    font-size: 14px;
+        font-family: SNIGLET;
+    color: #5f5f5f;
+    font-size: 15px;
     opacity: 0.9;
-    padding: 8px 5px;
+    padding: 9px 5px;
     display: inline-block;
     float: left;
     position: relative;
     left: 5px;
+    font-weight: 300;
 }
 .shown-post .single-trend-2  {
 	display: none !important;
@@ -7531,17 +7532,21 @@ i.fa.fa-reddit-alien {
 	padding-left: 5px !important;
 }
 .trends {
-	    font-size: 14px;
+	     font-size: 14px;
+    font-size: 13px;
     font-family: roboto;
-    color: #424242;
+    color: #717171;
     margin: 0px 0px;
     display: inline-block;
-    padding: 7px 6px;
+    padding: 7px 11px;
     text-align: left;
     border-radius: 20px;
-    background: #ffffff;
+    background: #fdfdfd;
     margin-left: 7px;
     margin-bottom: 10px;
+    font-weight: 500;
+    margin-top: 2px;
+    border: 1px solid #f7f7f7;
 }
 #tag .trends {
 	    font-size: 14px;
@@ -8620,7 +8625,7 @@ body:not(#make) .fixed-menu {
 	top:0px !important;
 	PADDING-TOP: 5PX;
 }
-.fixed-menu #fixed-logo {
+.fixed-menu #tiny-logo {
 	display: inline-block !important;
 }
 #fixed-logo {
@@ -9369,7 +9374,7 @@ display: none !important;
 #toggle-trends {
         position: absolute;
     right: 0px;
-    top: 3px;
+    top: 6px;
     font-family: montserrat;
     height: 37px;
     cursor: pointer;
@@ -9377,6 +9382,13 @@ display: none !important;
     color: #ff3000 !important;
     FONT-SIZE: 13PX;
     background: rgba(255, 255, 255, 1);
+}
+.tags-title i {
+	    LINE-HEIGHT: 0;
+    POSITION: RELATIVE;
+    TOP: 4PX;
+    MARGIN: 0PX 2PX !important;
+    font-size: 18px !important;
 }
 #tag #toggle-trends {
 	display: none !Important;
