@@ -56,7 +56,7 @@ class PagesController < ApplicationController
       @post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
       #@post = Post.limit(30).paginate(:per_page => 10, :page => params[:page])
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
-      @newposts = @pre_newposts#.reject{ |e| @post.include? e }
+      @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
@@ -113,6 +113,7 @@ class PagesController < ApplicationController
     puts "Ssssssssssssssssssssssssssssssssssssssssssssssssssss"
 
     @posts = Post.all
+=begin
     @posts.each do |post|
       puts "starteddddddddddddddddddddddddddddddddddd"
       puts post.trend_list
@@ -137,7 +138,14 @@ class PagesController < ApplicationController
         end
 
       end
-      end
+    end
+=end
+
+    @users = User.where(pic: nil)
+    @users.each do |user|
+      user.pic = rand(1..75)
+      user.save
+    end
 
 
     else
@@ -235,6 +243,9 @@ class PagesController < ApplicationController
   end
 
   def make
+    if params[:ref].present?
+      @ref = params[:ref]
+    end
     @trend = false
     @url =  request.base_url + request.original_fullpath
     if @url.include?('trend')
@@ -253,8 +264,8 @@ class PagesController < ApplicationController
     else
       @post = Post.new
     end
-    @trends = Trend.all.limit(15)
-      @trendname = Trend.all
+    @trends = Trend.order("RANDOM()").limit(15)
+      @trendname = Trend.order("RANDOM()")
   end
 
   def memes
@@ -440,9 +451,9 @@ class PagesController < ApplicationController
     else
       redirect_to root_path, :notice => "User not found"
     end
-    @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: nil).where(anonymous: false).paginate :page => params[:page], :per_page => 2
+    @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: nil).where(anonymous: false).paginate :page => params[:page], :per_page => 10
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
-    @profilefavor = @user.votes.where(:vote_scope => 'favor').for_type(Post).votables.paginate :page => params[:page], :per_page => 8
+    @profilefavor = @user.votes.where(:vote_scope => 'favor').for_type(Post).votables.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
      format.html
      format.js

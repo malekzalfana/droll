@@ -30,7 +30,7 @@
 
 			 <%= f.text_field :facenumber,id: "created-meme-facenumber-field", class: "hidden anonymous-image-field" %>
 			 <%= f.text_field :imageaddress,id: "image-for-meme-field", class: "hidden" %>
-			 <%= f.text_field :tag_list, class: "tag-list-field" %>
+			 <%= f.text_field :tag_list, class: "tag-list-field" %><%= f.text_field :ref, class: "hidden", :value => params[:ref] %>
 			 <%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 <%= f.check_box :anonymous, class: "hidden-imp", id: "created-meme-anonymous-field", checked: false %>
 			 <%= f.text_field :trendname, class: "make-trends-field hidden-imp trendname" %>
@@ -1397,7 +1397,7 @@
 			 	<%= f.check_box :anonymous, checked: false %>
 			 	<i class="material-icons anonymous-checked"></i>
 			 	<%= f.text_field :facenumber, class: "hidden anonymous-image-field" %>
-			 	<%= f.text_field :tag_list, class: "tag-list-field" %>
+			 	<%= f.text_field :tag_list, class: "tag-list-field" %><%= f.text_field :ref, class: "hidden", :value => params[:ref] %>
 			 	<%= f.text_field :trend_list, class: "make-trends-field hidden-imp" %>
 			 	<div id="anonymous-image" class="anonymous-image">
 			 		<i class="material-icons">add</i>

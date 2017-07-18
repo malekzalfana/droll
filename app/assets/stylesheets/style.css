@@ -2742,12 +2742,12 @@ i#upload-meme-stock:hover {
         position: absolute;
     left: 106px;
     display: inline-block;
-    color: #F44336;
-    font-size: 19px;
-    font-family: roboto;
+    color: gray;
+    font-size: 17px;
+    font-family: sniglet;
     font-weight: 300;
     z-index: 7;
-    top: 14px;
+    top: 17px;
 }
 .tools.active {
 	background: #efefed !important;
@@ -3849,8 +3849,8 @@ i#add-icon:hover, #notification-icon:hover, #menu-button-wrapper.shown, #notific
 	background: #f7f7f7;
 }
 i#add-icon:active, #notification-icon:active {
-    background: #ff4242;
-    color: white !important;
+        background: #e2e2e2;
+    color: #5a5a5a !important;
 }
 #nav-menu-wrapper.fixed-menu #trends-wrapper {
 	margin-top: 2px;
@@ -5076,7 +5076,6 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 @media screen and (max-width: 690px) {
 
 	#notif-title {
-		text-indent: 56px;
 	    margin: 15px 0px 20px 0px;
 	}
 }
@@ -7484,16 +7483,15 @@ i.fa.fa-reddit-alien {
     max-width: 200px;
 }
 .tags-title {
-        font-family: SNIGLET;
-    color: #5f5f5f;
-    font-size: 15px;
+        color: #6d6d6d;
+    font-size: 14px;
     opacity: 0.9;
     padding: 9px 5px;
     display: inline-block;
     float: left;
     position: relative;
     left: 5px;
-    font-weight: 300;
+    font-weight: 400;
 }
 .shown-post .single-trend-2  {
 	display: none !important;
@@ -10573,4 +10571,16 @@ div#nav-menu-wrapper.closed.second #search-trends {
 }
 #make:not(.new-user) .next-wrapper:not(.except) {
 	display: none;
+}
+#remove-notif {
+	     position: absolute;
+    right: 15px;
+    top: 15px;
+    color: gray;
+    background: white;
+    padding: 4px;
+    border-radius: 50%;
+}
+#remove-notif:hover {
+	background: lightgray;
 }

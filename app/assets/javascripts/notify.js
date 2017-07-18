@@ -129,7 +129,7 @@ $(window).load(function() {
 		$(".wrapper:visible .comment-html").append($(this).clone());
 		//fullComment();
 	})
-	$(document).on('click', '#notification-icon, #notification-icon-2, #notification-icon-bell-2', function() {
+	$(document).on('click', '#notification-icon, #notification-icon-2, #notification-icon-bell-2, #remove-notif', function() {
 		if ($('#notif-menu').hasClass('notif-show')) {
 			console.log('not-shown?')
 			$('#notif-menu').removeClass('notif-show')

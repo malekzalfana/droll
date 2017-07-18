@@ -86,12 +86,13 @@ class PostsController < ApplicationController
 
   def create
     puts "users"
+    #puts params[:ref]
     puts User.count
     if user_signed_in?
       @user = current_user
     else
 
-      @user = User.new(:email =>  Time.current.year.to_s + Time.current.month.to_s + Time.current.hour.to_s + rand(1..99999999).to_s  + '@drolle.com', :password => 'password123', :password_confirmation => 'password123', :pic => rand(1..75), :new => true)
+      @user = User.new(:ref => params[:ref], :email =>  Time.current.year.to_s + Time.current.month.to_s + Time.current.hour.to_s + rand(1..99999999).to_s  + '@drolle.com', :password => 'password123', :password_confirmation => 'password123', :pic => rand(1..75), :new => true)
       @user.save
       sign_in(:user, @user)
       puts "kkkkkkkkkkkkkkkkkkkkkkk"
@@ -101,7 +102,9 @@ class PostsController < ApplicationController
 
     @post = @user.posts.build(permit_post)
     @post.user = @user
+    #@post.ref = params[:ref]
     @post.user_id = @user.id
+    #@user.ref = params[:ref]
     puts "kssssssskkkkkkkkkkkkkkkkkkkkkk"
     puts @post.user
 
@@ -358,7 +361,7 @@ class PostsController < ApplicationController
 
   private
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list );
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list, :ref );
     end
     def permit_post2
       params.permit(:hidden, :id);
