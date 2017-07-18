@@ -104,9 +104,7 @@
                       <a href="/tags/<%= tag.name %>"><%= tag.name %></a>
                     <% end %>
                     -->
-                    <% if @post.trendid.present? %>
-                          <a class="post-trend" target="_blank" href="/trends/<%= Trend.find_by_id(@post.trendid).name %>">/<%= Trend.find_by_id(@post.trendid).name %></a>
-                        <% end %>
+
                 </div>
 
                 <% if user_signed_in? && current_user != @post.user %>
@@ -143,6 +141,10 @@
                     <%= link_to like_post_path(@post), method: :put, class: 'up upvote', :"data-post-id" => @post.id, remote: true  do %>
                     <% end %>
                 </div>
+
+                <% if @post.trendid.present? %>
+                          <a  class="new-post-trend" target="_blank" href="/trends/<%= Trend.find_by_id(@post.trendid).name %>">/<%= Trend.find_by_id(@post.trendid).name %></a>
+                        <% end %>
 
                 <div class="post-footer new <%= if @post.user.passed != true then "not-passedREMOVED" end %> ">
                 <% if @post.anonymous != true %>
