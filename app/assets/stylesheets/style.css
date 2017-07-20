@@ -8724,6 +8724,9 @@ body:not(#make) .fixed-menu {
     margin: 0px 10px;
     text-align: left;
 }
+#box-6-wrapper div:nth-child(n+12) {
+	displaY: none !important;
+}
 .go-left-2 #box-6-wrapper {
 	display: block;
 }
