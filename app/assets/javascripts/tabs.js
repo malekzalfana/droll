@@ -13,6 +13,10 @@ var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
 $(document).ready(function() {
+	if ( $(document).width() > 700 && $("body").hasClass("malek") ) {
+		$("#renderTrends-submit").click().remove();
+		$("#box-3-wrapper").hide();
+	}
 	$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
 
@@ -998,7 +1002,7 @@ $("#sketch").on("contextmenu",function(){
 		$('#hide-remote-make').click()
 	})
 
-	$(document).on('click', 'body:not(#show) #back-list, .shown-post .post-image-wrapper, #explore .post-image-wrapper', function(e) {
+	$(document).on('click', 'body:not(#show) #back-list, .shown-post .post-image-wrapper, #explore .post-image-wrapper, .new-post-trend', function(e) {
 		if (e.target.id != "prev-post-icon" && e.target.id != "next-post-icon" && e.target.className != 'post-trend') {
 			if ($('body').is('#show')) {
 				console.log('redirected to recent')

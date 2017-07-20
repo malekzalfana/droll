@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 
-<body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">oll-up-wrapper"><div id="scroll-up"></div></div>
+<body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<%= current_user.username %>< <%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">oll-up-wrapper"><div id="scroll-up"></div></div>
 
 
     <% if user_signed_in? %>
@@ -57,8 +57,11 @@
     </div>
     <% end %>
 <div id="content-full2" class="full-wrapper new-content">
-
+<% if current_user.username != 'malek' %>
     <%= render '/layouts/who_to_follow' %>
+<% else%>
+    <%= render '/layouts/trends' %>\
+<% end %>
 
 
     <% if @welcomeMessage == true %>

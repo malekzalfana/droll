@@ -58,20 +58,6 @@
         </div>
     </div>
 
-    <div id="box-6-wrapper">
-        <div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
-
-            <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
-            <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
-            <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
-            <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
-
-
-        <%= form_tag url_for(:controller => 'pages', :action => 'renderTrends'), :method => 'get', class: "hidden-imp", remote: true do %>
-      <%= text_field_tag 'name', '' %>
-      <%= submit_tag "Save", id: "renderTrends-submit" %>
-    <% end %>
-    </div>
 
     <div id="box-3-wrapper">
             <p ID="who-to-follow"><i class="material-icons">person_outline</i>Who to follow</p>
