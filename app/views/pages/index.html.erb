@@ -56,13 +56,10 @@
         <div id="tab-3" class="mobile-tab"><i class="material-icons">whatshot</i>Trends</div>
     </div>
     <% end %>
-<div id="content-full2" class="full-wrapper new-content">
-<% if current_user.username != 'malek' && current_user.username != 'malekk' %>
-    <%= render '/layouts/who_to_follow' %>
-<% else%>
     <%= render '/layouts/trends' %>
-<% end %>
+<div id="content-full2" class="full-wrapper new-content">
 
+<%= render '/layouts/who_to_follow' %>
 
     <% if @welcomeMessage == true %>
         <div id="main-message">

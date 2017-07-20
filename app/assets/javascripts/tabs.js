@@ -16,6 +16,7 @@ $(document).ready(function() {
 	if ( window.location == 'https://drolle-viral-2-malekzalfana.c9users.io/' || $("body").hasClass("malek") ) {
 		$("#renderTrends-submit").click().remove();
 		$("#box-3-wrapper").hide();
+		$("#box-6-wrapper").fadeIn();
 	}
 	$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
