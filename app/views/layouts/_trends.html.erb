@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
 
-    <div id="box-6-wrapper" class="second">
+    <div id="box-6-wrapper" class="second mini">
         <p id="main-trends-title"><i class="material-icons">whatshot</i>Trends</p>
         <div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
 
@@ -14,7 +14,10 @@
       <%= text_field_tag 'name', '' %>
       <%= submit_tag "Save", id: "renderTrends-submit" %>
     <% end %>
+    <div class="trend-holder"></div>
+    <div class="more-trends">more<i class="material-icons">expand_more</i></div>
     </div>
+
 
 
 

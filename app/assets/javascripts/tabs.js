@@ -60,6 +60,10 @@ tabs = function() {
 		newpostGutter = 10
 	}
 	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend)',
+		function() {
+			$("#box-6-wrapper.second").removeClass("mini")
+		})
+	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend)',
 		function(e) {
 			e.preventDefault();
 			console.log("clicked this bitch")

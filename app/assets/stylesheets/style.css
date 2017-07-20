@@ -8726,6 +8726,7 @@ body:not(#make) .fixed-menu {
 }
 #box-6-wrapper.second .trend .trend-name {
 	font-size: 17px;
+	padding: 5px 0px 0px 0px;
 }
 .trend-name i {
 	display: none;
@@ -8742,7 +8743,19 @@ body:not(#make) .fixed-menu {
 #box-6-wrapper.second .trend-name:hover i {
 	opacity: 0.3;
 }
-#box-6-wrapper.second > div:nth-child(n+12) {
+.more-trends {
+	    float: left;
+    font-family: roboto;
+    font-size: 14px;
+    opacity: 0.7;
+    margin: 11px;
+}
+.more-trends i {
+	    line-height: 0;
+    position: relative;
+    top: 7px;
+}
+#box-6-wrapper.second.mini > div:nth-child(n+20) {
 	displaY: none !important;
 }
 .go-left-2 #box-6-wrapper {
