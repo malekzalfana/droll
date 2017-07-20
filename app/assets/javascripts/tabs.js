@@ -13,7 +13,7 @@ var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
 $(document).ready(function() {
-	if ( $(document).width() > 700 && $("body").hasClass("malek") ) {
+	if ( window.location == 'https://drolle-viral-2-malekzalfana.c9users.io/' || $("body").hasClass("malek") ) {
 		$("#renderTrends-submit").click().remove();
 		$("#box-3-wrapper").hide();
 	}
