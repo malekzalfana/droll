@@ -8701,13 +8701,69 @@ body:not(#make) .fixed-menu {
 }
 /* REMOVED */
 #box-6-wrapper.second {
-	display: block;
-    width: 230px;
+    width: 260px;
     float: left;
     position: absolute;
-    top: 100px;
-    margin-left: 60px;
-    display: none
+    top: 110px;
+    margin-left: 90px;
+    display: none;
+    BACKGROUND: WHITE;
+}
+#box-6-wrapper.second #search-trends {
+	margin-top: 0px;
+	margin-left: 25px;
+	opacity: 0.7;
+	MARGIN-BOTTOM: 2PX;
+}
+.new-more-trends {
+	    font-style: italic;
+    opacity: 0.4;
+    font-size: 12px;
+    margin: 17px 20px;
+    font-family: roboto;
+    float: left;
+}
+.trend-last-image {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    background-size: cover;
+    float: left;
+    margin: 10px;
+}
+#box-6-wrapper.second .trend .trend-details {
+    font-family: roboto;
+    font-size: 11px;
+    margin: 0px 0px;
+    display: inline-block;
+    opacity: 0.4;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    float: left;
+    margin-top: -1px;
+}
+#box-6-wrapper.second #search-trends textarea {
+	margin-top: 0px;
+    border: none;
+    font-size: 13px;
+    height: 24px;
+}
+#box-6-wrapper.second #search-trends i {
+	margin-right: 4px
+}
+#box-6-wrapper.second > p {
+    font-family: roboto;
+    text-align: left;
+    margin: 20px 10px 5px 5px;
+    display: inline-block;
+    width: calc(100% - 30px);
+    font-size: 17px;
+    MARGIN-LEFT: 20PX;
+}
+#box-6-wrapper.second #main-trends-title i {
+	    FONT-SIZE: 25PX;
+    COLOR: #FF3000;
+    TOP: 6PX;
 }
 #box-6-wrapper.second .trend {
 	BOX-SHADOW: NONE;
@@ -8723,21 +8779,28 @@ body:not(#make) .fixed-menu {
     background: none;
     margin: 0px 10px;
     text-align: left;
+        background: white;
+    HEIGHT: 53PX;
+    MARGIN: 0PX;
+    PADDING: 0PX 10PX;
 }
 #box-6-wrapper.second .trend .trend-name {
 	font-size: 17px;
-	padding: 5px 0px 0px 0px;
+	padding: 3px 0px 0px 0px;
+	FLOAT:RIGHT;
+	COLOR: BLACK;
+	width: calc(100% - 55px);
 }
 .trend-name i {
 	display: none;
 }
 #box-6-wrapper.second .trend-name i {
-	font-size: 13px;
-	display: block;
+	    font-size: 13px;
+    display: block;
     position: absolute;
     line-height: 2;
-    right: 0;
-    top: 6px;
+    right: 15px;
+    top: 15px;
     opacity: 0;
 }
 #box-6-wrapper.second .trend-name:hover i {
@@ -8757,6 +8820,15 @@ body:not(#make) .fixed-menu {
 }
 #box-6-wrapper.second.mini > div:nth-child(n+20) {
 	displaY: none !important;
+}
+#box-6-wrapper.second #trend-scroll-wrapper {
+	display: none !important;
+}
+#box-6-wrapper.second .trend {
+	background: white;
+}
+#box-6-wrapper.second .trend:hover {
+	background: #f9f9f9;
 }
 .go-left-2 #box-6-wrapper {
 	display: block;

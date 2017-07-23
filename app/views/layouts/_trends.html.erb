@@ -10,12 +10,59 @@
             <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
 
 
-        <%= form_tag url_for(:controller => 'pages', :action => 'renderTrends'), :method => 'get', class: "hidden-imp", remote: true do %>
-      <%= text_field_tag 'name', '' %>
-      <%= submit_tag "Save", id: "renderTrends-submit" %>
-    <% end %>
-    <div class="trend-holder"></div>
-    <div class="more-trends">more<i class="material-icons">expand_more</i></div>
+    <!--<div class="trend-holder"></div>-->
+        <% @alltrends.each do |trend| %>
+
+<div data-filter-item data-filter-name="<%= trend.name %>" class="trend trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
+                <% if user_signed_in? %>
+                <%= form_for current_user, :html => { :multipart => true , :class => 'hidden-imp' },:url => url_for(:controller => 'trends', :action => 'follow', :user_id => current_user.id ), :method => "get" , remote: true  do |f| %>
+                    <%= f.text_field :trendid, :value => trend.id, :id => 'e' %>
+                    <%= f.submit "Save", class: 'follow-trend-submit'%>
+                <% end %>
+                <% end %>
+                <!--<a href="trends/<%= trend.name %>"></a>-->
+                <div class="trend-last-image" style="background-image: url(<%= Post.where(trendid: trend.id).last.image.url(:medium) %>)"></div>
+                <a href="/trends/<%= trend.name %>" target="_blank" class="not-link">
+                  <p class="trend-name new">/<%= trend.name %><i class="material-icons">open_in_new</i></p>
+                </a>
+                <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
+                <!--
+                <p class="trend-details first"><%= Post.where(trendid: trend.id).size %> Posts</p>
+                <p class="trend-details second">.</p>
+                <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
+
+
+                <div id="trend-scroll-wrapper">
+                <div id="trend-scroll">
+                  <% Post.where(trendid: trend.id).limit(4).each do |post| %>
+                <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if !post.giphyid.blank? %><img class="post-trend-2" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+
+              <% end %>
+              <a href="trends/<%= trend.name %>" target="_blank" class="not-link">
+              <i class="material-icons trend-arrow">navigate_next</i>
+              </a>
+
+              <div class="trend-overlay"></div>
+
+              </div>
+              </div>
+
+              <span class="follow-trend">Follow</span><span class="followed-trend" >Followed</span>
+              <a href"/make?trend=<%= trend.name %>" target="_blank" class="not-link"><i class="meme-trend material-icons">add</i></a>
+
+              <a href="trends/<%= trend.name %>" target="_blank" class="not-link">
+                <div class="new-tab-trend">
+                <i class="material-icons">open_in_new</i>
+                Open
+              </div>
+              </a>
+-->
+              </div>
+              <% end %>
+
+    <div class="new-more-trends">show more trends</div>
     </div>
 
 
