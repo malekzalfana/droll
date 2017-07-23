@@ -40,7 +40,7 @@
                 <% if !post.giphyid.blank? %><img class="post-trend-2" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
 
               <% end %>
-              <a href="trends/<%= trend.name %>" target="_blank" class="not-link">
+              <a href="trends/<%# trend.name %>" target="_blank" class="not-link">
               <i class="material-icons trend-arrow">navigate_next</i>
               </a>
 
