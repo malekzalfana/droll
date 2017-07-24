@@ -155,9 +155,10 @@ a {
     background: none;
     pointer-events: none;
     background: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
 }
 #explore #navbar , .make-dark-box, #show #navbar, #index.trendy #navbar, #settings #navbar, #invite-page #navbar, #settings #navbar, #profile #navbar, #tag #navbar{
-	box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.15) !important;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important
 }
 
 /* REMOVED NAVBAR */
@@ -5071,7 +5072,7 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	width: 200px;
 }
 #content-full2 {
-	padding-top: 80px;
+	padding-top: 60px;
 }
 @media screen and (max-width: 690px) {
 
@@ -8614,6 +8615,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
   	top: 45px;
   	height: 40px;
   	overflow: hidden;
+  	display: none !important;
 }
 #tag #nav-menu-wrapper {
 	    background: none;
@@ -8698,16 +8700,30 @@ body:not(#make) .fixed-menu {
 	width: 100%;
 	display: none;
 	background: #efefed;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
 }
 /* REMOVED */
 #box-6-wrapper.second {
-    width: 260px;
+    width: 320px;
     float: left;
     position: absolute;
-    top: 110px;
-    margin-left: 90px;
+    top: 95px;
+    margin-left: 50px;
     display: none;
     BACKGROUND: WHITE;
+}
+#box-5-wrapper.second #new-posts {
+	background: white;
+    HEIGHT: 50PX;
+    MARGIN: 15PX 3PX;
+    WIDTH: 280PX;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
+}
+#box-5-wrapper.second #new-posts i {
+	FONT-SIZE: 25PX;
+    COLOR: #FF3000;
+    MARGIN: 20PX 10PX 0PX 20PX;
+    TOP: 6PX;
 }
 #box-6-wrapper.second #search-trends {
 	margin-top: 0px;
@@ -8724,7 +8740,7 @@ body:not(#make) .fixed-menu {
     float: left;
 }
 .trend-last-image {
-    border-radius: 50%;
+    border-radius: 5PX;
     height: 30px;
     width: 30px;
     background-size: cover;

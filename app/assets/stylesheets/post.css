@@ -63,7 +63,7 @@ body:not(#invite-page) {
     position: relative;
     z-index: 5;
     padding: 0px 0px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.14);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
     padding-top: 0px;
 }
 body:not(.shown-post) .new-content .left-wrapper,body:not(.shown-post) .new-content .post-image,body:not(.shown-post) .new-content .post-title {

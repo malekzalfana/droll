@@ -18288,3 +18288,1391 @@ DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-23 23:52:38 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.7ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (106.9ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (1.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.4ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (64.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 10]]
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 10]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (23.5ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (249.4ms)
+  Rendered layouts/_nav_user.html.erb (0.7ms)
+  Rendered layouts/_nav.html.erb (1.8ms)
+Completed 200 OK in 468ms (Views: 441.7ms | ActiveRecord: 10.6ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-23 23:52:40 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (109.1ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:00:59 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 2]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.4ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (170.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (6.8ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 6]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 8]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 9]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 10]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 10]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (17.3ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (233.7ms)
+  Rendered layouts/_nav_user.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 422ms (Views: 400.4ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:01:01 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (84.8ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:09:20 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.4ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (169.6ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (1.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (7.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 10]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 10]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (16.2ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (230.7ms)
+  Rendered layouts/_nav_user.html.erb (0.7ms)
+  Rendered layouts/_nav.html.erb (1.7ms)
+Completed 200 OK in 571ms (Views: 549.3ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:09:22 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (6.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (70.2ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:12:55 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mPost Load (0.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 2]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.5ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (65.0ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (6.4ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 6]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 8]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 9]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 10]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 10]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (16.1ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (127.9ms)
+  Rendered layouts/_nav_user.html.erb (0.5ms)
+  Rendered layouts/_nav.html.erb (1.5ms)
+Completed 200 OK in 408ms (Views: 386.1ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/assets/style.self-60d50eb5ab118dd3ca18f748bc054bc6c52abe234f70b39d69cc317469e83b3b.css?body=1" for 94.187.88.121 at 2017-07-24 00:12:56 +0000
+
+
+Started GET "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:12:57 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (8.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (75.6ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:12:57 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (15.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (9.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (107.8ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.121 at 2017-07-24 00:12:59 +0000
+
+
+Started GET "/pages/renderTrends?utf8=%E2%9C%93&name=&commit=Save" for 94.187.88.121 at 2017-07-24 00:12:59 +0000
+Processing by PagesController#renderTrends as JS
+  Parameters: {"utf8"=>"✓", "name"=>"", "commit"=>"Save"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mTrend Load (8.6ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (3.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered trends/_trend.html.erb (20.3ms)
+  Rendered pages/renderTrends.js.erb (31.8ms)
+Completed 200 OK in 42ms (Views: 25.4ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:13:45 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (6.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (62.9ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (1.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mPublicActivity::Activity Load (5.1ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (84.9ms)
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (3.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.2ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (2.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (16.3ms)
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 10]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 10]]
+  [1m[36mPost Load (3.1ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (82.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (1.8ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (388.4ms)
+  Rendered layouts/_nav_user.html.erb (0.8ms)
+  Rendered layouts/_nav.html.erb (3.0ms)
+Completed 200 OK in 1978ms (Views: 1844.2ms | ActiveRecord: 94.2ms)
+
+
+Started GET "/assets/style.self-bed25879247624caa25bfd1322c23d3c1b92be685b09545933d1cb09a3772b62.css?body=1" for 94.187.88.121 at 2017-07-24 00:13:48 +0000
+
+
+Started GET "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:13:49 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (23.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (7.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (5.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (216.2ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:13:49 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (49.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (17.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (731.5ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.121 at 2017-07-24 00:13:50 +0000
+
+
+Started GET "/pages/renderTrends?utf8=%E2%9C%93&name=&commit=Save" for 94.187.88.121 at 2017-07-24 00:13:50 +0000
+Processing by PagesController#renderTrends as JS
+  Parameters: {"utf8"=>"✓", "name"=>"", "commit"=>"Save"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mTrend Load (0.4ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered trends/_trend.html.erb (7.5ms)
+  Rendered pages/renderTrends.js.erb (9.5ms)
+Completed 200 OK in 21ms (Views: 16.5ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:14:26 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mPost Load (2.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 2]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.3ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (21.3ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mTrend Load (0.3ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (40.9ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 2]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 6]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 8]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 9]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 9]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 10]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 10]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (17.9ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (140.3ms)
+  Rendered layouts/_nav_user.html.erb (0.6ms)
+  Rendered layouts/_nav.html.erb (1.6ms)
+Completed 200 OK in 582ms (Views: 560.2ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/assets/style.self-b4c75d0773b495207b55408ba889f3ebc2d308f5ac5bbb77b3689527d299ce46.css?body=1" for 94.187.88.121 at 2017-07-24 00:14:27 +0000
+
+
+Started GET "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:14:28 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (9.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (3.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (76.2ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:14:28 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (19.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (12.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (112.6ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.121 at 2017-07-24 00:14:28 +0000
+
+
+Started GET "/pages/renderTrends?utf8=%E2%9C%93&name=&commit=Save" for 94.187.88.121 at 2017-07-24 00:14:28 +0000
+Processing by PagesController#renderTrends as JS
+  Parameters: {"utf8"=>"✓", "name"=>"", "commit"=>"Save"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered trends/_trend.html.erb (5.7ms)
+  Rendered pages/renderTrends.js.erb (7.2ms)
+Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:18:32 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mPublicActivity::Activity Load (2.1ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (88.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (1.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.2ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (2.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (12.2ms)
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 10]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 10]]
+  [1m[36mPost Load (1.9ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (26.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (201.0ms)
+  Rendered layouts/_nav_user.html.erb (1.3ms)
+  Rendered layouts/_nav.html.erb (2.5ms)
+Completed 200 OK in 932ms (Views: 898.0ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/assets/style.self-18ee83ca53e7c7216fc2088a109cdce7f772398aa8de47d07f42833187658c86.css?body=1" for 94.187.88.121 at 2017-07-24 00:18:34 +0000
+
+
+Started GET "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:18:35 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (140.2ms)
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:18:35 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (11.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (24.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (99.5ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.121 at 2017-07-24 00:18:35 +0000
+
+
+Started GET "/pages/renderTrends?utf8=%E2%9C%93&name=&commit=Save" for 94.187.88.121 at 2017-07-24 00:18:35 +0000
+Processing by PagesController#renderTrends as JS
+  Parameters: {"utf8"=>"✓", "name"=>"", "commit"=>"Save"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mTrend Load (0.3ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered trends/_trend.html.erb (5.3ms)
+  Rendered pages/renderTrends.js.erb (6.5ms)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:19:42 +0000
+Processing by PagesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC[0m  [["follower_id", 2]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mPublicActivity::Activity Load (0.7ms)[0m  [1mSELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 171]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 161]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 162]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 153]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered layouts/_activities.html.erb (36.2ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mTrend Load (0.3ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (9.2ms)
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4[0m  [["follower_id", 2]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 6]]
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 6]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 8]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 8]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 9]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 9]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 10]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 10]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (24.2ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (118.2ms)
+  Rendered layouts/_nav_user.html.erb (0.9ms)
+  Rendered layouts/_nav.html.erb (2.3ms)
+Completed 200 OK in 633ms (Views: 607.6ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/assets/style.self-ee6b6f904409f7e4b6a22532fce02133bff56489e1e78b73e17ce7fd9e9bb606.css?body=1" for 94.187.88.121 at 2017-07-24 00:19:44 +0000
+
+
+Started GET "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:19:44 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (17.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (160.1ms)
+
+
+Started GET "/pages/renderTrends?utf8=%E2%9C%93&name=&commit=Save" for 94.187.88.121 at 2017-07-24 00:19:44 +0000
+Processing by PagesController#renderTrends as JS
+  Parameters: {"utf8"=>"✓", "name"=>"", "commit"=>"Save"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mTrend Load (0.4ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered trends/_trend.html.erb (7.3ms)
+  Rendered pages/renderTrends.js.erb (103.8ms)
+Completed 200 OK in 117ms (Views: 111.0ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.121 at 2017-07-24 00:19:45 +0000
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:19:45 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (7.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (14.7ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (11.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.4ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (118.3ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-24 00:22:07 +0000
+Processing by PagesController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1  [["id", 2]]
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up > 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.2ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND "posts"."user_id" IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)  ORDER BY created_at DESC  [["follower_id", 2]]
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."trendid" IN (0, 0, 6, 7, 4, 5, 3, 2, 24, 25, 26, 9, 3, 42) AND "posts"."hidden" IS NULL  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mPublicActivity::Activity Load (0.8ms)[0m  SELECT  "activities".* FROM "activities" WHERE "activities"."recipient_type" = 'User' AND "activities"."recipient_id" = 2  ORDER BY created_at DESC LIMIT 25
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 48]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 48]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 205]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 30]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 30]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 205]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 21]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 21]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 171]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 10]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 10]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 161]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1[0m  [["id", 162]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."id" = ?  ORDER BY created_at DESC LIMIT 1  [["id", 153]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered layouts/_activities.html.erb (26.5ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (1.1ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (6.9ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE ("users"."id" NOT IN (SELECT "users"."id" FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?)) LIMIT 4  [["follower_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 6]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 6]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 8]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 8]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 9]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 9]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."user_id" = ?[0m  [["user_id", 10]]
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 10]]
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (20.5ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "report"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_scope" = ?  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_scope", "favor"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mUser Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."voter_id" = ? AND "votes"."voter_type" = ? AND "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["voter_id", 2], ["voter_type", "User"], ["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1[0m  [["follower_id", 2], ["id", 79]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  1 AS one FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ? AND "users"."id" = ? LIMIT 1  [["follower_id", 2], ["id", 79]]
+  Rendered pages/index.html.erb within layouts/application (213.4ms)
+  Rendered layouts/_nav_user.html.erb (0.9ms)
+  Rendered layouts/_nav.html.erb (3.1ms)
+Completed 200 OK in 644ms (Views: 617.7ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/assets/style.self-a48b02607e6ec04526989bc729cb0335833bd2974edbae684c559480a03dc0be.css?body=1" for 94.187.88.121 at 2017-07-24 00:22:08 +0000
+
+
+Started GET "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:22:08 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/thumb/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (28.3ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (8.0ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (296.7ms)
+
+
+Started GET "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg?1493596570" for 94.187.88.121 at 2017-07-24 00:22:09 +0000
+
+ActionController::RoutingError (No route matches [GET] "/system/users/images/000/000/002/medium/WIN_20170428_01_54_11_Pro.jpg"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:20:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /usr/local/rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (7.2ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.1ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.5ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /usr/local/rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (66.2ms)
+
+
+Started GET "/assets/missing.jpg" for 94.187.88.121 at 2017-07-24 00:22:09 +0000
+
+
+Started GET "/pages/renderTrends?utf8=%E2%9C%93&name=&commit=Save" for 94.187.88.121 at 2017-07-24 00:22:09 +0000
+Processing by PagesController#renderTrends as JS
+  Parameters: {"utf8"=>"✓", "name"=>"", "commit"=>"Save"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ?  ORDER BY "users"."id" ASC LIMIT 1[0m  [["id", 2]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered trends/_trend.html.erb (4.4ms)
+  Rendered pages/renderTrends.js.erb (5.7ms)
+Completed 200 OK in 13ms (Views: 10.2ms | ActiveRecord: 0.7ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
