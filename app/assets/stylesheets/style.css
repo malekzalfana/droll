@@ -5327,7 +5327,7 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 #logo-wrapper {
         width: 35px;
     height: 35px;
-    background-image: url(http://i.imgur.com/nQApz5w.png);
+    background-image: url(http://i.imgur.com/uzhTnQY.png);
     background-repeat: no-repeat;
     background-size: 16px;
     background-position: center center;
@@ -8714,16 +8714,21 @@ body:not(#make) .fixed-menu {
 }
 #box-5-wrapper.second #new-posts {
 	background: white;
-    HEIGHT: 50PX;
+    HEIGHT: 52PX;
     MARGIN: 15PX 3PX;
-    WIDTH: 280PX;
+    WIDTH: 250PX;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
+    float: left;
+    position: relative;
 }
 #box-5-wrapper.second #new-posts i {
 	FONT-SIZE: 25PX;
     COLOR: #FF3000;
     MARGIN: 20PX 10PX 0PX 20PX;
     TOP: 6PX;
+}
+#box-5-wrapper.second.active #slide-page {
+	transform: rotate(180deg);
 }
 #box-6-wrapper.second #search-trends {
 	margin-top: 0px;
@@ -8914,7 +8919,7 @@ body:not(#make) .fixed-menu {
 .fixed-sides {
 	top: 45px !important;
 }
-.shown-post #box-3-wrapper, .shown-post #box-4-wrapper, .shown-post .memeb-wrapper, .shown-post #box-5-wrapper {
+.shown-post #box-3-wrapper, .shown-post #box-6-wrapper, .shown-post #box-4-wrapper, .shown-post .memeb-wrapper, .shown-post #box-5-wrapper {
 	display: none;
 }
 #box-3-wrapper p, #box-4-wrapper p, #box-5-wrapper p, #box-6-wrapper > p  {
@@ -9024,12 +9029,12 @@ body:not(#make) .fixed-menu {
 	    position: relative;
 		float: left;
 	}
-	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper {
+	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper {
 		display: none;
 	}
 }
 @media screen and (max-width: 1200px)  {
-	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper {
+	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper {
 		display: none;
 	}
 }
@@ -10738,4 +10743,12 @@ div#nav-menu-wrapper.closed.second #search-trends {
 }
 #remove-notif:hover {
 	background: lightgray;
+}
+#slide-page {
+	    right: 12px !Important;
+    position: absolute !important;
+    top: 8px !important;
+    color: black !important;
+    opacity: 0.2;
+    transition: 0.4s ease-out all
 }

@@ -5,7 +5,7 @@
         <i class="material-icons" id="go-back">keyboard_arrow_left</i>
     </div>
 
-        <p id="new-posts"><i class="material-icons">access_time</i>New Posts<span>click to slide page</span></p>
+        <p id="new-posts"><i class="material-icons">access_time</i>New Posts<i class="material-icons" id="slide-page">keyboard_arrow_right</i></p>
         <div class="reco-trend">
             <% @newposts.each do |post| %>
                 <div class="wrapper-new-2 <%= if post.user == current_user then "mine" end %>">
