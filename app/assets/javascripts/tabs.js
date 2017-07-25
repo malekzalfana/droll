@@ -13,11 +13,7 @@ var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
 $(document).ready(function() {
-	if ( window.location == 'https://drolle-viral-2-malekzalfana.c9users.io/' || $("body").hasClass("malek") ) {
-		$("#renderTrends-submit").click().remove();
-		$("#box-3-wrapper").hide();
-		$("#box-6-wrapper").fadeIn();
-	}
+
 	$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
 
@@ -62,7 +58,11 @@ tabs = function() {
 	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend)',
 		function() {
 			$("#box-6-wrapper.second").removeClass("mini")
-		})
+	})
+	$(document).on('click', '.new-more-trends', function() {
+		$(this).fadeOut(100);
+		$(".trend-holder").addClass("active")
+	})
 	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend)',
 		function(e) {
 			e.preventDefault();

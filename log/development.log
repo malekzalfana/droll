@@ -23724,3 +23724,485 @@ Processing by PagesController#renderTrends as JS
 Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.5ms)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
 DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:27:54 +0000
+Processing by PagesController#index as HTML
+  [1m[35mPost Load (1.6ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (1.0ms)
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (14.6ms)
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (6.5ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.2ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (59.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 296ms (Views: 273.3ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:28:36 +0000
+Processing by PagesController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (1.0ms)
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (6.9ms)
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (5.0ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (38.6ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 200ms (Views: 192.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:29:26 +0000
+Processing by PagesController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (1.5ms)
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (9.7ms)
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (3.0ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (50.0ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 402ms (Views: 392.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/tabs.self-e85321e065301dcfadf9bf906142c97b61dae035d92e98e93d6edebff734ffcf.js?body=1" for 94.187.88.121 at 2017-07-25 22:29:27 +0000
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:30:30 +0000
+Processing by PagesController#index as HTML
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.6ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (1.0ms)
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (7.3ms)
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (3.0ms)
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (58.5ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.3ms)
+Completed 200 OK in 409ms (Views: 396.1ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/assets/style.self-3f625c7064740df7f392fd9bc42b0bf925fdb47432d743b4ecc6cdbfb35e33ab.css?body=1" for 94.187.88.121 at 2017-07-25 22:30:31 +0000
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:30:43 +0000
+Processing by PagesController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (5.4ms)
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (2.1ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.2ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (42.4ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 217ms (Views: 208.5ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:31:17 +0000
+Processing by PagesController#index as HTML
+  [1m[36mPost Load (0.5ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (5.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (1.9ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (37.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 272ms (Views: 264.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/assets/style.self-458a59bbd3b3bb9b21e12756a4062848f52c0789537094bf08ee30d5d071bdc1.css?body=1" for 94.187.88.121 at 2017-07-25 22:31:18 +0000
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:33:21 +0000
+Processing by PagesController#index as HTML
+  [1m[35mPost Load (0.8ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (1.1ms)
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.1ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (6.2ms)
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (6.6ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mTrend Load (0.4ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (62.4ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 244ms (Views: 234.3ms | ActiveRecord: 4.1ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:16)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:32)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:Post> at /home/ubuntu/workspace/app/models/post.rb:33)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "posts"[0m
+
+
+Started GET "/trends/bro" for 94.187.88.121 at 2017-07-25 22:36:14 +0000
+Processing by TrendsController#trend as HTML
+  Parameters: {"name"=>"bro"}
+  [1m[36mTrend Load (0.6ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."name" = ?  ORDER BY "trends"."id" ASC LIMIT 1[0m  [["name", "bro"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  Rendered layouts/_activities.html.erb (9.9ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  [["trendid", 42]]
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ? AND "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 35 OFFSET 0[0m  [["trendid", 42]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered trends/trend.html.erb within layouts/application (66.2ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.4ms)
+Completed 200 OK in 301ms (Views: 290.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 22:43:23 +0000
+Processing by PagesController#index as HTML
+  [1m[35mPost Load (11.0ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (1.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (1.3ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (6.4ms)
+  [1m[36mTrend Load (1.3ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.2ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (2.7ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.8ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (63.6ms)
+  [1m[35mPost Load (5.2ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (66.0ms)
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.2ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (1359.0ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (3.3ms)
+Completed 200 OK in 3037ms (Views: 2957.4ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/assets/style.self-d8146b6a9b353483ea719fa9102290912746b5ad48ad3b6c28578b12092e32db.css?body=1" for 94.187.88.121 at 2017-07-25 22:43:27 +0000
+
+
+Started GET "/assets/tabs.self-b460f930993b93d8751eeffc6a283492d86f9db4ea2399025dc97379c7ab426a.js?body=1" for 94.187.88.121 at 2017-07-25 22:43:27 +0000
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 23:10:46 +0000
+Processing by PagesController#index as HTML
+  [1m[36mPost Load (1.1ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (2.0ms)
+  [1m[35mTrend Load (0.2ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (14.7ms)
+  [1m[36mPost Load (0.4ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (4.2ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.2ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (83.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.2ms)
+Completed 200 OK in 412ms (Views: 393.5ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/assets/style.self-0ffbd6b4b6aaa4b01a44381398a566686d702f83c1118070bbbc7e3ada2ba6d1.css?body=1" for 94.187.88.121 at 2017-07-25 23:10:47 +0000
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 23:13:12 +0000
+Processing by PagesController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT "trends".* FROM "trends"[0m
+  [1m[35mPost Exists (0.2ms)[0m  SELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1[0m  [["trendid", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (5.5ms)
+  [1m[35mPost Load (0.3ms)[0m  SELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10
+  Rendered layouts/_who_to_follow.html.erb (1.8ms)
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 79]]
+  [1m[35mActsAsTaggableOn::Tag Exists (0.1ms)[0m  SELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mActsAsTaggableOn::Tag Load (0.1ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mTrend Load (0.1ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?  [["post_id", 294]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (38.5ms)
+  Rendered layouts/_nav_guest.html.erb (2.4ms)
+  Rendered layouts/_nav.html.erb (3.4ms)
+Completed 200 OK in 315ms (Views: 307.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/make" for 94.187.88.121 at 2017-07-25 23:13:19 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT "trends".* FROM "trends"  ORDER BY RANDOM()[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.1ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (15.0ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.3ms)[0m  [1mSELECT  "trends".* FROM "trends"  ORDER BY RANDOM() LIMIT 15[0m
+  Rendered pages/make.html.erb within layouts/application (257.6ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 681ms (Views: 671.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/assets/cursor.png" for 94.187.88.121 at 2017-07-25 23:13:21 +0000
+
+
+Started GET "/make" for 94.187.88.121 at 2017-07-25 23:13:21 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mTrend Load (0.3ms)[0m  SELECT "trends".* FROM "trends"  ORDER BY RANDOM()
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (13.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.4ms)[0m  SELECT  "trends".* FROM "trends"  ORDER BY RANDOM() LIMIT 15
+  Rendered pages/make.html.erb within layouts/application (72.6ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 538ms (Views: 533.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/assets/impactt.ttf" for 94.187.88.121 at 2017-07-25 23:13:21 +0000
+
+
+Started GET "/assets/eraser.png" for 94.187.88.121 at 2017-07-25 23:13:22 +0000
+
+
+Started GET "/assets/colors.png" for 94.187.88.121 at 2017-07-25 23:13:22 +0000
+
+
+Started GET "/assets/spray-can.png" for 94.187.88.121 at 2017-07-25 23:13:22 +0000
+
+
+Started GET "/make" for 94.187.88.121 at 2017-07-25 23:16:55 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[36mTrend Load (2.1ms)[0m  [1mSELECT "trends".* FROM "trends"  ORDER BY RANDOM()[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36mPost Load (0.2ms)[0m  [1mSELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4[0m  [["trendid", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?  [["trendid", 42]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_pick_trend.html.erb (9.2ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  [1m[36mTrend Load (0.2ms)[0m  [1mSELECT  "trends".* FROM "trends"  ORDER BY RANDOM() LIMIT 15[0m
+  Rendered pages/make.html.erb within layouts/application (37.3ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (1.1ms)
+Completed 200 OK in 372ms (Views: 357.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/assets/style.self-37532a7a6612081bb8b216ff200d041d7393d239541a67bc47f740c3b98883d7.css?body=1" for 94.187.88.121 at 2017-07-25 23:16:56 +0000
+
+
+Started GET "/assets/eraser.png" for 94.187.88.121 at 2017-07-25 23:16:56 +0000
+
+
+Started GET "/make" for 94.187.88.121 at 2017-07-25 23:16:56 +0000
+Processing by PagesController#make as HTML
+  Rendered layouts/_activities.html.erb (0.1ms)
+  [1m[35mTrend Load (0.4ms)[0m  SELECT "trends".* FROM "trends"  ORDER BY RANDOM()
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.2ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count
+  Rendered layouts/_pick_trend.html.erb (6.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  [1m[35mTrend Load (0.2ms)[0m  SELECT  "trends".* FROM "trends"  ORDER BY RANDOM() LIMIT 15
+  Rendered pages/make.html.erb within layouts/application (24.1ms)
+  Rendered layouts/_nav_guest.html.erb (0.1ms)
+  Rendered layouts/_nav.html.erb (0.9ms)
+Completed 200 OK in 230ms (Views: 225.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/cursor.png" for 94.187.88.121 at 2017-07-25 23:16:57 +0000
+
+
+Started GET "/assets/spray-can.png" for 94.187.88.121 at 2017-07-25 23:16:57 +0000
+
+
+Started GET "/assets/colors.png" for 94.187.88.121 at 2017-07-25 23:16:57 +0000
+
+
+Started GET "/assets/impactt.ttf" for 94.187.88.121 at 2017-07-25 23:16:57 +0000
+
+
+Started GET "/" for 94.187.88.121 at 2017-07-25 23:17:06 +0000
+Processing by PagesController#index as HTML
+  [1m[36mPost Load (0.6ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL AND (cached_votes_up < 10)  ORDER BY created_at DESC[0m
+  [1m[35mPost Load (0.4ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."hidden" IS NULL  ORDER BY created_at DESC LIMIT 10 OFFSET 0
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "trends" LIMIT 15) subquery_for_count[0m
+  Rendered layouts/_trends_tags.html.erb (0.9ms)
+  [1m[35mTrend Load (0.1ms)[0m  SELECT "trends".* FROM "trends"
+  [1m[36mPost Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "posts" WHERE "posts"."trendid" = ? LIMIT 1[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at ASC LIMIT 1  [["trendid", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "posts" WHERE "posts"."trendid" = ?[0m  [["trendid", 42]]
+  [1m[35mPost Load (0.1ms)[0m  SELECT  "posts".* FROM "posts" WHERE "posts"."trendid" = ?  ORDER BY created_at DESC LIMIT 4  [["trendid", 42]]
+  Rendered layouts/_trends.html.erb (7.2ms)
+  [1m[36mPost Load (0.3ms)[0m  [1mSELECT  "posts".* FROM "posts"  ORDER BY created_at DESC LIMIT 10[0m
+  Rendered layouts/_who_to_follow.html.erb (2.1ms)
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 79]]
+  [1m[36mActsAsTaggableOn::Tag Exists (0.1ms)[0m  [1mSELECT  1 AS one FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ? LIMIT 1[0m  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[35mActsAsTaggableOn::Tag Load (0.1ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "taggings" ON "tags"."id" = "taggings"."tag_id" WHERE "taggings"."taggable_id" = ? AND "taggings"."taggable_type" = ? AND "taggings"."context" = ?  [["taggable_id", 294], ["taggable_type", "Post"], ["context", "tags"]]
+  [1m[36mTrend Load (0.1ms)[0m  [1mSELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1[0m  [["id", 42]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "trends".* FROM "trends" WHERE "trends"."id" = ? LIMIT 1  [["id", 42]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 294]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", "f"]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", true]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT COUNT(*) FROM "votes" WHERE "votes"."votable_id" = ? AND "votes"."votable_type" = ? AND "votes"."vote_flag" = ? AND "votes"."vote_scope" IS NULL[0m  [["votable_id", 294], ["votable_type", "Post"], ["vote_flag", false]]
+  Rendered pages/index.html.erb within layouts/application (40.9ms)
+  Rendered layouts/_nav_guest.html.erb (0.0ms)
+  Rendered layouts/_nav.html.erb (1.0ms)
+Completed 200 OK in 316ms (Views: 307.4ms | ActiveRecord: 3.1ms)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:11)
+DEPRECATION WARNING: [paperclip] [deprecation] AWS SDK v1 has been deprecated in paperclip 5. Please consider upgrading to AWS 2 before upgrading paperclip. (called from <class:User> at /home/ubuntu/workspace/app/models/user.rb:12)

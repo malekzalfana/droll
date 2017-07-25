@@ -4,13 +4,17 @@
         <p id="main-trends-title"><i class="material-icons">whatshot</i>Trends</p>
         <div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
 
+        <!--
+
             <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
             <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
             <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
             <div class="trend trend-parent waiter"><div class="waiter-title"></div><div class="waiter-details"></div><div class="waiter-images-wrapper"><div class="waiter-images"></div><div class="waiter-images"></div><div class="waiter-images"></div></div></div>
 
+            -->
 
-    <!--<div class="trend-holder"></div>-->
+
+    <div class="trend-holder">
         <% @alltrends.each do |trend| %>
 
 <div data-filter-item data-filter-name="<%= trend.name %>" class="trend trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
@@ -61,7 +65,7 @@
 -->
               </div>
               <% end %>
-
+</div>
     <div class="new-more-trends">show more trends</div>
     </div>
 

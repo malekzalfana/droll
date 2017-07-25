@@ -8626,6 +8626,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e73827', end
   	top: 45px;
   	height: 40px;
   	overflow: hidden;
+}
+#nav-menu-wrapper:not(.second) {
   	display: none !important;
 }
 #tag #nav-menu-wrapper {
@@ -8720,7 +8722,7 @@ body:not(#make) .fixed-menu {
     position: absolute;
     top: 75px;
     margin-left: -330px;
-    display: none;
+    display: block;
     BACKGROUND: WHITE;
 }
 #box-5-wrapper.second #new-posts {
@@ -8754,6 +8756,7 @@ body:not(#make) .fixed-menu {
     margin: 17px 20px;
     font-family: roboto;
     float: left;
+    cursor: pointer;
 }
 .trend-last-image {
     border-radius: 5PX;
@@ -8850,8 +8853,11 @@ body:not(#make) .fixed-menu {
     position: relative;
     top: 7px;
 }
-#box-6-wrapper.second.mini > div:nth-child(n+20) {
+.trend-holder > div:nth-child(n+12) {
 	displaY: none !important;
+}
+.trend-holder > div:nth-child(n+12) {
+	display: inline-block !important;
 }
 #box-6-wrapper.second #trend-scroll-wrapper {
 	display: none !important;
