@@ -7484,11 +7484,22 @@ i.fa.fa-reddit-alien {
     max-width: 200px;
 }
 .new-post-trend {
-	float: left;
-    color: #ef5350;
+	    float: left;
+    color: #000000;
     margin: 15px 10px 5px 10px;
     font-family: roboto;
     font-size: 15px;
+    font-weight: 500;
+}
+.nav-link {
+	    DISPLAY: INLINE-BLOCK;
+    MARGIN-LEFT: 30PX;
+    FONT-FAMILY: ROBOTO;
+    OPACITY: 0.5;
+    FONT-SIZE: 14PX;
+    POSITION: RELATIVE;
+    TOP: -1PX;
+    font-weight: 500;
 }
 .tags-title {
         color: #6d6d6d;
@@ -8704,11 +8715,11 @@ body:not(#make) .fixed-menu {
 }
 /* REMOVED */
 #box-6-wrapper.second {
-    width: 320px;
+        width: 320px;
     float: left;
     position: absolute;
-    top: 95px;
-    margin-left: 50px;
+    top: 75px;
+    margin-left: -330px;
     display: none;
     BACKGROUND: WHITE;
 }

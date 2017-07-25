@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+<% if 1 == 1 %>
 <div id="box-5-wrapper" class="second">
     <%= will_paginate @newposts %>
     <div id="go-back-wrapper">
@@ -74,6 +74,7 @@
     <div class="trend-holder"></div>
     </div>
 
+    <% if user_signed_in? %>
     <div id="box-3-wrapper">
             <p ID="who-to-follow"><i class="material-icons">person_outline</i>Who to follow</p>
             <% @randomUsers.each do |user| %>
@@ -119,6 +120,7 @@
             </a>
 
     </div>
+    <% end %>
 
     <div id="box-4-wrapper" class="opacity">
         <p>New Posts

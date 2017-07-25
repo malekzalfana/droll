@@ -1,6 +1,6 @@
-<% if user_signed_in? %>
+<% if 1 == 1 %>
 
-<body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<%= current_user.username %> <%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">oll-up-wrapper"><div id="scroll-up"></div></div>
+<body  data-no-turbolinks='true' id="<%= controller.action_name %>" class="<%= current_user.username unless !user_signed_in? %> <%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">oll-up-wrapper"><div id="scroll-up"></div></div>
 
 
     <% if user_signed_in? %>
@@ -56,9 +56,9 @@
         <div id="tab-3" class="mobile-tab"><i class="material-icons">whatshot</i>Trends</div>
     </div>
     <% end %>
-    <%= render '/layouts/trends' %>
-<div id="content-full2" class="full-wrapper new-content">
 
+<div id="content-full2" class="full-wrapper new-content">
+<%= render '/layouts/trends' %>
 <%= render '/layouts/who_to_follow' %>
 
     <% if @welcomeMessage == true %>
@@ -198,7 +198,7 @@
                 <% end %>
                 <%# if user_signed_in? && current_user != post.user %>
                 <!--
-                <div class="post-more-button <%= if current_user.voted_on? post, vote_scope: 'report' then 'reported' elsif current_user.voted_on? post, vote_scope: 'favor' then 'favorited' end %>">
+                <div class="post-more-button <%# if current_user.voted_on? post, vote_scope: 'report' then 'reported' elsif current_user.voted_on? post, vote_scope: 'favor' then 'favorited' end %>">
                             <%# link_to report_post_path(post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="reported-post material-icons">report</i><%# end %>
                             <%# link_to like_post_path(post, :favor => true), method: :put, class: 'favor-post', title: 'Add to favorites', :"data-post-id" => post.id, remote: true  do %><i class="material-icons favorite-post">favorite</i><%# end %>
                             <div class="report-words">reported</div>
