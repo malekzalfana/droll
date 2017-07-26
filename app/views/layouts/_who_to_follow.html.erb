@@ -1,6 +1,6 @@
 <% if 1 == 1 %>
 
-<div id="box-5-wrapper" class="second">
+<div id="box-5-wrapper" class="second <%= if controller.action_name == "newposts" then "active" end%>">
     <%= will_paginate @newposts %>
     <div id="go-back-wrapper">
         <i class="material-icons" id="go-back">keyboard_arrow_left</i>

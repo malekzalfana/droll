@@ -92,6 +92,112 @@ class PagesController < ApplicationController
   end
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  def newposts
+    if user_signed_in? && current_user.new == true
+      redirect_to current_user.posts.first
+    else
+    @randomPic = rand(1..75)
+    @alltrends = Trend.all
+    #if user_signed_in? && current_user.passed != true && Time.now - current_user.created_at  < 10
+    #  #redirect_to '/make'
+   #   puts "nothing"
+    #else
+
+    unless session[:display_welcome]
+        @welcomeMessage = true
+        session[:display_welcome] = true
+    end
+    @trends = Trend.all.limit(15)
+    @url =  request.base_url + request.original_fullpath
+    if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
+      redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
+    elsif @url.include?('?app=true') && !user_signed_in? && !@url.include?('&signed=false')
+      redirect_to request.base_url + request.original_fullpath + '&signed=false'
+    else
+        if current_user && current_user.sign_in_count == 1
+      unless session[:display_welcome]
+        @welcomeMessage = true
+        session[:display_welcome] = true
+      end
+    end
+    if user_signed_in?
+      if current_user.trends.blank?
+        @trendArray = ''
+      else
+        @trendArray = current_user.trends.split(',')
+      end
+      @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
+
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 10')
+      @trendPosts = Post.where(trendid: @trendArray, hidden: nil)#.where('cached_votes_up > -1')
+      @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
+    #remove # up >>^^^^
+      @post2 = [@popularPosts,@followingPosts, @trendPosts].flatten
+      @post2 = @post2.uniq
+      @post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
+      #@post = Post.limit(30).paginate(:per_page => 10, :page => params[:page])
+      @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
+      @newposts = @pre_newposts.reject{ |e| @post.include? e }
+      @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
+      #  .reverse! user this for reversing the order of posts
+      # add the user not nil !!!!!
+    else
+
+      @post = Post.where(hidden: nil).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
+      @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
+      @newposts = @pre_newposts.reject{ |e| @post.include? e }
+      @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
+    end
+
+    #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
+#=begin
+    if user_signed_in?
+      @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
+      @p1 = if current_user.posts.count == 0 then '0' else '1' end
+      @p2 = if current_user.image.url(:medium) == 'missing.jpg' then '0' else '1' end
+      @p3 = if current_user.cover.url(:medium) == 'missing-2.png' then '0' else '1' end
+      @p4 = if current_user.bio.blank? then '0' else '1' end
+      @pTotal = ( (@p1.to_f + @p2.to_f + @p3.to_f + @p4.to_f)/4 )*100
+    end
+#=end
+    respond_to do |format|
+     format.html
+     format.js
+     format.json {render json:  @post }
+    end
+    end
+    #end
+  end
+
+
+  end
+
+
+
   def signup2
 
     @url =  request.base_url + request.original_fullpath
