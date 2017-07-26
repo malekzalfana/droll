@@ -49,8 +49,8 @@
     <%= render '/layouts/trends_tags' %>
 
 <div id="mobile-tabs" class="<%= if !(user_signed_in? && current_user.posts.count > -1) then "hidden-imp" end %>">
-        <div id="tab-1" class="mobile-tab active"><i class="material-icons">home</i>Feed</div>
-        <div id="tab-2" class="mobile-tab"><i class="material-icons">access_time</i>New</div>
+        <div id="tab-1" class="mobile-tab"><i class="material-icons">home</i>Feed</div>
+        <div id="tab-2" class="mobile-tab active"><i class="material-icons">access_time</i>New</div>
         <div id="tab-3" class="mobile-tab"><i class="material-icons">whatshot</i>Trends</div>
     </div>
 
@@ -67,6 +67,7 @@
 
 
 <% if !user_signed_in? %>
+<!--
     <div class="memeb-wrapper first">
         <p class="memeb-title">Can you pass the meme challenge?</p>
         <p class="memeb-detail">Make a meme and if you were accepted, you're in!</p>
@@ -74,7 +75,6 @@
     </div>
 
     <div class="memeb-wrapper second">
-        <!--<p class="memeb-title">What is happening?</p>-->
         <p class="memeb-detail">After you post your meme, current users will choose to let you in or keep you out.</p>
         <button class="memeb-button second">Continue</button>
     </div>
@@ -95,7 +95,7 @@
 
 
     </div>
-
+-->
 
 
 <% elsif user_signed_in? &&  !current_user.passed.nil? && current_user.username.nil? %>
@@ -156,7 +156,7 @@
     <% end %>
     <% @post.each do |post| %>
 
-        <div class="wrapper <%= if post.user == current_user then "mine" end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
+        <div class="wrapper hidden-imp <%= if post.user == current_user then "mine" end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
             <span class="click-mini">click on post to minimize</span>
             <i class="material-icons" id="prev-post-icon">navigate_before</i>
             <i class="material-icons" id="next-post-icon">navigate_next</i>
