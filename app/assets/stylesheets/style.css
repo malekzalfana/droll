@@ -7504,7 +7504,7 @@ i.fa.fa-reddit-alien {
     transition: 0.2s all ease-out;
 }
 .nav-link:nth-child(1) {
-	    border-left: 1px solid;
+	    border-left: 1px solid lightgray;
     margin-left: 20px;
     padding-left: 20px;
 }

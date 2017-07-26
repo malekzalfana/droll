@@ -1799,7 +1799,7 @@ $("#sketch").on("contextmenu",function(){
 			$("#content-full2").addClass("go-left-2")
 			$("#renderTrends-submit").click().remove();
 		}
-		if ( !$("#box-5-wrapper").hasClass("loaded") &&  !$(this).is("#tab-3") || $("body").width() > 600  ) {
+		if ( !$("#box-5-wrapper").hasClass("loaded") &&  !$(this).is("#tab-3")  ) {
 			$("#box-5-wrapper").addClass("loaded")
 			setTimeout(function(){
 				var $content3 = $('.reco-trend');
