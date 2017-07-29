@@ -938,27 +938,43 @@ $("#sketch").on("contextmenu",function(){
 
 	})
 	$(document).on('click', '.add-trend', function() {
-		$(".pick-tags-title.pick, .add-trend, #search-trends").hide();
-		$('.pick-trends.trend-container, .add-trend').removeClass('active').addClass("less-opacity")
-		$('.pick-tags-title.new, #pick-trends-wrapper-2').fadeIn(200)
-		$(".refresh-trends").addClass("active")
+		if ( !$("body").hasClass("not-signed-in") ) {
+			$(".pick-tags-title.pick, .add-trend, #search-trends").hide();
+			$('.pick-trends.trend-container, .add-trend').removeClass('active').addClass("less-opacity")
+			$('.pick-tags-title.new, #pick-trends-wrapper-2').fadeIn(200)
+			$(".refresh-trends").addClass("active")
+		}
+		else {
+				notSigned();
+			}
 	})
+
+	var notSigned = function(){
+		alert("n")
+	}
 
 	var trendClick = 0;
 	$(document).on('click', '.follow-trend, .followed-trend', function() {
-		//alert( this.className)
-		if (trendClick == 0) {
-			$(".trend-parent").removeClass("active")
-			$(this).parents(".trend-parent").addClass("active")
-			console.log (  $(this).parents(".trend-parent")  )
-			console.log("samir")
-			$(".trend-parent.active .follow-trend-submit").click()
-			trendClick = 1;
-			setTimeout(function(){
-				trendClick = 0;
-			}, 3000)
+		if ( !$("body").hasClass("not-signed-in") ) {
+			//alert( this.className)
+			if (trendClick == 0) {
+				$(".trend-parent").removeClass("active")
+				$(this).parents(".trend-parent").addClass("active")
+				console.log (  $(this).parents(".trend-parent")  )
+				console.log("samir")
+				$(".trend-parent.active .follow-trend-submit").click()
+				trendClick = 1;
+				setTimeout(function(){
+					trendClick = 0;
+				}, 3000)
+
+			}
 
 		}
+		else {
+				notSigned();
+			}
+
 
 
 

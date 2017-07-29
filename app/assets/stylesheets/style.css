@@ -10090,10 +10090,12 @@ p.pick-tags-title.new {
     padding: 25px;
     display: none;
 }
+/*
 .not-signed-in .follow-trend {
 	pointer-events: none;
 	opacity: 0.5;
 }
+*/
 .memeb-title {
 	    font-size: 24px;
 }
