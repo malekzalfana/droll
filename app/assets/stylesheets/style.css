@@ -10090,6 +10090,26 @@ p.pick-tags-title.new {
     padding: 25px;
     display: none;
 }
+.trends-title-title {
+	width: 100%;
+    font-family: roboto;
+    text-align: left;
+    text-indent: 18px;
+    font-size: 12px;
+    color: #E53935;
+        margin: 10px 0px 3px 0px;
+}
+.sign-to-trend {
+	    background: #f9f9f9;
+    padding: 15px 0px;
+    font-family: roboto;
+    font-weight: 300;
+    font-size: 13px;
+    margin: 20px;
+    border-radius: 5px;
+    color: #afafaf;
+    margin-top: 10px;
+}
 /*
 .not-signed-in .follow-trend {
 	pointer-events: none;

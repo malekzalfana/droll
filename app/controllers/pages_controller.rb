@@ -27,9 +27,11 @@ class PagesController < ApplicationController
         session[:display_welcome] = true
     end
     if user_signed_in?
-      @trends = Trend.where(id: current_user.trends)
+      @trends = Trend.where(id: current_user.trends[1..-2].split(',').collect! {|n| n.to_i})
+      @strends = Trend.where.not(id: current_user.trends).order("RANDOM()").limit(5)
     else
       @trends = Trend.all
+      @strends = Trend.order("RANDOM()").limit(5)
     end
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
