@@ -26,7 +26,11 @@ class PagesController < ApplicationController
         @welcomeMessage = true
         session[:display_welcome] = true
     end
-    @trends = Trend.all.limit(15)
+    if user_signed_in?
+      @trends = Trend.where(id: current_user.trends)
+    else
+      @trends = Trend.all
+    end
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
@@ -475,7 +479,7 @@ class PagesController < ApplicationController
   def stock
     if params[:base64]
 
-      if !Stock.where(base64: params[:base64]).present?
+    if !Stock.where(base64: params[:base64]).present?
 
       @stock = Stock.create
       @stock.base64 = params[:base64]
@@ -497,8 +501,12 @@ class PagesController < ApplicationController
 
 
     end
-
   end
+
+  def enter
+    @randompic = rand(1..75)
+  end
+
 
   def deleteStock
     @stockid = params[:id]

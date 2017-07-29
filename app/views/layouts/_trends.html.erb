@@ -1,7 +1,7 @@
 <% if 1 == 1 %>
 
     <div id="box-6-wrapper" class="second mini">
-        <p id="main-trends-title"><i class="material-icons">whatshot</i>Trends</p>
+        <p id="main-trends-title"><i class="material-icons">whatshot</i>My Trends</p>
         <div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
 
         <!--
@@ -15,7 +15,7 @@
 
 
     <div class="trend-holder">
-        <% @alltrends.each do |trend| %>
+        <% @trends.each do |trend| %>
 
 <div data-filter-item data-filter-name="<%= trend.name %>" class="trend trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
                 <% if user_signed_in? %>
@@ -67,6 +67,9 @@
               <% end %>
 </div>
     <div class="new-more-trends">show more trends</div>
+
+    <a href="/trends" target="_blank" class="not-link"><div class="follow-more-trends">Follow more trends<i class="material-icons">keyboard_arrow_right</i></div></a>
+
     </div>
 
 

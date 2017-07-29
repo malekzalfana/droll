@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get '/terms' => 'pages#terms'
   get '/contact' => 'pages#contact'
   get '/recent' => 'pages#recent'
+  get '/enter' => 'pages#enter'
   get '/new-posts' => 'pages#newposts'
   get '/register' => 'pages#register'
   get '/admin' => 'pages#admin'

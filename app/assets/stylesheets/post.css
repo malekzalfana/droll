@@ -1,4 +1,4 @@
-body:not(#invite-page) {
+body:not(#invite-page):not(#new-invite-page) {
     background: #efefed !important;
 }
 .send-wrapper i {

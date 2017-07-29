@@ -5334,6 +5334,14 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
     float: left;
     margin: 8px 10px;
 }
+.new-invite-page-overlay {
+	    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #efefed;
+    opacity: 1;
+    z-index: -1;
+}
 #invite-page #logo-wrapper {
 	background-image: url(http://i.imgur.com/L5GvpH8.png);
 	    margin-right: 0px;
@@ -7500,13 +7508,16 @@ i.fa.fa-reddit-alien {
     POSITION: RELATIVE;
     TOP: -1PX;
     color: black;
-    font-weight: 500;
+    font-weight: 400;
     transition: 0.2s all ease-out;
 }
 .nav-link:nth-child(1) {
 	    border-left: 1px solid lightgray;
     margin-left: 20px;
     padding-left: 20px;
+}
+#make .nav-link:nth-child(1) {
+	margin-left: 80px;
 }
 .nav-link:hover {
 	opacity: 1;
@@ -8743,6 +8754,7 @@ body:not(#make) .fixed-menu {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
     float: left;
     position: relative;
+    margin-lefT: 0px;
 }
 #box-5-wrapper.second #new-posts i {
 	FONT-SIZE: 25PX;
@@ -8897,7 +8909,7 @@ body:not(#make) .fixed-menu {
 .reco-trend {
 	WIDTH: calc(100% - 5px);
 	margin: 0px auto;
-
+	float: left;
 }
 .mine .vote, .mine .follow-user, .mine .flag-post {
 	display: none !important;
@@ -9724,7 +9736,7 @@ display: none !important;
 }
 .trend .trend-name {
     vertical-align: middle;
-    color: #616161;
+    color: black;
     font-size: 19px;
     font-family: roboto;
     display: block;
@@ -9734,6 +9746,32 @@ display: none !important;
     text-align: left;
     font-weight: 400;
     margin-top: 4px;
+}
+.follow-more-trends {
+	float: left;
+    width: 100%;
+    background: #ffffff;
+    color: #ff3000;
+    font-family: roboto;
+    height: 47px;
+    text-align: left;
+    text-indent: 20px;
+    font-size: 15px;
+}
+.follow-more-trends:hover {
+	opacity: 0.65;
+}
+.new-more-trends {
+	display: none !imporTANT;
+}
+.follow-more-trends i {
+	    font-size: 18px !important;
+    line-height: 2.3 !important;
+    position: relative !important;
+    top: 4px;
+    text-indent: 0;
+    cursor: pointer;
+    margin-left: 5px !important;
 }
 #trend-scroll-wrapper {
 	overflow: hidden;
@@ -10086,6 +10124,9 @@ p.pick-tags-title.new {
     font-size: 25px;
     font-weight: 800;
 }
+#index .memeb-wrapper {
+    DISPLAY: NONE !IMPORTANT;
+}
 .memeb-wrapper.second, .memeb-wrapper.third {
 	display: none;
 }
@@ -10138,7 +10179,7 @@ p.pick-tags-title.new {
 	*/
 	background-size: cover !important;
 }
-.not-signed-in .memeb-wrapper {
+.not-signed-in:not(#new-invite-page) .memeb-wrapper {
 	font-family: roboto;
     color: #515151;
     border-bottom: none;
@@ -10158,7 +10199,7 @@ p.pick-tags-title.new {
 .not-signed-in .memeb-wrapper {
 	display: table;
 }
-.not-signed-in .memeb-wrapper > div {
+.not-signed-in:not(#new-invite-page) .memeb-wrapper > div {
 	display: table-cell;
 	vertical-align: middle;
 }
@@ -10726,6 +10767,9 @@ div#nav-menu-wrapper.closed.second #search-trends {
 	display: block;
 	font-weight: 400;
 }
+#new-invite-page #mc-wrapper {
+	text-align: center;
+}
 #mc-wrapper .memeb-submit {
 	color: white;
 	background: #ff3000;
@@ -10740,6 +10784,9 @@ div#nav-menu-wrapper.closed.second #search-trends {
 #mc-wrapper h2 {
 	font-family: sniglet;
 	color: #ff3000;
+}
+#new-invite-page #mc-wrapper h2 {
+	margin-top: 70px;
 }
 #meme-wrapper  #new_post {
 	background: none! important;

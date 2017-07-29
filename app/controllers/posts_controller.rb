@@ -91,7 +91,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       @user = current_user
     else
-
+      # :trends => Trend.where(followers: 3..Float::INFINITY).ids , REMOVED
       @user = User.new(:ref => params[:ref], :email =>  Time.current.year.to_s + Time.current.month.to_s + Time.current.hour.to_s + rand(1..99999999).to_s  + '@drolle.com', :password => 'password123', :password_confirmation => 'password123', :pic => rand(1..75), :new => true)
       @user.save
       sign_in(:user, @user)

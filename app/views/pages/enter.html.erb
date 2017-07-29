@@ -1,0 +1,37 @@
+<body  data-no-turbolinks='true' id="new-invite-page<%# controller.action_name %>" data-original="http://i.imgur.com/RyLdW69.jpg" class="<%= if user_signed_in? && current_user.passed.nil? then "not-passed" end  %> <% if user_signed_in? %> signed-in<% else %> not-signed-in<% end %>  <%= if request.original_url.include?('?app=true') then 'app' end %>">
+    <div class="new-invite-page-overlay"></div>
+<div id="settings-options">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
+
+
+        <div id="mc-wrapper" class="memeb-wrapper third">
+            <h2>Now let's set up your profile</h2>
+            <div class="generated-pic">
+            <div style="background-image:url(http://drolle.net/profilepics/pic<%= @randompic %>.jpg)" ></div>
+            <span>your auto-generated profile pic, you can change it later</span>
+        </div>
+        <%= f.text_field :username, autofocus: true, class: "memeb-field f new username", placeholder: "Username" %>
+        <%= f.email_field :email, autofocus: true, class: "memeb-field f new email", placeholder: "Email" %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+        <%= f.hidden_field :new, :value => false %>
+        <%= f.hidden_field :pic, :value => @randompic %>
+        <%= f.password_field :current_password, autocomplete: "off", value: "password123", class: "hidden-imp" %>
+        <%= f.password_field :password, autocomplete: "off", placeholder:"Password" , class: "memeb-field s new" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "memeb-field t new" %>
+        <button class="memeb-submit" type="button">Save</button>
+        <%= f.submit "Sign up", id: "memeb-sign-up-submit", class: "memeb-button-3"%>
+        </div>
+
+        <% end %>
+    </div>
+    <%= form_tag url_for(:controller => 'pages', :action => 'checkUsername'), :method => 'get', class: "hidden", remote: true do %>
+      <%= text_field_tag 'name', '', id: "username-check-field"%>
+      <%= submit_tag "Save", id: "username-check-submit" %>
+    <% end %>
+    <%= form_tag url_for(:controller => 'pages', :action => 'checkEmail'), :method => 'get', class: "hidden", remote: true do %>
+      <%= text_field_tag 'email', '', id: "email-check-field"%>
+      <%= submit_tag "Save", id: "email-check-submit" %>
+    <% end %>

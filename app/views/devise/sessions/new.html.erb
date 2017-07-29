@@ -1,4 +1,5 @@
 <body id="invite-screen" class="app users_sign_in">
+  <%= devise_error_messages! %>
     <!--<img class="random-gif" src="https://s-media-cache-ak0.pinimg.com/originals/32/a6/eb/32a6ebf6c0546ba0fb0d232e3aba49e7.gif">-->
     <div id="invite-screen-overlay"></div>
     <div id="invite-wrapper">
@@ -12,7 +13,7 @@
 	.st3{fill:#FF3000;}
 </style>
 <g id="XMLID_97_" class="st0">
-	
+
 		<image style="display:inline;overflow:visible;opacity:0.45;" width="340" height="339" id="XMLID_4_" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAVwAAAFcCAYAAACEFgYsAAAACXBIWXMAAFmoAABZqAGs1AqdAAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAALfxJREFUeNrsnYt24siybVNCgO2q
 7up9//8bT3dX+81DZ9e46HQ4iMhMCUnoMdcYGlAUtgWIqaWVkZFlQAghNIpK3gKEEAK4CCEEcBFC
@@ -242,7 +243,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
 </svg>
             <label id="invite-tab-1" class="invite-tab active-invite-tab">Log in</label>
             <label id="invite-tab-2"class="invite-tab">Sign up</label>
-        
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "invite-2"} ) do |f| %>
   <%= devise_error_messages! %>
 
@@ -251,7 +252,7 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
     <%= f.text_field :username, autofocus: true, id:"sign-up-username-field", placeholder: "Username" %>
     <i class="material-icons" id="username-check-icon">check_circle</i>
   </div>
-  
+
   <div class="field">
     <%= f.email_field :email, autofocus: true, id: "email-field-settings", placeholder: "Email" %>
     <i class="material-icons" id="email-check-icon">check_circle</i>
@@ -274,28 +275,28 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
     <button type="button" id="sign-up-submit-before" class="invite-submit">Sign up</button>
   </div>
 <% end %>
-    
-    
-    
+
+
+
         <%= form_for(:user, :url => session_path(:user), :html => {:id => "invite-1"}) do |f| %>
-        
-            
-            
+
+
+
           <div class="field">
             <%= f.email_field :email, placeholder: "Email" %>
           </div>
-        
+
           <div class="field">
             <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
           </div>
-        
+
           <% if devise_mapping.rememberable? -%>
             <div class="field" id="remember-me-button">
               <%= f.check_box :remember_me, checked: false  %>
               <%= f.label :remember_me %>
             </div>
           <% end -%>
-        
+
           <div class="actions">
             <%= f.submit "Log in", class: "invite-submit" %>
           </div>
@@ -308,11 +309,11 @@ QgAXIYQWpf8VYACGjUsJ5x9aAgAAAABJRU5ErkJggg==" transform="matrix(0.1235 0 0 0.123
           </div>
         <% end %>
     </div>
-    
+
     <div class="describe-drolle"><a href="/recent">Continue as guest</a><h1 class="hidden-imp">Drolle</h1><p class="hidden-imp"> is social website where users can express their thoughts and jokes using memes, gifs, and rage comics. It's all about fun and respect. Join the community!</p></div>
     <i class="material-icons more-about-drolle hidden-imp">expand_more</i>
     <p class="describe-drolle hidden">Share your memes, gifs, rage comics and browse and other users' posts. Follow tags and users you like and their memes will apear in your feed. Users are not restrited to post anything unless it harms anyone in anyway. This is still a beta. Expect a few bugs here and there. Make sure you submit your feature requests and bugs using the feedback button on the bottom left corner. Let's make this an awseome community. Invite your friends. Welcome to drolle!</p>
-    
+
     </div>
-    
+
 </body>

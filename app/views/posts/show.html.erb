@@ -35,7 +35,7 @@
 
         </div>
         <div class="upper-black"></div>
-                    <% if @user.new == true %>
+                    <% if @user.new == true && @user == current_user %>
                     <div id="settings-options">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
                   <%= devise_error_messages! %>
@@ -68,7 +68,7 @@
             <% if !user_signed_in? %>
                 <div id="post-memechallenge-banner">
                     <img src="http://i.imgur.com/Qvh21qf.png">
-                    <button onclick="window.location.href = "/" ">Continue</button>
+                    <button onclick="window.location.href = '/make' ">Continue</button>
                 </div>
             <% end %>
 

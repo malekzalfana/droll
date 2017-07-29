@@ -743,7 +743,7 @@ $("#sketch").on("contextmenu",function(){
 		$("#continue-make").removeClass("active")
 		trend = false;
 		$('.pick-trends').removeClass('active').removeClass("less-opacity")
-		$(".new-trend, .add-trend").show();
+		$(".new-trend, .add-trend, #search-trends, .pick-tags-title.pick").show();
 	})
 	$(document).on('click', '.pick-trends:not(.new-trend)', function() {
 		$('.pick-trends').removeClass('active').addClass("less-opacity")
@@ -938,7 +938,7 @@ $("#sketch").on("contextmenu",function(){
 
 	})
 	$(document).on('click', '.add-trend', function() {
-		$(".pick-tags-title.pick, .add-trend").hide();
+		$(".pick-tags-title.pick, .add-trend, #search-trends").hide();
 		$('.pick-trends.trend-container, .add-trend').removeClass('active').addClass("less-opacity")
 		$('.pick-tags-title.new, #pick-trends-wrapper-2').fadeIn(200)
 		$(".refresh-trends").addClass("active")
@@ -1469,13 +1469,20 @@ $("#sketch").on("contextmenu",function(){
 	var backgroundImage = function(){
 		$(".invite-underlay").css({'opacity':'0.7'})
 	}
+	var backgroundImage2 = function(){
+		$(".new-invite-page-overlay").css({'opacity':'0.97'})
+	}
 	var loadbi;
 
 	$("#invite-page").lazyload({
 		event: 'loadbi',
 		load: backgroundImage
 	})
-	$("#invite-page").trigger('loadbi')
+	$("#new-invite-page").lazyload({
+		event: 'loadbi',
+		load: backgroundImage2
+	})
+	$("#invite-page, #new-invite-page").trigger('loadbi')
 
 	//$(window).bind("load", function() {
 
