@@ -65,7 +65,7 @@ class PagesController < ApplicationController
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
     else
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 10').order("created_at DESC")
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 3').order("created_at DESC")
       @post = @popularPosts.paginate(:per_page => 10, :page => params[:page])
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
