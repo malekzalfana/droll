@@ -9069,12 +9069,12 @@ body:not(#make) .fixed-menu {
 		float: left;
 	}
 	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper {
-		display: none;
+		display: none !important;
 	}
 }
 @media screen and (max-width: 1200px)  {
 	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper {
-		display: none;
+		display: none !important;
 	}
 }
 .tags-tag {
@@ -10106,7 +10106,7 @@ p.pick-tags-title.new {
     font-family: roboto;
     font-weight: 300;
     font-size: 13px;
-    margin: 20px;
+    margin: 15px;
     border-radius: 5px;
     color: #afafaf;
     margin-top: 10px;
@@ -10588,11 +10588,18 @@ div#nav-menu-wrapper.closed.second #search-trends {
 .post-new-username {
 	    font-weight: 600;
     font-family: montserrat;
-    color: #777777;
+    color: #4a4a4a;
     font-size: 12px;
     float: left;
     margin: 10px;
     margin-right: 0px;
+}
+.not-wrapper {
+	font-style: italic;
+    font-family: roboto;
+    font-size: 12px;
+    opacity: 0.3;
+    margin-top: -15px !important;
 }
 .post-new-username:hover, .post-new-username:active {
 	opacity: 0.7;
