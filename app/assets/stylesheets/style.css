@@ -5399,7 +5399,9 @@ body.shown-post #main-page-type a:hover + #back-list {
 	transition: 0.4s ease-out all;
 }
 @media screen and (max-width: 700px) {
-
+	#box-6-wrapper.second .trend {
+		width: calc(100% - 20px) !important;
+	}
 	.trend-arrow {
 		position: initial !Important;
 	}
@@ -7207,7 +7209,7 @@ i.fa.fa-reddit-alien {
 	 width: 600px;
     margin: 0px auto;
     color: #757575;
-    font-size: 23px;
+    font-size: 17px;
     max-width: 100%;
     text-align: left;
     text-indent: 10px;
@@ -7229,6 +7231,7 @@ i.fa.fa-reddit-alien {
 .back-to-trend i {
 	position: relative;
 	top: 3px;
+	font-size: 19px;
 }
 .back-to-trend:active {
 	color: #ff3000;
@@ -8842,7 +8845,7 @@ body:not(#make) .fixed-menu {
     PADDING: 0PX 10PX;
 }
 #box-6-wrapper.second .trend .trend-name {
-	font-size: 17px;
+	font-size: 15px;
 	padding: 3px 0px 0px 0px;
 	FLOAT:RIGHT;
 	COLOR: BLACK;
@@ -9080,7 +9083,7 @@ body:not(#make) .fixed-menu {
 	    width: calc(100% - 40px);
 	    float: left;
 	    position: absolute;
-	    top: 75px;
+	    top: 70px;
 	    margin-left: 20px;
 	    display: block;
 	    BACKGROUND: WHITE;
@@ -10121,9 +10124,9 @@ p.pick-tags-title.new {
     text-align: left;
     text-indent: 18px;
     font-size: 12px;
-    color: #E53935;
+    color: #ea3e3a;
     float: left;
-    margin: 12px 0px 3px 0px;
+    margin: 5px 0px 3px 0px;
 }
 .sign-to-trend {
 	    background: #f9f9f9;
@@ -10880,4 +10883,22 @@ div#nav-menu-wrapper.closed.second #search-trends {
     color: black !important;
     opacity: 0.2;
     transition: 0.4s ease-out all
+}
+.trends-logo {
+	background-image: url(http://i.imgur.com/yLYBHKZ.png);
+    width: 17px;
+    height: 17px;
+    float: left;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+.trends-logo-2 {
+    background-image: url(http://i.imgur.com/06DENa8.png);
+    width: 17px;
+    height: 17px;
+    float: left;
+    margin-top: 3px;
+}
+#tab-3.active .trends-logo-2 {
+	background-image: url(http://i.imgur.com/yLYBHKZ.png);
 }
