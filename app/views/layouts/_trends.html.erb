@@ -127,7 +127,11 @@
 
     <div class="new-more-trends">show more trends</div>
 
+    <% if user_signed_in? %>
     <a href="/trends" target="_blank" class="not-link"><div class="follow-more-trends">Follow more trends<i class="material-icons">keyboard_arrow_right</i></div></a>
+    <% else %>
+    <a href="/trends" target="_blank" class="not-link"><div class="follow-more-trends">More trends<i class="material-icons">keyboard_arrow_right</i></div></a>
+    <% end %>
 
     </div>
 

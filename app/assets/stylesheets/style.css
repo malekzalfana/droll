@@ -8935,7 +8935,7 @@ body:not(#make) .fixed-menu {
     width: 250px;
     padding: 0px 0px;
     margin-bottom: 20px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.14);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
 	FLOAT: LEFT;
 }
 #box-5-wrapper:not(.active) div:nth-child(n+9) {
@@ -10091,13 +10091,14 @@ p.pick-tags-title.new {
     display: none;
 }
 .trends-title-title {
-	width: 100%;
+    width: 100%;
     font-family: roboto;
     text-align: left;
     text-indent: 18px;
     font-size: 12px;
     color: #E53935;
-        margin: 10px 0px 3px 0px;
+    float: left;
+    margin: 12px 0px 3px 0px;
 }
 .sign-to-trend {
 	    background: #f9f9f9;

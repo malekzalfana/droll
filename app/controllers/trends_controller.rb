@@ -112,7 +112,7 @@ class TrendsController < ApplicationController
 
 
   def follow
-    @t = current_user.trends#.split(',')
+    @t = current_user.trends[1..-2].split(',').collect! {|n| n.to_i}
     @follow = false
     @thetrend = Trend.find( params[:user][:trendid] )
 #=begin
@@ -128,7 +128,7 @@ class TrendsController < ApplicationController
      elsif @t.include?( params[:user][:trendid] )# ||  @t == params[:user][:trendid]
        puts "uuuuuuuuuuuuuuuu unfollowed"
        #@t = @t.delete(params[:user][:trendid])
-       @t = @t.remove(params[:user][:trendid])
+       @t = @t.delete_at(@t.index(params[:user][:trendid]))
        @thetrend.followers = @thetrend.followers.to_i - 1
        @thetrend.save
        puts @t
@@ -146,13 +146,13 @@ class TrendsController < ApplicationController
         @thetrend.followers = @thetrend.followers.to_i + 1
         @thetrend.save
       end
-
+=begin
       @t.sub! ',,', ','
       if @t[-1] == ','
         puts "theres comma at the end bro".chop
         @t.chop!
       end
-
+=end
 
       #puts  current_user.trends.include?( params[:user][:trendid] )
       #current_user.trends = "number1"
