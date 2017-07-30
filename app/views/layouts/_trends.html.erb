@@ -16,7 +16,7 @@
 
     <% if user_signed_in? %>
     <div class="trend-holder">
-        <%= @trends.count %>
+        <%# @trends.count %>
         <% @trends.each do |trend| %>
             <div data-filter-item data-filter-name="<%= trend.name %>" class="trend trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
                 <% if user_signed_in? %>

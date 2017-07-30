@@ -128,7 +128,7 @@ class TrendsController < ApplicationController
      elsif @t.include?( params[:user][:trendid] )# ||  @t == params[:user][:trendid]
        puts "uuuuuuuuuuuuuuuu unfollowed"
        #@t = @t.delete(params[:user][:trendid])
-       @t = @t.delete_at(@t.index(params[:user][:trendid]))
+       @t = @t.delete(params[:user][:trendid])
        @thetrend.followers = @thetrend.followers.to_i - 1
        @thetrend.save
        puts @t
