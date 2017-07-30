@@ -1,14 +1,14 @@
 var html3;
 if ( $("#box-5-wrapper").hasClass("active")  ) {
   $('body').removeClass('loadingPost')
-  //html3 = $('<%# j render (@newposts), newp: true %>');
-  html3 = $('<%= j render (@newposts) %>');
+  html3 = 0;
+  html3 = $('<%= j render (@newposts), newp: true %>');
   $('#box-5-wrapper .reco-trend').append(html3);
 
   <% if @newposts.next_page %>
-  $( document ).ready(function() {
-      $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
-  });
+    //$( document ).ready(function() {
+        $('#box-5-wrapper .pagination').replaceWith('<%= j will_paginate @newposts %>');
+    //});
 
   <% else %>
     $(window).off('scroll');
