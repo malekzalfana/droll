@@ -1766,16 +1766,19 @@ $("#sketch").on("contextmenu",function(){
 	$(document).on('click', '#new-posts', function() {
 		if ( $("#tab-1").hasClass("active") ) {
 			$("#tab-2").click()
-			setTimeout(function(){
-				var $content3 = $('.reco-trend');
-				$content3.imagesLoaded(function() {
-				$content3.masonry({
-					itemSelector: '.wrapper-new-2',
-					gutter: newpostGutter
-				});
-				});
-				//$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
-			}, 500)
+			if (  $(document).width() > 700  ) {
+				setTimeout(function(){
+					var $content3 = $('.reco-trend');
+					$content3.imagesLoaded(function() {
+					$content3.masonry({
+						itemSelector: '.wrapper-new-2',
+						gutter: newpostGutter
+					});
+					});
+					//$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+				}, 500)
+			}
+
 		}
 		else {
 			$("#tab-1").click();
