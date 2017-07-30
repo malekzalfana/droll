@@ -4296,7 +4296,7 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 }
 
 @media screen and (max-width: 920px) {
-	.trend {
+	.trend:not(.second) {
 	    height: 245px;
 	    width: calc(33.3% - 20px) !important;
 	}
@@ -5686,7 +5686,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 	*/
 	.trend .trend-name {
-		font-size: 20px !important;
+		font-size: 16px !important;
 	}
 	.trend .trend-details {
 		font-size: 16px;
@@ -9076,6 +9076,20 @@ body:not(#make) .fixed-menu {
 	}
 }
 @media screen and (max-width: 1200px)  {
+	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper, .nav-link {
+		display: none !important;
+	}
+	#box-6-wrapper.second {
+	    width: calc(100% - 40px);
+	    float: left;
+	    position: absolute;
+	    top: 70px;
+	    margin-left: 20px;
+	    display: block;
+	    BACKGROUND: WHITE;
+	}
+}
+@media screen and (max-width: 1200px) and (min-width: 700px)  {
 	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper, .nav-link {
 		display: none !important;
 	}
