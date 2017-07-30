@@ -8891,7 +8891,7 @@ body:not(#make) .fixed-menu {
 	background: #f9f9f9;
 }
 .go-left-2 #box-6-wrapper {
-	display: block;
+	display: block !important;
 }
 /* , .go-left-2 #box-5-wrapper  */
 .go-left-2 .wrapper{
@@ -9073,8 +9073,20 @@ body:not(#make) .fixed-menu {
 	}
 }
 @media screen and (max-width: 1200px)  {
-	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper {
+	#box-3-wrapper, #box-4-wrapper, #box-5-wrapper, #box-6-wrapper, .nav-link {
 		display: none !important;
+	}
+	#box-6-wrapper.second {
+	    width: calc(100% - 40px);
+	    float: left;
+	    position: absolute;
+	    top: 75px;
+	    margin-left: 20px;
+	    display: block;
+	    BACKGROUND: WHITE;
+	}
+	#box-6-wrapper.second .trend {
+		width: calc(50% - 20px) !important;
 	}
 }
 .tags-tag {
@@ -9742,6 +9754,19 @@ display: none !important;
     display: block;
     float: left;
     padding: 5px 0px 0px 15px;
+    width: calc(100% - 15px);
+    text-align: left;
+    font-weight: 400;
+    margin-top: 4px;
+}
+.trend.second .trend-name {
+    vertical-align: middle;
+    color: black;
+    font-size: 16px;
+    font-family: roboto;
+    display: block;
+    float:none;
+    padding: 2px 0px 0px 15px;
     width: calc(100% - 15px);
     text-align: left;
     font-weight: 400;
