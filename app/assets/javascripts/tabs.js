@@ -100,14 +100,15 @@ tabs = function() {
 			if ($(this).is('.upvote')) {
 				$('.notice-message').text('Sign in to upvote').hide()
 				setTimeout(function() {
-					$('.notice-message').show()
+					//$('.notice-message').show()
 				}, 100)
 			} else {
 				$('.notice-message').text('Sign in to downvote').hide()
 				setTimeout(function() {
-					$('.notice-message').show()
+					//$('.notice-message').show()
 				}, 100)
 			}
+			notSigned();
 		})
 	$(document).on('click', '.upvote, .downvote', function() {
 		if ($('body').hasClass('signed-in')) {
@@ -773,23 +774,6 @@ $("#sketch").on("contextmenu",function(){
 	var emptyField = false;
 	$(document).on('click', '.memeb-submit', function() {
 		emptyField = false;
-		/*
-		if ( $(".memeb-field.f").val() == '' ) {
-			console.log(0)
-			$(".memeb-field.f").addClass("shake");
-			emptyField = true
-		}
-		if ( $(".memeb-field.s").val() == '' ) {
-			console.log(1)
-			$(".memeb-field.s").addClass("shake");
-			emptyField = true
-		}
-		if ( $(".memeb-field.t").val() == '' ) {
-			console.log(2)
-			$(".memeb-field.t").addClass("shake")
-			emptyField = true
-		}
-		*/
 		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && !$(".memeb-wrapper.third").hasClass("declinedusername") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approvedusername") && $(".memeb-wrapper input#user_password_confirmation").val() == $(".memeb-wrapper input#user_password").val() &&  $(".memeb-wrapper input#user_password").val() != ''  ) {
 			$("#memeb-sign-up-submit").click();
 		}
@@ -809,6 +793,31 @@ $("#sketch").on("contextmenu",function(){
 			$(".memeb-wrapper input#user_password, .memeb-wrapper input#user_password_confirmation").addClass("buzz")
 			setTimeout(function(){
 				$(".memeb-wrapper input#user_password, .memeb-wrapper input#user_password_confirmation").removeClass("buzz")
+			}, 2000)
+		}
+	})
+
+
+	$(document).on('click', '#sign-up-submit-before', function() {
+		if ( $(".ifield").val() != '' && !$(".memeb-wrapper.third").hasClass("declinedusername") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approvedusername") && $("#invite-pass").val() == $("#invite-pass-2").val() &&  $("#invite-pass").val() != ''  ) {
+			$("#sign-up-submit").click();
+		}
+		if ( $(".memeb-wrapper.third").hasClass("declinedusername") ) {
+			$("#invite-pass").addClass("buzz")
+			setTimeout(function(){
+				$("#invite-pass").removeClass("buzz")
+			}, 2000)
+		}
+		if ( $(".memeb-wrapper.third").hasClass("declinedemail") ) {
+			$("#invite-pass-2").addClass("buzz")
+			setTimeout(function(){
+				$("#invite-pass-2").removeClass("buzz")
+			}, 2000)
+		}
+		if ( $("#invite-pass").val() != $("#invite-pass-2").val() ||  $("#invite-pass").val() == '' ) {
+			$("#invite-pass-2, #invite-pass").addClass("buzz")
+			setTimeout(function(){
+				$("#invite-pass-2, #invite-pass").removeClass("buzz")
 			}, 2000)
 		}
 	})
@@ -833,17 +842,26 @@ $("#sketch").on("contextmenu",function(){
 	  }
 	});
 
-	$(document).on('keyup outfocus', '.memeb-field.email', function() {
+	$(document).on('keyup outfocus', '.memeb-field.email, #email-field-settings', function() {
 		$("#email-check-field").val( $(this).val() );
 		$("#email-check-submit").click();
 	})
-	$(document).on('keyup outfocus', '.memeb-field.username', function() {
+	$(document).on('keyup outfocus', '.memeb-field.username, #sign-up-username-field', function() {
 		$("#username-check-field").val( $(this).val() );
 		$("#username-check-submit").click();
 	})
 
 	$(document).on('keyup', '.memeb-field.t', function() {
 		if ($(".memeb-field.s").val() != $(".memeb-field.t").val() ){
+			$(".memeb-wrapper.third").removeClass("approvedpass").addClass("declinedpass")
+		}
+		else {
+			$(".memeb-wrapper.third").addClass("approvedpass").removeClass("declinedpass")
+		}
+	})
+
+	$(document).on('keyup', '#invite-pass, #invite-pass-2', function() {
+		if ($("#invite-pass").val() != $("#invite-pass-2").val() ){
 			$(".memeb-wrapper.third").removeClass("approvedpass").addClass("declinedpass")
 		}
 		else {
@@ -937,7 +955,7 @@ $("#sketch").on("contextmenu",function(){
 		//}
 
 	})
-	$(document).on('click', '.add-trend', function() {
+	$(document).on('click', '.add-trend, .sign-to-trend', function() {
 		if ( !$("body").hasClass("not-signed-in") ) {
 			$(".pick-tags-title.pick, .add-trend, #search-trends").hide();
 			$('.pick-trends.trend-container, .add-trend').removeClass('active').addClass("less-opacity")
@@ -950,7 +968,7 @@ $("#sketch").on("contextmenu",function(){
 	})
 
 	var notSigned = function(){
-		alert("n")
+		$("#notice-to-sign").click();
 	}
 
 	var trendClick = 0;
@@ -1156,12 +1174,12 @@ $("#sketch").on("contextmenu",function(){
 			e.preventDefault()
 		}
 	})
-	$(document).on('keydown', function(e) {
-		if (e.keyCode == 13 && $('body').is('#make')) {
+
+	$(document).on('#image-for-gif-input, #searchTerm', 'keydown', function(e) {
 			e.preventDefault()
 			return false
-		}
 	})
+
 	$(document).on('keyup', '#memeb-username-field', function() {
 		console.log("canged")
 		$(this).removeClass("approved")
@@ -1451,6 +1469,7 @@ $("#sketch").on("contextmenu",function(){
 	if ($('body').attr('data-commentid') > '0') {
 		$('#comment-' + $('body').attr('data-commentid') + '').addClass('thiscomment')
 	}
+	/*
 	$(document).on('click', '#sign-up-submit-before', function() {
 		console.log('sign up')
 		if (usernameChecked === true) {
@@ -1475,7 +1494,7 @@ $("#sketch").on("contextmenu",function(){
 			}
 		}
 	});
-
+	*/
 	var loadMemes;
 	$(".pick-meme-container").slice(0,15).lazyload({
 	    event: "loadMemes"

@@ -27,11 +27,17 @@ class PagesController < ApplicationController
         session[:display_welcome] = true
     end
     if user_signed_in?
-      @trends = Trend.where(id: current_user.trends[1..-2].split(',').collect! {|n| n.to_i})
+      if current_user.trends.nil?
+        @trends = []
+      else
+        @trends = Trend.where(id: current_user.trends[1..-2].split(',').collect! {|n| n.to_i})
+      end
+
       @strends = Trend.where.not(id: current_user.trends).order("RANDOM()").limit(5)
     else
       @trends = Trend.all
       @strends = Trend.order("RANDOM()").limit(5)
+      @randomPic = rand(1..75)
     end
     @url =  request.base_url + request.original_fullpath
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
@@ -226,6 +232,9 @@ class PagesController < ApplicationController
   end
 
   def admin
+
+    @randomfirst = ["mrs", "mr", "sir", "thirsty", "bro", "master", "dick", "pussy", "bowl", "one", "the", "terrific", "leave", "pull", "my", "pro", "daddy", "fourth", "asian", "indian", "fucking", "red", "green", "farting", "yellow", "soft", "rough", "dangerous", "laura", "zack", "joe", "mark", "sandy", "pluto", "kisten", "logan", "savage", "crack", "douglar", "brazilian", "fat", "ugly", "stupid", "69", "99", "11", "last", "strange", "rocky", "high"]
+
     if user_signed_in?
 
       @post1 = Post.where(hidden: true).order("created_at DESC")

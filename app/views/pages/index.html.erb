@@ -652,24 +652,35 @@
 			</div>
 
 <% if !user_signed_in? %>
-    <div id="remote-invite-wrapper">
-        <i class="material-icons close-wrapper">close</i>
 
-    <div id="invite-buttons-wrapper" class="second">
+    <div id="remote-invite-wrapper">
+
+
+    <i class="material-icons close-wrapper">close</i>
+
+    <div id="invite-buttons-wrapper" class="second memeb-wrapper third">
+        <div class="invite-logo">
+    	<div id="logo-wrapper">
+    	</div>
+    	<div id="new-logo">drolle</div>
+    </div>
             <label id="invite-tab-1" class="invite-tab active-invite-tab">Log in</label>
             <label id="invite-tab-2"class="invite-tab">Sign up</label>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:id => "invite-2"} ) do |f| %>
   <%= devise_error_messages! %>
-
+  <div class="generated-pic">
+            <div style="background-image:url(http://drolle.net/profilepics/pic<%= @randomPic %>.jpg)" ></div>
+            <span>your auto-generated profile pic, you can change it later</span>
+</div>
   <div class="field">
     <span id="att-before-username">@</span>
-    <%= f.text_field :username, autofocus: true, id:"sign-up-username-field", placeholder: "Username" %>
+    <%= f.text_field :username, autofocus: true, id:"sign-up-username-field", placeholder: "Username", class: "ifield" %>
     <i class="material-icons" id="username-check-icon">check_circle</i>
   </div>
 
   <div class="field">
-    <%= f.email_field :email, autofocus: true, id: "email-field-settings", placeholder: "Email" %>
+    <%= f.email_field :email, autofocus: true, id: "email-field-settings", placeholder: "Email", class: "ifield" %>
     <i class="material-icons" id="email-check-icon">check_circle</i>
   </div>
 
@@ -677,13 +688,14 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "off", placeholder:"Password"  %>
+    <%= f.password_field :password, autocomplete: "off", placeholder:"Password", id: "invite-pass", class: "ifield"  %>
   </div>
 
   <div class="field passwords">
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", id: "invite-pass-2", class: "ifield" %>
   </div>
   <%= f.check_box :pro, checked: false, class: "hidden" %>
+  <%= f.hidden_field :pic, value: @randomPic %>
 
   <div class="actions">
     <%= f.submit "Sign up", class: "hidden submit-invite", id: "sign-up-submit" %>
@@ -837,11 +849,11 @@
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "off", placeholder:"Password"  %>
+    <%= f.password_field :password, autocomplete: "off", placeholder:"Password", id: "invite-pass"  %>
   </div>
 
   <div class="field passwords">
-    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", id: "invite-pass-2" %>
   </div>
   <%= f.check_box :pro, checked: false, class: "hidden" %>
 

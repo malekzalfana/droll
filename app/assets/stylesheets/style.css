@@ -109,6 +109,7 @@ a {
     height: 33px;
     padding-top: 15px;
     padding-bottom: 5PX;
+
 }
 #post-memechallenge-banner {
 	width: 100%;
@@ -2886,6 +2887,10 @@ i#upload-meme-stock:hover {
     display: inline-block;
     float: left;
     padding-left: 0px;
+    white-space: pre;
+    LINE-HEIGHT: 30PX;
+        MAX-HEIGHT: 100PX;
+    OVERFLOW-Y: SCROLL;
 }
 .post-image {
 	width: 550px;
@@ -4071,10 +4076,13 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
     top: 10px;
     color: #FF5722;
     font-size: 15px;
-    display: none;
+    display: none !important;
 }
 #check-email-icon {
 	display: none;
+}
+.invite-logo #new-logo {
+	float: left;
 }
 #signup #username-check-icon,#signup #email-check-icon {
 	position: relative;
@@ -5489,6 +5497,10 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 400px) {
+	.not-signed-in:not(#new-invite-page) .memeb-wrapper {
+		margin-bottom: 0px !important;
+	}
+
 	/*
 	.shown-post #main-page-type, #show #main-page-type {
 	    width: calc(100% - 135px);
@@ -6285,6 +6297,12 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 700px) {
+	#remote-login-wrapper, #remote-signup-wrapper, #remote-invite-wrapper {
+		background: white !IMPORTANT;
+	}
+	#invite-buttons-wrapper {
+		box-shadow: none !IMPORTANT
+	}
 	#left-content-profile, #right-content-profile {
 		max-width: calc(100% - 30px) !important;
 	}
@@ -7000,7 +7018,7 @@ a[title="Twitter"] img, a[title="Facebook"] img {
 	top:10px;
 	right: 10px;
 	color: white;
-    font-size: 35px !important;
+    font-size: 22px !important;
 }
 #remote-login-wrapper .close-wrapper {
 	display: block;
@@ -7787,6 +7805,13 @@ i.fa.fa-reddit-alien {
     margin: 10px auto;
 
 }
+#remember-me-button {
+	text-align: left;
+}
+#invite-logo #logo-wrapper {
+	     float: left;
+    margin-left: -5px;
+}
 .app #edit-profile{
 	display: none;
 }
@@ -7857,13 +7882,14 @@ i.fa.fa-reddit-alien {
 .invite-submit {
 	padding: 4px 7px;
     font-size: 14px;
-    background: #3c3c3c;
+    background: #F44336;
     color: white;
     border-radius: 5%;
     margin: 2px 0px 0px 0px;
     float: left;
     cursor: pointer;
     width: calc(50% - 10px) !important;
+    border-radius: 26px !important;
 }
 #invite-buttons-wrapper #other-log-in {
     float: right;
@@ -7886,12 +7912,23 @@ i.fa.fa-reddit-alien {
 	color: black;
 }
 .invite-tab {
-	line-height: 2;
-	font-family: open sans ;
-	opacity: 0.8;
-	display: inline-block;
-	font-size: 20px;
-	cursor: pointer;
+	    line-height: 2;
+    opacity: 0.4;
+    display: inline-block;
+    font-size: 24px;
+    width: calc(50% - 3px);
+    cursor: pointer;
+    FONT-FAMILY: montserrat;
+    margin: 20px 0px;
+    color: #3c3c3c;
+    text-align: center;
+    margin-top: 25px;
+}
+.invite-logo {
+	    WIDTH: 100%;
+    MARGIN: 0PX AUTO;
+    float: left;
+    margin-left: -30px;
 }
 #invite-buttons-wrapper {
 	width: 205px;
@@ -7903,9 +7940,12 @@ i.fa.fa-reddit-alien {
     font-size: 14px;
 }
 */
+/*
+REMOVED
 #invite-tab-2:not(.active-invite-tab) {
 	margin-left: 10px;
 }
+*/
 #invie-buttons-wrapper #notice-to-sign {
 	display: none !important;
 }
@@ -8973,9 +9013,11 @@ body:not(#make) .fixed-menu {
     width: calc(100% - 20px);
     font-size: 17px;
 }
+/*
 #invite-tab-2 {
 	display: none !important;
 }
+*/
 .box-profile-wrapper {
 	width: 100%;
     height: 70px;
@@ -9485,20 +9527,8 @@ body:not(#profile).app .post-user-follow, body:not(#profile).app .post-user-unfo
 
 
 .invite-tab.active-invite-tab {
-    font-weight:800 !important;
-    opacity: 1 !important;
-    FONT-SIZE: 33PX !IMPORTANT;
-}
-.invite-tab {
-    line-height: 2;
-    opacity: 0.4;
-    display: inline-block;
-    font-size: 25px;
-    cursor: pointer;
-    FONT-FAMILY: montserrat;
-    margin: 10px 0px;
-    margin-right: 20px;
-    color: #3c3c3c;
+        font-weight: 800 !important;
+    opacity: 1 !important
 }
 #invite-page .invite-tab {
 	color: #ff3000;
@@ -9508,7 +9538,7 @@ body:not(#profile).app .post-user-follow, body:not(#profile).app .post-user-unfo
 }
 #invite-buttons-wrapper input, #invite-screen #invite-buttons-wrapper button, #sign-up-submit-before {
     font-size: 17px;
-    PADDING: 15px 10px;
+    PADDING: 10px 10px;
     margin: 15px 0px;
     width: calc(100% - 20px);
     border-radius: 2px;
@@ -9517,8 +9547,10 @@ body:not(#profile).app .post-user-follow, body:not(#profile).app .post-user-unfo
 }
 @media screen and (min-width: 400px) {
 	#invite-buttons-wrapper.active {
-	height: 470px !important;
+	height: 570px !important;
+	/*
 	margin-top: 60px !important;
+	*/
 }
 }
 
@@ -9590,13 +9622,14 @@ display: none !important;
     margin: 0px auto;
     left: 0;
     right: 0;
-    height: 360px;
+    height: 420px;
     top: 0px;
     bottom: 0;
     float: none;
-    padding: 35px;
+    padding: 0px 35px;
     width: 300px;
     background: white;
+    transition: all ease-out 0.2s;
 }
 #toggle-trends {
         position: absolute;
@@ -9793,8 +9826,8 @@ display: none !important;
 .follow-more-trends {
 	float: left;
     width: 100%;
-    background: #ffffff;
-    color: #ff3000;
+    background: #fbfbfb;
+    color: #848484;
     font-family: roboto;
     height: 47px;
     text-align: left;
@@ -9802,7 +9835,10 @@ display: none !important;
     font-size: 15px;
 }
 .follow-more-trends:hover {
-	opacity: 0.65;
+    background: #f7f7f7;
+}
+.wrapper-new-2 .post-votes-word.real {
+	display: none !important;
 }
 .new-more-trends {
 	display: none !imporTANT;
@@ -10176,7 +10212,7 @@ p.pick-tags-title.new {
     border-radius: 2px;
 }
 */
-.memeb-wrapper {
+.memeb-wrapper:not(#invite-buttons-wrapper) {
 	font-family: montserrat;
     margin: 25px auto 15px auto;
     color: #ff3838;
@@ -10190,7 +10226,7 @@ p.pick-tags-title.new {
     font-size: 25px;
     font-weight: 800;
 }
-#index .memeb-wrapper {
+#index .memeb-wrapper:not(#invite-buttons-wrapper) {
     DISPLAY: NONE !IMPORTANT;
 }
 .memeb-wrapper.second, .memeb-wrapper.third {
@@ -10220,6 +10256,7 @@ p.pick-tags-title.new {
 .generated-pic {
 	    width: 350px;
     margin: 0px auto;
+    max-width: 100%;
     color: white;
     font-family: roboto;
 }
@@ -10253,7 +10290,7 @@ p.pick-tags-title.new {
     background: #fff !important;
     border-radius: 2px;
     text-align: center;
-    height: 350px;
+    height: 430px;
     width: 327px;
     position: absolute;
     top: 0;
@@ -10265,12 +10302,15 @@ p.pick-tags-title.new {
 .not-signed-in .memeb-wrapper {
 	display: table;
 }
-.not-signed-in:not(#new-invite-page) .memeb-wrapper > div {
+.not-signed-in:not(#new-invite-page) .memeb-wrapper > div:not(.invite-logo) {
 	display: table-cell;
 	vertical-align: middle;
 }
 .not-signed-in .memeb-wrapper.shown {
 	display: table !important;
+}
+#invite-2 .generated-pic {
+	color: gray;
 }
 .memeb-title-big {
 	font-size: 40px;
@@ -10638,11 +10678,17 @@ div#nav-menu-wrapper.closed.second #search-trends {
     margin-right: 0px;
 }
 .not-wrapper {
-	font-style: italic;
-    font-family: roboto;
+	    font-family: roboto;
     font-size: 12px;
     opacity: 0.3;
     margin-top: -15px !important;
+    position: relative !important;
+    max-width: 300px;
+}
+.sign-to-trend:HOVER {
+        color: #a9a9a9;
+    BACKGROUND: #f1f1f1;
+    cursor: pointer;
 }
 .post-new-username:hover, .post-new-username:active {
 	opacity: 0.7;
@@ -10889,7 +10935,7 @@ div#nav-menu-wrapper.closed.second #search-trends {
     border-radius: 50%;
 }
 #remove-notif:hover {
-	background: lightgray;
+	background: #f3f3f3;
 }
 #slide-page {
 	    right: 12px !Important;
@@ -10916,4 +10962,25 @@ div#nav-menu-wrapper.closed.second #search-trends {
 }
 #tab-3.active .trends-logo-2 {
 	background-image: url(http://i.imgur.com/wfBH0AI.png);
+}
+.nav-submit {
+	    float: right;
+    color: WHITE;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 13px;
+    BACKGROUND: #ff3000;
+    padding: 8px 18PX;
+    font-family: roboto;
+    MARGIN: 10PX 0PX;
+    LINE-HEIGHT: 1;
+}
+.go-new-member {
+	    float: right;
+    padding: 10px 17px;
+    margin: 10px;
+    background: none;
+    color: #989898;
+    border: 1px solid;
+    border-radius: 24px;
 }
