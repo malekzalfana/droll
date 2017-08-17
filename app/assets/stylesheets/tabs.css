@@ -308,18 +308,16 @@
   display: block;
 }
 #make-post-title{
-     height: 24px;
-    padding: 12px 7px;
-    width: calc(100% - 60px);
+    height: 50px;
+    padding: 15px 15px;
+    width: calc(100% - 30px);
     border: none;
-    margin: 10px 25px;
-    font-family: open\ sans;
+    margin: 0px;
+    font-family: arial;
     font-size: 17px;
-    border: 1px solid #d4d4d4;
+    border-bottom: 1px solid whitesmoke;
     display: block;
     resize: vertical;
-    position: relative;
-    display: none;
 }
 #make-post-title-2 {
   height: 24px;
@@ -336,18 +334,12 @@
     position: relative;
 }
 #make-image-preview, #make-gif-preview {
-   width: 510px;
-   display: none;
+       width: 100%;
+    display: none;
     min-height: 150px;
     background: #fbfbfb;
     position: relative;
-    margin: 0px 25px;
-    margin-bottom: 10px;
-
-    border: 1px solid #dbdbdb;
-}
-#make-gif-preview {
-  display: block;
+    margin: 0px 0px;
 }
 #make-gif-preview {
   min-height: 85px;
@@ -373,16 +365,16 @@
   position: relative;
 }
 #make-post-preview-wrapper #pictureInput {
-    width: 100%;
-    background: red;
+        background: red;
     position: absolute;
-    height: 76px;
-    opacity: 0;
     cursor: pointer;
     z-index: 2;
     left: 0;
-    top: 45px;
+    top: 0;
+    padding: 0;
     width: 100%;
+    height: 100%;
+    opacity: 0;
 }
 #reset-image {
   position: absolute;
@@ -398,16 +390,7 @@
   width: 100%;
   display: block;
 }
-#pictureInput {
-    width: 582px;
-    background: red;
-    position: absolute;
-    /*bottom: 46px;*/
-    height: 400px;
-    opacity: 0;
-    cursor: pointer;
-    z-index:2;
-}
+
 #make-preview-text {
   position: absolute;
   bottom: 220px;

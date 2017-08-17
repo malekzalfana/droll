@@ -143,7 +143,7 @@
                 </div>
 
                 <% if @post.trendid.present? %>
-                          <a  class="new-post-trend" target="_blank" href="/trends/<%= Trend.find_by_id(@post.trendid).name %>">/<%= Trend.find_by_id(@post.trendid).name %></a>
+                          <a  class="new-post-trend" target="_blank" href="/trends/<%= Trend.find(@post.trendid).name %>">/<%= Trend.find(@post.trendid).name %></a>
                         <% end %>
 
                 <div class="post-footer new <%= if @post.user.passed != true then "not-passedREMOVED" end %> ">

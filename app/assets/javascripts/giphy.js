@@ -1,4 +1,4 @@
-if ( $('body').is('#make2') || $('body').is('#make.signed-in:not(.app)') ) {
+if ( $('body').is('#make2') || $('body').is('#make.signed-in:not(.app)')  || $('body').is('#newmake:not(.app)') ) {
     var gifArray = ['lol', 'wtf', 'crying', "that's racist", 'laughing', 'mind blown', 'brah', "that's a penis", 'screaming', 'happy', 'hell no', 'damn it', 'me gusta', 'triggered', 'bitch what']
 
 

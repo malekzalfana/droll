@@ -114,7 +114,7 @@ class PostsController < ApplicationController
       @trend.followers = @trend.followers.to_i + 1
       @trend.save
     elsif Trend.where(id: @post.trendid).first.present?
-      @trend = Trend.where(name: @post.trendname).first
+      @trend = Trend.where(id: @post.trendid).first
       @post.trendid = @trend.id
       @trend.followers = @trend.followers.to_i + 1
       @trend.save

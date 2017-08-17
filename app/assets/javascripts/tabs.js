@@ -12,7 +12,87 @@ var type;
 var dReady;
 var usernameChecked = true;
 	var emailChecked = true;
+var makeOption;
+var m2Check;
+var m2Check2;
 $(document).ready(function() {
+
+	// NEW MAKEEEEEE
+
+	$(document).on('click', '.make-options .item', function() {
+		makeOption = $(this).attr("id");
+		if ( makeOption == 1 ) {
+			$(".make-options, .make-intro").fadeOut(150)
+			$(".make-first").fadeIn(200)
+		}
+		else if ( makeOption == 2 ) {
+			$(".make-options, .make-intro").fadeOut(150)
+			$(".make-second").fadeIn(200)
+		}
+		else if ( makeOption == 3 ) {
+			$(".make-options, .make-intro").fadeOut(150)
+			$(".make-third").css('display', 'inline-block').hide().fadeIn(200)
+		}
+	})
+
+	if ( $(document).width() < 700 ){
+		$(".make-options .item#2").click()
+	}
+
+	$(document).on('click', '#make-back', function() {
+		makeOption = false;
+		$(".make-options, .make-intro").fadeIn(200)
+		$(".make-second, .make-third, .make-first").fadeOut(150)
+		$(".m2-trend-wrapper .trend").removeClass("active").show()
+		//$(".m2-trend-wrapper").removeClass("active")
+		//$('.make-trends-field.trendid').val("")
+		m2Check();
+	})
+
+	$(document).on('click', '.giphy-option', function() {
+		//$("#make-gif-preview").fadeIn(200)
+		$(".m2-left").addClass("giphed")
+	})
+
+	$(document).on('click', '.meme-type-2', function() {
+		$(".m2-left-1").removeClass("active");
+		$(".m2-left-2").addClass("active");
+		$(".meme-type-wrapper .item").removeClass("active")
+		$(this).addClass("active")
+		$(".m2-wrapper").remove("captioned")
+		$(".pick-meme-container").slice(0,15).trigger('loadMemes')
+		m2Check();
+	})
+
+	$(document).on('click', '.meme-type-1', function() {
+		$(".m2-left-1").addClass("active");
+		$(".m2-left-2").removeClass("active");
+		$(".m2-wrapper").addClass("captioned")
+		$(".meme-type-wrapper .item").removeClass("active")
+		$(this).addClass("active")
+		m2Check();
+	})
+
+	$(document).on('click', '.m2-trend-wrapper .trend:not(.active)', function() {
+		var trendParent  = $(this).parents(".m2-trend-wrapper")
+		$('.make-option:visible .make-trends-field.trendid').val( $(this).attr("data-trendid") )
+		$(this).siblings(".trend").hide()
+		$(this).addClass("active")
+		$(trendParent).addClass("active")
+		m2Check();
+		m2Check2();
+	})
+	$(document).on('click', '.m2-cancel-trend', function() {
+		$(this).parents(".m2-trend-wrapper").children(".trend").removeClass("active").show()
+		$(this).parents(".m2-trend-wrapper").removeClass("active")
+		$('.make-option:visible .make-trends-field.trendid').val("")
+		m2Check();
+		m2Check2();
+	})
+
+
+
+
 
 	$('body:not(.app) #notif-menu').simplebar();
 		var $content = $('#left-content-profile');
@@ -551,12 +631,12 @@ $("#sketch").on("contextmenu",function(){
 		$('#gifs, #searchTerm').show();
 		$('#make-gif-field').attr('value', '')
 		$('#make-gif-preview img').remove()
-		$('#image-gif-reset').hide()
-		$('#make-gif-preview img').remove()
-		$('#cancel-upload, #submit-image-button-before').hide()
-		$('#make-tags-1-wrapper').removeClass('inline-block-imp')
-		$('.anonymous-checkbox').removeClass('shown')
-		$('#make-tags-1').removeClass('inline-block-imp')
+		$(".m2-left").removeClass("giphed")
+		//$('#image-gif-reset').hide()
+		//$('#cancel-upload, #submit-image-button-before').hide()
+		//$('#make-tags-1-wrapper').removeClass('inline-block-imp')
+		//$('.anonymous-checkbox').removeClass('shown')
+		//$('#make-tags-1').removeClass('inline-block-imp')
 	});
 
 	$(document).on('click',
@@ -675,7 +755,7 @@ $("#sketch").on("contextmenu",function(){
 				$('#make-image-preview').removeClass('stopped')
 				console.log('image is loaded')
 
-				$('#cancel-upload, #submit-image-button-before, #make-image-preview, #make-gif-preview').show()
+				$('#cancel-upload, #submit-image-button-before, #make-image-preview').show()
 				//$('#make-tags-1-wrapper').addClass('inline-block-imp')
 				$('.anonymous-checkbox').addClass('shown')
 				//$('#make-tags-1').addClass('inline-block-imp')
@@ -697,7 +777,7 @@ $("#sketch").on("contextmenu",function(){
 						'min-height': '100px'
 					});
 					$('#image-for-gif-reset').hide()
-					$('#cancel-upload, #reset-image, #submit-image-button-before,  #make-image-preview, #make-post-title, #make-gif-preview').show()
+					$('#cancel-upload, #reset-image, #submit-image-button-before,  #make-image-preview, #make-post-title').show()
 				}
 			}, 2000)
 		}
@@ -1009,16 +1089,18 @@ $("#sketch").on("contextmenu",function(){
 		$('#image-for-gif-input').val('')
 		$(image).remove()
 		$('#image-for-gif-wrapper').fadeIn()
-		$('#pictureInput, #preview-image-text, .make-dark-box, #make-gif-preview').show();
+		$('#pictureInput, #preview-image-text, .make-dark-box').show();
 		$('#cancel-upload, #submit-image-button-before,#make-image-preview').hide();
 		$('#make-tags-1-wrapper').removeClass('inline-block-imp')
+		$(".m2-wrapper").removeClass("imaged")
 		$('.anonymous-checkbox').removeClass('shown')
 		$('#make-tags-1').removeClass('inline-block-imp')
 		//$('#make-image-preview').css({
 		//	'min-height': '100px'
 		//});
-		$('#image-for-gif-reset, #make-post-title').hide()
+		$('#image-for-gif-reset').hide()
 		$("#make-post-preview-wrapper #pictureInput").replaceWith($("#make-post-preview-wrapper #pictureInput").val('').clone(true));
+		m2Check();
 	})
 	$(document).on('click', '#image-for-gif-reset-2', function() {
 		$("#make-gif-preview").hide();
@@ -1027,7 +1109,47 @@ $("#sketch").on("contextmenu",function(){
 		$('#image-for-meme-field').attr('value', '')
 		$('#image-for-meme-img').attr('src', '')
 		$('#image-for-meme').show()
-		$('#image-for-meme-reset').hide()
+		//$('#image-for-meme-reset').hide()
+		$(".m2-wrapper").removeClass("memed")
+		$("#meme-wrapper").removeClass("active")
+		$("#pick-meme").fadeIn(100)
+	})
+
+	m2Check = function(){
+		setTimeout(function(){
+			if ( ($(".m2-wrapper").hasClass("memed") && $(".meme-type-2").hasClass("active") ) && ( $(".m2-trend-wrapper").hasClass("active") ) ) {
+				$("#m2-image-submit").addClass("active")
+			}
+			else if ( ($(".m2-wrapper").hasClass("imaged") && $(".meme-type-1").hasClass("active") ) && ( $(".m2-trend-wrapper").hasClass("active") ) ) {
+				$("#m2-image-submit").addClass("active")
+			}
+			else {
+				$("#m2-image-submit").removeClass("active")
+			}
+		}, 1000)
+	}
+
+	m2Check2 = function(){
+		setTimeout(function(){
+			if ( $(".make-third .m2-trend-wrapper").hasClass("active") ){
+				$("#m2-image-submit-2").addClass("active")
+			}
+			else {
+				$("#m2-image-submit-2").removeClass("active")
+			}
+		}, 1000)
+	}
+
+	$(document).on('click', '#m2-image-submit', function(e) {
+		if ( $(".m2-wrapper").hasClass("imaged") ) {
+			$("#submit-image-button-before").click();
+		}
+		else if ( $(".m2-wrapper").hasClass("memed") ) {
+			$("#created-image-button-before").click();
+		}
+	})
+	$(document).on('click', '#m2-image-submit-2', function(e) {
+			$("#submit-image-button-before-3").click();
 	})
 
 	$(document).on('click', 'body.shown-post #main-page-type a', function(e) {
@@ -2447,8 +2569,10 @@ $("#sketch").on("contextmenu",function(){
 			$('#make-image-preview').css({
 				'min-height': $('#make-image-preview img').height()
 			});
-			$('#pictureInput, #preview-image-text').hide()
+			//$('#pictureInput, #preview-image-text').hide()
 			$('#image-for-gif-wrapper').hide()
+			$(".m2-wrapper").addClass("imaged")
+			alert("d")
 			$('#image-for-gif-reset').show()
 		}
 		reader.readAsDataURL(image);
@@ -2737,6 +2861,9 @@ $(document).on('click', '.pick-meme-container', function() {
 		thisImage.src = MemeBackground
 
 		thisImage.onload = function() {
+			$(".m2-wrapper").addClass("memed")
+			$(".m2-wrapper #pick-meme").hide();
+			$(".m2-wrapper #meme-wrapper").addClass("active")
 			//alert("Ss")
 			$(this).remove();
 			if ($(window).width() < 590) {
@@ -2909,6 +3036,7 @@ $(document).on('click', '.pick-meme-container', function() {
 					}
 				})
 			});
+			/*
 			$('#text-bottom').click(function() {
 				if ($(window).width() > 920) {
 					$("html, body").animate({
@@ -2916,6 +3044,7 @@ $(document).on('click', '.pick-meme-container', function() {
 					});
 				}
 			});
+			*/
 			$('#text-bottom').keyup(function writeDown(e) {
 				if (e.keyCode != 37 && e.keyCode != 38 && e.keyCode != 39 && e.keyCode != 40) {
 					var prevMeme = memeCtx.getImageData(0, 0, memeCanvas.width, memeCanvas.height);
@@ -2939,6 +3068,7 @@ $(document).on('click', '.pick-meme-container', function() {
 				}
 			})
 		};
+		m2Check();
 	}});
 	$('.wrapper, #upload').click(function() {
 	//alert('dfgdfg')
@@ -3018,12 +3148,14 @@ function previewPostImage(event, thisFiler, thisPreview) {
 		$('#make-image-preview').css({
 			'min-height': $('#make-image-preview img').height()
 		});
-		$('#pictureInput, #preview-image-text').hide()
+		//$('#pictureInput, #preview-image-text').hide()
 		$('#image-for-gif-wrapper, .make-dark-box').hide()
 		$('#image-for-gif-reset').show()
+		$(".m2-wrapper").addClass("imaged")
+		m2Check();
 	}
 	reader.readAsDataURL(image);
-	$('#cancel-upload, #reset-image, #submit-image-button-before,  #make-image-preview, #make-post-title, #make-gif-preview, #make-post-title').show()
+	$('#cancel-upload, #reset-image, #submit-image-button-before,  #make-image-preview, #make-post-title, #make-post-title').show()
 	$('#make-tags-1-wrapper').css('inline-imp')
 	$('.anonymous-checkbox').addClass('shown')
 	$('#make-tags-1').addClass('inline-block-imp')

@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   get '/new' => 'pages#new'
   get '/notlogged' => 'pages#notlogged'
   get '/makememe' => 'pages#makememe'
-  get '/make' => 'pages#make'
+  get '/make' => 'pages#newmake'
   get '/make/memes' => 'pages#memes'
   get '/make/gifs' => 'pages#gifs'
   get '/make/ragecomics' => 'pages#ragecomics'
