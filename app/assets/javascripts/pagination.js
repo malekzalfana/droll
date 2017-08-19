@@ -16,7 +16,7 @@ window.onload = function(){
         $('#main-page-type').fadeIn(100)
         }
 
-if ( $('body').is('#recent, #index, #profile, #new-posts') && !$('body').hasClass('shown-post') ) {
+if ( $('body').is('#recent, #index, #profile, #newposts') && !$('body').hasClass('shown-post') ) {
 
 
         //console.log('this is the main')
