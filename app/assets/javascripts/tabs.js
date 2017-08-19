@@ -16,6 +16,18 @@ var makeOption;
 var m2Check;
 var m2Check2;
 $(document).ready(function() {
+	if (   $("body").is("#newposts") && $(document).width() > 700  ) {
+				setTimeout(function(){
+					var $content3 = $('.reco-trend');
+					$content3.imagesLoaded(function() {
+					$content3.masonry({
+						itemSelector: '.wrapper-new-2',
+						gutter: newpostGutter
+					});
+					});
+					//$('#box-5-wrapper .wrapper-new-2').removeClass("no-opacity no-click")
+				}, 500)
+			}
 
 	// NEW MAKEEEEEE
 
