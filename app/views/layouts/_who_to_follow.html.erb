@@ -47,6 +47,7 @@
                         <% else %>
                             <span class="up upvote vote"><i class="material-icons">arrow_drop_up</i></span>
                         <% end %>
+                        <%= link_to report_post_path(post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="flag-post material-icons">flag</i><% end %>
                 </div>
             <% end %>
 

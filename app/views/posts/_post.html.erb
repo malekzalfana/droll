@@ -313,6 +313,7 @@
                         <% else %>
                             <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
                         <% end %>
+                        <%= link_to report_post_path(post), method: :put, class: 'report-post', title: 'Report this post', :"data-post-id" => post.id, remote: true  do %><i class="flag-post material-icons">flag</i><% end %>
                         <a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a>
                         <!--
                     <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
@@ -338,4 +339,5 @@
                         <% else %>
                             <span class="up upvote vote"><i class="material-icons">arrow_drop_up</i></span>
                         <% end %>
+
                 </div><% end %>

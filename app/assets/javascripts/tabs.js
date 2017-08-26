@@ -30,6 +30,9 @@ $(document).ready(function() {
 			}
 
 	// NEW MAKEEEEEE
+	$(document).on('click', '.cancel-ragefaces', function() {
+		$("#addRageFaces").click()
+	});
 
 	$(document).on('click', '.make-options .item', function() {
 		makeOption = $(this).attr("id");
@@ -67,7 +70,7 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.meme-type-2', function() {
-		$(".m2-left-1").removeClass("active");
+		$(".m2-left-1, .m2-tabs-item").removeClass("active");
 		$(".m2-left-2").addClass("active");
 		$(".meme-type-wrapper .item").removeClass("active")
 		$(this).addClass("active")
@@ -76,13 +79,25 @@ $(document).ready(function() {
 		m2Check();
 	})
 
+	$(document).on('click', '#captioned-meme', function() {
+		$(".meme-type-1").click();
+		$(".m2-tabs-item").removeClass("active");$(this).addClass("active")
+	})
+	$(document).on('click', '#classic-meme', function() {
+		$(".meme-type-2").click();
+		$(".m2-tabs-item").removeClass("active");$(this).addClass("active")
+	})
 	$(document).on('click', '.meme-type-1', function() {
 		$(".m2-left-1").addClass("active");
-		$(".m2-left-2").removeClass("active");
+		$(".m2-left-2, .m2-tabs-item").removeClass("active");
 		$(".m2-wrapper").addClass("captioned")
 		$(".meme-type-wrapper .item").removeClass("active")
 		$(this).addClass("active")
 		m2Check();
+	})
+
+	$(document).on('click', '.mc-wrapper button', function() {
+		$("body").addClass("step2")
 	})
 
 	$(document).on('click', '.m2-trend-wrapper .trend:not(.active)', function() {

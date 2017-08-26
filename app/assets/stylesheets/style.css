@@ -1003,7 +1003,7 @@ margin: 7px 0px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 	/*border: 1px grey solid;*/
 	position: fixed;
-	z-index: 5;
+	z-index: 10;
 	width: 1180px;
 	height: 490px;
 	overflow: auto;
@@ -4304,7 +4304,7 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 }
 
 @media screen and (max-width: 920px) {
-	.trend:not(.second) {
+	.trend.second {
 	    height: 245px;
 	    width: calc(33.3% - 20px) !important;
 	}
@@ -10698,8 +10698,10 @@ div#nav-menu-wrapper.closed.second #search-trends {
     color: #4a4a4a;
     font-size: 12px;
     float: left;
-    margin: 10px;
+    margin: 5px 10px;
     margin-right: 0px;
+    width: calc(100% - 10px);
+    text-align: left;
 }
 .not-wrapper {
 	    font-family: roboto;
@@ -11025,9 +11027,10 @@ div#nav-menu-wrapper.closed.second #search-trends {
     border-radius: 24px;
 }
 .make-intro {
-	    margin: 70px 0px 30px 0px;
+	     margin: 70px 0px 30px 0px;
     text-align: center;
-    font-family: roboto;
+    font-family: lato;
+    opacity: 0.65;
 }
 .make-intro .first {
 	font-size: 26px
@@ -11369,6 +11372,7 @@ margin-top: 50px;
     FLOAT: LEFT;
     PADDING-TOP: 10PX;
     margin-right: 10px;
+    display: none !important;
 }
 .meme-type-wrapper img {
 	    width: 75px;
@@ -11442,4 +11446,93 @@ margin-top: 50px;
 }
 .make-third #all-tools {
 	margin-top: 55px
+}
+.wrapper-new-2 .report-post {
+	float: left;
+	    margin: 6px;
+	    display: inline-block !IMPORTANT;
+}
+.wrapper-new-2 .flag-post {
+	margin: 0px !Important;
+	display: inline-block !importANT;
+}
+.new-trends-wrapper {
+    height: 200px;
+    overflow-y: auto;
+    display: block;
+}
+.watermark {
+	display: block;
+	margin: 0px auto;
+	left:0;right:0;
+	bottom:0;
+	height: 25px;
+	opacity: 0.5;
+	position: absolute;
+	margin-bottom: 10px;
+	pointer-events: none
+}
+#newmake {
+    min-height: 590px !important;
+    position: relative;
+}
+.ragefaces-title {
+	font-family: roboto;
+    font-size: 19px;
+    margin: 15px;
+    position: relative;
+}
+.cancel-ragefaces {
+	    position: absolute;
+    right: 0px;
+   	CURSOR: POINTER;
+    top: 0px;
+    font-size: 20px !important;
+    opacity: 0.7;
+}
+.m2-tabs {
+	    WIDTH: 900px;
+    margin: 0px auto 20PX AUTO;
+    border-bottom: 2px solid #FF3000;
+    HEIGHT: 47PX;
+        max-width: calc(100% - 30px);
+}
+.mc-wrapper img {
+    margin: 0px auto;
+    margin-top: 35px;
+    display: block;
+}
+.m2-tabs-item {
+	    padding: 13px 15px;
+    font-family: roboto;
+    color: #000000;
+    FONT-WEIGHT: 500;
+    float: left;
+    cursor: pointer;
+}
+.m2-tabs-item:not(.active) {
+	opacity: 0.65;
+}
+.m2-tabs-item.active {
+	    border-bottom: 3px solid #FF3000;
+    COLOR: #FF3000;
+}
+.meme-challenge:not(.step2) .make-intro, .meme-challenge:not(.step2) .make-options {
+	display: none !important;
+}
+.step2 .mc-wrapper {
+	display: none;
+}
+.mc-wrapper button {
+	    padding: 11px 20px;
+    color: #000000;
+    font-family: roboto;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px auto;
+    border-radius: 21px;
+    display: block;
+    margin-top: 30pX;
+    BACKGROUND: NO-REPEAT;
+    OPACITY: 0.6;
 }

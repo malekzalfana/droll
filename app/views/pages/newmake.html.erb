@@ -1,9 +1,14 @@
 
-<body id="<%= controller.action_name %>" class="<%= if user_signed_in? != true then 'new-user' end %> <%= if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 then "not-passed1" end %> <% if user_signed_in? %>signed-in<% end %> <% if user_signed_in? %> signed-in<% else %> REMOVEDnot-signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
+<body id="<%= controller.action_name %>" class="meme-challenge <%= if user_signed_in? != true then 'new-user' end %> <%= if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 then "not-passed1" end %> <% if user_signed_in? %>signed-in<% end %> <% if user_signed_in? %> signed-in<% else %> REMOVEDnot-signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
 
 <div class="holder" style="
     height: 50px;
 "></div>
+<div class="mc-wrapper">
+	<img src="http://i.imgur.com/2amvtA0.png">
+	<button>continue</button>
+	<img class="watermark" src="http://i.imgur.com/iYobup4.png">
+</div>
 <div class="make-intro">
 	<div class="first">Welcome guest,</div>
 	<div class="second">What are you making?</div>
@@ -14,6 +19,7 @@
 	<!--<div class="item" id="1"><img src="http://i.imgur.com/Wnx4P2S.png"><p>Video</p></div>-->
 	<div class="item" id="2"><img src="http://i.imgur.com/1c0WKbe.png"><p>Image</p></div>
 	<div class="item" id="3"><img src="http://i.imgur.com/STdnQpw.png"><p>Comic</p></div>
+	<img class="watermark" src="http://i.imgur.com/iYobup4.png">
 </div>
 
 
@@ -25,8 +31,12 @@
 		<span>Image / GIF</span>
 	</div>
 	<div class="m2-wrapper">
+		<div class="m2-tabs">
+			<div class="m2-tabs-item active" id="captioned-meme">Captioned Meme</div>
+			<div class="m2-tabs-item" id="classic-meme">Classic Meme</div>
+		</div>
 		<div class="m2-left m2-left-1 active">
-			<div class="meme-type-wrapper second">
+			<div class="meme-type-wrapper second hidden-imp">
 				<p class="title hidden">Meme type</p>
 				<div class="meme-type-1 item active"><img src="http://i.imgur.com/7SuynOy.png"><p>Caption Meme</p></div>
 				<div class="meme-type-2 item"><img src="http://i.imgur.com/ENk949v.png"><p>Classic Meme</p></div>
@@ -1029,7 +1039,7 @@
 
 
 		<div class="m2-right">
-			<div class="meme-type-wrapper">
+			<div class="meme-type-wrapper hidden-imp">
 				<p class="title hidden">Meme type</p>
 				<div class="meme-type-1 item active"><img src="http://i.imgur.com/7SuynOy.png"><p>Caption Meme</p></div>
 				<div class="meme-type-2 item"><img src="http://i.imgur.com/ENk949v.png"><p>Classic Meme</p></div>
@@ -1077,14 +1087,16 @@
 			<div class="m2-trend-wrapper">
 				<div class="title">Pick a trend</div>
 				<div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
-				<% @trends.each do |trend| %>
-		            <div data-filter-item data-trendid="<%= trend.id %>" data-filter-name="<%= trend.name %>" class="trend second trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
-		                <!--<a href="trends/<%= trend.name %>"></a>-->
-		                <i class="material-icons m2-cancel-trend">cancel</i>
-		                  <p class="trend-name new">/<%= trend.name %><i class="material-icons">open_in_new</i></p>
-		                <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
-		              </div>
-		        <% end %>
+				<div class="new-trends-wrapper">
+					<% @trends.each do |trend| %>
+			            <div data-filter-item data-trendid="<%= trend.id %>" data-filter-name="<%= trend.name %>" class="trend second trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
+			                <!--<a href="trends/<%= trend.name %>"></a>-->
+			                <i class="material-icons m2-cancel-trend">cancel</i>
+			                  <p class="trend-name new">/<%= trend.name %><i class="material-icons">open_in_new</i></p>
+			                <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
+			              </div>
+			        <% end %>
+		        </div>
 			</div>
 			<div class="m2-button-wrapper">
 				<button id="m2-image-submit">Submit</button>
@@ -1163,9 +1175,11 @@
 							<% @trends.any? %>
 							<p class="make-trends-title">Trends</p>
 							<div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
+							<div class="new-trends-wrapper">
 		                      <% @trends.each do |trend| %>
 		                      <p data-trend-name="<%= trend.name %>" class="make-trends">/<%= trend.name %></p>
 		                    <% end %>
+		                    </div>
 							<span class="make-add-trend-title">New trend</span>
 							<input class="make-add-trend-input" placeholder="addTrendLikeThis">
 							<span class="make-trend-notice">New trends are added like this.. vineIsDead</span>
@@ -2319,6 +2333,7 @@
   	<div class="m2-trend-wrapper">
 				<div class="title">Pick a trend</div>
 				<div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
+				<div class="new-trends-wrapper">
 				<% @trends.each do |trend| %>
 		            <div data-filter-item data-trendid="<%= trend.id %>" data-filter-name="<%= trend.name %>" class="trend second trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
 		                <!--<a href="trends/<%= trend.name %>"></a>-->
@@ -2327,6 +2342,7 @@
 		                <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
 		              </div>
 		        <% end %>
+				</div>
 			</div>
 	<div class="m2-button-wrapper">
 		<button id="m2-image-submit-2">Submit</button>
@@ -2480,6 +2496,8 @@
 				<p id="uploads-tag" >uploads</p>
 			</div>
 			<div id="ragefaces">
+				<p class="ragefaces-title">Pick a trend<i class="material-icons cancel-ragefaces">clear</i></p>
+
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.drolle.net/rageface/1face.png" data-facenumber="1">
 
 			<img class="rageface rageface-normal" crossorigin="" data-original="http://www.drolle.net/rageface/2face.png" data-facenumber="2">
