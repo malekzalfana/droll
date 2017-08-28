@@ -172,6 +172,17 @@
                     <% end %>
                 </div>
             <div class="left-wrapper" id="left-wrapper-<%= post.id %>">
+                <% if user_signed_in? && post.user == current_user && post.mc == true %>
+                    <div id="share-it">
+                        <p>Share this meme <span> #memeChallenge</span>!</p>
+                        <a  class="not-link" href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a  class="not-link" href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %>&amp;hashtags=drolle,<%= if post.user.posts.count == 1 then " #memeChallenge" end %>" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a  class="not-link" href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a  class="not-link" href="http://www.reddit.com/submit?url=<%= post.image.url(:large) %>&title=<%= post.title %>  <%= if post.user.posts.count == 1 then " #memeChallenge" end %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                            <i class="material-icons cancel-share-it">clear</i>
+
+                    </div>
+                <% end %>
                 <div class="left-wrapper-overlay"></div>
 
             <%# form_for (post), remote: true do |f| %>

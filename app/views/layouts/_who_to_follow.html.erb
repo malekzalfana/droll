@@ -24,7 +24,7 @@
                         <% end %>
                         <a  target="_blank" href="user/<%= post.user.username %>"><span class="post-new-username">@<%= post.user.username %></span></a>
                         <!--
-                    <a  target="_blank" href="trends/<%= Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%= Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
+                    <a  target="_blank" href="trends/<%# Trend.find(post.trendid).name %>"><p class="post-new-trend">/<%# Trend.find(post.trendid).name %><i class="material-icons">keyboard_arrow_right</i></p></a>
                     -->
                                             <% if (user_signed_in?) && (current_user.voted_down_on? post) %>
                             <%= link_to dislike_post_path(post), method: :put, class: 'down downvote vote downvoted voted', :"data-post-id" => post.id, remote: true  do %><i class="material-icons">arrow_drop_up</i><% end %>

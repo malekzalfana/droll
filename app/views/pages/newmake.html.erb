@@ -1,11 +1,11 @@
 
-<body id="<%= controller.action_name %>" class="meme-challenge <%= if user_signed_in? != true then 'new-user' end %> <%= if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 then "not-passed1" end %> <% if user_signed_in? %>signed-in<% end %> <% if user_signed_in? %> signed-in<% else %> REMOVEDnot-signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
+<body id="<%= controller.action_name %>" class="<% if @mc == true %>meme-challenge<% end %> <%= if user_signed_in? != true then 'new-user' end %> <%= if user_signed_in? &&  current_user.passed.nil? && current_user.posts.count > 0 then "not-passed1" end %> <% if user_signed_in? %>signed-in<% end %> <% if user_signed_in? %> signed-in<% else %> REMOVEDnot-signed-in<% end %> <%= if request.original_url.include?('?app=true') then 'app' end %>">
 
 <div class="holder" style="
     height: 50px;
 "></div>
 <div class="mc-wrapper">
-	<img src="http://i.imgur.com/2amvtA0.png">
+	<img src="http://i.imgur.com/GGAYqUC.png">
 	<button>continue</button>
 	<img class="watermark" src="http://i.imgur.com/iYobup4.png">
 </div>
@@ -36,6 +36,8 @@
 			<div class="m2-tabs-item" id="classic-meme">Classic Meme</div>
 		</div>
 		<div class="m2-left m2-left-1 active">
+			<p class="m2-left-title first">Add your image</p>
+
 			<div class="meme-type-wrapper second hidden-imp">
 				<p class="title hidden">Meme type</p>
 				<div class="meme-type-1 item active"><img src="http://i.imgur.com/7SuynOy.png"><p>Caption Meme</p></div>
@@ -45,6 +47,7 @@
 					<div id="make-preview-wrapper1">
 			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
+			<% if @mc = true %><%= f.text_field :mc, value: true, class: "hidden" %><% end %>
 
 
 			<div id="make-post-preview-wrapper">
@@ -122,8 +125,8 @@
 		</div>
 
 	<div class="m2-left-2 m2-left">
+		<p class="m2-left-title second">Pick a meme</p>
 		<div id="pick-meme" class="ui-sortable">
-			<p class="title">Pick a meme</p>
 			<p class="make-how-to"><i class="material-icons">info</i>React to a situation/image with a funny a meme. You can add custom memes. </p>
 
 	<%= form_tag 'pages/stock', remote: true, :method => 'get', class: "hidden-imp"  do %>
@@ -1011,6 +1014,7 @@
 		<div class="middle-column" id="meme-wrapper">
 					<%# if user_signed_in? %>
 					<%= form_for @post, html: { multipart: true } do |f| %>
+					<% if @mc = true %><%= f.text_field :mc, value: true, class: "hidden" %><% end %>
 					<%= f.text_area :title, id: "created-meme-title", placeholder: "Meme Title " %>
 					 <input id="base64" type="hidden" value="" name="base64"/>
 					 <div id="image-for-meme">
@@ -1117,6 +1121,7 @@
 		<div class="middle-column" id="meme-wrapper">
 			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
+			<% if @mc = true %><%= f.text_field :mc, value: true, class: "hidden" %><% end %>
 			<%= f.text_area :title, id: "created-meme-title", placeholder: "Meme Title " %>
 			 <input id="base64" type="hidden" value="" name="base64"/>
 			 <div id="image-for-meme">
@@ -2296,6 +2301,7 @@
 			</div>
 			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
+			<% if @mc = true %><%= f.text_field :mc, value: true, class: "hidden" %><% end %>
 				 <%= f.file_field :image, id: "ragefaces-filefield", accept: "image/*" %>
 				 <%= f.text_area :title, id: "make-post-title-3", class: "hidden",  placeholder: "Caption" %>
 				 <input id="base64-2" type="hidden" value="" name="base64"/>
@@ -2362,6 +2368,7 @@
 		<div id="make-preview-wrapper">
 			<%# if user_signed_in? %>
 			<%= form_for @post, html: { multipart: true } do |f| %>
+			<% if @mc = true %><%= f.text_field :mc, value: true, class: "hidden" %><% end %>
 
 
 			<div id="make-post-preview-wrapper">

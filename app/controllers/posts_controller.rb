@@ -361,7 +361,7 @@ class PostsController < ApplicationController
 
   private
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list, :ref );
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list, :ref, :mc );
     end
     def permit_post2
       params.permit(:hidden, :id);

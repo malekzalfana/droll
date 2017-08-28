@@ -4304,10 +4304,12 @@ span#profile-photo-small:hover, span#profile-photo-small:active {
 }
 
 @media screen and (max-width: 920px) {
+	/* REMOVED
 	.trend.second {
 	    height: 245px;
 	    width: calc(33.3% - 20px) !important;
 	}
+	*/
 	#index #add-icon, #recent #add-icon {
 		margin: 10px 10px;
 	}
@@ -5089,8 +5091,37 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	}
 }
 @media screen and (max-width: 600px) {
+	#meme-wrapper {
+		height: initial !important;
+	}
+	.m2-paste-url {
+		DISPLAY: NONE !IMPORTANT;
+	}
+	.m2-left-title {
+	    font-size: 18px;
+	    font-family: roboto;
+	    text-align: left;
+	    margin: 10px 0px;
+	    max-width: 300px !important;
+	    margin: 15px auto;
+	}
+	body.meme-challenge .make-intro, body.meme-challenge .make-options {
+		displaY: none !important;
+	}
+	.m2-trend-wrapper {
+    width: 300px !IMPORTANT;
+    MARGIN-TOP: 20PX !IMPORTANT;
+}
+	.make-bar {
+		display: none !important;
+	}
+	.m2-tabs {
+    margin-top: 20px !IMPORTANT;
+    max-width: 300px !IMPORTANT;
+}
 	.m2-left, .m2-right, .m2-imageholder {
 		width: 100% !important;
+		    MAX-WIDTH: 300PX !IMPORTANT;
 	}
 	#mc-wrapper h2 {
 		font-size: 24px !important;
@@ -5415,7 +5446,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 }
 @media screen and (max-width: 700px) {
 	#box-6-wrapper.second .trend {
-		width: calc(100% - 20px) !important;
+		width: calc(50% - 20px) !important;
 	}
 	.trend-arrow {
 		position: initial !Important;
@@ -5479,10 +5510,6 @@ body.shown-post #main-page-type a:hover + #back-list {
     position: relative;
     margin-left: 5px;
     font-size: 19px;
-	}
-	.trend {
-	    height: 245px;
-	    width: calc(50% - 20px) !important;
 	}
 	#toggle-trends {
 		font-size: 0px !important;
@@ -5556,6 +5583,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 550px) and (min-width: 450px) {
+
 	.pick-meme-container {
 		width: 25%;
 	}
@@ -5564,6 +5592,22 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	#share-it {
+		font-size: 15px !important;
+	}
+	#box-6-wrapper.second .trend {
+		width: calc(100% - 20px) !important;
+	}
+	.m2-tabs-item {
+    padding: 13px 0px  !imporTANT;
+    font-family: roboto;
+    color: #000000;
+    FONT-WEIGHT: 500;
+    float: left;
+    cursor: pointer;
+    width: calc(50% - 0px) !imporTANT;
+    text-align: center;
+}
 	#settings-title i {
 	    margin-right: 8px;
 	    position: relative;
@@ -5658,7 +5702,6 @@ body.shown-post #main-page-type a:hover + #back-list {
 		width: 100% !important;
 	}
 	#make-post-title {
-		margin: 15px 0px !important;
 		widtH: calc(100% - 45px) !important;
 		float: none !Important;
 	}
@@ -5767,6 +5810,7 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 450px) {
+
 	.pick-meme-container, .gif-container {
 		width: 33.333%;
 	}
@@ -5783,9 +5827,6 @@ body.shown-post #main-page-type a:hover + #back-list {
     top: 4px;
 }
 @media screen and (max-width: 600px) {
-	.meme-type-wrapper.second {
-		display: inline-block !important;
-	}
 	.gif-container {
 		height: 90px !important;
 	}
@@ -5796,17 +5837,18 @@ body.shown-post #main-page-type a:hover + #back-list {
 		width: calc(100% - 45px) !important;
 	}
 	#make-post-preview-wrapper {
-		widtH: calc(100% - 30px);
 		margin: 0px auto;
 	}
 	#make-gif-preview {
 		 width: calc(100% - 20px) !important;
     margin: 10px !important;
 	}
+	/*
 	#make-post-preview-wrapper #pictureInput, #make-image-preview, #make-preview-wrapper form {
 		    width: calc(100% - 20px)!important;
     margin: 10px!important;
 	}
+	*/
 	.pick-tags-title {
 		font-size: 25px !important;
 	}
@@ -6665,7 +6707,7 @@ body.shown-post .post-image-2 {
 		    margin: 28px 10px;
 	}
 	.meme-title {
-		    top: 180px;
+		    top: 185px !important;
 	}
 	.tags-tag {
 		width: calc(33.33% - 20px) !important;
@@ -6716,7 +6758,7 @@ body.shown-post .post-image-2 {
 		width: calc(50% - 20px) !important;
 	}
 	.meme-title {
-		top: 113px;
+		    top: 115px !important;
 	}
 }
 @media screen and (max-width: 450px) {
@@ -6724,7 +6766,7 @@ body.shown-post .post-image-2 {
 	    width: calc(100% - 80px);
 	}
 	.pick-meme-container, .gif-container {
-    height: 160px;
+    height: 115px;
     WIDTH: CALC(50% - 20px) !important;
     margin: 45px 10px;
 
@@ -6733,10 +6775,10 @@ body.shown-post .post-image-2 {
 		width: calc(50% - 20px) !important;
 	}
 	.meme-title {
-		    top: 153px;
+		    top: 115px !important;
 	}
 	#upload-meme-stock-input {
-	    width: calc(100% - 95px);
+	    width: calc(100% - 95px) !important;
 	    BORDER: NONE !IMPORTANT;
 	}
 	#search-memes {
@@ -6755,14 +6797,14 @@ body.shown-post .post-image-2 {
     POSITION: RELATIVE;
 }
 	#add-meme-url {
-		float: none;
-	    margin: 10px 0px;
-	    margin-bottom: 20px;
-	    float: left;
-	    width: calc(100% - 0px);
-	    border-bottom: 1px solid #E8E8E8;
-	    border-top: 1px solid #E8E8E8;
-	    HEIGHT: 40PX;
+		    float: none;
+    margin: 10px 0px;
+    margin-bottom: 20px;
+    float: left;
+    width: calc(100% - 0px);
+    border-bottom: 1px solid #E8E8E8;
+    /* border-top: 1px solid #E8E8E8; */
+    HEIGHT: 45PX;
 	}
 }
 .share-button {
@@ -8893,12 +8935,11 @@ body:not(#make) .fixed-menu {
 #box-6-wrapper.second .trend {
 	BOX-SHADOW: NONE;
 	BORDER: NONE ;
-	width: calc(100% - 20px) !important;
+	width: calc(100% - 20px);
 	    height: 37px;
     float: left;
     transition: 0.1s all ease-out;
     position: relative;
-    width: calc(25% - 20px);
     overflow: hidden;
     padding-top: 0px;
     background: none;
@@ -11100,17 +11141,20 @@ margin-top: 50px;
 	display: inline-block;
 }
 .m2-left {
-	    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
+	    /* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important; */
 	    display: none;
 }
 .m2-wrapper #pick-meme {
 	    position: initial;
     float: none;
+    display: inline-block;
     vertical-align: top;
     background: white;
         width: calc(100% - 10px) !important;
     padding: 0px 5px;
-    min-height: 530px !important;
+    min-height: 430px !important;
+        max-height: 180px !important;
+    overflow-y: auto;
 }
 .m2-wrapper #meme-above {
 	float: left;
@@ -11501,6 +11545,7 @@ margin-top: 50px;
     margin: 0px auto;
     margin-top: 35px;
     display: block;
+    max-width: 100%;
 }
 .m2-tabs-item {
 	    padding: 13px 15px;
@@ -11535,4 +11580,20 @@ margin-top: 50px;
     margin-top: 30pX;
     BACKGROUND: NO-REPEAT;
     OPACITY: 0.6;
+}
+body:not(.meme-challenge) .mc-wrapper {
+	displaY: none !important;
+}
+
+.m2-trend-wrapper.active  .new-trends-wrapper {
+	height: 50PX !IMPORTANT;
+}
+.m2-left-title {
+	    font-size: 18px;
+    font-family: roboto;
+    text-align: left;
+    margin: 10px 0px;
+    max-width: 100%;
+    margin: 20px auto;
+    margin-top: 10px;
 }

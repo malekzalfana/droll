@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718001757) do
+ActiveRecord::Schema.define(version: 20170827144126) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(version: 20170718001757) do
     t.integer  "trendid"
     t.text     "trendname"
     t.string   "ref"
+    t.boolean  "mc"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"
@@ -281,6 +282,7 @@ ActiveRecord::Schema.define(version: 20170718001757) do
     t.integer  "pic"
     t.boolean  "new"
     t.string   "ref"
+    t.boolean  "mc"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

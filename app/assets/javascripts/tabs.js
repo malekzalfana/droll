@@ -50,7 +50,7 @@ $(document).ready(function() {
 		}
 	})
 
-	if ( $(document).width() < 700 ){
+	if ( $(document).width() < 700 && !$("body").hasClass("meme-challenge") ){
 		$(".make-options .item#2").click()
 	}
 
@@ -97,6 +97,10 @@ $(document).ready(function() {
 	})
 
 	$(document).on('click', '.mc-wrapper button', function() {
+
+		if ( $(document).width() < 700 && $("body").hasClass("meme-challenge") ){
+			$(".make-options .item#2").click()
+		}
 		$("body").addClass("step2")
 	})
 
@@ -162,7 +166,7 @@ tabs = function() {
 	else {
 		newpostGutter = 10
 	}
-	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend)',
+	$(document).on('click', 'a:not(.settings-logout):not(.vote):not(.report-post):not(.favor-post):not(.not-link):not(.delete-comment):not(.post-trend):not(.user-link):not(.wrapper-new-2  a)',
 		function() {
 			$("#box-6-wrapper.second").removeClass("mini")
 	})
@@ -2702,9 +2706,12 @@ setTimeout(function() {
 			$(memeCanvas).css({
 				'height': ($(memeCanvas).attr('height') * $(memeCanvas).width()) / $(memeCanvas).attr('width')
 			});
-			$('#meme-wrapper').css({
-				'height': memeCanvas.height / 2
-			});
+			if ( $(document).width() > 450 ) {
+				$('#meme-wrapper').css({
+					'height': memeCanvas.height / 2
+				});
+			}
+
 			$('#pick-meme').hide();
 			$('#left-arrow').fadeIn();
 			$('.middle-column').show();
