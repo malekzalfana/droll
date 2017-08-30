@@ -177,6 +177,9 @@ class PostsController < ApplicationController
     puts 's s s s'
     puts @post
     if @post.save
+      @posttrend = Trend.where(@post.trendid)
+      @posttrend.posts = Post.where(trendid: @posttrend.id).count
+      @posttrend.save
       redirect_to @post
       flash[:notice] = "Post uploaded"
       if !params[:anonymous].present?
@@ -294,6 +297,9 @@ class PostsController < ApplicationController
       @post.destroy
       @post.user.create_activity :create, key: 'drolling', recipient: @post.user, parameters: {url: url_for(@post), what: 'Your post has been deleted.'}
     end
+    @posttrend = Trend.where(@post.trendid)
+    @posttrend.posts = Post.where(trendid: @posttrend.id).count
+    @posttrend.save
     respond_to do |format|
      format.html
      format.js

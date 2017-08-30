@@ -26,6 +26,7 @@ def index
         @welcomeMessage = true
         session[:display_welcome] = true
     end
+    @alltrends = Trend.all.sort_by{|e| e[:posts]}.reverse
     if user_signed_in?
       if current_user.trends.nil?
         @trends = []
@@ -283,6 +284,12 @@ def index
     @users.each do |user|
       user.pic = rand(1..75)
       user.save
+    end
+
+    @trendss = Trend.where(posts: nil)
+    @trendss.each do |t|
+      t.posts = Post.where(trendid: t.id).count
+      t.save
     end
 
 

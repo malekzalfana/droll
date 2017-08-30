@@ -34,6 +34,12 @@ $(document).ready(function() {
 		$("#addRageFaces").click()
 	});
 
+	$(document).on('click', '.trend-follow-icon', function() {
+		$(this).parents(".trend").addClass("active").children(".trend-form").children(".follow-trend-submit").click()
+		console.log($(this).parents(".trend") )
+		console.log($(this).parents(".trend").children(".follow-trend-submit") )
+	})
+
 	$(document).on('click', '.make-options .item', function() {
 		makeOption = $(this).attr("id");
 		if ( makeOption == 1 ) {

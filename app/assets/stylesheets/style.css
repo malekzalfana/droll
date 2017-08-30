@@ -2887,10 +2887,10 @@ i#upload-meme-stock:hover {
     display: inline-block;
     float: left;
     padding-left: 0px;
-    white-space: pre;
+    white-space: pre-wrap;
     LINE-HEIGHT: 30PX;
-        MAX-HEIGHT: 100PX;
-    OVERFLOW-Y: SCROLL;
+        MAX-HEIGHT: 300PX;
+    OVERFLOW-Y: auto;
 }
 .post-image {
 	width: 550px;
@@ -8877,7 +8877,7 @@ body:not(#make) .fixed-menu {
 }
 #box-6-wrapper.second #search-trends {
 	margin-top: 0px;
-	margin-left: 25px;
+	margin-left: 19px;
 	opacity: 0.7;
 	MARGIN-BOTTOM: 2PX;
 }
@@ -8903,11 +8903,11 @@ body:not(#make) .fixed-menu {
     font-size: 11px;
     margin: 0px 0px;
     display: inline-block;
-    opacity: 0.4;
+    color: #d6d6d6;
     margin-bottom: 0px;
     margin-left: 4px;
     float: left;
-    margin-top: -1px;
+    margin-top: 0px;
 }
 #box-6-wrapper.second #search-trends textarea {
 	margin-top: 0px;
@@ -8946,7 +8946,7 @@ body:not(#make) .fixed-menu {
     margin: 0px 10px;
     text-align: left;
         background: white;
-    HEIGHT: 53PX;
+    HEIGHT: 50PX;
     MARGIN: 0PX;
     PADDING: 0PX 10PX;
 }
@@ -8961,16 +8961,21 @@ body:not(#make) .fixed-menu {
 	display: none;
 }
 #box-6-wrapper.second .trend-name i {
-	    font-size: 13px;
+	font-size: 16px;
     display: block;
     position: absolute;
     line-height: 2;
-    right: 15px;
-    top: 15px;
+    right: 27px;
+    top: 10px;
     opacity: 0;
 }
+/*
 #box-6-wrapper.second .trend-name:hover i {
-	opacity: 0.3;
+	opacity: 0.1;
+}
+*/
+.trend-name:hover {
+	color: #ff3000 !important;
 }
 .more-trends {
 	    float: left;
@@ -9926,7 +9931,6 @@ display: none !important;
     font-size: 12px;
     margin: 0px 2px;
     display: inline-block;
-    opacity: 0.4;
     margin-bottom: 8px;
 }
 .trend-details.second {
@@ -10254,6 +10258,7 @@ p.pick-tags-title.new {
     border-radius: 5px;
     color: #afafaf;
     margin-top: 10px;
+    display: none !important;
 }
 /*
 .not-signed-in .follow-trend {
@@ -11596,4 +11601,46 @@ body:not(.meme-challenge) .mc-wrapper {
     max-width: 100%;
     margin: 20px auto;
     margin-top: 10px;
+}
+.trend-f {
+	    font-size: 14px !important;
+    line-height: 0;
+    position: relative  !important;
+    top: 2px;
+    margin: 0px 2px 0px 8px  !important;
+    color: #e2e2e2;
+
+}
+.trend:hover .trend-f {
+	color: #ea2121;
+}
+.trend-follow-icon {
+	     position: absolute !important;
+    right: 10px;
+    top: 0px;
+    opacity: 0;
+    z-index: 1;
+    padding: 15px !important;
+    cursor: pointer;
+    font-size: 21px !important;
+}
+.trend:hover .trend-follow-icon {
+	opacity: 0.05;
+}
+.trend-follow-icon:hover {
+	opacity: 0.3 !important;
+}
+.trend.notfollowed .trend-f {
+	display: none !important;
+}
+/*
+.trend-link:hover + .trend-follow-icon{
+	display: none;
+}
+*/
+.trend.followed .trend-follow-icon.first {
+	display: none !important;
+}
+.trend.notfollowed .trend-follow-icon.second {
+	display: none !important;
 }
