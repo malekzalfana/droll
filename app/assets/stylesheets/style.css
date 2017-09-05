@@ -2683,7 +2683,9 @@ i#upload-meme-stock:hover {
 	    color: red !important;
     font-weight: normal !important;
     cursor: pointer;
+    DISPLAY: NONE !IMPORTANT;
 }
+
 .flag-post {
 	font-family: 'Material Icons' !important;
 	font-size: 18px !important;
@@ -4931,7 +4933,7 @@ body:not(.shown-post) .post-image-wrapper {
 .favorite-post:hover, .reported-post:hover, .favorite-post:active, .reported-post:active {
 	opacity: 1 !important
 }
-.reported .reported-post {
+.reported .reported-post, .reported .flag-post {
 	color: red !important;
 	opacity: 1 !important;
 	text-shadow: none !important;
@@ -5091,6 +5093,9 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 	}
 }
 @media screen and (max-width: 600px) {
+	.trend .trend-follow-icon {
+		opacity: 0.05 !IMPORTANT;
+	}
 	#meme-wrapper {
 		height: initial !important;
 	}
@@ -5592,8 +5597,21 @@ body.shown-post #main-page-type a:hover + #back-list {
 	}
 }
 @media screen and (max-width: 500px) {
+	.back-from-trend {
+		border-radius: 0px !important
+	}
+	.m2-wrapper #meme-textareas {
+	    width: 100% !important;
+	    margin: 0px auto;
+	}
+	.make-intro, .make-options {
+		display: none !important;
+	}
 	#share-it {
 		font-size: 15px !important;
+	}
+	#share-it.second {
+		height: 130px !important;
 	}
 	#box-6-wrapper.second .trend {
 		width: calc(100% - 20px) !important;
@@ -7121,12 +7139,12 @@ a[title="Twitter"] img, a[title="Facebook"] img {
 	cursor: pointer;
 }
 #share-it {
-	background: #2196F3;
+	    background: #f34134;
     font-size: 19px;
     font-family: roboto;
-    border-bottom: 2px solid #2196F3;
+    border-bottom: 2px solid #f34134;
     color: #ffffff;
-    height: 85px;
+    height: 115px;
     padding: 15px 0px;
 }
 .cancel-share-it {
@@ -9815,12 +9833,17 @@ display: none !important;
 }
 
 .single-trend {
-	font-family: SNIGLET;
-    margin-top: 35px;
-    font-size: 35px;
+	    font-family: roboto;
+    margin-top: 35px !important;
+    font-size: 31px;
     margin-bottom: 5px;
     font-weight: 500;
     COLOR: #424242;
+    width: 500px;
+    position: relative;
+    padding: 0px;
+    margin: 15px auto;
+    max-width: 100%;
 }
 .trend {
         height: 223px;
@@ -11640,7 +11663,94 @@ body:not(.meme-challenge) .mc-wrapper {
 */
 .trend.followed .trend-follow-icon.first {
 	display: none !important;
+	OPACITY:0;
 }
 .trend.notfollowed .trend-follow-icon.second {
 	display: none !important;
+	OPACITY:0;
+}
+body.not-signed-in .trend-follow-icon {
+	display: none !important
+}
+.mc-info-2 {
+	    font-family: roboto;
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.mc-info-1 {
+	    font-family: sniglet;
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.mc-bar-wrapper {
+	position: fixed;
+    bottom: 0px;
+    left: 49px;
+    background: #ff3000;
+    width: 320px;
+    height: 50px;
+    z-index: 12;
+    color: white;
+    font-family: roboto;
+    font-size: 14px;
+}
+.mc-bar .mc-title {
+	float: left;
+}
+.mc-expand {
+	float: right;
+}
+.mc-container {
+	display: none;
+}
+.mc-bar {
+	    padding-top: 17px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.mc-points {
+    margin-left: 7px;
+    position: relative;
+}
+#time {
+    margin-left: 10px;
+}
+.mc-time-wrapper {
+	    margin-top: 13px;
+    text-align: center;
+    font-size: 14px !important;
+    background: rgba(255, 255, 255, 0.19);
+    padding: 7px 0px;
+    margin-bottom: -7px;
+}
+.back-from-trend {
+	    margin-right: 10px;
+    position: absolute;
+    left: 0px;
+    margin: 0px;
+    background: white;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08) !important;
+}
+.make-from-trend {
+	background: #efefed;
+    padding: 10px 0px;
+    font-family: roboto;
+    width: 500px !important;
+    max-width: 100%;
+    color: #adadad;
+transition: 0.3s all ease-out;
+    border: 1px solid #b9b9b9;
+}
+.make-from-trend:hover {
+	background: #efefed;
+    padding: 10px 0px;
+    font-family: roboto;
+    width: 500px !important;
+    max-width: 100%;
+    color: black;
+    border: 1px solid black;
 }

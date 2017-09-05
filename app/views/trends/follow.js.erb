@@ -1,4 +1,6 @@
 //followTrend();
 //alert("<%= current_user.trends %>")
 $('.trend-parent.active').toggleClass('followed')
-$('#box-6-wrapper .trend.active').toggleClass('followed notfollowed').removeClass("active")
+var thisTrend = $('#box-6-wrapper .trend.active');
+$(thisTrend).toggleClass('followed').removeClass("active")
+$(thisTrend).toggleClass('notfollowed')

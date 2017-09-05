@@ -12,6 +12,7 @@ class PagesController < ApplicationController
 
 
 def index
+  @challengepost = Post.last
     if user_signed_in? && current_user.new == true
       redirect_to current_user.posts.first
     else
@@ -289,6 +290,18 @@ def index
     @trendss = Trend.where(posts: nil)
     @trendss.each do |t|
       t.posts = Post.where(trendid: t.id).count
+      t.save
+    end
+
+    @postss = Post.where(pushpoints: nil)
+    @postss.each do |t|
+      t.pushpoints = rand(41..83)
+      t.save
+    end
+
+    @postss = Post.all#where(maxpushpoints: nil)
+    @postss.each do |t|
+      t.maxpushpoints = rand(90.205)
       t.save
     end
 

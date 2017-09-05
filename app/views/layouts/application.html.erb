@@ -7,9 +7,9 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
     <title>Make memes & rage comics | Drolle</title>
     <meta name='description' content='Make memes and rage comics easily using drolle!' />
     <meta name='keywords' content='make,memes, rage comics' />
-  <% elsif controller.action_name == 'recent' %>
-    <title>Recent memes & rage comics | Drolle</title>
-    <meta name='description' content='Make memes and rage comics easily using drolle!' />
+  <% elsif controller.action_name == 'newposts' %>
+    <title>New memes & rage comics | Drolle</title>
+    <meta name='description' content='New <%= Time.current.year %> memes and rage comics' />
     <meta name='keywords' content='make,memes, rage comics' />
   <% elsif controller.action_name == 'about' %>
     <title>What is Drolle?</title>
@@ -19,25 +19,33 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
     <title>How to contact drolle?</title>
     <meta name='description' content='How to contact drolle for business or to request/report something.' />
     <meta name='keywords' content='drolle,contact' />
-  <% elsif controller.action_name == 'index' && controller == 'pages' %>
+  <% elsif controller.action_name == 'index' && controller_name == 'pages' %>
     <title>Drolle | Memes, GIFs & rage comics</title>
     <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
     <meta name='keywords' content='drolle,memes, rage, comics, community' />
-  <% elsif controller.action_name == 'show' && controller == 'posts' %>
+  <% elsif controller.action_name == 'show' && controller_name == 'posts' %>
+    <title><%= @post.title %> - Drolle</title>
     <meta name='description' content='<%= @post.title %>' />
     <meta name='keywords' content='drolle, <%= @post.taglist %>' />
-  <% elsif controller.action_name == 'tag' && controller == 'tags' %>
+
+  <!--<%# elsif controller.action_name == 'tag' && controller_name == 'tags' %>
     <title><%= @tag.name %> memes, GIFs & rage comics | Drolle</title>
     <meta name='description' content='<%= @tag %>' />
-    <meta name='keywords' content='drolle, <%= @tag%>' />
-  <% elsif controller.action_name == 'trend' && controller == 'tags' %>
-    <title><%= @trend.name %> memes, GIFs & ragecomics | Drolle</title>
+    <meta name='keywords' content='drolle, <%= @tag%>' />-->
+
+  <% elsif controller.action_name == 'trend' && controller_name == 'trends' %>
+    <title>/<%= @trend.name %> memes, GIFs & ragecomics | Drolle</title>
     <meta name='description' content='<%= @trend.name %> Drolle posts.' />
     <meta name='keywords' content='drolle, <%= @trend.name %>' />
-  <% elsif controller.action_name == 'trend' && controller == 'tags' %>
+
+  <% elsif controller.action_name == 'index' && controller_name == 'trends' %>
     <title>Drolle Trends</title>
     <meta name='description' content='The lateset drolle trends. ' />
     <meta name='keywords' content='drolle, trends' />
+  <% elsif controller.action_name == 'profile' && controller_name == 'pages' %>
+    <title>@<%= @user.username %>'s memes on Drolle</title>
+    <meta name='description' content='@<%= @user.username %>' />
+    <meta name='keywords' content='drolle, @<%= @user.username %>' />
   <%else%>
     <title>Memes, GIFs and rage comics | Drolle</title>
     <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
@@ -51,7 +59,7 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
 
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
-  <% if controller.action_name  == 'show' && controller == 'posts' %>
+  <% if controller.action_name  == 'show' && controller_name == 'posts' %>
     <meta property="og:title" content="<%= @post.title %>" />
     <meta property="og:type" content="article" />
     <meta property='og:image:width' content="600" />

@@ -3,7 +3,8 @@
     <%# if !request.original_url.include?('?app=true') %>
         <%# render '/layouts/trends_tags' %>
     <%# end %>
-
+<%= controller%>
+<%=  controller.action_name %>
     <% if user_signed_in? %>
         <i class="material-icons" id="show-feedback">feedback</i>
         <div id="feedback">
@@ -45,7 +46,7 @@
 <div class="upper-black"></div>
 <div id="content-full2" class="full-wrapper new-content">
 
-    <p class="single-trend">/<%= @trend.name %></p>
+    <p class="single-trend"><a href="/trends"><i class="material-icons back-from-trend">arrow_back</i></a>/<%= @trend.name %></p>
     <div class="trend-parent active <%= if @followed then 'followed' end %>">
     <% if user_signed_in? %>
     <%= form_for current_user, :html => { :multipart => true , :class => 'hidden-imp' },:url => url_for(:controller => 'trends', :action => 'follow', :user_id => current_user.id ), :method => "get" , remote: true  do |f| %>
@@ -70,8 +71,14 @@
 
     <div class="content-overlay"></div>
 
-
-
+    <a href="/make?trend=<%= @trend.name %>" target="_blank"  class="not-link">
+    <div class="wrapper make-from-trend">
+        make a /<%= @trend.name %> meme<i class="material-icons" style="
+    position: absolute;
+    right: 10px;
+">chevron_right</i>
+    </div>
+    </a>
     <%= will_paginate @post %>
     <% @post.each do |post| %>
          <div class="wrapper <%= if post.user == current_user then "mine" end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
@@ -145,7 +152,7 @@
 
 
                     <% if post.trendid.present? %>
-                          <a  class="new-post-trend" target="_blank" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
+                          <a  class="new-post-trend not-link" target="_blank" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
                         <% end %>
 
                     <div class="post-footer new <%= if post.user.passed != true then "not-passedREMOVED" end %>">
@@ -203,24 +210,34 @@
                     <i class="material-icons comment-button">chat_bubble</i>
                     <span class="footer-interseter post-votes-word">.</span>
 
-                    <% if user_signed_in? %>
-                            <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
-                        <% else %>
-                            <span class="post-votes-word real" data-points="<%= post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%=  post.get_upvotes.size - post.get_downvotes.size %></span>
-                        <% end %>
+                    <% if user_signed_in? && post.user != current_user %>
+                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                    <% end %>
+
+                    <% if user_signed_in? && post.user == current_user && ((Time.now  - post.created_at).round / 1.minutes ) < 90 %>
+
+                        <span class="post-votes-word real" data-points="<%= ((Time.now  - post.created_at).round / 1.minutes ) / 3 + post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%= ((Time.now  - post.created_at).round / 1.minutes ) / 3 + post.get_upvotes.size - post.get_downvotes.size %></span>
+
+                    <% elsif user_signed_in? && post.user == current_user && ((Time.now  - post.created_at).round / 1.minutes ) >= 90 && ( ((Time.now  - post.created_at).round / 1.minutes ) / 12 + post.get_upvotes.size - post.get_downvotes.size + 30) >= post.maxpushpoints %>
+                        <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %></span>
+                    <% elsif user_signed_in? && post.user == current_user && ((Time.now  - post.created_at).round / 1.minutes ) > 90 && ( ((Time.now  - post.created_at).round / 1.minutes ) / 12 + post.get_upvotes.size - post.get_downvotes.size + 30) < post.maxpushpoints %>
+
+                        <span class="post-votes-word real" data-points="<%= ((Time.now  - post.created_at).round / 1.minutes ) / 12 + post.get_upvotes.size - post.get_downvotes.size - if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>" data-user-votes="<%= if current_user.voted_up_on? post then 1 elsif current_user.voted_down_on? post then -1 else 0 end %>"><%= ((Time.now  - post.created_at).round / 1.minutes ) / 3 + post.get_upvotes.size - post.get_downvotes.size %></span>
+
+                    <% end %>
 
 
                     <% if current_user != post.user %>
                         <div id="main-share-button">
                             <% if user_signed_in? %>
                                 <% if current_user.share == '1' %>
-                                    <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank" class="not-link"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '2' %>
-                                    <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                    <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank" class="not-link"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '3' %>
-                                    <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                    <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank" class="not-link"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <% elsif current_user.share == '4' %>
-                                    <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
+                                    <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" class="not-link" title="Share to Reddit"><img class="share-main" src="http://i.imgur.com/0mHlxNx.png"></a>
                                 <% elsif current_user.share == nil || current_user.share == '0' %>
                                     <i title="Share this post" class="material-icons more-post-options share-button">share</i>
 
@@ -318,15 +335,15 @@
                         <div class="share-buttons">
                             <span class="share-word">Share</span>
                             <!--
-                            <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank"><img src="http://i.imgur.com/D87RBjw.png"></a>
-                            <a class="twitter customer share" href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank"><img src="http://i.imgur.com/d7WTVVP.png"></a>
-                            <a class="google_plus customer share" href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank"><img src="http://i.imgur.com/NGKECtL.png"></a>
-                            <a class="customer share" href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank"><img src="http://i.imgur.com/wS2UoLP.png"></a>
+                            <a class="facebook customer share" href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Facebook" target="_blank" class="not-link"><img src="http://i.imgur.com/D87RBjw.png"></a>
+                            <a class="twitter customer share" href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Twitter" target="_blank" class="not-link"><img src="http://i.imgur.com/d7WTVVP.png"></a>
+                            <a class="google_plus customer share" href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Google Plus" target="_blank" class="not-link"><img src="http://i.imgur.com/NGKECtL.png"></a>
+                            <a class="customer share" href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" class="not-link"><img src="http://i.imgur.com/wS2UoLP.png"></a>
                             -->
-                            <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                            <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
+                            <a  href="http://www.facebook.com/sharer.php?u=http://www.drolle.co<%= url_for(post) %>" title="Share to Facebook" target="_blank" class="not-link"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="http://twitter.com/share?url=http://www.drolle.co<%= url_for(post) %>&amp;<%= post.title %> &amp;hashtags=drolle" title="Tweet this post" target="_blank" class="not-link"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="https://plus.google.com/share?url=http://www.drolle.co<%= url_for(post) %>" title="Share to Google+" target="_blank" class="not-link"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                            <a href="http://www.reddit.com/submit?url=http://www.drolle.co<%= url_for(post) %>&title=<%= post.title %>" target="_blank" class="not-link" title="Share to Reddit"><i class="fa fa-reddit-alien" aria-hidden="true"></i></a>
                         </div>
                     </div>
 

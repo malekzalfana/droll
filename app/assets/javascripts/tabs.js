@@ -15,6 +15,7 @@ var usernameChecked = true;
 var makeOption;
 var m2Check;
 var m2Check2;
+var challengeOver;
 $(document).ready(function() {
 	if (   $("body").is("#newposts") && $(document).width() > 700  ) {
 				setTimeout(function(){
@@ -120,12 +121,85 @@ $(document).ready(function() {
 		m2Check2();
 	})
 	$(document).on('click', '.m2-cancel-trend', function() {
-		$(this).parents(".m2-trend-wrapper").children(".trend").removeClass("active").show()
+		$(this).parents(".new-trends-wrapper").children(".trend").show()
+		$(this).parents(".new-trends-wrapper").children(".trend").removeClass("active")
 		$(this).parents(".m2-trend-wrapper").removeClass("active")
 		$('.make-option:visible .make-trends-field.trendid').val("")
 		m2Check();
 		m2Check2();
 	})
+
+	// TIMER
+	var secondsRemaining;
+	var intervalHandle;
+
+	function resetPage(){
+
+		document.getElementById("inputArea").style.display = "block";
+
+	}
+
+	function tick(){
+	// grab the h1
+	var timeDisplay = document.getElementById("time");
+
+	// turn the seconds into mm:ss
+	var min = Math.floor(secondsRemaining / 60);
+	var sec = secondsRemaining - (min * 60);
+
+	//add a leading zero (as a string value) if seconds less than 10
+	if (sec < 10) {
+		sec = "0" + sec;
+	}
+
+	// concatenate with colon
+	var message = min.toString() + ":" + sec;
+
+	// now change the display
+	timeDisplay.innerHTML = message;
+
+	// stop is down to zero
+	if (secondsRemaining === 0){
+		challengeOver();
+		clearInterval(intervalHandle);
+		resetPage();
+	}
+
+	//subtract from seconds remaining
+	secondsRemaining--;
+
+}
+
+	function startCountdown(){
+
+		function resetPage(){
+			document.getElementById("inputArea").style.display = "block";
+		}
+
+		// get countents of the "minutes" text box
+		var minutes = 19//document.getElementById("time").getAttribute("data-time");
+
+		// check if not a number
+		if (isNaN(minutes)){
+			alert("Please enter a number");
+			return; // stops function if true
+		}
+
+		// how many seconds
+		secondsRemaining = minutes * 60;
+
+		//every second, call the "tick" function
+		// have to make it into a variable so that you can stop the interval later!!!
+		intervalHandle = setInterval(tick, 1000);
+
+		// hide the form
+		document.getElementById("inputArea").style.display = "none";
+
+
+	}
+	window.onload = function(){
+	  startCountdown();
+	}
 
 
 
@@ -154,10 +228,7 @@ $(document).ready(function() {
 			var url = new URL(url_string);
 		var trend = false;
 		trend = url.searchParams.get("trend").toString();
-		//if ( trend ) {
-		console.log($("#"+trend))
-		console.log("bra")
-		$("#"+trend).click()
+		$(".trend[data-filter-name='" + trend + "']")[0].click()
 		}
 
 	})
@@ -891,7 +962,7 @@ $("#sketch").on("contextmenu",function(){
 	var emptyField = false;
 	$(document).on('click', '.memeb-submit', function() {
 		emptyField = false;
-		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && !$(".memeb-wrapper.third").hasClass("declinedusername") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approvedusername") && $(".memeb-wrapper input#user_password_confirmation").val() == $(".memeb-wrapper input#user_password").val() &&  $(".memeb-wrapper input#user_password").val() != ''  ) {
+		if ( $(".memeb-field.f").val() != '' && $(".memeb-field.s").val() != '' && $(".memeb-field.t").val() != '' && !$(".memeb-wrapper.third").hasClass("declinedusername") && !$(".memeb-wrapper.third").hasClass("declinedemail") && $(".memeb-wrapper.third").hasClass("approvedusername") && $(".memeb-wrapper input#user_password_confirmation").val() == $(".memeb-wrapper input#user_password").val() &&  $(".memeb-wrapper input#user_password").val() != '' && $(".memeb-wrapper input#user_password_confirmation").val().length >= 8 && $(".memeb-wrapper input#user_password").val().length >= 8 ) {
 			$("#memeb-sign-up-submit").click();
 		}
 		if ( $(".memeb-wrapper.third").hasClass("declinedusername") ) {
@@ -1178,10 +1249,13 @@ $("#sketch").on("contextmenu",function(){
 	}
 
 	$(document).on('click', '#m2-image-submit', function(e) {
+		$(this).hide();
+		$(".new-trends-wrapper").addClass("no-pointer")
 		if ( $(".m2-wrapper").hasClass("imaged") ) {
 			$("#submit-image-button-before").click();
 		}
 		else if ( $(".m2-wrapper").hasClass("memed") ) {
+			$("#meme-textareas").hide();
 			$("#created-image-button-before").click();
 		}
 	})
@@ -1658,7 +1732,9 @@ $("#sketch").on("contextmenu",function(){
 	$(".pick-meme-container").slice(0,15).lazyload({
 	    event: "loadMemes"
 	}).addClass("bitches");
-	$(".pick-meme-container").slice(15,300).lazyload()
+	$(".pick-meme-container").slice(15,300).lazyload({
+			container: $("#pick-meme")
+		})
 
 	var backgroundImage = function(){
 		$(".invite-underlay").css({'opacity':'0.7'})
@@ -1682,7 +1758,7 @@ $("#sketch").on("contextmenu",function(){
 
 	//});
 	//$(".pick-meme-container").lazyload();
-	$("#box-4-wrapper img").lazyload();
+	$("#box-4-wrapper img, .post-memechallenge-banner img").lazyload();
 
 	var $content = $('#box-4-wrapper-inside');
 		$content.imagesLoaded(function() {
@@ -2894,7 +2970,7 @@ $(document).on('click', '.pick-meme-container', function() {
 	console.log("brsa")
 	//$('.pick-meme-container').onclick(function()
 	//alert('llll')
-	if (!$(event.target).is('.delete-stock')) {
+	if (!$(event.target).is('.delete-stock') && $(this).css('background-image') != 'none' ) {
 		var MemeBackground = $(this).css('background-image').replace('url("', '').replace('")', '');
 		var thisImage = document.createElement('img');
 		thisImage.crossOrigin = "";

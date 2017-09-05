@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830213048) do
+ActiveRecord::Schema.define(version: 20170902214504) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -148,6 +148,8 @@ ActiveRecord::Schema.define(version: 20170830213048) do
     t.text     "trendname"
     t.string   "ref"
     t.boolean  "mc"
+    t.integer  "pushpoints"
+    t.integer  "maxpushpoints"
   end
 
   add_index "posts", ["cached_votes_down"], name: "index_posts_on_cached_votes_down"

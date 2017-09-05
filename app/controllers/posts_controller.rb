@@ -101,6 +101,7 @@ class PostsController < ApplicationController
     end
 
     @post = @user.posts.build(permit_post)
+    @post.pushpoints = rand(41..83)
     @post.user = @user
     #@post.ref = params[:ref]
     @post.user_id = @user.id
@@ -177,9 +178,11 @@ class PostsController < ApplicationController
     puts 's s s s'
     puts @post
     if @post.save
-      @posttrend = Trend.where(@post.trendid)
-      @posttrend.posts = Post.where(trendid: @posttrend.id).count
-      @posttrend.save
+      if Trend.where(@post.trendid).exists?
+        @posttrend = Trend.where(@post.trendid)[0]
+        @posttrend.posts = Post.where(trendid: @posttrend.id).count
+        @posttrend.save
+      end
       redirect_to @post
       flash[:notice] = "Post uploaded"
       if !params[:anonymous].present?
@@ -367,7 +370,7 @@ class PostsController < ApplicationController
 
   private
     def permit_post
-    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list, :ref, :mc );
+    params.require(:post).permit(:image, :title, :long, :anonymous, :facenumber, :hidden, :granted, :tag_list, :trendid, :trendname ,:giphyid,:image2, :imageaddress, :video64, :video, :trend_list, :ref, :mc, :pushpoints, :maxpushpoints);
     end
     def permit_post2
       params.permit(:hidden, :id);

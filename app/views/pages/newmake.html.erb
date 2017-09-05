@@ -158,13 +158,28 @@
 		</div>
     <% end %>
     <% end %>
+    <div crossorigin="" class="pick-meme-container" data-filter-item2="" data-original="http://www.drolle.net/meme/216meme.png" data-filter-name2="pepe the frog">
+	<div class="meme-shadow"></div>
+	<p class="meme-title" id="meme-title-1" contenteditable="true">Pepe The Frog</p>
+</div>
+<div crossorigin="" class="pick-meme-container" data-filter-item2="" data-original="http://www.drolle.net/meme/217meme.png" data-filter-name2="herbert the pervert pedobear">
+	<div class="meme-shadow"></div>
+	<p class="meme-title" id="meme-title-1" contenteditable="true">Herbert The Pervert</p>
+</div>
+<div crossorigin="" class="pick-meme-container" data-filter-item2="" data-original="http://www.drolle.net/meme/218meme.png" data-filter-name2="saltbae chef">
+	<div class="meme-shadow"></div>
+	<p class="meme-title" id="meme-title-1" contenteditable="true">Saltbae</p>
+</div>
+<div crossorigin="" class="pick-meme-container" data-filter-item2="" data-original="http://www.drolle.net/meme/219meme.png" data-filter-name2="dj khaled you played yourself another one">
+	<div class="meme-shadow"></div>
+	<p class="meme-title" id="meme-title-1" contenteditable="true">Another One</p>
+</div>
 						<div crossorigin="" class="pick-meme-container" data-filter-item2="" data-original="http://www.drolle.net/meme/50meme.png" data-filter-name2="
 						Condesending Wonka
 					">
-	<div class="meme-shadow"></div>
-	<p class="meme-title" id="meme-title-50" contenteditable="true">
-		<span>Condesending Wonka</span>
-	</p>
+
+<div class="meme-shadow"></div>
+	<p class="meme-title" id="meme-title-50" contenteditable="true"><span>Condesending Wonka</span></p>
 </div>
 <div crossorigin="" class="pick-meme-container" data-filter-item2="" data-original="http://www.drolle.net/meme/1meme.png" data-filter-name2="confession bear">
 	<div class="meme-shadow"></div>
@@ -1103,6 +1118,10 @@
 		        </div>
 			</div>
 			<div class="m2-button-wrapper">
+			<% if request.original_fullpath.include?("mc=true") %>
+			<p class="mc-info-1">#memechallenge</p>
+			<p class="mc-info-2"><%= rand(30..60) %> people have completed this challenge today</p>
+		<% end %>
 				<button id="m2-image-submit">Submit</button>
 			</div>
 		</div>
@@ -2351,6 +2370,10 @@
 				</div>
 			</div>
 	<div class="m2-button-wrapper">
+		<% if request.original_fullpath.include?("mc=true") %>
+			<p class="mc-info-1">#memechallenge</p>
+			<p class="mc-info-2"><%= rand(30..60) %> people have completed this challenge today</p>
+		<% end %>
 		<button id="m2-image-submit-2">Submit</button>
 	</div>
 
