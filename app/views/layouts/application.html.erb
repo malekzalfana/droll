@@ -29,9 +29,9 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
     <meta name='keywords' content='drolle, <%= @post.title %>, meme' />
 
   <!--<%# elsif controller.action_name == 'tag' && controller_name == 'tags' %>
-    <title><%= @tag.name %> memes, GIFs & rage comics | Drolle</title>
-    <meta name='description' content='<%= @tag %>' />
-    <meta name='keywords' content='drolle, <%= @tag%>' />-->
+    <title><%# @tag.name %> memes, GIFs & rage comics | Drolle</title>
+    <meta name='description' content='<%# @tag %>' />
+    <meta name='keywords' content='drolle, <%# @tag%>' />-->
 
   <% elsif controller.action_name == 'trend' && controller_name == 'trends' %>
     <title>/<%= @trend.name %> memes, GIFs & ragecomics | Drolle</title>
