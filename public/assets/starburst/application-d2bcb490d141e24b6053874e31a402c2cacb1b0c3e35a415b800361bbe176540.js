@@ -1,1 +1,0 @@
-function ready(e){document.addEventListener?document.addEventListener("DOMContentLoaded",e):document.attachEvent("onreadystatechange",function(){"interactive"===document.readyState&&e()})}ready(function(){var e=document.getElementById("starburst-close");null!==e&&e.addEventListener("click",function(){document.getElementById("starburst-announcement").style.display="none"})});

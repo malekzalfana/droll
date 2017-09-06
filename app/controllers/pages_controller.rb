@@ -299,8 +299,8 @@ def index
       t.save
     end
 
-    @postss = Post.all#where(maxpushpoints: nil)
-    @postss.each do |t|
+    @postss1 = Post.where(maxpushpoints: nil)
+    @postss1.each do |t|
       t.maxpushpoints = rand(90.205)
       t.save
     end
