@@ -161,10 +161,10 @@
                                   <span class="post-footer-user-name">@<%= @post.user.username %>
                                   </span>
                               <% end %>
-                            <% if post.created_at < 1.month.ago %>
+                            <% if @post.created_at < 1.month.ago %>
                                     <span class="post-footer-time"><%= time_ago_in_words( DateTime.now - (rand * 21) ) %> ago</span>
                               <%else%>
-                                    <span class="post-footer-time"><%= time_ago_in_words(post.created_at) %> ago</span>
+                                    <span class="post-footer-time"><%= time_ago_in_words(@post.created_at) %> ago</span>
                               <%end%>
                           </div>
 
