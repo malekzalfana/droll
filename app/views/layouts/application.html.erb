@@ -26,7 +26,7 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
   <% elsif controller.action_name == 'show' && controller_name == 'posts' %>
     <title><%= @post.title %> - Drolle</title>
     <meta name='description' content='<%= @post.title %>' />
-    <meta name='keywords' content='drolle, <%= @post.taglist %>' />
+    <meta name='keywords' content='drolle, <%= @post.title %>, meme' />
 
   <!--<%# elsif controller.action_name == 'tag' && controller_name == 'tags' %>
     <title><%= @tag.name %> memes, GIFs & rage comics | Drolle</title>
