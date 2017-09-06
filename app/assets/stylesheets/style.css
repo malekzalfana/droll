@@ -5399,8 +5399,9 @@ body:not(.app) .anonymous-checkbox input[type="checkbox"] {
 .wrapper.shown .comment-button {
 	display: inline-block;
 }
+/* REMOVEDCOMMENT */
 .wrapper.shown .comment-button {
-	margin:12px 5px 6px 3px !important;
+	margin:12px 15px 6px 3px !important;
 
 }
 .shown-post .wrapper {

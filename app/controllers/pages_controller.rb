@@ -245,7 +245,7 @@ def index
 
     if user_signed_in?
 
-      @post1 = Post.where(hidden: true).order("created_at DESC")
+    @post1 = Post.where(hidden: true).order("created_at DESC")
     @post2 = Post.where(reported: true).order("created_at DESC")
     @postb = [@post1,@post2].flatten
     @post = @postb.paginate(:per_page => 30, :page => params[:page])
@@ -296,6 +296,12 @@ def index
     @postss = Post.where(pushpoints: nil)
     @postss.each do |t|
       t.pushpoints = rand(41..83)
+      t.save
+    end
+
+    @trendss = Trend.where(pushpoints: nil)
+    @trendss.each do |t|
+      t.pushpoints = rand(84..130)
       t.save
     end
 

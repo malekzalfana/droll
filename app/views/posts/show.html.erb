@@ -161,7 +161,11 @@
                                   <span class="post-footer-user-name">@<%= @post.user.username %>
                                   </span>
                               <% end %>
-                            <span class="post-footer-time"><%= time_ago_in_words(@post.created_at) %> ago</span>
+                            <% if post.created_at < 1.month.ago %>
+                                    <span class="post-footer-time"><%= time_ago_in_words( DateTime.now - (rand * 21) ) %> ago</span>
+                              <%else%>
+                                    <span class="post-footer-time"><%= time_ago_in_words(post.created_at) %> ago</span>
+                              <%end%>
                           </div>
 
                     </a>
@@ -189,13 +193,16 @@
 
 
 
-                    <span class="post-votes-word comment-number"><%= @post.comments.count %></span>
+                    <!--<span class="post-votes-word comment-number"><%= @post.comments.count %></span>-->
                     <i class="material-icons comment-button">chat_bubble</i>
                     <span class="footer-interseter post-votes-word">.</span>
 
 
-                <% if user_signed_in? && @post.user != current_user %>
-                            <span class="post-votes-word real" data-points="<%= @post.pushpoints + @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%= @post.pushpoints +  @post.get_upvotes.size - @post.get_downvotes.size %></span>
+                    <% if !user_signed_in?  %>
+                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                    <% end %>
+                    <% if user_signed_in? && post.user != current_user  %>
+                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
                     <% end %>
 
                     <% if user_signed_in? && @post.user == current_user && ((Time.now  - @post.created_at).round / 1.minutes ) < 90 %>
