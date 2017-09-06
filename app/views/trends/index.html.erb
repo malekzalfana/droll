@@ -82,9 +82,9 @@
                 <div id="trend-scroll-wrapper">
                 <div id="trend-scroll">
                   <% Post.where(trendid: trend.id).limit(4).each do |post| %>
-                <% if !post.imageaddress.blank? %><img src="<%= post.image2.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if post.image.present? %><img src="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
-                <% if !post.giphyid.blank? %><img class="post-trend-2" src="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
+                <% if !post.imageaddress.blank? %><img data-original="<%= post.image2.url(:medium) %>" class="post-trend-2" title="<%= post.title %>"><% end %>
+                <% if post.image.present? %><img data-original="<%= post.image.url(:medium) %>" class="post-trend-2" alt="<%= post.title %>"><% end %>
+                <% if !post.giphyid.blank? %><img class="post-trend-2" data-original="https://media2.giphy.com/media/<%= post.giphyid %>/giphy.gif"><% end %>
 
               <% end %>
               <a href="/trends/<%= trend.name %>" target="_blank" class="not-link">

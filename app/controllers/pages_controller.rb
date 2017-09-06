@@ -427,7 +427,7 @@ def index
     else
       @post = Post.new
     end
-    @trends = Trend.order("RANDOM()").limit(15)
+    @trends = Trend.order("RANDOM()")#.limit(15)
       @trendname = Trend.order("RANDOM()")
   end
 

@@ -342,7 +342,7 @@ tabs = function() {
 	})
 
 	$(document).on('click', '.flag-post', function() {
-		$(this).addClass("flagged bounce animated")
+		$(this).toggle("flagged").addClass("bounce animated")
 		/*
 		var th = $(this).parents(".wrapper").addClass("rollOut animated")
 		setTimeout(function(){
@@ -1743,6 +1743,7 @@ $("#sketch").on("contextmenu",function(){
 		$(".new-invite-page-overlay").css({'opacity':'0.97'})
 	}
 	var loadbi;
+	var loadtrends;
 
 	$("#invite-page").lazyload({
 		event: 'loadbi',
@@ -1752,7 +1753,12 @@ $("#sketch").on("contextmenu",function(){
 		event: 'loadbi',
 		load: backgroundImage2
 	})
+	$(".post-trends-2").lazyload({
+		event: 'loadtrends'
+	})
 	$("#invite-page, #new-invite-page").trigger('loadbi')
+	$(".post-trend-2").trigger('loadtrends')
+	//$(".post-trend-2").slice(50,2000).lazyload()
 
 	//$(window).bind("load", function() {
 

@@ -1106,6 +1106,7 @@
 			<div class="m2-trend-wrapper">
 				<div class="title">Pick a trend</div>
 				<div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
+				<P class="new-trends-soon">New trends will be soon..</P>
 				<div class="new-trends-wrapper">
 					<% @trends.each do |trend| %>
 			            <div data-filter-item data-trendid="<%= trend.id %>" data-filter-name="<%= trend.name %>" class="trend second trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
@@ -2358,6 +2359,7 @@
   	<div class="m2-trend-wrapper">
 				<div class="title">Pick a trend</div>
 				<div id="search-trends"><i class="material-icons">search</i><textarea data-search placeholder="Search trends"></textarea></div>
+
 				<div class="new-trends-wrapper">
 				<% @trends.each do |trend| %>
 		            <div data-filter-item data-trendid="<%= trend.id %>" data-filter-name="<%= trend.name %>" class="trend second trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
