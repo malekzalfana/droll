@@ -199,10 +199,10 @@
 
 
                     <% if !user_signed_in?  %>
-                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                            <span class="post-votes-word real" data-points="<%= @post.pushpoints + @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%= @post.pushpoints +  @post.get_upvotes.size - @post.get_downvotes.size %></span>
                     <% end %>
-                    <% if user_signed_in? && post.user != current_user  %>
-                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                    <% if user_signed_in? && @post.user != current_user  %>
+                            <span class="post-votes-word real" data-points="<%= @post.pushpoints + @post.get_upvotes.size - @post.get_downvotes.size %>" data-user-votes="0"><%= @post.pushpoints +  @post.get_upvotes.size - @post.get_downvotes.size %></span>
                     <% end %>
 
                     <% if user_signed_in? && @post.user == current_user && ((Time.now  - @post.created_at).round / 1.minutes ) < 90 %>
