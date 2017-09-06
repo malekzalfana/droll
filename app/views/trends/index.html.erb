@@ -76,7 +76,7 @@
                   <p class="trend-name">/<%= trend.name %></p>
                 <p class="trend-details first"><%= Post.where(trendid: trend.id).size %> Posts</p>
                 <p class="trend-details second">.</p>
-                <p class="trend-details"><%= trend.followers.to_i %> Followers</p>
+                <p class="trend-details"><%= trend.pushpoints + trend.followers.to_i %> Followers</p>
 
 
                 <div id="trend-scroll-wrapper">
