@@ -180,8 +180,8 @@ class PostsController < ApplicationController
     puts 's s s s'
     puts @post
     if @post.save
-      if Trend.where(@post.trendid).exists?
-        @posttrend = Trend.where(@post.trendid)[0]
+      if Trend.where(id: @post.trendid).exists?
+        @posttrend = Trend.where(id: @post.trendid)[0]
         @posttrend.posts = Post.where(trendid: @posttrend.id).count
         @posttrend.save
       end

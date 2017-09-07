@@ -24,7 +24,12 @@ data-imageurl="<% if user_signed_in? %><%= current_user.image.url(:thumb) %><% e
     <meta name='description' content='Drolle - Meme and rage comics internet community. All the internet goodness starts here. Join the community!' />
     <meta name='keywords' content='drolle,memes, rage, comics, community' />
   <% elsif controller.action_name == 'show' && controller_name == 'posts' %>
+    <% if @post.title.blank? %>
+    <title>Drolle</title>
+    <% else%>
     <title><%= @post.title %> - Drolle</title>
+    <% end%>
+
     <meta name='description' content='<%= @post.title %>' />
     <meta name='keywords' content='drolle, <%= @post.title %>, meme' />
 
