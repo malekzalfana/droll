@@ -107,6 +107,7 @@ def index
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
+      @popularPosts2 = Post.where(hidden: nil).where('cached_votes_up > 10')
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
@@ -158,7 +159,6 @@ def index
 
 
   def newposts
-  @challengepost = Post.last
     if user_signed_in? && current_user.new == true
       redirect_to current_user.posts.first
     else
@@ -173,25 +173,15 @@ def index
         @welcomeMessage = true
         session[:display_welcome] = true
     end
-    @alltrends = Trend.all.sort_by{|e| e[:posts]}.reverse
+    @trends = Trend.all.limit(15)
     if user_signed_in?
-      if current_user.trends.nil?
-        @trends = []
-      else
-        @trends = Trend.where(id: current_user.trends.tr('[]', '').split(',').map(&:to_i))
-      end
-
+      @trends = Trend.where(id: current_user.trends.tr('[]', '').split(',').map(&:to_i))
       @strends = Trend.where.not(id: current_user.trends).order("RANDOM()").limit(5)
     else
       @trends = Trend.all
       @strends = Trend.order("RANDOM()").limit(5)
-      @randomPic = rand(1..75)
     end
     @url =  request.base_url + request.original_fullpath
-    @mc = false
-    if @url.include?('?mc=true')
-        @mc = true
-    end
     if @url.include?('?app=true') && user_signed_in? && !@url.include?('&signed=')
       redirect_to request.base_url + request.original_fullpath + '&username=' + current_user.username + '&imageurl=' + current_user.image.url(:thumb) + '&signed=true'
     elsif @url.include?('?app=true') && !user_signed_in? && !@url.include?('&signed=false')
@@ -202,18 +192,8 @@ def index
         @welcomeMessage = true
         session[:display_welcome] = true
       end
-
     end
-
     if user_signed_in?
-      @mcpost2 = current_user.posts.where(:mc => true).where("created_at < ?", 10.minutes.ago).limit(1)
-      if session[:mc3] == true
-        @mcpost2 = Post.none
-      end
-      unless session[:mc3] && current_user.posts.where(:mc => true).where("created_at < ?", 10.minutes.ago).limit(1).exists?
-        @mcMessage = true
-        session[:mc3] = true
-      end
       if current_user.trends.blank?
         @trendArray = ''
       else
@@ -221,38 +201,27 @@ def index
       end
       @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
 
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 0')
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 10')
       @trendPosts = Post.where(trendid: @trendArray, hidden: nil)#.where('cached_votes_up > -1')
       @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
       @popularPosts2 = @popularPosts.reject{ |e| @trendPosts.include? e }.reject{ |e| @followingPosts.include? e }
     #remove # up >>^^^^
       @post2 = [@popularPosts,@followingPosts, @trendPosts].flatten
       @post2 = @post2.uniq
-      @post = @post2.sort_by{|e| e[:time_ago]}.reject{ |e| current_user.posts.include? e }
-      @mcpost = current_user.posts.where(:mc => true).where("created_at > ?", 10.minutes.ago).limit(1)
-      if @mcpost.present?
-        puts @mcpost.first.hidden
-        @mcpost.first.hidden = false;
-        @mcpost.first.save
-        puts @mcpost.first.hidden
-        puts "bitch wah"
-      end
-
-
-
-      @post = [@mcpost, @mcpost2, @post].flatten.paginate(:per_page => 10, :page => params[:page])
+      @post = @post2.sort_by{|e| e[:time_ago]}.paginate(:per_page => 10, :page => params[:page])
       #@post = Post.limit(30).paginate(:per_page => 10, :page => params[:page])
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
-      @newposts = @pre_newposts.reject{ |e| @post.include? e }.reject{ |e| current_user.posts.include? e }
+      @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
     else
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 3').order("created_at DESC")
-      @post = @popularPosts.paginate(:per_page => 10, :page => params[:page])
+
+      @post = Post.where(hidden: nil).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
+      @popularPosts2 = Post.where(hidden: nil).where('cached_votes_up > 10')
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
