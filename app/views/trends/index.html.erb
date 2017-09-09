@@ -65,7 +65,7 @@
 
           <% @trends.each do |trend| %>
 
-              <div data-filter-item data-filter-name="<%= trend.name %>" class="trend trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(trend.id.to_s) then 'followed' end %>">
+              <div data-filter-item data-filter-name="<%= trend.name %>" class="trend trend-parent <%= if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(trend.id.to_i) then 'followed' end %>">
                 <% if user_signed_in? %>
                 <%= form_for current_user, :html => { :multipart => true , :class => 'hidden-imp' },:url => url_for(:controller => 'trends', :action => 'follow', :user_id => current_user.id ), :method => "get" , remote: true  do |f| %>
                     <%= f.text_field :trendid, :value => trend.id, :id => 'e' %>

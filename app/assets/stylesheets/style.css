@@ -7601,12 +7601,18 @@ i.fa.fa-reddit-alien {
     max-width: 200px;
 }
 .new-post-trend {
-	    float: left;
-    color: #000000;
-    margin: 15px 10px 5px 10px;
+	margin: 5px 5px 0px 0px;
     font-family: roboto;
-    font-size: 15px;
+    font-size: 19px;
     font-weight: 500;
+    float: left;
+    border-radius: 17px;
+    color: black;
+    padding: 5px 11px;
+    opacity: 0.8;
+}
+.new-post-trend:hover {
+	opacity: 1;
 }
 .nav-link {
 	    DISPLAY: INLINE-BLOCK;
@@ -11297,7 +11303,7 @@ margin-top: 50px;
 	color: black;
 	font-weight: 500;
 }
-.m2-imageholder i {
+.m2-imageholder > i {
 	    font-size: 125px !important;
     opacity: 0.1 !important;
 }
@@ -11319,12 +11325,12 @@ margin-top: 50px;
     border-radius: 18px;
 }
 .m2-paste-url {
-	    display: inline-block;
+    display: inline-block;
     font-size: 14px;
-    padding: 12px 15px;
+    /* padding: 12px 15px; */
     border-radius: 20px;
     background: none;
-    border: 1px solid #616161;
+    /* border: 1px solid #616161; */
     color: #616161;
     margin-left: 15px;
 }
@@ -11665,11 +11671,11 @@ body:not(.meme-challenge) .mc-wrapper {
 	display: none;
 }
 */
-.trend.followed .trend-follow-icon.first {
+.wrapper.popular.followed .trend-follow-icon.first, .trend.followed .trend-follow-icon.first {
 	display: none !important;
 	OPACITY:0;
 }
-.trend.notfollowed .trend-follow-icon.second {
+.wrapper.popular.notfollowed .trend-follow-icon.second, .trend.notfollowed .trend-follow-icon.second {
 	display: none !important;
 	OPACITY:0;
 }
@@ -11765,4 +11771,61 @@ transition: 0.3s all ease-out;
     font-style: italic !important;
     opacity: 0.3;
     margin: 0px auto 10px 0px !important;
+}
+#m2-paste-url-button {
+	    background: #ff3000;
+    color: white;
+    border-radius: 50%;
+    WIDTH: 40PX;
+    HEIGHT: 40PX;
+    display: none;
+}
+#m2-paste-url-input {
+	HEIGHT: 40PX;
+    BACKGROUND: #f3f3f3;
+    BORDER-RADIUS: 18PX;
+    text-align: center;
+    MARGIN-RIGHT: 9PX;
+    /* text-indent: 15px; */
+    font-family: roboto;
+    border: 1px solid darkgrey;
+    width: 130px;
+}
+.popular-container {
+	    float: right;
+    color: #636363;
+    font-family: roboto;
+    font-weight: bolder;
+    font-size: 13px;
+    margin: 10px;
+}
+.popular-container i {
+	font-size: 16px !important;
+    position: relative !important;
+    top: 3px !important;
+    margin-right: 2px !important;
+}
+.left-wrapper .trend-follow-icon{
+	    opacity: 0.3;
+    float: left;
+    position: initial !important;
+    margin: 11px 0px !important;
+    padding: 0px !important;
+}
+.wrapper.followed .trend-follow-icon {
+	display: none !important;
+}
+.wrapper.notfollowed .trend-follow-icon.second {
+	display: none !important;
+}
+svg path,
+svg rect{
+  fill: #ff3000;
+}
+.loading-wrapper {
+	display: none !important;
+	margin: 10px auto;
+}
+.wrapper.loading .loading-wrapper {
+	display: block !important;
 }

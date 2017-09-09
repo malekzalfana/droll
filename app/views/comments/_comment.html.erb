@@ -6,10 +6,10 @@
     <% if (comment.user == @post.user) && @post.anonymous == true %>
       <span class="comment-user-image" style="background-image: url(http://beta.drolle.co/assets/ragefaces/<%= @post.facenumber %>face.png"></span>
     <% else %>
-    <% if comment.user.image.url == "missing.jpg" %>
-            <span class="comment-user-image" style="background-image: url(/assets/<%= comment.user.image.url(:thumb) %>)"></span>
+      <% if !comment.user.pic.nil? && comment.user.image.url == 'missing.jpg' %>
+              <span class="comment-user-image" style="background-image: url(http://drolle.net/profilepics/pic<%= comment.user.pic %>.jpg)"></span>
       <% else %>
-            <span class="comment-user-image" style="background-image: url(<%= comment.user.image.url(:medium) %>)"></span>
+            <span class="comment-user-image" style="background-image: url(<%= if comment.user.image.url == 'missing.jpg' then 'assets/' end %><%= comment.user.image.url(:thumb) %>)"></span>
       <% end %>
     <% end %>
 

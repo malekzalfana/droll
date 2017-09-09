@@ -1,4 +1,5 @@
-window.onload = function(){
+//window.onload = function(){
+    // /alert(222)
     var leftMasonry = true;
     var nomorefavors = false;
     var nomoreposts = false;
@@ -19,7 +20,7 @@ window.onload = function(){
 if ( $('body').is('#recent, #index, #profile, #newposts') && !$('body').hasClass('shown-post') ) {
 
 
-        //console.log('this is the main')
+        console.log('this is the main')
     if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
         var url = $('#left-content-profile .pagination a.next_page').attr('href')
     }
@@ -33,6 +34,7 @@ if ( $('body').is('#recent, #index, #profile, #newposts') && !$('body').hasClass
             //alert('scrolled')
             //if ( toLoad == 100 ) {
                 if ( $('#profile-posts').hasClass('selected-profile-posts') ) {
+                    //alert(1)
                     console.log("5")
                     url = $('#left-content-profile .pagination a.next_page').attr('href')
                     $('#left-content-profile .pagination').text('more posts are coming')
@@ -44,6 +46,7 @@ if ( $('body').is('#recent, #index, #profile, #newposts') && !$('body').hasClass
                     }
                 }
                 else if ( $('#profile-favors').hasClass('selected-profile-posts') ) {
+                    //alert(2)
                     console.log("4")
                     //url = $('#right-content-profile .pagination a.next_page').attr('href')
                     $('#right-content-profile .pagination').text('more posts are coming')
@@ -54,6 +57,7 @@ if ( $('body').is('#recent, #index, #profile, #newposts') && !$('body').hasClass
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') && !$("body").hasClass("loadingPost") ) {
                     console.log("3")
+                    //alert(3)
                     //var urlNEWPOSTS = $('#box-5-wrapper .pagination a.next_page').attr('href')
 
                     //if ( nomorefavors == false ) {
@@ -66,10 +70,12 @@ if ( $('body').is('#recent, #index, #profile, #newposts') && !$('body').hasClass
                     //}
                 }
                 else if ( $('#box-5-wrapper').hasClass('active') && $("body").hasClass("loadingPost") ) {
+                    //alert(4)
                     console.log("2")
                     console.log("bitch")
                 }
                 else {
+                    //alert(5)
                     //console.log("1")
                     console.log('yes')
                     if ( !$('body').hasClass('shown-post') ){
@@ -101,4 +107,4 @@ $(document).on('click', '.reply-comment', function(){
     $('.comment-replies').removeAttr('id')
     $(this).parents('.new-reply').siblings('.comment-replies').attr('id','last-reply')
 })
-}
+//}

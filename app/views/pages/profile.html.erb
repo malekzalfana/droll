@@ -115,6 +115,7 @@
             <%= link_to(x) do %>
             <div class="wrapper">
                 <div class="wrapper-content">
+                  <p class="post-new-p <%= if x.title.blank? then "empty" end %>"><%= x.title unless x.title.nil? %></p>
 
                 <% if !x.imageaddress.blank? %><img src="<%= x.image2.url(:medium) %>" class="profile-post" alt="<%= x.title %>"><% end %>
                 <% if x.image.present? %><img src="<%= x.image.url(:medium) %>" class="profile-post" alt="<%= x.title %>"><% end %>

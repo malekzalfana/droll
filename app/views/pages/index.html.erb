@@ -162,7 +162,13 @@
     <%if !user_signed_in?%> <div class="wrapper not-wrapper">displaying popular posts only, sign in to view posts from your trends</div> <%end%>
     <% @post.each do |post| %>
 
-        <div class="wrapper <%= if post.user == current_user then "mine" end %> <%= if user_signed_in? && (current_user.voted_on? post, vote_scope: 'report') then 'reported' elsif user_signed_in? && (current_user.voted_on? post, vote_scope: 'favor') then 'favorited' end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
+        <div class="wrapper <%= if @followingPosts.include?(post) then 'userfollowed' end %> <%= if @popularPosts2.include?(post) then 'popular' end %> <% if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(post.trendid) %>followed<%else%>notfollowed<%end%> <%= if post.user == current_user then "mine" end %> <%= if user_signed_in? && (current_user.voted_on? post, vote_scope: 'report') then 'reported' elsif user_signed_in? && (current_user.voted_on? post, vote_scope: 'favor') then 'favorited' end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
+            <% if user_signed_in? %>
+                <%= form_for current_user, :html => { :multipart => true , :class => 'hidden-imp trend-form' },:url => url_for(:controller => 'trends', :action => 'follow', :user_id => current_user.id ), :method => "get" , remote: true  do |f| %>
+                    <%= f.text_field :trendid, :value => post.trendid, :id => 'e' %>
+                    <%= f.submit "Save", class: 'follow-trend-submit'%>
+                <% end %>
+                <% end %>
             <span class="click-mini">click on post to minimize</span>
             <i class="material-icons" id="prev-post-icon">navigate_before</i>
             <i class="material-icons" id="next-post-icon">navigate_next</i>
@@ -177,7 +183,7 @@
                     <div id="share-it" class="second">
                         <p>Share this meme <span> #memeChallenge</span>!</p>
                         <% if  (((Time.now  - post.created_at).round / 1.minutes ) / 3 + post.get_upvotes.size - post.get_downvotes.size ) >= 3 %>
-                        <div class="mc-time-wrapper">
+                            <div class="mc-time-wrapper">
                                 <span class="mc-points">You passed the #memechallenge!!</span>
                             </div>
                         <% else %>
@@ -259,6 +265,16 @@
                           <a  class="new-post-trend" target="_blank" href="/trends/<%= Trend.find_by_id(post.trendid).name %>">/<%= Trend.find_by_id(post.trendid).name %></a>
                         <% end %>
 
+                        <i class="material-icons trend-follow-icon first">add_circle_outline</i>
+                        <i class="material-icons trend-follow-icon second">remove_circle_outline</i>
+
+                        <% if @popularPosts2.include?(post)  %>
+                            <div class="popular-container">
+                                <i class="material-icons">whatshot</i>
+                                POPULAR
+                            </div>
+                        <% end %>
+
                     <div class="post-footer new <%= if post.user.passed != true then "not-passedREMOVED" end %>">
                 <% if post.anonymous != true %>
                     <a href="/user/<%= post.user.username %>" class="user-link">
@@ -306,6 +322,7 @@
                 <% else %>
 
                             <% if !post.facenumber.nil? %><div class="post-footer-user-image" style="background-image: url(http://www.nightmug.com/drolle/ragefaces/<%= post.facenumber %>face.png)"></div><% end %>
+
                                 <span class="post-footer-user-name anonymous-name">Anonymous</span>
                                 <span class="post-footer-time"><%= time_ago_in_words(post.created_at) %> ago</span>
                             <% end %>
@@ -320,11 +337,12 @@
                     <span class="footer-interseter post-votes-word">.</span>
 
                     <% if !user_signed_in?  %>
-                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                            <span class="post-votes-word real" data-points="<%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"> <%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
                     <% end %>
                     <% if user_signed_in? && post.user != current_user  %>
-                            <span class="post-votes-word real" data-points="<%= post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"><%= post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                            <span class="post-votes-word real" data-points="<%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"> <%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
                     <% end %>
+
 
                     <% if user_signed_in? && post.user == current_user && ((Time.now  - post.created_at).round / 1.minutes ) < 90 %>
 
@@ -501,6 +519,23 @@
                 </div>
 
                 </div>
+
+            <div class="loading-wrapper wrapper">
+                <div class="loader loader--style3" title="loading....................................">
+  <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+  <path fill="#000" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+    <animateTransform attributeType="xml"
+      attributeName="transform"
+      type="rotate"
+      from="0 25 25"
+      to="360 25 25"
+      dur="0.6s"
+      repeatCount="indefinite"/>
+    </path>
+  </svg>
+</div>
+            </div>
 
 
                     <!--<p class="commentig-notice">You have to be signed in to comment</p>-->

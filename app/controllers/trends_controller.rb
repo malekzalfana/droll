@@ -74,7 +74,7 @@ class TrendsController < ApplicationController
     @followed = false
     # && !current_user.trends.blank?
     #@v = current_user.trends.split(',').include?(@trend.id.to_s)
-    if user_signed_in? && !current_user.trends.nil? && current_user.trends.split(',').include?(@trend.id.to_s)
+    if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(@trend.id.to_i)
       @followed = true
     end
 
@@ -112,31 +112,41 @@ class TrendsController < ApplicationController
 
 
   def follow
-    @t = current_user.trends[1..-2].split(',').collect! {|n| n.to_i}
+    if user_signed_in? && !current_user.trends.nil?
+      @t = current_user.trends#[1..-2].split(',').collect! {|n| n.to_i}
+      puts current_user.trends
+      puts "string"
+    end
+
     @follow = false
     @thetrend = Trend.find( params[:user][:trendid] )
 #=begin
+    if current_user.trends.nil?
+      @t = []
+    else
+      @t = @t.tr('[]', '').split(',').map(&:to_i)
+    end
     #puts "before-" + current_user.trends
-     if @t.nil? || current_user.trends.empty?
+     if @t == []
        puts "ffffffffffffffff first"
-       @t = params[:user][:trendid]
+       @t.push(params[:user][:trendid].to_i)
        puts @t
        @follow = true
        #current_user.save
      #elsif (current_user.trends =~ /\A\d+\z/) == 0 &&  current_user.trends ==
 
-     elsif @t.include?( params[:user][:trendid] )# ||  @t == params[:user][:trendid]
+     elsif @t.include?( params[:user][:trendid].to_i )# ||  @t == params[:user][:trendid]
        puts "uuuuuuuuuuuuuuuu unfollowed"
        #@t = @t.delete(params[:user][:trendid])
-       @t = @t.delete(params[:user][:trendid])
+       @t.delete(params[:user][:trendid].to_i)
        @thetrend.followers = @thetrend.followers.to_i - 1
        @thetrend.save
        puts @t
+       puts
 
      else
        puts "fffffffffffffffff followed"
-       #@t = @t.split(',').push( params[:user][:trendid] )
-       @t = @t << (',' + params[:user][:trendid])
+       @t = @t.push(params[:user][:trendid].to_i)#(',' + params[:user][:trendid])
        puts @t
         @follow = true
      end
@@ -146,13 +156,7 @@ class TrendsController < ApplicationController
         @thetrend.followers = @thetrend.followers.to_i + 1
         @thetrend.save
       end
-=begin
-      @t.sub! ',,', ','
-      if @t[-1] == ','
-        puts "theres comma at the end bro".chop
-        @t.chop!
-      end
-=end
+
 
       #puts  current_user.trends.include?( params[:user][:trendid] )
       #current_user.trends = "number1"

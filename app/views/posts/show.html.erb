@@ -1,9 +1,9 @@
-<% if @post.hidden == true%>
+<% if @post.hidden == true && !( user_signed_in? && @post.user == current_user) %>
 <body class="<%= if request.original_url.include?('?app=true') then 'app' end %>">
     <% if request.original_url.include?('?app=true') %>
         <div id="hidden-post">Sorry, this post is now hidden due to user voting and will be reviewed.</div>
     <% else %>
-        <div id="hidden-post">Sorry, this post is now hidden due to user voting and will be reviewed. <br>Go back to <a href="/recent">/recent</a> page?</div>
+        <div id="hidden-post">Sorry, this post is now hidden due to user voting and will be reviewed. <br>Go back to <a href="/">main page</a> ?</div>
     <% end %>
 </body>
 
@@ -68,7 +68,7 @@
             <% if !user_signed_in? %>
                 <div id="post-memechallenge-banner">
                     <img data-original="http://i.imgur.com/Qvh21qf.png">
-                    <button onclick="window.location.href = '/make' ">Continue</button>
+                    <button onclick="window.location.href = '/make?mc=true' ">Continue</button>
                 </div>
             <% end %>
 

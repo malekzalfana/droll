@@ -102,6 +102,7 @@ class PostsController < ApplicationController
 
     @post = @user.posts.build(permit_post)
     @post.pushpoints = rand(41..83)
+    @post.maxpushpoints = 1000000
     @post.user = @user
     #@post.ref = params[:ref]
     @post.user_id = @user.id
@@ -124,22 +125,20 @@ class PostsController < ApplicationController
     end
 
     @t = @user.trends
-     if @t.nil? || @user.trends.empty?
+    if current_user.trends.nil?
+      @t = []
+    else
+      @t = @t.tr('[]', '').split(',').map(&:to_i)
+    end
+     if @t == []
        puts "ffffffffffffffff first"
-       @t = @trend.id
+       @t.push( @trend.id )
        puts @t
-     elsif !@t.include?( @trend.id.to_s )# ||  @t == params[:user][:trendid]
-       puts "fffffffffffffffff followed"
-       #@t = @t.split(',').push( params[:user][:trendid] )
-       @t = @t << (',' + @trend.id.to_s  )
-       @t.sub! ',,', ','
+     elsif !@t.include?( @trend.id.to_i )# ||  @t == params[:user][:trendid]
+       @t.push( @trend.id )
        puts @t
      end
     puts @t
-    if @t[-1] == ','
-      puts "theres comma at the end bro".chop
-      @t.chop!
-    end
 
     if @user.posted != true
       @user.posted = true
@@ -222,6 +221,7 @@ class PostsController < ApplicationController
           PublicActivity::Activity.where(key: 'upvoting', trackable_id: @post.id, owner: current_user).destroy_all
           @post.create_activity :upvote, owner: current_user, key: 'upvoting', recipient: @post.user
           puts 'upvoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooote'
+          puts current_user.voted_up_on? @post
           #redirect_to :back
         end
       end

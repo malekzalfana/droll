@@ -1,9 +1,10 @@
 <% if !@comment_parent.nil? %>
 $('<%= j render(@comment) %>').show().appendTo('#last-reply');
 $('#last-reply').addClass('commented-on-child').removeClass('no-replies').siblings('.comment-child .comment-user-image-wrapper').append('<div class="before-replies"></div>');
-<% else %> 
+<% else %>
 $('<%= j render(@comment) %>').insertAfter($('.wrapper:visible .right-wrapper > br:first-child'));
 console.log( $('.wrapper:visible .right-wrapper > br:first-child') )
 $('.loading-quarter-circle').removeClass('loading-animation')
 <% end %>
 $('.no-comments').hide()
+$(".wrapper.loading").removeClass("loading")

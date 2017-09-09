@@ -32,7 +32,7 @@ def index
       if current_user.trends.nil?
         @trends = []
       else
-        @trends = Trend.where(id: current_user.trends[1..-2].split(',').collect! {|n| n.to_i})
+        @trends = Trend.where(id: current_user.trends.tr('[]', '').split(',').map(&:to_i))
       end
 
       @strends = Trend.where.not(id: current_user.trends).order("RANDOM()").limit(5)
@@ -56,24 +56,45 @@ def index
         @welcomeMessage = true
         session[:display_welcome] = true
       end
+
     end
+
     if user_signed_in?
+      @mcpost2 = current_user.posts.where(:mc => true).where("created_at < ?", 10.minutes.ago).limit(1)
+      if session[:mc3] == true
+        @mcpost2 = Post.none
+      end
+      unless session[:mc3] && current_user.posts.where(:mc => true).where("created_at < ?", 10.minutes.ago).limit(1).exists?
+        @mcMessage = true
+        session[:mc3] = true
+      end
       if current_user.trends.blank?
         @trendArray = ''
       else
-        @trendArray = current_user.trends.split(',')
+        @trendArray = current_user.trends.tr('[]', '').split(',').map(&:to_i)
       end
       @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
 
-      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 10')
+      @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 0')
       @trendPosts = Post.where(trendid: @trendArray, hidden: nil)#.where('cached_votes_up > -1')
       @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
+      @popularPosts2 = @popularPosts.reject{ |e| @trendPosts.include? e }.reject{ |e| @followingPosts.include? e }
     #remove # up >>^^^^
       @post2 = [@popularPosts,@followingPosts, @trendPosts].flatten
       @post2 = @post2.uniq
       @post = @post2.sort_by{|e| e[:time_ago]}.reject{ |e| current_user.posts.include? e }
-      @mcpost = current_user.posts.where(:mc => true).where("created_at > ?", 20.minutes.ago).limit(1)
-      @post = [@mcpost, @post].flatten.paginate(:per_page => 10, :page => params[:page])
+      @mcpost = current_user.posts.where(:mc => true).where("created_at > ?", 10.minutes.ago).limit(1)
+      if @mcpost.present?
+        puts @mcpost.first.hidden
+        @mcpost.first.hidden = false;
+        @mcpost.first.save
+        puts @mcpost.first.hidden
+        puts "bitch wah"
+      end
+
+
+
+      @post = [@mcpost, @mcpost2, @post].flatten.paginate(:per_page => 10, :page => params[:page])
       #@post = Post.limit(30).paginate(:per_page => 10, :page => params[:page])
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }.reject{ |e| current_user.posts.include? e }
@@ -153,7 +174,7 @@ def index
     end
     @trends = Trend.all.limit(15)
     if user_signed_in?
-      @trends = Trend.where(id: current_user.trends[1..-2].split(',').collect! {|n| n.to_i})
+      @trends = Trend.where(id: current_user.trends.tr('[]', '').split(',').map(&:to_i))
       @strends = Trend.where.not(id: current_user.trends).order("RANDOM()").limit(5)
     else
       @trends = Trend.all
@@ -175,7 +196,7 @@ def index
       if current_user.trends.blank?
         @trendArray = ''
       else
-        @trendArray = current_user.trends.split(',')
+        @trendArray = current_user.trends.tr('[]', '').split(',').map(&:to_i)
       end
       @randomUsers = User.where.not(:id => current_user.following).except(current_user).limit(4)
 
@@ -240,7 +261,10 @@ def index
   end
 
   def admin
-
+    if user_signed_in?
+      current_user.trends = nil
+      current_user.save
+    end
     @randomfirst = ["mrs", "mr", "sir", "thirsty", "bro", "master", "dick", "pussy", "bowl", "one", "the", "terrific", "leave", "pull", "my", "pro", "daddy", "fourth", "asian", "indian", "fucking", "red", "green", "farting", "yellow", "soft", "rough", "dangerous", "laura", "zack", "joe", "mark", "sandy", "pluto", "kisten", "logan", "savage", "crack", "douglar", "brazilian", "fat", "ugly", "stupid", "69", "99", "11", "last", "strange", "rocky", "high"]
 
     if user_signed_in?
@@ -534,13 +558,15 @@ def index
   def stock
     if params[:base64]
 
-    if !Stock.where(base64: params[:base64]).present?
+    if (user_signed_in? && !Stock.where(user_id: current_user.id, base64: params[:base64]).present?) || !user_signed_in?
 
       @stock = Stock.create
       @stock.base64 = params[:base64]
       @stock.stocktype = params[:stocktype]
       @stock.image = URI.parse(  params[:base64]  )
       @stock.user = current_user
+      puts @stock.user.id
+      puts "Ssssssssssssssssssssssss"
       @stock.save
       if @stock.save
         respond_to do |format|
@@ -548,7 +574,6 @@ def index
          format.js
         end
       end
-
     else
       puts "already made on!!!!!!!!!!!!!"
       redirect_to :back
@@ -624,7 +649,7 @@ def index
     else
       redirect_to root_path, :notice => "User not found"
     end
-    @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: nil).where(anonymous: false).paginate :page => params[:page], :per_page => 10
+    @profilepost = Post.all.where("user_id = ?", User.find_by_username(params[:id]).id ).where(hidden: [false, nil]).where(anonymous: [nil, false]).paginate :page => params[:page], :per_page => 10
     @activities = PublicActivity::Activity.order("created_at DESC").where( recipient: current_user).limit(25).all
     @profilefavor = @user.votes.where(:vote_scope => 'favor').for_type(Post).votables.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
