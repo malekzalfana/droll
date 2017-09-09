@@ -26,7 +26,7 @@
                 <% end %>
                 <% end %>
                 <!--<a href="trends/<%= trend.name %>"></a>-->
-                <div class="trend-last-image" style="background-image: url(<%= if Post.where(trendid: trend.id).exists? then Post.where(trendid: trend.id).last.image.url(:medium) end %>)"></div>
+                <div class="trend-last-image" style="background-image: url(<%= if Post.where(trendid: trend.id).where.not(image_content_type: nil).exists? then Post.where(trendid: trend.id).where.not(image_content_type: nil).last.image.url(:medium) end %>)"></div>
                 <a href="/trends/<%= trend.name %>" target="_blank" class="not-link trend-link">
                   <p class="trend-name new">/<%= trend.name %><i class="material-icons">open_in_new</i>
                   </p>
