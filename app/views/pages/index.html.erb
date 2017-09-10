@@ -162,7 +162,7 @@
     <%if !user_signed_in?%> <div class="wrapper not-wrapper">displaying popular posts only, sign in to view posts from your trends</div> <%end%>
     <% @post.each do |post| %>
 
-        <div class="wrapper <%= if @followingPosts.include?(post) then 'userfollowed' end %> <%= if @popularPosts2.include?(post) then 'popular' end %> <% if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(post.trendid) %>followed<%else%>notfollowed<%end%> <%= if post.user == current_user then "mine" end %> <%= if user_signed_in? && (current_user.voted_on? post, vote_scope: 'report') then 'reported' elsif user_signed_in? && (current_user.voted_on? post, vote_scope: 'favor') then 'favorited' end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
+        <div class="wrapper <%= if @followingPosts.include?(post) then 'userfollowed' end %> <%= if user_signed_in? && @popularPosts2.include?(post) then 'popular' end %> <% if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(post.trendid) %>followed<%else%>notfollowed<%end%> <%= if post.user == current_user then "mine" end %> <%= if user_signed_in? && (current_user.voted_on? post, vote_scope: 'report') then 'reported' elsif user_signed_in? && (current_user.voted_on? post, vote_scope: 'favor') then 'favorited' end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
             <% if user_signed_in? %>
                 <%= form_for current_user, :html => { :multipart => true , :class => 'hidden-imp trend-form' },:url => url_for(:controller => 'trends', :action => 'follow', :user_id => current_user.id ), :method => "get" , remote: true  do |f| %>
                     <%= f.text_field :trendid, :value => post.trendid, :id => 'e' %>
@@ -268,7 +268,7 @@
                         <i class="material-icons trend-follow-icon first">add_circle_outline</i>
                         <i class="material-icons trend-follow-icon second">remove_circle_outline</i>
 
-                        <% if @popularPosts2.include?(post)  %>
+                        <% if user_signed_in? && @popularPosts2.include?(post)  %>
                             <div class="popular-container">
                                 <i class="material-icons">whatshot</i>
                                 POPULAR
@@ -337,10 +337,10 @@
                     <span class="footer-interseter post-votes-word">.</span>
 
                     <% if !user_signed_in?  %>
-                            <span class="post-votes-word real" data-points="<%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"> <%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                            <span class="post-votes-word real" data-points="<%= if user_signed_in? && @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"> <%= if user_signed_in? && @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
                     <% end %>
                     <% if user_signed_in? && post.user != current_user  %>
-                            <span class="post-votes-word real" data-points="<%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"> <%= if @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
+                            <span class="post-votes-word real" data-points="<%= if user_signed_in? && @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints + post.get_upvotes.size - post.get_downvotes.size %>" data-user-votes="0"> <%= if user_signed_in? && @popularPosts2.include?(post) then 12 else 0 end + post.pushpoints +  post.get_upvotes.size - post.get_downvotes.size %></span>
                     <% end %>
 
 
