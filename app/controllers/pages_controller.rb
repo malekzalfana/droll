@@ -108,6 +108,7 @@ def index
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
       @popularPosts2 = @post
+      @followingPosts = Post.none
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
@@ -222,6 +223,7 @@ def index
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
       @popularPosts2 = @post
+      @followingPosts = Post.none
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
