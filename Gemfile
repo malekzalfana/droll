@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.3.0'
+#for errors in heroku app
+gem 'rollbar'
 #for scheduling
 gem 'whenever', :require => false
 #for caching

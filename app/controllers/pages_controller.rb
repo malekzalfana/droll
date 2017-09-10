@@ -107,7 +107,6 @@ def index
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
-      @popularPosts2 = Post.where(hidden: nil).where('cached_votes_up > 10')
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
@@ -204,7 +203,6 @@ def index
       @popularPosts = Post.where(hidden: nil).where('cached_votes_up > 10')
       @trendPosts = Post.where(trendid: @trendArray, hidden: nil)#.where('cached_votes_up > -1')
       @followingPosts = Post.where(hidden: nil).where(:user_id => current_user.following)#.where("created_at < ?", 2.days.ago)
-      @popularPosts2 = @popularPosts.reject{ |e| @trendPosts.include? e }.reject{ |e| @followingPosts.include? e }
     #remove # up >>^^^^
       @post2 = [@popularPosts,@followingPosts, @trendPosts].flatten
       @post2 = @post2.uniq
@@ -215,13 +213,14 @@ def index
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
       #  .reverse! user this for reversing the order of posts
       # add the user not nil !!!!!
+      @popularPosts2 = @popularPosts.reject{ |e| @trendPosts.include? e }.reject{ |e| @followingPosts.include? e }
     else
 
       @post = Post.where(hidden: nil).order("created_at DESC").paginate(:per_page => 10, :page => params[:page])
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
-      @popularPosts2 = Post.where(hidden: nil).where('cached_votes_up > 10')
+      @popularPosts2 = @popularPosts
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all

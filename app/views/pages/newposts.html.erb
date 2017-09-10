@@ -155,7 +155,7 @@
     <p class="normal-message"><img src="https://media.giphy.com/media/jWexOOlYe241y/giphy.gif" class="gif-message">Posts of the trends and users you follow will appear here. Go ahead. Explore and follow what you like! <a href="/trends">click to see trends</a></p>
     <% end %>
     <% @post.each do |post| %>
-    <div class="wrapper <%= if user_signed_in? && @followingPosts.include?(post) then 'userfollowed' end %> <%= if user_signed_in? && @popularPosts2.include?(post) then 'popular' end %> <% if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(post.trendid) %>followed<%else%>notfollowed<%end%> <%= if post.user == current_user then "mine" end %> <%= if user_signed_in? && (current_user.voted_on? post, vote_scope: 'report') then 'reported' elsif user_signed_in? && (current_user.voted_on? post, vote_scope: 'favor') then 'favorited' end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
+    <div class="wrapper <%= if user_signed_in? && @followingPosts.include?(post) then 'userfollowed' end %> <%= if @popularPosts2.include?(post) then 'popular' end %> <% if user_signed_in? && !current_user.trends.nil? && current_user.trends.tr('[]', '').split(',').map(&:to_i).include?(post.trendid) %>followed<%else%>notfollowed<%end%> <%= if post.user == current_user then "mine" end %> <%= if user_signed_in? && (current_user.voted_on? post, vote_scope: 'report') then 'reported' elsif user_signed_in? && (current_user.voted_on? post, vote_scope: 'favor') then 'favorited' end %>" data-post-id="<%= post.id %>" id="wrapper-<%= post.id %>">
             <% if user_signed_in? %>
                 <%= form_for current_user, :html => { :multipart => true , :class => 'hidden-imp trend-form' },:url => url_for(:controller => 'trends', :action => 'follow', :user_id => current_user.id ), :method => "get" , remote: true  do |f| %>
                     <%= f.text_field :trendid, :value => post.trendid, :id => 'e' %>
@@ -261,7 +261,7 @@
                         <i class="material-icons trend-follow-icon first">add_circle_outline</i>
                         <i class="material-icons trend-follow-icon second">remove_circle_outline</i>
 
-                        <% if user_signed_in? && @popularPosts2.include?(post)  %>
+                        <% if @popularPosts2.include?(post)  %>
                             <div class="popular-container">
                                 <i class="material-icons">whatshot</i>
                                 POPULAR
