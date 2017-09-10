@@ -107,6 +107,7 @@ def index
       @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
       @newposts = @pre_newposts.reject{ |e| @post.include? e }
       @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
+      @popularPosts2 = @popularPosts
     end
 
     #@activities = PublicActivity::Activity.ordered.commenting.posting.upvoting.following.mentioning.ordered.limit.all
