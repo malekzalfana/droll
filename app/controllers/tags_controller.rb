@@ -26,6 +26,9 @@ class TagsController < ApplicationController
       @activities = @activities3.sort_by{|e| e[:created_at]}.reverse.paginate(:per_page => 25, :page => 1)
     end
     @post = Post.tagged_with(@tag).where(hidden: nil).order("created_at DESC").paginate(:per_page => 35, :page => 1)
+      @pre_newposts = Post.where(hidden: nil).where('cached_votes_up < 10').order("created_at DESC")
+      @newposts = @pre_newposts.reject{ |e| @post.include? e }.reject{ |e| current_user.posts.include? e }
+      @newposts = @newposts.paginate(:per_page => 9, :page => params[:page])
 
     # .reject{ |e| @anonymous.include? e }
     respond_to do |format|

@@ -638,7 +638,8 @@ def index
   def sitemap
     @post = Post.where(hidden: nil)
     @tag = ActsAsTaggableOn::Tag.all
-    @trend = ActsAsTaggableOn::Tag.all
+    #@trend = ActsAsTaggableOn::Tag.all
+    @trend = Trend.all
     @users = User.all
     respond_to do |format|
         format.xml { render layout: false }
